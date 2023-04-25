@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{57709c36-f9ab-4803-a936-aa84efa6ad49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{251cda58-b7ad-4c78-a4a2-d91e06f65e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{5a18df2b-7f98-4f16-ac5d-a237d2e2de72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Live">
+      <UniqueIdentifier>{d7547ac8-d0f6-4bb4-a1b6-f3eb3074f693}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{994b403f-a304-4ab0-a8a2-57fabba5d212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\UEClasses">
+      <UniqueIdentifier>{f9f55373-abaf-4493-8076-ceaf305bb354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\User Defined">
+      <UniqueIdentifier>{3dd106ec-934c-46c3-a254-c141c9a2fa97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entry">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resources\AES">
+      <UniqueIdentifier>{bfd08943-78a5-4e4a-a2df-0070475a56d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Dumps Host">
+      <UniqueIdentifier>{991396f2-49ea-442e-8771-fc95017f0410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\json">
+      <UniqueIdentifier>{7b42fe0b-587b-4e28-b0c3-e71f8d257093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend">
+      <UniqueIdentifier>{91886c58-a04b-429e-b99a-5f6eef4140d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\Windows">
+      <UniqueIdentifier>{5ffe2432-e701-4099-8e11-1df772977d13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\ImGui">
+      <UniqueIdentifier>{2a5bbc9d-4106-4bf9-a0c9-e9c8bf156e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\Texture">
+      <UniqueIdentifier>{bdb35c0c-2ab2-40b3-af12-9aaa681285de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\Fonts">
+      <UniqueIdentifier>{87c009aa-0d71-417e-a5d2-846d928f8261}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UEDumper.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\Core.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Live\LiveMemory.cpp">
+      <Filter>Engine\Live</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UEClasses\UnrealClasses.cpp">
+      <Filter>Engine\UEClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui_draw.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui_impl_dx11.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui_tables.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui_widgets.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Texture\TextureCreator.cpp">
+      <Filter>Frontend\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\DumpProgress.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\EditWindow.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\HelloWindow.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\LiveEditor.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\LogWindow.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\PackageViewerWindow.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\PackageWindow.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\TopRowButtons.cpp">
+      <Filter>Frontend\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\IGHelper.cpp">
+      <Filter>Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\Memory.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\AES\AES.cpp">
+      <Filter>Resources\AES</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Dumpshost\dumpshost.cpp">
+      <Filter>Resources\Dumps Host</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\EngineSettings.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\ImGui\imgui_impl_win32.cpp">
+      <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Core.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\EngineStructs.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\FName_decryption.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Live\LiveMemory.h">
+      <Filter>Engine\Live</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UEClasses\UnrealClasses.h">
+      <Filter>Engine\UEClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\enums.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\structs.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Fonts\fontAwesome.h">
+      <Filter>Frontend\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Fonts\fontAwesomeHelper.h">
+      <Filter>Frontend\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Fonts\InterFont.h">
+      <Filter>Frontend\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Texture\logo.h">
+      <Filter>Frontend\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Texture\TextureCreator.h">
+      <Filter>Frontend\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\DumpProgress.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\EditWindow.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\HelloWindow.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\LiveEditor.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\LogWindow.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\PackageViewerWindow.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\PackageWindow.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\TopRowButtons.h">
+      <Filter>Frontend\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\IGHelper.h">
+      <Filter>Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\driver.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Memory.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\AES\AES.h">
+      <Filter>Resources\AES</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Dumpshost\dumpshost.h">
+      <Filter>Resources\Dumps Host</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Json\json.hpp">
+      <Filter>Resources\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\EngineSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Userdefined\Offsets.h">
+      <Filter>Engine\User Defined</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Userdefined\StructDefinitions.h">
+      <Filter>Engine\User Defined</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Userdefined\UEdefinitions.h">
+      <Filter>Engine\User Defined</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Userdefined\Datatypes.h">
+      <Filter>Engine\User Defined</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UEDumper.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.ico">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

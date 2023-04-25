@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4cd4985c-6610-417e-a8ea-99d67743e789}</ProjectGuid>
+    <RootNamespace>UEDumper</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpshost/;../UEDumper/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpshost/;../UEDumper/;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>26495</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D3D11.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DisableSpecificWarnings>4267;4858;26495;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D3D11.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\Core\Core.cpp" />
+    <ClCompile Include="Engine\Live\LiveMemory.cpp" />
+    <ClCompile Include="Engine\UEClasses\UnrealClasses.cpp" />
+    <ClCompile Include="Frontend\IGHelper.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Frontend\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Frontend\Texture\TextureCreator.cpp" />
+    <ClCompile Include="Frontend\Windows\DumpProgress.cpp" />
+    <ClCompile Include="Frontend\Windows\EditWindow.cpp" />
+    <ClCompile Include="Frontend\Windows\HelloWindow.cpp" />
+    <ClCompile Include="Frontend\Windows\LiveEditor.cpp" />
+    <ClCompile Include="Frontend\Windows\LogWindow.cpp" />
+    <ClCompile Include="Frontend\Windows\PackageViewerWindow.cpp" />
+    <ClCompile Include="Frontend\Windows\PackageWindow.cpp" />
+    <ClCompile Include="Frontend\Windows\TopRowButtons.cpp" />
+    <ClCompile Include="Memory\Memory.cpp" />
+    <ClCompile Include="Resources\AES\AES.cpp" />
+    <ClCompile Include="Resources\Dumpshost\dumpshost.cpp" />
+    <ClCompile Include="Settings\EngineSettings.cpp" />
+    <ClCompile Include="UEDumper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Core\Core.h" />
+    <ClInclude Include="Engine\Core\EngineStructs.h" />
+    <ClInclude Include="Engine\Core\FName_decryption.h" />
+    <ClInclude Include="Engine\enums.h" />
+    <ClInclude Include="Engine\Live\LiveMemory.h" />
+    <ClInclude Include="Engine\structs.h" />
+    <ClInclude Include="Engine\UEClasses\UnrealClasses.h" />
+    <ClInclude Include="Engine\Userdefined\Datatypes.h" />
+    <ClInclude Include="Engine\Userdefined\Offsets.h" />
+    <ClInclude Include="Engine\Userdefined\StructDefinitions.h" />
+    <ClInclude Include="Engine\Userdefined\UEdefinitions.h" />
+    <ClInclude Include="Frontend\Fonts\fontAwesome.h" />
+    <ClInclude Include="Frontend\Fonts\fontAwesomeHelper.h" />
+    <ClInclude Include="Frontend\Fonts\InterFont.h" />
+    <ClInclude Include="Frontend\IGHelper.h" />
+    <ClInclude Include="Frontend\Texture\logo.h" />
+    <ClInclude Include="Frontend\Texture\TextureCreator.h" />
+    <ClInclude Include="Frontend\Windows\DumpProgress.h" />
+    <ClInclude Include="Frontend\Windows\EditWindow.h" />
+    <ClInclude Include="Frontend\Windows\HelloWindow.h" />
+    <ClInclude Include="Frontend\Windows\LiveEditor.h" />
+    <ClInclude Include="Frontend\Windows\LogWindow.h" />
+    <ClInclude Include="Frontend\Windows\PackageViewerWindow.h" />
+    <ClInclude Include="Frontend\Windows\PackageWindow.h" />
+    <ClInclude Include="Frontend\Windows\TopRowButtons.h" />
+    <ClInclude Include="Memory\driver.h" />
+    <ClInclude Include="Memory\Memory.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resources\AES\AES.h" />
+    <ClInclude Include="Resources\Dumpshost\dumpshost.h" />
+    <ClInclude Include="Resources\Json\json.hpp" />
+    <ClInclude Include="Settings\EngineSettings.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UEDumper.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
