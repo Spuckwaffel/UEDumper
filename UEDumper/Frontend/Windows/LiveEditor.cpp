@@ -446,6 +446,7 @@ void windows::LiveEditor::drawReadWriteableField(LiveMemory::MemoryBlock& block,
 		//uncomment to see whether a nonclickable prop is not supported
 		//ImGui::SameLineEx(5, 0);
 		//ImGui::Text("Not supported");
+		ImGui::Dummy({ 0,0 });
 		return;
 	}
 	ImGui::PopItemWidth();

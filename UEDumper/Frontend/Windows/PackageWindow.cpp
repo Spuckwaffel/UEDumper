@@ -111,7 +111,18 @@ bool windows::PackageWindow::render()
 			ImGui::Separator();
 			if (ImGui::Button("Save package"))
 			{
-				LogWindow::Log(windows::LogWindow::log_4, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
+				std::ofstream file(EngineSettings::getWorkingDirectory() / (packages[packagePicked].packageName + ".h"));
+				file <<
+R"(/********************************************************
+*                                                       *
+*   Package generated using UEDumper by Spuckwaffel.    *
+*                                                       *
+********************************************************/
+
+)";
+				file << "/// Package " + packages[packagePicked].packageName << ".\n\n";
+				PackageViewerWindow::generatePackage(file, packages[packagePicked]);
+				LogWindow::Log(LogWindow::log_4, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
 			}
 			if (ImGui::Button("Copy package name"))
 			{
