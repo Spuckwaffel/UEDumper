@@ -794,7 +794,8 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 	
 	auto block = LiveMemory::getMemoryBlock(address);
 
-	ImGui::TextColored(IGHelper::Colors::grayedOut, secret.c_str());
+	//draw the secret for debug purposes.
+	//ImGui::TextColored(IGHelper::Colors::grayedOut, secret.c_str());
 	
 	for (const auto& member : struc.members)
 	{
