@@ -89,4 +89,4 @@
 #endif
 
 
-#define FORTNITE
+#define FORTNITE_41
