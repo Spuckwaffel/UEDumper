@@ -1045,13 +1045,18 @@ bool windows::LiveEditor::renderLaunchPopup()
 	ImGui::Dummy(ImVec2(60, 0));
 	ImGui::SameLine();
 	if(ImGui::Button("Cancel", ImVec2(120, 30)))
+	{
+		ImGui::End();
 		return true;
+	}
+		
 	ImGui::SameLine();
 	if(ImGui::Button("Continue", ImVec2(120, 30)))
 	{
 		LiveMemory::cacheBlocks();
 		liveEditorStarted = true;
 		accepted = true;
+		ImGui::End();
 		return true;
 	}
 		
