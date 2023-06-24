@@ -815,9 +815,7 @@ public:
 		UObject* Object;
 	} Container;
 
-#if !FORTNITE_LATEST
 	bool bIsUObject;
-#endif
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Field.h#L351
@@ -843,9 +841,7 @@ public:
 
 	/** Object flags */
 	//EObjectFlags FlagsPrivate;
-#if !FORTNITE_LATEST
 	EObjectFlags FlagsPrivate;
-#endif
 
 
 	operator bool() const { return ClassPrivate != nullptr; }
@@ -937,9 +933,6 @@ class FArrayProperty : public FProperty
 {
 public:
 	FProperty* Inner;
-#if FORTNITE_LATEST
-	FProperty* Inner2;
-#endif
 	EArrayPropertyFlags ArrayFlags;
 
 	FProperty* getInner() const;

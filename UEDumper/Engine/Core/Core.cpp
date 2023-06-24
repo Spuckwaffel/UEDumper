@@ -35,16 +35,14 @@ std::string EngineCore::FNameToString(FName fname)
 	
 #else
 	//>4.25 chunks exist
-	unsigned int chunkOffset = fname.ComparisonIndex >> 16;
-	unsigned short nameOffset = fname.ComparisonIndex;
+	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
+	const unsigned short nameOffset = fname.ComparisonIndex;
 
 #endif
 	//calculation does not use the gnames pointer, rather the real offset
 	//calculation should be the same for every game
 #if UE_VERSION >= UE_4_25
-
-
-#ifndef FORTNITE_LATEST
+	
 	//average function since 4.25
 
 	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
@@ -54,27 +52,6 @@ std::string EngineCore::FNameToString(FName fname)
 	const auto nameLength = pool >> 6;
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
-
-#else
-	//fortnite has it a bit custom
-	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * chunkOffset + 16) + 4 * nameOffset;
-
-	uint16_t pool = Memory::read<uint16_t>(namePoolChunk);
-
-	if(pool < 64)
-	{
-		const int compIndex = Memory::read<DWORD>(namePoolChunk + 4);
-		chunkOffset = compIndex >> 16;
-		nameOffset = compIndex;
-		namePoolChunk = Memory::read<uint64_t>(gNames + 8 * chunkOffset + 16) + 4 * nameOffset;
-		pool = Memory::read<uint16_t>(namePoolChunk);
-	}
-
-	const auto nameLength = pool >> 6;
-
-	Memory::read(reinterpret_cast<void*>(namePoolChunk + 4), name, nameLength);
-
-#endif
 #endif
 
 #if USE_FNAME_ENCRYPTION

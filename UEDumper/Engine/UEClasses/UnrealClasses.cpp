@@ -870,17 +870,10 @@ UStruct* FStructProperty::getStruct() const
 
 FProperty* FArrayProperty::getInner() const
 {
-#if FORTNITE_LATEST
-    if (Inner2)
-    {
-        return EngineCore::getFField<FProperty>(Inner2);
-    }
-#else
     if (Inner)
     {
         return EngineCore::getFField<FProperty>(Inner);
     }
-#endif
     return nullptr;
 }
 
