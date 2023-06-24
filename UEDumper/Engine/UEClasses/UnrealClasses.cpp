@@ -157,11 +157,14 @@ UObject* UObject::getPackageObjectFnPtr() const
 
 std::string UObject::getSecondPackageName() const
 {
-    std::string package = getPackageObject()->getName().c_str();
-    //none packages have no package, they are a package themself
-    if (package == "None")
-    {
+    std::string package;
+    if(!getPackageObject())
         package = getName().c_str();
+    else
+    {
+        package = getPackageObject()->getName().c_str();
+        if (package == "None")
+            package = getName().c_str();
     }
     std::stringstream ss(package.substr(1).c_str());
     std::string token;
@@ -170,12 +173,13 @@ std::string UObject::getSecondPackageName() const
         output.push_back(token);
     }
 
+    if (output.size() == 0)
+        return package.substr(1);
+
     if (output.size() < 2) {
         return output[0];
     }
-    else {
-        return output[1];
-    }
+    return output[1];
 }
 
 bool UObject::IsA(const UClass* staticClass) const

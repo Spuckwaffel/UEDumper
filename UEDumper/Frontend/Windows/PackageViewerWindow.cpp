@@ -354,9 +354,36 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
 
         for(const auto& member : struc.members)
         {
+            //flag some invalid characters in a name
+            auto generateValidVarName = [](const std::string& str)
+            {
+                std::string result = "";
+                for (const char c : str)
+                {
+                    if (c == ' ' || c == '"' || c == ';' || c == '$' || c == '€')
+                        result += "_";
+                    else if (c == '%')
+                        result += '_percent_';
+                    else if (c == '+')
+                        result += '_plus_';
+                    else if (c == '-')
+                        result += '_min_';
+                    else if (c == '?')
+                        result += '_qmark_';
+                    else if (c == '!')
+                        result += '_excl_';
+                    else
+                        result += c;
+
+                }
+                //guaranteed 0 termination
+                result += '\0';
+                return result;
+            };
+
             char finalBuf[300];
             char nameBuf[200];
-            std::string name = member.name;
+            std::string name = generateValidVarName(member.name);
             if (member.isBit)
                 name += " : 1";
             sprintf_s(nameBuf, "%-50s %s;", member.type.stringify().c_str(), name.c_str());
@@ -364,7 +391,7 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
 				sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
             else
                 sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
-            file << finalBuf << " " <<static_cast<int>(member.type.propertyType);
+            file << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
             if (member.userEdited)
                 file << "USER-MODIFIED";
             else if (member.missed)
