@@ -330,30 +330,6 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 		int bitOffset = -1;
 	};
 
-	auto generateValidVarName = [](const std::string& str)
-	{
-		std::string result = "";
-		for (const char c : str)
-		{
-			if (c == ' ' || c == '"' || c == ';' || c == '$' || c == '€')
-				result += "_";
-			else if (c == '%')
-				result += '_percent_';
-			else if (c == '+')
-				result += '_plus_';
-			else if (c == '-')
-				result += '_min_';
-			else if (c == '?')
-				result += '_qmark_';
-			else if (c == '!')
-				result += '_excl_';
-			else
-				result += c;
-
-		}
-		return result;
-	};
-	
 	prevBitProp prevBitField = prevBitProp();
 
 #if UE_VERSION < UE_4_25
@@ -474,7 +450,7 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 		{
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
-			member.name = generateValidVarName(child->getName());
+			member.name = child->getName();
 			if (member.size == 0)
 			{
 				windows::LogWindow::Log(windows::LogWindow::log_3, "CORE", "member %s size is 0! ", member.name.c_str());
