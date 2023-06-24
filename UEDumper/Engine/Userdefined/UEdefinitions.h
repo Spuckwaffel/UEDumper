@@ -87,6 +87,3 @@
 //default TRUE
 #define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
 #endif
-
-
-#define ONLY_UP
