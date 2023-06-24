@@ -1122,7 +1122,7 @@ void windows::LiveEditor::renderLiveEditor()
 			if (ImGui::Selectable(tabs[i].name.c_str(), is_selected))
 			{
 				tabPicked = i;
-				LogWindow::Log(LogWindow::log_4, "LIVE", "opened tab %d", tabPicked);
+				LogWindow::Log(LogWindow::log_1, "LIVE", "opened tab %d", tabPicked);
 			}
 		}
 		ImGui::EndListBox();
@@ -1130,7 +1130,7 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::EndChild();
 	ImGui::SameLine();
 	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_HorizontalScrollbar);
-	if(tabs.size() > 0 && tabPicked < tabs.size())
+	if(tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
 	{
 		const auto& tab = tabs[tabPicked];
 
@@ -1138,7 +1138,7 @@ void windows::LiveEditor::renderLiveEditor()
 		{
 			const auto& currentStruct = EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
 
-			renderStruct(currentStruct, tab.address, tab.name, std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
+			renderStruct(currentStruct, tab.address, tab.name, tab.name + std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
 		}
 		else if (tab.type == TabTypeOffset)
 		{
@@ -1156,7 +1156,7 @@ void windows::LiveEditor::renderLiveEditor()
 				char addressBuf[30];
 				sprintf_s(addressBuf, "0x%llX", address);
 
-				renderStruct(currentStruct, address, tab.name, std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
+				renderStruct(currentStruct, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
 			}
 			else
 			{

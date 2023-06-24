@@ -32,12 +32,12 @@
 
 enum OffsetFlags
 {
-	OFFSET_LIVE_EDITOR = 1 << 0, //use this if the offset should be displayed in the live editor
-	OFFSET_DH = 1 << 1, //use this if the offset should be added to dumps host when creating dumps host files
-	OFFSET_ADDRESS = 1 << 2, //use this if the offset is at base + address
-	OFFSET_SIGNATURE = 1 << 3, //dont use directly
-	OFFSET_SIG_RVA = 1 << 4, //dont use directly
-	OFFSET_SIG_DIR = 1 << 5, //dont use directly
+	OFFSET_LIVE_EDITOR	= 1 << 0, //use this if the offset should be displayed in the live editor
+	OFFSET_DH			= 1 << 1, //use this if the offset should be added to dumps host when creating dumps host files
+	OFFSET_ADDRESS		= 1 << 2, //use this if the offset is at base + address
+	OFFSET_SIGNATURE	= 1 << 3, //dont use directly
+	OFFSET_SIG_RVA		= 1 << 4, //dont use directly
+	OFFSET_SIG_DIR		= 1 << 5, //dont use directly
 	OFFSET_SINGNATURE_DIRECT = OFFSET_SIGNATURE | OFFSET_SIG_DIR, //use this if the signature start is the offset
 	OFFSET_SIGNATURE_FOLLOW = OFFSET_SIGNATURE | OFFSET_SIG_RVA, //use this if the offset is at the signature + rva
 
@@ -51,7 +51,7 @@ struct Offset
 	//leave the rest empty if not using a sig
 	const char* sig = ""; //sig bytes in format \xAB\xCD\xEF\x00\x...
 	std::string mask = ""; //xxxxxxx??xxx??x? where x compares the byte and ? is a wildcard.
-
+	
 	operator bool() const { return flag != -1; }
 
 	nlohmann::json toJson() const
@@ -61,7 +61,7 @@ struct Offset
 		j["name"] = name;
 		j["offset"] = offset;
 		nlohmann::json jSig;
-		for (int i = 0; i < mask.length(); i++)
+		for(int i = 0; i < mask.length(); i++)
 		{
 			BYTE b = *(sig + i);
 			jSig.push_back(b);
@@ -81,7 +81,7 @@ struct Offset
 		nlohmann::json jSig = json["sig"];
 		char* sig = new char[o.mask.length()];
 		int i = 0;
-		for (const BYTE byte : jSig)
+		for(const BYTE byte : jSig)
 		{
 			sig[i++] = byte;
 		}
@@ -89,22 +89,16 @@ struct Offset
 	}
 };
 
-//examples:
 //for uworld: STAT_UGameEngine_Tick_TickWorldTravel or seamlesstravel
 //fnametostring: E8 ? ? ? ? 83 7D E8 00 4C 8D 05 ? ? ? ? 48 8D 15 ? ? ? ? follow the sub // WorldPartitionLevelStreaming_%s and sub above
 //gobjects: 48 8B 05 ? ? ? ? 48 8B 0C C8 48 8D 04 D1 48 85 C0
-
-/// Example:
-/// offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
-/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x4D01930 });
-/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x4E0EFF0 });
-
 inline std::vector<Offset> setOffsets()
 {
 	std::vector<Offset> offsets;
-
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x76846C0 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x7723D90 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x78915F8 });
+#ifdef FoliageVsUndead
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x581A7E0 });
+#endif
 	return offsets;
 }
