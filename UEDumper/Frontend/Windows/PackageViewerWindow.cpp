@@ -363,15 +363,15 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
                     if (c == ' ' || c == '"' || c == ';' || c == '$' || c == '€')
                         result += "_";
                     else if (c == '%')
-                        result += '_percent_';
+                        result += "_percent_";
                     else if (c == '+')
-                        result += '_plus_';
+                        result += "_plus_";
                     else if (c == '-')
-                        result += '_min_';
+                        result += "_min_";
                     else if (c == '?')
-                        result += '_qmark_';
+                        result += "_qmark_";
                     else if (c == '!')
-                        result += '_excl_';
+                        result += "_excl_";
                     else
                         result += c;
 
