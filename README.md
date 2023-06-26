@@ -27,7 +27,7 @@
 <li>Support for Dumps Host.</li>
 </ul>
 <h2>Getting Started</h2>
-<p>This project DOES NOT work out of the box! To support your game, you still have to reverse it on your own to find the information that are stated below.</p>
+<p>This project DOES NOT work out of the box! To support your game, you still have to reverse it on your own to find the information that is stated below.</p>
 <ol>
 <li>UE Version
 <ul>

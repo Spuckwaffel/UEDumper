@@ -197,28 +197,4 @@ inline void overrideUnknownMembers()
 		
 	};
 	EngineCore::overrideStructMembers(Engine);
-
-	EngineStructs::Struct MeshComp;
-	MeshComp.fullName = "/Script/Engine.ActorComponent";
-	MeshComp.cppName = "UActorComponent";
-	MeshComp.members = std::vector<EngineStructs::Member>{
-		//we can use the typename FSimpleMulticastDelegate even if its not defined in the engine at all, but thats still fine
-		{{false,	PropertyType::BoolProperty,	""},							"bRenderStateDirty",		 0x88, 1, false, true, 6},
-		{{false,	PropertyType::BoolProperty,	""},							"bRenderTransformDirty",		 0x88, 1, false, true, 7},
-		{{false,	PropertyType::BoolProperty,	""},							"bRenderDynamicDataDirty",		 0x89, 1, false, true, 0},
-		{{false,	PropertyType::BoolProperty,	""},							"bRenderInstancesDirty",		 0x89, 1, false, true, 1},
-		{{false,	PropertyType::BoolProperty,	""},							"bRoutedPostRename",		 0x89, 1, false, true, 2},
-		{{false,	PropertyType::BoolProperty,	""},							"bAutoRegister",		 0x89, 1, false, true, 3},
-	
-	};
-	EngineCore::overrideStructMembers(MeshComp);
-
-	EngineStructs::Struct Actor;
-	Actor.fullName = "/Script/Engine.Actor";
-	Actor.cppName = "AActor";
-	Actor.members = std::vector<EngineStructs::Member>{
-		{{false,	PropertyType::BoolProperty,	""},							"bAsancBla",		 0x5D, 1, false, true, 7},
-
-	};
-	EngineCore::overrideStructMembers(Actor);
 }
