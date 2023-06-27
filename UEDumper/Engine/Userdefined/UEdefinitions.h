@@ -26,7 +26,7 @@
 #define UE_4_22		3
 #define UE_4_23		4
 #define UE_4_24		5
-#define UE_4_25		6
+#define UE_4_25		6 //if 4.25 fails, try 4.26
 #define UE_4_26		7
 #define UE_4_27		8
 #define UE_5_00		9
@@ -37,7 +37,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_01
+#define UE_VERSION UE_4_25
 
 
 /* FName settings */
@@ -66,6 +66,14 @@
 #endif
 
 
+/* SETTING FOR 4.25 */
+#if UE_VERSION == UE_4_25
+
+#define USE_LOWERCASE_STRUCT FALSE
+
+#endif
+
+
 /* UFunction settings */
 
 /** Enable fast calls for event thunks into an event graph that have no parameters  */
@@ -85,5 +93,5 @@
 #if UE_VERSION >= UE_4_25
 //stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
 //default TRUE
-#define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
+#define USTRUCT_FAST_ISCHILDOF_IMPL FALSE
 #endif
