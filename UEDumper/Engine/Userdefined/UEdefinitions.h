@@ -37,7 +37,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_4_25
+#define UE_VERSION UE_5_01
 
 
 /* FName settings */

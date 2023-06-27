@@ -836,28 +836,13 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	addStructs();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
-
-	int structs = 0;
-	int enums = 0;
-
+	
 	for (; finishedPackages < UObjectArray.NumElements; finishedPackages++)
 	{
 		auto object = getUObjectIndex<UObject>(finishedPackages);
-
-		//printf("name: %s\n", object->getFullName().c_str());
-
-		if (!object->IsA<UStruct>())
-		{
-			if (!object->IsA<UEnum>())
-				continue;
-			enums++;
-		}
-		else
-			structs++;
-
-
-		//if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
-		//	continue;
+		
+		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
+			continue;
 
 		upackages[object->getSecondPackageName()].push_back(object);
 	}
@@ -866,8 +851,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	totalPackages = upackages.size();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Total packages: %d", totalPackages);
 
-	printf("structs: %d enums: %d\n", structs, enums);
-	
+
+
 	EngineStructs::Package basicType;
 	basicType.index = 0;
 	basicType.itemCount = 0;
