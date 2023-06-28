@@ -93,5 +93,5 @@
 #if UE_VERSION >= UE_4_25
 //stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
 //default TRUE
-#define USTRUCT_FAST_ISCHILDOF_IMPL FALSE
+#define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
 #endif
