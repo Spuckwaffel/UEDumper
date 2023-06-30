@@ -135,6 +135,22 @@ std::vector<Offset> EngineCore::getOffsets()
 	return offsets;
 }
 
+
+void EngineCore::verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize)
+{
+	if (requiredSize > UOBJECT_MAX_SIZE)
+		throw std::runtime_error("required size way too large???");
+
+	if (bigObjectPtr->readSize < requiredSize)
+	{
+		//the real uobject ptr is actually at the buffer base
+		void* UObjectGamePtr = *reinterpret_cast<void**>(bigObjectPtr->object);
+		Memory::read(UObjectGamePtr, &bigObjectPtr->object, requiredSize);
+		*reinterpret_cast<void**>(bigObjectPtr->object) = UObjectGamePtr;
+		bigObjectPtr->readSize = requiredSize;
+	}
+}
+
 void EngineCore::generateUnknownBitMembers(const int count, const int offset, int& bitOffset, EngineStructs::Struct& eStruct, int* insertPosition)
 {
 	int _insertPos;
@@ -656,17 +672,14 @@ bool EngineCore::lastOperationSuccess()
 	return bSuccess;
 }
 
-uint64_t EngineCore::UObjectPtrToRealPtr(uint64_t UObjectPtr)
-{
-	return linkedUObjectPtrs[UObjectPtr];
-}
 
 bool EngineCore::existsRealPtr(uint64_t UObjectPtr)
 {
 	const bool exists = linkedUObjectPtrs.contains(UObjectPtr);
 	if (!exists)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "ERROR! Could not find ptr %llX!", UObjectPtr);
+		windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "ERROR! Could not find ptr in linkedUObjectPtrs %llX!", UObjectPtr);
+		printf("ERROR! Could not find ptr in linkedUObjectPtrs %llX!\n", UObjectPtr);
 		//DebugBreak(); <- add for debugging purposes!
 		return false;
 	}
@@ -674,14 +687,6 @@ bool EngineCore::existsRealPtr(uint64_t UObjectPtr)
 	return true;
 }
 
-void EngineCore::checkForFix(uint64_t gamePtr, uint64_t realptr)
-{
-	if(*reinterpret_cast<int*>(realptr) == *reinterpret_cast<int*>(realptr + 4))
-	{
-		printf("invalid memory 0x%llX found! Trying to fix\n", gamePtr);
-		Memory::read(reinterpret_cast<void*>(gamePtr), reinterpret_cast<void*>(realptr), UOBJECT_MAX_SIZE);
-	}
-}
 
 void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
 {
@@ -751,10 +756,12 @@ void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, Co
 {
 	bSuccess = false;
 	finishedBytes = 0;
-	totalBytes = UObjectArray.NumElements * UOBJECT_MAX_SIZE;
+	//only read UObjects atm
+	totalBytes = UObjectArray.NumElements * sizeof(UObject);
+	const auto allocatedBytes = UObjectArray.NumElements * sizeof(UBigObject);
 	status = CS_busy;
 	//allocate UOBJECT_MAX_SIZE bytes for every UObject
-	pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, totalBytes));
+	pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, allocatedBytes));
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, pUBigObjectArray);
 
 	if (!pUBigObjectArray)
@@ -778,17 +785,19 @@ void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, Co
 		}
 		else {
 			//gets the memory address where the objects gonna be
-			const uint64_t newMemoryAddress = pUBigObjectArray + i * UOBJECT_MAX_SIZE;
+			UBigObject* newBigObject = reinterpret_cast<UBigObject*>(pUBigObjectArray + i * sizeof(UBigObject));
+			newBigObject->readSize = sizeof(UObject);
 			//read the UObject inside the buffer with UOBJECT_MAX_SIZE bytes size
-			Memory::read(reinterpret_cast<void*>(UObjectAddress), reinterpret_cast<void*>(newMemoryAddress), UOBJECT_MAX_SIZE);
+			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, sizeof(UObject));
 
 			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
-			*reinterpret_cast<uint64_t*>(newMemoryAddress) = UObjectAddress;
+			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
 
-			linkedUObjectPtrs.insert(std::pair(UObjectAddress, newMemoryAddress));
+			//link the list to the ptr
+			linkedUObjectPtrs.insert(std::pair(UObjectAddress, newBigObject));
 		}
 
-		finishedBytes += UOBJECT_MAX_SIZE;
+		finishedBytes += sizeof(UObject);
 	}
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray succesfully!");

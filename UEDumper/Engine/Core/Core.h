@@ -14,10 +14,9 @@
 ****************************************************/
 
 
-//largest size of a class that inherits UObject (e.g UMapProperty has a size of 0x80 bytes)
-//you dont have to edit this normally
-//you have to edit this if you add function support though
-#define UOBJECT_MAX_SIZE 0xA0
+//largest size of a class that inherits UObject plus padding bytes. You shouldnt have to edit this normally.
+//But if you have to, UFunction objects are the largest.
+#define UOBJECT_MAX_SIZE 0x150
 
 #if UE_VERSION >= UE_4_25
 //the number of FFIELDS to cache. You shouldnt have to change this, this is just for allocating a large enough buffer
@@ -82,6 +81,18 @@ ENGINE_CORE EngineCore
 
 	typedef FChunkedFixedUObjectArray TypeUObjectArray;
 #endif
+
+	//UBigObject struct. The readSize indicates how many bytes are valid in the array.
+#pragma pack(push, 1)
+	struct UBigObject
+	{
+		//valid bytes in the char array
+		size_t readSize = 0;
+		//if you ask where if the paired UObject game ptr?
+		//Well it actually is at object buff + 0! tldr Core.cpp@copyUBigObjects
+		char object[UOBJECT_MAX_SIZE];
+	};
+#pragma pack(pop)
 
 public:
 
@@ -154,7 +165,7 @@ private:
 #endif
 
 	//linkage like following: fn ptr to uedumper ptr
-	inline static std::unordered_map<uint64_t, uint64_t> linkedUObjectPtrs{};
+	inline static std::unordered_map<uint64_t, UBigObject*> linkedUObjectPtrs{};
 
 #if UE_VERSION >= UE_4_25
 	inline static int linkedFFieldIndexCount = 0;
@@ -256,13 +267,7 @@ public:
 	 * \return if the last operation was a success
 	 */
 	static bool lastOperationSuccess();
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Converts a game UObject pointer to dumper pointer
-	 * \param UObjectPtr real pointer in the game
-	 * \return the UObject pointer where the element is located in the dumper
-	 */
-	static uint64_t UObjectPtrToRealPtr(uint64_t UObjectPtr);
+	
 
 	/**
 	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Checks if the game UObject pointer is indexed in the ue dumper
@@ -270,13 +275,7 @@ public:
 	 * \return true if the pointer is indexed and is able to convert
 	 */
 	static bool existsRealPtr(uint64_t UObjectPtr);
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! In case the memory for the UObject in ue dumper is corrupted, you can fix it by giving the game ptr again
-	 * \param gamePtr game UObject ptr
-	 * \param realptr dumper UObject ptr
-	 */
-	static void checkForFix(uint64_t gamePtr, uint64_t realptr);
+	
 
 	/**
 	 * \brief Copies all the bytes from the TypeUObjectArray into a large buffer
@@ -424,7 +423,14 @@ public:
 
 
 	/// Section for package generation and live editor
+	
 
+	/**
+	* \brief USE ONLY AFTER UBIGOBJECT GENERATION! ONLY USE FOR UOBJECTS! Makes sure the required size is also copied
+	* \param bigObjectPtr ptr to the char buffer in the dumper (which is in linkedUObjectPtrs)
+	* \param requiredSize the required size for the UObject
+	*/
+	static void verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize);
 
 	/**
 	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! ONLY USE FOR UOBJECTS
@@ -438,8 +444,12 @@ public:
 		//should never happen
 		if (index > UObjectArray.NumElements)
 			throw std::runtime_error("Index larger than NumElements?");
+		
+		UBigObject* object = reinterpret_cast<UBigObject*>(pUBigObjectArray + index * sizeof(UBigObject));
 
-		return reinterpret_cast<T*>(pUBigObjectArray + index * UOBJECT_MAX_SIZE);
+		verifyUBigObjectSize(object, sizeof(T));
+
+		return reinterpret_cast<T*>(object->object);
 	}
 
 	/**
@@ -462,9 +472,10 @@ public:
 		{
 			return nullptr;
 		}
-		const auto ptr = UObjectPtrToRealPtr(gamePtr);
-		checkForFix(gamePtr, ptr);
-		return reinterpret_cast<T*>(ptr);
+
+		verifyUBigObjectSize(linkedUObjectPtrs[gamePtr], sizeof(T));
+
+		return reinterpret_cast<T*>(linkedUObjectPtrs[gamePtr]->object);
 	}
 
 	/**
