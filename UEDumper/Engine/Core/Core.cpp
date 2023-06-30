@@ -138,6 +138,7 @@ std::vector<Offset> EngineCore::getOffsets()
 
 void EngineCore::verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize)
 {
+
 	if (requiredSize > UOBJECT_MAX_SIZE)
 		throw std::runtime_error("required size way too large???");
 
