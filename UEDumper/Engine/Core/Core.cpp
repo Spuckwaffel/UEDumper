@@ -45,13 +45,20 @@ std::string EngineCore::FNameToString(FName fname)
 	
 	//average function since 4.25
 
-	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
+#if WITH_CASE_PRESERVING_NAME
+	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 4 * nameOffset;
 
-	uint16_t pool = Memory::read<uint16_t>(namePoolChunk);
+	const auto nameLength = Memory::read<uint16_t>(namePoolChunk + 4) >> 1;
 
-	const auto nameLength = pool >> 6;
+	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
+#else
+	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
+
+	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
+#endif
+
 #endif
 
 #if USE_FNAME_ENCRYPTION
