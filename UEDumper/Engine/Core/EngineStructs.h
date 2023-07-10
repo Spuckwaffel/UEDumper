@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <vector>
+#include <cstdint>
 
 #include "../structs.h"
 
@@ -132,6 +133,41 @@ namespace EngineStructs
 	};
 
 	/**
+	 * \brief Function struct. Contains info about a single function
+	 */
+	struct Function
+	{
+		uintptr_t memoryAddress;
+		std::string fullName;
+		std::string cppName;
+		std::string params;
+		std::string flags;
+		uint64_t func = 0;
+
+		nlohmann::json toJson() const
+		{
+			nlohmann::json j;
+			j["memoryAddress"] = memoryAddress;
+			j["fullName"] = fullName;
+			j["cppName"] = cppName;
+			j["flags"] = flags;
+			j["func"] = func;
+			return j;
+		}
+
+		static Function fromJson(const nlohmann::json& json)
+		{
+			Function f;
+			f.memoryAddress = json["memoryAddress"];
+			f.fullName = json["fullName"];
+			f.cppName = json["cppName"];
+			f.flags = json["flags"];
+			f.func = json["func"];
+			return f;
+		}
+	};
+
+	/**
 	 * \brief Struct/Class struct. Contains members and information about the Struct/Class
 	 */
 	struct Struct
@@ -146,6 +182,7 @@ namespace EngineStructs
 		int inheretedSize = 0; //size of the inherited structs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> members{}; //array of all members of the struct
+		std::vector<Function> functions{}; //array of all functions of the struct
 
 		bool operator==(const Struct& st) const
 		{
@@ -168,6 +205,10 @@ namespace EngineStructs
 			for (const auto& member : members)
 				jMembers.push_back(member.toJson());
 			j["members"] = jMembers;
+			nlohmann::json jFunctions;
+			for (const auto& fn : functions)
+				jFunctions.push_back(fn.toJson());
+			j["functions"] = jFunctions;
 			return j;
 		}
 
@@ -186,6 +227,9 @@ namespace EngineStructs
 			const nlohmann::json jMembers = json["members"];
 			for (const nlohmann::json& member : jMembers)
 				s.members.push_back(Member::fromJson(member));
+			const nlohmann::json jFunctions = json["functions"];
+			for (const nlohmann::json& fn : jFunctions)
+				s.functions.push_back(Function::fromJson(fn));
 
 			return s;
 		}
