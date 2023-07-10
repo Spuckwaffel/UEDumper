@@ -138,9 +138,10 @@ namespace EngineStructs
 	struct Function
 	{
 		uintptr_t memoryAddress;
+		fieldType returnType;
+		std::vector<std::pair<fieldType, std::string>> params;
 		std::string fullName;
 		std::string cppName;
-		std::string params;
 		std::string flags;
 		uint64_t func = 0;
 
@@ -148,6 +149,11 @@ namespace EngineStructs
 		{
 			nlohmann::json j;
 			j["memoryAddress"] = memoryAddress;
+			j["returnType"] = returnType.toJson();
+			nlohmann::json jParams;
+			for (const auto& param : params)
+				jParams.push_back({param.first.toJson(), param.second});
+			j["params"] = jParams;
 			j["fullName"] = fullName;
 			j["cppName"] = cppName;
 			j["flags"] = flags;
@@ -159,6 +165,10 @@ namespace EngineStructs
 		{
 			Function f;
 			f.memoryAddress = json["memoryAddress"];
+			f.returnType = fieldType::fromJson(json["returnType"]);
+			const nlohmann::json jParams = json["params"];
+			for (const nlohmann::json& param : jParams)
+				f.params.push_back(std::pair(fieldType::fromJson(param[0]), param[1]));
 			f.fullName = json["fullName"];
 			f.cppName = json["cppName"];
 			f.flags = json["flags"];

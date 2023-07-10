@@ -631,30 +631,30 @@ bool EngineCore::generateFunction(UFunction* object, std::vector<EngineStructs::
 	{
 		auto propertyFlags = child->PropertyFlags;
 		if (propertyFlags & EPropertyFlags::CPF_ReturnParm)
-			eFunction.cppName = child->getType().name + " " + object->getName();
+			eFunction.returnType = child->getType();
 		else if (propertyFlags & EPropertyFlags::CPF_Parm)
 		{
 			if (child->ArrayDim > 1)
-				eFunction.params += child->getType().name + "* " + child->getName() + ", ";
+				eFunction.params.push_back(std::pair(child->getType(), "* " + child->getName() + ", "));
 			else
 			{
 				if (propertyFlags & EPropertyFlags::CPF_OutParm)
-					eFunction.params += child->getType().name + "& " + child->getName() + ", ";
+					eFunction.params.push_back(std::pair(child->getType(), "& " + child->getName() + ", "));
 				else
-					eFunction.params += child->getType().name + " " + child->getName() + ", ";
+					eFunction.params.push_back(std::pair(child->getType(), " " + child->getName() + ", "));
 			}
 		}
 	}
 
-	// remove trailing ", " from params
+	// remove trailing ", " from last param name
 	if (eFunction.params.size())
-		eFunction.params.erase(eFunction.params.size() - 2);
-	else
-		eFunction.params = "";
+		eFunction.params.back().second.erase(eFunction.params.back().second.size() - 2);
 
 	// no defined return type => void
 	if (eFunction.cppName.size() == 0)
-		eFunction.cppName = "void " + object->getName();
+		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+	eFunction.cppName = eFunction.returnType.name + " " + object->getName();
 
 	data.push_back(eFunction);
 	return true;
