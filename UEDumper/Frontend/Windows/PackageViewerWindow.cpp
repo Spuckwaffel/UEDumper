@@ -399,6 +399,25 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
             file << std::endl;
 
         }
+
+        // Add function section header
+        if (!struc.functions.empty()) 
+        {
+            file << "\n\t/// Functions";
+            char headerBuf[300];
+            sprintf_s(headerBuf, "\n\t/// %-50s %-60s %-50s %-20s   [%s]", "ReturnType FunctionName", "(Parameters);", "Full Function Name", "(Function Flags)", "[Offset]");
+            file << headerBuf << std::endl;
+        }
+
+        for (const auto& func : struc.functions)
+        {
+            char finalBuf[1200];
+            char nameBuf[1000];
+            sprintf_s(nameBuf, "%-50s(%s);", func.cppName.c_str(), func.params.c_str());
+            auto offset = func.memoryAddress - Memory::getBaseAddress();
+            sprintf_s(finalBuf, "	%-110s // %-50s    (%-10s)    [0x%llx]", nameBuf, func.fullName.c_str(), func.flags.c_str(), offset);
+            file << finalBuf << std::endl;
+        }
         file << "};\n\n";
 
     }

@@ -30,6 +30,7 @@
 //forwarded classes
 class UEnum;
 class UStruct;
+class UFunction;
 class FFieldClass;
 class UProperty;
 
@@ -39,6 +40,7 @@ namespace EngineStructs
 	struct Member;
 	struct Struct;
 	struct Enum;
+	struct Function;
 	struct Package;
 }
 
@@ -250,6 +252,12 @@ private:
 	 * \param data Enum where the enum fields are going to be added
 	 */
 	static bool generateEnum(const UEnum* object, std::vector<EngineStructs::Enum>& data);
+	/**
+	* \brief generates a function for the specific function
+	* \param object UFunction from memory with all its data
+	* \param data Function where the function is going to be added
+	*/
+	static bool generateFunction(UFunction* object, std::vector<EngineStructs::Function>& data);
 	
 public:
 

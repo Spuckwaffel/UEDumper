@@ -567,6 +567,16 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 			currentOffset = member.offset + member.size;
 			eStruct.members.push_back(member);
 		}
+
+		// get struct functions
+		for (auto child = object->getChildren(); child; child = child->GetNext())
+		{
+			if (!child->IsA<UFunction>())
+				continue;
+
+			auto fn = child->castTo<UFunction>();
+			generateFunction(fn, eStruct.functions);
+		}
 	}
 #endif
 	//fixup 
@@ -606,6 +616,47 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 
 	data.push_back(eEnum);
 
+	return true;
+}
+
+bool EngineCore::generateFunction(UFunction* object, std::vector<EngineStructs::Function>& data)
+{
+	EngineStructs::Function eFunction;
+	eFunction.fullName = object->getFullName();
+	eFunction.memoryAddress = object->objectptr;
+	eFunction.flags = object->getFunctionFlagsString();
+	eFunction.func = object->Func;
+
+	for (auto child = object->getChildProperties(); child; child = child->getNext()) 
+	{
+		auto propertyFlags = child->PropertyFlags;
+		if (propertyFlags & EPropertyFlags::CPF_ReturnParm)
+			eFunction.cppName = child->getType().name + " " + object->getName();
+		else if (propertyFlags & EPropertyFlags::CPF_Parm)
+		{
+			if (child->ArrayDim > 1)
+				eFunction.params += child->getType().name + "* " + child->getName() + ", ";
+			else
+			{
+				if (propertyFlags & EPropertyFlags::CPF_OutParm)
+					eFunction.params += child->getType().name + "& " + child->getName() + ", ";
+				else
+					eFunction.params += child->getType().name + " " + child->getName() + ", ";
+			}
+		}
+	}
+
+	// remove trailing ", " from params
+	if (eFunction.params.size())
+		eFunction.params.erase(eFunction.params.size() - 2);
+	else
+		eFunction.params = "";
+
+	// no defined return type => void
+	if (eFunction.cppName.size() == 0)
+		eFunction.cppName = "void " + object->getName();
+
+	data.push_back(eFunction);
 	return true;
 }
 
@@ -927,7 +978,6 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				//enums do not have CNames
 				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(false, packageIndex, p.enums.size() - 1)));
 			}
-			
 		}
 		p.itemCount = p.structs.size() + p.enums.size();
 		packages.push_back(p);
