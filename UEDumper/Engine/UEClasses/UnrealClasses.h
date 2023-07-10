@@ -311,6 +311,8 @@ public:
 	/** C++ function this is bound to */
 	uintptr_t		Func;
 
+	/** String function flags */
+	std::string getFunctionFlagsString() const;
 
 	static UClass* staticClass();
 };
@@ -751,9 +753,8 @@ public:
 
 	UEnum* getEnum() const;
 
-	 std::string typeName() const { return getEnum()->getName(); }
-	 
-
+	std::string typeName() const { return getEnum()->getName(); }
+	
 	static UClass* staticClass();
 };
 

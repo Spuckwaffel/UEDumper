@@ -304,6 +304,77 @@ UClass* UScriptStruct::staticClass()
     return EngineCore::findObject<UClass>("/Script/CoreUObject.ScriptStruct");
 }
 
+std::string UFunction::getFunctionFlagsString() const {
+    auto flags = FunctionFlags;
+    std::string result;
+    if (flags == FUNC_None)
+        result = "None";
+    else 
+    {
+        if (flags & FUNC_Final)
+            result += "Final|";
+        if (flags & FUNC_RequiredAPI)
+            result += "RequiredAPI|";
+        if (flags & FUNC_BlueprintAuthorityOnly)
+            result += "BlueprintAuthorityOnly|";
+        if (flags & FUNC_BlueprintCosmetic)
+            result += "BlueprintCosmetic|";
+        if (flags & FUNC_Net)
+            result += "Net|";
+        if (flags & FUNC_NetReliable)
+            result += "NetReliable";
+        if (flags & FUNC_NetRequest)
+            result += "NetRequest|";
+        if (flags & FUNC_Exec)
+            result += "Exec|";
+        if (flags & FUNC_Native)
+            result += "Native|";
+        if (flags & FUNC_Event)
+            result += "Event|";
+        if (flags & FUNC_NetResponse)
+            result += "NetResponse|";
+        if (flags & FUNC_Static)
+            result += "Static|";
+        if (flags & FUNC_NetMulticast)
+            result += "NetMulticast|";
+        if (flags & FUNC_MulticastDelegate)
+            result += "MulticastDelegate|";
+        if (flags & FUNC_Public)
+            result += "Public|";
+        if (flags & FUNC_Private)
+            result += "Private|";
+        if (flags & FUNC_Protected)
+            result += "Protected|";
+        if (flags & FUNC_Delegate)
+            result += "Delegate|";
+        if (flags & FUNC_NetServer)
+            result += "NetServer|";
+        if (flags & FUNC_HasOutParms)
+            result += "HasOutParms|";
+        if (flags & FUNC_HasDefaults)
+            result += "HasDefaults|";
+        if (flags & FUNC_NetClient)
+            result += "NetClient|";
+        if (flags & FUNC_DLLImport)
+            result += "DLLImport|";
+        if (flags & FUNC_BlueprintCallable)
+            result += "BlueprintCallable|";
+        if (flags & FUNC_BlueprintEvent)
+            result += "BlueprintEvent|";
+        if (flags & FUNC_BlueprintPure)
+            result += "BlueprintPure|";
+        if (flags & FUNC_EditorOnly)
+            result += "EditorOnly|";
+        if (flags & FUNC_Const)
+            result += "Const|";
+        if (flags & FUNC_NetValidate)
+            result += "NetValidate|";
+        if (result.size())
+            result.erase(result.size() - 1);
+    }
+    return result;
+}
+
 UClass* UFunction::staticClass()
 {
     return EngineCore::findObject<UClass>("/Script/CoreUObject.Function");
