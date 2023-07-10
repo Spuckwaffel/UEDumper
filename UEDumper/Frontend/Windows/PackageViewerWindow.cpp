@@ -405,18 +405,20 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
         {
             file << "\n\t/// Functions";
             char headerBuf[300];
-            sprintf_s(headerBuf, "\n\t/// %-50s %-60s %-50s %-20s   [%s]", "ReturnType FunctionName", "(Parameters);", "Full Function Name", "(Function Flags)", "[Offset]");
+            sprintf_s(headerBuf, "\n\t/// %-46s %-60s %-63s %-20s %s", "ReturnType FunctionName", "(Parameters);", "Full Function Name", "(Function Flags)", "[Offset]");
             file << headerBuf << std::endl;
         }
 
         for (const auto& func : struc.functions)
         {
-            char finalBuf[1200];
-            char nameBuf[1000];
-            sprintf_s(nameBuf, "%-50s(%s);", func.cppName.c_str(), func.params.c_str());
+            char funcBuf[1200];
+            std::string params = "(";
+            for (auto param : func.params)
+                params += param.first.name + " " + param.second;
+            params += ");";
             auto offset = func.memoryAddress - Memory::getBaseAddress();
-            sprintf_s(finalBuf, "	%-110s // %-50s    (%-10s)    [0x%llx]", nameBuf, func.fullName.c_str(), func.flags.c_str(), offset);
-            file << finalBuf << std::endl;
+            sprintf_s(funcBuf, "	%-50s %-60s // %-60s %-20s [0x%llx]", func.cppName.c_str(), params.c_str(), func.fullName.c_str(), func.flags.c_str(), offset);
+            file << funcBuf << std::endl;
         }
         file << "};\n\n";
 
