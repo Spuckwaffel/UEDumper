@@ -2,26 +2,34 @@
 
 #include "stdafx.h"
 
+
 namespace windows
 {
 	class PackageViewerWindow
 	{
 		
-	public:
 
 		struct NavigationTab
 		{
 			//vector of all tab indexes we went through
-			std::vector<int> tabIndex;
+			std::vector<std::pair<int, EngineCore::ObjectInfo::ObjectType>> tabIndex;
 			//at what index are we in the vector? AKA tabindex[currentVecIndex] should be the package index displayed
 			int currentVecIndex = 0;
+
+			EngineCore::ObjectInfo::ObjectType currentType = EngineCore::ObjectInfo::ObjectType::OI_MAX;
 		};
 
 		struct PackageTab
 		{
-			int packageSelected = 0;
-			int itemSelected = 0;
-			int itemRange = 0;
+
+
+			int packageSelected = 0; //slsected package
+			EngineCore::ObjectInfo::ObjectType typeSelected = EngineCore::ObjectInfo::ObjectType::OI_MAX; //selected type
+			int itemSelected = 0; //seleted item of the type
+			int itemRange_S = 0; //current range from n - n+100 of structs
+			int itemRange_C = 0; //current range from n - n+100 of classes
+			int itemRange_E = 0; //current range from n - n+100 of enums
+			int itemRange_F = 0; //current range from n - n+100 of functions
 			bool focus = false;
 			bool open = false;
 			NavigationTab navTab;
@@ -37,19 +45,27 @@ namespace windows
 
 		static inline std::vector<PackageTab> Tabs;
 
-		
 
-		
+		/**
+		 * \brief 
+		 * \param index index of the struct in the vector of structs or class(just used for displaying index number)
+		 * \param struc struct
+		 */
+		static void renderClassOrStruct(int index, EngineStructs::Struct& struc);
 
-		static void renderClassOrStruct(EngineStructs::Package& package, int index);
+		/**
+		 * \brief 
+		 * \param index index of the enum in the vector of enums
+		 * \param enu enum
+		 */
+		static void renderEnum(int index, const EngineStructs::Enum& enu);
 
-		static void renderEnum(const EngineStructs::Package& package, int index);
+
+		static void renderFunction(int index, const EngineStructs::Function& func);
 
 		static void setOpenTabsClosed();
 
-		
-
-		static void updateNavBar(NavigationTab& navtab, int itemSelected);
+		static void updateNavBar(NavigationTab& navtab, int itemSelected, EngineCore::ObjectInfo::ObjectType typeSelected);
 
 		
 
@@ -60,7 +76,7 @@ namespace windows
 
 		static bool render();
 
-		static void createTab(int package, int itemSelected = 0);
+		static void createTab(int package, int itemSelected = 0, EngineCore::ObjectInfo::ObjectType type = EngineCore::ObjectInfo::ObjectType::OI_Struct);
 
 		static bool openTabFromCName(const std::string& name);
 

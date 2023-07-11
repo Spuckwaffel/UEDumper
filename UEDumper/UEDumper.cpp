@@ -20,6 +20,8 @@
 *   Also special thanks to guttir14 (and all contributers to UnrealDumper-4.25) and CorrM (and all contributers to Unreal-Finder-Tool),
 *   I've used their projects as a reference while making this tool.
 *
+*   Also special thanks to the contributors of this project!
+*
 *   Feel free to contribute to this project as it is defenitely not perfect.
 *   Do not open any issues regarding "what can be done better for % performance" or "do x instead of y" that requires rewriting
 *   the entire source code, I couldnt care less, you can do that.

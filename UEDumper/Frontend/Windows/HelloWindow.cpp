@@ -31,7 +31,10 @@ bool windows::HelloWindow::render()
 		ImGui::SetCursorPosY(40);
 		ImGui::Image(TextureCreator::getTexture("logo"), ImVec2(230, 230));
 		ImGui::SameLine();
-		ImGui::SetCursorPosY(20);
+		float posX = ImGui::GetCursorPosX();
+		ImGui::Dummy({ 0,0 });
+		ImGui::TextColored(IGHelper::Colors::grayedOut, "%22s", EngineSettings::getDumperVersion().c_str());
+		ImGui::SetCursorPos({ posX, 20 });
 		ImGui::BeginChild("NewProjectChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
 		ImGui::PushItemWidth(400);
 		ImGui::Dummy(ImVec2(0, 20));

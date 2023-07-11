@@ -107,11 +107,20 @@ public:
 		CS_error
 	};
 
-	//objectinfo struct that holds the info of a defined struct/class/enum
+	//objectinfo struct that holds the info of a defined struct/class/enum/function
 	struct ObjectInfo
 	{
-		//whether the object is a struct
-		bool isStruct;
+
+		enum ObjectType
+		{
+			OI_Struct,
+			OI_Class,
+			OI_Enum,
+			OI_Function,
+			OI_MAX
+		};
+
+		ObjectType type;
 		//the raw package index, convert to runtime index
 		int packageIndex;
 		//index of the object in the package
@@ -121,7 +130,7 @@ public:
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["isStruct"] = isStruct;
+			j["type"] = type;
 			j["packageIndex"] = packageIndex;
 			j["objectIndex"] = objectIndex;
 			return j;
@@ -131,7 +140,7 @@ public:
 		static ObjectInfo fromJson(nlohmann::json& json)
 		{
 			ObjectInfo j;
-			j.isStruct = json["isStruct"];
+			j.type = json["type"];
 			j.packageIndex = json["packageIndex"];
 			j.objectIndex = json["objectIndex"];
 			return j;
@@ -240,11 +249,11 @@ private:
 	static void findOverrideMember(int newMemberOffset, int currentOffset, int& currentBitOffset, EngineStructs::Struct& eStruct, int* insertPosition = nullptr);
 
 	/**
-	 * \brief generates all the members for the specific struct
+	 * \brief generates all the members for the specific struct or class
 	 * \param object UStruct from memory with all its data
 	 * \param data Struct where the members are going to be added
 	 */
-	static bool generateStruct(UStruct* object, std::vector<EngineStructs::Struct>& data);
+	static bool generateStructOrClass(UStruct* object, std::vector<EngineStructs::Struct>& data);
 
 	/**
 	 * \brief generates an enum for the specific enum
@@ -252,12 +261,13 @@ private:
 	 * \param data Enum where the enum fields are going to be added
 	 */
 	static bool generateEnum(const UEnum* object, std::vector<EngineStructs::Enum>& data);
+
 	/**
-	* \brief generates a function for the specific function
-	* \param object UFunction from memory with all its data
+	* \brief generates a function for the specific struct
+	* \param object UStruct from memory with all its data
 	* \param data Function where the function is going to be added
 	*/
-	static bool generateFunction(UFunction* object, std::vector<EngineStructs::Function>& data);
+	static bool generateFunctions(const UStruct* object, std::vector<EngineStructs::Function>& data);
 	
 public:
 

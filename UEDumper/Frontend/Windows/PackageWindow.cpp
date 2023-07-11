@@ -107,7 +107,7 @@ bool windows::PackageWindow::render()
 		if (ImGui::BeginPopup("Context Menu"))
 		{
 			ImGui::Text(packages[packagePicked].packageName.c_str());
-			ImGui::Text("Item count: %d", packages[packagePicked].itemCount);
+			ImGui::Text("Item count: %d", packages[packagePicked].structs.size()); //TODO: just temp
 			ImGui::Separator();
 			if (ImGui::Button("Save package"))
 			{

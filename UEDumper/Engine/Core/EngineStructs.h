@@ -182,7 +182,7 @@ namespace EngineStructs
 	 */
 	struct Struct
 	{
-		bool isClass = false; //if struct is actually a class
+		bool isClass = false; //if struct is actually a class. Even if we have in packages a struct and class vector, every struct should know what it is
 		uintptr_t memoryAddress = 0; //the real memory address where the struct is
 		std::string fullName; //the full name of the struct
 		std::string cppName; //the cppName of the struct
@@ -291,9 +291,12 @@ namespace EngineStructs
 	{
 		std::string packageName;
 		int index;
-		int itemCount;
+
+		//seperate structs and classes even if a boolean exists within the struct
 		std::vector<Struct> structs;
+		std::vector<Struct> classes;
 		std::vector<Enum> enums;
+		std::vector<std::tuple<bool, int, int>> functions; //vector of tuples for function (bInClassVec, vecidx, funcidx)
 
 		static bool packageCompare(const Package& a, const Package& b) {
 			if (a.packageName == "BasicType")
@@ -315,7 +318,6 @@ namespace EngineStructs
 			nlohmann::json j;
 			j["packageName"] = packageName;
 			j["index"] = index;
-			j["itemCount"] = itemCount;
 			nlohmann::json jStructs;
 			for(const auto& struc : structs)
 				jStructs.push_back(struc.toJson());
@@ -332,7 +334,6 @@ namespace EngineStructs
 			Package p;
 			p.packageName = json["packageName"];
 			p.index = json["index"];
-			p.itemCount = json["itemCount"];
 			nlohmann::json jStructs = json["structs"];
 			for (const nlohmann::json& struc : jStructs)
 				p.structs.push_back(Struct::fromJson(struc));

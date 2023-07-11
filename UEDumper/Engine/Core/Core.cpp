@@ -321,7 +321,7 @@ void EngineCore::findOverrideMember(int newMemberOffset,  int currentOffset, int
 		*insertPosition = _insertPos;
 }
 
-bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Struct>& data)
+bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStructs::Struct>& data)
 {
 	//this struct is completely useless
 	if (object->PropertiesSize == 0) return false;
@@ -356,6 +356,26 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 
 	prevBitProp prevBitField = prevBitProp();
 
+	//flag some invalid characters in a name
+	auto generateValidVarName = [](const std::string& str)
+	{
+		std::string result = "";
+		for (const char c : str)
+		{
+			if (c == ' ' || c == '"' || c == ';' ||
+				c == '$' || c == '€' || c == '%' ||
+				c == '+' || c == '-' || c == '?' || c == '!'
+				)
+				result += "_";
+			else
+				result += c;
+
+		}
+		//guaranteed 0 termination
+		result += '\0';
+		return result;
+	};
+
 #if UE_VERSION < UE_4_25
 	if(object->Children)
 	{
@@ -367,7 +387,7 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 				auto prop = child->castTo<UProperty>();
 				EngineStructs::Member member;
 				member.size = prop->ElementSize * prop->ArrayDim;
-				member.name = prop->getName();
+				member.name = generateValidVarName(prop->getName());
 				//should not happen
 				if (member.size == 0)
 				{
@@ -474,7 +494,7 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 		{
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
-			member.name = child->getName();
+			member.name = generateValidVarName(child->getName());
 			if (member.size == 0)
 			{
 				windows::LogWindow::Log(windows::LogWindow::log_3, "CORE", "member %s size is 0! ", member.name.c_str());
@@ -568,15 +588,7 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 			eStruct.members.push_back(member);
 		}
 
-		// get struct functions
-		for (auto child = object->getChildren(); child; child = child->GetNext())
-		{
-			if (!child->IsA<UFunction>())
-				continue;
 
-			auto fn = child->castTo<UFunction>();
-			generateFunction(fn, eStruct.functions);
-		}
 	}
 #endif
 	//fixup 
@@ -585,6 +597,10 @@ bool EngineCore::generateStruct(UStruct* object, std::vector<EngineStructs::Stru
 		findOverrideMember(eStruct.size, currentOffset, bitOffset, eStruct);
 		//generateUnknownMember(currentOffset, eStruct.size, unknownCount, eStruct);
 	}
+
+	// get struct functions
+	generateFunctions(object, eStruct.functions);
+
 	data.push_back(eStruct);
 	return true;
 }
@@ -619,44 +635,57 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 	return true;
 }
 
-bool EngineCore::generateFunction(UFunction* object, std::vector<EngineStructs::Function>& data)
+bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStructs::Function>& data)
 {
-	EngineStructs::Function eFunction;
-	eFunction.fullName = object->getFullName();
-	eFunction.memoryAddress = object->objectptr;
-	eFunction.flags = object->getFunctionFlagsString();
-	eFunction.func = object->Func;
+	if (!object->Children || !object->ChildProperties)
+		return false;
 
-	for (auto child = object->getChildProperties(); child; child = child->getNext()) 
+	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->GetNext())
 	{
-		auto propertyFlags = child->PropertyFlags;
-		if (propertyFlags & EPropertyFlags::CPF_ReturnParm)
-			eFunction.returnType = child->getType();
-		else if (propertyFlags & EPropertyFlags::CPF_Parm)
+		if (!fieldChild->IsA<UFunction>())
+			continue;
+
+		const auto fn = fieldChild->castTo<UFunction>();
+
+		EngineStructs::Function eFunction;
+		eFunction.fullName = fn->getFullName();
+		eFunction.memoryAddress = fn->objectptr;
+		eFunction.flags = fn->getFunctionFlagsString();
+		eFunction.func = fn->Func;
+
+		for (auto child = fn->getChildProperties(); child; child = child->getNext())
 		{
-			if (child->ArrayDim > 1)
-				eFunction.params.push_back(std::pair(child->getType(), "* " + child->getName() + ", "));
-			else
+			const auto propertyFlags = child->PropertyFlags;
+			if (propertyFlags & EPropertyFlags::CPF_ReturnParm)
+				eFunction.returnType = child->getType();
+			else if (propertyFlags & EPropertyFlags::CPF_Parm)
 			{
-				if (propertyFlags & EPropertyFlags::CPF_OutParm)
-					eFunction.params.push_back(std::pair(child->getType(), "& " + child->getName() + ", "));
+				if (child->ArrayDim > 1)
+					eFunction.params.push_back(std::pair(child->getType(), "* " + child->getName() + ", "));
 				else
-					eFunction.params.push_back(std::pair(child->getType(), " " + child->getName() + ", "));
+				{
+					if (propertyFlags & EPropertyFlags::CPF_OutParm)
+						eFunction.params.push_back(std::pair(child->getType(), "& " + child->getName() + ", "));
+					else
+						eFunction.params.push_back(std::pair(child->getType(), " " + child->getName() + ", "));
+				}
 			}
 		}
+
+		// remove trailing ", " from last param name
+		if (eFunction.params.size())
+			eFunction.params.back().second.erase(eFunction.params.back().second.size() - 2);
+
+		// no defined return type => void
+		if (eFunction.cppName.size() == 0)
+			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+		eFunction.cppName = eFunction.returnType.name + " " + fn->getName();
+
+		data.push_back(eFunction);
 	}
 
-	// remove trailing ", " from last param name
-	if (eFunction.params.size())
-		eFunction.params.back().second.erase(eFunction.params.back().second.size() - 2);
 
-	// no defined return type => void
-	if (eFunction.cppName.size() == 0)
-		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-	eFunction.cppName = eFunction.returnType.name + " " + object->getName();
-
-	data.push_back(eFunction);
 	return true;
 }
 
@@ -923,13 +952,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 
 	EngineStructs::Package basicType;
 	basicType.index = 0;
-	basicType.itemCount = 0;
 	basicType.packageName = "BasicType"; //dont rename!!
 	for(auto& struc : customStructs)
 	{
-		basicType.structs.push_back(struc);
-		basicType.itemCount++;
-		packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, 0, basicType.structs.size() - 1)));
+		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
+		dataVector.push_back(struc);
+		packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(
+			struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct, 
+			0, basicType.structs.size() - 1)));
 	}
 	packages.push_back(basicType);
 
@@ -944,9 +974,16 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		
 		for(const auto& object : package.second)
 		{
+
+			
+
 			const bool isClass = object->IsA<UClass>();
 			if (isClass || object->IsA<UScriptStruct>())
 			{
+
+				auto& dataVector = isClass ? p.classes : p.structs;
+				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
+
 				//is the struct predefined?
 				if(overridingStructs.contains(object->getFullName()))
 				{
@@ -955,20 +992,30 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 					if(struc.cppName == object->getCName())
 					{
 						struc.memoryAddress = reinterpret_cast<uintptr_t>(object->getOwnPointer());
-						p.structs.push_back(struc);
+
+						dataVector.push_back(struc);
+						
 						packageObjectInfos.insert(std::pair(object->getCName(),
-						                                    ObjectInfo(true, packageIndex, p.structs.size() - 1)));
+						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
+
+						generateFunctions(object->castTo<UStruct>(), dataVector[dataVector.size() - 1].functions);
 						continue;
 					}
 				}
 				const auto sObject = object->castTo<UStruct>();
-				if (!generateStruct(sObject, p.structs))
+
+				
+
+				if (!generateStructOrClass(sObject, dataVector))
 					continue;
 
-				p.structs[p.structs.size() - 1].isClass = isClass;
+				dataVector[dataVector.size() - 1].isClass = isClass;
 				//printf("added %s to packageIndex %d (%s), at objectIndex %d!\n", sObject.getCName().c_str(), packageIndex, p.packageName.c_str(), objectIndex);
-				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(true, packageIndex, p.structs.size() - 1)));
-
+				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
+				for(int i = 0; i < dataVector[dataVector.size() - 1].functions.size(); i++)
+				{
+					p.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
+				}
 			}
 			else if (object->IsA<UEnum>())
 			{
@@ -976,10 +1023,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				if (!generateEnum(eObject, p.enums))
 					continue;
 				//enums do not have CNames
-				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(false, packageIndex, p.enums.size() - 1)));
+				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(ObjectInfo::OI_Enum, packageIndex, p.enums.size() - 1)));
 			}
 		}
-		p.itemCount = p.structs.size() + p.enums.size();
 		packages.push_back(p);
 		finishedPackages++;
 		packageIndex++;
@@ -1011,8 +1057,9 @@ std::vector<EngineStructs::Package>& EngineCore::getPackages()
 
 EngineCore::ObjectInfo EngineCore::getInfoOfObject(const std::string& CName)
 {
+	//in functions we compare packageIndex and objectIndex anyways so the type doesnt matter
 	if(!packageObjectInfos.contains(CName))
-		return { true, -1, -1 };
+		return { ObjectInfo::OI_MAX, -1, -1 };
 
 	return packageObjectInfos[CName];
 }
@@ -1033,18 +1080,23 @@ std::vector<std::string>& EngineCore::getAllUnknownTypes()
 
 	for(auto& pack : packages)
 	{
-		for(auto& struc : pack.structs)
+		auto checkMembers = [&](const EngineStructs::Struct& struc) mutable
 		{
-			for(auto& member : struc.members)
+			for (auto& member : struc.members)
 			{
-				if(!member.type.clickable || //not clickable? Skip
+				if (!member.type.clickable || //not clickable? Skip
 					packageObjectInfos.contains(member.type.name) || //packageObjectInfos contains the name? Then its defined
 					std::ranges::find(unknownProperties, member.type.name) != unknownProperties.end()) //is it already in the vector? Skip
 					continue;
 
 				unknownProperties.push_back(member.type.name);
 			}
-		}
+		};
+
+		for(auto& struc : pack.structs)
+			checkMembers(struc);
+		for (auto& struc : pack.classes)
+			checkMembers(struc);
 	}
 	return unknownProperties;
 }

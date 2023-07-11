@@ -14,6 +14,17 @@
 *
 ************************************************************************************************/
 
+//Dumper version. Do not change this!
+#define RELEASE_1_1_BETA	0
+#define RELEASE_1_1_FINAL	1
+#define RELEASE_1_2_BETA	2
+#define RELEASE_1_2_FINAL	3
+#define RELEASE_1_3_BETA	4
+#define RELEASE_1_3_FINAL	5
+
+#define DUMPER_VERSION RELEASE_1_3_BETA
+
+
 /// This file contains engine definitions that you have to edit depending on the game!
 ///	These values have to be set and the program has to recompile to set set the settings
 

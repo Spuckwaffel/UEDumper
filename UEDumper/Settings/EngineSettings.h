@@ -29,6 +29,15 @@ public:
 		"Unreal Engine 5.2"
 	};
 
+	static const inline char* DumperVersionNames[] = {
+		"Version 1.1 BETA",
+		"Version 1.1 Release",
+		"Version 1.2 BETA",
+		"Version 1.2 Release",
+		"Version 1.3 BETA",
+		"Version 1.3 Release"
+	};
+
 private:
 
 	static inline bool bAllowLiveEditor = true;
@@ -50,6 +59,12 @@ public:
 	 * \return engine version
 	 */
 	static EngineVersion getEngineVersion();
+
+	/**
+	 * \brief gets the current dumper version
+	 * \return dumper version
+	 */
+	static std::string getDumperVersion();
 
 	/**
 	 * \brief sets the project name and creates a folder for the project

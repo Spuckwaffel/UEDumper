@@ -10,6 +10,11 @@ EngineSettings::EngineVersion EngineSettings::getEngineVersion()
 	return { _UE_VERSION, UEVersionNames[_UE_VERSION] };
 }
 
+std::string EngineSettings::getDumperVersion()
+{
+	return DumperVersionNames[DUMPER_VERSION];
+}
+
 bool EngineSettings::setProjectName(const std::string& name)
 {
 	const auto path = std::filesystem::current_path() / name;
@@ -108,8 +113,9 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	ImGui::BeginChild(merge(ICON_FA_INFO, " Engine Settings"), window, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
 	IGHelper::placeInCenter(merge(ICON_FA_INFO, " Engine Settings"));
 
-
-	ImGui::Text("Version: %s", getEngineVersion().name.c_str());
+	
+	ImGui::Text("Dumper version: %s", getDumperVersion().c_str());
+	ImGui::Text("UE version: %s", getEngineVersion().name.c_str());
 	if (ImGui::ArrowButton("loglevel_btn_left", ImGuiDir_Left) && windows::LogWindow::getLogLevel() > 0)
 		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() - 1);
 	ImGui::SameLine();
