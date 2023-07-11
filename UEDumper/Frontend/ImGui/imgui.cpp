@@ -8408,7 +8408,7 @@ void ImGui::SameLine(float offset_from_start_x, float spacing_w)
     window->DC.IsSameLine = true;
 }
 
-void ImGui::SameLineEx(float spacing_w, float spacing_h)
+void ImGui::SameLineEx(float spacing_w, float spacing_h, bool useNewY)
 {
     ImGuiContext& g = *GImGui;
     ImGuiWindow* window = g.CurrentWindow;
@@ -8416,7 +8416,11 @@ void ImGui::SameLineEx(float spacing_w, float spacing_h)
         return;
 
     window->DC.CursorPos.x = window->DC.CursorPosPrevLine.x + spacing_w;
-    window->DC.CursorPos.y = window->DC.CursorPosPrevLine.y + spacing_h;
+
+	if(useNewY)
+		window->DC.CursorPos.y = window->DC.CursorPos.y + spacing_h;
+    else
+        window->DC.CursorPos.y = window->DC.CursorPosPrevLine.y + spacing_h;
 
     window->DC.CurrLineSize = window->DC.PrevLineSize;
     window->DC.CurrLineTextBaseOffset = window->DC.PrevLineTextBaseOffset;

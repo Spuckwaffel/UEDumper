@@ -75,11 +75,12 @@ struct fieldType
 		t.clickable = json["clickable"];
 		t.propertyType = json["propertyType"];
 		t.name = json["name"];
-		nlohmann::json jsubTypes = json["subTypes"];
-		for (const nlohmann::json& subType : jsubTypes)
+		for (const nlohmann::json& subType : json["subTypes"])
 			t.subTypes.push_back(fromJson(subType));
 		return t;
 	}
+
+	operator bool() const { return propertyType != PropertyType::Unknown; }
 
 };
 
@@ -139,11 +140,11 @@ namespace EngineStructs
 	{
 		uintptr_t memoryAddress;
 		fieldType returnType;
-		std::vector<std::pair<fieldType, std::string>> params;
+		std::vector<std::tuple<fieldType, uint64_t, uint64_t>> params; //fieldType, propertyFlags, arrayDim
 		std::string fullName;
 		std::string cppName;
-		std::string flags;
-		uint64_t func = 0;
+		std::string functionFlags;
+		uint64_t func = 0; //offset of the func in the binary
 
 		nlohmann::json toJson() const
 		{
@@ -152,11 +153,11 @@ namespace EngineStructs
 			j["returnType"] = returnType.toJson();
 			nlohmann::json jParams;
 			for (const auto& param : params)
-				jParams.push_back({param.first.toJson(), param.second});
+				jParams.push_back({std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param) });
 			j["params"] = jParams;
 			j["fullName"] = fullName;
 			j["cppName"] = cppName;
-			j["flags"] = flags;
+			j["functionFlags"] = functionFlags;
 			j["func"] = func;
 			return j;
 		}
@@ -166,12 +167,11 @@ namespace EngineStructs
 			Function f;
 			f.memoryAddress = json["memoryAddress"];
 			f.returnType = fieldType::fromJson(json["returnType"]);
-			const nlohmann::json jParams = json["params"];
-			for (const nlohmann::json& param : jParams)
-				f.params.push_back(std::pair(fieldType::fromJson(param[0]), param[1]));
+			for (const nlohmann::json& param : json["params"])
+				f.params.push_back(std::tuple(fieldType::fromJson(param[0]), param[1], param[2]));
 			f.fullName = json["fullName"];
 			f.cppName = json["cppName"];
-			f.flags = json["flags"];
+			f.functionFlags = json["functionFlags"];
 			f.func = json["func"];
 			return f;
 		}
@@ -234,11 +234,9 @@ namespace EngineStructs
 			s.size = json["size"];
 			s.inheretedSize = json["inheretedSize"];
 			s.unknownCount = json["unknownCount"];
-			const nlohmann::json jMembers = json["members"];
-			for (const nlohmann::json& member : jMembers)
+			for (const nlohmann::json& member : json["members"])
 				s.members.push_back(Member::fromJson(member));
-			const nlohmann::json jFunctions = json["functions"];
-			for (const nlohmann::json& fn : jFunctions)
+			for (const nlohmann::json& fn : json["functions"])
 				s.functions.push_back(Function::fromJson(fn));
 
 			return s;

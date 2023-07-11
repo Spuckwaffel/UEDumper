@@ -650,42 +650,36 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 		EngineStructs::Function eFunction;
 		eFunction.fullName = fn->getFullName();
 		eFunction.memoryAddress = fn->objectptr;
-		eFunction.flags = fn->getFunctionFlagsString();
+		eFunction.functionFlags = fn->getFunctionFlagsString();
 		eFunction.func = fn->Func;
 
+		//childprops arent just params of the func, some contain info ab the function like the return type
 		for (auto child = fn->getChildProperties(); child; child = child->getNext())
 		{
 			const auto propertyFlags = child->PropertyFlags;
-			if (propertyFlags & EPropertyFlags::CPF_ReturnParm)
+			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
 				eFunction.returnType = child->getType();
 			else if (propertyFlags & EPropertyFlags::CPF_Parm)
 			{
-				if (child->ArrayDim > 1)
-					eFunction.params.push_back(std::pair(child->getType(), "* " + child->getName() + ", "));
-				else
-				{
-					if (propertyFlags & EPropertyFlags::CPF_OutParm)
-						eFunction.params.push_back(std::pair(child->getType(), "& " + child->getName() + ", "));
-					else
-						eFunction.params.push_back(std::pair(child->getType(), " " + child->getName() + ", "));
-				}
+				eFunction.params.push_back(std::tuple(child->getType(), propertyFlags, child->ArrayDim));
 			}
 		}
-
-		// remove trailing ", " from last param name
-		if (eFunction.params.size())
-			eFunction.params.back().second.erase(eFunction.params.back().second.size() - 2);
+		
 
 		// no defined return type => void
-		if (eFunction.cppName.size() == 0)
+		if (!eFunction.returnType)
 			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
 
-		eFunction.cppName = eFunction.returnType.name + " " + fn->getName();
+		eFunction.cppName = fn->getName();
+
+		
 
 		data.push_back(eFunction);
+
+		packageObjectInfos.insert(std::pair(eFunction.cppName, ObjectInfo{ObjectInfo::OI_Function, 1,data.size()-1}))
 	}
 
-
+	
 	return true;
 }
 
@@ -1062,6 +1056,16 @@ EngineCore::ObjectInfo EngineCore::getInfoOfObject(const std::string& CName)
 		return { ObjectInfo::OI_MAX, -1, -1 };
 
 	return packageObjectInfos[CName];
+}
+
+const EngineStructs::Function& EngineCore::getFunctionFromVectorIndex(const EngineStructs::Package& package, int functionIndex)
+{
+	//get the tuple
+	const auto& tup = package.functions.at(functionIndex);
+	//get the residing class or struct of the function
+	const auto& dataVector = std::get<0>(tup) ? package.classes : package.structs;
+	//get the vector[(1)].functions[(2)]
+	return dataVector.at(std::get<1>(tup)).functions.at(std::get<2>(tup));
 }
 
 int EngineCore::getVectorIndexForPackageIndex(const int packageIndex)

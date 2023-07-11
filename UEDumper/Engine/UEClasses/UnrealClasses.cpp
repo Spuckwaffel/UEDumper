@@ -779,12 +779,10 @@ int32_t FProperty::getOffset() const
     return Offset;
 }
 
-fieldType FProperty::getType(bool debug)
+fieldType FProperty::getType()
 {
     if (!ClassPrivate)
     {
-        if (debug)
-            DebugBreak();
         return { false, PropertyType::Unknown, getName() };
         
     }

@@ -114,22 +114,25 @@ public:
 	//colors
 	struct Colors
 	{
-		static inline ImVec4 red =			colToVec(255, 0, 0, 255);
-		static inline ImVec4 white =		colToVec(255, 255, 255, 255);
-		static inline ImVec4 classOrange =	colToVec(252, 140, 3, 255);
-		static inline ImVec4 yellow =		colToVec(255, 213, 0, 255 );
-		static inline ImVec4 green =		colToVec(17, 255, 0, 255 );
-		static inline ImVec4 numberGreen =	colToVec(181, 206, 168, 255);
-		static inline ImVec4 classGreen =	colToVec(75, 201, 171, 255);
-		static inline ImVec4 commentGreen =	colToVec(0, 145, 10, 255 );
-		static inline ImVec4 lightblue =	colToVec(0, 179, 255, 255 );
-		static inline ImVec4 varTypeBlue =	colToVec(86, 156, 214, 255);
-		static inline ImVec4 enumBlue =		colToVec(0, 21, 255, 255 );
-		static inline ImVec4 packagePurple =colToVec(162, 0, 255, 255 );
-		static inline ImVec4 varPink =		colToVec(221, 160, 221, 255);
-		static inline ImVec4 varBlue =		colToVec(156, 220, 254, 255);
-		static inline ImVec4 stringRed =	colToVec(214, 157, 133, 255);
-		static inline ImVec4 grayedOut =	colToVec(255, 255, 255, 150);
+		static inline ImVec4 red =				colToVec(255, 0, 0, 255);
+		static inline ImVec4 white =			colToVec(255, 255, 255, 255);
+		static inline ImVec4 classOrange =		colToVec(252, 140, 3, 255);
+		static inline ImVec4 yellow =			colToVec(255, 213, 0, 255 );
+		static inline ImVec4 functionYellow =	colToVec(220, 220, 170, 255 );
+		static inline ImVec4 green =			colToVec(17, 255, 0, 255 );
+		static inline ImVec4 numberGreen =		colToVec(181, 206, 168, 255);
+		static inline ImVec4 classGreen =		colToVec(75, 201, 171, 255);
+		static inline ImVec4 commentGreen =		colToVec(0, 145, 10, 255 );
+		static inline ImVec4 lightblue =		colToVec(0, 179, 255, 255 );
+		static inline ImVec4 varTypeBlue =		colToVec(86, 156, 214, 255);
+		static inline ImVec4 enumBlue =			colToVec(0, 21, 255, 255 );
+		static inline ImVec4 packagePurple =	colToVec(162, 0, 255, 255 );
+		static inline ImVec4 varPink =			colToVec(221, 160, 221, 255);
+		static inline ImVec4 varBlue =			colToVec(156, 220, 254, 255);
+		static inline ImVec4 stringRed =		colToVec(214, 157, 133, 255);
+		static inline ImVec4 grayedOut =		colToVec(255, 255, 255, 150);
+		static inline ImVec4 paramGray =		colToVec(154,154,154, 255);
+		static inline ImVec4 bracketGray =		colToVec(180,180,180, 255);
 		
 	};
 };

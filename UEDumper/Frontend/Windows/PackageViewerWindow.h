@@ -45,6 +45,12 @@ namespace windows
 
 		static inline std::vector<PackageTab> Tabs;
 
+		/**
+		 * \brief renders a type that has subtypes
+		 * \param type root fieldType that contains subTypes
+		 * \param inChild whether the data should render in a child
+		 */
+		static void renderSubTypes(const fieldType& type, bool inChild);
 
 		/**
 		 * \brief 

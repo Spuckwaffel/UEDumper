@@ -866,27 +866,27 @@ public:
 	using FField::FField;
 
 	// Persistent variables.
-	int32_t		ArrayDim;
-	int32_t		ElementSize;
-	uint64_t	PropertyFlags;
-	uint16_t	RepIndex;
+	int32_t			ArrayDim;
+	int32_t			ElementSize;
+	EPropertyFlags	PropertyFlags;
+	uint16_t		RepIndex;
 
-	uint8_t		BlueprintReplicationCondition;
-	int32_t		Offset;
+	uint8_t			BlueprintReplicationCondition;
+	int32_t			Offset;
 
-	FName		RepNotifyFunc;
+	FName			RepNotifyFunc;
 
 	/** In memory only: Linked list of properties from most-derived to base **/
-	FProperty* PropertyLinkNext;
+	FProperty*		PropertyLinkNext;
 
 	/** In memory only: Linked list of object reference properties from most-derived to base **/
-	FProperty* NextRef;
+	FProperty*		NextRef;
 
 	/** In memory only: Linked list of properties requiring destruction. Note this does not include things that will be destroyed byt he native destructor **/
-	FProperty* DestructorLinkNext;
+	FProperty*		DestructorLinkNext;
 
 	/** In memory only: Linked list of properties requiring post constructor initialization.**/
-	FProperty* PostConstructLinkNext;
+	FProperty*		PostConstructLinkNext;
 
 	//static std::string typeName() { return "UProperty"; }
 	//FIXMEEEE
@@ -894,7 +894,7 @@ public:
 
 	int32_t getOffset() const;
 
-	fieldType getType(bool debug = false);
+	fieldType getType();
 
 };
 

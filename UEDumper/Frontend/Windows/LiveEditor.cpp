@@ -1130,6 +1130,7 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::EndChild();
 	ImGui::SameLine();
 	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_HorizontalScrollbar);
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 	if(tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
 	{
 		const auto& tab = tabs[tabPicked];
@@ -1168,6 +1169,7 @@ void windows::LiveEditor::renderLiveEditor()
 		
 
 	}
+	ImGui::PopStyleVar();
 	ImGui::EndChild();
 	renderAddInspector();
 }
