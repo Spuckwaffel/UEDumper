@@ -129,7 +129,6 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
         ImGui::SameLine();
         ImGui::Text(":");
         ImGui::SameLine();
-        ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 3);
         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0, 0, 0, 0));
         ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0, 0, 0, 0));

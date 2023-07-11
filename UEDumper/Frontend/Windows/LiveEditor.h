@@ -31,6 +31,7 @@ namespace windows
 			std::string origin = ""; // use for TabTypeAdvanced or TabTypeOffset
 			int realPackageIndex = -1;
 			int structIndex = -1;
+			bool isClass = false;
 		};
 
 		static inline bool guessSuperClass = true;
@@ -143,10 +144,11 @@ namespace windows
 		 * \param CName name of the Struct
 		 * \param outPackageIndex returning package index
 		 * \param outStructIndex returning struct index
+		 * \param isClass whether its in the struct vector or class vector
 		 * \param lookForBest check whether it should look for the "real" class
 		 * \return if the struct and returning data is valid
 		 */
-		static bool isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool lookForBest = false);
+		static bool isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool& isClass, bool lookForBest = false);
 
 		/**
 		 * \brief checks whether the EnumName is valid.

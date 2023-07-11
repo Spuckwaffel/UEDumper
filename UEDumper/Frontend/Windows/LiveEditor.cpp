@@ -60,14 +60,16 @@ void windows::LiveEditor::renderAddAddress()
 			if (structName == "nil")
 			{
 				sprintf_s(errorText, "Getting UObject type failed!");
-				goto failed;
+				ImGui::EndDisabled();
+				return;
 			}
 				
 
 			const auto info = EngineCore::getInfoOfObject(structName);
 			if (info.packageIndex == -1) { //invalid!
 				sprintf_s(errorText, "Object not found in the packages!");
-				goto failed;
+				ImGui::EndDisabled();
+				return;
 			}
 
 			tab.structIndex = info.objectIndex;
@@ -75,12 +77,18 @@ void windows::LiveEditor::renderAddAddress()
 			tab.realPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
 			if (tab.realPackageIndex == -1) {//invalid!
 				sprintf_s(errorText, "Object not found in the packages!");
-				goto failed;
+				ImGui::EndDisabled();
+				return;
 			}
+
+			tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
+
+			const auto& dataVector = info.type == EngineCore::ObjectInfo::OI_Class ? 
+				EngineCore::getPackages()[tab.realPackageIndex].classes[tab.structIndex] : EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
 
 			tab.found = true;
 			memset(errorText, 0, sizeof(errorText));
-			LiveMemory::addNewBlock(tab.address, EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex].size);
+			LiveMemory::addNewBlock(tab.address, dataVector.size);
 			tabs.push_back(tab);
 			bRenderAddInspector = false;
 			ImGui::EndDisabled();
@@ -88,15 +96,10 @@ void windows::LiveEditor::renderAddAddress()
 			memset(name, 0, sizeof(name));
 			memset(caddress, 0, sizeof(caddress));
 			return;
-
-		failed:
-			{
-				//-
-			}
 			
 		}
-		else
-			sprintf_s(errorText, "Only hexadecimal characters supported!");
+		sprintf_s(errorText, "Only hexadecimal characters supported!");
+			
 	}
 	ImGui::EndDisabled();
 }
@@ -228,6 +231,8 @@ void windows::LiveEditor::renderAddOffset()
 		}
 
 		tab.structIndex = info.objectIndex;
+
+		tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
 
 		tab.realPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
 		if (tab.realPackageIndex == -1) {//invalid!
@@ -483,9 +488,11 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 		
 		int pidx = 0;
 		int stidx = 0;
-		if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, pidx, stidx) && arr.Data != nullptr && arr.Count > 0)
+		bool bClass = false;
+		if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, pidx, stidx, bClass) && arr.Data != nullptr && arr.Count > 0)
 		{
-			auto& arrStruct = EngineCore::getPackages()[pidx].structs[stidx];
+			const auto& arrStruct = bClass ?
+				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 			if(member.type.subTypes[0].propertyType == PropertyType::ObjectProperty || member.type.subTypes[0].propertyType == PropertyType::ClassProperty)
 			{
 				LiveMemory::addNewBlock(reinterpret_cast<uint64_t>(arr.Data), 8 * arr.Count); //TArray stores pointers
@@ -630,9 +637,11 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc,
 
 				int s_pidx = 0;
 				int s_stidx = 0;
-				if (isValidStructName(block.gameAddress, super, s_pidx, s_stidx))
+				bool bClass = false;
+				if (isValidStructName(block.gameAddress, super, s_pidx, s_stidx, bClass))
 				{
-					const auto& superStruct = EngineCore::getPackages()[s_pidx].structs[s_stidx];
+					const auto& superStruct = bClass ?
+						EngineCore::getPackages()[s_pidx].classes[s_stidx] : EngineCore::getPackages()[s_pidx].structs[s_stidx];
 					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 					if (ImGui::TreeNodeEx(std::string(superStruct.cppName + "##" + secret + std::to_string(offset)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
 					{
@@ -701,9 +710,11 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 150), "0x%llX", memberPtr);
 		int pidx = 0;
 		int stidx = 0;
-		if (isValidStructName(memberPtr, member.type.name, pidx, stidx, true) && memberPtr != 0)
+		bool bClass = false;
+		if (isValidStructName(memberPtr, member.type.name, pidx, stidx, bClass, true) && memberPtr != 0)
 		{
-			const auto& newStruct = EngineCore::getPackages()[pidx].structs[stidx];
+			const auto& newStruct = bClass ?
+				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 			LiveMemory::addNewBlock(memberPtr, newStruct.size);
 			renderStruct(newStruct, memberPtr, member.name, appendSecret(secret, member.type.name, member.offset + innerOffset)); //secret is 0x7FF+UOject+namePrivate
 		}
@@ -826,9 +837,11 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 				{
 					int pidx = 0;
 					int stidx = 0;
-					if (isValidStructName(address, member.type.name, pidx, stidx))
+					bool bClass = false;
+					if (isValidStructName(address, member.type.name, pidx, stidx, bClass))
 					{
-						const auto& subStruct = EngineCore::getPackages()[pidx].structs[stidx];
+						const auto& subStruct = bClass ?
+							EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 						drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset);
 					}
 						
@@ -910,9 +923,12 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 		ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 		int pidx = 0;
 		int stidx = 0;
-		if (isValidStructName(address, super, pidx, stidx))
+		bool bClass = false;
+		if (isValidStructName(address, super, pidx, stidx, bClass))
 		{
-			const auto& superStruct = EngineCore::getPackages()[pidx].structs[stidx];
+			const auto& superStruct = bClass ?
+				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
+
 			if (ImGui::TreeNodeEx(std::string(superStruct.cppName + "##" + appendSecret(secret, superStruct.cppName, struc.inheretedSize)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
 			{
 				
@@ -949,7 +965,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	ImGui::Separator();
 }
 
-bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool lookForBest)
+bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool& isClass, bool lookForBest)
 {
 	if(classPointer != 0 && guessSuperClass && lookForBest)
 	{
@@ -974,6 +990,8 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 
 		outStructIndex = info.objectIndex;
 
+		isClass = info.type == EngineCore::ObjectInfo::OI_Class;
+
 		outPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
 		if (outPackageIndex == -1) //invalid!
 			goto tryAgain;
@@ -990,6 +1008,8 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 		return false;
 
 	outStructIndex = info.objectIndex;
+
+	isClass = info.type == EngineCore::ObjectInfo::OI_Class;
 
 	outPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
 	if (outPackageIndex == -1) //invalid!
@@ -1137,7 +1157,8 @@ void windows::LiveEditor::renderLiveEditor()
 
 		if(tab.type == TabTypeAddress)
 		{
-			const auto& currentStruct = EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
+			const auto& currentStruct = tab.isClass ?
+				EngineCore::getPackages()[tab.realPackageIndex].classes[tab.structIndex] : EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
 
 			renderStruct(currentStruct, tab.address, tab.name, tab.name + std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
 		}
@@ -1146,7 +1167,9 @@ void windows::LiveEditor::renderLiveEditor()
 			auto block = LiveMemory::getMemoryBlock(tab.address); //8 byte block
 
 			//just get the old size
-			const auto& currentStruct = EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
+			const auto& currentStruct = tab.isClass ?
+				EngineCore::getPackages()[tab.realPackageIndex].classes[tab.structIndex] : EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
+			
 
 			const uint64_t address = block.read<uint64_t>(0);
 

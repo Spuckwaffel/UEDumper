@@ -123,7 +123,7 @@ public:
 		ObjectType type;
 		//the raw package index, convert to runtime index
 		int packageIndex;
-		//index of the object in the package
+		//index of the object in the specific vector
 		int objectIndex;
 
 		//converts the struct to a JSON object

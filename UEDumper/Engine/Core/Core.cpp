@@ -975,9 +975,11 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 			if (isClass || object->IsA<UScriptStruct>())
 			{
 
+
+
 				auto& dataVector = isClass ? p.classes : p.structs;
 				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
-
+				
 				//is the struct predefined?
 				if(overridingStructs.contains(object->getFullName()))
 				{
@@ -991,8 +993,16 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						
 						packageObjectInfos.insert(std::pair(object->getCName(),
 						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
+						
+						generateFunctions(object->castTo<UStruct>(), dataVector.back().functions);
 
-						generateFunctions(object->castTo<UStruct>(), dataVector[dataVector.size() - 1].functions);
+						for (int i = 0; i < dataVector.back().functions.size(); i++)
+						{
+							p.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
+							packageObjectInfos.insert(std::pair(dataVector.back().functions.at(i).cppName,
+								ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
+						}
+						
 						
 						continue;
 					}
@@ -1000,16 +1010,21 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				const auto sObject = object->castTo<UStruct>();
 
 				
+				int oldFuncSize = dataVector[dataVector.size() - 1].functions.size();
 
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
 
-				dataVector[dataVector.size() - 1].isClass = isClass;
+				dataVector.back().isClass = isClass;
 				//printf("added %s to packageIndex %d (%s), at objectIndex %d!\n", sObject.getCName().c_str(), packageIndex, p.packageName.c_str(), objectIndex);
 				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
-				for(int i = 0; i < dataVector[dataVector.size() - 1].functions.size(); i++)
+
+
+				for(int i = 0; i < dataVector.back().functions.size(); i++)
 				{
 					p.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
+					packageObjectInfos.insert(std::pair(dataVector.back().functions.at(i).cppName,
+						ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
 				}
 			}
 			else if (object->IsA<UEnum>())
