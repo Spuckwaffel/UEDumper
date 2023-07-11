@@ -676,7 +676,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 
 		data.push_back(eFunction);
 
-		packageObjectInfos.insert(std::pair(eFunction.cppName, ObjectInfo{ObjectInfo::OI_Function, 1,data.size()-1}))
+		
 	}
 
 	
@@ -993,6 +993,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
 						generateFunctions(object->castTo<UStruct>(), dataVector[dataVector.size() - 1].functions);
+						
 						continue;
 					}
 				}
