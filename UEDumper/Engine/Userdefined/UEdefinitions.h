@@ -95,7 +95,7 @@
 #if UE_VERSION >= UE_5_00
 //Make sure that live coding define is available. Normally this is supplied by UBT
 //default FALSE but in case function offsets are 0 set this to true
-#define WITH_LIVE_CODING TRUE
+#define WITH_LIVE_CODING FALSE
 #endif
 
 

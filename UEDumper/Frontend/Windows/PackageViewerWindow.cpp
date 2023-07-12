@@ -521,8 +521,10 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
                         params += "*";
                     else if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
                         params += "&";
-                    params += " " + std::get<1>(param);
+                    params += " " + std::get<1>(param) + ", ";
                 }
+                if (func.params.size() > 0)
+					params = params.erase(params.size() - 2);
                 params += ");";
 
 

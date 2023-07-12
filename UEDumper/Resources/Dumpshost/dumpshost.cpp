@@ -115,34 +115,72 @@ namespace DumpsHost
         
         for(auto& pack : EngineCore::getPackages())
         {
-	        for(auto& struc : pack.structs)
-	        {
-		        if(struc.inherited)
-		        {
-                    nlohmann::json j;
-                    j[struc.cppName] = struc.supers[0];
-                    AddInheritInfo(j);
-		        }
-                nlohmann::json members = nlohmann::json::array();
-
-                for(auto& member : struc.members)
+            auto generateStructsOrClasses = [&](std::vector<EngineStructs::Struct> strucVec) mutable
+            {
+                for (auto& struc : strucVec)
                 {
-                    if(member.missed)
-                        continue;
-                    nlohmann::json a;
-                    if(member.isBit)
-                        a[member.name + " : 1"] = std::make_tuple(member.offset, member.type.stringify());
+                    if (struc.inherited)
+                    {
+                        nlohmann::json j;
+                        j[struc.cppName] = struc.supers[0];
+                        AddInheritInfo(j);
+                    }
+                    nlohmann::json members = nlohmann::json::array();
+
+                    for (auto& member : struc.members)
+                    {
+                        if (member.missed)
+                            continue;
+                        nlohmann::json a;
+                        if (member.isBit)
+                            a[member.name + " : 1"] = std::make_tuple(member.offset, member.type.stringify());
+                        else
+                            a[member.name] = std::make_tuple(member.offset, member.type.stringify());
+                        members.push_back(a);
+                    }
+                    nlohmann::json j;
+
+                    j[struc.cppName] = members;
+                    
+                    if (struc.isClass)
+                        AddClass(j);
                     else
-						a[member.name] = std::make_tuple(member.offset, member.type.stringify());
-                    members.push_back(a);
+                        AddStruct(j);
+
+                    nlohmann::json functions = nlohmann::json::array();
+
+
+                    for (auto& func : struc.functions)
+                    {
+                        nlohmann::json a;
+
+                        std::string function = func.returnType.stringify() + " " + func.cppName + "(";
+                        for(auto& param : func.params)
+                        {
+                            function += std::get<0>(param).stringify();
+                            if (std::get<3>(param) > 1)
+                                function += "*";
+                            else if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
+                                function += "&";
+                            function += " " + std::get<1>(param) + ", ";
+                        }
+                        if(func.params.size() > 0)
+							function = function.erase(function.size() - 2);
+
+                        function += ")";
+                        a[function] = std::make_tuple(func.binaryOffset, func.functionFlags);
+                        functions.push_back(a);
+                    }
+                    nlohmann::json f;
+
+                    f[struc.cppName] = functions;
+                    AddFunction(f);
                 }
-                nlohmann::json j;
-                j[struc.cppName] = members;
-                if(struc.isClass)
-					AddClass(j);
-                else
-                    AddStruct(j);
-	        }
+            };
+
+            generateStructsOrClasses(pack.structs);
+            generateStructsOrClasses(pack.classes);
+	        
             for(auto& enu : pack.enums)
             {
                 nlohmann::json members = nlohmann::json::array();
