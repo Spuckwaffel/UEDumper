@@ -22,7 +22,7 @@
 #define RELEASE_1_3_BETA	4
 #define RELEASE_1_3_FINAL	5
 
-#define DUMPER_VERSION RELEASE_1_3_BETA
+#define DUMPER_VERSION RELEASE_1_3_FINAL
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
