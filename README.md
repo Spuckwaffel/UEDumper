@@ -114,7 +114,6 @@
 <p>&nbsp;</p>
 <h2>Contributing</h2>
 <p>Contribution is always appreciated! I will most likely not add support for Unreal Engine 3 or before, but you can.</p>
-<p>Additionally, theres at the moment no support for functions, because this project is designed for external projects, but feel free to implement functions.</p>
 <p>Please keep in mind that i will not accept any pull requests that change the entire code base, do not use any caching, arent documented or just messy.&nbsp;</p>
 <p>This project is a very large project but very stable and uses a lot caching for almost everything in order to work properly and fast. However, if you find any better solutions, feel free to create a pull request to implement it.</p>
 <p>&nbsp;</p>
