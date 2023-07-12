@@ -140,11 +140,11 @@ namespace EngineStructs
 	{
 		uintptr_t memoryAddress;
 		fieldType returnType;
-		std::vector<std::tuple<fieldType, uint64_t, uint64_t>> params; //fieldType, propertyFlags, arrayDim
+		std::vector<std::tuple<fieldType, std::string, uint64_t, uint64_t>> params; //fieldType, name, propertyFlags, arrayDim
 		std::string fullName;
 		std::string cppName;
 		std::string functionFlags;
-		uint64_t func = 0; //offset of the func in the binary
+		uint64_t binaryOffset = 0; //offset of the func in the binary
 
 		nlohmann::json toJson() const
 		{
@@ -153,12 +153,12 @@ namespace EngineStructs
 			j["returnType"] = returnType.toJson();
 			nlohmann::json jParams;
 			for (const auto& param : params)
-				jParams.push_back({std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param) });
+				jParams.push_back({std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param), std::get<3>(param) });
 			j["params"] = jParams;
 			j["fullName"] = fullName;
 			j["cppName"] = cppName;
 			j["functionFlags"] = functionFlags;
-			j["func"] = func;
+			j["binaryOffset"] = binaryOffset;
 			return j;
 		}
 
@@ -168,11 +168,11 @@ namespace EngineStructs
 			f.memoryAddress = json["memoryAddress"];
 			f.returnType = fieldType::fromJson(json["returnType"]);
 			for (const nlohmann::json& param : json["params"])
-				f.params.push_back(std::tuple(fieldType::fromJson(param[0]), param[1], param[2]));
+				f.params.push_back(std::tuple(fieldType::fromJson(param[0]), param[1], param[2], param[3]));
 			f.fullName = json["fullName"];
 			f.cppName = json["cppName"];
 			f.functionFlags = json["functionFlags"];
-			f.func = json["func"];
+			f.binaryOffset = json["binaryOffset"];
 			return f;
 		}
 	};
@@ -316,10 +316,22 @@ namespace EngineStructs
 			nlohmann::json j;
 			j["packageName"] = packageName;
 			j["index"] = index;
+
 			nlohmann::json jStructs;
 			for(const auto& struc : structs)
 				jStructs.push_back(struc.toJson());
 			j["structs"] = jStructs;
+
+			nlohmann::json jClasses;
+			for (const auto& clas : classes)
+				jClasses.push_back(clas.toJson());
+			j["classes"] = jClasses;
+
+			nlohmann::json jFunctions;
+			for (const auto& function : functions)
+				jFunctions.push_back({ std::get<0>(function), std::get<1>(function), std::get<2>(function) });
+			j["functions"] = jFunctions;
+
 			nlohmann::json jEnums;
 			for (const auto& enu : enums)
 				jEnums.push_back(enu.toJson());
@@ -332,11 +344,13 @@ namespace EngineStructs
 			Package p;
 			p.packageName = json["packageName"];
 			p.index = json["index"];
-			nlohmann::json jStructs = json["structs"];
-			for (const nlohmann::json& struc : jStructs)
+			for (const nlohmann::json& struc : json["structs"])
 				p.structs.push_back(Struct::fromJson(struc));
-			nlohmann::json jEnums = json["enums"];
-			for (const nlohmann::json& enu : jEnums)
+			for (const nlohmann::json& clas : json["classes"])
+				p.classes.push_back(Struct::fromJson(clas));
+			for (const nlohmann::json& function : json["functions"])
+				p.functions.push_back(std::tuple(function[0], function[1], function[2]));
+			for (const nlohmann::json& enu : json["enums"])
 				p.enums.push_back(Enum::fromJson(enu));
 
 			return p;

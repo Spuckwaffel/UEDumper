@@ -10,12 +10,17 @@ namespace windows
 
 		enum logLevels
 		{
-			log_0 = 0,
-			log_1 = 1,
-			log_2 = 2,
-			log_3 = 3,
-			log_4 = 4,
-			log_MAX = 5
+			log_0 = 0, //a lot useless log shit
+			log_1 = 1, //somewhat important
+			log_2 = 2, //important messages
+			log_MAX = 3
+		};
+
+		static const inline char* logLevelNames[] = {
+			"Everything",
+			"Frontend, Errors and Dumping Info",
+			"Frontend and Error Messages"
+			""
 		};
 
 	private:
@@ -27,7 +32,7 @@ namespace windows
 		static inline int logRange = 100;
 
 
-		static inline int logLevel = log_4;
+		static inline int logLevel = log_0;
 
 	public:
 		
@@ -37,6 +42,8 @@ namespace windows
 		static void Log(logLevels level, std::string origin, const char* fmt, ...);
 
 		static int getLogLevel();
+
+		static std::string getLogLevelName();
 
 		static void setLogLevel(int level);
 

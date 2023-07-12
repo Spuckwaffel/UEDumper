@@ -67,7 +67,7 @@ namespace windows
 		static void renderEnum(int index, const EngineStructs::Enum& enu);
 
 
-		static void renderFunction(int index, const EngineStructs::Function& func);
+		static void renderFunction(int index, std::pair<const EngineStructs::Function&, const EngineStructs::Struct&> pair);
 
 		static void setOpenTabsClosed();
 

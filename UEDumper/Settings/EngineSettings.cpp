@@ -75,36 +75,102 @@ nlohmann::json EngineSettings::toJson()
 	EngineSettings["projectName"] = getProjectName();
 	EngineSettings["workingDir"] = getWorkingDirectory();
 	EngineSettings["targetApplicationName"] = getTargetApplicationName();
+
+	EngineSettings["DUMPER_VERSION"] = DUMPER_VERSION;
+	EngineSettings["UE_VERSION"] = _UE_VERSION;
+	EngineSettings["USE_FNAME_ENCRYPTION"] = _USE_FNAME_ENCRYPTION;
+	EngineSettings["WITH_CASE_PRESERVING_NAME"] = _WITH_CASE_PRESERVING_NAME;
+
+	if (_UE_VERSION < UE_4_23)
+		EngineSettings["GNAMES_POOL_OFFSET"] = _GNAMES_POOL_OFFSET;
+	if (_UE_VERSION > UE_5_00)
+		EngineSettings["UE_FNAME_OUTLINE_NUMBER"] = _UE_FNAME_OUTLINE_NUMBER;
+
+	if (_UE_VERSION == UE_4_25)
+		EngineSettings["USE_LOWERCASE_STRUCT"] = _USE_LOWERCASE_STRUCT;
+	
+	EngineSettings["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"] = _UE_BLUEPRINT_EVENTGRAPH_FASTCALLS;
+
+	if (_UE_VERSION >= UE_5_00)
+		EngineSettings["WITH_LIVE_CODING"] = _WITH_LIVE_CODING;
+
+	if (_UE_VERSION >= UE_4_22)
+		EngineSettings["USTRUCT_FAST_ISCHILDOF_IMPL"] = _USTRUCT_FAST_ISCHILDOF_IMPL;
+
+	if (_UE_VERSION >= UE_4_25)
+		EngineSettings["WITH_EDITORONLY_DATA"] = _WITH_EDITORONLY_DATA;
 	return EngineSettings;
 }
 
 bool EngineSettings::loadJson(const nlohmann::json& json)
 {
-	int val = 1;
-	if (json.is_null())
-		goto lError;
+	if(!json.contains("DUMPER_VERSION"))
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+			"version of the dumper and is not compatible with this version.");
+	}
+	const int ver = json["DUMPER_VERSION"];
+	if(ver != DUMPER_VERSION)
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+																	   "version of the dumper.");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but Dumper has version %d.", ver, DUMPER_VERSION);
+		return false;
+	}
 
-	val++; // 2
-	projectName = json.value("projectName", "");
-	if(projectName.length() < 5)
-		goto lError;
+	if (!json.contains("UE_VERSION") ||
+		!json.contains("USE_FNAME_ENCRYPTION") ||
+		!json.contains("WITH_CASE_PRESERVING_NAME") ||
+		!json.contains("USE_FNAME_ENCRYPTION") ||
+		!json.contains("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"))
 
-	val++; // 3
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "This project is missing special json settings and is corrupted.");
+		return false;
+	}
+
+	_UE_VERSION = json["UE_VERSION"];
+	windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINESETTINGS", "This project uses %s.", getEngineVersion().name.c_str());
+
+	_USE_FNAME_ENCRYPTION = json["USE_FNAME_ENCRYPTION"];
+	_WITH_CASE_PRESERVING_NAME = json["WITH_CASE_PRESERVING_NAME"];
+	_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS = json["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"];
+
+#define checkMacro(condition, name, save) \
+	if(condition) { \
+		if (!json.contains(name)) { \
+			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
+			return false; \
+		} \
+		save = json[name]; \
+	}
+
+	checkMacro(_UE_VERSION < UE_4_23, "GNAMES_POOL_OFFSET", _GNAMES_POOL_OFFSET);
+
+	checkMacro(_UE_VERSION > UE_5_00, "UE_FNAME_OUTLINE_NUMBER", _UE_FNAME_OUTLINE_NUMBER);
+
+	checkMacro(_UE_VERSION == UE_4_25, "USE_LOWERCASE_STRUCT", _USE_LOWERCASE_STRUCT);
+
+	checkMacro(_UE_VERSION >= UE_5_00, "WITH_LIVE_CODING", _WITH_LIVE_CODING);
+
+	checkMacro(_UE_VERSION >= UE_4_22, "USTRUCT_FAST_ISCHILDOF_IMPL", _USTRUCT_FAST_ISCHILDOF_IMPL);
+
+	checkMacro(_UE_VERSION >= UE_4_25, "WITH_EDITORONLY_DATA", _WITH_EDITORONLY_DATA);
+
+
+	projectName = json["projectName"];
+
 	workingDir = json.value("workingDir", std::filesystem::path());
-	if(workingDir.empty())
-		goto lError;
+	if (workingDir.empty())
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "WorkingDir is missing!");
+		return false;
+	}
 
-	val++; // 4
-	targetApplicationName = json.value("targetApplicationName", "");
-	if (targetApplicationName.length() < 5)
-		goto lError;
+	targetApplicationName = json["targetApplicationName"];
 
 
 	return true;
-
-	lError:
-	windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINESETTINGS", "JSON invalid! - %d", val);
-	return false;
 }
 
 void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
@@ -122,15 +188,19 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	if (ImGui::ArrowButton("loglevel_btn_right", ImGuiDir_Right))
 		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() + 1);
 	ImGui::SameLine();
-	ImGui::Text("Log level: %d", windows::LogWindow::getLogLevel());
+	ImGui::Text("Log level: %d | %s", windows::LogWindow::getLogLevel(), windows::LogWindow::getLogLevelName().c_str());
 	ImGui::BeginDisabled();
 	ImGui::Text("FName settings");
 	ImGui::Checkbox("WITH_CASE_PRESERVING_NAME", reinterpret_cast<bool*>(&_WITH_CASE_PRESERVING_NAME));
+	ImGui::Checkbox("USE_FNAME_ENCRYPTION", reinterpret_cast<bool*>(&_USE_FNAME_ENCRYPTION));
 
-	if(_UE_VERSION < UE_4_25)
+	if(_UE_VERSION < UE_4_23)
 		ImGui::Text("GNAMES_POOL_OFFSET %d", _GNAMES_POOL_OFFSET);
 	if (_UE_VERSION > UE_5_00)
 		ImGui::Checkbox("UE_FNAME_OUTLINE_NUMBER", reinterpret_cast<bool*>(&_UE_FNAME_OUTLINE_NUMBER));
+
+	if (_UE_VERSION == UE_4_25)
+		ImGui::Checkbox("USE_LOWERCASE_STRUCT", reinterpret_cast<bool*>(&_USE_LOWERCASE_STRUCT));
 
 	ImGui::Text("UFunction settings");
 	ImGui::Checkbox("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS", reinterpret_cast<bool*>(&_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS));
@@ -138,10 +208,15 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	if (_UE_VERSION >= UE_5_00)
 		ImGui::Checkbox("WITH_LIVE_CODING", reinterpret_cast<bool*>(&_WITH_LIVE_CODING));
 
-	if (_UE_VERSION >= UE_4_25)
+	if (_UE_VERSION >= UE_4_22)
 	{
 		ImGui::Text("UStruct settings");
 		ImGui::Checkbox("USTRUCT_FAST_ISCHILDOF_IMPL", reinterpret_cast<bool*>(&EngineSettings::_USTRUCT_FAST_ISCHILDOF_IMPL));
+	}
+
+	if (_UE_VERSION >= UE_4_25)
+	{
+		ImGui::Checkbox("WITH_EDITORONLY_DATA", reinterpret_cast<bool*>(&EngineSettings::_WITH_EDITORONLY_DATA));
 	}
 
 	ImGui::EndDisabled();

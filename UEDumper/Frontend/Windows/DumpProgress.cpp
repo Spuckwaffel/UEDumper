@@ -26,13 +26,13 @@ bool windows::DumpProgress::render()
 		callOnce = true;
 		//unique pointer using future so the render function can return without waiting for the async thread to complete
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_4, "DUMPPROGRESS", "Starting dump...");
+			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Starting dump...");
 			startDumpTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
 			EngineCore();
 
 			if (!EngineCore::lastOperationSuccess()) {
-				LogWindow::Log(LogWindow::log_3, "DUMPPROGRESS", "Failed to initialize EngineCore!");
+				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Failed to initialize EngineCore!");
 				errorOccurred = true;
 				return;
 			}
@@ -42,7 +42,7 @@ bool windows::DumpProgress::render()
 
 			if (GObjectPtrs.status != EngineCore::CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_3, "DUMPPROGRESS", "No success at copyGObjectPtrs!");
+				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at copyGObjectPtrs!");
 				errorOccurred = true;
 				return;
 			}
@@ -51,25 +51,25 @@ bool windows::DumpProgress::render()
 			EngineCore::copyUBigObjects(UBigObjects.finishedBytes, UBigObjects.totalBytes, UBigObjects.status);
 			if (UBigObjects.status != EngineCore::CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_3, "DUMPPROGRESS", "No success at copyUBigObjects!");
+				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at copyUBigObjects!");
 				errorOccurred = true;
 				return;
 			}
 			EngineCore::cacheFNames(FNames.finishedBytes, FNames.totalBytes, FNames.status);
 			if (FNames.status != EngineCore::CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_3, "DUMPPROGRESS", "No success at cacheFNames!");
+				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at cacheFNames!");
 				errorOccurred = true;
 				return;
 			}
 			EngineCore::generatePackages(packages.finishedBytes, packages.totalBytes, packages.status);
 			if (packages.status != EngineCore::CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_3, "DUMPPROGRESS", "No success at cacheFullPackages!");
+				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at cacheFullPackages!");
 				errorOccurred = true;
 				return;
 			}
-			LogWindow::Log(LogWindow::log_4, "DUMPPROGRESS", "Finished dumping!");
+			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Finished dumping!");
 			//we're done
 			alreadyCompleted = true;
 			LogWindow::Log(LogWindow::log_0, "DUMPPROGRESS", "Finished everything with %d memory operations!", Memory::getTotalReads());

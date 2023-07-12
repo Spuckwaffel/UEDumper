@@ -120,7 +120,7 @@ public:
 	/** Next Field in the linked list */
 	UField* Next;
 
-	UField* GetNext() const;
+	UField* getNext() const;
 
 	static UClass* staticClass();
 };
@@ -206,6 +206,7 @@ public:
 	/** Script byte code associated with this object */
 	TArray<uint8_t> Script;
 
+#if UE_VERSION < UE_4_25
 	/** In memory only: Linked list of properties from most-derived to base */
 	UProperty* PropertyLink;
 
@@ -218,18 +219,78 @@ public:
 	/** In memory only: Linked list of properties requiring post constructor initialization */
 	UProperty* PostConstructLink;
 
-#if UE_VERSION < UE_4_25
+
 	/** Array of object references embedded in script code. Mirrored for easy access by realtime garbage collection code */
 	TArray<UObject*> ScriptObjectReferences;
 
+
+
 #else
+
+	// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L312
+	// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L321
+	// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L321
+
+	/** In memory only: Linked list of properties from most-derived to base */
+	FProperty* PropertyLink;
+
+	/** In memory only: Linked list of object reference properties from most-derived to base */
+	FProperty* RefLink;
+
+	/** In memory only: Linked list of properties requiring destruction. Note this does not include things that will be destroyed byt he native destructor */
+	FProperty* DestructorLink;
+
+	/** In memory only: Linked list of properties requiring post constructor initialization */
+	FProperty* PostConstructLink;
+
 	/** Array of object references embedded in script code and referenced by FProperties. Mirrored for easy access by realtime garbage collection code */
 	TArray<UObject*> ScriptAndPropertyObjectReferences;
 
-	//this has been defined easy, for reference https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L325
+	//things are defined easier because theres no reason implementing all classes
 
+	//typedef TArray<TPair<TFieldPath<FField>, int32>> FUnresolvedScriptPropertiesArray
+	//FUnresolvedScriptPropertiesArray* UnresolvedScriptProperties;
 	/** Contains a list of script properties that could not be resolved at load time */
 	uintptr_t UnresolvedScriptProperties;
+
+	#if WITH_EDITORONLY_DATA
+		/** List of wrapper UObjects for FProperties */
+		TArray<uintptr_t> PropertyWrappers;
+
+		/** Unique id incremented each time this class properties get destroyed */
+		int32_t FieldPathSerialNumber;
+
+	#endif
+
+	#if UE_VERSION < UE_5_00
+	
+		// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L335
+		// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
+		// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
+		/** Cached schema for optimized unversioned property serialization, owned by this. */
+		uintptr_t UnversionedSchema = 0;
+	#else
+
+		// https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L353
+		// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L413
+		/** Cached schema for optimized unversioned and filtereditoronly property serialization, owned by this. */
+		uintptr_t UnversionedGameSchema = 0;
+
+		#if WITH_EDITORONLY_DATA
+		
+			/** Cached schema for optimized unversioned property serialization, with editor data, owned by this. */
+			uintptr_t UnversionedEditorSchema = 0;
+		
+			#if UE_VERSION > UE_5_00
+				// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L423
+				bool bHasAssetRegistrySearchableProperties;
+			#endif
+		
+		
+		#endif
+
+	#endif
+
 #endif
 
 	template <typename T>

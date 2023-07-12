@@ -31,6 +31,11 @@ int windows::LogWindow::getLogLevel()
 	return logLevel;
 }
 
+std::string windows::LogWindow::getLogLevelName()
+{
+	return logLevelNames[logLevel];
+}
+
 void windows::LogWindow::setLogLevel(int level)
 {
 	if (level < logLevels::log_MAX)
@@ -112,6 +117,6 @@ void windows::LogWindow::renderEditPopup()
 			file << i << " " << logs[i] << std::endl;
 		}
 		file.close();
-		Log(log_4, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
+		Log(log_2, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
 	}
 }

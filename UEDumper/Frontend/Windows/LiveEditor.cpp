@@ -784,7 +784,7 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 			{
 				value = i;
 
-				windows::LogWindow::Log(LogWindow::log_4, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum.members[value].first.c_str(), subEnum.members[value].second);
+				windows::LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum.members[value].first.c_str(), subEnum.members[value].second);
 				uint8_t newData = subEnum.members[value].second;
 				block.write(member.offset + innerOffset, newData);
 				Memory::write(block.gameAddress + member.offset + innerOffset, newData);
@@ -899,7 +899,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 		char addressBuf[30];
 		sprintf_s(addressBuf, "0x%llX", address);
 		IGHelper::copyToClipBoard(std::string(addressBuf));
-		LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Copied address to clipboard!");
+		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
 	}
 	ImGui::SameLine();
 	if(origin.length() > 0)
@@ -911,7 +911,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + struc.cppName + secret).c_str()))
 	{
 		IGHelper::copyToClipBoard(struc.cppName);
-		LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Copied struct name to clipboard!");
+		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied struct name to clipboard!");
 	}
 	ImGui::SameLine();
 	ImGui::TextColored(IGHelper::Colors::classGreen, struc.cppName.c_str());
@@ -1226,7 +1226,7 @@ void windows::LiveEditor::renderEditPopUp()
 	{
 		if(ImGui::Button("Clear superclass cache"))
 		{
-			LogWindow::Log(LogWindow::log_4, "LIVE", "Cleared superclass cache!");
+			LogWindow::Log(LogWindow::log_2, "LIVE", "Cleared superclass cache!");
 			realSuperClassCache.clear();
 		}
 		ImGui::SameLine();

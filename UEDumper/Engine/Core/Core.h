@@ -353,9 +353,10 @@ public:
 	 * \brief as functions store tuples for the function information this gets the function
 	 * \param package the package where the function is in
 	 * \param functionIndex index in the function vector
-	 * \return the function
+	 * \return the function and its parent struct
 	 */
-	static const EngineStructs::Function& getFunctionFromVectorIndex(const EngineStructs::Package& package, int functionIndex);
+	static std::pair<std::reference_wrapper<const EngineStructs::Function>, std::reference_wrapper<const EngineStructs::Struct>> getFunctionFromVectorIndex(
+		const EngineStructs::Package& package, int functionIndex);
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION!

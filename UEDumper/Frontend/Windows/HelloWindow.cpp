@@ -105,11 +105,11 @@ bool windows::HelloWindow::render()
 	else
 	{
 #if UE_VERSION >= UE_5_00
-		constexpr auto childSize = ImVec2(510, 400);
+		constexpr auto childSize = ImVec2(510, 500);
 #else
-		constexpr auto childSize = ImVec2(510, 320);
+		constexpr auto childSize = ImVec2(510, 400);
 #endif
-		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2 - 20));
+		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2 - 80));
 		EngineSettings::drawEngineSettings(childSize, &showEngineInfos);
 	}
 	
@@ -145,7 +145,7 @@ void windows::HelloWindow::renderProjectPopup()
 			const std::string st(filename, MAX_PATH);
 			if(EngineCore::loadProject(st))
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project loaded!");
+				windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project loaded!");
 				alreadyCompleted = true;
 			}
 		}

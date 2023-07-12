@@ -66,7 +66,7 @@ void windows::PackageWindow::copyPackageNames()
 		names += package.packageName + "\n";
 	}
 	IGHelper::copyToClipBoard(names);
-	LogWindow::Log(windows::LogWindow::log_4, "PACKAGE", "Copied Package names to clipboard!");
+	LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "Copied Package names to clipboard!");
 
 }
 
@@ -94,7 +94,7 @@ bool windows::PackageWindow::render()
 			if (ImGui::Selectable(packages[i].packageName.c_str(), is_selected))
 			{
 				packagePicked = i;
-				LogWindow::Log(windows::LogWindow::log_4, "PACKAGE", "opened package %d", packagePicked);
+				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opened package %d", packagePicked);
 				PackageViewerWindow::createTab(packagePicked);
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Right))
@@ -122,12 +122,12 @@ R"(/********************************************************
 )";
 				file << "/// Package " + packages[packagePicked].packageName << ".\n\n";
 				PackageViewerWindow::generatePackage(file, packages[packagePicked]);
-				LogWindow::Log(LogWindow::log_4, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
+				LogWindow::Log(LogWindow::log_2, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
 			}
 			if (ImGui::Button("Copy package name"))
 			{
 				IGHelper::copyToClipBoard(packages[packagePicked].packageName);
-				LogWindow::Log(LogWindow::log_4, "PACKAGE", "Copied Package name to clipboard!");
+				LogWindow::Log(LogWindow::log_2, "PACKAGE", "Copied Package name to clipboard!");
 			}
 			ImGui::EndPopup();
 		}
@@ -140,12 +140,12 @@ R"(/********************************************************
 	                             ImGuiInputTextFlags_EnterReturnsTrue) && !PackageViewerWindow::openTabFromCName(
 		std::string(CNameSearch)))
 	{
-		LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "%s not found!", CNameSearch);
+		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found!", CNameSearch);
 	}
 	ImGui::SameLine();
 	if (ImGui::Button(ICON_FA_SEARCH) && !PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
-		LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "%s not found!", CNameSearch);
+		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found!", CNameSearch);
 	}
 	ImGui::PopItemWidth();
 	ImGui::EndChild();
@@ -163,9 +163,9 @@ void windows::PackageWindow::renderEditPopup()
 	if(ImGui::Button(merge(ICON_FA_QUESTION, " Get Undefined Structs")))
 	{
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(windows::LogWindow::log_4, "PACKAGEWINDOW", "Getting undefined structs...");
+			LogWindow::Log(windows::LogWindow::log_2, "PACKAGEWINDOW", "Getting undefined structs...");
 			EngineCore::getAllUnknownTypes();
-			LogWindow::Log(windows::LogWindow::log_4, "PACKAGEWINDOW", "Done!");
+			LogWindow::Log(windows::LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			showUndefinedStructs = true;
 		})));
 	}
@@ -218,17 +218,17 @@ void windows::PackageWindow::renderProjectPopup()
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Full SDK")))
 	{
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "Creating SDK...");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating SDK...");
 			generateSDK();
-			LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "Done!");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			})));
 	}
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
 	{
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "Crerating Dumps.Host SDK...");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumps.Host SDK...");
 			DumpsHost::Generate();
-			LogWindow::Log(LogWindow::log_4, "PACKAGEWINDOW", "Done!");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			})));
 	}
 }

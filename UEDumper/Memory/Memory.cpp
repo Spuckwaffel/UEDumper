@@ -30,12 +30,12 @@ Memory::LoadError Memory::load(std::string processName)
 		loadData(processName, baseAddress, processID);
 
 		if (!baseAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_3, "MEMORY", "Error getting base address!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting base address!");
 			return noBaseAddress;
 		}
 
 		if (!processID) {
-			windows::LogWindow::Log(windows::LogWindow::log_3, "MEMORY", "Error getting process ID!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting process ID!");
 			return noProcessID;
 		}
 

@@ -11,7 +11,7 @@ void windows::TopRowButtons::renderHelpWindow()
     ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
     ImGui::SetNextWindowFocus();
     ImGui::Begin("Help", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-    ImGui::SetWindowSize(ImVec2(800, 700), ImGuiCond_Once);
+    ImGui::SetWindowSize(ImVec2(800, 800), ImGuiCond_Once);
     const ImVec2 smallWindow = ImGui::GetWindowSize();
     ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
     ImGui::PopStyleVar();
@@ -25,9 +25,9 @@ void windows::TopRowButtons::renderHelpWindow()
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 50);
     ImVec2 childSize;
     if(EngineSettings::_UE_VERSION >= UE_5_00)
-        childSize = ImVec2(780, 400);
+        childSize = ImVec2(780, 500);
     else
-        childSize = ImVec2(780, 320);
+        childSize = ImVec2(780, 400);
     EngineSettings::drawEngineSettings(childSize, &bRenderHelpWindow);
     ImGui::End();
     

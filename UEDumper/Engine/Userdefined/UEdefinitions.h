@@ -48,7 +48,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_4_22
+#define UE_VERSION UE_5_01
 
 
 /* FName settings */
@@ -59,7 +59,7 @@
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
 //default FALSE
-#define WITH_CASE_PRESERVING_NAME TRUE
+#define WITH_CASE_PRESERVING_NAME FALSE
 
 
 #if UE_VERSION < UE_4_23
@@ -105,4 +105,10 @@
 //stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
 //default TRUE
 #define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
+#endif
+
+#if UE_VERSION >= UE_4_25
+//set this to true if function types show everywhere None
+//default false
+#define WITH_EDITORONLY_DATA FALSE
 #endif

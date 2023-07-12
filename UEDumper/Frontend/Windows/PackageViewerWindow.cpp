@@ -15,7 +15,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
     {
         if (!openTabFromCName(type.name))
         {
-            LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Object %s not found!", type.name.c_str());
+            LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", type.name.c_str());
         }
     }
     ImGui::SameLineEx(0);
@@ -29,7 +29,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
         {
             if (ImGui::Button(std::string(subType.name + "##" + std::to_string(reinterpret_cast<__int64>(&subType.name))).c_str()) && !openTabFromCName(subType.name))
             {
-                LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Object %s not found!", subType.name.c_str());
+                LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", subType.name.c_str());
             }
             ImGui::SameLineEx(0);
             if (type.subTypes[j].propertyType == PropertyType::ObjectProperty || type.subTypes[j].propertyType == PropertyType::ClassProperty)
@@ -71,7 +71,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
         char address[30];
         sprintf_s(address, "0x%llX", struc.memoryAddress);
         IGHelper::copyToClipBoard(std::string(address));
-        LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Copied address to clipboard!");
+        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
     }
     ImGui::SameLine();
     //render some infos in green
@@ -185,7 +185,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
                 }
 
                 if(clicked && !openTabFromCName(member.type.name))
-                    LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Object %s not found!", member.type.name.c_str());
+                    LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", member.type.name.c_str());
                 
             }
             ImGui::PopStyleColor(6);
@@ -237,7 +237,7 @@ void windows::PackageViewerWindow::renderEnum(int index, const EngineStructs::En
         char address[30];
         sprintf_s(address, "0x%llX", enu.memoryAddress);
         IGHelper::copyToClipBoard(std::string(address));
-        LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Copied address to clipboard!");
+        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
     }
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::commentGreen);
@@ -274,7 +274,7 @@ void windows::PackageViewerWindow::renderEnum(int index, const EngineStructs::En
 	}
 }
 
-void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs::Function& func)
+void windows::PackageViewerWindow::renderFunction(int index, std::pair<const EngineStructs::Function&, const EngineStructs::Struct&> pair)
 {
     auto copyToClipBoard = [&](uint64_t address)
     {
@@ -283,9 +283,11 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
             char addressBuf[30];
             sprintf_s(addressBuf, "0x%llX", address);
             IGHelper::copyToClipBoard(std::string(addressBuf));
-            LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Copied address to clipboard!");
+            LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
         }
     };
+
+    const auto& func = pair.first;
 
     copyToClipBoard(reinterpret_cast<uint64_t>(&func.memoryAddress));
     ImGui::SameLine();
@@ -293,10 +295,10 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
     ImGui::Text("Memory address: 0x%p", func.memoryAddress);
     ImGui::Text("Function index: %d", index);
     ImGui::PopStyleColor();
-    copyToClipBoard(func.func);
+    copyToClipBoard(func.binaryOffset);
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::commentGreen);
-    ImGui::Text("Function offset in the Binary: 0x%p", func.func);
+    ImGui::Text("Function offset in the Binary: 0x%p", func.binaryOffset);
     ImGui::Text("Name: %s", func.fullName.c_str());
     ImGui::PopStyleColor();
     if (ImGui::IsItemHovered())
@@ -307,6 +309,7 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
         ImGui::PopTextWrapPos();
         ImGui::EndTooltip();
     }
+    ImGui::TextColored(IGHelper::Colors::varBlue, "Flags: %s", func.functionFlags.c_str());
     ImGui::Dummy(ImVec2(30, 30));
     
 
@@ -325,7 +328,7 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
         if (ImGui::Button(std::string(func.returnType.name + "##" + std::to_string(reinterpret_cast<__int64>(&func.returnType.name))).c_str()))
         {
             if (!openTabFromCName(func.returnType.name))
-                LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Type %s not found!", func.returnType.name.c_str());
+                LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Type %s not found!", func.returnType.name.c_str());
         }
         ImGui::PopStyleColor(6);
     }
@@ -333,6 +336,10 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
 		ImGui::TextColored(IGHelper::Colors::varTypeBlue, func.returnType.name.c_str());
 
     ImGui::SameLine();
+    ImGui::TextColored(IGHelper::Colors::classGreen, pair.second.cppName.c_str());
+    ImGui::SameLineEx(0);
+    ImGui::TextColored(IGHelper::Colors::bracketGray, "::");
+    ImGui::SameLineEx(0);
     ImGui::TextColored(IGHelper::Colors::functionYellow, func.cppName.c_str());
     ImGui::SameLineEx(0);
     ImGui::TextColored(IGHelper::Colors::bracketGray, "(");
@@ -340,7 +347,13 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
     ImGui::SameLineEx(0);
     for(int i = 0; i < func.params.size(); i++)
     {
-        
+        if (ImGui::GetCursorPosX() > ImGui::GetWindowSize().x - 250)
+        {
+            ImGui::Dummy({ 0,0 });
+            ImGui::SetCursorPosX(150);
+        }
+            
+			
         if(std::get<0>(func.params.at(i)).clickable)
         {
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
@@ -361,7 +374,7 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
                 if (ImGui::Button(std::string(std::get<0>(func.params.at(i)).name + "##" + std::to_string(reinterpret_cast<__int64>(&std::get<0>(func.params.at(i)).name))).c_str()))
                 {
                     if (!openTabFromCName(std::get<0>(func.params.at(i)).name))
-                        LogWindow::Log(LogWindow::log_4, "PACKAGEVIEWER", "Param type %s not found!", std::get<0>(func.params.at(i)).name.c_str());
+                        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Param type %s not found!", std::get<0>(func.params.at(i)).name.c_str());
                 }
                 ImGui::SameLineEx(0);
             }
@@ -376,12 +389,12 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
         }
             
 
-	    if(std::get<2>(func.params.at(i)) > 1)
+	    if(std::get<3>(func.params.at(i)) > 1)
 	    {
             ImGui::TextColored(IGHelper::Colors::paramGray, "*");
             ImGui::SameLine();
 	    }
-        else if(std::get<1>(func.params.at(i)) & EPropertyFlags::CPF_OutParm)
+        else if(std::get<2>(func.params.at(i)) & EPropertyFlags::CPF_OutParm)
         {
             ImGui::TextColored(IGHelper::Colors::paramGray, "&");
             ImGui::SameLine();
@@ -390,9 +403,9 @@ void windows::PackageViewerWindow::renderFunction(int index, const EngineStructs
             ImGui::SameLine();
 
         if(i < func.params.size() - 1)
-			ImGui::TextColored(IGHelper::Colors::paramGray, "%s, ", func.cppName.c_str());
+			ImGui::TextColored(IGHelper::Colors::paramGray, "%s, ", std::get<1>(func.params.at(i)).c_str());
         else
-            ImGui::TextColored(IGHelper::Colors::paramGray, func.cppName.c_str());
+            ImGui::TextColored(IGHelper::Colors::paramGray, std::get<1>(func.params.at(i)).c_str());
         ImGui::SameLineEx(-2);
     }
     ImGui::TextColored(IGHelper::Colors::bracketGray, ")");
@@ -443,75 +456,88 @@ bool windows::PackageViewerWindow::openTabFromCName(const std::string& name)
 
 void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const EngineStructs::Package& package)
 {
-    for(const auto& struc : package.structs)
+    auto generateStruct = [&](const std::vector<EngineStructs::Struct>& DataStruc)
     {
-        if (struc.isClass)
-            file << "/// Class " << struc.fullName << std::endl;
-        else
-            file << "/// Struct " << struc.fullName << std::endl;
-    	char buf[100] = { 0 };
-    	sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size);
-    	file << "/// " << buf << std::endl;
-        if(struc.isClass)
-    		file << "class " << struc.cppName;
-        else
-            file << "struct " << struc.cppName;
-
-        if (struc.inherited && struc.isClass)
-            file << " : public " << struc.supers[0];
-        else if (struc.inherited)
-            file << " : " << struc.supers[0];
-
-        file << "\n{ " << std::endl;
-
-        if (struc.isClass)
-            file << "public:" << std::endl;
-
-        for(const auto& member : struc.members)
+        for (const auto& struc : DataStruc)
         {
-            char finalBuf[300];
-            char nameBuf[200];
-            std::string name = member.name;
-            if (member.isBit)
-                name += " : 1";
-            sprintf_s(nameBuf, "%-50s %s;", member.type.stringify().c_str(), name.c_str());
-            if(member.isBit)
-				sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
+            if (struc.isClass)
+                file << "/// Class " << struc.fullName << std::endl;
             else
-                sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
-            file << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
-            if (member.userEdited)
-                file << "USER-MODIFIED";
-            else if (member.missed)
-                file << "MISSED";
-            file << std::endl;
+                file << "/// Struct " << struc.fullName << std::endl;
+            char buf[100] = { 0 };
+            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size);
+            file << "/// " << buf << std::endl;
+            if (struc.isClass)
+                file << "class " << struc.cppName;
+            else
+                file << "struct " << struc.cppName;
+
+            if (struc.inherited && struc.isClass)
+                file << " : public " << struc.supers[0];
+            else if (struc.inherited)
+                file << " : " << struc.supers[0];
+
+            file << "\n{ " << std::endl;
+
+            if (struc.isClass)
+                file << "public:" << std::endl;
+
+            for (const auto& member : struc.members)
+            {
+                char finalBuf[300];
+                char nameBuf[200];
+                std::string name = member.name;
+                if (member.isBit)
+                    name += " : 1";
+                sprintf_s(nameBuf, "%-50s %s;", member.type.stringify().c_str(), name.c_str());
+                if (member.isBit)
+                    sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
+                else
+                    sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
+                file << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
+                if (member.userEdited)
+                    file << "USER-MODIFIED";
+                else if (member.missed)
+                    file << "MISSED";
+                file << std::endl;
+
+            }
+
+            // Add function section header
+            if (!struc.functions.empty())
+            {
+                file << "\n\n\t/// Functions" << std::endl;
+            }
+
+            for (const auto& func : struc.functions)
+            {
+                file << "\t// Function " << func.fullName << std::endl;
+                char funcBuf[1200];
+                std::string params = func.returnType.stringify() + " " + func.cppName.c_str() + "(";
+                for (auto param : func.params)
+                {
+                    params += std::get<0>(param).stringify();
+                    if (std::get<3>(param) > 1)
+                        params += "*";
+                    else if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
+                        params += "&";
+                    params += " " + std::get<1>(param);
+                }
+                params += ");";
+
+
+
+                sprintf_s(funcBuf, "	%-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
+                file << funcBuf << std::endl;
+            }
+            file << "};\n\n";
 
         }
+    };
 
-        // Add function section header
-        if (!struc.functions.empty()) 
-        {
-            file << "\n\t/// Functions";
-            char headerBuf[300];
-            sprintf_s(headerBuf, "\n\t/// %-46s %-60s %-63s %-20s %s", "ReturnType FunctionName", "(Parameters);", "Full Function Name", "(Function Flags)", "[Offset]");
-            file << headerBuf << std::endl;
-        }
-
-        for (const auto& func : struc.functions)
-        {
-            char funcBuf[1200];
-            std::string params = "(";
-            //TODO: fix
-            //for (auto param : func.params)
-            //    params += param.first.name + " " + param.second;
-            params += ");";
-            auto offset = func.memoryAddress - Memory::getBaseAddress();
-            sprintf_s(funcBuf, "	%-50s %-60s // %-60s %-20s [0x%llx]", func.cppName.c_str(), params.c_str(), func.fullName.c_str(), func.functionFlags.c_str(), offset);
-            file << funcBuf << std::endl;
-        }
-        file << "};\n\n";
-
-    }
+    generateStruct(package.classes);
+    generateStruct(package.structs);
+    
     for(const auto& enu : package.enums)
     {
         file << "/// Enum " << enu.fullName << std::endl;
@@ -710,14 +736,14 @@ void windows::PackageViewerWindow::renderTabs()
                         const bool is_selected = (tab.itemSelected == i && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function);
                         
                         const auto& func = EngineCore::getFunctionFromVectorIndex(package, i);
-                        if (ImGui::Selectable(func.cppName.c_str(), is_selected)) {
+                        if (ImGui::Selectable(func.first.get().cppName.c_str(), is_selected)) {
                             tab.itemSelected = i;
                             tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
                             updateNavBar(tab.navTab, i, tab.typeSelected);
                         }
                         if (is_selected && ImGui::IsItemHovered()) {
                             ImGui::BeginTooltip();
-                            ImGui::Text(func.cppName.c_str());
+                            ImGui::Text(func.first.get().cppName.c_str());
                             ImGui::EndTooltip();
                         }
                     }

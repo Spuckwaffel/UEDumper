@@ -208,7 +208,7 @@ UClass* AActor::staticClass()
     return EngineCore::findObject<UClass>("/Script/Engine.Actor");
 }
 
-UField* UField::GetNext() const
+UField* UField::getNext() const
 {
     if (Next)
     {

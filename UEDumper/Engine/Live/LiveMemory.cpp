@@ -68,7 +68,7 @@ LiveMemory::MemoryBlock& LiveMemory::addNewBlock(uint64_t address, int size)
 	b.usageCounter++;
 	b.size = size;
 	memoryBlocks.insert(std::pair(address, b));
-	windows::LogWindow::Log(windows::LogWindow::log_4, "LIVEMEM", "Added block for 0x%p at 0x%p!", address, b.buffer);
+	windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Added block for 0x%p at 0x%p!", address, b.buffer);
 	return memoryBlocks[address];
 	
 }
@@ -80,7 +80,7 @@ void LiveMemory::freeBlock(uint64_t address)
 
 	free(reinterpret_cast<void*>(memoryBlocks[address].buffer));
 
-	windows::LogWindow::Log(windows::LogWindow::log_4, "LIVEMEM", "Deleted block for 0x%p!", address);
+	windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Deleted block for 0x%p!", address);
 	
 }
 

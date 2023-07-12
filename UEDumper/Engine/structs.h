@@ -47,12 +47,14 @@ typedef NAME_INDEX FNameEntryId;
 // -> https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1098
 // https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L50
 // -> https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1200
-struct FNameEntryId
-{
-    uint32_t Value;
-
-    FNameEntryId(uint32_t value) : Value(value) {}
-};
+//struct FNameEntryId
+//{
+//    uint32_t Value;
+//
+//    FNameEntryId(uint32_t value) : Value(value) {}
+//};
+//which is after all just
+typedef uint32_t FNameEntryId;
 #endif
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1096

@@ -96,6 +96,7 @@ std::string EngineCore::FNameToString(FName fname)
 #else
 	const uint64_t AnsiName = FNameEntryPtr + 0x10;
 #endif
+
 	int nameLength = NAME_SIZE - 1;
 	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
 	
@@ -448,7 +449,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	if(object->Children)
 	{
 		
-		for (auto child = object->getChildren(); child; child = child->GetNext())
+		for (auto child = object->getChildren(); child; child = child->getNext())
 		{
 			if (child->IsA<UProperty>())
 			{
@@ -459,7 +460,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				//should not happen
 				if (member.size == 0)
 				{
-					windows::LogWindow::Log(windows::LogWindow::log_3, "CORE", "member %s size is 0! ", member.name.c_str());
+					windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
 					//DebugBreak();
 					continue;
 				}
@@ -565,7 +566,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.name = generateValidVarName(child->getName());
 			if (member.size == 0)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_3, "CORE", "member %s size is 0! ", member.name.c_str());
+				windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
 				//DebugBreak();
 				continue;
 			}
@@ -708,8 +709,13 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 #if UE_VERSION < UE_4_25
 	if (!object->Children)
 		return false;
+#else
+	if (!object->Children || !object->ChildProperties)
+		return false;
+#endif
 
-	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->GetNext())
+	//in every version we have to go through the children to 
+	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 	{
 		if (!fieldChild->IsA<UFunction>())
 			continue;
@@ -720,19 +726,27 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 		eFunction.fullName = fn->getFullName();
 		eFunction.memoryAddress = fn->objectptr;
 		eFunction.functionFlags = fn->getFunctionFlagsString();
-		eFunction.func = fn->Func;
+		eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
 
-		for (auto child = fn->getChildren(); child; child = child->GetNext())
+#if UE_VERSION < UE_4_25
+		//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
+		for (auto child = fn->getChildren(); child; child = child->getNext())
 		{
-			child = child->castTo<UProperty>();
 			const auto propChild = child->castTo<UProperty>();
+#else
+		//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
+		for (auto child = fn->getChildProperties(); child; child = child->getNext())
+		{
+			const auto propChild = child;
+#endif
+			//rest of the code is identical, nothing changed here
 			const auto propertyFlags = propChild->PropertyFlags;
 
 			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
 				eFunction.returnType = propChild->getType();
 			else if (propertyFlags & EPropertyFlags::CPF_Parm)
 			{
-				eFunction.params.push_back(std::tuple(propChild->getType(), propertyFlags, propChild->ArrayDim));
+				eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
 			}
 		}
 
@@ -746,51 +760,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 
 		data.push_back(eFunction);
 	}
-#else
-	if (!object->Children || !object->ChildProperties)
-		return false;
 
-
-	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->GetNext())
-	{
-		if (!fieldChild->IsA<UFunction>())
-			continue;
-
-		const auto fn = fieldChild->castTo<UFunction>();
-
-		EngineStructs::Function eFunction;
-		eFunction.fullName = fn->getFullName();
-		eFunction.memoryAddress = fn->objectptr;
-		eFunction.functionFlags = fn->getFunctionFlagsString();
-		eFunction.func = fn->Func;
-
-		//childprops arent just params of the func, some contain info ab the function like the return type
-		for (auto child = fn->getChildProperties(); child; child = child->getNext())
-		{
-			const auto propertyFlags = child->PropertyFlags;
-			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
-				eFunction.returnType = child->getType();
-			else if (propertyFlags & EPropertyFlags::CPF_Parm)
-			{
-				eFunction.params.push_back(std::tuple(child->getType(), propertyFlags, child->ArrayDim));
-			}
-		}
-		
-
-		// no defined return type => void
-		if (!eFunction.returnType)
-			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-		eFunction.cppName = fn->getName();
-
-		
-
-		data.push_back(eFunction);
-
-		
-	}
-
-#endif
 	return true;
 }
 
@@ -803,7 +773,7 @@ EngineCore::EngineCore()
 	bSuccess = false;
 	if(!loaded)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Loading core...");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Loading core...");
 
 		offsets = setOffsets();
 
@@ -811,7 +781,7 @@ EngineCore::EngineCore()
 		gNames = getOffsetAddress(getOffsetForName("OFFSET_GNAMES"));
 		if(!gNames)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "GNames offset not found!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames offset not found!");
 			return;
 		}
 
@@ -819,10 +789,10 @@ EngineCore::EngineCore()
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "GNames -> 0x%p", gNames);
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "GNames offset seems zero!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames offset seems zero!");
 			return;
 		}
 #endif
@@ -830,7 +800,7 @@ EngineCore::EngineCore()
 		const auto UObjectAddr = getOffsetAddress(getOffsetForName("OFFSET_GOBJECTS"));
 		if (!UObjectAddr)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "UObjectAddress offset not found!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectAddress offset not found!");
 			return;
 		}
 		UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
@@ -848,7 +818,7 @@ EngineCore::EngineCore()
 		
 		if (!UObjectArray.Objects || !UObjectArray.NumElements)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "UObjectArray seems empty!");
+			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectArray seems empty!");
 			bSuccess = false;
 			return;
 		}
@@ -871,7 +841,7 @@ bool EngineCore::existsRealPtr(uint64_t UObjectPtr)
 	const bool exists = linkedUObjectPtrs.contains(UObjectPtr);
 	if (!exists)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "ERROR! Could not find ptr in linkedUObjectPtrs %llX!", UObjectPtr);
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "ERROR! Could not find ptr in linkedUObjectPtrs %llX!", UObjectPtr);
 		printf("ERROR! Could not find ptr in linkedUObjectPtrs %llX!\n", UObjectPtr);
 		//DebugBreak(); <- add for debugging purposes!
 		return false;
@@ -892,7 +862,7 @@ void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, Co
 	if(!pGObjectPtrArray)
 	{
 		status = CS_error;
-		windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "Failed to allocate memory for GObjectPtrArray!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for GObjectPtrArray!");
 		return;
 	}
 	
@@ -966,7 +936,7 @@ void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, Co
 	{
 		status = CS_error;
 		
-		windows::LogWindow::Log(windows::LogWindow::log_3, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
 		return;
 	}
 	
@@ -1180,15 +1150,23 @@ EngineCore::ObjectInfo EngineCore::getInfoOfObject(const std::string& CName)
 	return packageObjectInfos[CName];
 }
 
-const EngineStructs::Function& EngineCore::getFunctionFromVectorIndex(const EngineStructs::Package& package, int functionIndex)
+std::pair<std::reference_wrapper<const EngineStructs::Function>, std::reference_wrapper<const EngineStructs::Struct>> EngineCore::getFunctionFromVectorIndex(
+	const EngineStructs::Package& package, int functionIndex)
 {
 	//get the tuple
 	const auto& tup = package.functions.at(functionIndex);
 	//get the residing class or struct of the function
 	const auto& dataVector = std::get<0>(tup) ? package.classes : package.structs;
-	//get the vector[(1)].functions[(2)]
-	return dataVector.at(std::get<1>(tup)).functions.at(std::get<2>(tup));
+
+	const auto& dataStruct = dataVector.at(std::get<1>(tup));
+
+	const auto& func = dataStruct.functions.at(std::get<2>(tup));
+
+
+	
+	return std::make_pair(std::cref(func), std::cref(dataStruct));
 }
+
 
 int EngineCore::getVectorIndexForPackageIndex(const int packageIndex)
 {
@@ -1315,31 +1293,8 @@ void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, st
 
 void EngineCore::saveToDisk()
 {
-	windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Saving to disk...");
+	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saving to disk...");
 	nlohmann::json UEDProject;
-	nlohmann::json UEDefinitions;
-	UEDefinitions["UE_VERSION"] = EngineSettings::_UE_VERSION;
-	UEDefinitions["USE_FNAME_ENCRYPTION"] = EngineSettings::_USE_FNAME_ENCRYPTION;
-	UEDefinitions["WITH_CASE_PRESERVING_NAME"] = EngineSettings::_WITH_CASE_PRESERVING_NAME;
-
-#if UE_VERSION < UE_4_25
-	UEDefinitions["GNAMES_POOL_OFFSET"] = EngineSettings::_GNAMES_POOL_OFFSET;
-#endif
-#if UE_VERSION > UE_5_00
-	UEDefinitions["UE_FNAME_OUTLINE_NUMBER"] = EngineSettings::_UE_FNAME_OUTLINE_NUMBER;
-#endif
-
-	UEDefinitions["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"] = EngineSettings::_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS;
-
-#if UE_VERSION >= UE_5_00
-	UEDefinitions["WITH_LIVE_CODING"] = EngineSettings::_WITH_LIVE_CODING;
-#endif
-
-#if UE_VERSION >= UE_4_25
-	UEDefinitions["USTRUCT_FAST_ISCHILDOF_IMPL"] = EngineSettings::_USTRUCT_FAST_ISCHILDOF_IMPL;
-#endif
-
-	UEDProject["UEDefinitions"] = UEDefinitions;
 	
 
 	UEDProject["EngineSettings"] = EngineSettings::toJson();
@@ -1417,14 +1372,14 @@ void EngineCore::saveToDisk()
 	free(strBytes);
 	delete[] c;
 
-	windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Saved!");
+	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saved!");
 }
 
 bool EngineCore::loadProject(const std::string& filepath)
 {
 	std::ifstream file(filepath, std::ios::binary | std::ios::ate);
 	if (!file) {
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Error opening file!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Error opening file!");
 		return false;
 	}
 
@@ -1433,14 +1388,14 @@ bool EngineCore::loadProject(const std::string& filepath)
 
 	if(fileSize < 100)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "File invalid!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "File invalid!");
 		return false;
 	}
 
 	unsigned char* buffer = static_cast<unsigned char*>(calloc(1, fileSize));
 	if (!file.read(reinterpret_cast<char*>(buffer), fileSize))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Failed to read file!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to read file!");
 		free(buffer);
 		return false;
 	}
@@ -1459,7 +1414,7 @@ bool EngineCore::loadProject(const std::string& filepath)
 
 	if(std::memcmp(c, cmp.c_str(), cmp.length()) != 0)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Wrong decryption key!");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Wrong decryption key!");
 		delete[] c;
 		return false;
 	}
@@ -1468,64 +1423,7 @@ bool EngineCore::loadProject(const std::string& filepath)
 
 	delete[] c;
 
-	if (!UEDProject.contains("UEDefinitions") ||
-		!UEDProject.contains("EngineSettings") || 
-		!UEDProject.contains("vectors") || 
-		!UEDProject.contains("unordered_maps"))
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-1)");
-		return false;
-	}
 
-	//check and set all uedefinitions
-
-	const nlohmann::json UEDefinitions = UEDProject["UEDefinitions"];
-
-	//all ue versions
-	if (!UEDefinitions.contains("UE_VERSION") || 
-		!UEDefinitions.contains("USE_FNAME_ENCRYPTION") ||
-		!UEDefinitions.contains("WITH_CASE_PRESERVING_NAME") ||
-		!UEDefinitions.contains("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"))
-		
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-2)");
-		return false;
-	}
-
-	EngineSettings::_UE_VERSION = UEDefinitions["UE_VERSION"];
-	
-	if(EngineSettings::_UE_VERSION < UE_4_25 && !UEDefinitions.contains("GNAMES_POOL_OFFSET"))
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-3)");
-	}
-	else if (EngineSettings::_UE_VERSION > UE_5_00 && !UEDefinitions.contains("UE_FNAME_OUTLINE_NUMBER"))
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-3)");
-	}
-	else if (EngineSettings::_UE_VERSION >= UE_5_00 && !UEDefinitions.contains("WITH_LIVE_CODING"))
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-3)");
-	}
-	else if (EngineSettings::_UE_VERSION >= UE_4_25 && !UEDefinitions.contains("USTRUCT_FAST_ISCHILDOF_IMPL"))
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-3)");
-	}
-
-	EngineSettings::_USE_FNAME_ENCRYPTION = UEDefinitions["USE_FNAME_ENCRYPTION"];
-	EngineSettings::_WITH_CASE_PRESERVING_NAME = UEDefinitions["WITH_CASE_PRESERVING_NAME"];
-
-	if(EngineSettings::_UE_VERSION < UE_4_25)
-		EngineSettings::_GNAMES_POOL_OFFSET = UEDefinitions["GNAMES_POOL_OFFSET"];
-	if (EngineSettings::_UE_VERSION > UE_5_00)
-		EngineSettings::_UE_FNAME_OUTLINE_NUMBER = UEDefinitions["UE_FNAME_OUTLINE_NUMBER"];
-
-	EngineSettings::_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS = UEDefinitions["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"];
-
-	if (EngineSettings::_UE_VERSION >= UE_5_00)
-		EngineSettings::_WITH_LIVE_CODING = UEDefinitions["WITH_LIVE_CODING"];
-
-	if (EngineSettings::_UE_VERSION >= UE_4_25)
-		EngineSettings::_USTRUCT_FAST_ISCHILDOF_IMPL = UEDefinitions["USTRUCT_FAST_ISCHILDOF_IMPL"];
 
 	//now set all enginesettings settings
 	const nlohmann::json engineSettings = UEDProject["EngineSettings"];
@@ -1540,7 +1438,7 @@ bool EngineCore::loadProject(const std::string& filepath)
 		!unordered_maps.contains("PackageIndexes") ||
 		!unordered_maps.contains("OverridingStructs"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-4)");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project corrupted! (-4)");
 		return false;
 	}
 
@@ -1570,7 +1468,7 @@ bool EngineCore::loadProject(const std::string& filepath)
 		!vectors.contains("CustomStructs") ||
 		!vectors.contains("Offsets"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_4, "ENGINECORE", "Project corrupted! (-5)");
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project corrupted! (-5)");
 		return false;
 	}
 
