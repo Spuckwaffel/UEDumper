@@ -8,24 +8,71 @@
 
 #include "enums.h"
 
+// FName changes like every engine version. See the comments below
+
+
+
+// UE defined the FName indexes as NAME_INDEX AKA int32_t in UE 4.19 - 4.22, see
+// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L36
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1096
+// https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L37
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1104
+// https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L37
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1116
+// https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L37
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1112
+#if UE_VERSION < UE_4_23
+typedef int32_t NAME_INDEX;
+
+//for better reading our FName has for every version FNameEntryIds so we just add this typedef
+typedef NAME_INDEX FNameEntryId;
+
+
+#else
+
+// UE defined FName indexes as FNameEntryId in UE 4.23 - 5.1, see
+// https://github.com/EpicGames/UnrealEngine/blob/4.23/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L37
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.23/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L817
+// https://github.com/EpicGames/UnrealEngine/blob/4.24/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L36
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.24/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L839
+// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L38
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L885
+// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L38
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L911
+// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L39
+// -> https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L909
+// https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L39
+// -> https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L922
+// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L50
+// -> https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1098
+// https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L50
+// -> https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1200
+struct FNameEntryId
+{
+    uint32_t Value;
+
+    FNameEntryId(uint32_t value) : Value(value) {}
+};
+#endif
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1096
 // https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1098
+// 
 struct FName
 {
     /** Index into the Names array (used to find String portion of the string/number pair used for comparison) */
-	int32_t ComparisonIndex = 0;
+    FNameEntryId ComparisonIndex = 0;
 
 	#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER
     /** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
-	int32_t Number = 0;
+    FNameEntryId Number = 0;
 	#endif
 	#endif
 
 	#if WITH_CASE_PRESERVING_NAME
     /** Index into the Names array (used to find String portion of the string/number pair used for display) */
-	int32_t DisplayIndex = 0;
+    FNameEntryId DisplayIndex = 0;
 	#endif
 
 

@@ -19,6 +19,9 @@
 // example:
 // static uint64_t dword_4B64088 = 0;
 
+static uint64_t dword_4CF88E4 = 0;
+static uint64_t dword_4BF84A4 = 0;
+
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)
 {
@@ -39,4 +42,36 @@ static void fname_decrypt(char* inputBuf, int namelength)
 	///			*(BYTE*)(v2 - 1) ^= v8;
 	///		} while (v5 < v4);
 	///	}
+	///
+	char decname[1024];
+	ZeroMemory(decname, sizeof(decname));
+
+	__int64 outputBuff = reinterpret_cast<__int64>(&decname);
+
+	if (dword_4CF88E4 == 0)
+		dword_4CF88E4 = Memory::read<uint64_t>(Memory::getBaseAddress() + 0x4CF88E4);
+
+	if (dword_4BF84A4 == 0)
+		dword_4BF84A4 = Memory::read<uint64_t>(Memory::getBaseAddress() + 0x4BF84A4);
+
+	const int v4 = dword_4BF84A4 ^ 0x9C677CC5;
+	unsigned int v5 = dword_4CF88E4 + v4;
+	char result = v5 ^ *inputBuf;
+	*(BYTE*)outputBuff = result;
+	const char* v7;
+	__int64 v8;
+	if (result)
+	{
+		v7 = &inputBuf[-outputBuff];
+		v8 = -outputBuff;
+		do
+		{
+			v5 += dword_4CF88E4 + v8 + ++outputBuff;
+			result = v5 ^ v7[outputBuff];
+			*(BYTE*)outputBuff = result;
+		} while (result);
+	}
+
+	//memcpy here, also inputBuf should have the same size as decname otherwise buffer overflow
+	memcpy(inputBuf, decname, sizeof(decname));
 }

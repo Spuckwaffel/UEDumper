@@ -14,36 +14,104 @@ EngineCore::TypeUObjectArray EngineCore::getTUObject()
 
 //https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp
 //https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h
+//FName::ToString
+//https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L3375
+//https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L251
+
+
+//we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
+	bool b;
 	if(FNameCache.contains(fname.ComparisonIndex))
 	{
 		return FNameCache[fname.ComparisonIndex];
 	}
-	char name[1024] = { 0 };
+	
 	
 
-	//unreal engine 4.19 fname read function
-#if UE_VERSION < UE_4_25
-	const auto FNameEntry = Memory::read<uint64_t>(Memory::read<uint64_t>(gNames + 8 * (fname.ComparisonIndex / 0x4000) + GNAMES_POOL_OFFSET) + 8 * (fname.ComparisonIndex % 0x4000));
+	//unreal engine 4.19 - 4.22 fname read function
+#if UE_VERSION < UE_4_23
 
-	//ffinding the real namelength in < 25 is a bit difficult
-	constexpr auto nameLength = sizeof(name) - 2;
+	// the game doesnt use chunks so its completely different
+	// lets take a look at the func at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L942
+	// we first get how the FNameEntry is determined and then how FNameEntry::AppendNameToString( FString& String ) works which
+	// returns the plain string.
+	// lets look at how the FNameEntry is determined. The ToString function calls FName::GetDisplayNameEntry() to return a FNameEntry*
+	// and the func is at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L919
+	// that gets the Names array and the index via GetDisplayIndex() which is at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L579
+	// which just calls GetDisplayIndexFast() and returns the DisplayIndex or ComparisonIndex depending on WITH_CASE_PRESERVING_NAME. See
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L1192
+	// now lets determine the Names array. The Names array is a TNameEntryArray. But what is TNameEntryArray? Its defined at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L489
+	// which is a TStaticIndirectArrayThreadSafeRead thats defined at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L342
+	// where we look at the function that returns the pointer at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L391
+	// we see it takes a Index as param like the one from GetDisplayIndex() and does following:
+	// int32 ChunkIndex = Index / ElementsPerChunk;
+	// int32 WithinChunkIndex = Index % ElementsPerChunk;
+	// where ElementsPerChunk is 16384 or 0x4000.
+	// and gets the ElementType** Chunk = Chunks[ChunkIndex]; (ElementType is FNameEntry)
+	// where the Chunks array is just the gnames array.
+	// the gnames array holds pointers to the FNameEntries
+	// the following gets returned: Chunk + WithinChunkIndex;
+	// this will be our FNameEntry**!
+	// now lets go to FNameEntry::AppendNameToString( FString& String ) which is at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L126
+	// which just returns the WideName or AnsiName
+	// which is at FNameEntry at offset 0x16 looking at
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h#L138
+	// thats it, we just need to get the bytes there!
+	// the representative code:
+	constexpr auto ElementsPerChunk = 0x4000;
 
-	Memory::read(reinterpret_cast<void*>(FNameEntry + 16), name, nameLength);
+	enum { NAME_SIZE = 1024 };
 
-	
+	char name[NAME_SIZE] = { 0 };
+
+#if WITH_CASE_PRESERVING_NAME
+	const int32_t Index = fname.DisplayIndex;
 #else
-	//>4.25 chunks exist
+	const int32_t Index = fname.ComparisonIndex;
+#endif
+
+	const int32_t ChunkIndex = Index / ElementsPerChunk;
+	const int32_t WithinChunkIndex = Index % ElementsPerChunk;
+
+	//GNAMES_POOL_OFFSET exists as theres always a offset for whatever reason. Check this in IDA!!!!!!!!!
+	const uint64_t ElementType = Memory::read<uint64_t>(gNames + 8 * ChunkIndex + GNAMES_POOL_OFFSET);
+
+	//WithinChunkIndex * 8 as its full of pointers
+	const auto FNameEntryPtrPtr = ElementType + (WithinChunkIndex * 8);
+
+	const auto FNameEntryPtr = Memory::read<uint64_t>(FNameEntryPtrPtr);
+	
+	//read the bytes
+#if UE_VERSION == UE_4_22
+	const uint64_t AnsiName = FNameEntryPtr + 0xC;
+#else
+	const uint64_t AnsiName = FNameEntryPtr + 0x10;
+#endif
+	int nameLength = NAME_SIZE - 1;
+	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
+	
+#else // >= 4_23
+
+	enum { NAME_SIZE = 1024 };
+
+	char name[NAME_SIZE] = { 0 };
+
+	//>4.23 name chunks exist
 	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
 	const unsigned short nameOffset = fname.ComparisonIndex;
-
-#endif
-	//calculation does not use the gnames pointer, rather the real offset
-	//calculation should be the same for every game
-#if UE_VERSION >= UE_4_25
+	
 	
 	//average function since 4.25
+	//https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L3375
 
 #if WITH_CASE_PRESERVING_NAME
 	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 4 * nameOffset;
@@ -637,8 +705,51 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 
 bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStructs::Function>& data)
 {
+#if UE_VERSION < UE_4_25
+	if (!object->Children)
+		return false;
+
+	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->GetNext())
+	{
+		if (!fieldChild->IsA<UFunction>())
+			continue;
+
+		const auto fn = fieldChild->castTo<UFunction>();
+
+		EngineStructs::Function eFunction;
+		eFunction.fullName = fn->getFullName();
+		eFunction.memoryAddress = fn->objectptr;
+		eFunction.functionFlags = fn->getFunctionFlagsString();
+		eFunction.func = fn->Func;
+
+		for (auto child = fn->getChildren(); child; child = child->GetNext())
+		{
+			child = child->castTo<UProperty>();
+			const auto propChild = child->castTo<UProperty>();
+			const auto propertyFlags = propChild->PropertyFlags;
+
+			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
+				eFunction.returnType = propChild->getType();
+			else if (propertyFlags & EPropertyFlags::CPF_Parm)
+			{
+				eFunction.params.push_back(std::tuple(propChild->getType(), propertyFlags, propChild->ArrayDim));
+			}
+		}
+
+		// no defined return type => void
+		if (!eFunction.returnType)
+			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+		eFunction.cppName = fn->getName();
+
+
+
+		data.push_back(eFunction);
+	}
+#else
 	if (!object->Children || !object->ChildProperties)
 		return false;
+
 
 	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->GetNext())
 	{
@@ -679,7 +790,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 		
 	}
 
-	
+#endif
 	return true;
 }
 
@@ -704,7 +815,7 @@ EngineCore::EngineCore()
 			return;
 		}
 
-#if UE_VERSION < UE_4_25
+#if UE_VERSION < UE_4_24
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
@@ -786,7 +897,7 @@ void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, Co
 	}
 	
 
-#if UE_VERSION < UE_4_25
+#if UE_VERSION < UE_4_20
 	//no chunks
 	const uint64_t objectArrayStart = reinterpret_cast<uint64_t>(UObjectArray.Objects);
 
@@ -801,7 +912,12 @@ void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, Co
 	
 #else
 	//chunks apperared
+#if UE_VERSION == UE_4_20
+	constexpr auto numElementsPerChunk = 65 * 1024;
+#else
 	constexpr auto numElementsPerChunk = 64 * 1024;
+#endif
+	
 	constexpr auto chunkBytesSize = numElementsPerChunk * 24;
 	for(int i = 0; i < UObjectArray.NumChunks; i++)
 	{
@@ -1008,9 +1124,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 					}
 				}
 				const auto sObject = object->castTo<UStruct>();
-
 				
-				int oldFuncSize = dataVector[dataVector.size() - 1].functions.size();
 
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
@@ -1047,15 +1161,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	{
 		packageIndexes.insert(std::pair(packages[i].index, i));
 	}
-
-	//free(reinterpret_cast<void*>(pGObjectPtrArray));
-	//free(reinterpret_cast<void*>(pUBigObjectArray));
-
-#if UE_VERSION >= UE_4_25
-	//free((void*)pFFieldArray);
-	//free((void*)pFFieldClassArray);
-#endif
-
+	
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Done generating packets!");
 }

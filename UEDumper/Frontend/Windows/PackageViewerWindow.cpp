@@ -424,11 +424,6 @@ void windows::PackageViewerWindow::updateNavBar(NavigationTab& navtab, int itemS
 }
 
 
-
-
-
-
-
 bool windows::PackageViewerWindow::openTabFromCName(const std::string& name)
 {
 	const auto info = EngineCore::getInfoOfObject(name);
@@ -628,16 +623,16 @@ void windows::PackageViewerWindow::renderTabs()
             }
             else
             {
-                if(tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+                if(tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class && package.classes.size() > tab.itemSelected)
                     renderClassOrStruct(tab.itemSelected, package.classes[tab.itemSelected]);
 
-                if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct)
+                if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct && package.structs.size() > tab.itemSelected)
                     renderClassOrStruct(tab.itemSelected, package.structs[tab.itemSelected]);
 
                 if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
                     renderFunction(tab.itemSelected, EngineCore::getFunctionFromVectorIndex(package, tab.itemSelected));
 
-                if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+                if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum && package.enums.size() > tab.itemSelected)
                     renderEnum(tab.itemSelected, package.enums[tab.itemSelected]);
                 
             }

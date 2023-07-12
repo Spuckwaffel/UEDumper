@@ -159,7 +159,7 @@ public:
 	static UClass* staticClass();
 };
 
-#if UE_VERSION >= UE_4_25
+#if UE_VERSION >= UE_4_22
 class FStructBaseChain
 {
 public:
@@ -171,6 +171,7 @@ public:
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L218
 // https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L283
+// https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L248
 /**
  * \brief Base class for all UObject types that contain fields.
  */
@@ -179,7 +180,7 @@ class UStruct : public UField
 public:
 	using UField::UField;
 
-#if UE_VERSION >= UE_4_25
+#if UE_VERSION >= UE_4_22
 #if USTRUCT_FAST_ISCHILDOF_IMPL
 	FStructBaseChain baseChainInheritance;
 #endif

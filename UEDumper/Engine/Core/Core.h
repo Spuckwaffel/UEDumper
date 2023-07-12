@@ -50,7 +50,8 @@ ENGINE_CORE EngineCore
 
 	//UObjectArray struct. This one changes between UE versions
 	//https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L198
-#if UE_VERSION < UE_4_25
+	//-> https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L760
+#if UE_VERSION < UE_4_20
 	struct FFixedUObjectArray
 	{
 		/** Static master table to chunks of pointers **/
@@ -63,8 +64,12 @@ ENGINE_CORE EngineCore
 
 	typedef FFixedUObjectArray TypeUObjectArray;
 #else
-	//UE decided to use chunks for >=4.25
-	//https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L355
+	//UE decided to use chunks for >=4.20
+	//https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L321
+	//-> https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L959
+	//however the NumElementsPerChunk changed from 65 * 1024 to 64 * 1024 for >= 4.21
+	//https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L321
+	//-> https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L960
 	struct FChunkedFixedUObjectArray
 	{
 		/** Master table to chunks of pointers **/

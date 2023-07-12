@@ -164,7 +164,21 @@ enum EFunctionFlags : uint32_t
 	FUNC_AllFlags				= 0xFFFFFFFF,
 };
 
-// https://github.com/EpicGames/UnrealEngine/blob/463443057fb97f1af0d2951705324ce8818d2a55/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L392
+// unchanged since 4.19
+// however 4.19 did not use any enums, it used definition macros
+// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L365
+// since 4.20 its like below.
+// https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L369
+// https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L370
+// https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L357
+// https://github.com/EpicGames/UnrealEngine/blob/4.23/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L360
+// https://github.com/EpicGames/UnrealEngine/blob/4.24/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L360
+// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L392
+// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L362
+// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L362
+// https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L374
+// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L393
+// https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L392
 enum EPropertyFlags : uint64_t
 {
 	CPF_None = 0,

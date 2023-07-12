@@ -48,7 +48,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_01
+#define UE_VERSION UE_4_22
 
 
 /* FName settings */
@@ -59,20 +59,20 @@
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
 //default FALSE
-#define WITH_CASE_PRESERVING_NAME FALSE
+#define WITH_CASE_PRESERVING_NAME TRUE
 
 
-#if UE_VERSION < UE_4_25
+#if UE_VERSION < UE_4_23
 //in EngineCore::FNameToString theres a premade FNameEntry calculation. Though games sometimes have a offset on that calculation
 //such as Fortnite (version 3.5). Make sure to find that offset and set it!
 //default 0
-#define GNAMES_POOL_OFFSET 232
+#define GNAMES_POOL_OFFSET 0
 #endif
 
 //only exists for UE version 5.1 and above
 #if UE_VERSION > UE_5_00
 //UECOMMENT: Storing it in the name table may save memory overall but new number suffixes will cause the name table to grow like unique strings do
-//default FALSE
+//default TRUE
 #define UE_FNAME_OUTLINE_NUMBER FALSE
 #endif
 
@@ -101,7 +101,7 @@
 
 /* UStruct settings */
 
-#if UE_VERSION >= UE_4_25
+#if UE_VERSION >= UE_4_22
 //stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
 //default TRUE
 #define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
