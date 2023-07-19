@@ -890,8 +890,8 @@ fieldType FProperty::getType()
         
     default:
 	    {
-        windows::LogWindow::Log(windows::LogWindow::log_2, "UCLASSES", "Class %s found but type 0x%llX not supported?", EngineCore::FNameToString(objectClass->Name).c_str(), objectClass->Id);
-        return { false, PropertyType::Unknown, getName() };
+            windows::LogWindow::Log(windows::LogWindow::log_2, "UCLASSES", "Missing support for type 0x%llX!", objectClass->Id);
+            return { false, PropertyType::Unknown, getName() };
 	    }
 
         

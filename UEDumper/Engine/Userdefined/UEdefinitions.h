@@ -72,7 +72,7 @@
 //only exists for UE version 5.1 and above
 #if UE_VERSION > UE_5_00
 //UECOMMENT: Storing it in the name table may save memory overall but new number suffixes will cause the name table to grow like unique strings do
-//default TRUE
+//default FALSE
 #define UE_FNAME_OUTLINE_NUMBER FALSE
 #endif
 

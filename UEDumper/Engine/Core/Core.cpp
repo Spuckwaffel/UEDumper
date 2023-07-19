@@ -138,7 +138,10 @@ std::string EngineCore::FNameToString(FName fname)
 
 	std::string finalName = std::string(name);
 
-	FNameCache.insert(std::pair(fname.ComparisonIndex, finalName));
+	if(finalName.empty())
+		throw std::runtime_error("empty name is trying to get cached");
+
+	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
 	return finalName;
 }
@@ -570,6 +573,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				//DebugBreak();
 				continue;
 			}
+
 			auto type = child->getType();
 			member.type = type;
 
@@ -1047,23 +1051,20 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	int packageIndex = 1;
 	for(auto& package: upackages)
 	{
-		EngineStructs::Package p;
-		p.packageName = package.first;
-		p.index = packageIndex;
-		
+		EngineStructs::Package ePackage;
+		ePackage.packageName = package.first;
+		ePackage.index = packageIndex;
+
+		int objectIndex = 0;
+
 		
 		for(const auto& object : package.second)
 		{
-
-			
-
+			objectIndex++;
 			const bool isClass = object->IsA<UClass>();
 			if (isClass || object->IsA<UScriptStruct>())
 			{
-
-
-
-				auto& dataVector = isClass ? p.classes : p.structs;
+				auto& dataVector = isClass ? ePackage.classes : ePackage.structs;
 				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
 				
 				//is the struct predefined?
@@ -1079,13 +1080,15 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						
 						packageObjectInfos.insert(std::pair(object->getCName(),
 						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
-						
-						generateFunctions(object->castTo<UStruct>(), dataVector.back().functions);
 
-						for (int i = 0; i < dataVector.back().functions.size(); i++)
+						auto& functionVec = dataVector[dataVector.size() - 1].functions;
+						
+						generateFunctions(object->castTo<UStruct>(), functionVec);
+
+						for (int i = 0; i < functionVec.size(); i++)
 						{
-							p.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
-							packageObjectInfos.insert(std::pair(dataVector.back().functions.at(i).cppName,
+							ePackage.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
+							packageObjectInfos.insert(std::pair(functionVec.at(i).cppName,
 								ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
 						}
 						
@@ -1099,28 +1102,30 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
 
-				dataVector.back().isClass = isClass;
+				dataVector[dataVector.size() - 1].isClass = isClass;
 				//printf("added %s to packageIndex %d (%s), at objectIndex %d!\n", sObject.getCName().c_str(), packageIndex, p.packageName.c_str(), objectIndex);
 				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
+				auto& functionVec = dataVector[dataVector.size() - 1].functions;
 
-				for(int i = 0; i < dataVector.back().functions.size(); i++)
+
+				for(int i = 0; i < functionVec.size(); i++)
 				{
-					p.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
-					packageObjectInfos.insert(std::pair(dataVector.back().functions.at(i).cppName,
+					ePackage.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
+					packageObjectInfos.insert(std::pair(functionVec.at(i).cppName,
 						ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
 				}
 			}
 			else if (object->IsA<UEnum>())
 			{
 				const auto eObject = object->castTo<UEnum>();
-				if (!generateEnum(eObject, p.enums))
+				if (!generateEnum(eObject, ePackage.enums))
 					continue;
 				//enums do not have CNames
-				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(ObjectInfo::OI_Enum, packageIndex, p.enums.size() - 1)));
+				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(ObjectInfo::OI_Enum, packageIndex, ePackage.enums.size() - 1)));
 			}
 		}
-		packages.push_back(p);
+		packages.push_back(ePackage);
 		finishedPackages++;
 		packageIndex++;
 	}
