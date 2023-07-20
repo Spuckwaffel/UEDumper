@@ -40,8 +40,8 @@ windows::TopRowButtons::TopRowButtons()
 
 void windows::TopRowButtons::renderTopRowButtons()
 {
-    //if were on the dump progress those buttons are disabled
-    ImGui::BeginDisabled(DumpProgress::isBusy());
+    //if were on the dump progress some stuff is disabled
+    const bool dumping = DumpProgress::isBusy();
 
     ImGui::SameLineEx(0, -5);
     if (ImGui::Button("Project"))
@@ -58,7 +58,7 @@ void windows::TopRowButtons::renderTopRowButtons()
     //even if its useless if live editor is disabled, give the user a visual appearance of a disabled button
     if ((!EngineSettings::liveEditorEnabled() && HelloWindow::isCompleted() ) || DumpProgress::isAlreadyCompleted())
     {
-        ImGui::BeginDisabled(!EngineSettings::liveEditorEnabled());
+        ImGui::BeginDisabled(!EngineSettings::liveEditorEnabled() || dumping);
         static bool bLiveTriggered = false;
         if (!LiveEditor::LiveEditorStarted())
         {
@@ -78,20 +78,23 @@ void windows::TopRowButtons::renderTopRowButtons()
         ImGui::EndDisabled();
     }
     ImGui::SameLineEx(5, -5);
-    if(ImGui::Button("Help"))
+    if(ImGui::Button("Help") && !dumping)
     {
         bRenderHelpWindow = true;
     }
-    ImGui::EndDisabled();
 
     if (ImGui::BeginPopup("EditPopup"))
     {
         LogWindow::renderEditPopup();
-        PackageWindow::renderEditPopup();
-        LiveEditor::renderEditPopUp();
+        if(!dumping)
+        {
+            PackageWindow::renderEditPopup();
+            LiveEditor::renderEditPopUp();
+        }
+        
         ImGui::EndPopup();
     }
-    if (ImGui::BeginPopup("ProjectPopup"))
+    if (ImGui::BeginPopup("ProjectPopup") && !dumping)
     {
         PackageWindow::renderProjectPopup();
         HelloWindow::renderProjectPopup();
