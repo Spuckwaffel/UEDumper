@@ -1243,3 +1243,7 @@ void windows::LiveEditor::renderEditPopUp()
 	}
 
 }
+
+void windows::LiveEditor::topmostCallback()
+{
+}

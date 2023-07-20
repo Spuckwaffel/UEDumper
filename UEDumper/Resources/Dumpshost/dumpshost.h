@@ -22,5 +22,5 @@ namespace DumpsHost
 	void Dump(std::filesystem::path directory);
 
 	//custom function
-	void Generate();
+	void Generate(int& progressDone, int& totalProgress);
 }

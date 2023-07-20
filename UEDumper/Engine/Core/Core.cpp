@@ -705,65 +705,78 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 	return true;
 }
 
+
 bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStructs::Function>& data)
 {
+
 #if UE_VERSION < UE_4_25
 	if (!object->Children)
 		return false;
 #else
 	if (!object->Children || !object->ChildProperties)
 		return false;
+
 #endif
 
-	//in every version we have to go through the children to 
-	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
-	{
-		if (!fieldChild->IsA<UFunction>())
-			continue;
+//i am so sorry for the indent here but fucking reSharper from intellij is so bad and fucks up the
+//indenting for the entire rest of the core.cpp file just because some #define shit
+//this made me so mad i couldnt care less the code misses now a indent
 
-		const auto fn = fieldChild->castTo<UFunction>();
+//in every version we have to go through the children to 
+for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
+{
+	if (!fieldChild->IsA<UFunction>())
+		continue;
 
-		EngineStructs::Function eFunction;
-		eFunction.fullName = fn->getFullName();
-		eFunction.memoryAddress = fn->objectptr;
-		eFunction.functionFlags = fn->getFunctionFlagsString();
-		eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
+
+	const auto fn = fieldChild->castTo<UFunction>();
+
+	EngineStructs::Function eFunction;
+	eFunction.fullName = fn->getFullName();
+	eFunction.memoryAddress = fn->objectptr;
+	eFunction.functionFlags = fn->getFunctionFlagsString();
+	eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
 
 #if UE_VERSION < UE_4_25
-		//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
-		for (auto child = fn->getChildren(); child; child = child->getNext())
-		{
-			const auto propChild = child->castTo<UProperty>();
+
+	//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
+	for (auto child = fn->getChildren(); child; child = child->getNext())
+	{
+		const auto propChild = child->castTo<UProperty>();
 #else
-		//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
-		for (auto child = fn->getChildProperties(); child; child = child->getNext())
-		{
-			const auto propChild = child;
+
+	//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
+	for (auto child = fn->getChildProperties(); child; child = child->getNext())
+	{
+		const auto propChild = child;
+
 #endif
-			//rest of the code is identical, nothing changed here
-			const auto propertyFlags = propChild->PropertyFlags;
 
-			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
-				eFunction.returnType = propChild->getType();
-			else if (propertyFlags & EPropertyFlags::CPF_Parm)
-			{
-				eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
-			}
+		//rest of the code is identical, nothing changed here
+		const auto propertyFlags = propChild->PropertyFlags;
+
+		if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
+			eFunction.returnType = propChild->getType();
+		else if (propertyFlags & EPropertyFlags::CPF_Parm)
+		{
+			eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
 		}
-
-		// no defined return type => void
-		if (!eFunction.returnType)
-			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-		eFunction.cppName = fn->getName();
-
-
-
-		data.push_back(eFunction);
 	}
 
-	return true;
+	// no defined return type => void
+	if (!eFunction.returnType)
+		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+	eFunction.cppName = fn->getName();
+
+
+
+	data.push_back(eFunction);
 }
+return true;
+
+}
+
 
 EngineCore::EngineCore()
 {
@@ -973,6 +986,7 @@ void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, Co
 	bSuccess = true;
 }
 
+
 void EngineCore::cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopyStatus& status)
 {
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Caching FNames...");
@@ -1019,6 +1033,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	{
 		auto object = getUObjectIndex<UObject>(finishedPackages);
 		
+		
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
 			continue;
 
@@ -1062,13 +1077,12 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
 				const auto naming = isClass ? "Class" : "Struct";
 
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", 
-					"Generating %s %s:%s...", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				
 				
 				//is the struct predefined?
 				if(overridingStructs.contains(object->getFullName()))
 				{
-					windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "%s is predefined!", naming);
+					windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "%s %s is predefined!", naming, object->getCName().c_str());
 					auto& struc = overridingStructs[object->getFullName()];
 					//last check, does the cpp name match?
 					if(struc.cppName == object->getCName())
@@ -1084,7 +1098,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						
 						generateFunctions(object->castTo<UStruct>(), functionVec);
 
-						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Function count: %d", functionVec.size());
+						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Member count: %d | Function count: %d", struc.members.size(), functionVec.size());
 
 						for (int i = 0; i < functionVec.size(); i++)
 						{
@@ -1095,10 +1109,11 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						continue;
 					}
 				}
-				const auto sObject = object->castTo<UStruct>();
-				
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Generating %s...", naming);
 
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE",
+					"Generating %s %s:%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+
+				const auto sObject = object->castTo<UStruct>();
 
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
@@ -1108,7 +1123,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
 				auto& functionVec = dataVector.back().functions;
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Function count: %d", functionVec.size());
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Member count: %d | Function count: %d", dataVector.back().members.size(), functionVec.size());
 
 				for(int i = 0; i < functionVec.size(); i++)
 				{
@@ -1119,6 +1134,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 			}
 			else if (object->IsA<UEnum>())
 			{
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Generating Enum %s", object->getCName().c_str());
 				const auto eObject = object->castTo<UEnum>();
 				if (!generateEnum(eObject, ePackage.enums))
 					continue;
@@ -1146,6 +1162,7 @@ std::vector<EngineStructs::Package>& EngineCore::getPackages()
 {
 	return packages;
 }
+
 
 EngineCore::ObjectInfo EngineCore::getInfoOfObject(const std::string& CName)
 {
@@ -1297,13 +1314,17 @@ void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, st
 
 }
 
-void EngineCore::saveToDisk()
+void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 {
+	totalProgress = 1 + FNameCache.size() + packageObjectInfos.size() + packageIndexes.size() + 
+		overridingStructs.size() + packages.size() + unknownProperties.size() + customStructs.size() + offsets.size() + 5000;
+	progressDone = 0;
 	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saving to disk...");
 	nlohmann::json UEDProject;
 	
 
 	UEDProject["EngineSettings"] = EngineSettings::toJson();
+	progressDone++;
 
 	nlohmann::json unordered_maps;
 
@@ -1311,21 +1332,25 @@ void EngineCore::saveToDisk()
 	for (const auto& entry : FNameCache)
 		jFNameCache[std::to_string(entry.first)] = entry.second;
 	unordered_maps["FNameCache"] = jFNameCache;
+	progressDone += FNameCache.size();
 
 	nlohmann::json jPackageObjectInfos;
 	for (const auto& entry : packageObjectInfos)
 		jPackageObjectInfos[entry.first] = entry.second.toJson();
 	unordered_maps["PackageObjectInfos"] = jPackageObjectInfos;
+	progressDone += packageObjectInfos.size();
 
 	nlohmann::json jPackageIndexes;
 	for (const auto& entry : packageIndexes)
 		jPackageIndexes[std::to_string(entry.first)] = entry.second;
 	unordered_maps["PackageIndexes"] = jPackageIndexes;
+	progressDone += packageIndexes.size();
 
 	nlohmann::json jOverridingStructs;
 	for (const auto& entry : overridingStructs)
 		jOverridingStructs[entry.first] = entry.second.toJson();
 	unordered_maps["OverridingStructs"] = jOverridingStructs;
+	progressDone += overridingStructs.size();
 
 	UEDProject["unordered_maps"] = unordered_maps;
 
@@ -1335,21 +1360,25 @@ void EngineCore::saveToDisk()
 	for (const auto& package : packages)
 		jPackages.push_back(package.toJson());
 	vectors["Packages"] = jPackages;
+	progressDone += packages.size();
 
 	nlohmann::json jUnknownProperties = unknownProperties;
 	vectors["UnknownProperties"] = jUnknownProperties;
+	progressDone += unknownProperties.size();
 
 	// Create JSON for customStructs vector
 	nlohmann::json jCustomStructs;
 	for (const auto& structObj : customStructs)
 		jCustomStructs.push_back(structObj.toJson());
 	vectors["CustomStructs"] = jCustomStructs;
+	progressDone += customStructs.size();
 
 	// Create JSON for offsets vector
 	nlohmann::json jOffsets;
 	for (const auto& offset : offsets)
 		jOffsets.push_back(offset.toJson());
 	vectors["Offsets"] = jOffsets;
+	progressDone += offsets.size();
 
 	UEDProject["vectors"] = vectors;
 
@@ -1377,12 +1406,15 @@ void EngineCore::saveToDisk()
 
 	free(strBytes);
 	delete[] c;
-
+	
 	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saved!");
+	progressDone = totalProgress;
 }
 
-bool EngineCore::loadProject(const std::string& filepath)
+bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int& totalProgress)
 {
+	progressDone = 0;
+	totalProgress = 1;
 	std::ifstream file(filepath, std::ios::binary | std::ios::ate);
 	if (!file) {
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Error opening file!");
@@ -1427,6 +1459,8 @@ bool EngineCore::loadProject(const std::string& filepath)
 
 	const nlohmann::json UEDProject = nlohmann::json::parse(c);
 
+	totalProgress = 9;
+	
 	delete[] c;
 
 
@@ -1436,6 +1470,8 @@ bool EngineCore::loadProject(const std::string& filepath)
 	
 	if (!EngineSettings::loadJson(engineSettings))
 		return false;
+
+	progressDone++;
 
 	const nlohmann::json unordered_maps = UEDProject["unordered_maps"];
 
@@ -1453,20 +1489,28 @@ bool EngineCore::loadProject(const std::string& filepath)
 		FNameCache.insert(std::pair(std::stoi(it.key()), it.value()));
 	}
 
+	progressDone++;
+
 	nlohmann::json jPackageObjectInfos = unordered_maps["PackageObjectInfos"];
 	for (auto it = jPackageObjectInfos.begin(); it != jPackageObjectInfos.end(); ++it) {
 		packageObjectInfos.insert(std::pair(it.key(), ObjectInfo::fromJson(it.value())));
 	}
+
+	progressDone++;
 
 	nlohmann::json jPackageIndexes = unordered_maps["PackageIndexes"];
 	for (auto it = jPackageIndexes.begin(); it != jPackageIndexes.end(); ++it) {
 		packageIndexes.insert(std::pair(std::stoi(it.key()), it.value()));
 	}
 
+	progressDone++;
+
 	nlohmann::json jOverridingStructs = unordered_maps["OverridingStructs"];
 	for (auto it = jOverridingStructs.begin(); it != jOverridingStructs.end(); ++it) {
 		overridingStructs.insert(std::pair(it.key(), EngineStructs::Struct::fromJson(it.value())));
 	}
+
+	progressDone++;
 
 	const nlohmann::json vectors = UEDProject["vectors"];
 
@@ -1482,22 +1526,34 @@ bool EngineCore::loadProject(const std::string& filepath)
 	for (const nlohmann::json& package : jPackages)
 		packages.push_back(EngineStructs::Package::fromJson(package));
 
+	progressDone++;
+
 	unknownProperties = vectors["UnknownProperties"];
+
+	progressDone++;
 
 	nlohmann::json jCustomStructs = vectors["CustomStructs"];
 
 	for (const nlohmann::json& customStruct : jCustomStructs)
 		customStructs.push_back(EngineStructs::Struct::fromJson(customStruct));
 
+	progressDone++;
+
 	nlohmann::json jOffsets = vectors["Offsets"];
 	for (const nlohmann::json& offset : jOffsets)
 		offsets.push_back(Offset::fromJson(offset));
+
+	progressDone++;
 	
 
 	EngineSettings::setLiveEditor(false);
 
+	progressDone = totalProgress;
+
+
 	return true;
 }
+
 
 void EngineCore::generateStructDefinitionsFile()
 {

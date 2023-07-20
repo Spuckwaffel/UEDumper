@@ -83,7 +83,7 @@ bool windows::DumpProgress::render()
 
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
-	constexpr auto childSize = ImVec2(500, 150);
+	constexpr auto childSize = ImVec2(500, 160);
 	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2));
 
 	ImGui::BeginChild("DumpingChild", childSize, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollWithMouse);
@@ -140,6 +140,7 @@ bool windows::DumpProgress::render()
 		skip: {
 			//-
 		}
+		ImGui::Text(LogWindow::getLastLogMessage().c_str());
 	}
 	ImGui::EndChild();
 	return false;

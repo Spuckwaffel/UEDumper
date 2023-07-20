@@ -101,6 +101,14 @@ int main()
         //always display logs
         windows::LogWindow::render();
 
+        //topmost callbacks get called here
+        //please handle code within the callbacks carefully as all windows presented that most likely call setWindpwFocus will disable all interactions
+        //with other buttons (such as the top row buttons)
+        windows::LogWindow::topmostCallback();
+        windows::LiveEditor::topmostCallback();
+        windows::PackageViewerWindow::topmostCallback();
+        windows::PackageWindow::topmostCallback();
+
         ImGui::End();
 
         IGHelper::render();

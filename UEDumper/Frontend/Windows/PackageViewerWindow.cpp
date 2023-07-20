@@ -560,6 +560,12 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
     }
 }
 
+void windows::PackageViewerWindow::topmostCallback()
+{
+
+}
+
+
 windows::PackageViewerWindow::PackageViewerWindow()
 {
 
