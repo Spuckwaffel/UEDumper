@@ -786,7 +786,7 @@ fieldType FProperty::getType()
         return { false, PropertyType::Unknown, getName() };
         
     }
-        //DebugBreak();
+
     const auto objectClass = EngineCore::getFFieldClass(ClassPrivate);
     switch (objectClass->Id)
     {
@@ -893,8 +893,6 @@ fieldType FProperty::getType()
             windows::LogWindow::Log(windows::LogWindow::log_2, "UCLASSES", "Missing support for type 0x%llX!", objectClass->Id);
             return { false, PropertyType::Unknown, getName() };
 	    }
-
-        
     }
 }
 

@@ -7,7 +7,7 @@ windows::DumpProgress::DumpProgress()
 
 bool windows::DumpProgress::render()
 {
-	if (alreadyCompleted) return true;
+	if (bAlreadyCompleted) return true;
 
 	//statics
 	static dumpProgress GObjectPtrs{};
@@ -26,6 +26,7 @@ bool windows::DumpProgress::render()
 		callOnce = true;
 		//unique pointer using future so the render function can return without waiting for the async thread to complete
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			bIsBusy = true;
 			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Starting dump...");
 			startDumpTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
@@ -71,7 +72,8 @@ bool windows::DumpProgress::render()
 			}
 			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Finished dumping!");
 			//we're done
-			alreadyCompleted = true;
+			bAlreadyCompleted = true;
+			bIsBusy = false;
 			LogWindow::Log(LogWindow::log_0, "DUMPPROGRESS", "Finished everything with %d memory operations!", Memory::getTotalReads());
 
 			EngineSettings::setLiveEditor(true);
@@ -80,30 +82,20 @@ bool windows::DumpProgress::render()
 	}
 
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
-	
 
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
+	constexpr auto childSize = ImVec2(500, 150);
+	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2));
 
-	ImGui::SetNextWindowFocus();
-	ImGui::Begin("Dumping...", nullptr,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-	ImGui::SetWindowSize(ImVec2(500, 140), ImGuiCond_Once);
-	const ImVec2 smallWindow = ImGui::GetWindowSize();
-	ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
-	ImGui::PopStyleVar();
+	ImGui::BeginChild("DumpingChild", childSize, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollWithMouse);
+	IGHelper::placeInCenter("Dumping...");
 	
 	//check if no success and a status got a error
 	if(!EngineCore::lastOperationSuccess() && errorOccurred)
 	{
 		ImGui::PushFont(IGHelper::getTitleFont());
-		ImGui::TextColored(IGHelper::colToVec(255,255,255,255), "EngineCore scan failed!\nCheck the log");
-
-		ImGui::Dummy(ImVec2(smallWindow.x / 2 - 105, 0));
-		ImGui::SameLine();
-		if(ImGui::Button("Close", ImVec2(180, 35)))
-		{
-			exit(0);
-		}
+		ImGui::TextColored(IGHelper::colToVec(255,255,255,255), "EngineCore scan failed!");
 		ImGui::PopFont();
+		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 255), "Check the log and export it for help");
 	}
 	else
 	{
@@ -137,10 +129,7 @@ bool windows::DumpProgress::render()
 		else if (packages.status != EngineCore::CopyStatus::CS_success && packages.status == EngineCore::CopyStatus::CS_busy)
 		{
 			progress = static_cast<float>(packages.finishedBytes) / packages.totalBytes;
-			if(packages.totalBytes == 1)
-				ImGui::Text("Caching Packages (?/?)", packages.finishedBytes, packages.totalBytes);
-			else
-				ImGui::Text("Caching Packages (%03lld/%03lld)", packages.finishedBytes, packages.totalBytes);
+			ImGui::Text("Caching Packages (%03lld/%03lld)", packages.finishedBytes, packages.totalBytes);
 		}
 		else
 		{
@@ -152,11 +141,16 @@ bool windows::DumpProgress::render()
 			//-
 		}
 	}
-	ImGui::End();
+	ImGui::EndChild();
 	return false;
+}
+
+bool windows::DumpProgress::isBusy()
+{
+	return bIsBusy;
 }
 
 bool windows::DumpProgress::isAlreadyCompleted()
 {
-	return alreadyCompleted;
+	return bAlreadyCompleted;
 }

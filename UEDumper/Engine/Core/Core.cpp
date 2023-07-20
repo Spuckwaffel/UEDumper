@@ -22,13 +22,10 @@ EngineCore::TypeUObjectArray EngineCore::getTUObject()
 //we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
-	bool b;
 	if(FNameCache.contains(fname.ComparisonIndex))
 	{
 		return FNameCache[fname.ComparisonIndex];
 	}
-	
-	
 
 	//unreal engine 4.19 - 4.22 fname read function
 #if UE_VERSION < UE_4_23
@@ -1054,22 +1051,24 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		EngineStructs::Package ePackage;
 		ePackage.packageName = package.first;
 		ePackage.index = packageIndex;
-
-		int objectIndex = 0;
-
+		
 		
 		for(const auto& object : package.second)
 		{
-			objectIndex++;
 			const bool isClass = object->IsA<UClass>();
 			if (isClass || object->IsA<UScriptStruct>())
 			{
 				auto& dataVector = isClass ? ePackage.classes : ePackage.structs;
 				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
+				const auto naming = isClass ? "Class" : "Struct";
+
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", 
+					"Generating %s %s:%s...", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 				
 				//is the struct predefined?
 				if(overridingStructs.contains(object->getFullName()))
 				{
+					windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "%s is predefined!", naming);
 					auto& struc = overridingStructs[object->getFullName()];
 					//last check, does the cpp name match?
 					if(struc.cppName == object->getCName())
@@ -1081,9 +1080,11 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						packageObjectInfos.insert(std::pair(object->getCName(),
 						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
-						auto& functionVec = dataVector[dataVector.size() - 1].functions;
+						auto& functionVec = dataVector.back().functions;
 						
 						generateFunctions(object->castTo<UStruct>(), functionVec);
+
+						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Function count: %d", functionVec.size());
 
 						for (int i = 0; i < functionVec.size(); i++)
 						{
@@ -1091,23 +1092,23 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 							packageObjectInfos.insert(std::pair(functionVec.at(i).cppName,
 								ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
 						}
-						
-						
 						continue;
 					}
 				}
 				const auto sObject = object->castTo<UStruct>();
 				
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Generating %s...", naming);
+
 
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
 
-				dataVector[dataVector.size() - 1].isClass = isClass;
+				dataVector.back().isClass = isClass;
 				//printf("added %s to packageIndex %d (%s), at objectIndex %d!\n", sObject.getCName().c_str(), packageIndex, p.packageName.c_str(), objectIndex);
 				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
-				auto& functionVec = dataVector[dataVector.size() - 1].functions;
-
+				auto& functionVec = dataVector.back().functions;
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Function count: %d", functionVec.size());
 
 				for(int i = 0; i < functionVec.size(); i++)
 				{

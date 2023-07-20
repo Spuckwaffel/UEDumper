@@ -40,7 +40,9 @@ windows::TopRowButtons::TopRowButtons()
 
 void windows::TopRowButtons::renderTopRowButtons()
 {
-    
+    //if were on the dump progress those buttons are disabled
+    ImGui::BeginDisabled(DumpProgress::isBusy());
+
     ImGui::SameLineEx(0, -5);
     if (ImGui::Button("Project"))
     {
@@ -80,7 +82,7 @@ void windows::TopRowButtons::renderTopRowButtons()
     {
         bRenderHelpWindow = true;
     }
-
+    ImGui::EndDisabled();
 
     if (ImGui::BeginPopup("EditPopup"))
     {
