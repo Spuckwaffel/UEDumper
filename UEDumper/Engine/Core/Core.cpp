@@ -135,8 +135,10 @@ std::string EngineCore::FNameToString(FName fname)
 
 	std::string finalName = std::string(name);
 
-	if(finalName.empty())
-		throw std::runtime_error("empty name is trying to get cached");
+	if (finalName.empty())
+		finalName = "null";
+		//throw std::runtime_error("empty name is trying to get cached");
+	
 
 	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
@@ -431,11 +433,8 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		std::string result = "";
 		for (const char c : str)
 		{
-			if (c == ' ' || c == '"' || c == ';' ||
-				c == '$' || c == '€' || c == '%' ||
-				c == '+' || c == '-' || c == '?' || c == '!'
-				)
-				result += "_";
+			if (static_cast<int>(c) < 0 || !std::isalnum(c))
+				result += '_';
 			else
 				result += c;
 
@@ -555,8 +554,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 #else
 
-	
-	
 	if(object->ChildProperties)
 	{
 		for (auto child = object->getChildProperties(); child; child = child->getNext())
@@ -577,7 +574,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.offset = child->getOffset();
 			if(type.propertyType == PropertyType::Unknown)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
+				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
 				continue;
 			}
 			if (currentOffset < member.offset)
@@ -1111,7 +1108,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				}
 
 				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE",
-					"Generating %s %s:%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				
 
 				const auto sObject = object->castTo<UStruct>();
 
@@ -1382,9 +1380,7 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 
 	UEDProject["vectors"] = vectors;
 
-	
-
-	auto dump = UEDProject.dump();
+	auto dump = UEDProject.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
 
 	size_t paddingBytes = 16 - (dump.length() % 16);
 	auto totalBytes = dump.length() + paddingBytes;

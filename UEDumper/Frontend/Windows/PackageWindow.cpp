@@ -140,16 +140,15 @@ R"(/********************************************************
 	}
 	ImGui::PushItemWidth(278);
 	
-	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1,
-	                             ImGuiInputTextFlags_EnterReturnsTrue) && !PackageViewerWindow::openTabFromCName(
-		std::string(CNameSearch)))
+	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) && 
+		!PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
-		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found!", CNameSearch);
+		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}
 	ImGui::SameLine();
 	if (ImGui::Button(ICON_FA_SEARCH) && !PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
-		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found!", CNameSearch);
+		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}
 	ImGui::PopItemWidth();
 	ImGui::EndChild();
@@ -171,7 +170,7 @@ void windows::PackageWindow::renderEditPopup()
 			EngineCore::getAllUnknownTypes();
 			LogWindow::Log(windows::LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			showUndefinedStructs = true;
-		})));
+			}))).reset();
 	}
 	if (ImGui::Button(merge(ICON_FA_CLIPBOARD, " Copy Package Names")))
 	{
@@ -227,7 +226,7 @@ void windows::PackageWindow::renderProjectPopup()
 						HelloWindow::setCompleted();
 					}
 					presentTopMostCallback = false;
-					})));
+					}))).reset();
 
 			}
 		}
@@ -246,11 +245,11 @@ void windows::PackageWindow::renderProjectPopup()
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
-
+		
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			EngineCore::saveToDisk(anyProgressDone, anyProgressTotal);
 			presentTopMostCallback = false;
-		})));
+			}))).reset();
 		
 	}
 
@@ -277,7 +276,7 @@ void windows::PackageWindow::renderProjectPopup()
 			generateSDK(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
-			})));
+			}))).reset();
 	}
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
 	{
@@ -289,7 +288,7 @@ void windows::PackageWindow::renderProjectPopup()
 			DumpsHost::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
-			})));
+			}))).reset();
 	}
 	
 }
