@@ -484,8 +484,8 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
 
             for (const auto& member : struc.members)
             {
-                char finalBuf[300];
-                char nameBuf[200];
+                char finalBuf[600];
+                char nameBuf[500];
                 std::string name = member.name;
                 if (member.isBit)
                     name += " : 1";
