@@ -48,14 +48,14 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_4_25
+#define UE_VERSION UE_5_02
 
 
 /* FName settings */
 
 
  //in case the FNames are encrypted, it will use your decryption function in FName_decryption.h
-#define USE_FNAME_ENCRYPTION FALSE
+#define USE_FNAME_ENCRYPTION TRUE
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
 //default FALSE

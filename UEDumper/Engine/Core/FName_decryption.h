@@ -23,22 +23,28 @@
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)
 {
-	/// Example:
-	///	char* v2 = inputBuf; // rdi
-	///	int v4 = namelength; // ebx
-	///	int v5 = 0;
-	///	uint64_t result = 38i64;
-	///	if (v4)
-	///	{
-	///		do
-	///		{
-	///			uint64_t v7 = v5 | result;
-	///			++v2;
-	///			++v5;
-	///			BYTE v8 = ~(BYTE)v7;
-	///			result = (unsigned int)(2 * v7);
-	///			*(BYTE*)(v2 - 1) ^= v8;
-	///		} while (v5 < v4);
-	///	}
-	///
+    //reversed either by me or credits to the people who post it on uc
+
+    char* v2 = inputBuf; // rdi
+    int v4 = namelength; // ebx
+    __int64 result; // rax
+    unsigned int v5; // ecx
+    __int64 v6; // r8
+    char v7; // cl
+    unsigned int v8; // eax
+
+    result = 26i64;
+    v5 = v4;
+    if (v5)
+    {
+        v6 = v5;
+        do
+        {
+            v7 = *v2++;
+            v8 = result + 45297;
+            *(v2 - 1) = v8 + ~v7;
+            result = (v8 << 8) | (v8 >> 8);
+            --v6;
+        } while (v6);
+    }
 }

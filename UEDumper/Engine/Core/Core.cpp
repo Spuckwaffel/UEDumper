@@ -118,9 +118,20 @@ std::string EngineCore::FNameToString(FName fname)
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
 #else
-	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
+	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * chunkOffset + 16) + 2 * nameOffset;
 
-	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
+	uint16_t pool = Memory::read<uint16_t>(namePoolChunk);
+
+	if (pool < 64)
+	{
+		const int compIndex = Memory::read<DWORD>(namePoolChunk + 2);
+		unsigned int _chunkOffset = compIndex >> 16;
+		unsigned short _nameOffset = compIndex;
+		namePoolChunk = Memory::read<uint64_t>(gNames + 8 * _chunkOffset + 16) + 2 * _nameOffset;
+		pool = Memory::read<uint16_t>(namePoolChunk);
+	}
+
+	const auto nameLength = pool >> 6;
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
 #endif
@@ -1023,9 +1034,10 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	overrideStructs();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding custom structs....");
 	addStructs();
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
+	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overriding unknown members....");
 	overrideUnknownMembers();
-	
+
+	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "caching elements....");
 	for (; finishedPackages < UObjectArray.NumElements; finishedPackages++)
 	{
 		auto object = getUObjectIndex<UObject>(finishedPackages);
