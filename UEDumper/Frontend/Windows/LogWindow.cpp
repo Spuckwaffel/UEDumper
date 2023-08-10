@@ -7,13 +7,15 @@ windows::LogWindow::LogWindow()
 
 }
 
-void windows::LogWindow::Log(logLevels level, std::string origin, const char* fmt, ...)
+void windows::LogWindow::Log(logLevels level, const std::string& origin, const char* fmt, ...)
 {
 	if (level < logLevel)
 		return;
-	char buffer[200];
-	auto now = std::chrono::system_clock::now();
-	auto now_time_t = std::chrono::system_clock::to_time_t(now);
+
+	log l;
+
+	char logBuffer[2001] = {0};
+	const auto now_time_t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 	std::tm time_info;
 	localtime_s(&time_info, &now_time_t);
 	// Format time as a string
@@ -21,9 +23,11 @@ void windows::LogWindow::Log(logLevels level, std::string origin, const char* fm
 	oss << std::put_time(&time_info, "%H:%M:%S");
 	va_list args;
 	va_start(args, fmt);
-	vsprintf_s(buffer, fmt, args);
-	sprintf_s(buffer, "[%s - %s]: %s", oss.str().c_str(), origin.c_str(), std::string(buffer).c_str());
-	logs.push_back(std::string(buffer));
+	vsprintf_s(logBuffer, 2000, fmt, args);
+	l.message = std::string(logBuffer);
+	l.originandTime = "[" + oss.str() + " - " + origin + "]:";
+	
+	logs.push_back(l);
 }
 
 int windows::LogWindow::getLogLevel()
@@ -48,6 +52,11 @@ void windows::LogWindow::render()
 	ImGui::SetCursorPosY(ImGui::GetWindowSize().y - 310);
 	ImGui::BeginChild("Log", ImVec2(ImGui::GetWindowSize().x - 15, 300), true);
 	//ImGui::SetWindowSize(ImVec2(1000, 300), ImGuiCond_Once);
+
+	if(autoScroll)
+	{
+		selectedLogRange = logSize - logSize % logRange;
+	}
 	
 	if (ImGui::ArrowButton("logselect_btn_fastleft", ImGuiDir_LLeft))
 		selectedLogRange = 0;
@@ -68,6 +77,8 @@ void windows::LogWindow::render()
 	ImGui::SameLine();
 	ImGui::Text("Showing Log %d-%d of %d", selectedLogRange, selectedLogRange + logRange - 1 > logSize ? logSize : selectedLogRange + logRange - 1, logSize);
 	ImGui::SameLine();
+	ImGui::Checkbox("Auto scroll", &autoScroll);
+	ImGui::SameLine();
 	ImGui::SetCursorPosX(ImGui::GetWindowSize().x - ImGui::CalcTextSize("Showing 999 logs").x - 80);
 
 	if (ImGui::ArrowButton("logrange_btn_left", ImGuiDir_Left) && logRange >= 40)
@@ -78,19 +89,19 @@ void windows::LogWindow::render()
 	ImGui::SameLine();
 	ImGui::Text("Showing %d logs", logRange);
 	
-	
+	char buf[2501] = { 0 };
 	if(ImGui::BeginListBox("##loglistbox", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 		for (int i = selectedLogRange; i < logSize && i < selectedLogRange + logRange; i++) {
 			const bool is_selected = (selectedLog == i);
-			char buf[300] = {0};
-			sprintf_s(buf, "%d %s", i, logs[i].c_str());
+			memset(buf, 0, 2500);
+			sprintf_s(buf, 2500, "%d %s %s", i, logs[i].originandTime.c_str(), logs[i].message.c_str());
 			if (ImGui::Selectable(buf, is_selected)) {
 				selectedLog = i;
 			}
 			if (is_selected && ImGui::IsItemHovered()) {
 				ImGui::BeginTooltip();
-				ImGui::Text("%s", logs[i].c_str());
+				ImGui::Text("%s", logs[i].message.c_str());
 				ImGui::EndTooltip();
 			}
 		}
@@ -114,9 +125,20 @@ void windows::LogWindow::renderEditPopup()
 		std::ofstream file(EngineSettings::getWorkingDirectory() / "log.txt");
 		for(size_t i = 0; i < logs.size(); i++)
 		{
-			file << i << " " << logs[i] << std::endl;
+			file << i << " " << logs[i].originandTime << " " << logs[i].message << std::endl;
 		}
 		file.close();
 		Log(log_2, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
 	}
+}
+
+std::string windows::LogWindow::getLastLogMessage()
+{
+	//returning a copy and not a reference
+	//also returning a index rather than calling back because i dont trust back
+	return logs[logs.size() - 1].message;
+}
+
+void windows::LogWindow::topmostCallback()
+{
 }

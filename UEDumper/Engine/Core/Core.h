@@ -406,14 +406,14 @@ public:
 	 * \brief ONLY AFTER FULL PACKAGE GENERATION!
 	 * Saves all the states and data to disk into a .uedproj file that can get loaded 
 	 */
-	static void saveToDisk();
+	static void saveToDisk(int& progressDone, int& totalProgress);
 
 	/**
 	 * \brief USE ONLY BEFORE ANY GENERATION! Loads a valid project into the core that can be used in offline mode
 	 * \param filepath path to the file
 	 * \return true upon success
 	 */
-	static bool loadProject(const std::string& filepath);
+	static bool loadProject(const std::string& filepath, int& progressDone, int& totalProgress);
 
 	/**
 	 * \brief generates a file with all the struct definitions for StructDefinitions.h that were previously defined and via runtime defined

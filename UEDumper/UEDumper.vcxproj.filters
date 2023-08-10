@@ -58,6 +58,15 @@
     <Filter Include="Frontend\Fonts">
       <UniqueIdentifier>{87c009aa-0d71-417e-a5d2-846d928f8261}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Frontend\Windows\Viewer">
+      <UniqueIdentifier>{2a46d785-6ac7-4833-8f36-1dbd33327562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\Windows\Always Present">
+      <UniqueIdentifier>{04970fde-53d5-42b9-b429-07e1ffd8f545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frontend\Windows\Live">
+      <UniqueIdentifier>{19decf4b-45f1-4881-b7fb-eaaf64e4f18c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UEDumper.cpp">
@@ -93,25 +102,7 @@
     <ClCompile Include="Frontend\Windows\DumpProgress.cpp">
       <Filter>Frontend\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Frontend\Windows\EditWindow.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="Frontend\Windows\HelloWindow.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Frontend\Windows\LiveEditor.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Frontend\Windows\LogWindow.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Frontend\Windows\PackageViewerWindow.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Frontend\Windows\PackageWindow.cpp">
-      <Filter>Frontend\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Frontend\Windows\TopRowButtons.cpp">
       <Filter>Frontend\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Frontend\IGHelper.cpp">
@@ -131,6 +122,24 @@
     </ClCompile>
     <ClCompile Include="Frontend\ImGui\imgui_impl_win32.cpp">
       <Filter>Frontend\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\PackageViewerWindow.cpp">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\PackageWindow.cpp">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\EditWindow.cpp">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\TopRowButtons.cpp">
+      <Filter>Frontend\Windows\Always Present</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\LogWindow.cpp">
+      <Filter>Frontend\Windows\Always Present</Filter>
+    </ClCompile>
+    <ClCompile Include="Frontend\Windows\LiveEditor.cpp">
+      <Filter>Frontend\Windows\Live</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,25 +185,7 @@
     <ClInclude Include="Frontend\Windows\DumpProgress.h">
       <Filter>Frontend\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Frontend\Windows\EditWindow.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="Frontend\Windows\HelloWindow.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Frontend\Windows\LiveEditor.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Frontend\Windows\LogWindow.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Frontend\Windows\PackageViewerWindow.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Frontend\Windows\PackageWindow.h">
-      <Filter>Frontend\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Frontend\Windows\TopRowButtons.h">
       <Filter>Frontend\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Frontend\IGHelper.h">
@@ -232,6 +223,24 @@
     </ClInclude>
     <ClInclude Include="Engine\Userdefined\Datatypes.h">
       <Filter>Engine\User Defined</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\PackageViewerWindow.h">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\PackageWindow.h">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\EditWindow.h">
+      <Filter>Frontend\Windows\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\TopRowButtons.h">
+      <Filter>Frontend\Windows\Always Present</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\LogWindow.h">
+      <Filter>Frontend\Windows\Always Present</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\Windows\LiveEditor.h">
+      <Filter>Frontend\Windows\Live</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

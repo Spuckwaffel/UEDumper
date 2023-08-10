@@ -1,4 +1,4 @@
-#include "PackageViewerWindow.h"
+﻿#include "PackageViewerWindow.h"
 #include "EditWindow.h"
 
 
@@ -61,10 +61,8 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
 		ImGui::EndChild();
 }
 
-void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs::Struct& struc)
+void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, int index, EngineStructs::Struct& struc)
 {
-    
-    
     //copy button for clipboard
     if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(reinterpret_cast<__int64>(&struc.memoryAddress))).c_str()))
     {
@@ -192,8 +190,38 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
             
         }
         ImGui::SameLine();
-        ImGui::SetCursorPosX(440);
+        constexpr auto nameOffset = 440;
+        ImGui::SetCursorPosX(nameOffset);
         ImGui::TextColored(IGHelper::Colors::varPink, member.name.length() > 48 ? "%.48s.." : "%s", member.name.c_str());
+        auto toLower = [&](const std::string& st)
+        {
+            std::string s;
+            for(const char c : st)
+            {
+                s += std::tolower(c);
+            }
+            return s;
+        };
+        ImGui::SameLine();
+        std::string obj = std::string(tab.objectBuf);
+        if(tab.findObject >= PackageTab::findState::FS_highlight && strcmp(toLower(member.name).c_str(), toLower(obj).c_str()) == 0)
+        {
+            const float posX = ImGui::GetCursorPosX();
+            const float posY = ImGui::GetCursorPosY() + ImGui::GetFontSize() + 6 - ImGui::GetScrollY() + 80;
+            if(tab.findObject == PackageTab::findState::FS_hard)
+            {
+                ImGui::SetScrollFromPosY(posY);
+                //so we dont scroll over and over here, which also means if items have the same name
+                //only the first gets targeted
+                tab.findObject = PackageTab::findState::FS_highlight;
+            }
+            //fancy highlight
+            ImGui::GetWindowDrawList()->AddRectFilled(
+                ImVec2(ImGui::GetWindowPos().x + nameOffset, posY), 
+                ImVec2(ImGui::GetWindowPos().x + posX - 3, posY + ImGui::GetFontSize() + 5), 
+                ImGui::GetColorU32(IGHelper::colToVec(179, 59, 0, 100)));
+        }
+        
         if (ImGui::IsItemHovered() && member.name.length() > 48)
         {
             ImGui::BeginTooltip();
@@ -207,7 +235,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
         }
         if (member.isBit)
         {
-            ImGui::SameLine();
+            //sameline was here before, however it got added above already
             ImGui::Text(":");
             ImGui::SameLine();
             ImGui::TextColored(IGHelper::Colors::numberGreen, "1");
@@ -484,8 +512,8 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
 
             for (const auto& member : struc.members)
             {
-                char finalBuf[300];
-                char nameBuf[200];
+                char finalBuf[600];
+                char nameBuf[500];
                 std::string name = member.name;
                 if (member.isBit)
                     name += " : 1";
@@ -560,6 +588,12 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
     }
 }
 
+void windows::PackageViewerWindow::topmostCallback()
+{
+
+}
+
+
 windows::PackageViewerWindow::PackageViewerWindow()
 {
 
@@ -599,6 +633,30 @@ void windows::PackageViewerWindow::renderTabs()
             const auto packageTextPosY = ImGui::GetCursorPosY();
             ImGui::TextColored(IGHelper::Colors::packagePurple, "Package %s", package.packageName.c_str());
 
+            ImGui::SameLine();
+            ImGui::SetCursorPosX(ImGui::GetWindowSize().x - 730);
+            ImGui::PushItemWidth(278);
+            //disabled if it snot a struct or class. I mean who needs enum search? And functions is useless, use the search top left....
+            ImGui::BeginDisabled(tab.typeSelected != EngineCore::ObjectInfo::OI_Class && tab.typeSelected != EngineCore::ObjectInfo::OI_Struct);
+            std::string beforeTest = std::string(tab.objectBuf);
+            //we cant scroll here as we arent in any scroll window
+            if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", tab.objectBuf, sizeof(tab.objectBuf) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
+            {
+                //tells the renderX functions to find the Object (used for scrolling)
+                tab.findObject = PackageTab::findState::FS_hard;
+            }
+            //highlight mode + buffer changed -> reset
+            if(tab.findObject == PackageTab::findState::FS_highlight && strcmp(beforeTest.c_str(), std::string(tab.objectBuf).c_str()) != 0)
+            {
+                tab.findObject = PackageTab::findState::FS_none;
+            }
+            ImGui::SameLine();
+            if (ImGui::Button(ICON_FA_SEARCH))
+            {
+                tab.findObject = PackageTab::findState::FS_hard;
+            }
+            ImGui::EndDisabled();
+            ImGui::PopItemWidth();
             ImGui::BeginChild(std::string("tabchildviewer" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 420, ImGui::GetWindowSize().y - 85), true);
 
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
@@ -618,7 +676,7 @@ void windows::PackageViewerWindow::renderTabs()
                 {
                     for (auto& struc : package.structs)
                     {
-                        renderClassOrStruct(i++, struc);
+                        renderClassOrStruct(tab, i++, struc);
                         addSpacing();
                     }
                 }
@@ -627,7 +685,7 @@ void windows::PackageViewerWindow::renderTabs()
                 {
                     for (auto& struc : package.classes)
                     {
-                        renderClassOrStruct(i++, struc);
+                        renderClassOrStruct(tab, i++, struc);
                         addSpacing();
                     }
                 }
@@ -652,10 +710,10 @@ void windows::PackageViewerWindow::renderTabs()
             else
             {
                 if(tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class && package.classes.size() > tab.itemSelected)
-                    renderClassOrStruct(tab.itemSelected, package.classes[tab.itemSelected]);
+                    renderClassOrStruct(tab, tab.itemSelected, package.classes[tab.itemSelected]);
 
                 if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct && package.structs.size() > tab.itemSelected)
-                    renderClassOrStruct(tab.itemSelected, package.structs[tab.itemSelected]);
+                    renderClassOrStruct(tab, tab.itemSelected, package.structs[tab.itemSelected]);
 
                 if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
                     renderFunction(tab.itemSelected, EngineCore::getFunctionFromVectorIndex(package, tab.itemSelected));
@@ -689,7 +747,7 @@ void windows::PackageViewerWindow::renderTabs()
                 auto& itemRange = isClass ? tab.itemRange_C : tab.itemRange_S;
                 renderItemRange(itemRange, dataVector.size());
                 
-                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 50)))
+                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 85)))
                 {
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable(isClass ? "Show all Classes" : "Show all Structs")) {
@@ -724,7 +782,7 @@ void windows::PackageViewerWindow::renderTabs()
             {
                 renderItemRange(tab.itemRange_F, package.functions.size());
 
-                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 50)))
+                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 85)))
                 {
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable("Show all Functions")) {
@@ -737,15 +795,33 @@ void windows::PackageViewerWindow::renderTabs()
                     {
                         const bool is_selected = (tab.itemSelected == i && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function);
                         
+
                         const auto& func = EngineCore::getFunctionFromVectorIndex(package, i);
-                        if (ImGui::Selectable(func.first.get().cppName.c_str(), is_selected)) {
+
+
+
+                        //the tuple contains at last information the index of the function in the struct vector, if its 0, do->
+                        if(std::get<2>(package.functions.at(i)) == 0)
+                        {
+                            ImGui::Selectable(std::string("##" + func.second.get().cppName + " functions").c_str(), false, ImGuiSelectableFlags_Disabled);
+                            ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
+                            ImGui::SameLine();
+                            ImGui::Text(std::string(func.second.get().cppName + " functions").c_str());
+                            ImGui::PopStyleColor();
+                        }
+                        ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
+                        if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLE_DOUBLE_RIGHT) + "##" + func.first.get().cppName).c_str(), is_selected)) {
+                            
                             tab.itemSelected = i;
                             tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
                             updateNavBar(tab.navTab, i, tab.typeSelected);
                         }
+                        ImGui::PopStyleColor();
+                        ImGui::SameLine();
+                        ImGui::Text(func.first.get().cppName.c_str());
                         if (is_selected && ImGui::IsItemHovered()) {
                             ImGui::BeginTooltip();
-                            ImGui::Text(func.first.get().cppName.c_str());
+                            ImGui::Text(std::string(func.second.get().cppName + "::" + func.first.get().cppName).c_str());
                             ImGui::EndTooltip();
                         }
                     }
@@ -757,7 +833,7 @@ void windows::PackageViewerWindow::renderTabs()
             {
                 renderItemRange(tab.itemRange_E, package.enums.size());
 
-                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 50)))
+                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 85)))
                 {
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable("Show all Enums")) {
@@ -790,7 +866,7 @@ void windows::PackageViewerWindow::renderTabs()
                 auto beginTab = [&](const char* str, const ImVec4& col, bool focus, const std::function<void(bool)>& func, bool param = false)
                 {
                     ImGui::PushStyleColor(ImGuiCol_Text, col);
-                    if (ImGui::BeginTabItem(str, 0, focus ? ImGuiTabItemFlags_SetSelected : ImGuiTabItemFlags_None))
+                    if (ImGui::BeginTabItem(str, nullptr, focus ? ImGuiTabItemFlags_SetSelected : ImGuiTabItemFlags_None))
                     {
                         ImGui::PopStyleColor();
                         func(param);

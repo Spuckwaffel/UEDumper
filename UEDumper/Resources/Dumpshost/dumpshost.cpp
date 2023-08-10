@@ -103,14 +103,16 @@ namespace DumpsHost
         DumpEnums(directory);
     }
 
-    void Generate()
+    void Generate(int& progressDone, int& totalProgress)
     {
+        totalProgress = EngineCore::getOffsets().size() + EngineCore::getPackages().size();
         for(const auto& offset : EngineCore::getOffsets())
         {
 	        if(offset.flag & OFFSET_DH)
 	        {
                 AddOffset(offset.name, EngineCore::getOffsetAddress(offset) - Memory::getBaseAddress());
 	        }
+            progressDone++;
         }
         
         for(auto& pack : EngineCore::getPackages())
@@ -194,7 +196,9 @@ namespace DumpsHost
                 j[enu.cppName] = members;
                 AddEnum(j);
             }
+            progressDone++;
         }
         Dump(EngineSettings::getWorkingDirectory());
+        progressDone = totalProgress;
     }
 }

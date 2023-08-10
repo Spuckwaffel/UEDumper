@@ -784,9 +784,8 @@ fieldType FProperty::getType()
     if (!ClassPrivate)
     {
         return { false, PropertyType::Unknown, getName() };
-        
     }
-        //DebugBreak();
+
     const auto objectClass = EngineCore::getFFieldClass(ClassPrivate);
     switch (objectClass->Id)
     {
@@ -889,12 +888,7 @@ fieldType FProperty::getType()
     //    return { true, PropertyType::FieldPathProperty, FFieldPathProperty::typeName(), castTo<FFieldPathProperty>().getSubTypes() };
         
     default:
-	    {
-        windows::LogWindow::Log(windows::LogWindow::log_2, "UCLASSES", "Class %s found but type 0x%llX not supported?", EngineCore::FNameToString(objectClass->Name).c_str(), objectClass->Id);
         return { false, PropertyType::Unknown, getName() };
-	    }
-
-        
     }
 }
 

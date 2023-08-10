@@ -15,6 +15,9 @@ namespace windows
 
 		static bool isCompleted();
 
+
+		static void setCompleted();
+
 		static void renderProjectPopup();
 
 	};

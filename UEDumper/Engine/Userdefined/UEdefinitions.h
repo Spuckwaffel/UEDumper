@@ -21,8 +21,9 @@
 #define RELEASE_1_2_FINAL	3
 #define RELEASE_1_3_BETA	4
 #define RELEASE_1_3_FINAL	5
+#define RELEASE_1_4_BETA	6
 
-#define DUMPER_VERSION RELEASE_1_3_FINAL
+#define DUMPER_VERSION RELEASE_1_4_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -72,7 +73,7 @@
 //only exists for UE version 5.1 and above
 #if UE_VERSION > UE_5_00
 //UECOMMENT: Storing it in the name table may save memory overall but new number suffixes will cause the name table to grow like unique strings do
-//default TRUE
+//default FALSE
 #define UE_FNAME_OUTLINE_NUMBER FALSE
 #endif
 

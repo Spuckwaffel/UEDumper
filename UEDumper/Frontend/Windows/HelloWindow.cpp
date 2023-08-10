@@ -122,32 +122,11 @@ bool windows::HelloWindow::isCompleted()
 	return alreadyCompleted;
 }
 
+void windows::HelloWindow::setCompleted()
+{
+	alreadyCompleted = true;
+}
+
 void windows::HelloWindow::renderProjectPopup()
 {
-	if (alreadyCompleted)
-		return;
-
-	if (ImGui::Button(merge(ICON_FA_FILE, " Load Project")))
-	{
-		OPENFILENAMEA ofn;
-		char filename[MAX_PATH] = { 0 };
-
-		ZeroMemory(&ofn, sizeof(OPENFILENAME));
-		ofn.lStructSize = sizeof(OPENFILENAME);
-		ofn.hwndOwner = NULL;
-		ofn.lpstrFilter = "UEDumper Project File (*.uedproj)\0*.uedproj\0";
-		ofn.lpstrFile = filename;
-		ofn.nMaxFile = MAX_PATH;
-		ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
-		ofn.lpstrDefExt = "uedproj";
-
-		if (GetOpenFileNameA(&ofn) == TRUE) {
-			const std::string st(filename, MAX_PATH);
-			if(EngineCore::loadProject(st))
-			{
-				windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project loaded!");
-				alreadyCompleted = true;
-			}
-		}
-	}
 }

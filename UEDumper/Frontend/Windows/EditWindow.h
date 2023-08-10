@@ -4,6 +4,7 @@
 
 namespace windows
 {
+	//class handler for edit popups
 	class EditWindow
 	{
 		struct editStruc

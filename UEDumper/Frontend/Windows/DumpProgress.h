@@ -7,7 +7,9 @@ namespace windows
 	class DumpProgress
 	{
 		//completed flag whether to render this window or not
-		static inline bool alreadyCompleted = false;
+		static inline bool bAlreadyCompleted = false;
+		static inline bool bIsBusy = false;
+
 
 		struct dumpProgress
 		{
@@ -22,6 +24,16 @@ namespace windows
 
 		static bool render();
 
+		/**
+		 * \brief whether dumping progress is running
+		 * \return dumper is busy
+		 */
+		static bool isBusy();
+
+		/**
+		 * \brief whether the dump progress is not finished
+		 * \return this stage is completed
+		 */
 		static bool isAlreadyCompleted();
 	};
 }

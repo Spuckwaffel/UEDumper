@@ -24,12 +24,19 @@ namespace windows
 		};
 
 	private:
-		static inline std::vector<std::string> logs{};
+
+		struct log
+		{
+			std::string originandTime;
+			std::string message;
+		};
+		static inline std::vector<log> logs{};
 		static inline int oldSize = 0;
 
 		static inline int selectedLog = 0;
 		static inline int selectedLogRange = 0;
 		static inline int logRange = 100;
+		static inline bool autoScroll = true;
 
 
 		static inline int logLevel = log_0;
@@ -39,7 +46,7 @@ namespace windows
 
 		LogWindow();
 
-		static void Log(logLevels level, std::string origin, const char* fmt, ...);
+		static void Log(logLevels level, const std::string& origin, const char* fmt, ...);
 
 		static int getLogLevel();
 
@@ -50,5 +57,13 @@ namespace windows
 		static void render();
 
 		static void renderEditPopup();
+
+		static std::string getLastLogMessage();
+
+		/**
+		 * \brief callback function that has to get called at the end of every frame in case
+		 * there's something that has to be rendered topmost. Use carefully!
+		 */
+		static void topmostCallback();
 	};
 }
