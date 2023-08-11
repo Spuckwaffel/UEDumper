@@ -61,10 +61,8 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
 		ImGui::EndChild();
 }
 
-void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs::Struct& struc)
+void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, int index, EngineStructs::Struct& struc)
 {
-    
-    
     //copy button for clipboard
     if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(reinterpret_cast<__int64>(&struc.memoryAddress))).c_str()))
     {
@@ -192,8 +190,38 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
             
         }
         ImGui::SameLine();
-        ImGui::SetCursorPosX(440);
+        constexpr auto nameOffset = 440;
+        ImGui::SetCursorPosX(nameOffset);
         ImGui::TextColored(IGHelper::Colors::varPink, member.name.length() > 48 ? "%.48s.." : "%s", member.name.c_str());
+        auto toLower = [&](const std::string& st)
+        {
+            std::string s;
+            for(const char c : st)
+            {
+                s += std::tolower(c);
+            }
+            return s;
+        };
+        ImGui::SameLine();
+        std::string obj = std::string(tab.objectBuf);
+        if(tab.findObject >= PackageTab::findState::FS_highlight && strcmp(toLower(member.name).c_str(), toLower(obj).c_str()) == 0)
+        {
+            const float posX = ImGui::GetCursorPosX();
+            const float posY = ImGui::GetCursorPosY() + ImGui::GetFontSize() + 6 - ImGui::GetScrollY() + 80;
+            if(tab.findObject == PackageTab::findState::FS_hard)
+            {
+                ImGui::SetScrollFromPosY(posY);
+                //so we dont scroll over and over here, which also means if items have the same name
+                //only the first gets targeted
+                tab.findObject = PackageTab::findState::FS_highlight;
+            }
+            //fancy highlight
+            ImGui::GetWindowDrawList()->AddRectFilled(
+                ImVec2(ImGui::GetWindowPos().x + nameOffset, posY), 
+                ImVec2(ImGui::GetWindowPos().x + posX - 3, posY + ImGui::GetFontSize() + 5), 
+                ImGui::GetColorU32(IGHelper::colToVec(179, 59, 0, 100)));
+        }
+        
         if (ImGui::IsItemHovered() && member.name.length() > 48)
         {
             ImGui::BeginTooltip();
@@ -207,7 +235,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(int index, EngineStructs:
         }
         if (member.isBit)
         {
-            ImGui::SameLine();
+            //sameline was here before, however it got added above already
             ImGui::Text(":");
             ImGui::SameLine();
             ImGui::TextColored(IGHelper::Colors::numberGreen, "1");
@@ -608,15 +636,26 @@ void windows::PackageViewerWindow::renderTabs()
             ImGui::SameLine();
             ImGui::SetCursorPosX(ImGui::GetWindowSize().x - 730);
             ImGui::PushItemWidth(278);
-            char bufff[200];
-            if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", bufff, sizeof(bufff) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
+            //disabled if it snot a struct or class. I mean who needs enum search? And functions is useless, use the search top left....
+            ImGui::BeginDisabled(tab.typeSelected != EngineCore::ObjectInfo::OI_Class && tab.typeSelected != EngineCore::ObjectInfo::OI_Struct);
+            std::string beforeTest = std::string(tab.objectBuf);
+            //we cant scroll here as we arent in any scroll window
+            if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", tab.objectBuf, sizeof(tab.objectBuf) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
             {
+                //tells the renderX functions to find the Object (used for scrolling)
+                tab.findObject = PackageTab::findState::FS_hard;
+            }
+            //highlight mode + buffer changed -> reset
+            if(tab.findObject == PackageTab::findState::FS_highlight && strcmp(beforeTest.c_str(), std::string(tab.objectBuf).c_str()) != 0)
+            {
+                tab.findObject = PackageTab::findState::FS_none;
             }
             ImGui::SameLine();
             if (ImGui::Button(ICON_FA_SEARCH))
             {
-
+                tab.findObject = PackageTab::findState::FS_hard;
             }
+            ImGui::EndDisabled();
             ImGui::PopItemWidth();
             ImGui::BeginChild(std::string("tabchildviewer" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 420, ImGui::GetWindowSize().y - 85), true);
 
@@ -637,7 +676,7 @@ void windows::PackageViewerWindow::renderTabs()
                 {
                     for (auto& struc : package.structs)
                     {
-                        renderClassOrStruct(i++, struc);
+                        renderClassOrStruct(tab, i++, struc);
                         addSpacing();
                     }
                 }
@@ -646,7 +685,7 @@ void windows::PackageViewerWindow::renderTabs()
                 {
                     for (auto& struc : package.classes)
                     {
-                        renderClassOrStruct(i++, struc);
+                        renderClassOrStruct(tab, i++, struc);
                         addSpacing();
                     }
                 }
@@ -671,10 +710,10 @@ void windows::PackageViewerWindow::renderTabs()
             else
             {
                 if(tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class && package.classes.size() > tab.itemSelected)
-                    renderClassOrStruct(tab.itemSelected, package.classes[tab.itemSelected]);
+                    renderClassOrStruct(tab, tab.itemSelected, package.classes[tab.itemSelected]);
 
                 if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct && package.structs.size() > tab.itemSelected)
-                    renderClassOrStruct(tab.itemSelected, package.structs[tab.itemSelected]);
+                    renderClassOrStruct(tab, tab.itemSelected, package.structs[tab.itemSelected]);
 
                 if (tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
                     renderFunction(tab.itemSelected, EngineCore::getFunctionFromVectorIndex(package, tab.itemSelected));

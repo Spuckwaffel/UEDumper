@@ -3,7 +3,7 @@
 #include "FName_decryption.h"
 #include "../UEClasses/UnrealClasses.h"
 #include "../Userdefined/StructDefinitions.h"
-
+#include "Frontend/Windows/PackageViewerWindow.h"
 
 
 EngineCore::TypeUObjectArray EngineCore::getTUObject()
@@ -1392,6 +1392,8 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 
 	UEDProject["vectors"] = vectors;
 
+	UEDProject["OpenTabs"] = windows::PackageViewerWindow::getTabsToJson();
+
 	auto dump = UEDProject.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
 
 	size_t paddingBytes = 16 - (dump.length() % 16);
@@ -1467,7 +1469,7 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 
 	const nlohmann::json UEDProject = nlohmann::json::parse(c);
 
-	totalProgress = 9;
+	totalProgress = 10;
 	
 	delete[] c;
 
@@ -1552,7 +1554,9 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 		offsets.push_back(Offset::fromJson(offset));
 
 	progressDone++;
-	
+
+	windows::PackageViewerWindow::loadTabsFromJson(UEDProject["OpenTabs"]);
+	progressDone++;
 
 	EngineSettings::setLiveEditor(false);
 

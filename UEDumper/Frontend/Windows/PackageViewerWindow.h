@@ -8,7 +8,7 @@ namespace windows
 	class PackageViewerWindow
 	{
 		
-
+	public:
 		struct NavigationTab
 		{
 			//vector of all tab indexes we went through
@@ -17,33 +17,116 @@ namespace windows
 			int currentVecIndex = 0;
 
 			EngineCore::ObjectInfo::ObjectType currentType = EngineCore::ObjectInfo::ObjectType::OI_MAX;
+
+			nlohmann::json toJson() const
+			{
+				nlohmann::json j;
+
+				for(const auto& idx : tabIndex)
+					j["tabIndex"].push_back(idx);
+
+				j["currentVecIndex"] = currentVecIndex;
+				j["currentType"] = currentType;
+
+				return j;
+			}
+
+			static NavigationTab fromJson(const nlohmann::json& j)
+			{
+				NavigationTab n;
+				for(const nlohmann::json& js : j["tabIndex"])
+					n.tabIndex.push_back(std::pair(js[0], js[1]));
+
+				n.currentVecIndex = j["currentVecIndex"];
+				n.currentType = j["currentType"];
+				return n;
+			}
 		};
 
 		struct PackageTab
 		{
-
-
-			int packageSelected = 0; //slsected package
+			int packageSelected = 0; //selected package
 			EngineCore::ObjectInfo::ObjectType typeSelected = EngineCore::ObjectInfo::ObjectType::OI_MAX; //selected type
-			int itemSelected = 0; //seleted item of the type
+			int itemSelected = 0; //selected item of the type
 			int itemRange_S = 0; //current range from n - n+100 of structs
 			int itemRange_C = 0; //current range from n - n+100 of classes
 			int itemRange_E = 0; //current range from n - n+100 of enums
 			int itemRange_F = 0; //current range from n - n+100 of functions
 			bool focus = false;
 			bool open = false;
+			char objectBuf[250] = {0};
+			enum class findState {
+				FS_none, //no operation
+				FS_highlight,//only highlight
+				FS_hard //also scroll
+			};
+			findState findObject = findState::FS_none;
 			NavigationTab navTab;
-		};
-		
 
-	private:
-		
+			nlohmann::json toJson() const
+			{
+				nlohmann::json j;
+
+				j["packageSelected"] = packageSelected;
+				j["typeSelected"] = typeSelected;
+				j["itemSelected"] = itemSelected;
+				j["itemRange_S"] = itemRange_S;
+				j["itemRange_C"] = itemRange_C;
+				j["itemRange_E"] = itemRange_E;
+				j["itemRange_F"] = itemRange_F;
+				j["focus"] = focus;
+				j["open"] = open;
+				j["objectBuf"] = std::string(objectBuf);
+				j["findObject"] = findObject;
+				j["findObject"] = findObject;
+				j["navTab"] = navTab.toJson();
+
+				return j;
+			}
+
+			static PackageTab fromJson(const nlohmann::json& j)
+			{
+				PackageTab p;
+				p.packageSelected = j["packageSelected"];
+				p.typeSelected = j["typeSelected"];
+				p.itemSelected = j["itemSelected"];
+				p.itemRange_S = j["itemRange_S"];
+				p.itemRange_C = j["itemRange_C"];
+				p.itemRange_E = j["itemRange_E"];
+				p.itemRange_F = j["itemRange_F"];
+				p.focus = j["focus"];
+				p.open = j["open"];
+				const std::string tmp = j["objectBuf"];
+				strcpy(p.objectBuf, tmp.c_str());
+				p.findObject = j["findObject"];
+				p.navTab = NavigationTab::fromJson(j["navTab"]);
+
+				return p;
+			}
+		};
 		
 		static inline int packagePicked = 0;
 
 		static inline bool alreadyCompleted = false;
 
 		static inline std::vector<PackageTab> Tabs;
+
+	public:
+		static nlohmann::json getTabsToJson()
+		{
+			nlohmann::json j;
+			for(const auto& tab: Tabs)
+				j.push_back(tab.toJson());
+			return j;
+		}
+
+		static void loadTabsFromJson(const nlohmann::json& j)
+		{
+			for (const nlohmann::json& js : j)
+				Tabs.push_back(PackageTab::fromJson(js));
+		}
+
+	private:
 
 		/**
 		 * \brief renders a type that has subtypes
@@ -54,14 +137,15 @@ namespace windows
 
 		/**
 		 * \brief 
-		 * \param index index of the struct in the vector of structs or class(just used for displaying index number)
+		 * \param tab the current tab this functions gets called in
+		 * \param index index of the struct in the vector of structs or class (just used for displaying index number)
 		 * \param struc struct
 		 */
-		static void renderClassOrStruct(int index, EngineStructs::Struct& struc);
+		static void renderClassOrStruct(PackageTab& tab, int index, EngineStructs::Struct& struc);
 
 		/**
 		 * \brief 
-		 * \param index index of the enum in the vector of enums
+		 * \param index index of the enum in the vector of enums (just used for displaying index number)
 		 * \param enu enum
 		 */
 		static void renderEnum(int index, const EngineStructs::Enum& enu);
