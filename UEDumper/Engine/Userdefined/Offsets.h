@@ -107,6 +107,14 @@ inline std::vector<Offset> setOffsets()
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x7723D90 });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x78915F8 });
 
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x5B8D390 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x5B918B8 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x5C80950 });
+
+	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x4D01930 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x4E0EFF0 });
+
 	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, 
 	//	"\x48\x8d\x0d\x00\x00\x00\x00\xe8\x00\x00\x00\x00\xc6\x05\x00\x00\x00\x00\x00\x0f\x10\x03", "xxx????x????xx?????xxx" });
 

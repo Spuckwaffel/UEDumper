@@ -49,7 +49,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_01
+#define UE_VERSION UE_5_02
 
 
 /* FName settings */
@@ -67,7 +67,7 @@
 //in EngineCore::FNameToString theres a premade FNameEntry calculation. Though games sometimes have a offset on that calculation
 //such as Fortnite (version 3.5). Make sure to find that offset and set it!
 //default 0
-#define GNAMES_POOL_OFFSET 0
+#define GNAMES_POOL_OFFSET 112
 #endif
 
 //only exists for UE version 5.1 and above

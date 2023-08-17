@@ -19,7 +19,8 @@ public:
 		int size = 0;
 		int usageCounter = 0;
 		__int64 updateTimeStamp = 0;
-		
+
+		//whether data has not yet been filled
 		bool valid() const
 		{
 			return updateTimeStamp != 0;
@@ -64,14 +65,16 @@ public:
 
 	LiveMemory();
 
-	static MemoryBlock& addNewBlock(uint64_t address, int size);
+	//adds a new block or returns a existing block for the given game address 
+	static MemoryBlock* addNewBlock(uint64_t address, int size);
 
 	//have to call erase on your own!
 	static void freeBlock(uint64_t address);
 
 	static void cacheBlocks();
 
-	static MemoryBlock getMemoryBlock(uint64_t address);
+	//gets the memory block for a given address
+	static MemoryBlock* getMemoryBlock(uint64_t address);
 
 	static std::string getBlockInfo(uint64_t address);
 	
