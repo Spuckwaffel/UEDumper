@@ -1,5 +1,10 @@
 ﻿#include "PackageViewerWindow.h"
 #include "EditWindow.h"
+#include "LogWindow.h"
+#include "Engine/Core/Core.h"
+#include "Frontend/IGHelper.h"
+#include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Frontend/Texture/TextureCreator.h"
 
 
 void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool inChild)

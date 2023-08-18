@@ -13,18 +13,6 @@
 *													*
 ****************************************************/
 
-
-//largest size of a class that inherits UObject plus padding bytes. You shouldnt have to edit this normally.
-//But if you have to, UFunction objects are the largest.
-#define UOBJECT_MAX_SIZE 0x150
-
-#if UE_VERSION >= UE_4_25
-//the number of FFIELDS to cache. You shouldnt have to change this, this is just for allocating a large enough buffer
-#define FFIELD_CT 400000
-#define FFIELD_CLASSES_CT 100000
-
-#endif
-
 #define ENGINE_CORE class
 
 //forwarded classes
@@ -47,70 +35,9 @@ namespace EngineStructs
 
 ENGINE_CORE EngineCore
 {
-
-	//UObjectArray struct. This one changes between UE versions
-	//https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L198
-	//-> https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L760
-#if UE_VERSION < UE_4_20
-	struct FFixedUObjectArray
-	{
-		/** Static master table to chunks of pointers **/
-		FUObjectItem*	Objects = nullptr;
-		/** Number of elements we currently have **/
-		uint32_t	MaxElements = 0;
-		/** Current number of UObject slots */
-		uint32_t	NumElements = 0;
-	};
-
-	typedef FFixedUObjectArray TypeUObjectArray;
-#else
-	//UE decided to use chunks for >=4.20
-	//https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L321
-	//-> https://github.com/EpicGames/UnrealEngine/blob/4.20/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L959
-	//however the NumElementsPerChunk changed from 65 * 1024 to 64 * 1024 for >= 4.21
-	//https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L321
-	//-> https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L960
-	struct FChunkedFixedUObjectArray
-	{
-		/** Master table to chunks of pointers **/
-		FUObjectItem** Objects;
-		/** If requested, a contiguous memory where all objects are allocated **/
-		FUObjectItem* PreAllocatedObjects;
-		/** Maximum number of elements **/
-		int32_t MaxElements;
-		/** Number of elements we currently have **/
-		int32_t NumElements;
-		/** Maximum number of chunks **/
-		int32_t MaxChunks;
-		/** Number of chunks we currently have **/
-		int32_t NumChunks;
-	};
-
-	typedef FChunkedFixedUObjectArray TypeUObjectArray;
-#endif
-
-	//UBigObject struct. The readSize indicates how many bytes are valid in the array.
-#pragma pack(push, 1)
-	struct UBigObject
-	{
-		//valid bytes in the char array
-		size_t readSize = 0;
-		//if you ask where if the paired UObject game ptr?
-		//Well it actually is at object buff + 0! tldr Core.cpp@copyUBigObjects
-		char object[UOBJECT_MAX_SIZE];
-	};
-#pragma pack(pop)
-
 public:
 
-	//copystatus error used in the dump progress
-	enum CopyStatus
-	{
-		CS_idle,
-		CS_busy,
-		CS_success,
-		CS_error
-	};
+
 
 	//objectinfo struct that holds the info of a defined struct/class/enum/function
 	struct ObjectInfo
@@ -154,23 +81,6 @@ public:
 	
 
 private:
-	//ptr to the allocated buffer where all UObject pointers are located
-	inline static uint64_t pGObjectPtrArray = 0;
-	
-	//ptr to the allocated buffer where all UObjects are located
-	inline static uint64_t pUBigObjectArray = 0;
-
-#if UE_VERSION >= UE_4_25
-	//ptr to the allocated buffer where all FFields are located
-	inline static uint64_t pFFieldArray = 0;
-
-	//ptr to the allocated buffer where all FFieldClasses are located
-	inline static uint64_t pFFieldClassArray = 0;
-#endif
-
-	//Object array that gets scanned once at the beginning
-	inline static TypeUObjectArray UObjectArray;
-
 #if UE_VERSION < UE_4_25
 	//pointer to GNames on heap
 	inline static uint64_t gNames;
@@ -180,21 +90,13 @@ private:
 	inline static uint64_t gNames;
 #endif
 
-	//linkage like following: fn ptr to uedumper ptr
-	inline static std::unordered_map<uint64_t, UBigObject*> linkedUObjectPtrs{};
-
-#if UE_VERSION >= UE_4_25
-	inline static int linkedFFieldIndexCount = 0;
-	inline static std::unordered_map<uint64_t, uint64_t> linkedFFieldPtrs{};
-	inline static int linkedFFieldClassIndexCount = 0;
-	inline static std::unordered_map<uint64_t, uint64_t> linkedFFieldClassPtrs{};
-#endif
-
 	//map that returns the UObject ptr for the full String name
 	inline static std::unordered_map<std::string, uint64_t> fullStringCache{};
 
 	//mal that returns the String of a FNames ComparisonIndex
 	inline static std::unordered_map<int, std::string> FNameCache{};
+
+	friend class ObjectsManager;
 
 	//general bSuccess var to store the latest operations success value in the dump progress.
 	inline static bool bSuccess = false;
@@ -283,45 +185,10 @@ public:
 	 */
 	EngineCore();
 
-	/// dump progress
+	static bool initSuccess();
 
-	/**
-	 * \brief only used in dumping progress!
-	 * \return if the last operation was a success
-	 */
-	static bool lastOperationSuccess();
-	
+	//Dump generation
 
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Checks if the game UObject pointer is indexed in the ue dumper
-	 * \param UObjectPtr real pointer in the game
-	 * \return true if the pointer is indexed and is able to convert
-	 */
-	static bool existsRealPtr(uint64_t UObjectPtr);
-	
-
-	/**
-	 * \brief Copies all the bytes from the TypeUObjectArray into a large buffer
-	 * \param finishedBytes bytes already copied
-	 * \param totalBytes total bytes that need to be copied
-	 * \param status status of the operation
-	 */
-	static void copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status);
-
-	/**
-	 * \brief USE ONLY AFTER GOBJECTPTR GENERATION! Copies every UObject into a large buffer
-	 * \param finishedBytes bytes already copied
-	 * \param totalBytes total bytes that need to be copied
-	 * \param status status of the operation
-	 */
-	static void copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status);
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Caches all the FNames of all cached UObjects
-	 * \param finishedNames names cached
-	 * \param totalNames total names that need to be cached
-	 * \param status status of the operation
-	 */
 	static void cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopyStatus& status);
 
 	/// package generation
@@ -420,11 +287,6 @@ public:
 	 */
 	static void generateStructDefinitionsFile();
 
-	/**
-	 * \brief 
-	 * \return returns (if valid) the TypeUObjectArray
-	 */
-	static TypeUObjectArray getTUObject();
 
 	/**
 	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Converts a FName to string
@@ -453,163 +315,5 @@ public:
 	 */
 	static std::vector<Offset> getOffsets();
 
-
-	/// Section for package generation and live editor
-	
-
-	/**
-	* \brief USE ONLY AFTER UBIGOBJECT GENERATION! ONLY USE FOR UOBJECTS! Makes sure the required size is also copied
-	* \param bigObjectPtr ptr to the char buffer in the dumper (which is in linkedUObjectPtrs)
-	* \param requiredSize the required size for the UObject
-	*/
-	static void verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize);
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! ONLY USE FOR UOBJECTS
-	 * \tparam T UObject inherited class
-	 * \param index index of the UObject
-	 * \return the cached Object
-	 */
-	template <typename T>
-	static T* getUObjectIndex(int32_t index)
-	{
-		//should never happen
-		if (index > UObjectArray.NumElements)
-			throw std::runtime_error("Index larger than NumElements?");
-		
-		UBigObject* object = reinterpret_cast<UBigObject*>(pUBigObjectArray + index * sizeof(UBigObject));
-
-		verifyUBigObjectSize(object, sizeof(T));
-
-		return reinterpret_cast<T*>(object->object);
-	}
-
-	/**
-	 * \brief USE ONLY AFTER GOBJECTPTR GENERATION! Gets the game Pointer to the UObject
-	 * \param index index of the UObject
-	 * \return Game pointer
-	 */
-	static uint64_t getUObjectIndexPtr(int index);
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Gets the UObject of the given game pointer
-	 * \tparam T UObject inherited class
-	 * \param gamePtr game pointer to the UObject
-	 * \return the cached Object
-	 */
-	template <typename T>
-	static T* getUObject(uint64_t gamePtr)
-	{
-		if(!existsRealPtr(gamePtr))
-		{
-			return nullptr;
-		}
-
-		verifyUBigObjectSize(linkedUObjectPtrs[gamePtr], sizeof(T));
-
-		return reinterpret_cast<T*>(linkedUObjectPtrs[gamePtr]->object);
-	}
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Gets the UObject of the given game pointer
-	 * \tparam T UObject inherited class
-	 * \param gamePtr game pointer to the UObject
-	 * \return the cached Object
-	 */
-	template <typename T>
-	static T* getUObject(void* gamePtr)
-	{
-		return getUObject<T>(reinterpret_cast<uint64_t>(gamePtr));
-
-	}
-
-	/**
-	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Gets the UObject of the full name
-	 * \tparam T UObject inherited class
-	 * \param name Full name of the UObject
-	 * \return the cached Object
-	 */
-	template <typename T>
-	static T* findObject(std::string name)
-	{
-		//check if the object is in out cache
-		if (fullStringCache.contains(name))
-		{
-			//get the UObject from the fn ptr in the map
-			return getUObject<T>(fullStringCache[name]);
-		}
-
-		for (int32_t i = 0; i < UObjectArray.NumElements; i++) {
-
-			//get the uobject for i
-			auto obj = getUObjectIndex<T>(i);
-
-			//get the fn ptr
-			auto ptr = getUObjectIndexPtr(i);
-			
-			std::string cname = obj->getFullName();
-			
-			
-			if(cname == name)
-			{
-				//FullStringCache.insert(std::pair(name, ptr));
-				//just insert here, we make a findobject only on specific objects 
-				fullStringCache.insert(std::pair(cname, ptr));
-				return obj;
-				
-			}
-			
-		}
-		return nullptr;
-	}
-
-#if UE_VERSION >= UE_4_25
-
-	/**
-	 * \brief ONLY USE FOR FFIELDS! Caches a FField 
-	 * \param  gamePtr game pointer to the FField
-	 * \return ue dumper pointer to the FField
-	 */
-	static uint64_t cacheFField(uint64_t gamePtr);
-
-	/**
-	 * \brief ONLY USE FOR FFIELDS! Returns the FField for the game pointer
-	 * \tparam T FField inherited class
-	 * \param gamePtr game pointer to the FField
-	 * \return the cached FField
-	 */
-	template <typename T>
-	static T* getFField(uint64_t gamePtr)
-	{
-		if(linkedFFieldPtrs.contains(gamePtr))
-		{
-			return reinterpret_cast<T*>(linkedFFieldPtrs[gamePtr]);
-		}
-		//element is not cached, go add it
-		
-		return reinterpret_cast<T*>(cacheFField(gamePtr));
-	}
-
-	/**
-	 * \brief ONLY USE FOR FFIELDS! Returns the FField for the game pointer
-	 * \tparam T FField inherited class
-	 * \param gamePtr game pointer to the FField
-	 * \return the cached FField
-	 */
-	template <typename T>
-	static T* getFField(void* gamePtr)
-	{
-		return getFField<T>(reinterpret_cast<uint64_t>(gamePtr));
-
-	}
-
-	/**
-	 * \brief ONLY USE FOR FFIELDS! Returns the FFieldClass for the game pointer
-	 * \param gamePtr game pointer to the FFieldClass
-	 * \return the cached FFieldClass
-	 */
-	static FFieldClass* getFFieldClass(void* gamePtr);
-
-#endif
 };
 

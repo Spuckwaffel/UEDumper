@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Engine/Core/EngineStructs.h"
 
 namespace windows
 {
@@ -15,7 +16,7 @@ namespace windows
 		{
 			int64_t finishedBytes = 0;
 			int64_t totalBytes = 1;
-			EngineCore::CopyStatus status = EngineCore::CopyStatus::CS_idle;
+			CopyStatus status = CopyStatus::CS_idle;
 		};
 
 

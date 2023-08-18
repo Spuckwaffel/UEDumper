@@ -3,6 +3,10 @@
 
 #include <fstream>
 
+#include "Engine/Core/Core.h"
+#include "Memory/memory.h"
+#include "Settings/EngineSettings.h"
+
 namespace DumpsHost
 {
     std::string dumpTimeStamp = {};

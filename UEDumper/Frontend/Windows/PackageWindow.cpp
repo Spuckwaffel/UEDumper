@@ -2,7 +2,14 @@
 
 #include "DumpProgress.h"
 #include "HelloWindow.h"
+#include "LogWindow.h"
 #include "PackageViewerWindow.h"
+#include "Engine/Core/Core.h"
+#include "Frontend/IGHelper.h"
+#include <Settings/EngineSettings.h>
+
+#include "dumpshost.h"
+#include "Frontend/Fonts/fontAwesomeHelper.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
 {

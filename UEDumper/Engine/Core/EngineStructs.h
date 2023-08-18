@@ -84,6 +84,15 @@ struct fieldType
 
 };
 
+//copystatus error used in the dump progress
+enum CopyStatus
+{
+	CS_idle,
+	CS_busy,
+	CS_success,
+	CS_error
+};
+
 //used for the packages
 namespace EngineStructs
 {

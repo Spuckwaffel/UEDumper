@@ -1,6 +1,8 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Engine/Core/Core.h"
+#include "Engine/Core/EngineStructs.h"
 
 
 namespace windows

@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 
+#include "Memory/memory.h"
+
 /*
  * DO NOT INCLUDE THIS FILE ANYWHERE OR ADD FUNCTIONS HERE
  *

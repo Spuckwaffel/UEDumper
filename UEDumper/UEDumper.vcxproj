@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Core\Core.cpp" />
+    <ClCompile Include="Engine\Core\ObjectsManager.cpp" />
     <ClCompile Include="Engine\Live\LiveMemory.cpp" />
     <ClCompile Include="Engine\UEClasses\UnrealClasses.cpp" />
     <ClCompile Include="Frontend\IGHelper.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Frontend\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Frontend\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Frontend\Texture\TextureCreator.cpp" />
+    <ClCompile Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.cpp" />
     <ClCompile Include="Frontend\Windows\DumpProgress.cpp" />
     <ClCompile Include="Frontend\Windows\EditWindow.cpp" />
     <ClCompile Include="Frontend\Windows\HelloWindow.cpp" />
@@ -181,6 +183,7 @@
     <ClInclude Include="Engine\Core\Core.h" />
     <ClInclude Include="Engine\Core\EngineStructs.h" />
     <ClInclude Include="Engine\Core\FName_decryption.h" />
+    <ClInclude Include="Engine\Core\ObjectsManager.h" />
     <ClInclude Include="Engine\enums.h" />
     <ClInclude Include="Engine\Live\LiveMemory.h" />
     <ClInclude Include="Engine\structs.h" />
@@ -195,6 +198,8 @@
     <ClInclude Include="Frontend\IGHelper.h" />
     <ClInclude Include="Frontend\Texture\logo.h" />
     <ClInclude Include="Frontend\Texture\TextureCreator.h" />
+    <ClInclude Include="Frontend\Texture\warninglogo.h" />
+    <ClInclude Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.h" />
     <ClInclude Include="Frontend\Windows\DumpProgress.h" />
     <ClInclude Include="Frontend\Windows\EditWindow.h" />
     <ClInclude Include="Frontend\Windows\HelloWindow.h" />

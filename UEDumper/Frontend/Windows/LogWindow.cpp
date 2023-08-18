@@ -1,4 +1,5 @@
 #include "LogWindow.h"
+#include <Settings/EngineSettings.h>
 
 
 

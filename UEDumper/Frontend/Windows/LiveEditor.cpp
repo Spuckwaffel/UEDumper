@@ -1,6 +1,16 @@
 #include "LiveEditor.h"
 #include <vector>
+
+#include "LogWindow.h"
+#include "Engine/Core/Core.h"
+#include "Engine/Live/LiveMemory.h"
 #include "Engine/UEClasses/UnrealClasses.h"
+#include "Frontend/IGHelper.h"
+#include <Memory/Memory.h>
+#include <Engine/Userdefined/Datatypes.h>
+
+#include "Frontend/Fonts/fontAwesomeHelper.h"
+#include <Engine/Core/ObjectsManager.h>
 
 void windows::LiveEditor::renderAddAddress()
 {
@@ -510,10 +520,6 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "(Count: %d) 0x%llX", arr.Count, arr.Data);
 		
-		
-		//TODO: check
-
-
 		//nothing to show if data is invalid
 		if(arr.Data == nullptr || arr.Count <= 0)
 		{
@@ -1144,8 +1150,11 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 		}
 		else
 		{
-			const UObject obj = Memory::read<UObject>(classPointer);
-			superName = obj.getClass()->getCName();
+			//we cannot use enginecores functions because some objets arent in the object list generated
+			//for the SDK! So we have to do it all here and (most likely) read data multiple times
+			const auto obj = ObjectsManager::getUObject<UObject>(classPointer);
+			//TODO: fix!
+			superName = obj->getClass()->getCName();
 		}
 		if(superName == "nil")
 			goto tryAgain;

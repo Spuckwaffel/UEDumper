@@ -1,22 +1,24 @@
 // ReSharper disable CppPossiblyUnintendedObjectSlicing
 #include "UnrealClasses.h"
 
+#include "Engine/Core/Core.h"
+#include "Engine/Core/ObjectsManager.h"
+
+#define UREADORNULL(x,y) \
+    if (y)          \
+    {               \
+        return ObjectsManager::getUObject<x>(y);\
+    }               \
+    return nullptr;
+
 UObject* UObject::getOuter() const
 {
-    if (OuterPrivate)
-    {
-        return EngineCore::getUObject<UObject>(OuterPrivate);
-    }
-    return nullptr;
+    UREADORNULL(UObject, OuterPrivate)
 }
 
 UClass* UObject::getClass() const
 {
-    if (ClassPrivate)
-    {
-        return EngineCore::getUObject<UClass>(ClassPrivate);
-    }
-    return nullptr;
+    UREADORNULL(UClass, ClassPrivate)
 }
 
 
@@ -121,7 +123,7 @@ UObject* UObject::getPackageObject() const
 {
     if(const auto ptr = getPackageObjectFnPtr())
     {
-        return EngineCore::getUObject<UObject>(ptr);
+        return ObjectsManager::getUObject<UObject>(ptr);
     }
     return nullptr;
 }
@@ -200,47 +202,33 @@ bool UObject::IsA(const UClass* staticClass) const
 
 UClass* UObject::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Object");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Object");
 }
 
 UClass* AActor::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/Engine.Actor");
+    return ObjectsManager::findObject<UClass>("/Script/Engine.Actor");
 }
 
 UField* UField::getNext() const
 {
-    if (Next)
-    {
-        return EngineCore::getUObject<UField>(Next);
-    }
-    return nullptr;
+    UREADORNULL(UField, Next)
 }
 
 UClass* UField::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Field");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Field");
 }
 
 template <typename T>
 T* UStruct::getSuper()
 {
-    if (SuperStruct)
-    {
-        return EngineCore::getUObject<T>(SuperStruct);
-    }
-
-    return nullptr;
+    UREADORNULL(T, SuperStruct)
 }
 
 UStruct* UStruct::getSuper() const
 {
-    if (SuperStruct)
-    {
-        return EngineCore::getUObject<UStruct>(SuperStruct);
-    }
-
-    return nullptr;
+    UREADORNULL(UStruct, SuperStruct)
 }
 
 
@@ -257,31 +245,21 @@ std::vector<UObject*> UStruct::getAllSupers() const
 template <typename T>
 T* UStruct::getChildren()
 {
-    if (Children)
-    {
-        return EngineCore::getUObject<T>(Children);
-    }
-
-    return nullptr;
+    UREADORNULL(T, Children)
 }
 
 UField* UStruct::getChildren() const
 {
-    if (Children)
-    {
-        return EngineCore::getUObject<UField>(Children);
-    }
-
-    return nullptr;
+    UREADORNULL(UField, Children)
 }
 
 UClass* UStruct::staticClass()
 {
 #if UE_VERSION == UE_4_25 && USE_LOWERCASE_STRUCT
     //please can someone explain what the fuck they decided to write struct in lowercase
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.struct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.struct");
 #else
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Struct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Struct");
 #endif
 }
 
@@ -296,12 +274,12 @@ std::vector<TPair<FName, int64_t>> UEnum::getNames() const
 
 UClass* UEnum::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Enum");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Enum");
 }
 
 UClass* UScriptStruct::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ScriptStruct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ScriptStruct");
 }
 
 std::string UFunction::getFunctionFlagsString() const {
@@ -377,17 +355,17 @@ std::string UFunction::getFunctionFlagsString() const {
 
 UClass* UFunction::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Function");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Function");
 }
 
 UClass* UClass::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Class");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Class");
 }
 
 UClass* UProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Property");
 }
 
 int32_t UProperty::getOffset() const
@@ -436,169 +414,122 @@ fieldType UProperty::getType()
 
 UClass* UNumericProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.NumericProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.NumericProperty");
 }
 
 UEnum* UByteProperty::getEnum() const
 {
-    if (Enum)
-    {
-        return EngineCore::getUObject<UEnum>(Enum);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UEnum, Enum)
 }
 
 UClass* UByteProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ByteProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ByteProperty");
 }
 
 UEnum* UEnumProperty::getEnum() const
 {
-    if (Enum)
-    {
-        return EngineCore::getUObject<UEnum>(Enum);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UEnum, Enum)
 }
 
 UClass* UEnumProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.EnumProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.EnumProperty");
 }
 
 UClass* UMulticastDelegateProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.MulticastDelegateProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.MulticastDelegateProperty");
 }
 
 UClass* UDelegateProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.DelegateProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.DelegateProperty");
 }
 
 UProperty* UMapProperty::getKeyProp() const
 {
-    if (KeyProp)
-    {
-        return EngineCore::getUObject<UProperty>(KeyProp);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UProperty, KeyProp)
 }
 
 UProperty* UMapProperty::getValueProp() const
 {
-    if (ValueProp)
-    {
-        return EngineCore::getUObject<UProperty>(ValueProp);
-    }
-    return nullptr;
+    UREADORNULL(UProperty, ValueProp)
 }
 
 UClass* UMapProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.MapProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.MapProperty");
 }
 
 UProperty* USetProperty::getElementProp() const
 {
-    if (ElementProp)
-    {
-        return EngineCore::getUObject<UProperty>(ElementProp);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UProperty, ElementProp)
 }
 
 UProperty* UArrayProperty::getInner() const
 {
-    if (Inner)
-    {
-        return EngineCore::getUObject<UProperty>(Inner);
-
-    }
-    else
-        printf("no inner but array?");
-
-    return nullptr;
+    UREADORNULL(UProperty, Inner)
 }
 
 UClass* UArrayProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ArrayProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ArrayProperty");
 }
 
 UClass* UTextProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.TextProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.TextProperty");
 }
 
 UClass* UStrProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.StrProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.StrProperty");
 }
 
 UClass* UStructProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.StructProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.StructProperty");
 }
 
 UClass* UNameProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.NameProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.NameProperty");
 }
 
 UScriptStruct* UStructProperty::getStruct() const
 {
-    if (Struct)
-    {
-        return EngineCore::getUObject<UScriptStruct>(Struct);
-    }
-
-    return nullptr;
+    UREADORNULL(UScriptStruct, Struct)
 }
 
 UClass* ULazyObjectProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.LazyObjectProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.LazyObjectProperty");
 }
 
 UClass* UAssetClassProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.AssetClassProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.AssetClassProperty");
 }
 
 UClass* UAssetObjectProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.AssetObjectProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.AssetObjectProperty");
 }
 
 UClass* UWeakObjectProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.WeakObjectProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.WeakObjectProperty");
 }
 
 UProperty* UInterfaceProperty::getInterfaceClass() const
 {
-    if (InterfaceClass)
-    {
-        return EngineCore::getUObject<UProperty>(InterfaceClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UProperty, InterfaceClass)
 }
 
 UClass* UInterfaceProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.InterfaceProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.InterfaceProperty");
 }
 
 std::string UWeakObjectProperty::typeName()
@@ -608,39 +539,27 @@ std::string UWeakObjectProperty::typeName()
 
 UClass* UClassProperty::getMetaClass() const
 {
-    if (MetaClass)
-    {
-        return EngineCore::getUObject<UClass>(MetaClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UClass, MetaClass)
 }
 
 UClass* UClassProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ClassProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ClassProperty");
 }
 
 UClass* UObjectProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ObjectProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ObjectProperty");
 }
 
 UClass* UObjectPropertyBase::getPropertyClass() const
 {
-    if (PropertyClass)
-    {
-        return EngineCore::getUObject<UClass>(PropertyClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UClass, PropertyClass)
 }
 
 UClass* UObjectPropertyBase::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.ObjectPropertyBase");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ObjectPropertyBase");
 }
 
 
@@ -661,53 +580,53 @@ int UBoolProperty::getBitPosition(uint8_t byteMask)
 
 UClass* UBoolProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.BoolProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.BoolProperty");
 }
 
 UClass* UDoubleProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.DoubleProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.DoubleProperty");
 }
 
 UClass* UFloatProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.FloatProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.FloatProperty");
 }
 
 UClass* UInt8Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Int8Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Int8Property");
 }
 
 UClass* UInt16Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Int16Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Int16Property");
 }
 
 UClass* UIntProperty::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.IntProperty");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.IntProperty");
 }
 
 UClass* UInt64Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.Int64Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Int64Property");
 }
 
 UClass* UUInt16Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.UInt16Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.UInt16Property");
 }
 
 UClass* UUInt32Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.UInt32Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.UInt32Property");
 }
 
 
 UClass* UUInt64Property::staticClass()
 {
-    return EngineCore::findObject<UClass>("/Script/CoreUObject.UInt64Property");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.UInt64Property");
 }
 
 //from UnrealFinderTool
@@ -746,22 +665,21 @@ UBoolProperty::BitInfo UBoolProperty::getMissingBitsCount(const UBoolProperty& l
 
 #if UE_VERSION >= UE_4_25
 
+#define FREADORNULL(x,y) \
+    if (y)          \
+    {               \
+        return ObjectsManager::getFField<x>(y);\
+    }               \
+    return nullptr;
+
 FProperty* UStruct::getChildProperties() const
 {
-    if (ChildProperties)
-    {
-        return EngineCore::getFField<FProperty>(ChildProperties);
-    }
-    return nullptr;
+    FREADORNULL(FProperty, ChildProperties)
 }
 
 FProperty* FField::getNext() const
 {
-    if (Next)
-    {
-        return EngineCore::getFField<FProperty>(Next);
-    }
-    return nullptr;
+    FREADORNULL(FProperty, Next)
 }
 
 std::string FField::getName() const
@@ -786,7 +704,7 @@ fieldType FProperty::getType()
         return { false, PropertyType::Unknown, getName() };
     }
 
-    const auto objectClass = EngineCore::getFFieldClass(ClassPrivate);
+    const auto objectClass = ObjectsManager::getFFieldClass(ClassPrivate);
     switch (objectClass->Id)
     {
     case ECCF_FObjectProperty:
@@ -926,115 +844,60 @@ FBoolProperty::BitInfo FBoolProperty::getMissingBitsCount(const FBoolProperty& l
 
 UStruct* FStructProperty::getStruct() const
 {
-    if (Struct)
-    {
-        return EngineCore::getUObject<UStruct>(Struct);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UStruct, Struct)
 }
 
 FProperty* FArrayProperty::getInner() const
 {
-    if (Inner)
-    {
-        return EngineCore::getFField<FProperty>(Inner);
-    }
-    return nullptr;
+    FREADORNULL(FProperty, Inner)
 }
 
 
 UClass* FObjectPropertyBase::getPropertyClass() const
 {
-    if (PropertyClass)
-    {
-        return EngineCore::getUObject<UClass>(PropertyClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UClass, PropertyClass)
 }
 
 UClass* FSoftClassProperty::getMetaClass() const
 {
-    if (MetaClass)
-    {
-        return EngineCore::getUObject<UClass>(MetaClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UClass, MetaClass)
 }
 
 UEnum* FEnumProperty::getEnum() const
 {
-    if (Enum)
-    {
-    	return EngineCore::getUObject<UEnum>(Enum);
-    }
-
-    return nullptr;
+    UREADORNULL(UEnum, Enum)
 }
 
 UProperty* FInterfaceProperty::getInterfaceClass() const
 {
-    if (InterfaceClass)
-    {
-        return EngineCore::getUObject<UProperty>(InterfaceClass);
-
-    }
-
-    return nullptr;
+    UREADORNULL(UProperty, InterfaceClass)
 }
 
 FProperty* FMapProperty::getKeyProp() const
 {
-    if (KeyProp)
-    {
-        return EngineCore::getFField<FProperty>(KeyProp);
-
-    }
-
-    return nullptr;
+    FREADORNULL(FProperty, KeyProp)
 }
 
 FProperty* FMapProperty::getValueProp() const
 {
-    if (ValueProp)
-    {
-        return EngineCore::getFField<FProperty>(ValueProp);
-    }
-
-    return nullptr;
+    FREADORNULL(FProperty, ValueProp)
 }
 
 UEnum* FByteProperty::getEnum() const
 {
-    if (Enum)
-    {
-        return EngineCore::getUObject<UEnum>(Enum);
-    }
-
-    return nullptr;
+    UREADORNULL(UEnum, Enum)
 }
 
 FProperty* FSetProperty::getElementProp() const
 {
-    if (ElementProp)
-    {
-        return EngineCore::getFField<FProperty>(ElementProp);
-
-    }
-
-    return nullptr;
+    FREADORNULL(FProperty, ElementProp)
 }
 
 FFieldClass* FFieldPathProperty::getPropertyClass() const
 {
     if (PropertyClass)
     {
-        return EngineCore::getFFieldClass(PropertyClass);
+        return ObjectsManager::getFFieldClass(PropertyClass);
 
     }
 

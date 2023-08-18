@@ -1,5 +1,9 @@
 #include "EngineSettings.h"
 
+#include "Frontend/IGHelper.h"
+#include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Frontend/Windows/LogWindow.h"
+
 EngineSettings::EngineSettings()
 {
 

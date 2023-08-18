@@ -1,5 +1,8 @@
 #include "LiveMemory.h"
 
+#include "Frontend/Windows/LogWindow.h"
+#include "Memory/memory.h"
+
 
 void LiveMemory::memoryLoop()
 {

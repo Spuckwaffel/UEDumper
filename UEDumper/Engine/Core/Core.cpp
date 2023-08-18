@@ -3,13 +3,9 @@
 #include "FName_decryption.h"
 #include "../UEClasses/UnrealClasses.h"
 #include "../Userdefined/StructDefinitions.h"
+#include "Frontend/Windows/LogWindow.h"
 #include "Frontend/Windows/PackageViewerWindow.h"
-
-
-EngineCore::TypeUObjectArray EngineCore::getTUObject()
-{
-	return UObjectArray;
-}
+#include "Settings/EngineSettings.h"
 
 
 //https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp
@@ -145,43 +141,6 @@ std::string EngineCore::FNameToString(FName fname)
 	return finalName;
 }
 
-
-uint64_t EngineCore::getUObjectIndexPtr(int index)
-{
-	return *reinterpret_cast<uint64_t*>(pGObjectPtrArray + index * 24);
-}
-
-#if UE_VERSION >= UE_4_25
-
-uint64_t EngineCore::cacheFField(uint64_t gamePtr)
-{
-	uint64_t realAddress = pFFieldArray + linkedFFieldIndexCount * UOBJECT_MAX_SIZE;
-	Memory::read(reinterpret_cast<void*>(gamePtr), reinterpret_cast<void*>(realAddress), UOBJECT_MAX_SIZE);
-	*reinterpret_cast<uint64_t*>(realAddress) = gamePtr;
-	linkedFFieldPtrs.insert(std::pair(gamePtr, realAddress));
-	linkedFFieldIndexCount++;
-	return realAddress;
-}
-
-
-FFieldClass* EngineCore::getFFieldClass(void* gamePtr)
-{
-	auto ptr = reinterpret_cast<uint64_t>(gamePtr);
-	if (linkedFFieldClassPtrs.contains(ptr))
-	{
-		return reinterpret_cast<FFieldClass*>(linkedFFieldClassPtrs[ptr]);
-	}
-	//element is not cached, go add it
-	uint64_t realAddress = pFFieldClassArray + linkedFFieldClassIndexCount * sizeof(FFieldClass);
-	Memory::read(gamePtr, reinterpret_cast<void*>(realAddress), sizeof(FFieldClass));
-	*reinterpret_cast<uint64_t*>(realAddress) = ptr;
-	linkedFFieldClassPtrs.insert(std::pair(ptr, realAddress));
-	linkedFFieldClassIndexCount++;
-	return reinterpret_cast<FFieldClass*>(realAddress);
-}
-
-#endif
-
 uint64_t EngineCore::getOffsetAddress(const Offset& offset)
 {
 	if (!offset)
@@ -211,23 +170,6 @@ Offset EngineCore::getOffsetForName(const std::string& name)
 std::vector<Offset> EngineCore::getOffsets()
 {
 	return offsets;
-}
-
-
-void EngineCore::verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize)
-{
-
-	if (requiredSize > UOBJECT_MAX_SIZE)
-		throw std::runtime_error("required size way too large???");
-
-	if (bigObjectPtr->readSize < requiredSize)
-	{
-		//the real uobject ptr is actually at the buffer base
-		void* UObjectGamePtr = *reinterpret_cast<void**>(bigObjectPtr->object);
-		Memory::read(UObjectGamePtr, &bigObjectPtr->object, requiredSize);
-		*reinterpret_cast<void**>(bigObjectPtr->object) = UObjectGamePtr;
-		bigObjectPtr->readSize = requiredSize;
-	}
 }
 
 void EngineCore::generateUnknownBitMembers(const int count, const int offset, int& bitOffset, EngineStructs::Struct& eStruct, int* insertPosition)
@@ -779,8 +721,6 @@ EngineCore::EngineCore()
 {
 	static bool loaded = false;
 
-	
-
 	bSuccess = false;
 	if(!loaded)
 	{
@@ -808,31 +748,8 @@ EngineCore::EngineCore()
 		}
 #endif
 
-		const auto UObjectAddr = getOffsetAddress(getOffsetForName("OFFSET_GOBJECTS"));
-		if (!UObjectAddr)
-		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectAddress offset not found!");
-			return;
-		}
-		UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
-
-		windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "TUObject -> 0x%p", UObjectArray.Objects);
-		windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "TUObject elements: %d", UObjectArray.NumElements);
-
-#if UE_VERSION >= UE_4_25
-		//allocating a large enough buffer for all FFields using uobject size because that should be big enough
-		pFFieldArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CT * UOBJECT_MAX_SIZE));
-
-		pFFieldClassArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CLASSES_CT * sizeof(FFieldClass)));
-
-#endif
 		
-		if (!UObjectArray.Objects || !UObjectArray.NumElements)
-		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectArray seems empty!");
-			bSuccess = false;
-			return;
-		}
+
 		loaded = true;
 	}
 	
@@ -840,159 +757,20 @@ EngineCore::EngineCore()
 	
 }
 
-
-bool EngineCore::lastOperationSuccess()
+bool EngineCore::initSuccess()
 {
 	return bSuccess;
 }
-
-
-bool EngineCore::existsRealPtr(uint64_t UObjectPtr)
-{
-	const bool exists = linkedUObjectPtrs.contains(UObjectPtr);
-	if (!exists)
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "ERROR! Could not find ptr in linkedUObjectPtrs %llX!", UObjectPtr);
-		printf("ERROR! Could not find ptr in linkedUObjectPtrs %llX!\n", UObjectPtr);
-		//DebugBreak(); <- add for debugging purposes!
-		return false;
-	}
-
-	return true;
-}
-
-
-void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
-{
-	bSuccess = false;
-	status = CS_busy;
-	finishedBytes = 0;
-	totalBytes = UObjectArray.NumElements * 24;
-	pGObjectPtrArray = reinterpret_cast<uint64_t>(calloc(1, totalBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%p bytes of memory for GObjectPtrArray at 0x%p", totalBytes, pGObjectPtrArray);
-	if(!pGObjectPtrArray)
-	{
-		status = CS_error;
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for GObjectPtrArray!");
-		return;
-	}
-	
-
-#if UE_VERSION < UE_4_20
-	//no chunks
-	const uint64_t objectArrayStart = reinterpret_cast<uint64_t>(UObjectArray.Objects);
-
-	while (finishedBytes + 0x100 < totalBytes)
-	{
-		Memory::read(reinterpret_cast<void*>(objectArrayStart + finishedBytes), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), 0x100);
-		finishedBytes += 0x100;
-	}
-	const auto reminingBytes = totalBytes - finishedBytes;
-	Memory::read(reinterpret_cast<void*>(objectArrayStart + finishedBytes), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), reminingBytes);
-	finishedBytes += reminingBytes;
-	
-#else
-	//chunks apperared
-#if UE_VERSION == UE_4_20
-	constexpr auto numElementsPerChunk = 65 * 1024;
-#else
-	constexpr auto numElementsPerChunk = 64 * 1024;
-#endif
-	
-	constexpr auto chunkBytesSize = numElementsPerChunk * 24;
-	for(int i = 0; i < UObjectArray.NumChunks; i++)
-	{
-		//chunks are in objects* 
-		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(UObjectArray.Objects) + i * 8);
-		auto chunkBytesRead = 0;
-		printf("chunk %i from %llX to %llX\n", i, chunkStart, chunkStart + chunkBytesSize);
-		//256 bytes is good enough, a full chunk would take 6144 reads.
-		//if the cunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
-		while(finishedBytes + 0x100 < totalBytes && chunkBytesRead < chunkBytesSize)
-		{
-			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), 0x100);
-			chunkBytesRead += 0x100;
-			finishedBytes += 0x100;
-		}
-		//fixup the remaining bytes, should only apply for the latest elements in chunk X
-		if(finishedBytes + 0x100 > totalBytes && totalBytes - finishedBytes > 0)
-		{
-			const auto reminingBytes = totalBytes - finishedBytes;
-			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), reminingBytes);
-			finishedBytes += reminingBytes;
-		}
-	}
-
-#endif
-
-	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded GObjectPtrArray succesfully!");
-
-	bSuccess = true;
-}
-
-void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
-{
-	bSuccess = false;
-	finishedBytes = 0;
-	//only read UObjects atm
-	totalBytes = UObjectArray.NumElements * sizeof(UObject);
-	const auto allocatedBytes = UObjectArray.NumElements * sizeof(UBigObject);
-	status = CS_busy;
-	//allocate UOBJECT_MAX_SIZE bytes for every UObject
-	pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, allocatedBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, pUBigObjectArray);
-
-	if (!pUBigObjectArray)
-	{
-		status = CS_error;
-		
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
-		return;
-	}
-	
-
-	//go through each element
-	for(int32_t i = 0; i < UObjectArray.NumElements; i++)
-	{
-		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(pGObjectPtrArray + i * 24);
-		//this happens quite often, those objects just got deleted
-		//the array is like a block of cheese with holes
-		if (!UObjectAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for obect %d!", i);
-		}
-		else {
-			//gets the memory address where the objects gonna be
-			UBigObject* newBigObject = reinterpret_cast<UBigObject*>(pUBigObjectArray + i * sizeof(UBigObject));
-			newBigObject->readSize = sizeof(UObject);
-			//read the UObject inside the buffer with UOBJECT_MAX_SIZE bytes size
-			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, sizeof(UObject));
-
-			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
-			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
-
-			//link the list to the ptr
-			linkedUObjectPtrs.insert(std::pair(UObjectAddress, newBigObject));
-		}
-
-		finishedBytes += sizeof(UObject);
-	}
-	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray succesfully!");
-	bSuccess = true;
-}
-
 
 void EngineCore::cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopyStatus& status)
 {
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Caching FNames...");
 	status = CS_busy;
-	totalNames = UObjectArray.NumElements;
+	totalNames = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedNames = 0;
-	for (; finishedNames < UObjectArray.NumElements; finishedNames++)
+	for (; finishedNames < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedNames++)
 	{
-		const auto object = getUObjectIndex<UObject>(finishedNames);
+		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
 		//caches already if not cached, we dont have to use the result
 		auto res = object->getName();
 	}
@@ -1016,7 +794,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	}
 	std::unordered_map<std::string, std::vector<UObject*>> upackages;
 	//we first use the counter to iterate over all elements
-	totalPackages = UObjectArray.NumElements;
+	totalPackages = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedPackages = 0;
 
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "reading overriding structs....");
@@ -1026,9 +804,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
 	
-	for (; finishedPackages < UObjectArray.NumElements; finishedPackages++)
+	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
-		auto object = getUObjectIndex<UObject>(finishedPackages);
+		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
 		
 		
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())

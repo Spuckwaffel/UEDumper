@@ -1,6 +1,10 @@
 // ReSharper disable CppDeprecatedEntity
 #include "EditWindow.h"
 
+#include "LogWindow.h"
+#include "Engine/Core/Core.h"
+#include "Frontend/IGHelper.h"
+
 
 bool windows::EditWindow::overrideStruct(std::vector<NewType>& newTypes, char* buf)
 {
