@@ -50,8 +50,9 @@ void windows::LogWindow::setLogLevel(int level)
 void windows::LogWindow::render()
 {
 	const int logSize = logs.size();
-	ImGui::SetCursorPosY(ImGui::GetWindowSize().y - 310);
-	ImGui::BeginChild("Log", ImVec2(ImGui::GetWindowSize().x - 15, 300), true);
+	float BigWindowSizeY = ImGui::GetWindowSize().y;
+	ImGui::SetCursorPosY(ImGui::GetWindowSize().y - logWindowYSize);
+	ImGui::BeginChild("LogChild", ImVec2(ImGui::GetWindowSize().x - 15, logWindowYSize - 10), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 	//ImGui::SetWindowSize(ImVec2(1000, 300), ImGuiCond_Once);
 
 	if(autoScroll)
@@ -80,6 +81,21 @@ void windows::LogWindow::render()
 	ImGui::SameLine();
 	ImGui::Checkbox("Auto scroll", &autoScroll);
 	ImGui::SameLine();
+	ImGui::SetCursorPosX(ImGui::GetWindowSize().x / 2 - 30);
+	float windowYPos = ImGui::GetWindowPos().y;
+	if (ImGui::MoveButton("banenen", ImVec2(50, 30), &windowYPos)) {
+		//logging
+		//printf("%.2f\n", logWindowYSize);
+		logWindowYSize = BigWindowSizeY - windowYPos;
+		//set limits
+		if (logWindowYSize < 50)
+			logWindowYSize = 50;
+
+		else if (logWindowYSize > 600)
+			logWindowYSize = 600;
+	}
+	ImGui::SameLine();
+	
 	ImGui::SetCursorPosX(ImGui::GetWindowSize().x - ImGui::CalcTextSize("Showing 999 logs").x - 80);
 
 	if (ImGui::ArrowButton("logrange_btn_left", ImGuiDir_Left) && logRange >= 40)
@@ -138,6 +154,11 @@ std::string windows::LogWindow::getLastLogMessage()
 	//returning a copy and not a reference
 	//also returning a index rather than calling back because i dont trust back
 	return logs[logs.size() - 1].message;
+}
+
+float windows::LogWindow::getLogWindowYSize()
+{
+	return logWindowYSize;
 }
 
 void windows::LogWindow::topmostCallback()

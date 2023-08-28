@@ -38,6 +38,8 @@ namespace windows
 		static inline int logRange = 100;
 		static inline bool autoScroll = true;
 
+		static inline float logWindowYSize = 310;
+
 
 		static inline int logLevel = log_0;
 
@@ -59,6 +61,8 @@ namespace windows
 		static void renderEditPopup();
 
 		static std::string getLastLogMessage();
+
+		static float getLogWindowYSize();
 
 		/**
 		 * \brief callback function that has to get called at the end of every frame in case
