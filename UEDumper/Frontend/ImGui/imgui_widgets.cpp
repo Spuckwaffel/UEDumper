@@ -1294,6 +1294,7 @@ bool ImGui::MoveButton(const char* str_id, ImVec2 buttonSize, float* newCalculat
         return false;
 
     window->DrawList->AddRectFilled(bb.Min, bb.Max, GetColorU32(ImGuiCol_Button), 4);
+    window->DrawList->AddText({ bb.Min.x + buttonSize.x / 2 - CalcTextSize("-").x / 2, bb.Min.y}, GetColorU32(ImGuiCol_Text), "-");
 
     bool hovered, held;
     bool pressed = ButtonBehavior(bb, id, &hovered, &held, ImGuiButtonFlags_None);

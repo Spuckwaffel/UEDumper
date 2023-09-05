@@ -170,6 +170,8 @@ bool windows::DumpProgress::render()
 			//no progress bar if status is unknown
 			goto skip;
 		}
+
+
 		ImGui::ProgressBar(progress, ImVec2(480, 30));
 		skip: {
 			//-

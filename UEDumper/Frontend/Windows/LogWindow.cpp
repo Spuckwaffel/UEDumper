@@ -50,7 +50,7 @@ void windows::LogWindow::setLogLevel(int level)
 void windows::LogWindow::render()
 {
 	const int logSize = logs.size();
-	float BigWindowSizeY = ImGui::GetWindowSize().y;
+	const float BigWindowSizeY = ImGui::GetWindowSize().y;
 	ImGui::SetCursorPosY(ImGui::GetWindowSize().y - logWindowYSize);
 	ImGui::BeginChild("LogChild", ImVec2(ImGui::GetWindowSize().x - 15, logWindowYSize - 10), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 	//ImGui::SetWindowSize(ImVec2(1000, 300), ImGuiCond_Once);
@@ -83,7 +83,7 @@ void windows::LogWindow::render()
 	ImGui::SameLine();
 	ImGui::SetCursorPosX(ImGui::GetWindowSize().x / 2 - 30);
 	float windowYPos = ImGui::GetWindowPos().y;
-	if (ImGui::MoveButton("banenen", ImVec2(50, 30), &windowYPos)) {
+	if (ImGui::MoveButton("logwindowmover", ImVec2(50, 30), &windowYPos)) {
 		//logging
 		//printf("%.2f\n", logWindowYSize);
 		logWindowYSize = BigWindowSizeY - windowYPos;

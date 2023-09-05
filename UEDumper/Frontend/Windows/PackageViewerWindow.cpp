@@ -918,7 +918,7 @@ bool windows::PackageViewerWindow::render()
 	if (alreadyCompleted) return true;
 
     ImGui::SameLine();
-	ImGui::BeginChild("PackageViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("PackageViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	
     
     if (ImGui::BeginTabBar("PackageTabtab", ImGuiTabBarFlags_Reorderable))

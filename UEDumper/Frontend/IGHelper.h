@@ -106,6 +106,8 @@ public:
 
 	static ImVec4 colToVec(float r, float g, float b, float a);
 
+	static ImVec4 updateRGBColor(ImVec4 col, float highestVar = 255, float minVar = 0, int step = 2);
+
 	//places a text in center
 	static void placeInCenter(const std::string& st, float off = 0);
 

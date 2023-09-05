@@ -365,9 +365,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
 
-	if (eStruct.cppName == "UWorld")
-		DebugBreak();
-
 	cookMemberArray(eStruct);
 
 	data.push_back(eStruct);
@@ -1148,7 +1145,7 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int& totalProgress)
 {
 	progressDone = 0;
-	totalProgress = 1;
+	totalProgress = 11;
 	std::ifstream file(filepath, std::ios::binary | std::ios::ate);
 	if (!file) {
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Error opening file!");
@@ -1172,9 +1169,8 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 		return false;
 	}
 
+	progressDone++;
 	//seems like you found the easteregg that i encrypt the project with aes
-	
-
 	const char* key = "UEDumper secret!";
 
 	AES aes(AESKeyLength::AES_128);
@@ -1193,7 +1189,7 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 
 	const nlohmann::json UEDProject = nlohmann::json::parse(c);
 
-	totalProgress = 10;
+	
 	
 	delete[] c;
 

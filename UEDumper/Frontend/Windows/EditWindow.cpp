@@ -97,7 +97,7 @@ void windows::EditWindow::renderEditField()
     ImGui::Text("If you are unsure about any column or what name to give, please look at StructDefinitions.h as a reference.");
     ImGui::Text("Offset and size field require a hexadecimal number.");
     ImGui::TextColored(IGHelper::Colors::classOrange,
-		"You are currently overriding the member %s at offset 0x%llX with a size of 0x%llX bytes!", edit.editMember->name.c_str(), edit.editMember->offset, edit.editMember->size);
+		"You are currently overriding the member %s at offset 0x%llX with a size of 0x%X bytes!", edit.editMember->name.c_str(), edit.editMember->offset, edit.editMember->size);
 
     if (ImGui::Button("Add new Member"))
     {
@@ -147,7 +147,7 @@ void windows::EditWindow::renderEditField()
 		    ImGui::TableSetupColumn("PropertyName##2EditsTable", 0, 140);
 	    }
     }
-    ImGui::TableSetupColumn("Name##EditsTable", 0, 140);
+    ImGui::TableSetupColumn("Member name##EditsTable", 0, 140);
     ImGui::TableSetupColumn("Bit Offset##EditsTable", 0, 90);
     ImGui::TableSetupColumn("Offset##EditsTable", 0, 60);
     ImGui::TableSetupColumn("Size##EditsTable", 0, 60);

@@ -1583,6 +1583,7 @@ enum ImGuiCol_
     ImGuiCol_PlotLines,
     ImGuiCol_PlotLinesHovered,
     ImGuiCol_PlotHistogram,
+    ImGuiCol_PlotHistogram_GRAD,
     ImGuiCol_PlotHistogramHovered,
     ImGuiCol_TableHeaderBg,         // Table header background
     ImGuiCol_TableBorderStrong,     // Table outer and header borders (prefer using Alpha=1.0 here)

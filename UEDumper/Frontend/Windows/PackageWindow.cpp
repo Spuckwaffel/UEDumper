@@ -93,7 +93,8 @@ bool windows::PackageWindow::render()
 	static char CNameSearch[100] = {0};
 
 	ImGui::SetCursorPosY(35);
-	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - 350), true,  ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true,  ImGuiWindowFlags_NoScrollbar);
+
 	ImGui::Text("%d Packages", EngineCore::getPackages().size());
 	if (ImGui::BeginListBox("##packageslist", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 80)))
 	{
