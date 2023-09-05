@@ -152,6 +152,10 @@ public:
 	static inline int _USTRUCT_FAST_ISCHILDOF_IMPL = 0;
 	static inline int _WITH_EDITORONLY_DATA = 0;
 
+	//macros that can be chnged at runtime
+
+	//checks if the first name is /Script/Core.UObject
+	static inline int _FNAME_CHECK = TRUE;
 
 	static void loadMacros()
 	{
