@@ -14,7 +14,7 @@
 *
 ************************************************************************************************/
 
-//Dumper version. Do not change this!
+//Dumper versions. Do not change this!
 #define RELEASE_1_1_BETA	0
 #define RELEASE_1_1_FINAL	1
 #define RELEASE_1_2_BETA	2
@@ -22,8 +22,11 @@
 #define RELEASE_1_3_BETA	4
 #define RELEASE_1_3_FINAL	5
 #define RELEASE_1_4_BETA	6
+#define RELEASE_1_4_FINAL	7
+#define RELEASE_1_5_BETA	8
+#define RELEASE_1_5_FINAL	9
 
-#define DUMPER_VERSION RELEASE_1_4_BETA
+#define DUMPER_VERSION RELEASE_1_5_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -49,7 +52,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_02
+#define UE_VERSION UE_5_01
 
 
 /* FName settings */

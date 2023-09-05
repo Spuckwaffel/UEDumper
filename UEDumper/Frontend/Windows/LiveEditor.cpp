@@ -74,7 +74,7 @@ void windows::LiveEditor::renderAddAddress()
 				return;
 			}
 				
-
+			LogWindow::Log(LogWindow::log_0, "LIVE", "Looking for %s...", structName.c_str());
 			const auto info = EngineCore::getInfoOfObject(structName);
 			if (info.packageIndex == -1) { //invalid!
 				sprintf_s(errorText, "Object not found in the packages!");
@@ -689,7 +689,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc,
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "(");
 		ImGui::SameLineEx(0);
-		for (const auto& subMember : subStruct.members)
+		for (const auto& subMember : subStruct.definedMembers)
 		{
 			//simple drawing otherwise its too long
 			drawNonclickableMember(subMember, block, offset, secret, true);
@@ -936,7 +936,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 	//ImGui::TextColored(IGHelper::Colors::grayedOut, secret.c_str());
 
 	//iterate through all the members of the struct
-	for (const auto& member : struc.members)
+	for (const auto& member : struc.definedMembers)
 	{
 		//ignore missed members
 		if (member.missed)

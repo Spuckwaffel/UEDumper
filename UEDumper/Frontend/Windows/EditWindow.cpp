@@ -10,11 +10,6 @@ bool windows::EditWindow::overrideStruct(std::vector<NewType>& newTypes, char* b
 {
 	bool success = false;
 
-	auto it = std::ranges::find(edit.editStruct->members, *edit.editMember);
-	if(it == edit.editStruct->members.end())
-		throw std::runtime_error("editmember not found in struct! Something is wrong!");
-
-	auto pos = std::distance(edit.editStruct->members.begin(), it);
 
 	std::vector<EngineStructs::Member> members;
 	for (int j = 0; j < newTypes.size(); j++)
@@ -75,7 +70,7 @@ bool windows::EditWindow::overrideStruct(std::vector<NewType>& newTypes, char* b
 	if (success)
 	{
 		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Updating Struct!");
-		EngineCore::runtimeOverrideStructMembers(edit.editStruct, members, pos);
+		EngineCore::runtimeOverrideStructMembers(edit.editStruct, members);
 		return true;
 	}
 	return false;

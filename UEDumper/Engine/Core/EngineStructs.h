@@ -108,7 +108,7 @@ namespace EngineStructs
 		int size = 0; //size of the member
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
-		int bitOffset = 0;
+		int bitOffset = 0; //the offset of the bit (0 if not bit)
 		bool userEdited = false; //if the member is edited by a user
 
 		bool operator==(Member obj) const { return obj.name == name && obj.offset == offset && obj.bitOffset == bitOffset; }
@@ -200,7 +200,9 @@ namespace EngineStructs
 		int size = 0; //true size of the struct
 		int inheretedSize = 0; //size of the inherited structs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
-		std::vector<Member> members{}; //array of all members of the struct
+		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
+		std::vector<Member> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
+		//std::vector<Member> deprecated_members{}; //array of all members of the struct DEPRECATED
 		std::vector<Function> functions{}; //array of all functions of the struct
 
 		bool operator==(const Struct& st) const
@@ -221,7 +223,7 @@ namespace EngineStructs
 			j["inheretedSize"] = inheretedSize;
 			j["unknownCount"] = unknownCount;
 			nlohmann::json jMembers;
-			for (const auto& member : members)
+			for (const auto& member : definedMembers)
 				jMembers.push_back(member.toJson());
 			j["members"] = jMembers;
 			nlohmann::json jFunctions;
@@ -244,9 +246,10 @@ namespace EngineStructs
 			s.inheretedSize = json["inheretedSize"];
 			s.unknownCount = json["unknownCount"];
 			for (const nlohmann::json& member : json["members"])
-				s.members.push_back(Member::fromJson(member));
+				s.definedMembers.push_back(Member::fromJson(member));
 			for (const nlohmann::json& fn : json["functions"])
 				s.functions.push_back(Function::fromJson(fn));
+
 
 			return s;
 		}

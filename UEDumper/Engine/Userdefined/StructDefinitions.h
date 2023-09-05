@@ -44,7 +44,7 @@ inline void overrideStructs()
 	uObject.isClass = true; //is it a class? - Yes
 
 	int uObjectOffset = 0; //just creating a variable for the offset that increases with the members (makes it a lot easier)
-	uObject.members = std::vector<EngineStructs::Member>{
+	uObject.definedMembers = std::vector<EngineStructs::Member>{
 		// a void** is not clickable! The property is a ObjectProperty indicates that its a object (which means basically anything)
 		{{false,		PropertyType::ObjectProperty,	"void**"},		"vtable",				uObjectOffset, 8},
 		// a enum is clickable! The property is a EnumProperty because, well, its a enum. We can freely use the typename EObjectFlags even if
@@ -79,7 +79,7 @@ inline void overrideStructs()
 	//but in our case UField just inherits from UObject.
 	uField.supers = std::vector<std::string>{ "UObject"}; 
 	constexpr int uFieldOffet = sizeof(UObject);
-	uField.members = std::vector<EngineStructs::Member> {
+	uField.definedMembers = std::vector<EngineStructs::Member> {
 		{{true,		PropertyType::ObjectProperty,	"UField"},		"Next",				uFieldOffet, 8}
 	};
 	//add the struct/class
@@ -106,7 +106,7 @@ inline void overrideStructs()
 	//but in our case UField just inherits from UObject.
 	uStruct.supers = std::vector<std::string>{ "UField","UObject" };
 	int uStructOffet = sizeof(UField);
-	uStruct.members = std::vector<EngineStructs::Member>{
+	uStruct.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,	"UStruct"},		"SuperStruct",				uStructOffet, 8},
 		{{true,		PropertyType::ObjectProperty,	"UField"},		"Children",				uStructOffet += 8, 8}
 	};
@@ -128,7 +128,7 @@ inline void addStructs()
 	Fname.inherited = false;
 	int FnameOffset = 0;
 	//of course we can also use defines, just be careful
-	Fname.members =  std::vector<EngineStructs::Member>{
+	Fname.cookedMembers =  std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::IntProperty,		"int"},		"ComparisonIndex",		0, 4},
 		#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER
@@ -156,7 +156,7 @@ inline void addStructs()
 	Tarray.size = sizeof(TArray<uint64_t>);
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
-	Tarray.members = std::vector<EngineStructs::Member>{
+	Tarray.definedMembers = std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::ObjectProperty,	"T*"},			"Data",		TarrayOffset, 8},
 		{{false,		PropertyType::IntProperty,		"int"},		"Count",		TarrayOffset += 8, 4},
 		{{false,		PropertyType::IntProperty,		"int"},		"Max",			TarrayOffset += 4, 4},
@@ -191,7 +191,7 @@ inline void overrideUnknownMembers()
 	EngineStructs::Struct Engine;
 	Engine.fullName = "/Script/Engine.Engine";
 	Engine.cppName = "UEngine";
-	Engine.members = std::vector<EngineStructs::Member>{
+	Engine.definedMembers = std::vector<EngineStructs::Member>{
 		//we can use the typename FSimpleMulticastDelegate even if its not defined in the engine at all, but thats still fine
 		{{true,		PropertyType::MulticastDelegateProperty,	"FSimpleMulticastDelegate"},			"OnPostEngineInit",		sizeof(UObject), 8},
 		

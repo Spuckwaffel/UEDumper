@@ -133,7 +133,7 @@ namespace DumpsHost
                     }
                     nlohmann::json members = nlohmann::json::array();
 
-                    for (auto& member : struc.members)
+                    for (auto& member : struc.definedMembers)
                     {
                         if (member.missed)
                             continue;

@@ -98,6 +98,8 @@ private:
 
 	friend class ObjectsManager;
 
+	friend struct EngineStructs::Struct;
+
 	//general bSuccess var to store the latest operations success value in the dump progress.
 	inline static bool bSuccess = false;
 
@@ -128,34 +130,6 @@ private:
 	
 
 	/**
-	 * \brief generates unknown bit members inside the EngineStructs::Struct but also checks for user defined bit members
-	 * \param count amount of unknown bits
-	 * \param offset offset of the bits inside the struct
-	 * \param bitOffset bit offset inside the offset (automatically increases the counter)
-	 * \param eStruct Struct where the members are going to be added
-	 * \param insertPosition the position of the vector where we add the data, leave nullptr if you want to add it at the end of the vector
-	 */
-	static void generateUnknownBitMembers(int count, int offset, int& bitOffset, EngineStructs::Struct& eStruct, int* insertPosition = nullptr);
-
-	/**
-	 * \brief generates a unknownMember inside the EngineStructs::Struct
-	 * \param fromOffset starting offset
-	 * \param toOffset ending offset (excluded)
-	 * \param eStruct Struct where the member is going to be added
-	 * \param insertPosition the position of the vector where we add the data, leave nullptr if you want to add it at the end of the vector
-	 */
-	static void generateUnknownMember(int fromOffset, int toOffset, EngineStructs::Struct& eStruct, int* insertPosition = nullptr);
-
-	/**
-	 * \brief tries to replace unknown member blocks with user defined data
-	 * \param newMemberOffset the offset that should be reached
-	 * \param currentOffset the current offset before the newest var
-	 * \param eStruct current Struct where the members get added to
-	 * \param insertPosition the position of the vector where we add the data, leave nullptr if you want to add it at the end of the vector
-	 */
-	static void findOverrideMember(int newMemberOffset, int currentOffset, int& currentBitOffset, EngineStructs::Struct& eStruct, int* insertPosition = nullptr);
-
-	/**
 	 * \brief generates all the members for the specific struct or class
 	 * \param object UStruct from memory with all its data
 	 * \param data Struct where the members are going to be added
@@ -175,6 +149,19 @@ private:
 	* \param data Function where the function is going to be added
 	*/
 	static bool generateFunctions(const UStruct* object, std::vector<EngineStructs::Function>& data);
+
+	/**
+	 * \brief adds a member to the member array in case it has place. Only use after generation of the members.
+	 * \param eStruct the target struct
+	 * \param member the member
+	 */
+	static bool RUNAddMemberToMemberArray(EngineStructs::Struct& eStruct, const EngineStructs::Member& member);
+
+	/**
+	 * \brief (re)generates the cookedmembers array in the given struct
+	 * \param eStruct the struct where the cookedmembers array should be (re)generated
+	 */
+	static void cookMemberArray(EngineStructs::Struct& eStruct);
 	
 public:
 
@@ -243,22 +230,29 @@ public:
 	static std::vector<std::string>& getAllUnknownTypes();
 
 	/**
-	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides a existing struct with user defined data
+	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides a existing struct with user defined data.
+	 * When calling overrideStruct, the engine will skip the entire struct defined by the game. Creating a
+	 * invalid struct that doesnt match the size that the game expects will most likely result in broken
+	 * SDKs and live editor crashes.
 	 * \param eStruct the struct filled with the data
 	 */
 	static void overrideStruct(EngineStructs::Struct& eStruct);
 
 	/**
-	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Creates a new struct that gets added to the BasicTypes package
+	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Creates a new struct that gets added to the BasicTypes package.
+	 * Use this to create structs the game has but arent present in the SDK. 
 	 * \param eStruct the struct that gets created
 	 */
 	static void createStruct(const EngineStructs::Struct& eStruct);
 
 	/**
-	 * \brief USE ONLY BEFORE PACKAGE GENERATION! overrides (only!) unknown member blocks  or bits with user defined members
+	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides (only!) unknown member blocks or bits with user defined members.
+	 * If you try to override a existing and valid member, it gets not overridden.
 	 * \param eStruct the struct with members that get added to the existing struct
 	 */
 	static void overrideStructMembers(const EngineStructs::Struct& eStruct);
+
+	
 
 	/**
 	 * \brief RUNTIME ONLY! USE ONLY AFTER PACKAGE GENERATION!
@@ -267,7 +261,7 @@ public:
 	 * \param members vector of members to be added
 	 * \param index the member index (that has to be flagged as missed) block of the struct that gets overridden
 	 */
-	static void runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, std::vector<EngineStructs::Member> members, int index);
+	static void runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, const std::vector<EngineStructs::Member>& members);
 
 	/**
 	 * \brief ONLY AFTER FULL PACKAGE GENERATION!

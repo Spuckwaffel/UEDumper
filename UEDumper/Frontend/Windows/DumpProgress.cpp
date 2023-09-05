@@ -100,6 +100,7 @@ bool windows::DumpProgress::render()
 			bIsBusy = false;
 			LogWindow::Log(LogWindow::log_0, "DUMPPROGRESS", "Finished everything with %d memory operations!", Memory::getTotalReads());
 
+			ObjectsManager::setSDKGenerationDone();
 			EngineSettings::setLiveEditor(true);
 
 		}))).reset();
