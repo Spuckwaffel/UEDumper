@@ -2,7 +2,9 @@
 #include "stdafx.h"
 
 #include "Engine/structs.h"
-#include "UnrealClasses.h"
+#include "Engine/Core/Core.h"
+#include "Engine/Core/ObjectsManager.h"
+#include "Engine/Userdefined/Datatypes.h"
 
 //any linked source code means that since then the code works and is unchanged
 // more links means any changes in the versions
@@ -76,7 +78,7 @@ public:
 	T* castTo()
 	{
 		//T obj = EngineCore::getUObject<T>(reinterpret_cast<uint64_t>(getOwnPointer()));
-		return EngineCore::getUObjectIndex<T>(InternalIndex);
+		return ObjectsManager::getUObjectByIndex<T>(InternalIndex);
 	}
 
 	bool IsA(const UClass* cmp) const;
@@ -917,7 +919,7 @@ public:
 	T* castTo()
 	{
 		//T obj = EngineCore::getUObject<T>(reinterpret_cast<uint64_t>(getOwnPointer()));
-		return EngineCore::getFField<T>(objectptr);
+		return ObjectsManager::getFField<T>(objectptr);
 	}
 };
 

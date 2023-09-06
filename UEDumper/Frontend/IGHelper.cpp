@@ -177,6 +177,7 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
         colors[ImGuiCol_PlotLines] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
         colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
         colors[ImGuiCol_PlotHistogram] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
+        colors[ImGuiCol_PlotHistogram_GRAD] = colToVec(255, 200, 0, 255);
         colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.00f, 0.00f, 1.00f);
         colors[ImGuiCol_TableHeaderBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
         colors[ImGuiCol_TableBorderStrong] = ImVec4(0.00f, 0.00f, 0.00f, 0.52f);
@@ -189,6 +190,7 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
         colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 0.00f, 0.00f, 0.70f);
         colors[ImGuiCol_NavWindowingDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.20f);
         colors[ImGuiCol_ModalWindowDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.35f);
+
 
         ImGuiStyle& style = ImGui::GetStyle();
         style.WindowPadding = ImVec2(8.00f, 8.00f);
@@ -358,4 +360,59 @@ ImFont* IGHelper::getFaFont()
 ImVec4 IGHelper::colToVec(const float r, const float g, const float b, const float a)
 {
     return ImVec4(r / 255, g / 255, b / 255, a / 255);
+}
+
+ImVec4 IGHelper::updateRGBColor(ImVec4 col, float highestVar, float minVar, int step)
+{
+    float r = col.x * 255;
+    float g = col.y * 255;
+    float b = col.z * 255;
+#define fixAndRet(l) \
+	if(l > highestVar) \
+		l = highestVar;\
+    else if (l < minVar) \
+        l = minVar; \
+    return colToVec(r, g, b, col.w * 255);
+
+    if(r == highestVar)
+    {
+        if(b > minVar)
+        {
+            b -= step;
+            fixAndRet(b);
+        }
+	    if(g < highestVar)
+	    {
+            g += step;
+            fixAndRet(g);
+	    }
+    }
+    if(g == highestVar)
+    {
+	    if(r > minVar)
+	    {
+            r -= step;
+            fixAndRet(r);
+	    }
+        if (b < highestVar)
+        {
+            b += step;
+            fixAndRet(b);
+        }
+    }
+    if(b == highestVar)
+    {
+        if (g > minVar)
+        {
+            g -= step;
+            fixAndRet(g);
+        }
+        if (r < highestVar)
+        {
+            r += step;
+            fixAndRet(r);
+        }
+    }
+    //this is a invalid state, fix by setting one var to max to trigger a state
+    return {highestVar / 255, col.y, col.z, col.w};
 }

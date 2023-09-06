@@ -3,7 +3,12 @@
 #include "LiveEditor.h"
 #include "DumpProgress.h"
 #include "HelloWindow.h"
+#include "LogWindow.h"
 #include "PackageWindow.h"
+#include "Frontend/IGHelper.h"
+#include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Frontend/Texture/TextureCreator.h"
+#include "Settings/EngineSettings.h"
 
 void windows::TopRowButtons::renderHelpWindow()
 {
@@ -94,10 +99,14 @@ void windows::TopRowButtons::renderTopRowButtons()
         
         ImGui::EndPopup();
     }
-    if (ImGui::BeginPopup("ProjectPopup") && !dumping)
+    if (ImGui::BeginPopup("ProjectPopup"))
     {
-        PackageWindow::renderProjectPopup();
-        HelloWindow::renderProjectPopup();
+        if (!dumping)
+        {
+            PackageWindow::renderProjectPopup();
+            HelloWindow::renderProjectPopup();
+        }
+        
         ImGui::EndPopup();
     }
 

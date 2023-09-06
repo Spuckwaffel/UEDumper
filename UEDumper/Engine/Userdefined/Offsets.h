@@ -92,6 +92,7 @@ struct Offset
 //examples:
 //for uworld: STAT_UGameEngine_Tick_TickWorldTravel or seamlesstravel
 //fnametostring: E8 ? ? ? ? 83 7D E8 00 4C 8D 05 ? ? ? ? 48 8D 15 ? ? ? ? follow the sub // WorldPartitionLevelStreaming_%s and sub above
+//or 48 8D 0D ? ? ? ? E8 ? ? ? ? 4C 8B C0 C6 05
 //gobjects: 48 8B 05 ? ? ? ? 48 8B 0C C8 48 8D 04 D1 48 85 C0
 
 /// Example:
@@ -106,6 +107,19 @@ inline std::vector<Offset> setOffsets()
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x76846C0 });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x7723D90 });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x78915F8 });
+
+
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x3CA2540 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x3CDE9E0 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x3E22258 });
+
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x5B8D390 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x5B918B8 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x5C80950 });
+
+	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x4D01930 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x4E0EFF0 });
 
 	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, 
 	//	"\x48\x8d\x0d\x00\x00\x00\x00\xe8\x00\x00\x00\x00\xc6\x05\x00\x00\x00\x00\x00\x0f\x10\x03", "xxx????x????xx?????xxx" });

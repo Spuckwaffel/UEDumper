@@ -1,5 +1,10 @@
 #include "HelloWindow.h"
 
+#include "Frontend/IGHelper.h"
+#include <Frontend/Texture/TextureCreator.h>
+#include <Settings/EngineSettings.h>
+#include <Frontend/Fonts/fontAwesomeHelper.h>
+#include <Memory/Memory.h>
 
 
 windows::HelloWindow::HelloWindow()
