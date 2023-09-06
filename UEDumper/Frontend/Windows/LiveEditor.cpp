@@ -1305,7 +1305,7 @@ bool windows::LiveEditor::renderQuitPopup()
 void windows::LiveEditor::renderLiveEditor()
 {
 
-	ImGui::BeginChild("LiveTabChild", ImVec2(330, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("LiveTabChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	if(ImGui::Button("Add Inspector"))
 		bRenderAddInspector = true;
 	if (ImGui::BeginListBox("##liveInspectorList", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
@@ -1324,7 +1324,7 @@ void windows::LiveEditor::renderLiveEditor()
 	}
 	ImGui::EndChild();
 	ImGui::SameLine();
-	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_HorizontalScrollbar);
+	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_HorizontalScrollbar);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 	//looks like we have to render a struct
 	if(tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
