@@ -242,82 +242,15 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 					windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
 					continue;
 				}
-				//offset mismatch?
-				if (currentOffset < member.offset)
-				{
-					//maybe the user defined that unknown block
-					findOverrideMember(member.offset, currentOffset, bitOffset, eStruct);
-
-					//if the bitoffset is 0 it indicates that the last item was not a bit -> reset prevbitfield
-					//otherwise save
-					if (bitOffset == 0)
-						prevBitField = prevBitProp();
-					else
-						prevBitField = { currentOffset - 1, bitOffset - 1 }; //-1 because both update and we need to get the item before
-
-					//fix offset
-					currentOffset = member.offset + member.size;
-				}
 				if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())
 				{
 					auto boolProp = child->castTo<UBoolProperty>();
 
 					const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
-
-					//does a previous bitfield exist and is the bitbos not 0?
-					if (prevBitField.offset == -1 && bitPos > 0)
-					{
-						generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-					}
-					//bitpos higher than expected?
-					else if (prevBitField.offset == member.offset && bitPos > prevBitField.bitOffset + 1)
-					{
-						generateUnknownBitMembers(bitPos - prevBitField.bitOffset - 1, member.offset, bitOffset, eStruct);
-					}
-					//member offset 1 larger than expected?
-					else if (member.offset > prevBitField.offset && prevBitField.offset != -1)
-					{
-						//make sure old offset has 8 bits
-						generateUnknownBitMembers(8 - prevBitField.bitOffset - 1, prevBitField.offset, bitOffset, eStruct);
-						if (bitPos > 0)
-							generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-					}
-
-					prevBitField = { member.offset, bitPos };
 					member.isBit = true;
-					member.bitOffset = bitOffset++;
-					bitOffset = bitOffset % 8;
+					member.bitOffset = bitPos;
 				}
-				else
-				{
-					//before the last field was a bitfield, check if maybe user defined bits are there too
-					if (bitOffset != 0 && overridingStructMembers.contains(eStruct.fullName))
-					{
-						auto& oStruct = overridingStructMembers[eStruct.fullName];
-						for (auto& missingMember : oStruct.members)
-						{
-							if (missingMember.bitOffset >= 99 || //member already used go to next one, we use this as a used flag
-								!missingMember.isBit || //no bit? Continue
-								missingMember.offset != (currentOffset - 1)) //wrong offset? Continue
-								continue;
-
-							if (missingMember.bitOffset < bitOffset) //already defined
-								continue;
-
-							int diff = missingMember.bitOffset - bitOffset;
-							if (diff > 0)
-								generateUnknownBitMembers(diff, currentOffset - 1, bitOffset, eStruct);
-							bitOffset = missingMember.bitOffset;
-							missingMember.type.name = TYPE_BOOLEAN;
-							eStruct.members.push_back(missingMember);
-						}
-					}
-					prevBitField = prevBitProp();
-					bitOffset = 0;
-				}
-
-				currentOffset = member.offset + member.size;
-				eStruct.members.push_back(member);
+				eStruct.definedMembers.push_back(member);
 			}
 		}
 	}

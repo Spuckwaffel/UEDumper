@@ -266,7 +266,7 @@ UClass* UStruct::staticClass()
 std::vector<TPair<FName, int64_t>> UEnum::getNames() const
 {
     std::vector<TPair<FName, int64_t>> vec(Names.Count);
-    
+
     Memory::read(Names.Data, vec.data(), sizeof(TPair<FName, int64_t>) * Names.Count);
 
     return vec;
