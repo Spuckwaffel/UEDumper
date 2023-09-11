@@ -187,7 +187,7 @@ public:
 	FStructBaseChain baseChainInheritance;
 #endif
 #endif
-
+	
 	/** Struct this inherits from, may be null */
 	UStruct*	SuperStruct;
 

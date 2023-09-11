@@ -240,6 +240,8 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 	bOperationSuccess = true;
 }
 
+#if UE_VERSION >= UE_4_25
+
 uint64_t ObjectsManager::cacheFField(uint64_t gamePtr)
 {
 	if(gFFieldManager.linkedFFieldIndexCount >= gFFieldManager.maxFFieldCacheNum)
@@ -281,6 +283,8 @@ FFieldClass* ObjectsManager::getFFieldClass(void* gamePtr)
 	gFFieldManager.linkedFFieldClassIndexCount++;
 	return reinterpret_cast<FFieldClass*>(realAddress);
 }
+
+#endif
 
 void ObjectsManager::setSDKGenerationDone()
 {
