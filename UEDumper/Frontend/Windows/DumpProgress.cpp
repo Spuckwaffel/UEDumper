@@ -43,9 +43,9 @@ bool windows::DumpProgress::render()
 			EngineCore();
 
 			if (!EngineCore::initSuccess()) {
+				errorMessage = LogWindow::getLastLogMessage();
 				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Failed to initialize EngineCore!");
 				errorOccurred = true;
-				errorMessage = LogWindow::getLastLogMessage();
 				return;
 			}
 
@@ -89,9 +89,9 @@ bool windows::DumpProgress::render()
 			EngineCore::generatePackages(packages.finishedBytes, packages.totalBytes, packages.status);
 			if (packages.status != CopyStatus::CS_success)
 			{
+				errorMessage = LogWindow::getLastLogMessage();
 				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at generating Packages!");
 				errorOccurred = true;
-				errorMessage = LogWindow::getLastLogMessage();
 				return;
 			}
 			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Finished dumping!");

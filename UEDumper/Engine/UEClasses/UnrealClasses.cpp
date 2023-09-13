@@ -39,6 +39,8 @@ std::string UObject::getFullName() const
     std::string temp = "";
     for (const UObject* outer = getOuter(); outer; outer = outer->getOuter())
     {
+        if (!outer)
+            break;
         temp = outer->getName() + "." + temp;
     }
 
@@ -52,14 +54,18 @@ std::string UObject::getCName()
     std::string name = "nil";
 
     if(!this)
-    {
-	    return name;
-    }
+        return name;
 
     if (IsA<UClass>())
     {
         //read again but as a struct
         auto uStruct = castTo<UStruct>();
+
+        if(!uStruct)
+        {
+            puts("WARN: invalid state! after casting its invalid????");
+            name = "U";
+        }
 
         //whitelisted are: AActor and UObject
         //taken from UnrealFinderTool GenericTypes.cpp:119
@@ -73,7 +79,7 @@ std::string UObject::getCName()
         }
         else
         {
-            while (uStruct->SuperStruct)
+            while (uStruct && uStruct->SuperStruct)
             {
                 uStruct = uStruct->getSuper();
                 if (uStruct == AActor::staticClass())
@@ -93,7 +99,10 @@ std::string UObject::getCName()
         {
             printf("superstruct failed!\n");
             printf("name: %s\n", getFullName().c_str());
-            printf("name: %s\n", uStruct->getFullName().c_str());
+            if(uStruct)
+				printf("name: %s\n", uStruct->getFullName().c_str());
+            else
+                puts("name: ???\n");
             //DebugBreak();
             name = "U";
         }
@@ -136,7 +145,7 @@ UObject* UObject::getPackageObjectFnPtr() const
 
     auto package = getOuter();
 
-    while (pouter)
+    while (pouter && package)
     {
         UObject* nOuter = package->OuterPrivate;
         if (pouter == nOuter)
@@ -189,6 +198,8 @@ bool UObject::IsA(const UClass* staticClass) const
     if (!ClassPrivate) return false;
     for(auto super = getClass(); super; super = super->getSuper<UClass>())
     {
+        if (!super)
+            return false;
         std::string fullname = super->getFullName();
 	    if(super == staticClass)
 	    {
@@ -257,9 +268,9 @@ UClass* UStruct::staticClass()
 {
 #if UE_VERSION == UE_4_25 && USE_LOWERCASE_STRUCT
     //please can someone explain what the fuck they decided to write struct in lowercase
-    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.struct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.struct", true);
 #else
-    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Struct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Struct", true);
 #endif
 }
 
@@ -274,12 +285,12 @@ std::vector<TPair<FName, int64_t>> UEnum::getNames() const
 
 UClass* UEnum::staticClass()
 {
-    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Enum");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Enum", true);
 }
 
 UClass* UScriptStruct::staticClass()
 {
-    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ScriptStruct");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ScriptStruct", true);
 }
 
 std::string UFunction::getFunctionFlagsString() const {
@@ -360,7 +371,7 @@ UClass* UFunction::staticClass()
 
 UClass* UClass::staticClass()
 {
-    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Class");
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Class", true);
 }
 
 UClass* UProperty::staticClass()
@@ -386,30 +397,68 @@ fieldType UProperty::getType()
     if (IsA<UUInt64Property>()) { return    { false, PropertyType::UInt64Property, UUInt64Property::typeName() }; };
     if (IsA<UTextProperty>()) { return      { true, PropertyType::TextProperty,   UTextProperty::typeName() }; }
     if (IsA<UStrProperty>()) { return       { true, PropertyType::StrProperty,   UStrProperty::typeName() }; };
-    if (IsA<UClassProperty>()) { return     { true, PropertyType::ClassProperty,  castTo<UClassProperty>()->typeName() }; };
-    if (IsA<UStructProperty>()) { return    { true,  PropertyType::StructProperty, castTo<UStructProperty>()->typeName() }; };
+    if (IsA<UClassProperty>())
+    {
+        if (const auto cast = castTo<UClassProperty>(); cast->getPropertyClass())
+    		return     { true, PropertyType::ClassProperty,  cast->typeName() };
+    };
+    if (IsA<UStructProperty>())
+    {
+        if (const auto cast = castTo<UStructProperty>(); cast->getStruct())
+            return    { true,  PropertyType::StructProperty, cast->typeName() };
+    };
     if (IsA<UNameProperty>()) { return      { true, PropertyType::NameProperty,   UNameProperty::typeName() }; };
     if (IsA<UBoolProperty>()) { return      { false, PropertyType::BoolProperty,   castTo<UBoolProperty>()->typeName() }; }
-    if (IsA<UByteProperty>()) {
+	if (IsA<UByteProperty>()) {
         const auto cast = castTo<UByteProperty>();
-        if (cast->Enum)
+        if (cast->Enum && cast->getEnum())
         {
             return { true, PropertyType::ByteProperty, cast->typeName(), cast->getSubTypes() };
         }
         return { false, PropertyType::ByteProperty, cast->typeName() };
     
     }
-    if (IsA<UArrayProperty>()) { return     { true, PropertyType::ArrayProperty,  UArrayProperty::typeName(), castTo<UArrayProperty>()->getSubTypes() }; };
-    if (IsA<UEnumProperty>()) { return      { true, PropertyType::EnumProperty,   castTo<UEnumProperty>()->typeName() }; };
+    if (IsA<UArrayProperty>())
+    {
+	    if(const auto cast = castTo<UArrayProperty>(); cast->getInner())
+			return { true, PropertyType::ArrayProperty,  UArrayProperty::typeName(), cast->getSubTypes() };
+    };
+    if (IsA<UEnumProperty>())
+    {
+	    if(const auto cast = castTo<UEnumProperty>(); cast->getEnum())
+			return { true, PropertyType::EnumProperty,   cast->typeName() };
+    };
     //if (IsA<USetProperty>())  { return      { true, PropertyType::SetProperty,      USetProperty::typeName(), castTo<USetProperty>().getSubTypes() }; };
-    if (IsA<UMapProperty>()) { return       { true, PropertyType::MapProperty,   UMapProperty::typeName(), castTo<UMapProperty>()->getSubTypes() }; };
-    if (IsA<UInterfaceProperty>()) { return { true, PropertyType::InterfaceProperty, UInterfaceProperty::typeName(), castTo<UInterfaceProperty>()->getSubTypes() }; };
-    if (IsA<UMulticastDelegateProperty>()) { return { true, PropertyType::MulticastDelegateProperty, UMulticastDelegateProperty::typeName() }; };
-    if (IsA<UWeakObjectProperty>()) { return{ true, PropertyType::WeakObjectProperty, UObjectPropertyBase::weakTypeName(), castTo<UObjectPropertyBase>()->getSubTypes() }; };
-    if (IsA<UObjectPropertyBase>()) { return{ true, PropertyType::ObjectProperty, castTo<UObjectPropertyBase>()->typeName() }; };
+    if (IsA<UMapProperty>())
+    {
+        if (const auto cast = castTo<UMapProperty>(); cast->getKeyProp() && cast->getValueProp())
+            return { true, PropertyType::MapProperty,   UMapProperty::typeName(), cast->getSubTypes() };
+	    
+    };
+    if (IsA<UInterfaceProperty>())
+    {
+        if (const auto cast = castTo<UInterfaceProperty>(); cast->getInterfaceClass())
+            return { true, PropertyType::InterfaceProperty, UInterfaceProperty::typeName(), cast->getSubTypes() };
+    };
+    if (IsA<UMulticastDelegateProperty>())
+    {
+	    return { true, PropertyType::MulticastDelegateProperty, UMulticastDelegateProperty::typeName() };
+    };
+    if (IsA<UWeakObjectProperty>())
+    {
+        if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
+			return{ true, PropertyType::WeakObjectProperty, UObjectPropertyBase::weakTypeName(), cast->getSubTypes() };
+    };
+    if (IsA<UObjectPropertyBase>())
+    {
+        if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
+			return{ true, PropertyType::ObjectProperty, cast->typeName() };
+    };
 
     //if (IsA<UClass>()) { return {PropertyType::SoftClassProperty, "struct FSoftClassPath"}; };
-    return { false, PropertyType::Unknown, getClass()->getName() };
+    if(const auto clas = getClass())
+		return { false, PropertyType::Unknown, clas->getName() };
+    return { false, PropertyType::Unknown, getName() };
 }
 
 UClass* UNumericProperty::staticClass()
