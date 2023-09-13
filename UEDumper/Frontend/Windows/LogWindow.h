@@ -8,11 +8,15 @@ namespace windows
 	{
 	public:
 
+#define LOGLEVEL_ALL_DEBUG_MESSAGES log_0
+#define LOGLEVEL_SMALL_WARNINGS_AND_INFOS log_1
+#define LOGLEVEL_ONLY_IMPORTANT_MESSAGES log_2
+
 		enum logLevels
 		{
-			log_0 = 0, //a lot useless log shit
-			log_1 = 1, //somewhat important
-			log_2 = 2, //important messages
+			LOGLEVEL_ALL_DEBUG_MESSAGES = 0, //a lot useless log shit
+			LOGLEVEL_SMALL_WARNINGS_AND_INFOS = 1, //somewhat important
+			LOGLEVEL_ONLY_IMPORTANT_MESSAGES = 2, //important messages
 			log_MAX = 3
 		};
 
@@ -38,8 +42,10 @@ namespace windows
 		static inline int logRange = 100;
 		static inline bool autoScroll = true;
 
+		static inline float logWindowYSize = 310;
 
-		static inline int logLevel = log_0;
+
+		static inline int logLevel = LOGLEVEL_ALL_DEBUG_MESSAGES;
 
 	public:
 		
@@ -59,6 +65,8 @@ namespace windows
 		static void renderEditPopup();
 
 		static std::string getLastLogMessage();
+
+		static float getLogWindowYSize();
 
 		/**
 		 * \brief callback function that has to get called at the end of every frame in case

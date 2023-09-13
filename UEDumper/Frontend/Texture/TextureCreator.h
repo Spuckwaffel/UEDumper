@@ -19,7 +19,7 @@ public:
 
 	static ID3D11ShaderResourceView* getTexture(const std::string& description);
 
-	static ID3D11ShaderResourceView* createTexture(unsigned char* imageData, DWORD size, const std::string& description);
+	static ID3D11ShaderResourceView* createTexture(const unsigned char* imageData, DWORD size, const std::string& description);
 
 	static bool success();
 };

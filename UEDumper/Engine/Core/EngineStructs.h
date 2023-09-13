@@ -60,28 +60,37 @@ struct fieldType
 	nlohmann::json toJson() const
 	{
 		nlohmann::json j;
-		j["clickable"] = clickable;
-		j["propertyType"] = propertyType;
-		j["name"] = name;
+		j["c"] = clickable;
+		j["p"] = propertyType;
+		j["n"] = name;
 		nlohmann::json jsubTypes;
 		for (const auto& subType : subTypes)
 			jsubTypes.push_back(subType.toJson());
-		j["subTypes"] = jsubTypes;
+		j["s"] = jsubTypes;
 		return j;
 	}
 	static fieldType fromJson(const nlohmann::json& json)
 	{
 		fieldType t;
-		t.clickable = json["clickable"];
-		t.propertyType = json["propertyType"];
-		t.name = json["name"];
-		for (const nlohmann::json& subType : json["subTypes"])
+		t.clickable = json["c"];
+		t.propertyType = json["p"];
+		t.name = json["n"];
+		for (const nlohmann::json& subType : json["s"])
 			t.subTypes.push_back(fromJson(subType));
 		return t;
 	}
 
 	operator bool() const { return propertyType != PropertyType::Unknown; }
 
+};
+
+//copystatus error used in the dump progress
+enum CopyStatus
+{
+	CS_idle,
+	CS_busy,
+	CS_success,
+	CS_error
 };
 
 //used for the packages
@@ -99,36 +108,38 @@ namespace EngineStructs
 		int size = 0; //size of the member
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
-		int bitOffset = 0;
+		int bitOffset = 0; //the offset of the bit (0 if not bit)
 		bool userEdited = false; //if the member is edited by a user
+
+		operator bool() const { return size > 0; }
 
 		bool operator==(Member obj) const { return obj.name == name && obj.offset == offset && obj.bitOffset == bitOffset; }
 
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["type"] = type.toJson();
-			j["name"] = name;
-			j["offset"] = offset;
-			j["size"] = size;
-			j["missed"] = missed;
-			j["isBit"] = isBit;
-			j["bitOffset"] = bitOffset;
-			j["userEdited"] = userEdited;
+			j["t"] = type.toJson();
+			j["n"] = name;
+			j["o"] = offset;
+			j["s"] = size;
+			j["m"] = missed;
+			j["i"] = isBit;
+			j["b"] = bitOffset;
+			j["u"] = userEdited;
 			return j;
 		}
 
 		static Member fromJson(const nlohmann::json& json)
 		{
 			Member m;
-			m.type = fieldType::fromJson(json["type"]);
-			m.name = json["name"];
-			m.offset = json["offset"];
-			m.size = json["size"];
-			m.missed = json["missed"];
-			m.isBit = json["isBit"];
-			m.bitOffset = json["bitOffset"];
-			m.userEdited = json["userEdited"];
+			m.type = fieldType::fromJson(json["t"]);
+			m.name = json["n"];
+			m.offset = json["o"];
+			m.size = json["s"];
+			m.missed = json["m"];
+			m.isBit = json["i"];
+			m.bitOffset = json["b"];
+			m.userEdited = json["u"];
 			return m;
 		}
 	};
@@ -149,30 +160,30 @@ namespace EngineStructs
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["memoryAddress"] = memoryAddress;
-			j["returnType"] = returnType.toJson();
+			j["m"] = memoryAddress;
+			j["r"] = returnType.toJson();
 			nlohmann::json jParams;
 			for (const auto& param : params)
 				jParams.push_back({std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param), std::get<3>(param) });
-			j["params"] = jParams;
-			j["fullName"] = fullName;
-			j["cppName"] = cppName;
-			j["functionFlags"] = functionFlags;
-			j["binaryOffset"] = binaryOffset;
+			j["p"] = jParams;
+			j["fn"] = fullName;
+			j["c"] = cppName;
+			j["ff"] = functionFlags;
+			j["b"] = binaryOffset;
 			return j;
 		}
 
 		static Function fromJson(const nlohmann::json& json)
 		{
 			Function f;
-			f.memoryAddress = json["memoryAddress"];
-			f.returnType = fieldType::fromJson(json["returnType"]);
-			for (const nlohmann::json& param : json["params"])
+			f.memoryAddress = json["m"];
+			f.returnType = fieldType::fromJson(json["r"]);
+			for (const nlohmann::json& param : json["p"])
 				f.params.push_back(std::tuple(fieldType::fromJson(param[0]), param[1], param[2], param[3]));
-			f.fullName = json["fullName"];
-			f.cppName = json["cppName"];
-			f.functionFlags = json["functionFlags"];
-			f.binaryOffset = json["binaryOffset"];
+			f.fullName = json["fn"];
+			f.cppName = json["c"];
+			f.functionFlags = json["ff"];
+			f.binaryOffset = json["b"];
 			return f;
 		}
 	};
@@ -191,7 +202,9 @@ namespace EngineStructs
 		int size = 0; //true size of the struct
 		int inheretedSize = 0; //size of the inherited structs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
-		std::vector<Member> members{}; //array of all members of the struct
+		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
+		std::vector<Member> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
+		//std::vector<Member> deprecated_members{}; //array of all members of the struct DEPRECATED
 		std::vector<Function> functions{}; //array of all functions of the struct
 
 		bool operator==(const Struct& st) const
@@ -202,42 +215,43 @@ namespace EngineStructs
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["isClass"] = isClass;
-			j["memoryAddress"] = memoryAddress;
-			j["fullName"] = fullName;
-			j["cppName"] = cppName;
-			j["supers"] = supers;
-			j["inherited"] = inherited;
-			j["size"] = size;
-			j["inheretedSize"] = inheretedSize;
-			j["unknownCount"] = unknownCount;
+			j["ic"] = isClass;
+			j["ma"] = memoryAddress;
+			j["fn"] = fullName;
+			j["c"] = cppName;
+			j["sp"] = supers;
+			j["in"] = inherited;
+			j["sz"] = size;
+			j["is"] = inheretedSize;
+			j["uc"] = unknownCount;
 			nlohmann::json jMembers;
-			for (const auto& member : members)
+			for (const auto& member : definedMembers)
 				jMembers.push_back(member.toJson());
-			j["members"] = jMembers;
+			j["m"] = jMembers;
 			nlohmann::json jFunctions;
 			for (const auto& fn : functions)
 				jFunctions.push_back(fn.toJson());
-			j["functions"] = jFunctions;
+			j["f"] = jFunctions;
 			return j;
 		}
 
 		static Struct fromJson(const nlohmann::json& json)
 		{
 			Struct s;
-			s.isClass = json["isClass"];
-			s.memoryAddress = json["memoryAddress"];
-			s.fullName = json["fullName"];
-			s.cppName = json["cppName"];
-			s.supers = json["supers"];
-			s.inherited = json["inherited"];
-			s.size = json["size"];
-			s.inheretedSize = json["inheretedSize"];
-			s.unknownCount = json["unknownCount"];
-			for (const nlohmann::json& member : json["members"])
-				s.members.push_back(Member::fromJson(member));
-			for (const nlohmann::json& fn : json["functions"])
+			s.isClass = json["ic"];
+			s.memoryAddress = json["ma"];
+			s.fullName = json["fn"];
+			s.cppName = json["c"];
+			s.supers = json["sp"];
+			s.inherited = json["in"];
+			s.size = json["sz"];
+			s.inheretedSize = json["is"];
+			s.unknownCount = json["uc"];
+			for (const nlohmann::json& member : json["m"])
+				s.definedMembers.push_back(Member::fromJson(member));
+			for (const nlohmann::json& fn : json["f"])
 				s.functions.push_back(Function::fromJson(fn));
+
 
 			return s;
 		}
@@ -254,32 +268,32 @@ namespace EngineStructs
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["memoryAddress"] = memoryAddress;
-			j["fullName"] = fullName;
-			j["cppName"] = cppName;
-			j["type"] = type;
+			j["ma"] = memoryAddress;
+			j["f"] = fullName;
+			j["c"] = cppName;
+			j["t"] = type;
 			nlohmann::json jMembers;
 			for(const auto& member : members)
 			{
 				nlohmann::json jMember;
-				jMember["first"] = member.first;
-				jMember["second"] = member.second;
+				jMember["f"] = member.first;
+				jMember["s"] = member.second;
 				jMembers.push_back(jMember);
 			}
-			j["members"] = jMembers;
+			j["m"] = jMembers;
 			return j;
 		}
 
 		static Enum fromJson(const nlohmann::json& json)
 		{
 			Enum e;
-			e.memoryAddress = json["memoryAddress"];
-			e.fullName = json["fullName"];
-			e.cppName = json["cppName"];
-			e.type = json["type"];
-			const nlohmann::json jMembers = json["members"];
+			e.memoryAddress = json["ma"];
+			e.fullName = json["f"];
+			e.cppName = json["c"];
+			e.type = json["t"];
+			const nlohmann::json jMembers = json["m"];
 			for (const nlohmann::json& member : jMembers)
-				e.members.push_back(std::pair(member["first"], member["second"]));
+				e.members.push_back(std::pair(member["f"], member["s"]));
 
 			return e;
 		}
@@ -314,43 +328,43 @@ namespace EngineStructs
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
-			j["packageName"] = packageName;
-			j["index"] = index;
+			j["p"] = packageName;
+			j["i"] = index;
 
 			nlohmann::json jStructs;
 			for(const auto& struc : structs)
 				jStructs.push_back(struc.toJson());
-			j["structs"] = jStructs;
+			j["s"] = jStructs;
 
 			nlohmann::json jClasses;
 			for (const auto& clas : classes)
 				jClasses.push_back(clas.toJson());
-			j["classes"] = jClasses;
+			j["c"] = jClasses;
 
 			nlohmann::json jFunctions;
 			for (const auto& function : functions)
 				jFunctions.push_back({ std::get<0>(function), std::get<1>(function), std::get<2>(function) });
-			j["functions"] = jFunctions;
+			j["f"] = jFunctions;
 
 			nlohmann::json jEnums;
 			for (const auto& enu : enums)
 				jEnums.push_back(enu.toJson());
-			j["enums"] = jEnums;
+			j["e"] = jEnums;
 			return j;
 		}
 
 		static Package fromJson(const nlohmann::json& json)
 		{
 			Package p;
-			p.packageName = json["packageName"];
-			p.index = json["index"];
-			for (const nlohmann::json& struc : json["structs"])
+			p.packageName = json["p"];
+			p.index = json["i"];
+			for (const nlohmann::json& struc : json["s"])
 				p.structs.push_back(Struct::fromJson(struc));
-			for (const nlohmann::json& clas : json["classes"])
+			for (const nlohmann::json& clas : json["c"])
 				p.classes.push_back(Struct::fromJson(clas));
-			for (const nlohmann::json& function : json["functions"])
+			for (const nlohmann::json& function : json["f"])
 				p.functions.push_back(std::tuple(function[0], function[1], function[2]));
-			for (const nlohmann::json& enu : json["enums"])
+			for (const nlohmann::json& enu : json["e"])
 				p.enums.push_back(Enum::fromJson(enu));
 
 			return p;

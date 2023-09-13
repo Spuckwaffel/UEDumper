@@ -1,6 +1,8 @@
 #include "memory.h"
 
 #include "driver.h"
+#include "Frontend/Windows/LogWindow.h"
+#include <Engine/Userdefined/Offsets.h>
 
 
 Memory::Memory()

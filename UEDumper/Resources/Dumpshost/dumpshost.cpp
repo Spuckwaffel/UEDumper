@@ -3,6 +3,10 @@
 
 #include <fstream>
 
+#include "Engine/Core/Core.h"
+#include "Memory/memory.h"
+#include "Settings/EngineSettings.h"
+
 namespace DumpsHost
 {
     std::string dumpTimeStamp = {};
@@ -129,7 +133,7 @@ namespace DumpsHost
                     }
                     nlohmann::json members = nlohmann::json::array();
 
-                    for (auto& member : struc.members)
+                    for (auto& member : struc.definedMembers)
                     {
                         if (member.missed)
                             continue;

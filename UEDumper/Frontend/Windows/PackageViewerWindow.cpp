@@ -1,5 +1,10 @@
 ﻿#include "PackageViewerWindow.h"
 #include "EditWindow.h"
+#include "LogWindow.h"
+#include "Engine/Core/Core.h"
+#include "Frontend/IGHelper.h"
+#include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Frontend/Texture/TextureCreator.h"
 
 
 void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool inChild)
@@ -140,7 +145,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, int inde
         ImGui::PopStyleColor(6);
     }
 
-    for (auto& member : struc.members)
+    for (auto& member : struc.cookedMembers)
     {
         if (member.missed || member.userEdited)
         {
@@ -510,7 +515,7 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
             if (struc.isClass)
                 file << "public:" << std::endl;
 
-            for (const auto& member : struc.members)
+            for (const auto& member : struc.cookedMembers)
             {
                 char finalBuf[600];
                 char nameBuf[500];
@@ -759,7 +764,7 @@ void windows::PackageViewerWindow::renderTabs()
                     for (int i = itemRange; i < dataVector.size() && i < itemRange + 99; i++)
                     {
                         const bool is_selected = (tab.itemSelected == i && tab.typeSelected == type);
-                        ImGui::PushStyleColor(ImGuiCol_Text, dataVector.at(i).members.size() > 0 ? IGHelper::Colors::white : IGHelper::Colors::grayedOut);
+                        ImGui::PushStyleColor(ImGuiCol_Text, dataVector.at(i).cookedMembers.size() > 0 ? IGHelper::Colors::white : IGHelper::Colors::grayedOut);
                         if (ImGui::Selectable(dataVector.at(i).cppName.c_str(), is_selected)) {
                             tab.itemSelected = i;
                             tab.typeSelected = type;
@@ -913,7 +918,7 @@ bool windows::PackageViewerWindow::render()
 	if (alreadyCompleted) return true;
 
     ImGui::SameLine();
-	ImGui::BeginChild("PackageViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - 350), true, ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("PackageViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	
     
     if (ImGui::BeginTabBar("PackageTabtab", ImGuiTabBarFlags_Reorderable))

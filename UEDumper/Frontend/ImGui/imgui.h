@@ -491,6 +491,7 @@ namespace ImGui
     // Widgets: Main
     // - Most widgets return true when the value has been changed or when pressed/selected
     // - You may also use one of the many IsItemXXX functions (e.g. IsItemActive, IsItemHovered, etc.) to query widget state.
+    IMGUI_API bool          MoveButton(const char* str_id, ImVec2 ButtonSize, float* newCalculatedPos);
     IMGUI_API void          Spinner(float radius = GetFontSize(), float thickness = 5, int num_segments = 20, ImVec2 pos = ImVec2(0,0), bool IsRealWidget = true);
     IMGUI_API void          Cross(float size, float thickness);
     IMGUI_API void          DrawCircleProgress(ImVec2 center, float radius, float percentage, ImU32 col, float thickness);
@@ -1582,6 +1583,7 @@ enum ImGuiCol_
     ImGuiCol_PlotLines,
     ImGuiCol_PlotLinesHovered,
     ImGuiCol_PlotHistogram,
+    ImGuiCol_PlotHistogram_GRAD,
     ImGuiCol_PlotHistogramHovered,
     ImGuiCol_TableHeaderBg,         // Table header background
     ImGuiCol_TableBorderStrong,     // Table outer and header borders (prefer using Alpha=1.0 here)

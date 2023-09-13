@@ -1,5 +1,8 @@
 #include "LiveMemory.h"
 
+#include "Frontend/Windows/LogWindow.h"
+#include "Memory/memory.h"
+
 
 void LiveMemory::memoryLoop()
 {
@@ -52,24 +55,28 @@ LiveMemory::LiveMemory()
 {
 }
 
-LiveMemory::MemoryBlock& LiveMemory::addNewBlock(uint64_t address, int size)
+LiveMemory::MemoryBlock* LiveMemory::addNewBlock(uint64_t address, int size)
 {
 	//increase usageCounter because the block was accessed
 
 	if (memoryBlocks.contains(address))
 	{
-		auto& b = memoryBlocks[address];
-		b.usageCounter++; 
-		return b;
+		memoryBlocks[address].usageCounter++;
+		return &memoryBlocks[address];
 	}
 	MemoryBlock b;
 	b.gameAddress = address;
 	b.buffer = reinterpret_cast<uint64_t>(calloc(1, size));
+	if(!b.buffer)
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Couldnt add memory block with size %d", size);
+		return nullptr;
+	}
 	b.usageCounter++;
 	b.size = size;
 	memoryBlocks.insert(std::pair(address, b));
 	windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Added block for 0x%p at 0x%p!", address, b.buffer);
-	return memoryBlocks[address];
+	return &memoryBlocks[address];
 	
 }
 
@@ -94,16 +101,17 @@ void LiveMemory::cacheBlocks()
 	CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(memoryLoop), nullptr, 0, nullptr);
 }
 
-LiveMemory::MemoryBlock LiveMemory::getMemoryBlock(uint64_t address)
+LiveMemory::MemoryBlock* LiveMemory::getMemoryBlock(uint64_t address)
 {
 	//increase usageCounter because the block was accessed
 
-	if(!memoryBlocks.contains(address))
-		return {};
+	if(memoryBlocks.contains(address))
+	{
+		memoryBlocks[address].usageCounter++;
+		return &memoryBlocks[address];
+	}
 
-	auto& b = memoryBlocks[address];
-	b.usageCounter++;
-	return b;
+	return nullptr;
 }
 
 std::string LiveMemory::getBlockInfo(uint64_t address)

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Engine/Core/Core.h"
+#include "Engine/Core/EngineStructs.h"
 
 
 namespace windows
@@ -67,19 +69,18 @@ namespace windows
 			{
 				nlohmann::json j;
 
-				j["packageSelected"] = packageSelected;
-				j["typeSelected"] = typeSelected;
-				j["itemSelected"] = itemSelected;
-				j["itemRange_S"] = itemRange_S;
-				j["itemRange_C"] = itemRange_C;
-				j["itemRange_E"] = itemRange_E;
-				j["itemRange_F"] = itemRange_F;
-				j["focus"] = focus;
-				j["open"] = open;
-				j["objectBuf"] = std::string(objectBuf);
-				j["findObject"] = findObject;
-				j["findObject"] = findObject;
-				j["navTab"] = navTab.toJson();
+				j["ps"] = packageSelected;
+				j["ts"] = typeSelected;
+				j["is"] = itemSelected;
+				j["irs"] = itemRange_S;
+				j["irc"] = itemRange_C;
+				j["ire"] = itemRange_E;
+				j["irf"] = itemRange_F;
+				j["f"] = focus;
+				j["o"] = open;
+				j["ob"] = std::string(objectBuf);
+				j["fo"] = findObject;
+				j["nt"] = navTab.toJson();
 
 				return j;
 			}
@@ -87,19 +88,19 @@ namespace windows
 			static PackageTab fromJson(const nlohmann::json& j)
 			{
 				PackageTab p;
-				p.packageSelected = j["packageSelected"];
-				p.typeSelected = j["typeSelected"];
-				p.itemSelected = j["itemSelected"];
-				p.itemRange_S = j["itemRange_S"];
-				p.itemRange_C = j["itemRange_C"];
-				p.itemRange_E = j["itemRange_E"];
-				p.itemRange_F = j["itemRange_F"];
-				p.focus = j["focus"];
-				p.open = j["open"];
-				const std::string tmp = j["objectBuf"];
+				p.packageSelected = j["ps"];
+				p.typeSelected = j["ts"];
+				p.itemSelected = j["is"];
+				p.itemRange_S = j["irs"];
+				p.itemRange_C = j["irc"];
+				p.itemRange_E = j["ire"];
+				p.itemRange_F = j["irf"];
+				p.focus = j["f"];
+				p.open = j["o"];
+				const std::string tmp = j["ob"];
 				strcpy(p.objectBuf, tmp.c_str());
-				p.findObject = j["findObject"];
-				p.navTab = NavigationTab::fromJson(j["navTab"]);
+				p.findObject = j["fo"];
+				p.navTab = NavigationTab::fromJson(j["nt"]);
 
 				return p;
 			}

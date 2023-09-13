@@ -2,7 +2,9 @@
 #include "stdafx.h"
 
 #include "Engine/structs.h"
-#include "UnrealClasses.h"
+#include "Engine/Core/Core.h"
+#include "Engine/Core/ObjectsManager.h"
+#include "Engine/Userdefined/Datatypes.h"
 
 //any linked source code means that since then the code works and is unchanged
 // more links means any changes in the versions
@@ -72,11 +74,16 @@ public:
 	std::string getSecondPackageName() const;
 
 	//header code otherwise linker errors
+	/**
+	 * \brief casts the object to a different object. WARNING: OBJECT NEEDS TO EXIST OR NULLPTR
+	 * \tparam T type 
+	 * \return casted object
+	 */
 	template <typename T>
 	T* castTo()
 	{
 		//T obj = EngineCore::getUObject<T>(reinterpret_cast<uint64_t>(getOwnPointer()));
-		return EngineCore::getUObjectIndex<T>(InternalIndex);
+		return ObjectsManager::getUObject<T>(objectptr);
 	}
 
 	bool IsA(const UClass* cmp) const;
@@ -86,10 +93,7 @@ public:
 	{
 		auto staticClass = T::staticClass();
 		if (!staticClass)
-		{
-			printf("class not found!\n");
 			return false;
-		}
 
 		return IsA(staticClass);
 	}
@@ -185,7 +189,7 @@ public:
 	FStructBaseChain baseChainInheritance;
 #endif
 #endif
-
+	
 	/** Struct this inherits from, may be null */
 	UStruct*	SuperStruct;
 
@@ -452,7 +456,16 @@ public:
 	std::string typeName() const { return Enum ? "TEnumAsByte" : TYPE_UCHAR; }
 
 	//only if Enum exists!
-	std::vector<fieldType> getSubTypes() const { if (!Enum) { DebugBreak(); } return std::vector<fieldType>{ {true, PropertyType::EnumProperty, getEnum()->getName()}}; };
+	std::vector<fieldType> getSubTypes() const
+	{
+		if (!Enum)
+			return {};
+
+		const auto enu = getEnum();
+		if (!enu)
+			return {};
+		return std::vector<fieldType>{ {true, PropertyType::EnumProperty, enu->getName()}};
+	};
 	static UClass* staticClass();
 };
 
@@ -815,7 +828,12 @@ public:
 
 	UEnum* getEnum() const;
 
-	std::string typeName() const { return getEnum()->getName(); }
+	std::string typeName() const
+	{
+		if(const auto enu = getEnum())
+			return enu->getName();
+		return "";
+	}
 	
 	static UClass* staticClass();
 };
@@ -918,7 +936,7 @@ public:
 	T* castTo()
 	{
 		//T obj = EngineCore::getUObject<T>(reinterpret_cast<uint64_t>(getOwnPointer()));
-		return EngineCore::getFField<T>(objectptr);
+		return ObjectsManager::getFField<T>(objectptr);
 	}
 };
 

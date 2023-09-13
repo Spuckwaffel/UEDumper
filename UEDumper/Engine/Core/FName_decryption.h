@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 
+#include "Memory/memory.h"
+
 /*
  * DO NOT INCLUDE THIS FILE ANYWHERE OR ADD FUNCTIONS HERE
  *
@@ -19,6 +21,11 @@
 // example:
 // static uint64_t dword_4B64088 = 0;
 
+static uint64_t dword_4CF88E4 = 0;
+static uint64_t dword_4BF84A4 = 0;
+
+
+static unsigned int dword_5A1DA78 = 0;
 
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)

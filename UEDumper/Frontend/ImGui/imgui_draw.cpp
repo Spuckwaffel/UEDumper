@@ -3841,9 +3841,74 @@ void ImGui::RenderRectFilledRangeH(ImDrawList* draw_list, const ImRect& rect, Im
 
     ImVec2 p0 = ImVec2(ImLerp(rect.Min.x, rect.Max.x, x_start_norm), rect.Min.y);
     ImVec2 p1 = ImVec2(ImLerp(rect.Min.x, rect.Max.x, x_end_norm), rect.Max.y);
+
+    auto colToVec = [&](const float r, const float g, const float b, const float a)
+    {
+        return ImVec4(r / 255, g / 255, b / 255, a / 255);
+    };
+
+
+    auto updateRGBColor = [&](ImVec4 color, float highestVar = 255, float minVar = 0, int step = 2) ->ImVec4
+    {
+        float r = color.x * 255;
+        float g = color.y * 255;
+        float b = color.z * 255;
+#define fixAndRet(l) \
+	if(l > highestVar) \
+		l = highestVar;\
+    else if (l < minVar) \
+        l = minVar; \
+    return colToVec(r, g, b, color.w * 255);
+
+        if (r == highestVar)
+        {
+            if (b > minVar)
+            {
+                b -= step;
+                fixAndRet(b);
+            }
+            if (g < highestVar)
+            {
+                g += step;
+                fixAndRet(g);
+            }
+        }
+        if (g == highestVar)
+        {
+            if (r > minVar)
+            {
+                r -= step;
+                fixAndRet(r);
+            }
+            if (b < highestVar)
+            {
+                b += step;
+                fixAndRet(b);
+            }
+        }
+        if (b == highestVar)
+        {
+            if (g > minVar)
+            {
+                g -= step;
+                fixAndRet(g);
+            }
+            if (r < highestVar)
+            {
+                r += step;
+                fixAndRet(r);
+            }
+        }
+        //this is a invalid state, fix by setting one var to max to trigger a state
+        return { highestVar / 255, color.y, color.z, color.w };
+    };
+    GetStyle().Colors[ImGuiCol_PlotHistogram] = updateRGBColor(GetStyleColorVec4(ImGuiCol_PlotHistogram));
+    GetStyle().Colors[ImGuiCol_PlotHistogram_GRAD] = updateRGBColor(GetStyleColorVec4(ImGuiCol_PlotHistogram_GRAD));
+
     if (rounding == 0.0f)
     {
-        draw_list->AddRectFilled(p0, p1, col, 0.0f);
+        draw_list->AddRectFilledMultiColor(p0, p1, col, GetColorU32(ImGuiCol_PlotHistogram_GRAD), GetColorU32(ImGuiCol_PlotHistogram_GRAD), col);
+        //draw_list->AddRectFilled(p0, p1, col, 0.0f);
         return;
     }
 
@@ -3889,7 +3954,10 @@ void ImGui::RenderRectFilledRangeH(ImDrawList* draw_list, const ImRect& rect, Im
             draw_list->PathArcTo(ImVec2(x1, p1.y - rounding), rounding, +arc1_b, +arc1_e, 3); // BR
         }
     }
+    const int vert_start_idx = draw_list->VtxBuffer.Size;
     draw_list->PathFillConvex(col);
+    const int vert_end_idx = draw_list->VtxBuffer.Size;
+    ShadeVertsLinearColorGradientKeepAlpha(draw_list, vert_start_idx, vert_end_idx, p0, p1, col, GetColorU32(ImGuiCol_PlotHistogram_GRAD));
 }
 
 void ImGui::RenderRectFilledWithHole(ImDrawList* draw_list, const ImRect& outer, const ImRect& inner, ImU32 col, float rounding)

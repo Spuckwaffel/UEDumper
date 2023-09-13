@@ -3,13 +3,9 @@
 #include "FName_decryption.h"
 #include "../UEClasses/UnrealClasses.h"
 #include "../Userdefined/StructDefinitions.h"
+#include "Frontend/Windows/LogWindow.h"
 #include "Frontend/Windows/PackageViewerWindow.h"
-
-
-EngineCore::TypeUObjectArray EngineCore::getTUObject()
-{
-	return UObjectArray;
-}
+#include "Settings/EngineSettings.h"
 
 
 //https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp
@@ -156,43 +152,6 @@ std::string EngineCore::FNameToString(FName fname)
 	return finalName;
 }
 
-
-uint64_t EngineCore::getUObjectIndexPtr(int index)
-{
-	return *reinterpret_cast<uint64_t*>(pGObjectPtrArray + index * 24);
-}
-
-#if UE_VERSION >= UE_4_25
-
-uint64_t EngineCore::cacheFField(uint64_t gamePtr)
-{
-	uint64_t realAddress = pFFieldArray + linkedFFieldIndexCount * UOBJECT_MAX_SIZE;
-	Memory::read(reinterpret_cast<void*>(gamePtr), reinterpret_cast<void*>(realAddress), UOBJECT_MAX_SIZE);
-	*reinterpret_cast<uint64_t*>(realAddress) = gamePtr;
-	linkedFFieldPtrs.insert(std::pair(gamePtr, realAddress));
-	linkedFFieldIndexCount++;
-	return realAddress;
-}
-
-
-FFieldClass* EngineCore::getFFieldClass(void* gamePtr)
-{
-	auto ptr = reinterpret_cast<uint64_t>(gamePtr);
-	if (linkedFFieldClassPtrs.contains(ptr))
-	{
-		return reinterpret_cast<FFieldClass*>(linkedFFieldClassPtrs[ptr]);
-	}
-	//element is not cached, go add it
-	uint64_t realAddress = pFFieldClassArray + linkedFFieldClassIndexCount * sizeof(FFieldClass);
-	Memory::read(gamePtr, reinterpret_cast<void*>(realAddress), sizeof(FFieldClass));
-	*reinterpret_cast<uint64_t*>(realAddress) = ptr;
-	linkedFFieldClassPtrs.insert(std::pair(ptr, realAddress));
-	linkedFFieldClassIndexCount++;
-	return reinterpret_cast<FFieldClass*>(realAddress);
-}
-
-#endif
-
 uint64_t EngineCore::getOffsetAddress(const Offset& offset)
 {
 	if (!offset)
@@ -224,185 +183,6 @@ std::vector<Offset> EngineCore::getOffsets()
 	return offsets;
 }
 
-
-void EngineCore::verifyUBigObjectSize(UBigObject* bigObjectPtr, int requiredSize)
-{
-
-	if (requiredSize > UOBJECT_MAX_SIZE)
-		throw std::runtime_error("required size way too large???");
-
-	if (bigObjectPtr->readSize < requiredSize)
-	{
-		//the real uobject ptr is actually at the buffer base
-		void* UObjectGamePtr = *reinterpret_cast<void**>(bigObjectPtr->object);
-		Memory::read(UObjectGamePtr, &bigObjectPtr->object, requiredSize);
-		*reinterpret_cast<void**>(bigObjectPtr->object) = UObjectGamePtr;
-		bigObjectPtr->readSize = requiredSize;
-	}
-}
-
-void EngineCore::generateUnknownBitMembers(const int count, const int offset, int& bitOffset, EngineStructs::Struct& eStruct, int* insertPosition)
-{
-	int _insertPos;
-	if (!insertPosition)
-		_insertPos = eStruct.members.size();
-	else
-		_insertPos = *insertPosition;
-
-	//i like to have each bit presented as unknown
-	for (int i = 0; i < count; i++)
-	{
-		//lets see if the user defined that bit
-		if (overridingStructMembers.contains(eStruct.fullName))
-		{
-			bool found = false;
-			auto& missingStruct = overridingStructMembers[eStruct.fullName];
-			for (auto& missingMember : missingStruct.members)
-			{
-				if (missingMember.bitOffset >= 99 || //member already used go to next one, we use this as a used flag
-					!missingMember.isBit || //no bit? Continue
-					missingMember.offset != offset || //wrong offset? Continue
-					missingMember.bitOffset != bitOffset) //wrong bitoffset? Continue
-					continue;
-
-				EngineStructs::Member userBit;
-				userBit.missed = false;
-				userBit.userEdited = true;
-				userBit.name = missingMember.name;
-				userBit.offset = offset;
-				userBit.size = 1;
-				userBit.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
-				userBit.isBit = true;
-				userBit.bitOffset = bitOffset++;
-				bitOffset = bitOffset % 8;
-				eStruct.members.insert(eStruct.members.begin() + _insertPos++, userBit);
-				found = true;
-				break; //we found it, no more search needed
-			}
-			if (found)
-				continue;
-		}
-		EngineStructs::Member unknown;
-		unknown.missed = true;
-		char name[30];
-		sprintf_s(name, "UnknownBit%02d", eStruct.unknownCount++);
-		unknown.name = std::string(name);
-		unknown.offset = offset;
-		unknown.size = 1;
-		unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
-		unknown.isBit = true;
-		unknown.bitOffset = bitOffset++;
-		bitOffset = bitOffset % 8;
-		eStruct.members.insert(eStruct.members.begin() + _insertPos++, unknown);
-	}
-	
-	if (insertPosition)
-		*insertPosition = _insertPos;
-}
-
-void EngineCore::generateUnknownMember(const int fromOffset, const int toOffset, EngineStructs::Struct& eStruct, int* insertPosition)
-{
-	int _insertPos;
-	if (!insertPosition)
-		_insertPos = eStruct.members.size();
-	else
-		_insertPos = *insertPosition;
-
-	EngineStructs::Member unknown;
-	unknown.missed = true;
-	unknown.size = toOffset - fromOffset;
-	char name[30];
-	sprintf_s(name, "UnknownData%02d[0x%X]", eStruct.unknownCount++, unknown.size);
-	unknown.name = std::string(name);
-	unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
-	unknown.offset = fromOffset;
-	eStruct.members.insert(eStruct.members.begin() + _insertPos++, unknown);
-	if (insertPosition)
-		*insertPosition = _insertPos;
-}
-
-void EngineCore::findOverrideMember(int newMemberOffset,  int currentOffset, int& currentBitOffset, EngineStructs::Struct& eStruct, int* insertPosition)
-{
-	if(!overridingStructMembers.contains(eStruct.fullName))
-	{
-		generateUnknownMember(currentOffset, newMemberOffset, eStruct, insertPosition);
-		return;
-	}
-	int _insertPos;
-	if (!insertPosition)
-		_insertPos = eStruct.members.size();
-	else
-		_insertPos = *insertPosition;
-
-	auto& missingStruct = overridingStructMembers[eStruct.fullName];
-	int cursorOffset = currentOffset;
-	int& cursorBitOffset = currentBitOffset;
-	for (auto& missingMember : missingStruct.members)
-	{
-		if (missingMember.bitOffset >= 99) //member already used go to next one, we use this as a used flag
-			continue;
-
-		if (missingMember.offset + missingMember.size > newMemberOffset) //this one is not for this block
-			continue;
-
-		if (cursorOffset < missingMember.offset) //seems like theres still some unknown stuff before!
-		{
-			generateUnknownMember(cursorOffset, missingMember.offset, eStruct, &_insertPos);
-			cursorOffset = missingMember.offset;
-			cursorBitOffset = 0;
-		}
-		//set the userEdited flag
-		missingMember.userEdited = true;
-		//now its our turn for our definition
-		if (!missingMember.isBit)
-		{
-			if (cursorOffset > missingMember.offset) //no this should not happen! Seems like the object before is too large!
-			{
-				missingMember.bitOffset += 99; //mark this one as used
-				continue;
-			}
-			eStruct.members.insert(eStruct.members.begin() + _insertPos++, missingMember);
-			missingMember.bitOffset += 99; //mark this one as used
-			cursorOffset += missingMember.size;
-			cursorBitOffset = 0;
-		}
-		else //seems like we have a bit!
-		{
-			//fix back to right offset
-			if (cursorOffset == missingMember.offset) //we actually hit a new bitfield exactly after a previous bitfield! (see why at cursorOffset++ below)
-			{
-				//if old bitoffset wasnt 8 (and larger than 0, so a real bitfield was there), go one offset back and add unknown bits to fixup
-				if (cursorBitOffset < 8 && cursorBitOffset > 0)
-					generateUnknownBitMembers(8 - cursorBitOffset, cursorOffset - 1, cursorBitOffset, eStruct, &_insertPos);
-				cursorBitOffset = 0; //then reset the offset
-			}
-			else //mismatch, most likely is missingMember.offset 1 below cursorOffset. -> we are in the same bitfield!
-				cursorOffset = missingMember.offset; //correct cursor offset again
-
-			if (missingMember.bitOffset > cursorBitOffset) //do we have some missing bits?
-			{
-				const int missingBits = missingMember.bitOffset - cursorBitOffset;
-				generateUnknownBitMembers(missingBits, cursorOffset, cursorBitOffset, eStruct, &_insertPos);
-			}
-			//bits are always bool and non clickable
-			missingMember.type.clickable = false;
-			missingMember.type.propertyType = PropertyType::BoolProperty;
-			missingMember.type.name = TYPE_BOOLEAN;
-			eStruct.members.insert(eStruct.members.begin() + _insertPos++, missingMember);
-			missingMember.bitOffset += 99; //mark this one as used
-			cursorBitOffset++;
-			cursorOffset++; //we treat the offset like we would be at the end of the bitfield
-
-		}
-	}
-	if (cursorOffset < newMemberOffset) //in case thres still some rest we have to define
-	{
-		generateUnknownMember(cursorOffset, newMemberOffset, eStruct, &_insertPos);
-	}
-	if (insertPosition)
-		*insertPosition = _insertPos;
-}
-
 bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStructs::Struct>& data)
 {
 	//this struct is completely useless
@@ -417,26 +197,19 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	//supers?
 	if (object->SuperStruct)
 	{
-		auto super = object->getSuper();
-		for(auto& obj: object->getAllSupers())
+		if(const auto super = object->getSuper())
 		{
-			//add them to a vector
-			eStruct.supers.push_back(obj->getCName());
+			for (auto& obj : object->getAllSupers())
+			{
+				//add them to a vector
+				eStruct.supers.push_back(obj->getCName());
+			}
+			eStruct.inherited = true;
+			eStruct.inheretedSize = super->PropertiesSize;
 		}
-		eStruct.inherited = true;
-		eStruct.inheretedSize = super->PropertiesSize;
+		
 	}
 
-	int currentOffset = eStruct.inheretedSize;
-	int bitOffset = 0;
-
-	struct prevBitProp
-	{
-		int offset = -1;
-		int bitOffset = -1;
-	};
-
-	prevBitProp prevBitField = prevBitProp();
 
 	//flag some invalid characters in a name
 	auto generateValidVarName = [](const std::string& str)
@@ -461,109 +234,46 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		
 		for (auto child = object->getChildren(); child; child = child->getNext())
 		{
-			if (child->IsA<UProperty>())
+			if (!ObjectsManager::operationSuccess())
+				return false;
+
+			if (!child || !child->IsA<UProperty>())
+				continue;
+
+			auto prop = child->castTo<UProperty>();
+			EngineStructs::Member member;
+			member.size = prop->ElementSize * prop->ArrayDim;
+			member.name = generateValidVarName(prop->getName());
+			//should not happen
+			if (member.size == 0)
 			{
-				auto prop = child->castTo<UProperty>();
-				EngineStructs::Member member;
-				member.size = prop->ElementSize * prop->ArrayDim;
-				member.name = generateValidVarName(prop->getName());
-				//should not happen
-				if (member.size == 0)
-				{
-					windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
-					//DebugBreak();
-					continue;
-				}
-				auto type = prop->getType();
-				member.type = type;
-				member.offset = prop->getOffset();
-
-				if (type.propertyType == PropertyType::Unknown)
-				{
-					windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
-					continue;
-				}
-				//offset mismatch?
-				if (currentOffset < member.offset)
-				{
-					//maybe the user defined that unknown block
-					findOverrideMember(member.offset, currentOffset, bitOffset, eStruct);
-
-					//if the bitoffset is 0 it indicates that the last item was not a bit -> reset prevbitfield
-					//otherwise save
-					if (bitOffset == 0)
-						prevBitField = prevBitProp();
-					else
-						prevBitField = { currentOffset - 1, bitOffset - 1 }; //-1 because both update and we need to get the item before
-
-					//fix offset
-					currentOffset = member.offset + member.size;
-				}
-				if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())
-				{
-					auto boolProp = child->castTo<UBoolProperty>();
-
-					const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
-
-					//does a previous bitfield exist and is the bitbos not 0?
-					if (prevBitField.offset == -1 && bitPos > 0)
-					{
-						generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-					}
-					//bitpos higher than expected?
-					else if (prevBitField.offset == member.offset && bitPos > prevBitField.bitOffset + 1)
-					{
-						generateUnknownBitMembers(bitPos - prevBitField.bitOffset - 1, member.offset, bitOffset, eStruct);
-					}
-					//member offset 1 larger than expected?
-					else if (member.offset > prevBitField.offset && prevBitField.offset != -1)
-					{
-						//make sure old offset has 8 bits
-						generateUnknownBitMembers(8 - prevBitField.bitOffset - 1, prevBitField.offset, bitOffset, eStruct);
-						if (bitPos > 0)
-							generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-					}
-
-					prevBitField = { member.offset, bitPos };
-					member.isBit = true;
-					member.bitOffset = bitOffset++;
-					bitOffset = bitOffset % 8;
-				}
-				else
-				{
-					//before the last field was a bitfield, check if maybe user defined bits are there too
-					if (bitOffset != 0 && overridingStructMembers.contains(eStruct.fullName))
-					{
-						auto& oStruct = overridingStructMembers[eStruct.fullName];
-						for (auto& missingMember : oStruct.members)
-						{
-							if (missingMember.bitOffset >= 99 || //member already used go to next one, we use this as a used flag
-								!missingMember.isBit || //no bit? Continue
-								missingMember.offset != (currentOffset - 1)) //wrong offset? Continue
-								continue;
-
-							if (missingMember.bitOffset < bitOffset) //already defined
-								continue;
-
-							int diff = missingMember.bitOffset - bitOffset;
-							if (diff > 0)
-								generateUnknownBitMembers(diff, currentOffset - 1, bitOffset, eStruct);
-							bitOffset = missingMember.bitOffset;
-							missingMember.type.name = TYPE_BOOLEAN;
-							eStruct.members.push_back(missingMember);
-						}
-					}
-					prevBitField = prevBitProp();
-					bitOffset = 0;
-				}
-
-				currentOffset = member.offset + member.size;
-				eStruct.members.push_back(member);
+				windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
+				//DebugBreak();
+				continue;
 			}
+			auto type = prop->getType();
+			member.type = type;
+			member.offset = prop->getOffset();
+
+			if (type.propertyType == PropertyType::Unknown)
+			{
+				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
+				continue;
+			}
+			if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())
+			{
+				auto boolProp = child->castTo<UBoolProperty>();
+
+				const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
+				member.isBit = true;
+				member.bitOffset = bitPos;
+			}
+			eStruct.definedMembers.push_back(member);
 		}
 	}
 
 #else
+
 
 	if(object->ChildProperties)
 	{
@@ -588,21 +298,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
 				continue;
 			}
-			if (currentOffset < member.offset)
-			{
-				//maybe the user defined that unknown block
-				findOverrideMember(member.offset, currentOffset, bitOffset, eStruct);
-
-				//if the bitoffset is 0 it indicates that the last item was not a bit -> reset prevbitfield
-				//otherwise save
-				if(bitOffset == 0)
-					prevBitField = prevBitProp();
-				else
-					prevBitField = { currentOffset - 1, bitOffset - 1 }; //-1 because both update and we need to get the item before
-
-				//fix offset
-				currentOffset = member.offset + member.size;
-			}
 
 			if(type.propertyType == PropertyType::BoolProperty && child->castTo<FBoolProperty>()->isBitField())
 			{
@@ -610,74 +305,17 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 				const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
 
-				//does a previous bitfield exist and is the bitbos not 0?
-				if(prevBitField.offset == -1 && bitPos > 0)
-				{
-					generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-				}
-				//bitpos higher than expected?
-				else if(prevBitField.offset == member.offset && bitPos > prevBitField.bitOffset + 1)
-				{
-					generateUnknownBitMembers(bitPos - prevBitField.bitOffset - 1, member.offset, bitOffset, eStruct);
-				}
-				//member offset 1 larger than expected?
-				else if (member.offset > prevBitField.offset && prevBitField.offset != -1)
-				{
-					//make sure old offset has 8 bits
-					generateUnknownBitMembers(8 - prevBitField.bitOffset - 1, prevBitField.offset, bitOffset, eStruct);
-					if(bitPos > 0)
-						generateUnknownBitMembers(bitPos, member.offset, bitOffset, eStruct);
-				}
-
-				prevBitField = { member.offset, bitPos};
 				member.isBit = true;
-				member.bitOffset = bitOffset++;
-				bitOffset = bitOffset % 8;
+				member.bitOffset = bitPos;
 			}
-			else
-			{
-				//before the last field was a bitfield, check if maybe user defined bits are there too
-				if(bitOffset != 0 && overridingStructMembers.contains(eStruct.fullName)) 
-				{
-					auto& oStruct = overridingStructMembers[eStruct.fullName];
-					for (auto& missingMember : oStruct.members)
-					{
-						if (missingMember.bitOffset >= 99 || //member already used go to next one, we use this as a used flag
-							!missingMember.isBit || //no bit? Continue
-							missingMember.offset != (currentOffset - 1)) //wrong offset? Continue
-							continue;
-
-						if (missingMember.bitOffset < bitOffset) //already defined
-							continue;
-
-						int diff = missingMember.bitOffset - bitOffset;
-						if (diff > 0)
-							generateUnknownBitMembers(diff, currentOffset - 1, bitOffset, eStruct);
-						bitOffset = missingMember.bitOffset;
-						missingMember.type.name = TYPE_BOOLEAN;
-						eStruct.members.push_back(missingMember);
-					}
-				}
-				prevBitField = prevBitProp();
-				bitOffset = 0;
-				
-			}
-			currentOffset = member.offset + member.size;
-			eStruct.members.push_back(member);
+			eStruct.definedMembers.push_back(member);
 		}
-
-
 	}
 #endif
-	//fixup 
-	if (currentOffset < eStruct.size)
-	{
-		findOverrideMember(eStruct.size, currentOffset, bitOffset, eStruct);
-		//generateUnknownMember(currentOffset, eStruct.size, unknownCount, eStruct);
-	}
-
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
+
+	cookMemberArray(eStruct);
 
 	data.push_back(eStruct);
 	return true;
@@ -733,7 +371,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 //in every version we have to go through the children to 
 for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 {
-	if (!fieldChild->IsA<UFunction>())
+	if (fieldChild || !fieldChild->IsA<UFunction>())
 		continue;
 
 
@@ -785,12 +423,262 @@ return true;
 
 }
 
+bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct& eStruct, const EngineStructs::Member& newMember)
+{
+	//basic 0(1) checks before iterating
+
+	//below class base offset? 
+	if (newMember.offset < eStruct.inheretedSize) { 
+		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.inheretedSize);
+		return false;
+	}
+	//above class?
+	if (newMember.offset > eStruct.size) {
+		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X is greater than class size 0x%X!", newMember.offset, eStruct.size);
+		return false;
+	}
+	//offset + size larger than class size?
+	if (newMember.offset + newMember.size > eStruct.size)
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X with size %d is greater than class size 0x%X!", newMember.offset + newMember.size, eStruct.size);
+		return false;
+	}
+
+	//larger than class size? Thats weird and will only happen if offset is negative otherwise handled by above
+	if (newMember.size > eStruct.size - eStruct.inheretedSize)
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.inheretedSize);
+		return false;
+	}
+
+	//empty? Mostly the case if the struct has just a unknownmember and nothing defined
+	if (eStruct.definedMembers.size() == 0) {
+		//nothing really needed to check
+		eStruct.definedMembers.push_back(newMember);
+	}
+
+	for(int i = 0; i < eStruct.definedMembers.size(); i++)
+	{
+		const auto& nextMember = eStruct.definedMembers[i];
+
+		//check if its smaller than the next member
+		if (newMember.offset < nextMember.offset)
+		{
+			//is the new member somehow interferring the next member
+			if (newMember.offset + newMember.size > nextMember.offset)
+			{
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: member is interferring other member (0x%X -> 0x%X -!- 0x%X)", newMember.offset, newMember.offset + newMember.size, nextMember.offset);
+				return false;
+			}
+			//yep we found place
+			eStruct.definedMembers.insert(eStruct.definedMembers.begin() + i, newMember);
+			return true;
+		}
+		//occurence can only happen if both members are a bit. if not, error
+		if(newMember.offset == nextMember.offset)
+		{
+			//only allowed if they are bits
+			if(!newMember.isBit || !nextMember.isBit)
+			{
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: attempted to override a existing member (one of them is not a bit) (isBit: %d isBit %d)", newMember.isBit, nextMember.isBit);
+				return false;
+			}
+			if(newMember.bitOffset == nextMember.bitOffset)
+			{
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: attempted to override a existing member (both have the same botOffset) (%d, %d)", newMember.bitOffset, nextMember.bitOffset);
+				return false;
+			}
+			if(newMember.bitOffset < nextMember.bitOffset)
+			{
+				//yep we found place
+				eStruct.definedMembers.insert(eStruct.definedMembers.begin() + i, newMember);
+				return true;
+			}
+			//other cases like > are skipped, they should be checked in the next iter
+		}
+		//all cases should be handled in the next iteration as the member is larger
+
+		//exception: this was the last iteration
+		if(i == eStruct.definedMembers.size() - 1)
+		{
+			//sizes etc are already checked before the loop
+			eStruct.definedMembers.push_back(newMember);
+			return true;
+		}
+	}
+	//will never be reached
+	return false;
+}
+
+void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
+{
+	//clear the existing array
+	if (!eStruct.cookedMembers.empty())
+		eStruct.cookedMembers.clear();
+
+
+	auto genUnknownMember = [&](int from, int to, int special)
+	{
+		EngineStructs::Member unknown;
+		unknown.missed = true;
+		unknown.size = to - from;
+		char name[30];
+		sprintf_s(name, "UnknownData%02d_%d[0x%X]", eStruct.unknownCount++, special, unknown.size);
+		unknown.name = std::string(name);
+		unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
+		unknown.offset = from;
+		eStruct.cookedMembers.push_back(unknown);
+	};
+
+	//end bit exclusive
+	auto genUnknownBits = [&](int startOffset, int endOffset, int startBit, int endBit)
+	{
+		//weird
+		if (endOffset < startOffset)
+			return;
+
+		//weird aswell
+		if (endOffset == startOffset && startBit >= endBit)
+			return;
+
+		//are we here many offsets apart??
+		//0x5:3
+		//0x7:1
+		//->
+		//0x5:3
+		//0x6 unknownmember[0x1]
+		//0x7:0 unk (handled by while)
+		//0x7:1
+		if(endOffset - startOffset > 1)
+		{
+			//fill that with a unknownmember instead of bits
+			genUnknownMember(startOffset + 1, endOffset, 3);
+			//check if the end is < 0, then we can just stop
+			if(endBit == 0)
+				return;
+			//adjust, now we just gotta fill the bits until endbit
+			startOffset = endOffset;
+			startBit = 0;
+		}
+
+		while(true)
+		{
+			if(startOffset == endOffset && startBit == endBit)
+			{
+				break;
+			}
+			EngineStructs::Member unknown;
+			unknown.missed = true;
+			char name[30];
+			sprintf_s(name, "UnknownBit%02d", eStruct.unknownCount++);
+			unknown.name = std::string(name);
+			unknown.offset = startOffset;
+			unknown.size = 1;
+			unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
+			unknown.isBit = true;
+			unknown.bitOffset = startBit++;
+			if(startBit >= 8) //should actually just be == 8 otherwise its super weird
+			{
+				startBit = startBit % 8;
+				startOffset++;
+			}
+			eStruct.cookedMembers.push_back(unknown);
+		}
+	};
+
+	if (eStruct.size - eStruct.inheretedSize == 0)
+		return;
+
+	if (eStruct.definedMembers.size() == 0 && eStruct.size - eStruct.inheretedSize > 0)
+	{
+		genUnknownMember(eStruct.inheretedSize, eStruct.size, 1);
+		return;
+	}
+
+	if(eStruct.inheretedSize < eStruct.definedMembers[0].offset)
+	{
+		genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 2);
+	}
+
+	//we are hoping (very hard) that definedmembers array is 1. sorted and 2. checked for collisions
+	for(int i = 0; i < eStruct.definedMembers.size() - 1; i++)
+	{
+		const auto& currentMember = eStruct.definedMembers[i];
+		const auto& nextMember = eStruct.definedMembers[i + 1];
+		//bit shit
+		if(currentMember.isBit)
+		{
+			eStruct.cookedMembers.push_back(currentMember);
+			if(nextMember.isBit)
+			{
+				//not directly next to it?
+				//0x7:3
+				//0x7:4
+				if(currentMember.offset == nextMember.offset && nextMember.bitOffset - currentMember.bitOffset > 1)
+				{
+					genUnknownBits(currentMember.offset, nextMember.offset, currentMember.bitOffset + 1, nextMember.bitOffset);
+					continue;
+				}
+				//offset diff?
+				//0x6:2
+				//0x7:4
+				if(nextMember.offset > currentMember.offset)
+				{
+					int startBitOffset = currentMember.bitOffset + 1;
+					int startOffset = currentMember.offset;
+
+					//we cant use bitoffset + 1 here because 8 is a invalid state, so we fixup that the gen starts at off+1 and bit 0
+					if(currentMember.bitOffset == 7)
+					{
+						startBitOffset = 0;
+						startOffset++;
+					}
+					genUnknownBits(startOffset, nextMember.offset, startBitOffset, nextMember.bitOffset);
+					continue;
+				}
+			}
+			//is the next member offset not directly after it?
+			//0x5:3
+			//0x8
+			//->
+			//0x5:3
+			//0x6 unk[0x2]
+			//0x8 (handled by next iter)
+			if(nextMember.offset - currentMember.offset > 1)
+			{
+				genUnknownMember(currentMember.offset + 1, nextMember.offset, 4);
+			}
+			continue;
+		}
+		eStruct.cookedMembers.push_back(currentMember);
+		//0x2 [0x4]
+		//0x7 [0x2]
+		//->
+		//0x2 [0x4]
+		//0x6 unk[0x1]
+		//0x7 [0x2]
+		if(nextMember.offset - (currentMember.offset + currentMember.size) > 0)
+		{
+			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 5);
+		}
+
+		//fixup any bits
+		if(nextMember.isBit && nextMember.bitOffset > 0)
+		{
+			genUnknownBits(nextMember.offset, nextMember.offset, 0, nextMember.bitOffset);
+		}
+	}
+	//add the last member
+	eStruct.cookedMembers.push_back(eStruct.definedMembers[eStruct.definedMembers.size() - 1]);
+	const auto& last = eStruct.cookedMembers[eStruct.cookedMembers.size() - 1];
+	if(last.offset + last.size < eStruct.size)
+		genUnknownMember(last.offset + last.size, eStruct.size, 6);
+}
+
 
 EngineCore::EngineCore()
 {
 	static bool loaded = false;
-
-	
 
 	bSuccess = false;
 	if(!loaded)
@@ -819,31 +707,8 @@ EngineCore::EngineCore()
 		}
 #endif
 
-		const auto UObjectAddr = getOffsetAddress(getOffsetForName("OFFSET_GOBJECTS"));
-		if (!UObjectAddr)
-		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectAddress offset not found!");
-			return;
-		}
-		UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
-
-		windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "TUObject -> 0x%p", UObjectArray.Objects);
-		windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "TUObject elements: %d", UObjectArray.NumElements);
-
-#if UE_VERSION >= UE_4_25
-		//allocating a large enough buffer for all FFields using uobject size because that should be big enough
-		pFFieldArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CT * UOBJECT_MAX_SIZE));
-
-		pFFieldClassArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CLASSES_CT * sizeof(FFieldClass)));
-
-#endif
 		
-		if (!UObjectArray.Objects || !UObjectArray.NumElements)
-		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "UObjectArray seems empty!");
-			bSuccess = false;
-			return;
-		}
+
 		loaded = true;
 	}
 	
@@ -851,159 +716,22 @@ EngineCore::EngineCore()
 	
 }
 
-
-bool EngineCore::lastOperationSuccess()
+bool EngineCore::initSuccess()
 {
 	return bSuccess;
 }
-
-
-bool EngineCore::existsRealPtr(uint64_t UObjectPtr)
-{
-	const bool exists = linkedUObjectPtrs.contains(UObjectPtr);
-	if (!exists)
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "ERROR! Could not find ptr in linkedUObjectPtrs %llX!", UObjectPtr);
-		printf("ERROR! Could not find ptr in linkedUObjectPtrs %llX!\n", UObjectPtr);
-		//DebugBreak(); <- add for debugging purposes!
-		return false;
-	}
-
-	return true;
-}
-
-
-void EngineCore::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
-{
-	bSuccess = false;
-	status = CS_busy;
-	finishedBytes = 0;
-	totalBytes = UObjectArray.NumElements * 24;
-	pGObjectPtrArray = reinterpret_cast<uint64_t>(calloc(1, totalBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%p bytes of memory for GObjectPtrArray at 0x%p", totalBytes, pGObjectPtrArray);
-	if(!pGObjectPtrArray)
-	{
-		status = CS_error;
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for GObjectPtrArray!");
-		return;
-	}
-	
-
-#if UE_VERSION < UE_4_20
-	//no chunks
-	const uint64_t objectArrayStart = reinterpret_cast<uint64_t>(UObjectArray.Objects);
-
-	while (finishedBytes + 0x100 < totalBytes)
-	{
-		Memory::read(reinterpret_cast<void*>(objectArrayStart + finishedBytes), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), 0x100);
-		finishedBytes += 0x100;
-	}
-	const auto reminingBytes = totalBytes - finishedBytes;
-	Memory::read(reinterpret_cast<void*>(objectArrayStart + finishedBytes), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), reminingBytes);
-	finishedBytes += reminingBytes;
-	
-#else
-	//chunks apperared
-#if UE_VERSION == UE_4_20
-	constexpr auto numElementsPerChunk = 65 * 1024;
-#else
-	constexpr auto numElementsPerChunk = 64 * 1024;
-#endif
-	
-	constexpr auto chunkBytesSize = numElementsPerChunk * 24;
-	for(int i = 0; i < UObjectArray.NumChunks; i++)
-	{
-		//chunks are in objects* 
-		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(UObjectArray.Objects) + i * 8);
-		auto chunkBytesRead = 0;
-		printf("chunk %i from %llX to %llX\n", i, chunkStart, chunkStart + chunkBytesSize);
-		//256 bytes is good enough, a full chunk would take 6144 reads.
-		//if the cunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
-		while(finishedBytes + 0x100 < totalBytes && chunkBytesRead < chunkBytesSize)
-		{
-			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), 0x100);
-			chunkBytesRead += 0x100;
-			finishedBytes += 0x100;
-		}
-		//fixup the remaining bytes, should only apply for the latest elements in chunk X
-		if(finishedBytes + 0x100 > totalBytes && totalBytes - finishedBytes > 0)
-		{
-			const auto reminingBytes = totalBytes - finishedBytes;
-			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(pGObjectPtrArray + finishedBytes), reminingBytes);
-			finishedBytes += reminingBytes;
-		}
-	}
-
-#endif
-
-	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded GObjectPtrArray succesfully!");
-
-	bSuccess = true;
-}
-
-void EngineCore::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
-{
-	bSuccess = false;
-	finishedBytes = 0;
-	//only read UObjects atm
-	totalBytes = UObjectArray.NumElements * sizeof(UObject);
-	const auto allocatedBytes = UObjectArray.NumElements * sizeof(UBigObject);
-	status = CS_busy;
-	//allocate UOBJECT_MAX_SIZE bytes for every UObject
-	pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, allocatedBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, pUBigObjectArray);
-
-	if (!pUBigObjectArray)
-	{
-		status = CS_error;
-		
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
-		return;
-	}
-	
-
-	//go through each element
-	for(int32_t i = 0; i < UObjectArray.NumElements; i++)
-	{
-		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(pGObjectPtrArray + i * 24);
-		//this happens quite often, those objects just got deleted
-		//the array is like a block of cheese with holes
-		if (!UObjectAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for obect %d!", i);
-		}
-		else {
-			//gets the memory address where the objects gonna be
-			UBigObject* newBigObject = reinterpret_cast<UBigObject*>(pUBigObjectArray + i * sizeof(UBigObject));
-			newBigObject->readSize = sizeof(UObject);
-			//read the UObject inside the buffer with UOBJECT_MAX_SIZE bytes size
-			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, sizeof(UObject));
-
-			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
-			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
-
-			//link the list to the ptr
-			linkedUObjectPtrs.insert(std::pair(UObjectAddress, newBigObject));
-		}
-
-		finishedBytes += sizeof(UObject);
-	}
-	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray succesfully!");
-	bSuccess = true;
-}
-
 
 void EngineCore::cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopyStatus& status)
 {
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Caching FNames...");
 	status = CS_busy;
-	totalNames = UObjectArray.NumElements;
+	totalNames = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedNames = 0;
-	for (; finishedNames < UObjectArray.NumElements; finishedNames++)
+	for (; finishedNames < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedNames++)
 	{
-		const auto object = getUObjectIndex<UObject>(finishedNames);
+		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
+		if (!object)
+			continue;
 		//caches already if not cached, we dont have to use the result
 		auto res = object->getName();
 	}
@@ -1027,21 +755,27 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	}
 	std::unordered_map<std::string, std::vector<UObject*>> upackages;
 	//we first use the counter to iterate over all elements
-	totalPackages = UObjectArray.NumElements;
+	totalPackages = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedPackages = 0;
 
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "reading overriding structs....");
 	overrideStructs();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding custom structs....");
 	addStructs();
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overriding unknown members....");
+	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
-
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "caching elements....");
-	for (; finishedPackages < UObjectArray.NumElements; finishedPackages++)
+	
+	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
-		auto object = getUObjectIndex<UObject>(finishedPackages);
-		
+		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
+
+		//instantly go if any operation was not successful!
+		if (!ObjectsManager::operationSuccess())
+			return;
+
+		//is it even valid? Some indexes arent
+		if (!object) 
+			continue;
 		
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
 			continue;
@@ -1060,6 +794,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	basicType.packageName = "BasicType"; //dont rename!!
 	for(auto& struc : customStructs)
 	{
+		cookMemberArray(struc);
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
 		packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(
@@ -1080,6 +815,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for(const auto& object : package.second)
 		{
 			const bool isClass = object->IsA<UClass>();
+			if (!ObjectsManager::operationSuccess())
+				return;
 			if (isClass || object->IsA<UScriptStruct>())
 			{
 				auto& dataVector = isClass ? ePackage.classes : ePackage.structs;
@@ -1098,6 +835,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 					{
 						struc.memoryAddress = reinterpret_cast<uintptr_t>(object->getOwnPointer());
 
+						cookMemberArray(struc);
+
 						dataVector.push_back(struc);
 						
 						packageObjectInfos.insert(std::pair(object->getCName(),
@@ -1107,7 +846,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						
 						generateFunctions(object->castTo<UStruct>(), functionVec);
 
-						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Member count: %d | Function count: %d", struc.members.size(), functionVec.size());
+						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", struc.cookedMembers.size(), functionVec.size());
 
 						for (int i = 0; i < functionVec.size(); i++)
 						{
@@ -1118,6 +857,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						continue;
 					}
 				}
+
+				if (!ObjectsManager::operationSuccess())
+					return;
 
 				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
@@ -1133,7 +875,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
 				auto& functionVec = dataVector.back().functions;
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Member count: %d | Function count: %d", dataVector.back().members.size(), functionVec.size());
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", dataVector.back().cookedMembers.size(), functionVec.size());
 
 				for(int i = 0; i < functionVec.size(); i++)
 				{
@@ -1219,7 +961,7 @@ std::vector<std::string>& EngineCore::getAllUnknownTypes()
 	{
 		auto checkMembers = [&](const EngineStructs::Struct& struc) mutable
 		{
-			for (auto& member : struc.members)
+			for (auto& member : struc.definedMembers)
 			{
 				if (!member.type.clickable || //not clickable? Skip
 					packageObjectInfos.contains(member.type.name) || //packageObjectInfos contains the name? Then its defined
@@ -1262,66 +1004,15 @@ void EngineCore::overrideStructMembers(const EngineStructs::Struct& eStruct)
 	overridingStructMembers.insert(std::pair(eStruct.fullName, eStruct));
 }
 
-void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, std::vector<EngineStructs::Member> members, int index)
+void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, const std::vector<EngineStructs::Member>& members)
 {
-	bool success = false;
-	//if theres a overriding struct, insert the data into there (we have to do this when we save any changes)
-	if(overridingStructMembers.contains(eStruct->fullName))
+	if (eStruct == nullptr)
+		return;
+	for(const auto& member : members)
 	{
-		auto& struc = overridingStructMembers[eStruct->fullName];
-		int largestOffset = 0;
-		bool found = false;
-		for(int i = 0; i < struc.members.size(); i++)
-		{
-			const auto& member = struc.members[i];
-			largestOffset = member.offset;
-			//check the next block in the array
-			if(member.offset > members[0].offset && //check if the member.offset if above -> add new vector below
-				member.offset >= members[members.size() - 1].offset + members[members.size() - 1].size) //check if the offset is >= our last item
-			{
-				//after all this is confirmed, we add our shit below the last item
-				found = true;
-				struc.members.insert(struc.members.begin() + i, members.begin(), members.end());
-				success = true;
-				break;
-			}
-			//looks like we added a block before and now we try to replace it
-			if(member.offset <= members[0].offset && member.offset + member.size >= members[members.size() - 1].offset + members[members.size() - 1].size)
-			{
-				//remove it
-				struc.members.erase(struc.members.begin() + i);
-				//add our members
-				struc.members.insert(struc.members.begin() + i, members.begin(), members.end());
-				success = true;
-				break;
-
-			}
-		}
-		//or add it at the last position
-		if(largestOffset < members[0].offset && !found)
-		{
-			struc.members.insert(struc.members.end(), members.begin(), members.end());
-			success = true;
-		}
+		RUNAddMemberToMemberArray(*eStruct, member);
 	}
-	else
-	{
-		//copy struct
-		EngineStructs::Struct overrideStruc = *eStruct;
-		//but override members with members we added
-		overrideStruc.members = members;
-		overridingStructMembers.insert(std::pair(eStruct->fullName, overrideStruc));
-		success = true;
-	}
-	if(success)
-	{
-		const EngineStructs::Member unknownBlock = eStruct->members[index];
-
-		eStruct->members.erase(eStruct->members.begin() + index);
-		int bitOffset = 0;
-		findOverrideMember(unknownBlock.offset + unknownBlock.size, unknownBlock.offset, bitOffset, *eStruct, &index);
-	}
-
+	cookMemberArray(*eStruct);
 }
 
 void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
@@ -1424,7 +1115,7 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int& totalProgress)
 {
 	progressDone = 0;
-	totalProgress = 1;
+	totalProgress = 11;
 	std::ifstream file(filepath, std::ios::binary | std::ios::ate);
 	if (!file) {
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Error opening file!");
@@ -1448,9 +1139,8 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 		return false;
 	}
 
+	progressDone++;
 	//seems like you found the easteregg that i encrypt the project with aes
-	
-
 	const char* key = "UEDumper secret!";
 
 	AES aes(AESKeyLength::AES_128);
@@ -1469,7 +1159,7 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 
 	const nlohmann::json UEDProject = nlohmann::json::parse(c);
 
-	totalProgress = 10;
+	
 	
 	delete[] c;
 
@@ -1536,6 +1226,15 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 	for (const nlohmann::json& package : jPackages)
 		packages.push_back(EngineStructs::Package::fromJson(package));
 
+	for(auto& package : packages)
+	{
+		for (auto& struc : package.structs)
+			cookMemberArray(struc);
+		for (auto& clas : package.classes)
+			cookMemberArray(clas);
+	}
+		
+
 	progressDone++;
 
 	unknownProperties = vectors["UnknownProperties"];
@@ -1591,7 +1290,7 @@ void EngineCore::generateStructDefinitionsFile()
 			file << spacing << objectName << ".inherited = " << boolToSt(val.inherited) << ";" << std::endl;
 			file << spacing << objectName << ".isClass = " << boolToSt(val.isClass) << ";" << std::endl;
 			file << spacing << objectName << ".members = std::vector<EngineStructs::Member> {" << std::endl;
-			for(const auto member : val.members)
+			for(const auto member : val.cookedMembers)
 			{
 				auto printFieldType = [&](const fieldType& type) mutable
 				{

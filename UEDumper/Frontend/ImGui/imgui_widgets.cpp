@@ -1277,6 +1277,37 @@ void ImGui::Cross(float size, float thickness)
     return;
 }
 
+bool ImGui::MoveButton(const char* str_id, ImVec2 buttonSize, float* newCalculatedPos) {
+    ImGuiWindow* window = GetCurrentWindow();
+    if (window->SkipItems)
+        return false;
+
+    ImGuiContext& g = *GImGui;
+    const ImGuiStyle& style = g.Style;
+    const ImGuiID id = window->GetID(str_id);
+
+    ImVec2 pos = ImVec2(window->DC.CursorPos.x, window->DC.CursorPos.y + 5);
+    const ImRect bb(pos, buttonSize + window->DC.CursorPos);
+
+    ItemSize(bb, style.FramePadding.y);
+    if (!ItemAdd(bb, id))
+        return false;
+
+    window->DrawList->AddRectFilled(bb.Min, bb.Max, GetColorU32(ImGuiCol_Button), 4);
+    window->DrawList->AddText({ bb.Min.x + buttonSize.x / 2 - CalcTextSize("-").x / 2, bb.Min.y}, GetColorU32(ImGuiCol_Text), "-");
+
+    bool hovered, held;
+    bool pressed = ButtonBehavior(bb, id, &hovered, &held, ImGuiButtonFlags_None);
+    if (hovered) {
+        SetMouseCursor(ImGuiMouseCursor_ResizeNS);
+    }
+
+    if (held && newCalculatedPos) {
+        *newCalculatedPos += g.IO.MouseDelta.y;
+    }
+    return held;
+}
+
 void ImGui::Spinner(float radius, float thickness, int num_segments, ImVec2 posi, bool IsRealWidget) {
 
     float speed = 12.f;

@@ -25,23 +25,3 @@
 //third party
 #include <json.hpp>
 #include <AES.h>
-
-#include "Engine/Userdefined/Datatypes.h"
-
-#include "Engine/Userdefined/UEdefinitions.h"
-
-#include "Frontend/Windows/LogWindow.h"
-
-#include "Frontend/Fonts/fontAwesomeHelper.h"
-#include "Frontend/IGHelper.h"
-#include "Frontend/Texture/TextureCreator.h"
-
-#include "Memory/Memory.h"
-#include "Settings/EngineSettings.h"
-
-//dumps host
-#include <dumpshost.h>
-
-#include "Engine/Core/Core.h"
-
-#include "Engine/Live/LiveMemory.h"

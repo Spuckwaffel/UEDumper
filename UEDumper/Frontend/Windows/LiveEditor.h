@@ -1,5 +1,7 @@
 #pragma once
 #include "stdafx.h"
+#include "Engine/Core/EngineStructs.h"
+#include "Engine/Live/LiveMemory.h"
 /****************************************
 *										*
 *	+++ UEDumper live editor +++		*
@@ -55,7 +57,7 @@ namespace windows
 
 
 		/**
-		 * \brief draws a field to support read/write
+		 * \brief draws a field to support read/write.
 		 * \param block memory block for the member
 		 * \param offset the offset in the block 
 		 * \param bitOffset the bit offset
@@ -63,7 +65,7 @@ namespace windows
 		 * \param type fieldType
 		 * \param secret a secret key to make the field unique
 		 */
-		static void drawReadWriteableField(LiveMemory::MemoryBlock& block, const int offset, const int bitOffset, bool isBit, const fieldType& type, const std::string& secret);
+		static void drawReadWriteableField(LiveMemory::MemoryBlock* block, const int offset, const int bitOffset, bool isBit, const fieldType& type, const std::string& secret);
 
 
 		//add your prop here for support!
@@ -76,7 +78,7 @@ namespace windows
 		 * \param secret secret
 		 * \param innerOffset inner offset
 		 */
-		static void drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock& block, const std::string& secret, int innerOffset);
+		static void drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 
 		/**
 		 * \brief displays the given struct for a memory block
@@ -86,7 +88,7 @@ namespace windows
 		 * \param secret a secret key to make the members unique
 		 * \param offset data offset so it will use block + offset for the members
 		 */
-		static void drawStructProperty(const EngineStructs::Struct& struc, const std::string& name, LiveMemory::MemoryBlock& block, const std::string& secret, int offset);
+		static void drawStructProperty(const EngineStructs::Struct& struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset);
 
 		/**
 		 * \brief draws a single member that is not clickable and has support to get written to
@@ -96,7 +98,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param simple simple displaying or extended
 		 */
-		static void drawMemberNonclickableProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock& block, int innerOffset, const std::string& secret, bool simple = false);
+		static void drawNonclickableMember(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, int innerOffset, const std::string& secret, bool simple = false);
 
 		/**
 		 * \brief displays a ObjectProperty which is a pointer
@@ -105,7 +107,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
 		 */
-		static void drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock& block, const std::string& secret, int innerOffset);
+		static void drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 
 		/**
 		 * \brief displays a TEnumAsByte
@@ -115,7 +117,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
 		 */
-		static void drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum& subEnum, LiveMemory::MemoryBlock& block, const std::string& secret, int innerOffset);
+		static void drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum& subEnum, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 		
 
 		/**
@@ -141,7 +143,7 @@ namespace windows
 		/**
 		 * \brief checks whether the StructName is valid. Enabling lookForBest does additionally memory operations
 		 * \param classPointer pointer to the class UObject
-		 * \param CName name of the Struct
+		 * \param CName name of the Struct (if lookForBest fails this will be used)
 		 * \param outPackageIndex returning package index
 		 * \param outStructIndex returning struct index
 		 * \param isClass whether its in the struct vector or class vector

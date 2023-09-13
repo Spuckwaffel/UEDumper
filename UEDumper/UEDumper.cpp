@@ -6,7 +6,13 @@
 #include "Frontend/Windows/PackageWindow.h"
 #include "Frontend/Windows/PackageViewerWindow.h"
 #include "Frontend/Windows/LiveEditor.h"
+#include "Frontend/Windows/LogWindow.h"
 #include "Frontend/Windows/TopRowButtons.h"
+#include <Frontend/IGHelper.h>
+
+#include "Frontend/Texture/TextureCreator.h"
+#include "Memory/memory.h"
+#include <Settings/EngineSettings.h>
 
 /*
 *    ██╗░░░██╗███████╗  ██████╗░██╗░░░██╗███╗░░░███╗██████╗░███████╗██████╗░
