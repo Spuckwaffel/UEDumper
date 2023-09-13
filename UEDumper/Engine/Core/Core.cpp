@@ -505,13 +505,14 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 	if (!eStruct.cookedMembers.empty())
 		eStruct.cookedMembers.clear();
 
+
 	auto genUnknownMember = [&](int from, int to, int special)
 	{
 		EngineStructs::Member unknown;
 		unknown.missed = true;
 		unknown.size = to - from;
 		char name[30];
-		sprintf_s(name, "UnknownData%02d-%d[0x%X]", eStruct.unknownCount++, special, unknown.size);
+		sprintf_s(name, "UnknownData%02d_%d[0x%X]", eStruct.unknownCount++, special, unknown.size);
 		unknown.name = std::string(name);
 		unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
 		unknown.offset = from;
