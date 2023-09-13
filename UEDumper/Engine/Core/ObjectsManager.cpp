@@ -2,8 +2,6 @@
 
 #include "Core.h"
 #include "../UEClasses/UnrealClasses.h"
-#include "Frontend/IGHelper.h"
-#include "Frontend/Texture/TextureCreator.h"
 #include "Frontend/Windows/LogWindow.h"
 #include "Memory/memory.h"
 
@@ -14,8 +12,7 @@ void ObjectsManager::verifyUBigObjectSize(UObjectManager::UBigObject* bigObjectP
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 			"HARD ERROR! A UObject tried to acces more space (%d) than it can have max (%d). Try increasing UOBJECT_MAX_SIZE", requiredSize, UOBJECT_MAX_SIZE);
 		errorReason = windows::LogWindow::getLastLogMessage();
-		presentTopMostCallback = true;
-		throw std::runtime_error("required size way too large???");
+		STOP_OPERATION();
 	}
 
 	//do we have to read more than we did at one point before?
@@ -40,11 +37,16 @@ uint64_t ObjectsManager::getUObjectPtrByIndex(int index)
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 			"HARD ERROR: getUObjectPtrByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 		errorReason = windows::LogWindow::getLastLogMessage();
-		presentTopMostCallback = true;
-		throw std::runtime_error("Index larger than NumElements?");
+		STOP_OPERATION();
 	}
 
 	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * 24);
+}
+
+void ObjectsManager::STOP_OPERATION()
+{
+	puts("Operation shut down after failure");
+	bOperationSuccess = false;
 }
 
 ObjectsManager::ObjectsManager()
@@ -53,8 +55,9 @@ ObjectsManager::ObjectsManager()
 	const auto UObjectAddr = EngineCore::getOffsetAddress(EngineCore::getOffsetForName("OFFSET_GOBJECTS"));
 	if (!UObjectAddr)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "UObject address offset not found / invalid!");
-		errorReason = "UObject address offset not found / invalid!";
+		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "GObject address offset not found / invalid!");
+		errorReason = "GObject address offset not found / invalid!";
+		STOP_OPERATION();
 		return;
 	}
 
@@ -67,6 +70,7 @@ ObjectsManager::ObjectsManager()
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "TUObject pointer is invalid!");
 		errorReason = "TUObject pointer is invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		STOP_OPERATION();
 		return;
 	}
 
@@ -74,6 +78,7 @@ ObjectsManager::ObjectsManager()
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "TUobject elements are invalid!");
 		errorReason = "TUobject elements are invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		STOP_OPERATION();
 		return;
 	}
 
@@ -87,6 +92,7 @@ ObjectsManager::ObjectsManager()
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "Could not allocate bytes for the FFields! Is FFIELD_CT too large?");
 		errorReason = windows::LogWindow::getLastLogMessage();
+		STOP_OPERATION();
 		return;
 	}
 	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocated %llX bytes for FFields cache", FFIELD_CT * UOBJECT_MAX_SIZE);
@@ -98,12 +104,18 @@ ObjectsManager::ObjectsManager()
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "Could not allocate bytes for the FFieldClasses! Is FFIELD_CLASSES_CT too large?");
 		errorReason = windows::LogWindow::getLastLogMessage();
+		STOP_OPERATION();
 		return;
 	}
 	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocated %llX bytes for FFieldClass cache", FFIELD_CLASSES_CT * sizeof(FFieldClass));
 
-	bOperationSuccess = true;
 #endif
+	bOperationSuccess = true;
+}
+
+bool ObjectsManager::operationSuccess()
+{
+	return bOperationSuccess;
 }
 
 bool ObjectsManager::operationSuccess(std::string& errorString)
@@ -229,6 +241,8 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
 			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
 
+			newBigObject->valid = true;
+
 			//link the list to the ptr
 			gUObjectManager.linkedUObjectPtrs.insert(std::pair(UObjectAddress, newBigObject));
 		}
@@ -289,37 +303,4 @@ FFieldClass* ObjectsManager::getFFieldClass(void* gamePtr)
 void ObjectsManager::setSDKGenerationDone()
 {
 	cacheState = CS_RUNTIME;
-}
-
-void ObjectsManager::topmostCallback()
-{
-	if(presentTopMostCallback)
-	{
-		const ImVec2 bigWindow = IGHelper::getWindowSize();
-		ImGui::SetNextWindowFocus();
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
-
-		ImGui::Begin("Error", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-		ImGui::SetWindowSize(ImVec2(600, 300), ImGuiCond_Once);
-
-		const ImVec2 smallWindow = ImGui::GetWindowSize();
-		ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
-		ImGui::PopStyleVar();
-		ImGui::SetCursorPosY(40);
-		ImGui::Image(TextureCreator::getTexture("warninglogo"), ImVec2(200, 200));
-		ImGui::SameLine();
-		ImGui::BeginChild("ObjectsManagerTopMostCallbackChild", ImVec2(380, 260), ImGuiWindowFlags_NoScrollWithMouse);
-		ImGui::TextWrapped("Sorry! You ran into a unrecoverable error that forces the Dumper to close.");
-		ImGui::TextWrapped(errorReason.c_str());
-		ImGui::EndChild();
-		ImGui::Dummy(ImVec2(ImGui::GetWindowSize().x / 2 - 65, 0));
-		ImGui::SameLine();
-		if (ImGui::Button("Exit", ImVec2(90, 40)))
-		{
-			exit(EXIT_FAILURE);
-		}
-
-		ImGui::End();
-	}
-
 }

@@ -105,6 +105,7 @@ private:
 #pragma pack(push, 1)
 		struct UBigObject
 		{
+			bool valid = false;
 			//valid bytes in the char array
 			size_t readSize = 0;
 			//if you ask where if the paired UObject game ptr?
@@ -170,10 +171,12 @@ private:
 	 */
 	static uint64_t getUObjectPtrByIndex(int index);
 
+	//default false but true after init
 	static inline bool bOperationSuccess = false;
 	static inline std::string errorReason = "";
 
-	static inline bool presentTopMostCallback = false;
+	//loops shpuld call this for a shutdown
+	static void STOP_OPERATION();
 
 public:
 
@@ -182,6 +185,7 @@ public:
 	//basic constructor and default initializer
 	ObjectsManager();
 
+	static bool operationSuccess();
 	
 	static bool operationSuccess(std::string& errorString);
 
@@ -220,11 +224,18 @@ public:
 			windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 				"HARD ERROR: getUObjectByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 			errorReason = windows::LogWindow::getLastLogMessage();
-			presentTopMostCallback = true;
-			throw std::runtime_error("Index larger than NumElements?");
+			STOP_OPERATION();
 		}
 		//this should not fail as UBigObjectArray should have the memory for all SDK index objects
 		UObjectManager::UBigObject* object = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + index * sizeof(UObjectManager::UBigObject));
+
+		if (!object->valid)
+		{
+			windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+				"WARN: Requested index %d in getUObjectByIndex is marked invalid!", index);
+			return nullptr;
+		}
+			
 
 		verifyUBigObjectSize(object, sizeof(T));
 
@@ -262,7 +273,7 @@ public:
 					windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 						"HARD ERROR! Could not allocate a new bigObject (size %d) for %llX! Not enough ram?", sizeof(UObjectManager::UBigObject), gamePtr);
 					errorReason = windows::LogWindow::getLastLogMessage();
-					presentTopMostCallback = true;
+					STOP_OPERATION();
 					return nullptr;
 				}
 				//read the memory of the object, override the vtable and set the readsize
@@ -304,10 +315,11 @@ public:
 	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Gets the UObject of the full name
 	 * \tparam T UObject inherited class
 	 * \param name Full name of the UObject
+	 * \param raiseHardError whether the program should raise a hard error or not upon unsuccessful find
 	 * \return the cached Object
 	 */
 	template <typename T>
-	static T* findObject(std::string name)
+	static T* findObject(std::string name, bool raiseHardError = false)
 	{
 		//check if the object is in out cache
 		if (EngineCore::fullStringCache.contains(name))
@@ -336,6 +348,13 @@ public:
 
 			}
 
+		}
+		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+			"ERROR? Could not find name %s in FindObject!!", name.c_str());
+		if(!raiseHardError)
+		{
+			errorReason = windows::LogWindow::getLastLogMessage();
+			STOP_OPERATION();
 		}
 		return nullptr;
 	}
@@ -391,9 +410,4 @@ public:
 
 	static void setSDKGenerationDone();
 
-	/**
-	* \brief callback function that has to get called at the end of every frame in case
-	* there's something that has to be rendered topmost. Use carefully!
-	*/
-	static void topmostCallback();
 };

@@ -186,14 +186,17 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	//supers?
 	if (object->SuperStruct)
 	{
-		auto super = object->getSuper();
-		for(auto& obj: object->getAllSupers())
+		if(const auto super = object->getSuper())
 		{
-			//add them to a vector
-			eStruct.supers.push_back(obj->getCName());
+			for (auto& obj : object->getAllSupers())
+			{
+				//add them to a vector
+				eStruct.supers.push_back(obj->getCName());
+			}
+			eStruct.inherited = true;
+			eStruct.inheretedSize = super->PropertiesSize;
 		}
-		eStruct.inherited = true;
-		eStruct.inheretedSize = super->PropertiesSize;
+		
 	}
 
 
@@ -220,38 +223,41 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		
 		for (auto child = object->getChildren(); child; child = child->getNext())
 		{
-			if (child->IsA<UProperty>())
+			if (!ObjectsManager::operationSuccess())
+				return false;
+
+			if (!child || !child->IsA<UProperty>())
+				continue;
+
+			auto prop = child->castTo<UProperty>();
+			EngineStructs::Member member;
+			member.size = prop->ElementSize * prop->ArrayDim;
+			member.name = generateValidVarName(prop->getName());
+			//should not happen
+			if (member.size == 0)
 			{
-				auto prop = child->castTo<UProperty>();
-				EngineStructs::Member member;
-				member.size = prop->ElementSize * prop->ArrayDim;
-				member.name = generateValidVarName(prop->getName());
-				//should not happen
-				if (member.size == 0)
-				{
-					windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
-					//DebugBreak();
-					continue;
-				}
-				auto type = prop->getType();
-				member.type = type;
-				member.offset = prop->getOffset();
-
-				if (type.propertyType == PropertyType::Unknown)
-				{
-					windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
-					continue;
-				}
-				if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())
-				{
-					auto boolProp = child->castTo<UBoolProperty>();
-
-					const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
-					member.isBit = true;
-					member.bitOffset = bitPos;
-				}
-				eStruct.definedMembers.push_back(member);
+				windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
+				//DebugBreak();
+				continue;
 			}
+			auto type = prop->getType();
+			member.type = type;
+			member.offset = prop->getOffset();
+
+			if (type.propertyType == PropertyType::Unknown)
+			{
+				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
+				continue;
+			}
+			if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())
+			{
+				auto boolProp = child->castTo<UBoolProperty>();
+
+				const auto bitPos = boolProp->getBitPosition(boolProp->ByteMask);
+				member.isBit = true;
+				member.bitOffset = bitPos;
+			}
+			eStruct.definedMembers.push_back(member);
 		}
 	}
 
@@ -354,7 +360,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 //in every version we have to go through the children to 
 for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 {
-	if (!fieldChild->IsA<UFunction>())
+	if (fieldChild || !fieldChild->IsA<UFunction>())
 		continue;
 
 
@@ -499,13 +505,13 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 	if (!eStruct.cookedMembers.empty())
 		eStruct.cookedMembers.clear();
 
-	auto genUnknownMember = [&](int from, int to)
+	auto genUnknownMember = [&](int from, int to, int special)
 	{
 		EngineStructs::Member unknown;
 		unknown.missed = true;
 		unknown.size = to - from;
 		char name[30];
-		sprintf_s(name, "UnknownData%02d[0x%X]", eStruct.unknownCount++, unknown.size);
+		sprintf_s(name, "UnknownData%02d-%d[0x%X]", eStruct.unknownCount++, special, unknown.size);
 		unknown.name = std::string(name);
 		unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
 		unknown.offset = from;
@@ -534,7 +540,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 		if(endOffset - startOffset > 1)
 		{
 			//fill that with a unknownmember instead of bits
-			genUnknownMember(startOffset + 1, endOffset);
+			genUnknownMember(startOffset + 1, endOffset, 3);
 			//check if the end is < 0, then we can just stop
 			if(endBit == 0)
 				return;
@@ -573,8 +579,13 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 
 	if (eStruct.definedMembers.size() == 0 && eStruct.size - eStruct.inheretedSize > 0)
 	{
-		genUnknownMember(0, eStruct.size - eStruct.inheretedSize);
+		genUnknownMember(eStruct.inheretedSize, eStruct.size, 1);
 		return;
+	}
+
+	if(eStruct.inheretedSize < eStruct.definedMembers[0].offset)
+	{
+		genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 2);
 	}
 
 	//we are hoping (very hard) that definedmembers array is 1. sorted and 2. checked for collisions
@@ -623,7 +634,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 			//0x8 (handled by next iter)
 			if(nextMember.offset - currentMember.offset > 1)
 			{
-				genUnknownMember(currentMember.offset + 1, nextMember.offset);
+				genUnknownMember(currentMember.offset + 1, nextMember.offset, 4);
 			}
 			continue;
 		}
@@ -636,7 +647,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 		//0x7 [0x2]
 		if(nextMember.offset - (currentMember.offset + currentMember.size) > 0)
 		{
-			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset);
+			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 5);
 		}
 
 		//fixup any bits
@@ -649,7 +660,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct& eStruct)
 	eStruct.cookedMembers.push_back(eStruct.definedMembers[eStruct.definedMembers.size() - 1]);
 	const auto& last = eStruct.cookedMembers[eStruct.cookedMembers.size() - 1];
 	if(last.offset + last.size < eStruct.size)
-		genUnknownMember(last.offset + last.size, eStruct.size);
+		genUnknownMember(last.offset + last.size, eStruct.size, 6);
 }
 
 
@@ -707,6 +718,8 @@ void EngineCore::cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopySt
 	for (; finishedNames < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedNames++)
 	{
 		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
+		if (!object)
+			continue;
 		//caches already if not cached, we dont have to use the result
 		auto res = object->getName();
 	}
@@ -743,7 +756,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
 		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
-		
+
+		//instantly go if any operation was not successful!
+		if (!ObjectsManager::operationSuccess())
+			return;
+
+		//is it even valid? Some indexes arent
+		if (!object) 
+			continue;
 		
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
 			continue;
@@ -783,6 +803,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for(const auto& object : package.second)
 		{
 			const bool isClass = object->IsA<UClass>();
+			if (!ObjectsManager::operationSuccess())
+				return;
 			if (isClass || object->IsA<UScriptStruct>())
 			{
 				auto& dataVector = isClass ? ePackage.classes : ePackage.structs;
@@ -823,6 +845,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						continue;
 					}
 				}
+
+				if (!ObjectsManager::operationSuccess())
+					return;
 
 				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());

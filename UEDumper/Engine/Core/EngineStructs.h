@@ -111,6 +111,8 @@ namespace EngineStructs
 		int bitOffset = 0; //the offset of the bit (0 if not bit)
 		bool userEdited = false; //if the member is edited by a user
 
+		operator bool() const { return size > 0; }
+
 		bool operator==(Member obj) const { return obj.name == name && obj.offset == offset && obj.bitOffset == bitOffset; }
 
 		nlohmann::json toJson() const
