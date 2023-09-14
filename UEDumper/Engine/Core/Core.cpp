@@ -121,8 +121,8 @@ std::string EngineCore::FNameToString(FName fname)
 	if (pool < 64)
 	{
 		const int compIndex = Memory::read<DWORD>(namePoolChunk + 2);
-		unsigned int _chunkOffset = compIndex >> 16;
-		unsigned short _nameOffset = compIndex;
+		const unsigned int _chunkOffset = compIndex >> 16;
+		const unsigned short _nameOffset = compIndex;
 		namePoolChunk = Memory::read<uint64_t>(gNames + 8 * _chunkOffset + 16) + 2 * _nameOffset;
 		pool = Memory::read<uint16_t>(namePoolChunk);
 	}

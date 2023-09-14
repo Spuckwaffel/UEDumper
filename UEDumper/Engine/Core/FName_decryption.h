@@ -26,32 +26,36 @@ static uint64_t dword_4BF84A4 = 0;
 
 
 static unsigned int dword_5A1DA78 = 0;
+static unsigned int dword_E851E58 = 0;
 
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)
 {
     //reversed either by me or credits to the people who post it on uc
 
-    char* v2 = inputBuf; // rdi
-    int v4 = namelength; // ebx
-    __int64 result; // rax
-    unsigned int v5; // ecx
-    __int64 v6; // r8
-    char v7; // cl
-    unsigned int v8; // eax
+    char* v25 = inputBuf; // rdi
+    int v26 = namelength; // ebx
+    int v27;
+    unsigned int v28;
+    char* v29;
+    char v30;
 
-    result = 26i64;
-    v5 = v4;
-    if (v5)
+    v27 = 0;
+
+    if (!dword_E851E58)
+        dword_E851E58 = Memory::read<unsigned int>(Memory::getBaseAddress() + 0xE851E58) >> 5;
+    v28 = dword_E851E58;
+
+    if (v26)
     {
-        v6 = v5;
+        v29 = v25;
         do
         {
-            v7 = *v2++;
-            v8 = result + 45297;
-            *(v2 - 1) = v8 + ~v7;
-            result = (v8 << 8) | (v8 >> 8);
-            --v6;
-        } while (v6);
+            v30 = v28 ^ (16 * *v29) ^ (v28 ^ ((unsigned int)*v29 >> 4)) & 0xF;
+            v28 += 4 * v27;
+            *v29 = v30;
+            ++v27;
+            ++v29;
+        } while (v27 < v26);
     }
 }
