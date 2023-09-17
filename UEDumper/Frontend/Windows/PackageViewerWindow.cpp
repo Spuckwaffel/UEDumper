@@ -509,14 +509,33 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
                 file << " : public " << struc.supers[0];
             else if (struc.inherited)
                 file << " : " << struc.supers[0];
+            else if(!struc.inherited && struc.isClass)
+                file << " : public MDKBase";
 
             file << "\n{ " << std::endl;
+
+            file << "	friend MDKHandler;\n";
+            file << "	static inline constexpr uint64_t __MDKClassSize = " << struc.size << ";\n\n";
 
             if (struc.isClass)
                 file << "public:" << std::endl;
 
+            if(struc.isClass)
+            {
+                for (const auto& member : struc.cookedMembers)
+                {
+                    if (member.missed)
+                        continue;
+                    char finalBuf[600];
+                    sprintf_s(finalBuf, "	Member(%s) %s() const { return get<T>({0x%X, %d, %d, %d}); }", member.type.stringify().c_str(), member.name, member.offset, member.size, member.isBit, member.bitOffset);
+                    file << finalBuf << std::endl;
+                }
+                continue;
+            }
+
             for (const auto& member : struc.cookedMembers)
             {
+                
                 char finalBuf[600];
                 char nameBuf[500];
                 std::string name = member.name;
@@ -533,8 +552,10 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
                 else if (member.missed)
                     file << "MISSED";
                 file << std::endl;
-
+                
             }
+
+            continue;
 
             // Add function section header
             if (!struc.functions.empty())
@@ -570,10 +591,7 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
         }
     };
 
-    generateStruct(package.classes);
-    generateStruct(package.structs);
-    
-    for(const auto& enu : package.enums)
+    for (const auto& enu : package.enums)
     {
         file << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
@@ -591,6 +609,13 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
         }
         file << "};\n\n";
     }
+
+    generateStruct(package.structs);
+
+    generateStruct(package.classes);
+    
+    
+
 }
 
 void windows::PackageViewerWindow::topmostCallback()

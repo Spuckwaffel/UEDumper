@@ -223,11 +223,10 @@ public:
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION!
-	 * getInfoOfObject might return -1 if a type definition is not found. This function lists all
-	 * types that were used in structs but were never defined. (e.g TArray or TMap)
+	 * This function lists all types that were used in structs but were never defined. (e.g TArray or TMap)
 	 * \return vector of all unknown types
 	 */
-	static std::vector<std::string>& getAllUnknownTypes();
+	static const std::vector<std::string>& getAllUnknownTypes();
 
 	/**
 	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides a existing struct with user defined data.
