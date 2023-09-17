@@ -124,4 +124,5 @@ void SDKGeneration::Generate()
 
 #include "SDK/BasicType.h"
 )";
+
 }
