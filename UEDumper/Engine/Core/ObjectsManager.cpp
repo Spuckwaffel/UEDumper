@@ -263,7 +263,7 @@ uint64_t ObjectsManager::cacheFField(uint64_t gamePtr)
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 			"HARD ERROR: cacheFField wanted to cache another field but the cache is full! Try increasing FFIELD_CT (currently: %d)", FFIELD_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
-		throw std::runtime_error("FField cache full");
+		STOP_OPERATION();
 	}
 	uint64_t realAddress = gFFieldManager.pFFieldArray + gFFieldManager.linkedFFieldIndexCount * UOBJECT_MAX_SIZE;
 	Memory::read(reinterpret_cast<void*>(gamePtr), reinterpret_cast<void*>(realAddress), UOBJECT_MAX_SIZE);
@@ -286,7 +286,7 @@ FFieldClass* ObjectsManager::getFFieldClass(void* gamePtr)
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 			"HARD ERROR: getFFieldClass wanted to cache another fieldclass but the cache is full! Try increasing FFIELD_CLASSES_CT (currently: %d)", FFIELD_CLASSES_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
-		throw std::runtime_error("FFieldClasses cache full");
+		STOP_OPERATION();
 	}
 	uint64_t realAddress = gFFieldManager.pFFieldClassArray + gFFieldManager.linkedFFieldClassIndexCount * sizeof(FFieldClass);
 	Memory::read(gamePtr, reinterpret_cast<void*>(realAddress), sizeof(FFieldClass));

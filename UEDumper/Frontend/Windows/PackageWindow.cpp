@@ -29,7 +29,7 @@ void windows::PackageWindow::renderUndefinedStructs()
 		ImGui::TextWrapped("Here is a list of all structs that can be clicked but are not defined. To fix this, add them "
 			"in StructDefinitions.h");
 		ImGui::BeginChild("UndefinedStructsChild", ImVec2(495, 250), true);
-		for (auto& struc : EngineCore::getAllUnknownTypes())
+		for (const auto& struc : EngineCore::getAllUnknownTypes())
 		{
 			ImGui::Text(struc.c_str());
 		}

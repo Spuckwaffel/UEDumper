@@ -70,6 +70,9 @@
     <Filter Include="Frontend\Texture\WICTextureLoader">
       <UniqueIdentifier>{6997e010-c276-4ae8-8e02-ce778319f608}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Generation">
+      <UniqueIdentifier>{ff7627ad-8674-4a0f-939b-f93963210c61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UEDumper.cpp">
@@ -149,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.cpp">
       <Filter>Frontend\Texture\WICTextureLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Generation\SDK.cpp">
+      <Filter>Engine\Generation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.h">
       <Filter>Frontend\Texture\WICTextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Generation\SDK.h">
+      <Filter>Engine\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Generation\BasicType.h">
+      <Filter>Engine\Generation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

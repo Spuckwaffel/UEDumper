@@ -3,8 +3,8 @@
 *													*
 *	StructDefinitions.h - Override structs here.	*
 *	This file is used to override or create structs *
-*	that are important for the live	editor to work	*
-*	properly and like you want to.					*
+*	that m,ay be important for the live	editor 		*
+*	to work properly and like you want to.			*
 *													*
 ****************************************************/
 
@@ -114,7 +114,8 @@ inline void overrideStructs()
 	EngineCore::overrideStruct(uStruct);
 }
 
-//add a struct that does not exist in the SDK. They will be all in the BasicType package.
+//add a struct that is only for visual purposes only for the editor. They will not appear in the SDK.
+//for definitions that should appear, go to Engine/Generation/BasicType.h
 //keep in mind to follow the rules of the Member struct, setting wrong offsets and sizes or types may result in crashes.
 //the normal editor DOES NOT CHECK if a class/struct below also matches the size when the class/struct gets referenced, so make sure it does!
 //if its wrong, the live editor will most likely crash

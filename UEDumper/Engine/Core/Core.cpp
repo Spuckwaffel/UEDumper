@@ -951,7 +951,7 @@ int EngineCore::getVectorIndexForPackageIndex(const int packageIndex)
 	return packageIndexes[packageIndex];
 }
 
-std::vector<std::string>& EngineCore::getAllUnknownTypes()
+const std::vector<std::string>& EngineCore::getAllUnknownTypes()
 {
 	//already checked? Well then dont do it again
 	if(unknownProperties.size() > 0)
