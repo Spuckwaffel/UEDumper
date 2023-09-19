@@ -18,7 +18,7 @@
 //we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
-	if(FNameCache.contains(fname.ComparisonIndex))
+	if (FNameCache.contains(fname.ComparisonIndex))
 	{
 		return FNameCache[fname.ComparisonIndex];
 	}
@@ -82,7 +82,7 @@ std::string EngineCore::FNameToString(FName fname)
 	const auto FNameEntryPtrPtr = ElementType + (WithinChunkIndex * 8);
 
 	const auto FNameEntryPtr = Memory::read<uint64_t>(FNameEntryPtrPtr);
-	
+
 	//read the bytes
 #if UE_VERSION == UE_4_22
 	const uint64_t AnsiName = FNameEntryPtr + 0xC;
@@ -92,7 +92,7 @@ std::string EngineCore::FNameToString(FName fname)
 
 	int nameLength = NAME_SIZE - 1;
 	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
-	
+
 #else // >= 4_23
 
 	enum { NAME_SIZE = 1024 };
@@ -102,8 +102,8 @@ std::string EngineCore::FNameToString(FName fname)
 	//>4.23 name chunks exist
 	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
 	const unsigned short nameOffset = fname.ComparisonIndex;
-	
-	
+
+
 	//average function since 4.25
 	//https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L3375
 
@@ -114,20 +114,9 @@ std::string EngineCore::FNameToString(FName fname)
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
 #else
-	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * chunkOffset + 16) + 2 * nameOffset;
+	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
 
-	uint16_t pool = Memory::read<uint16_t>(namePoolChunk);
-
-	if (pool < 64)
-	{
-		const int compIndex = Memory::read<DWORD>(namePoolChunk + 2);
-		const unsigned int _chunkOffset = compIndex >> 16;
-		const unsigned short _nameOffset = compIndex;
-		namePoolChunk = Memory::read<uint64_t>(gNames + 8 * _chunkOffset + 16) + 2 * _nameOffset;
-		pool = Memory::read<uint16_t>(namePoolChunk);
-	}
-
-	const auto nameLength = pool >> 6;
+	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
 #endif
@@ -138,14 +127,14 @@ std::string EngineCore::FNameToString(FName fname)
 	//decrypt the FNames buffer
 	fname_decrypt(name, nameLength);
 #endif
-	
+
 
 	std::string finalName = std::string(name);
 
 	if (finalName.empty())
 		finalName = "null";
-		//throw std::runtime_error("empty name is trying to get cached");
-	
+	//throw std::runtime_error("empty name is trying to get cached");
+
 
 	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
