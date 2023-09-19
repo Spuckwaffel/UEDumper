@@ -46,16 +46,18 @@ static void fname_decrypt(char* inputBuf, int namelength)
         dword_E851E58 = Memory::read<unsigned int>(Memory::getBaseAddress() + 0xE851E58) >> 5;
     v28 = dword_E851E58;
 
-    if (v26)
+    result = 26i64;
+    v5 = v4;
+    if (v5)
     {
-        v29 = v25;
+        v6 = v5;
         do
         {
-            v30 = v28 ^ (16 * *v29) ^ (v28 ^ ((unsigned int)*v29 >> 4)) & 0xF;
-            v28 += 4 * v27;
-            *v29 = v30;
-            ++v27;
-            ++v29;
-        } while (v27 < v26);
+            v7 = *v2++;
+            v8 = result + 45297;
+            *(v2 - 1) = v8 + ~v7;
+            result = (v8 << 8) | (v8 >> 8);
+            --v6;
+        } while (v6);
     }
 }
