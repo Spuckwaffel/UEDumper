@@ -14,7 +14,8 @@ namespace windows
 		struct NavigationTab
 		{
 			//vector of all tab indexes we went through
-			std::vector<std::pair<void*, EngineCore::ObjectInfo::ObjectType>> tabIndex;
+			std::vector<std::pair<void*, EngineCore::ObjectInfo::ObjectType>> tabIndex{};
+
 			//at what index are we in the vector? AKA tabindex[currentVecIndex] should be the package index displayed
 			int currentVecIndex = 0;
 
@@ -63,7 +64,8 @@ namespace windows
 				FS_hard //also scroll
 			};
 			findState findObject = findState::FS_none;
-			NavigationTab navTab;
+
+			NavigationTab navTab{};
 
 			nlohmann::json toJson() const
 			{
@@ -141,7 +143,7 @@ namespace windows
 		 * \param tab the current tab this functions gets called in
 		 * \param struc struct
 		 */
-		static void renderClassOrStruct(PackageTab& tab, EngineStructs::Struct& struc);
+		static void renderClassOrStruct(PackageTab* tab, EngineStructs::Struct& struc);
 
 		/**
 		 * \brief 

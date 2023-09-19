@@ -129,7 +129,7 @@ inline void addStructs()
 	Fname.inherited = false;
 	int FnameOffset = 0;
 	//of course we can also use defines, just be careful
-	Fname.cookedMembers =  std::vector<EngineStructs::Member>{
+	Fname.definedMembers =  std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::IntProperty,		"int"},		"ComparisonIndex",		0, 4},
 		#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER

@@ -361,7 +361,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 //in every version we have to go through the children to 
 for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 {
-	if (fieldChild || !fieldChild->IsA<UFunction>())
+	if (!fieldChild || !fieldChild->IsA<UFunction>())
 		continue;
 
 
