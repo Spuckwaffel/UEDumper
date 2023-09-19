@@ -149,12 +149,12 @@ R"(/********************************************************
 	ImGui::PushItemWidth(278);
 	
 	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) && 
-		!PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
+		!PackageViewerWindow::openTabFromFullName(std::string(CNameSearch)))
 	{
 		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}
 	ImGui::SameLine();
-	if (ImGui::Button(ICON_FA_SEARCH) && !PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
+	if (ImGui::Button(ICON_FA_SEARCH) && !PackageViewerWindow::openTabFromFullName(std::string(CNameSearch)))
 	{
 		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}

@@ -196,16 +196,17 @@ std::string UObject::getSecondPackageName() const
 bool UObject::IsA(const UClass* staticClass) const
 {
     if (!ClassPrivate) return false;
+    const UClass* _oldsuper = nullptr;
     for(auto super = getClass(); super; super = super->getSuper<UClass>())
     {
-        if (!super)
+        if (!super || _oldsuper == super)
             return false;
-        std::string fullname = super->getFullName();
 	    if(super == staticClass)
 	    {
             //printf("%s\n", fullname.c_str());
             return true;
 	    }
+        _oldsuper = super;
     }
     return false;
    
