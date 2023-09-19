@@ -154,7 +154,6 @@
   <ItemGroup>
     <ClCompile Include="Engine\Core\Core.cpp" />
     <ClCompile Include="Engine\Core\ObjectsManager.cpp" />
-    <ClCompile Include="Engine\Generation\MDK.cpp" />
     <ClCompile Include="Engine\Generation\SDK.cpp" />
     <ClCompile Include="Engine\Live\LiveMemory.cpp" />
     <ClCompile Include="Engine\UEClasses\UnrealClasses.cpp" />
@@ -188,7 +187,6 @@
     <ClInclude Include="Engine\Core\ObjectsManager.h" />
     <ClInclude Include="Engine\enums.h" />
     <ClInclude Include="Engine\Generation\BasicType.h" />
-    <ClInclude Include="Engine\Generation\MDK.h" />
     <ClInclude Include="Engine\Generation\SDK.h" />
     <ClInclude Include="Engine\Live\LiveMemory.h" />
     <ClInclude Include="Engine\structs.h" />

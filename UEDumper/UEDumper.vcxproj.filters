@@ -156,9 +156,6 @@
     <ClCompile Include="Engine\Generation\SDK.cpp">
       <Filter>Engine\Generation</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Generation\MDK.cpp">
-      <Filter>Engine\Generation</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -273,9 +270,6 @@
       <Filter>Engine\Generation</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Generation\BasicType.h">
-      <Filter>Engine\Generation</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Generation\MDK.h">
       <Filter>Engine\Generation</Filter>
     </ClInclude>
   </ItemGroup>

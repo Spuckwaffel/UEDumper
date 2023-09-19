@@ -14,7 +14,7 @@ namespace windows
 		struct NavigationTab
 		{
 			//vector of all tab indexes we went through
-			std::vector<std::pair<void*, EngineCore::ObjectInfo::ObjectType>> tabIndex;
+			std::vector<std::pair<int, EngineCore::ObjectInfo::ObjectType>> tabIndex;
 			//at what index are we in the vector? AKA tabindex[currentVecIndex] should be the package index displayed
 			int currentVecIndex = 0;
 
@@ -24,8 +24,8 @@ namespace windows
 			{
 				nlohmann::json j;
 
-				//for(const auto& idx : tabIndex)
-				//	j["tabIndex"].push_back(idx);
+				for(const auto& idx : tabIndex)
+					j["tabIndex"].push_back(idx);
 
 				j["currentVecIndex"] = currentVecIndex;
 				j["currentType"] = currentType;
@@ -36,8 +36,8 @@ namespace windows
 			static NavigationTab fromJson(const nlohmann::json& j)
 			{
 				NavigationTab n;
-				//for(const nlohmann::json& js : j["tabIndex"])
-				//	n.tabIndex.push_back(std::pair(js[0], js[1]));
+				for(const nlohmann::json& js : j["tabIndex"])
+					n.tabIndex.push_back(std::pair(js[0], js[1]));
 
 				n.currentVecIndex = j["currentVecIndex"];
 				n.currentType = j["currentType"];
@@ -47,9 +47,9 @@ namespace windows
 
 		struct PackageTab
 		{
-			EngineStructs::Package* packageSelected = 0; //selected package
+			int packageSelected = 0; //selected package
 			EngineCore::ObjectInfo::ObjectType typeSelected = EngineCore::ObjectInfo::ObjectType::OI_MAX; //selected type
-			void* itemSelected = 0; //selected item of the type
+			int itemSelected = 0; //selected item of the type
 			int itemRange_S = 0; //current range from n - n+100 of structs
 			int itemRange_C = 0; //current range from n - n+100 of classes
 			int itemRange_E = 0; //current range from n - n+100 of enums
@@ -69,9 +69,9 @@ namespace windows
 			{
 				nlohmann::json j;
 
-				//j["ps"] = packageSelected;
+				j["ps"] = packageSelected;
 				j["ts"] = typeSelected;
-				//j["is"] = itemSelected;
+				j["is"] = itemSelected;
 				j["irs"] = itemRange_S;
 				j["irc"] = itemRange_C;
 				j["ire"] = itemRange_E;
@@ -88,9 +88,9 @@ namespace windows
 			static PackageTab fromJson(const nlohmann::json& j)
 			{
 				PackageTab p;
-				//p.packageSelected = j["ps"];
+				p.packageSelected = j["ps"];
 				p.typeSelected = j["ts"];
-				//p.itemSelected = j["is"];
+				p.itemSelected = j["is"];
 				p.itemRange_S = j["irs"];
 				p.itemRange_C = j["irc"];
 				p.itemRange_E = j["ire"];
@@ -139,22 +139,24 @@ namespace windows
 		/**
 		 * \brief 
 		 * \param tab the current tab this functions gets called in
+		 * \param index index of the struct in the vector of structs or class (just used for displaying index number)
 		 * \param struc struct
 		 */
-		static void renderClassOrStruct(PackageTab& tab, EngineStructs::Struct& struc);
+		static void renderClassOrStruct(PackageTab& tab, int index, EngineStructs::Struct& struc);
 
 		/**
 		 * \brief 
+		 * \param index index of the enum in the vector of enums (just used for displaying index number)
 		 * \param enu enum
 		 */
-		static void renderEnum(const EngineStructs::Enum& enu);
+		static void renderEnum(int index, const EngineStructs::Enum& enu);
 
 
-		static void renderFunction(const EngineStructs::Function& func);
+		static void renderFunction(int index, std::pair<const EngineStructs::Function&, const EngineStructs::Struct&> pair);
 
 		static void setOpenTabsClosed();
 
-		static void updateNavBar(NavigationTab& navtab, void* itemSelected, EngineCore::ObjectInfo::ObjectType typeSelected);
+		static void updateNavBar(NavigationTab& navtab, int itemSelected, EngineCore::ObjectInfo::ObjectType typeSelected);
 
 		
 
@@ -165,9 +167,9 @@ namespace windows
 
 		static bool render();
 
-		static void createTab(void* typeSt, EngineCore::ObjectInfo::ObjectType type = EngineCore::ObjectInfo::ObjectType::OI_Struct);
+		static void createTab(int package, int itemSelected = 0, EngineCore::ObjectInfo::ObjectType type = EngineCore::ObjectInfo::ObjectType::OI_Struct);
 
-		static bool openTabFromFullName(const std::string& name);
+		static bool openTabFromCName(const std::string& name);
 
 		static void generatePackage(std::ofstream& file, const EngineStructs::Package& package);
 
