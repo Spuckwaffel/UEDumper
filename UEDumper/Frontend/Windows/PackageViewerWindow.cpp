@@ -778,8 +778,6 @@ void windows::PackageViewerWindow::renderTabs()
                     renderEnum(*static_cast<EngineStructs::Enum*>(tab.itemSelected));
                 
             }
-            //somehow this has to get refreshed if the Tabs size increases because when clicking on basictype objects it somehow gets entirely corrupt???
-            tab = Tabs[i];
             ImGui::PopStyleVar();
             ImGui::EndChild();
             ImGui::SameLine();
