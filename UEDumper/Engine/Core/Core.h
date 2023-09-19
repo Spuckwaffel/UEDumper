@@ -110,7 +110,7 @@ private:
 	//vector of all packages available
 	inline static std::vector<EngineStructs::Package> packages{};
 
-	//map that returns a ObjectInfo for its given fullName
+	//map that returns a ObjectInfo for its given CName
 	inline static std::unordered_map<std::string, ObjectInfo> packageObjectInfos;
 
 	//array of strings that holds all object names that dont belong to any class but are referenced
@@ -202,10 +202,10 @@ public:
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION! Converts a CName to a ObjectInfo
-	 * \param fullName Full name of the UObject
+	 * \param CName CName  of the UObject
 	 * \return ObjectInfo of the UObject
 	 */
-	static ObjectInfo getInfoOfObject(const std::string& fullName);
+	static ObjectInfo getInfoOfObject(const std::string& CName);
 
 
 

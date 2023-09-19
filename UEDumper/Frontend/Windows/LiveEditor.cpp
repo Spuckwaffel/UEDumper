@@ -76,29 +76,19 @@ void windows::LiveEditor::renderAddAddress()
 				
 			LogWindow::Log(LogWindow::log_0, "LIVE", "Looking for %s...", structName.c_str());
 			const auto info = EngineCore::getInfoOfObject(structName);
-			if (info.packageIndex == -1) { //invalid!
+			if(!info)
+			{
 				sprintf_s(errorText, "Object not found in the packages!");
 				ImGui::EndDisabled();
 				return;
 			}
 
-			tab.structIndex = info.objectIndex;
-
-			tab.realPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-			if (tab.realPackageIndex == -1) {//invalid!
-				sprintf_s(errorText, "Object not found in the packages!");
-				ImGui::EndDisabled();
-				return;
-			}
-
+			tab.struc = static_cast<EngineStructs::Struct*>(info.target);
 			tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
-
-			const auto& dataVector = info.type == EngineCore::ObjectInfo::OI_Class ? 
-				EngineCore::getPackages()[tab.realPackageIndex].classes[tab.structIndex] : EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
 
 			tab.found = true;
 			memset(errorText, 0, sizeof(errorText));
-			LiveMemory::addNewBlock(tab.address, dataVector.size);
+			LiveMemory::addNewBlock(tab.address, tab.struc->size);
 			tabs.push_back(tab);
 			bRenderAddInspector = false;
 			ImGui::EndDisabled();
@@ -222,49 +212,39 @@ void windows::LiveEditor::renderAddOffset()
 		tab.name = std::string(displayName);
 		tab.address = address;
 
-		const std::string structName = Memory::read<UObject>(followAddress).getClass()->getCName();
-		
-
-		//using here goto because it makes reading the code actually better than using if else if else
-
-		if (structName == "nil")
+		if (Memory::read<UObject>(followAddress).getClass())
 		{
+			const std::string structName = Memory::read<UObject>(followAddress).getClass()->getCName();
+			if (structName != "nil")
+			{
+				const auto info = EngineCore::getInfoOfObject(structName);
+				if (info)
+				{
+					sprintf_s(errorText, "Object not found in the packages!");
+					goto failed;
+				}
+				tab.struc = static_cast<EngineStructs::Struct*>(info.target);
+
+				tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
+
+				tab.origin = std::string(offsetsVec[selector].name) + "->";
+				tab.found = true;
+				memset(errorText, 0, sizeof(errorText));
+				//keep track of offset if it changes. If it does, live editor will handle changes
+				LiveMemory::addNewBlock(address, 8);
+				tabs.push_back(tab);
+				bRenderAddInspector = false;
+				ImGui::EndDisabled();
+				memset(errorText, 0, sizeof(errorText));
+				memset(displayName, 0, sizeof(displayName));
+				address = 0;
+				followAddress = 0;
+				checked = false;
+				once = false;
+				return;
+			}
 			sprintf_s(errorText, "Getting UObject type failed!");
-			goto failed;
 		}
-
-
-		const auto info = EngineCore::getInfoOfObject(structName);
-		if (info.packageIndex == -1) { //invalid!
-			sprintf_s(errorText, "Object not found in the packages!");
-			goto failed;
-		}
-
-		tab.structIndex = info.objectIndex;
-
-		tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
-
-		tab.realPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-		if (tab.realPackageIndex == -1) {//invalid!
-			sprintf_s(errorText, "Object not found in the packages!");
-			goto failed;
-		}
-
-		tab.origin = std::string(offsetsVec[selector].name) + "->";
-		tab.found = true;
-		memset(errorText, 0, sizeof(errorText));
-		//keep track of offset if it changes. If it does, live editor will handle changes
-		LiveMemory::addNewBlock(address, 8);
-		tabs.push_back(tab);
-		bRenderAddInspector = false;
-		ImGui::EndDisabled();
-		memset(errorText, 0, sizeof(errorText));
-		memset(displayName, 0, sizeof(displayName));
-		address = 0;
-		followAddress = 0;
-		checked = false;
-		once = false;
-		return;
 
 	failed:
 		checked = false;
@@ -545,10 +525,8 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			return;
 		}
 		
-		int pidx = 0;
-		int stidx = 0;
-		bool bClass = false;
-		if(!isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, pidx, stidx, bClass))
+		EngineStructs::Struct* st;
+		if(!isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, st))
 		{
 			ImGui::TextColored(IGHelper::Colors::red, "Struct or Class doesnt exist in the SDK!");
 			ImGui::TreePop();
@@ -569,16 +547,13 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			//we get the first pointer so we can check what class the array indexes really are (tarray lies just like pointers)
 			const uint64_t firstIndexPtr = arrBlock->read<uint64_t>(0);
 			//look for the struct
-			if(!isValidStructName(firstIndexPtr, member.type.subTypes[0].name, pidx, stidx, bClass, true))
+			if(!isValidStructName(firstIndexPtr, member.type.subTypes[0].name, st, true))
 			{
 				//this should never fail!
 				ImGui::TextColored(IGHelper::Colors::red, "Struct or Class doesnt exist in the SDK!");
 				ImGui::TreePop();
 				return;
 			}
-			//finally get the struct
-			const auto& arrStruct = bClass ?
-				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 
 			//create a vector where we will iterate through
 			std::vector<uint64_t> objs(arr.Count);
@@ -607,9 +582,9 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 					
 					ImGui::TextColored(IGHelper::Colors::varBlue, std::string(addressBuf).c_str());
 					//add a memory block for the index struct
-					LiveMemory::addNewBlock(objPtr, arrStruct.size);
+					LiveMemory::addNewBlock(objPtr, st->size);
 					//and render it
-					renderStruct(arrStruct, objPtr, member.name, appendSecret(secret, member.type.name + std::to_string(objPtr), member.offset + innerOffset));
+					renderStruct(st, objPtr, member.name, appendSecret(secret, member.type.name + std::to_string(objPtr), member.offset + innerOffset));
 					ImGui::TreePop();
 					continue;
 				}
@@ -626,11 +601,8 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 		}
 		else
 		{
-			//we have the structs here in the tarray 
-			const auto& arrStruct = bClass ?
-				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 
-			const auto subBlock = LiveMemory::addNewBlock(reinterpret_cast<uint64_t>(arr.Data), arrStruct.size * arr.Count); //TArray stores direct blocks
+			const auto subBlock = LiveMemory::addNewBlock(reinterpret_cast<uint64_t>(arr.Data), st->size * arr.Count); //TArray stores direct blocks
 			if (!subBlock)
 			{
 				ImGui::TextColored(IGHelper::Colors::red, "Could not load memory block for the array!");
@@ -639,8 +611,8 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			}
 			//then draw every index
 			for (int i = 0; i < arr.Count; i++)
-				drawStructProperty(arrStruct, member.name + "_" + std::to_string(i), subBlock, 
-					appendSecret(secret, member.type.name + std::to_string(reinterpret_cast<uint64_t>(arr.Data)), i), arrStruct.size * i + innerOffset);
+				drawStructProperty(st, member.name + "_" + std::to_string(i), subBlock, 
+					appendSecret(secret, member.type.name + std::to_string(reinterpret_cast<uint64_t>(arr.Data)), i), st->size * i + innerOffset);
 		}
 		ImGui::TreePop();
 		return;
@@ -674,22 +646,22 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 	}
 }
 
-void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset)
+void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset)
 {
 	if (!block)
 		return;
 	const auto& subStruct = struc;
 	//these structs are special and get shown in a oneliner
-	if (struc.cppName == "FVector" || struc.cppName == "FRotator")
+	if (struc->cppName == "FVector" || struc->cppName == "FRotator")
 	{
 		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
-		ImGui::TextColored(IGHelper::Colors::classGreen, struc.cppName.c_str());
+		ImGui::TextColored(IGHelper::Colors::classGreen, struc->cppName.c_str());
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::varPink, name.c_str());
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "(");
 		ImGui::SameLineEx(0);
-		for (const auto& subMember : subStruct.definedMembers)
+		for (const auto& subMember : struc->definedMembers)
 		{
 			//simple drawing otherwise its too long
 			drawNonclickableMember(subMember, block, offset, secret, true);
@@ -699,10 +671,10 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc,
 		return;
 	}
 	//show a cool color pallette
-	if(struc.cppName == "FLinearColor")
+	if(struc->cppName == "FLinearColor")
 	{
 		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
-		ImGui::TextColored(IGHelper::Colors::classGreen, struc.cppName.c_str());
+		ImGui::TextColored(IGHelper::Colors::classGreen, struc->cppName.c_str());
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::varPink, name.c_str());
 		//read the color just like this, also reading single because template is complaining 
@@ -710,7 +682,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc,
 
 		ImGui::PushItemWidth(400);
 		ImGui::SameLine();
-		if (ImGui::ColorEdit4(std::string("##" + struc.cppName + secret + std::to_string(offset)).c_str(), &color.x))
+		if (ImGui::ColorEdit4(std::string("##" + struc->cppName + secret + std::to_string(offset)).c_str(), &color.x))
 		{
 			//write any changes
 			block->write(offset, color);
@@ -721,28 +693,24 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct& struc,
 	}
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 	//the average struct
-	if (ImGui::TreeNode(std::string(struc.cppName + "##" + secret + std::to_string(offset)).c_str()))
+	if (ImGui::TreeNode(std::string(struc->cppName + "##" + secret + std::to_string(offset)).c_str()))
 	{
 		ImGui::PopStyleColor();
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::varPink, name.c_str());
 		//show super structs here just like classes
-		if (subStruct.inherited)
+		if (subStruct->inherited)
 		{
-			for (int i = subStruct.supers.size(); i > 0; i--) //recusrive because last elem of vec is uobject
+			for (int i = subStruct->supers.size(); i > 0; i--) //recusrive because last elem of vec is uobject
 			{
-				auto& super = subStruct.supers[i - 1];
+				auto& super = subStruct->supers[i - 1];
 
-				int s_pidx = 0;
-				int s_stidx = 0;
-				bool bClass = false;
+				EngineStructs::Struct* superStruct;
 				//get the struct for its game address and draw the members
-				if (isValidStructName(block->gameAddress, super, s_pidx, s_stidx, bClass))
+				if (isValidStructName(block->gameAddress, super->cppName, superStruct))
 				{
-					const auto& superStruct = bClass ?
-						EngineCore::getPackages()[s_pidx].classes[s_stidx] : EngineCore::getPackages()[s_pidx].structs[s_stidx];
 					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-					if (ImGui::TreeNodeEx(std::string(superStruct.cppName + "##" + secret + std::to_string(offset)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
+					if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + secret + std::to_string(offset)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
 					{
 						ImGui::PopStyleColor();
 						drawMembers(superStruct, block->gameAddress, secret, offset);
@@ -817,19 +785,14 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 150), "0x%llX", memberPtr);
 		//check whether its a valid struct and look for the best because SDKS dont point to the right one
-		int pidx = 0;
-		int stidx = 0;
-		bool bClass = false;
+		EngineStructs::Struct* newStruct;
 		//if member ptr is 0 theres nothing to display
-		if (memberPtr != 0 && isValidStructName(memberPtr, member.type.name, pidx, stidx, bClass, true))
+		if (memberPtr != 0 && isValidStructName(memberPtr, member.type.name, newStruct, true))
 		{
-			//get the struct
-			const auto& newStruct = bClass ?
-				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 			//add the new block so we can track the data for it
-			if(!LiveMemory::addNewBlock(memberPtr, newStruct.size))
+			if(!LiveMemory::addNewBlock(memberPtr, newStruct->size))
 			{
-				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "Could not add new memory block for %p (%s) with size %d!", memberPtr, member.name, newStruct.size);
+				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "Could not add new memory block for %p (%s) with size %d!", memberPtr, member.name, newStruct->size);
 			}
 			//and render it
 			else
@@ -853,13 +816,13 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 150), "0x%llX", memberPtr);
 }
 
-void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum& subEnum, LiveMemory::MemoryBlock* block,
+void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block,
 	const std::string& secret, int innerOffset)
 {
 	std::vector<std::string> items;
 
 	// Use std::transform to extract the first elements of each pair
-	std::ranges::transform(subEnum.members, std::back_inserter(items),
+	std::ranges::transform(subEnum->members, std::back_inserter(items),
 	                       [](const std::pair<std::string, int>& pair) {
 		                       return pair.first;
 	                       });
@@ -884,8 +847,8 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 	//		EAudioBusChannels__SevenPointOne = 7,
 	//		EAudioBusChannels__EAudioBusChannels_MAX = 8,
 	//we have to get the vector index for the specific value
-	for (int i = 0; i < subEnum.members.size(); ++i) {
-		if (subEnum.members[i].second == value) {
+	for (int i = 0; i < subEnum->members.size(); ++i) {
+		if (subEnum->members[i].second == value) {
 			value = i;
 			break;
 		}
@@ -902,8 +865,8 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 			{
 				value = i;
 
-				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum.members[value].first.c_str(), subEnum.members[value].second);
-				uint8_t newData = subEnum.members[value].second;
+				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum->members[value].first.c_str(), subEnum->members[value].second);
+				uint8_t newData = subEnum->members[value].second;
 				block->write(member.offset + innerOffset, newData);
 				Memory::write(block->gameAddress + member.offset + innerOffset, newData);
 			}
@@ -918,7 +881,7 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 }
 
 
-void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64_t address, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset)
 {
 	//finally we get the values!
 	//get the memory block which should be allocated by the functions before
@@ -936,7 +899,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 	//ImGui::TextColored(IGHelper::Colors::grayedOut, secret.c_str());
 
 	//iterate through all the members of the struct
-	for (const auto& member : struc.definedMembers)
+	for (const auto& member : struc->definedMembers)
 	{
 		//ignore missed members
 		if (member.missed)
@@ -974,14 +937,10 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 			case PropertyType::StructProperty:
 				{
 					//we have to resolve the struct here
-					int pidx = 0;
-					int stidx = 0;
-					bool bClass = false;
+				EngineStructs::Struct* subStruct;
 
-					if (isValidStructName(address, member.type.name, pidx, stidx, bClass))
+					if (isValidStructName(address, member.type.name, subStruct))
 					{
-						const auto& subStruct = bClass ?
-							EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 						//draw the substruct
 						//also inneroffset (thats always needed) plus member offset because the struct is within the current struct
 						drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset);
@@ -1004,12 +963,10 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 				//TEnumAsByte support
 			case PropertyType::ByteProperty:
 				{
-					int pidx = 0;
-					int eidx = 0;
+				EngineStructs::Enum* subEnum;
 					//we have to use the first subtype which is the enum name
-					if(member.type.subTypes.size() == 1 &&isValidEnumName(member.type.subTypes[0].name, pidx, eidx))
+					if(member.type.subTypes.size() == 1 &&isValidEnumName(member.type.subTypes[0].name, subEnum))
 					{
-						const auto& subEnum = EngineCore::getPackages()[pidx].enums[eidx];
 						drawTEnumAsByteProperty(member, subEnum, block, secret, innerOffset);
 					}
 					break;
@@ -1041,7 +998,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct& struc, uint64
 }
 
 
-void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin)
+void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin)
 {
 	//copy the address to clipboard
 	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(address) + secret).c_str()))
@@ -1060,14 +1017,14 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	
 	ImGui::SameLine();
 	//copy the struct name
-	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + struc.cppName + secret).c_str()))
+	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + struc->cppName + secret).c_str()))
 	{
-		IGHelper::copyToClipBoard(struc.cppName);
+		IGHelper::copyToClipBoard(struc->cppName);
 		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied struct name to clipboard!");
 	}
 	ImGui::SameLine();
 	//print the struct name and representative name
-	ImGui::TextColored(IGHelper::Colors::classGreen, struc.cppName.c_str());
+	ImGui::TextColored(IGHelper::Colors::classGreen, struc->cppName.c_str());
 	ImGui::SameLine();
 	ImGui::TextColored(IGHelper::Colors::varBlue, name.c_str());
 	//as we dont only want to show (for axample) the class world and the other classes too, we have to go through all supers
@@ -1077,26 +1034,21 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	//ustruct
 	//..
 	//finalClass
-	for(int i = struc.supers.size(); i > 0; i--) 
+	for(int i = struc->supers.size(); i > 0; i--)
 	{
-		auto& super = struc.supers[i-1];
+		auto& super = struc->supers[i-1];
 		
-		int pidx = 0;
-		int stidx = 0;
-		bool bClass = false;
+		EngineStructs::Struct* superStruct;
 		//find the strucr for the given name
 		//dont look for best because we specifically want that struct
-		if (isValidStructName(address, super, pidx, stidx, bClass))
+		if (isValidStructName(address, super->cppName, superStruct))
 		{
-			//get the struct reference
-			const auto& superStruct = bClass ?
-				EngineCore::getPackages()[pidx].classes[stidx] : EngineCore::getPackages()[pidx].structs[stidx];
 
 			//push a fancy color
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 
 			//show a treenode, but so it has no indent we use treenodeEx with ImGuiTreeNodeFlags_NoTreePushOnOpen
-			if (ImGui::TreeNodeEx(std::string(superStruct.cppName + "##" + appendSecret(secret, superStruct.cppName, struc.inheretedSize)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
+			if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + appendSecret(secret, superStruct->cppName, struc->inheretedSize)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen)) //secret: 0x7FF + UObject
 			{
 				ImGui::PopStyleColor();
 				//draw the members of the struct
@@ -1114,11 +1066,11 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	}
 	//two code pieces here, one we have to indicate via a treenode our real (in this case) uworld class
 	//but if there are no other supers (like uobject) we dont need a treenode and can draw it directly (just like below)
-	if(struc.supers.size() > 0)
+	if(struc->supers.size() > 0)
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 		//create a non indent treenode
-		if (ImGui::TreeNodeEx(std::string(struc.cppName + "##" + appendSecret(secret, struc.cppName, struc.inheretedSize)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen))
+		if (ImGui::TreeNodeEx(std::string(struc->cppName + "##" + appendSecret(secret, struc->cppName, struc->inheretedSize)).c_str(), ImGuiTreeNodeFlags_NoTreePushOnOpen))
 		{
 			ImGui::PopStyleColor();
 			//draw our struct
@@ -1137,12 +1089,15 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct& struc, uint6
 	ImGui::Separator();
 }
 
-bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool& isClass, bool lookForBest)
+bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::string& CName, EngineStructs::Struct*& outStruct, bool lookForBest)
 {
 	if(classPointer != 0 && guessSuperClass && lookForBest)
 	{
+		//get the super class by getting the uobjects class name
+
 		std::string superName = "";
 		bool found = false;
+		//already searched this address?
 		if(realSuperClassCache.contains(classPointer))
 		{
 			superName = realSuperClassCache[classPointer];
@@ -1153,24 +1108,18 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 			//we cannot use enginecores functions because some objets arent in the object list generated
 			//for the SDK! So we have to do it all here and (most likely) read data multiple times
 			const auto obj = ObjectsManager::getUObject<UObject>(classPointer);
-			//TODO: fix!
-			superName = obj->getClass()->getCName();
+			if(obj->getClass())
+				superName = obj->getClass()->getCName();
 		}
-		if(superName == "nil")
+		if(superName == "nil" || superName.empty())
 			goto tryAgain;
 
 		const auto info = EngineCore::getInfoOfObject(superName);
-		if (info.packageIndex == -1) //invalid!
+		if(!info || !(info.type == EngineCore::ObjectInfo::OI_Class || info.type == EngineCore::ObjectInfo::OI_Struct)) //invalid!
 			goto tryAgain;
 
-		outStructIndex = info.objectIndex;
-
-		isClass = info.type == EngineCore::ObjectInfo::OI_Class;
-
-		outPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-		if (outPackageIndex == -1) //invalid!
-			goto tryAgain;
-
+		outStruct = static_cast<EngineStructs::Struct*>(info.target);
+		
 		//found it! Adding...
 		if(!found)
 			realSuperClassCache.insert(std::pair(classPointer, superName));
@@ -1179,31 +1128,21 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 	tryAgain:
 
 	const auto info = EngineCore::getInfoOfObject(CName);
-	if (info.packageIndex == -1) //invalid!
+	if(!info)
 		return false;
 
-	outStructIndex = info.objectIndex;
-
-	isClass = info.type == EngineCore::ObjectInfo::OI_Class;
-
-	outPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-	if (outPackageIndex == -1) //invalid!
-		return false;
+	outStruct = static_cast<EngineStructs::Struct*>(info.target);
 	
 	return true;
 }
 
-bool windows::LiveEditor::isValidEnumName(const std::string& CName, int& outPackageIndex, int& outEnumIndex)
+bool windows::LiveEditor::isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu)
 {
 	const auto info = EngineCore::getInfoOfObject(CName);
-	if (info.packageIndex == -1) //invalid!
+	if (!info || info.type != EngineCore::ObjectInfo::OI_Enum) //invalid!
 		return false;
 
-	outEnumIndex = info.objectIndex;
-
-	outPackageIndex = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-	if (outPackageIndex == -1) //invalid!
-		return false;
+	enu = static_cast<EngineStructs::Enum*>(info.target);
 
 	return true;
 
@@ -1331,14 +1270,10 @@ void windows::LiveEditor::renderLiveEditor()
 	{
 		const auto& tab = tabs[tabPicked];
 
-		//get the current struct were working with
-		const auto& currentStruct = tab.isClass ?
-			EngineCore::getPackages()[tab.realPackageIndex].classes[tab.structIndex] : EngineCore::getPackages()[tab.realPackageIndex].structs[tab.structIndex];
-
 		//whether the given type is a direct address, then render the struct directly for the address
 		if(tab.type == TabTypeAddress)
 		{
-			renderStruct(currentStruct, tab.address, tab.name, tab.name + std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
+			renderStruct(tab.struc, tab.address, tab.name, tab.name + std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
 		}
 		//whether its a offset and we have to read the read adress
 		else if (tab.type == TabTypeOffset && LiveMemory::getMemoryBlock(tab.address))
@@ -1351,13 +1286,13 @@ void windows::LiveEditor::renderLiveEditor()
 			if(address != 0)
 			{
 				//add a new block for the struct for the specific address and its size to fetch the data
-				LiveMemory::addNewBlock(address, currentStruct.size);
+				LiveMemory::addNewBlock(address, tab.struc->size);
 
 				char addressBuf[30] = {0};
 				sprintf_s(addressBuf, "0x%llX", address);
 
 				//render it!
-				renderStruct(currentStruct, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
+				renderStruct(tab.struc, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
 			}
 			//we have to wait for the blocks initialization
 			else

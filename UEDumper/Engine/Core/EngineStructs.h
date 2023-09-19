@@ -313,6 +313,7 @@ namespace EngineStructs
 		std::string packageName;
 		int index;
 
+		//all packages this package needs
 		std::vector<Package*> dependencyPackages;
 		//seperate structs and classes even if a boolean exists within the struct
 		std::vector<Struct*> combinedStructsAndClasses;
@@ -339,6 +340,11 @@ namespace EngineStructs
 		bool operator==(const Package& p) const
 		{
 			return p.index == index;
+		}
+
+		bool operator==(const Package*& p) const
+		{
+			return p->index == index;
 		}
 
 		nlohmann::json toJson() const

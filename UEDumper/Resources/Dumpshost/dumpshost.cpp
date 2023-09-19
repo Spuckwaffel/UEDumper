@@ -128,7 +128,7 @@ namespace DumpsHost
                     if (struc.inherited)
                     {
                         nlohmann::json j;
-                        j[struc.cppName] = struc.supers[0];
+                        j[struc.cppName] = struc.supers[0]->cppName;
                         AddInheritInfo(j);
                     }
                     nlohmann::json members = nlohmann::json::array();

@@ -18,7 +18,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
 
     if (ImGui::Button(std::string(type.name + "##" + std::to_string(reinterpret_cast<__int64>(&type.name))).c_str()))
     {
-        if (!openTabFromFullName(type.name))
+        if (!openTabFromCName(type.name))
         {
             LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", type.name.c_str());
         }
@@ -32,7 +32,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
         auto& subType = type.subTypes[j];
         if (subType.clickable)
         {
-            if (ImGui::Button(std::string(subType.name + "##" + std::to_string(reinterpret_cast<__int64>(&subType.name))).c_str()) && !openTabFromFullName(subType.name))
+            if (ImGui::Button(std::string(subType.name + "##" + std::to_string(reinterpret_cast<__int64>(&subType.name))).c_str()) && !openTabFromCName(subType.name))
             {
                 LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", subType.name.c_str());
             }
@@ -108,7 +108,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, EngineSt
             //allow clicking on it for redirection
             if(ImGui::Button(std::string(struc.supers[i]->cppName + "##" + std::to_string(i) + struc.cppName).c_str()))
             {
-                openTabFromFullName(struc.supers[i]->fullName);
+                openTabFromCName(struc.supers[i]->cppName);
             }
             if (i < struc.supers.size() - 1)
             {
@@ -140,7 +140,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, EngineSt
         ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
         if(ImGui::Button(std::string(struc.supers[0]->cppName + "##" + std::to_string(reinterpret_cast<__int64>(&struc.supers[0]))).c_str()))
         {
-            openTabFromFullName(struc.supers[0]->fullName);
+            openTabFromCName(struc.supers[0]->cppName);
         }
         ImGui::PopStyleColor(6);
     }
@@ -187,7 +187,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab& tab, EngineSt
                     ImGui::TextColored(IGHelper::Colors::white, "*");
                 }
 
-                if(clicked && !openTabFromFullName(member.type.name))
+                if(clicked && !openTabFromCName(member.type.name))
                     LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", member.type.name.c_str());
                 
             }
@@ -358,7 +358,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
 
         if (ImGui::Button(std::string(func.returnType.name + "##" + std::to_string(reinterpret_cast<__int64>(&func.returnType.name))).c_str()))
         {
-            if (!openTabFromFullName(func.returnType.name))
+            if (!openTabFromCName(func.returnType.name))
                 LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Type %s not found!", func.returnType.name.c_str());
         }
         ImGui::PopStyleColor(6);
@@ -404,7 +404,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
             {
                 if (ImGui::Button(std::string(std::get<0>(func.params.at(i)).name + "##" + std::to_string(reinterpret_cast<__int64>(&std::get<0>(func.params.at(i)).name))).c_str()))
                 {
-                    if (!openTabFromFullName(std::get<0>(func.params.at(i)).name))
+                    if (!openTabFromCName(std::get<0>(func.params.at(i)).name))
                         LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Param type %s not found!", std::get<0>(func.params.at(i)).name.c_str());
                 }
                 ImGui::SameLineEx(0);
@@ -468,7 +468,7 @@ void windows::PackageViewerWindow::updateNavBar(NavigationTab& navtab, void* ite
 }
 
 
-bool windows::PackageViewerWindow::openTabFromFullName(const std::string& name)
+bool windows::PackageViewerWindow::openTabFromCName(const std::string& name)
 {
 	const auto info = EngineCore::getInfoOfObject(name);
     if(!info)
@@ -659,10 +659,11 @@ windows::PackageViewerWindow::PackageViewerWindow()
 void windows::PackageViewerWindow::renderTabs()
 {
 
-    auto& packages = EngineCore::getPackages();
     bool showing = false;
-    for (auto& tab : Tabs)
+    for(int i = 0; i < Tabs.size(); i++)
     {
+        auto& tab = Tabs[i];
+        printf("%llX\n", &tab);
         auto& package = tab.packageSelected;
         if (ImGui::BeginTabItem(package->packageName.c_str(), &tab.open, tab.focus ? ImGuiTabItemFlags_SetSelected : ImGuiTabItemFlags_None))
         {
@@ -777,6 +778,8 @@ void windows::PackageViewerWindow::renderTabs()
                     renderEnum(*static_cast<EngineStructs::Enum*>(tab.itemSelected));
                 
             }
+            //somehow this has to get refreshed if the Tabs size increases because when clicking on basictype objects it somehow gets entirely corrupt???
+            tab = Tabs[i];
             ImGui::PopStyleVar();
             ImGui::EndChild();
             ImGui::SameLine();
@@ -846,40 +849,36 @@ void windows::PackageViewerWindow::renderTabs()
                     }
                     ImGui::PopStyleColor();
 
-                    for (int i = tab.itemRange_F; i < package->functions.size() && i <  tab.itemRange_F + 99; i++)
+                    for(int i = tab.itemRange_F; i < package->combinedStructsAndClasses.size() && i < tab.itemRange_F + 99; i++)
                     {
-                        const bool is_selected = (tab.itemSelected == package->functions[i] && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function);
-                        
+                        auto& struc = package->combinedStructsAndClasses[i];
 
-                        auto& func = package->functions[i];
-
-
-
-                        //the tuple contains at last information the index of the function in the struct vector, if its 0, do->
-
-                        if(std::get<2>(package->functions.at(i)) == 0)
-                        {
-                            ImGui::Selectable(std::string("##" + func.second.get().cppName + " functions").c_str(), false, ImGuiSelectableFlags_Disabled);
-                            ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-                            ImGui::SameLine();
-                            ImGui::Text(std::string(func.second.get().cppName + " functions").c_str());
-                            ImGui::PopStyleColor();
-                        }
-                        ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
-                        if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLE_DOUBLE_RIGHT) + "##" + func.first.get().cppName).c_str(), is_selected)) {
-                            
-                            tab.itemSelected = i;
-                            tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
-                            updateNavBar(tab.navTab, i, tab.typeSelected);
-                        }
-                        ImGui::PopStyleColor();
+                        ImGui::Selectable(std::string("##" + struc->cppName + " functions").c_str(), false, ImGuiSelectableFlags_Disabled);
+                        ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
                         ImGui::SameLine();
-                        ImGui::Text(func.first.get().cppName.c_str());
-                        if (is_selected && ImGui::IsItemHovered()) {
-                            ImGui::BeginTooltip();
-                            ImGui::Text(std::string(func.second.get().cppName + "::" + func.first.get().cppName).c_str());
-                            ImGui::EndTooltip();
+                        ImGui::Text(std::string(struc->cppName + " functions").c_str());
+                        ImGui::PopStyleColor();
+
+                        for(auto& func : struc->functions)
+                        {
+                            const bool is_selected = (tab.itemSelected == &func && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function);
+                            ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
+                            if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLE_DOUBLE_RIGHT) + "##" + func.cppName).c_str(), is_selected)) {
+
+                                tab.itemSelected = &func;
+                                tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
+                                updateNavBar(tab.navTab, &func, tab.typeSelected);
+                            }
+                            ImGui::PopStyleColor();
+                            ImGui::SameLine();
+                            ImGui::Text(func.cppName.c_str());
+                            if (is_selected && ImGui::IsItemHovered()) {
+                                ImGui::BeginTooltip();
+                                ImGui::Text(std::string(struc->cppName + "::" + func.cppName).c_str());
+                                ImGui::EndTooltip();
+                            }
                         }
+                        
                     }
                     ImGui::EndListBox();
                 }
@@ -887,28 +886,29 @@ void windows::PackageViewerWindow::renderTabs()
 
             auto renderEnums = [&](bool unused)
             {
-                renderItemRange(tab.itemRange_E, package.enums.size());
+                renderItemRange(tab.itemRange_E, package->enums.size());
 
-                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package.packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 85)))
+                if (ImGui::BeginListBox(std::string("##packageContentslistbox" + package->packageName).c_str(), ImVec2(ImGui::GetWindowSize().x - 20, ImGui::GetWindowSize().y - 85)))
                 {
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable("Show all Enums")) {
-                        tab.itemSelected = -1;
+                        tab.itemSelected = nullptr;
                         tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Enum;
                     }
                     ImGui::PopStyleColor();
 
-                    for (int i = tab.itemRange_E; i < package.enums.size() && i < tab.itemRange_E + 99; i++)
+                    for (int i = tab.itemRange_E; i < package->enums.size() && i < tab.itemRange_E + 99; i++)
                     {
-                        const bool is_selected = (tab.itemSelected == i && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum);
-                        if (ImGui::Selectable(package.enums.at(i).cppName.c_str(), is_selected)) {
-                            tab.itemSelected = i;
+                        auto& enu = package->enums[i];
+                        const bool is_selected = (tab.itemSelected == &enu && tab.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum);
+                        if (ImGui::Selectable(enu.cppName.c_str(), is_selected)) {
+                            tab.itemSelected = &enu;
                             tab.typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Enum;
-                            updateNavBar(tab.navTab, i, tab.typeSelected);
+                            updateNavBar(tab.navTab, &enu, tab.typeSelected);
                         }
                         if (is_selected && ImGui::IsItemHovered()) {
                             ImGui::BeginTooltip();
-                            ImGui::Text(package.enums.at(i).cppName.c_str());
+                            ImGui::Text(enu.cppName.c_str());
                             ImGui::EndTooltip();
                         }
                     }
@@ -988,20 +988,25 @@ bool windows::PackageViewerWindow::render()
 void windows::PackageViewerWindow::createTab(void* typeSt, const EngineCore::ObjectInfo::ObjectType type)
 {
     //dont create double packages
-    EngineStructs::Package* p = nullptr;
+    EngineStructs::Package* package = nullptr;
     if(type == EngineCore::ObjectInfo::ObjectType::OI_Struct || type == EngineCore::ObjectInfo::ObjectType::OI_Class)
-        p = static_cast<EngineStructs::Struct*>(typeSt)->owningPackage;
-    if (type == EngineCore::ObjectInfo::ObjectType::OI_Function)
-        p = static_cast<EngineStructs::Function*>(typeSt)->owningStruct->owningPackage;
-    if (type == EngineCore::ObjectInfo::ObjectType::OI_Enum)
-        p = static_cast<EngineStructs::Enum*>(typeSt)->owningPackage;
+    {
+	    const auto st = static_cast<EngineStructs::Struct*>(typeSt);
+        package = st->owningPackage;
 
-    if (!p)
+    }
+        
+    else if (type == EngineCore::ObjectInfo::ObjectType::OI_Function)
+        package = static_cast<EngineStructs::Function*>(typeSt)->owningStruct->owningPackage;
+    else if (type == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+        package = static_cast<EngineStructs::Enum*>(typeSt)->owningPackage;
+
+    if (!package)
         return;
 
     for(auto& tab : Tabs)
     {
-        if (tab.packageSelected == p)
+        if (tab.packageSelected == package)
         {
             tab.itemSelected = typeSt;
             tab.focus = true;
@@ -1016,7 +1021,7 @@ void windows::PackageViewerWindow::createTab(void* typeSt, const EngineCore::Obj
     }
     //setOpenTabsClosed();
     PackageTab t;
-    t.packageSelected = p;
+    t.packageSelected = package;
     t.itemSelected = typeSt;
     t.focus = true;
     t.open = true;

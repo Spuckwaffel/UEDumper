@@ -797,8 +797,6 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		cookMemberArray(struc);
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
-		packageObjectInfos.insert(std::pair(struc.fullName, ObjectInfo(true,
-			struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct, &struc)));
 	}
 	packages.push_back(basicType);
 
@@ -895,7 +893,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				struc.owningVectorIndex = j;
 
 				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
-				packageObjectInfos.insert(std::pair(struc.fullName, ObjectInfo(true, OI_type, &struc)));
+				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
 				package.combinedStructsAndClasses.push_back(&struc);
 
 				for (int k = 0; k < struc.functions.size(); k++)
@@ -905,7 +903,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 					func.owningStruct = &struc;
 					package.functions.push_back(&func);
 
-					packageObjectInfos.insert(std::pair(func.fullName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
+					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
 
 				}
 			}
@@ -919,7 +917,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 			auto& enu = package.enums[j];
 			enu.owningPackage = &package;
 			enu.owningVectorIndex = j;
-			packageObjectInfos.insert(std::pair(enu.fullName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
+			packageObjectInfos.insert(std::pair(enu.cppName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
 		}
 	}
 
@@ -928,7 +926,17 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	{
 		auto& package = packages[i];
 
-
+		for(auto& struc : package.combinedStructsAndClasses)
+		{
+			for(auto& name : struc->superNames)
+			{
+				auto info = getInfoOfObject(name);
+				auto superStruc = static_cast<EngineStructs::Struct*>(info.target);
+				struc->supers.push_back(superStruc);
+				if(superStruc->owningPackage != &package)
+					package.dependencyPackages.push_back(superStruc->owningPackage);
+			}
+		}
 		
 	}
 	

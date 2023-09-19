@@ -68,25 +68,6 @@ MDKGeneration::MDKGeneration()
 #include "../MDK.h"
 
 )";
-
-	auto getPackageFromClass = [&](const std::string& cname, int& sidx, int& pidx, bool& isClass)
-	{
-		const auto info = EngineCore::getInfoOfObject(cname);
-		if (info.packageIndex == -1) //invalid!
-			return false;
-
-		sidx = info.objectIndex;
-
-		isClass = info.type == EngineCore::ObjectInfo::OI_Class;
-
-		pidx = EngineCore::getVectorIndexForPackageIndex(info.packageIndex);
-		if (pidx == -1) //invalid!
-			return false;
-
-		return true;
-	};
-
-
 	std::vector<EngineStructs::Package> bakedAndOrderedPackages;
 	for(const auto& currentPackage : EngineCore::getPackages())
 	{
@@ -113,28 +94,28 @@ MDKGeneration::MDKGeneration()
 				bool isClass;
 				int pidx;
 
-				if(getPackageFromClass(clas.supers[0], sidx, pidx, isClass))
-				{
-					auto& inheritedPackage = EngineCore::getPackages()[pidx];
-					auto& inheritedStruct = isClass ? EngineCore::getPackages()[pidx].classes[sidx] : EngineCore::getPackages()[pidx].structs[sidx];
-
-					//same package
-					if(inheritedPackage.index == currentPackage.index)
-					{
-						//not in the list but this class needs it? then move before
-						if (auto it = std::ranges::find(bakedAndOrderedStructs, inheritedStruct); it == bakedAndOrderedStructs.end())
-						{
-							//insert it before our current one
-							bakedAndOrderedStructs.insert(currentClassIt, inheritedStruct);
-						}
-					}
-					else
-					{
-						
-						//first check for a cyclic package
-						for()
-					}
-				}
+				//if(getPackageFromClass(clas.supers[0], sidx, pidx, isClass))
+				//{
+				//	auto& inheritedPackage = EngineCore::getPackages()[pidx];
+				//	auto& inheritedStruct = isClass ? EngineCore::getPackages()[pidx].classes[sidx] : EngineCore::getPackages()[pidx].structs[sidx];
+				//
+				//	//same package
+				//	if(inheritedPackage.index == currentPackage.index)
+				//	{
+				//		//not in the list but this class needs it? then move before
+				//		if (auto it = std::ranges::find(bakedAndOrderedStructs, inheritedStruct); it == bakedAndOrderedStructs.end())
+				//		{
+				//			//insert it before our current one
+				//			bakedAndOrderedStructs.insert(currentClassIt, inheritedStruct);
+				//		}
+				//	}
+				//	else
+				//	{
+				//		
+				//		//first check for a cyclic package
+				//		for()
+				//	}
+				//}
 			}
 		}
 	}

@@ -167,7 +167,7 @@ namespace windows
 
 		static void createTab(void* typeSt, EngineCore::ObjectInfo::ObjectType type = EngineCore::ObjectInfo::ObjectType::OI_Struct);
 
-		static bool openTabFromFullName(const std::string& name);
+		static bool openTabFromCName(const std::string& name);
 
 		static void generatePackage(std::ofstream& file, const EngineStructs::Package& package);
 
