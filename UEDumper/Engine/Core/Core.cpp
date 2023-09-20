@@ -933,8 +933,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				auto info = getInfoOfObject(name);
 				auto superStruc = static_cast<EngineStructs::Struct*>(info.target);
 				struc->supers.push_back(superStruc);
-				if(superStruc->owningPackage != &package)
-					package.dependencyPackages.push_back(superStruc->owningPackage);
+				if(superStruc->owningPackage->index != package.index)
+					package.dependencyPackages.insert(superStruc->owningPackage);
+
 			}
 		}
 		

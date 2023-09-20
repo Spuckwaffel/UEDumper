@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <cstdint>
+#include <set>
 
 #include "../structs.h"
 
@@ -314,7 +315,7 @@ namespace EngineStructs
 		int index;
 
 		//all packages this package needs
-		std::vector<Package*> dependencyPackages;
+		std::set<Package*> dependencyPackages;
 		//seperate structs and classes even if a boolean exists within the struct
 		std::vector<Struct*> combinedStructsAndClasses;
 		std::vector<Struct> structs;

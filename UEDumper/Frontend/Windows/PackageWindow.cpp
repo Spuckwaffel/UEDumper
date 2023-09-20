@@ -9,6 +9,7 @@
 #include <Settings/EngineSettings.h>
 
 #include "dumpshost.h"
+#include "Engine/Generation/MDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
@@ -45,6 +46,10 @@ void windows::PackageWindow::renderUndefinedStructs()
 
 void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
 {
+	totalProgress = 10;
+	MDKGeneration::MDKGeneration();
+	progressDone = totalProgress;
+	return;
 	totalProgress = EngineCore::getPackages().size();
 	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
 	if(!create_directories(path))

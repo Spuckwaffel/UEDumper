@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Engine/Core/EngineStructs.h"
 
 class MDKGeneration
 {
@@ -9,6 +10,8 @@ class MDKGeneration
 	static inline std::filesystem::path SDKPath{};
 
 	static void printCredits(std::ofstream& stream);
+
+	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);
 public:
 	MDKGeneration();
 };
