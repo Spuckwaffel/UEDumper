@@ -47,18 +47,16 @@ void windows::PackageWindow::renderUndefinedStructs()
 void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
 {
 	totalProgress = 10;
-	MDKGeneration::MDKGeneration();
 	progressDone = totalProgress;
-	return;
 	totalProgress = EngineCore::getPackages().size();
 	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
-	if(!create_directories(path))
+	if (!create_directories(path))
 		remove_all(path);
-	for(const auto& package : EngineCore::getPackages())
+	for (const auto& package : EngineCore::getPackages())
 	{
 		std::ofstream file(path / (package.packageName + ".h"));
-		file << 
-R"(/********************************************************
+		file <<
+			R"(/********************************************************
 *                                                       *
 *   Package generated using UEDumper by Spuckwaffel.    *
 *                                                       *
@@ -77,7 +75,7 @@ R"(/********************************************************
 void windows::PackageWindow::copyPackageNames()
 {
 	std::string names = "";
-	for(const auto& package : EngineCore::getPackages())
+	for (const auto& package : EngineCore::getPackages())
 	{
 		names += package.packageName + "\n";
 	}
@@ -95,10 +93,10 @@ bool windows::PackageWindow::render()
 {
 	if (alreadyCompleted) return true;
 
-	static char CNameSearch[100] = {0};
+	static char CNameSearch[100] = { 0 };
 
 	ImGui::SetCursorPosY(35);
-	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true,  ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 
 	ImGui::Text("%d Packages", EngineCore::getPackages().size());
 	if (ImGui::BeginListBox("##packageslist", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 80)))
@@ -112,7 +110,7 @@ bool windows::PackageWindow::render()
 			{
 				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opening package %d", packagePicked);
 				packagePicked = i;
-				if(packages[i].structs.size() > 0)
+				if (packages[i].structs.size() > 0)
 					PackageViewerWindow::createTab(&packages[i].structs[0], EngineCore::ObjectInfo::OI_Struct);
 				else if (packages[i].classes.size() > 0)
 					PackageViewerWindow::createTab(&packages[i].classes[0], EngineCore::ObjectInfo::OI_Class);
@@ -122,7 +120,7 @@ bool windows::PackageWindow::render()
 					PackageViewerWindow::createTab(&packages[i].enums[0], EngineCore::ObjectInfo::OI_Enum);
 				else
 					LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "failed to open package: package is empty!");
-				
+
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Right))
 			{
@@ -140,7 +138,7 @@ bool windows::PackageWindow::render()
 			{
 				std::ofstream file(EngineSettings::getWorkingDirectory() / (packages[packagePicked].packageName + ".h"));
 				file <<
-R"(/********************************************************
+					R"(/********************************************************
 *                                                       *
 *   Package generated using UEDumper by Spuckwaffel.    *
 *                                                       *
@@ -162,8 +160,8 @@ R"(/********************************************************
 		ImGui::EndListBox();
 	}
 	ImGui::PushItemWidth(278);
-	
-	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) && 
+
+	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) &&
 		!PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
 		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
@@ -181,12 +179,12 @@ R"(/********************************************************
 
 void windows::PackageWindow::renderEditPopup()
 {
-	if(EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
+	if (EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
 		return;
 
 	ImGui::Separator();
 
-	if(ImGui::Button(merge(ICON_FA_QUESTION, " Get Undefined Structs")))
+	if (ImGui::Button(merge(ICON_FA_QUESTION, " Get Undefined Structs")))
 	{
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(windows::LogWindow::log_2, "PACKAGEWINDOW", "Getting undefined structs...");
@@ -211,7 +209,7 @@ void windows::PackageWindow::renderEditPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("This won't save your project to disk! This will generate a StructDefinitions.h file with all the changes "
-						 "you made (this will include old changes too). ");
+			"you made (this will include old changes too). ");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
@@ -242,7 +240,7 @@ void windows::PackageWindow::renderProjectPopup()
 				anyProgressDone = 0;
 				anyProgressTotal = 1;
 				std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [st] {
-					
+
 					if (EngineCore::loadProject(st, anyProgressDone, anyProgressTotal))
 					{
 						windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project loaded!");
@@ -255,25 +253,25 @@ void windows::PackageWindow::renderProjectPopup()
 		}
 	}
 
-	
+
 
 	if (EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
 		return;
 
 	ImGui::Separator();
-	
+
 	//force the topmost window rendering when saving the project
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Save Project")) && !presentTopMostCallback)
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
-		
+
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			EngineCore::saveToDisk(anyProgressDone, anyProgressTotal);
 			presentTopMostCallback = false;
 			}))).reset();
-		
+
 	}
 
 	ImGui::SameLine();
@@ -283,13 +281,13 @@ void windows::PackageWindow::renderProjectPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("You can save your project to open up next time in OFFLINE mode. That means that you can do everything you want "
-						 "except using the live editor.");
+			"except using the live editor.");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
-	
-	
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Full SDK")))
+
+
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Legacy SDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
@@ -301,6 +299,21 @@ void windows::PackageWindow::renderProjectPopup()
 			presentTopMostCallback = false;
 			}))).reset();
 	}
+	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " +Generate NEW MDK+")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating MDK...");
+			MDKGeneration::MDKGeneration();
+			MDKGeneration::generate(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	ImGui::PopStyleColor();
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
 	{
 		presentTopMostCallback = true;
@@ -313,20 +326,20 @@ void windows::PackageWindow::renderProjectPopup()
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-	
+
 }
 
 void windows::PackageWindow::topmostCallback()
 {
-	if(presentTopMostCallback)
+	if (presentTopMostCallback)
 	{
 		const ImVec2 bigWindow = IGHelper::getWindowSize();
 		ImGui::SetNextWindowFocus();
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
 
 		ImGui::Begin("Processing...", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-		ImGui::SetWindowSize(ImVec2(520, 100), ImGuiCond_Once);
-		
+		ImGui::SetWindowSize(ImVec2(520, 130), ImGuiCond_Once);
+
 		const ImVec2 smallWindow = ImGui::GetWindowSize();
 		ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
 		ImGui::PopStyleVar();
@@ -334,8 +347,8 @@ void windows::PackageWindow::topmostCallback()
 		ImGui::SameLine();
 		ImGui::Spinner();
 		const float progress = static_cast<float>(anyProgressDone) / anyProgressTotal;
-		ImGui::ProgressBar(progress, ImVec2(480, 30));
-		
+		ImGui::ProgressBar(progress, ImVec2(500, 30));
+		ImGui::Text(LogWindow::getLastLogMessage().c_str());
 		ImGui::End();
 	}
 }

@@ -113,7 +113,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 				char nameBuf[500];
 
-				if (memberName == "bool" || memberName == "char" || memberName == "int" || memberName == "float") {
+				if (memberName == "bool" || memberName == "char" || memberName == "int" || memberName == "float" || memberName == "TRUE" || memberName == "FALSE") {
 					memberName += "_";
 				}
 				if (alreadyDefinedMembers.contains(memberName))
@@ -133,36 +133,11 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 
 				if (!member.type.clickable)
-					sprintf_s(finalBuf, "	%-110s ___ OFFSET(get<%s>, {0x%X, %d, %d, %d})", nameBuf, member.type.stringify().c_str(), member.offset, member.size, member.isBit, member.bitOffset);
-				else sprintf_s(finalBuf, "	%-110s ___ OFFSET(get<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
+					sprintf_s(finalBuf, "	%-110s OFFSET(get<%s>, {0x%X, %d, %d, %d})", nameBuf, member.type.stringify().c_str(), member.offset, member.size, member.isBit, member.bitOffset);
+				else sprintf_s(finalBuf, "	%-110s OFFSET(get<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
 				stream << finalBuf << std::endl;
 			}
 			stream << "};\n\n";
-			continue;
-
-			for (const auto& member : struc->cookedMembers)
-			{
-
-				char finalBuf[600];
-				char nameBuf[500];
-				std::string name = member.name;
-				if (member.isBit)
-					name += " : 1";
-				sprintf_s(nameBuf, "%-50s %s;", member.type.stringify().c_str(), name.c_str());
-				if (member.isBit)
-					sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
-				else
-					sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
-				stream << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
-				if (member.userEdited)
-					stream << "USER-MODIFIED";
-				else if (member.missed)
-					stream << "MISSED";
-				stream << std::endl;
-
-			}
-
-			continue;
 
 			// Add function section header
 			if (!struc->functions.empty())
@@ -190,10 +165,9 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 
 
-				sprintf_s(funcBuf, "	%-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
+				sprintf_s(funcBuf, "	// %-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
 				stream << funcBuf << std::endl;
 			}
-			stream << "};\n\n";
 
 		}
 	};
@@ -227,6 +201,13 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 MDKGeneration::MDKGeneration()
 {
+
+}
+
+void MDKGeneration::generate(int& progressDone, int& totalProgress)
+{
+	progressDone = 0;
+	totalProgress = 10;
 	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Baking MDK...");
 
 	SDKPath = EngineSettings::getWorkingDirectory() / "MDK";
@@ -289,10 +270,14 @@ MDKGeneration::MDKGeneration()
 		newPackages.push_back(p);
 	}
 
+	totalProgress = newPackages.size();
+
 	bool anyMergeFound = false;
 
+	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Merging packages...");
 	do
 	{
+		progressDone = 0;
 		anyMergeFound = false;
 		std::vector<MergedPackage> _newPackages{};
 		//this just acts as a temporary identifier, it just has to be smth unique per package
@@ -309,7 +294,8 @@ MDKGeneration::MDKGeneration()
 				{
 					if (std::ranges::find(pack.mergedPackages, neighbourNeighbour) != pack.mergedPackages.end())
 					{
-						printf("merge found with %s and %s origin %s\n", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
+						windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "merge found with %s and %s origin %s", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
+
 						anyMergeFound = true;
 						mergefound = true;
 						//add him to the merges
@@ -354,13 +340,17 @@ MDKGeneration::MDKGeneration()
 			}
 			else
 				_newPackages.push_back(pack);
+
+			progressDone++;
 		}
 		newPackages.clear();
 		newPackages.insert(newPackages.end(), _newPackages.begin(), _newPackages.end());
 	} while (anyMergeFound);
 
+	progressDone = 0;
+	totalProgress = newPackages.size();
 
-	puts("eliminating double merges");
+	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Eliminating double merges....");
 	bool eraseDone = false;
 	do
 	{
@@ -383,7 +373,8 @@ MDKGeneration::MDKGeneration()
 				std::ranges::sort(p1.mergedPackages);
 				if (p.mergedPackages == p1.mergedPackages)
 				{
-					printf("deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
+					windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
+					//printf("deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
 
 					//delete p1 package
 					newPackages.erase(newPackages.begin() + tracker);
@@ -397,9 +388,13 @@ MDKGeneration::MDKGeneration()
 		}
 	} while (eraseDone);
 
-	puts("reordering structs");
+	progressDone = 0;
+	totalProgress = newPackages.size();
+	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering structs");
+
 	for (auto& p : newPackages)
 	{
+		progressDone++;
 		std::vector<EngineStructs::Struct*> orderedStructsAndClasses;
 		for (auto& item : p.package.combinedStructsAndClasses)
 		{
@@ -433,14 +428,17 @@ MDKGeneration::MDKGeneration()
 
 	}
 
+	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
 	bool didReordering = false;
 	do
 	{
+		progressDone = 0;
 		didReordering = false;
 		for (auto& p : newPackages)
 		{
-			printf("package %s\n", p.package.packageName.c_str());
+			progressDone++;
+			windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
 			auto currentPackageIt = std::ranges::find(
 				orderedPackages, &p);
 
@@ -452,7 +450,6 @@ MDKGeneration::MDKGeneration()
 			}
 			for (auto& neighbour : p.package.dependencyPackages)
 			{
-				printf("neighbour: %s\n", neighbour->packageName.c_str());
 				//iterate through all merged package until we find the neighbour this class needs, so
 				//we can ensure the dependeny is before our current packafwe
 				for (auto& p_ : newPackages)
@@ -496,22 +493,28 @@ MDKGeneration::MDKGeneration()
 	} while (didReordering);
 
 
-	puts("------------");
+	puts("------sorted packages------");
 	for (auto& pack : orderedPackages)
 	{
 		printf("%s\n", pack->package.packageName.c_str());
 	}
-	puts("------------");
+	puts("---------------------------");
+
+	progressDone = 0;
 	for (auto& pack : orderedPackages)
 	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Baking package %s", pack->package.packageName.c_str());
 		masterHeader << "#include \"MDK/" + pack->package.packageName + ".h\"" << std::endl;
 		std::string packageName = pack->package.packageName + ".h";
 		std::ofstream package(SDKPath / packageName);
 		printCredits(package);
 		generatePackage(package, pack->package);
 		package.close();
+		progressDone++;
 	}
 	masterHeader.close();
+
+	progressDone = totalProgress;
 }
 
 /*
