@@ -77,7 +77,7 @@ inline void overrideStructs()
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
 	//because inheritance for a uclass is UStruct > UField > UObject.
 	//but in our case UField just inherits from UObject.
-	uField.supers = std::vector<std::string>{ "UObject"}; 
+	uField.superNames = std::vector<std::string>{ "UObject"}; 
 	constexpr int uFieldOffet = sizeof(UObject);
 	uField.definedMembers = std::vector<EngineStructs::Member> {
 		{{true,		PropertyType::ObjectProperty,	"UField"},		"Next",				uFieldOffet, 8}
@@ -104,7 +104,7 @@ inline void overrideStructs()
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
 	//because inheritance for a uclass is UStruct > UField > UObject.
 	//but in our case UField just inherits from UObject.
-	uStruct.supers = std::vector<std::string>{ "UField","UObject" };
+	uStruct.superNames = std::vector<std::string>{ "UField","UObject" };
 	int uStructOffet = sizeof(UField);
 	uStruct.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,	"UStruct"},		"SuperStruct",				uStructOffet, 8},
@@ -129,7 +129,7 @@ inline void addStructs()
 	Fname.inherited = false;
 	int FnameOffset = 0;
 	//of course we can also use defines, just be careful
-	Fname.cookedMembers =  std::vector<EngineStructs::Member>{
+	Fname.definedMembers =  std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::IntProperty,		"int"},		"ComparisonIndex",		0, 4},
 		#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER

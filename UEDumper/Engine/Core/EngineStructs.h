@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <cstdint>
+#include <set>
 
 #include "../structs.h"
 
@@ -96,6 +97,8 @@ enum CopyStatus
 //used for the packages
 namespace EngineStructs
 {
+	struct Package;
+	struct Struct;
 	/**
 	 * \brief Member struct. Contains info about a single member
 	 */
@@ -149,6 +152,8 @@ namespace EngineStructs
 	 */
 	struct Function
 	{
+		Struct* owningStruct; //the struct this function resides in
+		int owningVectorIndex = 0; //the vector index this function resides in
 		uintptr_t memoryAddress;
 		fieldType returnType;
 		std::vector<std::tuple<fieldType, std::string, uint64_t, uint64_t>> params; //fieldType, name, propertyFlags, arrayDim
@@ -193,11 +198,14 @@ namespace EngineStructs
 	 */
 	struct Struct
 	{
+		Package* owningPackage = nullptr; //the package this struct resides in
+		int owningVectorIndex = 0; //the vector index this struct resides in
 		bool isClass = false; //if struct is actually a class. Even if we have in packages a struct and class vector, every struct should know what it is
 		uintptr_t memoryAddress = 0; //the real memory address where the struct is
 		std::string fullName; //the full name of the struct
 		std::string cppName; //the cppName of the struct
-		std::vector<std::string> supers{}; //all the structs it inherits
+		std::vector<std::string> superNames{}; //all the structs it inherits, empty, only used in package generation
+		std::vector<Struct*> supers{}; //all the structs it inherits
 		bool inherited = false; //if the struct is inherited
 		int size = 0; //true size of the struct
 		int inheretedSize = 0; //size of the inherited structs
@@ -219,7 +227,7 @@ namespace EngineStructs
 			j["ma"] = memoryAddress;
 			j["fn"] = fullName;
 			j["c"] = cppName;
-			j["sp"] = supers;
+			//j["sp"] = supers;
 			j["in"] = inherited;
 			j["sz"] = size;
 			j["is"] = inheretedSize;
@@ -242,7 +250,7 @@ namespace EngineStructs
 			s.memoryAddress = json["ma"];
 			s.fullName = json["fn"];
 			s.cppName = json["c"];
-			s.supers = json["sp"];
+			//s.supers = json["sp"];
 			s.inherited = json["in"];
 			s.size = json["sz"];
 			s.inheretedSize = json["is"];
@@ -259,6 +267,8 @@ namespace EngineStructs
 
 	struct Enum
 	{
+		Package* owningPackage = nullptr;
+		int owningVectorIndex = 0;
 		uintptr_t memoryAddress;
 		std::string fullName;
 		std::string cppName;
@@ -304,11 +314,14 @@ namespace EngineStructs
 		std::string packageName;
 		int index;
 
+		//all packages this package needs
+		std::set<Package*> dependencyPackages;
 		//seperate structs and classes even if a boolean exists within the struct
+		std::vector<Struct*> combinedStructsAndClasses;
 		std::vector<Struct> structs;
 		std::vector<Struct> classes;
 		std::vector<Enum> enums;
-		std::vector<std::tuple<bool, int, int>> functions; //vector of tuples for function (bInClassVec, vecidx, funcidx)
+		std::vector<Function*> functions; //pointer because these functions reside in classes and structs and are even ordered
 
 		static bool packageCompare(const Package& a, const Package& b) {
 			if (a.packageName == "BasicType")
@@ -323,6 +336,16 @@ namespace EngineStructs
 			std::ranges::transform(sb, sb.begin(),
 			                       [](unsigned char c) { return std::tolower(c); });
 			return sa < sb;
+		}
+
+		bool operator==(const Package& p) const
+		{
+			return p.index == index;
+		}
+
+		bool operator==(const Package*& p) const
+		{
+			return p->index == index;
 		}
 
 		nlohmann::json toJson() const
@@ -341,10 +364,10 @@ namespace EngineStructs
 				jClasses.push_back(clas.toJson());
 			j["c"] = jClasses;
 
-			nlohmann::json jFunctions;
-			for (const auto& function : functions)
-				jFunctions.push_back({ std::get<0>(function), std::get<1>(function), std::get<2>(function) });
-			j["f"] = jFunctions;
+			//nlohmann::json jFunctions;
+			//for (const auto& function : functions)
+			//	jFunctions.push_back({ std::get<0>(function), std::get<1>(function), std::get<2>(function) });
+			//j["f"] = jFunctions;
 
 			nlohmann::json jEnums;
 			for (const auto& enu : enums)
@@ -362,8 +385,8 @@ namespace EngineStructs
 				p.structs.push_back(Struct::fromJson(struc));
 			for (const nlohmann::json& clas : json["c"])
 				p.classes.push_back(Struct::fromJson(clas));
-			for (const nlohmann::json& function : json["f"])
-				p.functions.push_back(std::tuple(function[0], function[1], function[2]));
+			//for (const nlohmann::json& function : json["f"])
+			//	p.functions.push_back(std::tuple(function[0], function[1], function[2]));
 			for (const nlohmann::json& enu : json["e"])
 				p.enums.push_back(Enum::fromJson(enu));
 

@@ -18,7 +18,7 @@
 //we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
-	if(FNameCache.contains(fname.ComparisonIndex))
+	if (FNameCache.contains(fname.ComparisonIndex))
 	{
 		return FNameCache[fname.ComparisonIndex];
 	}
@@ -82,7 +82,7 @@ std::string EngineCore::FNameToString(FName fname)
 	const auto FNameEntryPtrPtr = ElementType + (WithinChunkIndex * 8);
 
 	const auto FNameEntryPtr = Memory::read<uint64_t>(FNameEntryPtrPtr);
-	
+
 	//read the bytes
 #if UE_VERSION == UE_4_22
 	const uint64_t AnsiName = FNameEntryPtr + 0xC;
@@ -92,7 +92,7 @@ std::string EngineCore::FNameToString(FName fname)
 
 	int nameLength = NAME_SIZE - 1;
 	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
-	
+
 #else // >= 4_23
 
 	enum { NAME_SIZE = 1024 };
@@ -102,8 +102,8 @@ std::string EngineCore::FNameToString(FName fname)
 	//>4.23 name chunks exist
 	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
 	const unsigned short nameOffset = fname.ComparisonIndex;
-	
-	
+
+
 	//average function since 4.25
 	//https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L3375
 
@@ -138,14 +138,14 @@ std::string EngineCore::FNameToString(FName fname)
 	//decrypt the FNames buffer
 	fname_decrypt(name, nameLength);
 #endif
-	
+
 
 	std::string finalName = std::string(name);
 
 	if (finalName.empty())
 		finalName = "null";
-		//throw std::runtime_error("empty name is trying to get cached");
-	
+	//throw std::runtime_error("empty name is trying to get cached");
+
 
 	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
@@ -202,7 +202,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			for (auto& obj : object->getAllSupers())
 			{
 				//add them to a vector
-				eStruct.supers.push_back(obj->getCName());
+				eStruct.superNames.push_back(obj->getCName());
 			}
 			eStruct.inherited = true;
 			eStruct.inheretedSize = super->PropertiesSize;
@@ -315,6 +315,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
 
+
 	cookMemberArray(eStruct);
 
 	data.push_back(eStruct);
@@ -371,7 +372,7 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 //in every version we have to go through the children to 
 for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 {
-	if (fieldChild || !fieldChild->IsA<UFunction>())
+	if (!fieldChild || !fieldChild->IsA<UFunction>())
 		continue;
 
 
@@ -379,6 +380,7 @@ for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChil
 
 	EngineStructs::Function eFunction;
 	eFunction.fullName = fn->getFullName();
+	eFunction.cppName = fn->getName();
 	eFunction.memoryAddress = fn->objectptr;
 	eFunction.functionFlags = fn->getFunctionFlagsString();
 	eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
@@ -412,10 +414,6 @@ for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChil
 	// no defined return type => void
 	if (!eFunction.returnType)
 		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-	eFunction.cppName = fn->getName();
-
-
 
 	data.push_back(eFunction);
 }
@@ -764,6 +762,8 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	addStructs();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
+
+	std::vector<std::string> names;
 	
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
@@ -780,8 +780,19 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
 			continue;
 
-		upackages[object->getSecondPackageName()].push_back(object);
+		auto name = object->getSecondPackageName();
+		upackages[name].push_back(object);
+		if (auto it = std::ranges::find(names, name); it == names.end()) {
+			names.push_back(name);
+		}
+		
 	}
+	puts("names---------------");
+	for(auto& name : names)
+	{
+		printf("#include \"SDK/%s.h\"\n", name.c_str());
+	}
+	puts("names---------------");
 	//reset the counter to 0 as we are using it again but this time really for packages
 	finishedPackages = 0;
 	totalPackages = upackages.size();
@@ -797,19 +808,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		cookMemberArray(struc);
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
-		packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(
-			struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct, 
-			0, basicType.structs.size() - 1)));
 	}
 	packages.push_back(basicType);
 
 	//package 0 is reserved for our special defined structs
-	int packageIndex = 1;
 	for(auto& package: upackages)
 	{
 		EngineStructs::Package ePackage;
 		ePackage.packageName = package.first;
-		ePackage.index = packageIndex;
 		
 		
 		for(const auto& object : package.second)
@@ -820,7 +826,6 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 			if (isClass || object->IsA<UScriptStruct>())
 			{
 				auto& dataVector = isClass ? ePackage.classes : ePackage.structs;
-				const auto OI_type = isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
 				const auto naming = isClass ? "Class" : "Struct";
 
 				
@@ -838,22 +843,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 						cookMemberArray(struc);
 
 						dataVector.push_back(struc);
-						
-						packageObjectInfos.insert(std::pair(object->getCName(),
-						                                    ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
 
-						auto& functionVec = dataVector.back().functions;
-						
-						generateFunctions(object->castTo<UStruct>(), functionVec);
+						auto& generatedStruc = dataVector.back();
+						generatedStruc.isClass = isClass;
 
-						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", struc.cookedMembers.size(), functionVec.size());
+						generateFunctions(object->castTo<UStruct>(), generatedStruc.functions);
 
-						for (int i = 0; i < functionVec.size(); i++)
-						{
-							ePackage.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
-							packageObjectInfos.insert(std::pair(functionVec.at(i).cppName,
-								ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
-						}
+						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
+
 						continue;
 					}
 				}
@@ -870,19 +867,11 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				if (!generateStructOrClass(sObject, dataVector))
 					continue;
 
-				dataVector.back().isClass = isClass;
-				//printf("added %s to packageIndex %d (%s), at objectIndex %d!\n", sObject.getCName().c_str(), packageIndex, p.packageName.c_str(), objectIndex);
-				packageObjectInfos.insert(std::pair(sObject->getCName(), ObjectInfo(OI_type, packageIndex, dataVector.size() - 1)));
+				auto& generatedStruc = dataVector.back();
+				generatedStruc.isClass = isClass;
 
-				auto& functionVec = dataVector.back().functions;
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", dataVector.back().cookedMembers.size(), functionVec.size());
+				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
 
-				for(int i = 0; i < functionVec.size(); i++)
-				{
-					ePackage.functions.push_back(std::make_tuple(isClass, dataVector.size() - 1, i));
-					packageObjectInfos.insert(std::pair(functionVec.at(i).cppName,
-						ObjectInfo(ObjectInfo::OI_Function, packageIndex, i)));
-				}
 			}
 			else if (object->IsA<UEnum>())
 			{
@@ -890,20 +879,77 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				const auto eObject = object->castTo<UEnum>();
 				if (!generateEnum(eObject, ePackage.enums))
 					continue;
-				//enums do not have CNames
-				packageObjectInfos.insert(std::pair(eObject->getName(), ObjectInfo(ObjectInfo::OI_Enum, packageIndex, ePackage.enums.size() - 1)));
 			}
 		}
 		packages.push_back(ePackage);
 		finishedPackages++;
-		packageIndex++;
 	}
+
+	
+
 	std::ranges::sort(packages, EngineStructs::Package::packageCompare);
 
-	//package.index doesnt match packages[i] so we make a table that stores the "convertion"
-	for(int i = 0; i < packages.size(); i++)
+	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
+	for (int i = 0; i < packages.size(); i++)
 	{
-		packageIndexes.insert(std::pair(packages[i].index, i));
+		auto& package = packages[i];
+		package.index = i;
+
+		auto fillMissingDataForStructs = [&](std::vector<EngineStructs::Struct>& structs)
+		{
+			for (int j = 0; j < structs.size(); j++)
+			{
+				auto& struc = structs[j];
+				struc.owningPackage = &package;
+				struc.owningVectorIndex = j;
+
+				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
+				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
+				package.combinedStructsAndClasses.push_back(&struc);
+
+				for (int k = 0; k < struc.functions.size(); k++)
+				{
+					auto& func = struc.functions[k];
+					func.owningVectorIndex = k;
+					func.owningStruct = &struc;
+					package.functions.push_back(&func);
+
+					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
+
+				}
+			}
+		};
+
+		fillMissingDataForStructs(package.classes);
+		fillMissingDataForStructs(package.structs);
+
+		for (int j = 0; j < package.enums.size(); j++)
+		{
+			auto& enu = package.enums[j];
+			enu.owningPackage = &package;
+			enu.owningVectorIndex = j;
+			packageObjectInfos.insert(std::pair(enu.cppName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
+		}
+	}
+
+	//we have to loop again for dependency tracking and supers
+	for (int i = 0; i < packages.size(); i++)
+	{
+		auto& package = packages[i];
+
+		for(auto& struc : package.combinedStructsAndClasses)
+		{
+			for(auto& name : struc->superNames)
+			{
+				auto info = getInfoOfObject(name);
+				auto superStruc = static_cast<EngineStructs::Struct*>(info.target);
+				struc->supers.push_back(superStruc);
+				if(superStruc->owningPackage->index != package.index)
+					package.dependencyPackages.insert(superStruc->owningPackage);
+
+			}
+		}
+		
 	}
 	
 	status = CS_success;
@@ -920,36 +966,11 @@ EngineCore::ObjectInfo EngineCore::getInfoOfObject(const std::string& CName)
 {
 	//in functions we compare packageIndex and objectIndex anyways so the type doesnt matter
 	if(!packageObjectInfos.contains(CName))
-		return { ObjectInfo::OI_MAX, -1, -1 };
+		return { false, ObjectInfo::OI_MAX, nullptr };
 
 	return packageObjectInfos[CName];
 }
 
-std::pair<std::reference_wrapper<const EngineStructs::Function>, std::reference_wrapper<const EngineStructs::Struct>> EngineCore::getFunctionFromVectorIndex(
-	const EngineStructs::Package& package, int functionIndex)
-{
-	//get the tuple
-	const auto& tup = package.functions.at(functionIndex);
-	//get the residing class or struct of the function
-	const auto& dataVector = std::get<0>(tup) ? package.classes : package.structs;
-
-	const auto& dataStruct = dataVector.at(std::get<1>(tup));
-
-	const auto& func = dataStruct.functions.at(std::get<2>(tup));
-
-
-	
-	return std::make_pair(std::cref(func), std::cref(dataStruct));
-}
-
-
-int EngineCore::getVectorIndexForPackageIndex(const int packageIndex)
-{
-	if (!packageIndexes.contains(packageIndex))
-		return -1;
-
-	return packageIndexes[packageIndex];
-}
 
 const std::vector<std::string>& EngineCore::getAllUnknownTypes()
 {
@@ -1017,7 +1038,7 @@ void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, co
 
 void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 {
-	totalProgress = 1 + FNameCache.size() + packageObjectInfos.size() + packageIndexes.size() + 
+	totalProgress = 1 + FNameCache.size() + packageObjectInfos.size() + 
 		overridingStructs.size() + packages.size() + unknownProperties.size() + customStructs.size() + offsets.size() + 5000;
 	progressDone = 0;
 	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saving to disk...");
@@ -1040,12 +1061,6 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 		jPackageObjectInfos[entry.first] = entry.second.toJson();
 	unordered_maps["PackageObjectInfos"] = jPackageObjectInfos;
 	progressDone += packageObjectInfos.size();
-
-	nlohmann::json jPackageIndexes;
-	for (const auto& entry : packageIndexes)
-		jPackageIndexes[std::to_string(entry.first)] = entry.second;
-	unordered_maps["PackageIndexes"] = jPackageIndexes;
-	progressDone += packageIndexes.size();
 
 	nlohmann::json jOverridingStructs;
 	for (const auto& entry : overridingStructs)
@@ -1194,13 +1209,6 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 	nlohmann::json jPackageObjectInfos = unordered_maps["PackageObjectInfos"];
 	for (auto it = jPackageObjectInfos.begin(); it != jPackageObjectInfos.end(); ++it) {
 		packageObjectInfos.insert(std::pair(it.key(), ObjectInfo::fromJson(it.value())));
-	}
-
-	progressDone++;
-
-	nlohmann::json jPackageIndexes = unordered_maps["PackageIndexes"];
-	for (auto it = jPackageIndexes.begin(); it != jPackageIndexes.end(); ++it) {
-		packageIndexes.insert(std::pair(std::stoi(it.key()), it.value()));
 	}
 
 	progressDone++;

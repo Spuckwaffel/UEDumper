@@ -9,6 +9,7 @@
 #include <Settings/EngineSettings.h>
 
 #include "dumpshost.h"
+#include "Engine/Generation/MDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
@@ -45,6 +46,10 @@ void windows::PackageWindow::renderUndefinedStructs()
 
 void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
 {
+	totalProgress = 10;
+	MDKGeneration::MDKGeneration();
+	progressDone = totalProgress;
+	return;
 	totalProgress = EngineCore::getPackages().size();
 	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
 	if(!create_directories(path))
@@ -99,15 +104,25 @@ bool windows::PackageWindow::render()
 	if (ImGui::BeginListBox("##packageslist", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 80)))
 	{
 		static int packagePicked = 0;
-		const auto& packages = EngineCore::getPackages();
+		auto& packages = EngineCore::getPackages();
 		for (int i = 0; i < packages.size(); i++)
 		{
 			const bool is_selected = (packagePicked == i);
 			if (ImGui::Selectable(packages[i].packageName.c_str(), is_selected))
 			{
+				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opening package %d", packagePicked);
 				packagePicked = i;
-				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opened package %d", packagePicked);
-				PackageViewerWindow::createTab(packagePicked);
+				if(packages[i].structs.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].structs[0], EngineCore::ObjectInfo::OI_Struct);
+				else if (packages[i].classes.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].classes[0], EngineCore::ObjectInfo::OI_Class);
+				else if (packages[i].functions.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].functions[0], EngineCore::ObjectInfo::OI_Function);
+				else if (packages[i].enums.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].enums[0], EngineCore::ObjectInfo::OI_Enum);
+				else
+					LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "failed to open package: package is empty!");
+				
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Right))
 			{
@@ -214,7 +229,7 @@ void windows::PackageWindow::renderProjectPopup()
 
 			ZeroMemory(&ofn, sizeof(OPENFILENAME));
 			ofn.lStructSize = sizeof(OPENFILENAME);
-			ofn.hwndOwner = NULL;
+			ofn.hwndOwner = nullptr;
 			ofn.lpstrFilter = "UEDumper Project File (*.uedproj)\0*.uedproj\0";
 			ofn.lpstrFile = filename;
 			ofn.nMaxFile = MAX_PATH;
