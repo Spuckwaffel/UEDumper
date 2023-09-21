@@ -239,7 +239,8 @@ public:
 	 */
 	static void overrideStructMembers(const EngineStructs::Struct& eStruct);
 
-	
+
+	static void finishPackages();
 
 	/**
 	 * \brief RUNTIME ONLY! USE ONLY AFTER PACKAGE GENERATION!

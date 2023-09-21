@@ -67,6 +67,11 @@
 //default FALSE
 #define WITH_CASE_PRESERVING_NAME FALSE
 
+//set this to false if your generation always stops and says you have a invalid fname offset
+//however all this does is check if the first item is /Scrupt/Core.UObject which should alwyays be the case
+//default TRUE
+#define BREAK_IF_INVALID_NAME TRUE
+
 
 #if UE_VERSION < UE_4_23
 //in EngineCore::FNameToString theres a premade FNameEntry calculation. Though games sometimes have a offset on that calculation

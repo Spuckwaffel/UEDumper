@@ -717,8 +717,20 @@ void EngineCore::cacheFNames(int64_t& finishedNames, int64_t& totalNames, CopySt
 		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
 		if (!object)
 			continue;
+
 		//caches already if not cached, we dont have to use the result
 		auto res = object->getName();
+
+#if BREAK_IF_INVALID_NAME
+		if (finishedNames == 0 && res != "/Script/CoreUObject")
+		{
+			windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", 
+				"ERROR: The first object name should be always /Script/CoreUObject! This is most likely the result of a invalid FName offset or no decryption!");
+			status = CS_error;
+			return;
+		}
+
+#endif
 	}
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Cached all FNames!");
@@ -749,8 +761,6 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	addStructs();
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
-
-	std::vector<std::string> names;
 	
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
@@ -767,19 +777,9 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
 			continue;
 
-		auto name = object->getSecondPackageName();
-		upackages[name].push_back(object);
-		if (auto it = std::ranges::find(names, name); it == names.end()) {
-			names.push_back(name);
-		}
-		
+		upackages[object->getSecondPackageName()].push_back(object);
 	}
-	puts("names---------------");
-	for(auto& name : names)
-	{
-		printf("#include \"SDK/%s.h\"\n", name.c_str());
-	}
-	puts("names---------------");
+
 	//reset the counter to 0 as we are using it again but this time really for packages
 	finishedPackages = 0;
 	totalPackages = upackages.size();
@@ -877,67 +877,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	std::ranges::sort(packages, EngineStructs::Package::packageCompare);
 
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
-	for (int i = 0; i < packages.size(); i++)
-	{
-		auto& package = packages[i];
-		package.index = i;
-
-		auto fillMissingDataForStructs = [&](std::vector<EngineStructs::Struct>& structs)
-		{
-			for (int j = 0; j < structs.size(); j++)
-			{
-				auto& struc = structs[j];
-				struc.owningPackage = &package;
-				struc.owningVectorIndex = j;
-
-				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
-				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
-				package.combinedStructsAndClasses.push_back(&struc);
-
-				for (int k = 0; k < struc.functions.size(); k++)
-				{
-					auto& func = struc.functions[k];
-					func.owningVectorIndex = k;
-					func.owningStruct = &struc;
-					package.functions.push_back(&func);
-
-					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
-
-				}
-			}
-		};
-
-		fillMissingDataForStructs(package.classes);
-		fillMissingDataForStructs(package.structs);
-
-		for (int j = 0; j < package.enums.size(); j++)
-		{
-			auto& enu = package.enums[j];
-			enu.owningPackage = &package;
-			enu.owningVectorIndex = j;
-			packageObjectInfos.insert(std::pair(enu.cppName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
-		}
-	}
-
-	//we have to loop again for dependency tracking and supers
-	for (int i = 0; i < packages.size(); i++)
-	{
-		auto& package = packages[i];
-
-		for(auto& struc : package.combinedStructsAndClasses)
-		{
-			for(auto& name : struc->superNames)
-			{
-				auto info = getInfoOfObject(name);
-				auto superStruc = static_cast<EngineStructs::Struct*>(info.target);
-				struc->supers.push_back(superStruc);
-				if(superStruc->owningPackage->index != package.index)
-					package.dependencyPackages.insert(superStruc->owningPackage);
-
-			}
-		}
-		
-	}
+	finishPackages();
 	
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Done generating packets!");
@@ -1012,6 +952,73 @@ void EngineCore::overrideStructMembers(const EngineStructs::Struct& eStruct)
 	overridingStructMembers.insert(std::pair(eStruct.fullName, eStruct));
 }
 
+void EngineCore::finishPackages()
+{
+	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
+	for (int i = 0; i < packages.size(); i++)
+	{
+		auto& package = packages[i];
+		package.index = i;
+
+		auto fillMissingDataForStructs = [&](std::vector<EngineStructs::Struct>& structs)
+		{
+			for (int j = 0; j < structs.size(); j++)
+			{
+				auto& struc = structs[j];
+				struc.owningPackage = &package;
+				struc.owningVectorIndex = j;
+
+				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
+				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
+				package.combinedStructsAndClasses.push_back(&struc);
+
+				for (int k = 0; k < struc.functions.size(); k++)
+				{
+					auto& func = struc.functions[k];
+					func.owningVectorIndex = k;
+					func.owningStruct = &struc;
+					package.functions.push_back(&func);
+
+					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
+
+				}
+			}
+		};
+
+		fillMissingDataForStructs(package.classes);
+		fillMissingDataForStructs(package.structs);
+
+		for (int j = 0; j < package.enums.size(); j++)
+		{
+			auto& enu = package.enums[j];
+			enu.owningPackage = &package;
+			enu.owningVectorIndex = j;
+			packageObjectInfos.insert(std::pair(enu.cppName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
+		}
+	}
+
+	//we have to loop again for dependency tracking and supers
+	for (int i = 0; i < packages.size(); i++)
+	{
+		auto& package = packages[i];
+
+		for (const auto& struc : package.combinedStructsAndClasses)
+		{
+			for (auto& name : struc->superNames)
+			{
+				const auto info = getInfoOfObject(name);
+				auto superStruc = static_cast<EngineStructs::Struct*>(info.target);
+				struc->supers.push_back(superStruc);
+				if (superStruc->owningPackage->index != package.index)
+					package.dependencyPackages.insert(superStruc->owningPackage);
+
+			}
+		}
+
+	}
+
+}
+
 void EngineCore::runtimeOverrideStructMembers(EngineStructs::Struct* eStruct, const std::vector<EngineStructs::Member>& members)
 {
 	if (eStruct == nullptr)
@@ -1043,11 +1050,6 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 	unordered_maps["FNameCache"] = jFNameCache;
 	progressDone += FNameCache.size();
 
-	nlohmann::json jPackageObjectInfos;
-	for (const auto& entry : packageObjectInfos)
-		jPackageObjectInfos[entry.first] = entry.second.toJson();
-	unordered_maps["PackageObjectInfos"] = jPackageObjectInfos;
-	progressDone += packageObjectInfos.size();
 
 	nlohmann::json jOverridingStructs;
 	for (const auto& entry : overridingStructs)
@@ -1178,25 +1180,18 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 	const nlohmann::json unordered_maps = UEDProject["unordered_maps"];
 
 	if (!unordered_maps.contains("FNameCache") ||
-		!unordered_maps.contains("PackageObjectInfos") ||
-		!unordered_maps.contains("PackageIndexes") ||
 		!unordered_maps.contains("OverridingStructs"))
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project corrupted! (-4)");
 		return false;
 	}
+	
 
 	nlohmann::json jFNameCache = unordered_maps["FNameCache"];
 	for (auto it = jFNameCache.begin(); it != jFNameCache.end(); ++it) {
 		FNameCache.insert(std::pair(std::stoi(it.key()), it.value()));
 	}
 
-	progressDone++;
-
-	nlohmann::json jPackageObjectInfos = unordered_maps["PackageObjectInfos"];
-	for (auto it = jPackageObjectInfos.begin(); it != jPackageObjectInfos.end(); ++it) {
-		packageObjectInfos.insert(std::pair(it.key(), ObjectInfo::fromJson(it.value())));
-	}
 
 	progressDone++;
 
@@ -1228,7 +1223,8 @@ bool EngineCore::loadProject(const std::string& filepath, int& progressDone, int
 		for (auto& clas : package.classes)
 			cookMemberArray(clas);
 	}
-		
+
+	finishPackages();
 
 	progressDone++;
 

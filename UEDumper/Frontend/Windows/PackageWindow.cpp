@@ -8,9 +8,10 @@
 #include "Frontend/IGHelper.h"
 #include <Settings/EngineSettings.h>
 
-#include "dumpshost.h"
+#include "dumpspace.h"
 #include "Engine/Generation/MDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Resources/Dumpspace/dumpspace.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
 {
@@ -321,7 +322,7 @@ void windows::PackageWindow::renderProjectPopup()
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumps.Host SDK...");
-			DumpsHost::Generate(anyProgressDone, anyProgressTotal);
+			Dumpspace::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();

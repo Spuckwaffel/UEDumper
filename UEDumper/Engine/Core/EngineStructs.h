@@ -212,7 +212,6 @@ namespace EngineStructs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
 		std::vector<Member> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
-		//std::vector<Member> deprecated_members{}; //array of all members of the struct DEPRECATED
 		std::vector<Function> functions{}; //array of all functions of the struct
 
 		bool operator==(const Struct& st) const
@@ -227,7 +226,7 @@ namespace EngineStructs
 			j["ma"] = memoryAddress;
 			j["fn"] = fullName;
 			j["c"] = cppName;
-			//j["sp"] = supers;
+			j["spn"] = superNames;
 			j["in"] = inherited;
 			j["sz"] = size;
 			j["is"] = inheretedSize;
@@ -250,7 +249,7 @@ namespace EngineStructs
 			s.memoryAddress = json["ma"];
 			s.fullName = json["fn"];
 			s.cppName = json["c"];
-			//s.supers = json["sp"];
+			s.superNames = json["spn"];
 			s.inherited = json["in"];
 			s.size = json["sz"];
 			s.inheretedSize = json["is"];
@@ -364,11 +363,6 @@ namespace EngineStructs
 				jClasses.push_back(clas.toJson());
 			j["c"] = jClasses;
 
-			//nlohmann::json jFunctions;
-			//for (const auto& function : functions)
-			//	jFunctions.push_back({ std::get<0>(function), std::get<1>(function), std::get<2>(function) });
-			//j["f"] = jFunctions;
-
 			nlohmann::json jEnums;
 			for (const auto& enu : enums)
 				jEnums.push_back(enu.toJson());
@@ -385,8 +379,6 @@ namespace EngineStructs
 				p.structs.push_back(Struct::fromJson(struc));
 			for (const nlohmann::json& clas : json["c"])
 				p.classes.push_back(Struct::fromJson(clas));
-			//for (const nlohmann::json& function : json["f"])
-			//	p.functions.push_back(std::tuple(function[0], function[1], function[2]));
 			for (const nlohmann::json& enu : json["e"])
 				p.enums.push_back(Enum::fromJson(enu));
 

@@ -33,7 +33,7 @@
 enum OffsetFlags
 {
 	OFFSET_LIVE_EDITOR = 1 << 0, //use this if the offset should be displayed in the live editor
-	OFFSET_DH = 1 << 1, //use this if the offset should be added to dumps host when creating dumps host files
+	OFFSET_DS = 1 << 1, //use this if the offset should be added to dumpspace when creating dumpspace files
 	OFFSET_ADDRESS = 1 << 2, //use this if the offset is at base + address
 	OFFSET_SIGNATURE = 1 << 3, //dont use directly
 	OFFSET_SIG_RVA = 1 << 4, //dont use directly
@@ -108,9 +108,9 @@ inline std::vector<Offset> setOffsets()
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x69ECDB0 });
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x78915F8 });
 
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x581A7E0 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0x562D340 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x545C6E0 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x581A7E0 });
 
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x3CA2540 });
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x3CDE9E0 });
