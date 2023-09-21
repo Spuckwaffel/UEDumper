@@ -506,60 +506,24 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
             char buf[100] = { 0 };
             sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size);
             file << "/// " << buf << std::endl;
-            //if (struc.isClass)
-            file << "class " << generateValidVarName(struc.cppName);
-            //else
-            //    file << "struct " << struc.cppName;
+            if (struc.isClass)
+                file << "class " << generateValidVarName(struc.cppName);
+            else
+                file << "struct " << generateValidVarName(struc.cppName);
 
-            if (struc.inherited)
+            if (struc.inherited && struc.isClass)
                 file << " : public " << generateValidVarName(struc.supers[0]->cppName);
-            //else if (struc.inherited)
-            //    file << " : " << struc.supers[0];
-            else if(!struc.inherited && struc.isClass)
-                file << " : public MDKBase";
-            else if (!struc.inherited && !struc.isClass)
-                file << " : public MDKStruct";
+            if (struc.inherited )
+                file << " : " << generateValidVarName(struc.supers[0]->cppName);
+
 
             file << "\n{ " << std::endl;
 
-            if(struc.isClass)
-				file << "	friend MDKHandler;\n";
-            else
-                file << "	friend MDKBase;\n";
-            file << "	static inline constexpr uint64_t __MDKClassSize = " << struc.size << ";\n\n";
-
-            //if (struc.isClass)
-            file << "public:" << std::endl;
+            if (struc.isClass)
+				file << "public:" << std::endl;
 
             for (const auto& member : struc.cookedMembers)
             {
-                if (member.missed)
-                    continue;
-                char finalBuf[600];
-
-                std::string macroType;
-                if (member.type.name[0] == 'F')
-                    macroType = "SMember(" + member.type.stringify() + ")";
-                else if (!member.type.clickable)
-                    macroType = "DMember(" + member.type.stringify() + ")";
-                else
-                    macroType = "CMember(" + member.type.stringify() + ")";
-
-                char nameBuf[500];
-                sprintf_s(nameBuf, "%-50s %s", macroType.c_str(), member.name.c_str());
-
-                
-                if(!member.type.clickable)
-                    sprintf_s(finalBuf, "	%-110s ___ OFFSET(get<%s>, {0x%X, %d, %d, %d})", nameBuf, member.type.stringify().c_str(), member.offset, member.size, member.isBit, member.bitOffset);
-                else sprintf_s(finalBuf,"	%-110s ___ OFFSET(get<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
-                file << finalBuf << std::endl;
-            }
-            file << "};\n\n";
-            continue;
-
-            for (const auto& member : struc.cookedMembers)
-            {
-                
                 char finalBuf[600];
                 char nameBuf[500];
                 std::string name = member.name;
@@ -576,11 +540,8 @@ void windows::PackageViewerWindow::generatePackage(std::ofstream& file, const En
                 else if (member.missed)
                     file << "MISSED";
                 file << std::endl;
-                
             }
-
-            continue;
-
+            
             // Add function section header
             if (!struc.functions.empty())
             {

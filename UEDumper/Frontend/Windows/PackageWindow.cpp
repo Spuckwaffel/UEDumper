@@ -47,9 +47,7 @@ void windows::PackageWindow::renderUndefinedStructs()
 void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
 {
 	totalProgress = 10;
-	MDKGeneration::MDKGeneration();
 	progressDone = totalProgress;
-	return;
 	totalProgress = EngineCore::getPackages().size();
 	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
 	if(!create_directories(path))
@@ -289,7 +287,7 @@ void windows::PackageWindow::renderProjectPopup()
 	}
 	
 	
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Full SDK")))
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Legacy SDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
@@ -301,6 +299,21 @@ void windows::PackageWindow::renderProjectPopup()
 			presentTopMostCallback = false;
 			}))).reset();
 	}
+	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " +Generate NEW MDK+")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating MDK...");
+			MDKGeneration::MDKGeneration();
+			MDKGeneration::generate(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	ImGui::PopStyleColor();
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
 	{
 		presentTopMostCallback = true;
@@ -325,7 +338,7 @@ void windows::PackageWindow::topmostCallback()
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
 
 		ImGui::Begin("Processing...", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-		ImGui::SetWindowSize(ImVec2(520, 100), ImGuiCond_Once);
+		ImGui::SetWindowSize(ImVec2(520, 130), ImGuiCond_Once);
 		
 		const ImVec2 smallWindow = ImGui::GetWindowSize();
 		ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
@@ -334,8 +347,8 @@ void windows::PackageWindow::topmostCallback()
 		ImGui::SameLine();
 		ImGui::Spinner();
 		const float progress = static_cast<float>(anyProgressDone) / anyProgressTotal;
-		ImGui::ProgressBar(progress, ImVec2(480, 30));
-		
+		ImGui::ProgressBar(progress, ImVec2(500, 30));
+		ImGui::Text(LogWindow::getLastLogMessage().c_str());
 		ImGui::End();
 	}
 }
