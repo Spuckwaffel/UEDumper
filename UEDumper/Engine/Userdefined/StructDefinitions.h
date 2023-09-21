@@ -158,7 +158,7 @@ inline void addStructs()
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
 	Tarray.definedMembers = std::vector<EngineStructs::Member>{
-		{{false,		PropertyType::ObjectProperty,	"T*"},			"Data",		TarrayOffset, 8},
+		{{false,		PropertyType::ObjectProperty,	"uint64_t"},			"Data",		TarrayOffset, 8},
 		{{false,		PropertyType::IntProperty,		"int"},		"Count",		TarrayOffset += 8, 4},
 		{{false,		PropertyType::IntProperty,		"int"},		"Max",			TarrayOffset += 4, 4},
 	};

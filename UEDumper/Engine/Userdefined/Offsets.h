@@ -108,9 +108,9 @@ inline std::vector<Offset> setOffsets()
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0xE73BE40 });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x78915F8 });
 
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x581A7E0 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
+	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_UWORLD", 0x581A7E0 });
 
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x3CA2540 });
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x3CDE9E0 });
