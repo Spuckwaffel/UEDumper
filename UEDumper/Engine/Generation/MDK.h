@@ -16,4 +16,6 @@ class MDKGeneration
 	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);
 public:
 	MDKGeneration();
+
+	static void generate(int& progressDone, int& totalProgress);
 };

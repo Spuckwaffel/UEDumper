@@ -137,7 +137,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 				else sprintf_s(finalBuf, "	%-110s OFFSET(get<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
 				stream << finalBuf << std::endl;
 			}
-			stream << "};\n\n";
+			
 
 			// Add function section header
 			if (!struc->functions.empty())
@@ -168,7 +168,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 				sprintf_s(funcBuf, "	// %-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
 				stream << funcBuf << std::endl;
 			}
-
+			stream << "};\n\n";
 		}
 	};
 
@@ -217,12 +217,12 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	//the master header contains all the imports sorted
 	std::ofstream masterHeader(SDKPath / "MDKImports.h");
 
-	//yes, so all the SDK files are in path/to/stuff/MDK/MDK/
-	//because i can imagine theres some stupid game that has a package called SDK and that would ruin our master file
+	//yes, so all the MDK files are in path/to/stuff/MDK/MDK/
+	//because i can imagine theres some stupid game that has a package called MDK and that would ruin our master file
 	//so it will look like this
 	/// path/to/shit/
 	///				-> MDK/
-	///					  -> MDK.h					// master header you will include
+	///					  -> MDKImports.h			// master header you will include
 	///					  -> MDK/					// folder with all the packages
 	///							-> Engine.h			//random package by the game
 	///							-> XGame.h			//random package by the game
@@ -249,7 +249,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 #include <string>
 
-// base class
+// base class, you can get this file from https://github.com/Spuckwaffel/MDKTest and for setup help
 #include "../MDK.h"
 
 )";
@@ -516,130 +516,3 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 	progressDone = totalProgress;
 }
-
-/*
-//gets a package name that gets looked for and then returns a possible merged name
-	std::unordered_map<std::string, std::string> packagesThatGotMerged;
-	std::vector<EngineStructs::Package> packagesButMergeResolved;
-	std::vector<EngineStructs::Package> bakedAndOrderedPackages;
-
-	auto getMergedName = [&](const EngineStructs::Package* one, const EngineStructs::Package* two)
-	{
-		return std::string("merged" + one->packageName + "_" + two->packageName);
-	};
-
-	for(auto& currentPackage : EngineCore::getPackages())
-	{
-		//skip if our current package is already in, only happens when the package is a cycling one with a added one
-		if (packagesThatGotMerged.contains(currentPackage.packageName))
-			continue;
-		bool multiplecombine = false;
-		//contains al list of all combining packages, first one of course basic class
-		std::vector<EngineStructs::Package*> combiningPackages;
-		combiningPackages.push_back(&currentPackage);
-
-		//first go through all the dependencies
-		for(const auto& ownDepencendyPackage : currentPackage.dependencyPackages)
-		{
-			//now get the dependencies from that package
-			for(const auto& dependencyPackageFromOwnDepencendyPackage : ownDepencendyPackage->dependencyPackages)
-			{
-				//is there a dependency that is in the combined list? (own package or previous found cycles)
-				//so if own and abc cycles
-				//and this one contains any dependency from own or abc, we gotta add
-				//because then at the end own, this and abc have to be merged
-				for(auto& combiningPackage : combiningPackages)
-				{
-					if(dependencyPackageFromOwnDepencendyPackage == combiningPackage)
-					{
-						windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Combined classes %s from root (needed: %s ) %s due to cyclic dependencies", dependencyPackageFromOwnDepencendyPackage->packageName.c_str(), combiningPackage->packageName.c_str(),currentPackage.packageName.c_str());
-						combiningPackages.push_back(dependencyPackageFromOwnDepencendyPackage);
-						multiplecombine = true;
-						break;
-					}
-				}
-				//cycling?
-				//if(_dependencyPackages->index == currentPackage.index)
-				//{
-				//	if()
-				//	//this only happens with a third cycle
-				//	//so lets say we merged ab with cd
-				//	//and now de needs shit from ab and other too
-				//	if(packagesThatGotMerged.contains(_dependencyPackages->packageName))
-				//	{
-				//
-				//	}
-				//	combiningPackage.pu = _dependencyPackages;
-				//	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Combined classes %s and %s due to cyclic dependencies", _dependencyPackages->packageName.c_str(), currentPackage.packageName);
-				//	packagesThatGotMerged.insert(std::pair(_dependencyPackages->packageName, getMergedName(combiningPackage, &currentPackage)));
-				//	packagesThatGotMerged.insert(std::pair(currentPackage.packageName, getMergedName(combiningPackage, &currentPackage)));
-				//	combine = true;
-				//	break;
-				//}
-			}
-		}
-		if(multiplecombine)
-		{
-			EngineStructs::Package mergedPack;
-			mergedPack.packageName = packagesThatGotMerged[currentPackage.packageName];
-
-			//thats all needed for a barebones package
-
-			//mergedPack.functions.reserve(combiningPackage->functions.size() + currentPackage.functions.size());
-			//mergedPack.functions.insert(mergedPack.functions.end(), combiningPackage->functions.begin(), combiningPackage->functions.end());
-			//mergedPack.functions.insert(mergedPack.functions.end(), currentPackage.functions.begin(), currentPackage.functions.end());
-			mergedPack.combinedStructsAndClasses.reserve(combiningPackage->combinedStructsAndClasses.size() + currentPackage.combinedStructsAndClasses.size());
-			mergedPack.combinedStructsAndClasses.insert(mergedPack.combinedStructsAndClasses.end(), combiningPackage->combinedStructsAndClasses.begin(), combiningPackage->combinedStructsAndClasses.end());
-			mergedPack.combinedStructsAndClasses.insert(mergedPack.combinedStructsAndClasses.end(), currentPackage.combinedStructsAndClasses.begin(), currentPackage.combinedStructsAndClasses.end());
-			mergedPack.enums.reserve(combiningPackage->enums.size() + currentPackage.enums.size());
-			mergedPack.enums.insert(mergedPack.enums.end(), combiningPackage->enums.begin(), combiningPackage->enums.end());
-			mergedPack.enums.insert(mergedPack.enums.end(), currentPackage.enums.begin(), currentPackage.enums.end());
-			mergedPack.dependencyPackages.reserve(combiningPackage->dependencyPackages.size() + currentPackage.dependencyPackages.size());
-			mergedPack.dependencyPackages.insert(mergedPack.dependencyPackages.end(), combiningPackage->dependencyPackages.begin(), combiningPackage->dependencyPackages.end());
-			mergedPack.dependencyPackages.insert(mergedPack.dependencyPackages.end(), currentPackage.dependencyPackages.begin(), currentPackage.dependencyPackages.end());
-
-			packagesButMergeResolved.push_back(mergedPack);
-		}
-		else
-		{
-			packagesButMergeResolved.push_back(currentPackage);
-		}
-	}
-
-	for(auto& package : packagesButMergeResolved)
-	{
-		std::vector<EngineStructs::Struct*> orderedStructs;
-		for(auto& clas : package.combinedStructsAndClasses)
-		{
-			auto currentClassIt = std::ranges::find(
-				orderedStructs, clas);
-			//is it not in? then add
-			if (currentClassIt == orderedStructs.end())
-			{
-				orderedStructs.push_back(clas);
-				//let the iterator point to this
-				--currentClassIt;
-			}
-			if(clas->inherited)
-			{
-				auto super = clas->supers[0];
-				//same package?
-				bool same = false;
-				if (super->owningPackage->packageName == package.packageName)
-					same = true;
-				else if (packagesThatGotMerged.contains(super->owningPackage->packageName) && packagesThatGotMerged[super->owningPackage->packageName] == package.packageName)
-					same = true;
-				if(same)
-				{
-					//not in the list or above current?
-					if (auto it = std::ranges::find(orderedStructs, super); it > currentClassIt)
-					{
-						//insert it before our current one
-						orderedStructs.insert(currentClassIt, super);
-					}
-				}
-				//else just ignore lol
-			}
-		}
-	}
-*/
