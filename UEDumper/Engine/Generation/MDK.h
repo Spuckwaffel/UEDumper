@@ -13,6 +13,8 @@ class MDKGeneration
 
 	static void printCredits(std::ofstream& stream);
 
+	static void generateBasicType();
+
 	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);
 public:
 	MDKGeneration();

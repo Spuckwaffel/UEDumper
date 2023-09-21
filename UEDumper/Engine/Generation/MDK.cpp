@@ -23,6 +23,57 @@ void MDKGeneration::printCredits(std::ofstream& stream)
 )";
 }
 
+void MDKGeneration::generateBasicType()
+{
+	std::ofstream BasicType(SDKPath / "BasicType.h");
+	const auto& defs = basicDefinitions();
+	auto noDefs = EngineCore::getAllUnknownTypes();
+	for (const auto& [name, definition] : defs)
+		if (auto it = std::ranges::find(noDefs, name); it != noDefs.end())
+			noDefs.erase(it);
+
+	printCredits(BasicType);
+	BasicType << "/// This file contains all definitions of structs that werent defined automatically.\n\n";
+
+	auto addIfCustom = [&](const char* base, const char* user)
+	{
+		if (strcmp(base, user) != 0)
+		{
+			BasicType << "typedef " << base << " " << user << ";\n";
+		}
+	};
+
+	addIfCustom("bool", TYPE_BOOLEAN);
+	addIfCustom("unsigned char", TYPE_UCHAR);
+	addIfCustom("char", TYPE_CHAR);
+	addIfCustom("uint8_t", TYPE_UI8);
+	addIfCustom("uint16_t", TYPE_UI16);
+	addIfCustom("uint32_t", TYPE_UI32);
+	addIfCustom("uint64_t", TYPE_UI64);
+	addIfCustom("int8_t", TYPE_I8);
+	addIfCustom("int16_t", TYPE_I16);
+	addIfCustom("int32_t", TYPE_I32);
+	addIfCustom("int64_t", TYPE_I64);
+	addIfCustom("float", TYPE_FLOAT);
+	addIfCustom("double", TYPE_DOUBLE);
+
+	BasicType << "\n\n";
+
+
+	for (const auto& missingDef : noDefs)
+	{
+		windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Info: Missing definition for struct %s", missingDef.c_str());
+		BasicType << "//TODO: Define " << missingDef << "!\n\n\n";
+	}
+
+	for (const auto& [name, definition] : defs)
+	{
+		BasicType << "/// Definition for " << name << "\n";
+		BasicType << definition << "\n\n";
+	}
+	BasicType.close();
+}
+
 void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::Package& package)
 {
 	//flag some invalid characters in a name
@@ -48,7 +99,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 	stream << "\n";
 
-	auto generateStruct = [&](const std::vector<EngineStructs::Struct*> DataStruc)
+	auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
 	{
 
 		for (const auto& struc : DataStruc)
@@ -74,16 +125,13 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 				stream << " : public " << generateValidVarName(struc->supers[0]->cppName);
 			//else if (struc.inherited)
 			//    file << " : " << struc.supers[0];
-			else if (!struc->inherited && struc->isClass)
+			else if (!struc->inherited)
 				stream << " : public MDKBase";
-			else if (!struc->inherited && !struc->isClass)
-				stream << " : public MDKStruct";
 
 			stream << "\n{ " << std::endl;
 
-			if (struc->isClass)
-				stream << "	friend MDKHandler;\n";
-			else
+			stream << "	friend MDKHandler;\n";
+			if (!struc->isClass)
 				stream << "	friend MDKBase;\n";
 			stream << "	static inline constexpr uint64_t __MDKClassSize = " << struc->size << ";\n\n";
 
@@ -131,13 +179,14 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
 				sprintf_s(nameBuf, "%-50s %s", macroType.c_str(), memberName.c_str());
 
-
-				if (!member.type.clickable)
+				if (member.type.name[0] == 'F')
+					sprintf_s(finalBuf, "	%-110s OFFSET(getStruct<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
+				else if (!member.type.clickable)
 					sprintf_s(finalBuf, "	%-110s OFFSET(get<%s>, {0x%X, %d, %d, %d})", nameBuf, member.type.stringify().c_str(), member.offset, member.size, member.isBit, member.bitOffset);
 				else sprintf_s(finalBuf, "	%-110s OFFSET(get<T>, {0x%X, %d, %d, %d})", nameBuf, member.offset, member.size, member.isBit, member.bitOffset);
 				stream << finalBuf << std::endl;
 			}
-			
+
 
 			// Add function section header
 			if (!struc->functions.empty())
@@ -254,6 +303,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 )";
 
+
 	struct MergedPackage
 	{
 		std::vector<EngineStructs::Package*> mergedPackages;
@@ -279,6 +329,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	{
 		progressDone = 0;
 		anyMergeFound = false;
+		//a new vector we fill up this round and then replace the newPackages vector
 		std::vector<MergedPackage> _newPackages{};
 		//this just acts as a temporary identifier, it just has to be smth unique per package
 		std::vector<std::string> skippedPackageDueToMerge{};
@@ -292,18 +343,19 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 			{
 				for (auto& neighbourNeighbour : neighbour->dependencyPackages)
 				{
-					if (std::ranges::find(pack.mergedPackages, neighbourNeighbour) != pack.mergedPackages.end())
-					{
-						windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "merge found with %s and %s origin %s", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
+					if (std::ranges::find(pack.mergedPackages, neighbourNeighbour) == pack.mergedPackages.end())
+						continue;
 
-						anyMergeFound = true;
-						mergefound = true;
-						//add him to the merges
-						pack.mergedPackages.push_back(neighbour);
-						skippedPackageDueToMerge.push_back(neighbour->packageName);
+					windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+						"merge found with %s and %s origin %s", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
 
-						break;
-					}
+					anyMergeFound = true;
+					mergefound = true;
+					//add him to the merges
+					pack.mergedPackages.push_back(neighbour);
+					skippedPackageDueToMerge.push_back(neighbour->packageName);
+
+					break;
 				}
 			}
 			//if a merge has been found, recreate the entire package
@@ -313,6 +365,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 				//first sort out own references and remove dups
 				std::set<EngineStructs::Package*> neighbours;
 				std::string name = "merged";
+				//merge all the mininal needed stuff together
 				for (auto& mergedpack : pack.mergedPackages)
 				{
 					name += "_" + mergedpack->packageName;
@@ -330,7 +383,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 				}
 				p.mergedPackages.insert(p.mergedPackages.end(), pack.mergedPackages.begin(), pack.mergedPackages.end());
 				p.package.packageName = name;
-				//add them 
+				//add the depenencies
 				for (auto& neighbour : neighbours)
 				{
 					p.package.dependencyPackages.insert(neighbour);
@@ -338,6 +391,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 				_newPackages.push_back(p);
 
 			}
+			//no merge? just add
 			else
 				_newPackages.push_back(pack);
 
@@ -371,18 +425,20 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 				std::ranges::sort(p.mergedPackages);
 				std::ranges::sort(p1.mergedPackages);
-				if (p.mergedPackages == p1.mergedPackages)
-				{
-					windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
-					//printf("deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
 
-					//delete p1 package
-					newPackages.erase(newPackages.begin() + tracker);
-					eraseDone = true;
-					break;
-				}
+				if (p.mergedPackages != p1.mergedPackages)
+					continue;
+
+				windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+					"deleted %s because its same to %s", p1.package.packageName.c_str(), p.package.packageName.c_str());
+
+				//delete p1 package
+				newPackages.erase(newPackages.begin() + tracker);
+				eraseDone = true;
+				break;
 
 			}
+			//completely break through and redo
 			if (eraseDone)
 				break;
 		}
@@ -392,45 +448,64 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	totalProgress = newPackages.size();
 	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering structs");
 
-	for (auto& p : newPackages)
+	bool didReordering = false;
+	do
 	{
-		progressDone++;
-		std::vector<EngineStructs::Struct*> orderedStructsAndClasses;
-		for (auto& item : p.package.combinedStructsAndClasses)
+		didReordering = false;
+
+		for (auto& [mergedPackages, package] : newPackages)
 		{
-			auto currentIt = std::ranges::find(
-				orderedStructsAndClasses, item);
-			//is it not in? then add
-			if (currentIt == orderedStructsAndClasses.end())
+			progressDone++;
+			std::vector<EngineStructs::Struct*> orderedStructsAndClasses;
+			for (auto& item : package.combinedStructsAndClasses)
 			{
-				orderedStructsAndClasses.push_back(item);
-				currentIt = orderedStructsAndClasses.end() - 1;
-			}
-			if (item->inherited > 0) // inherited
-			{
-				if (std::ranges::find(p.mergedPackages, item->supers[0]->owningPackage) != p.mergedPackages.end())
+				auto currentIt = std::ranges::find(
+					orderedStructsAndClasses, item);
+				//is it not in? then add
+				if (currentIt == orderedStructsAndClasses.end())
 				{
-					if (std::ranges::find(orderedStructsAndClasses, item->supers[0]) > currentIt)
+					orderedStructsAndClasses.push_back(item);
+					currentIt = orderedStructsAndClasses.end() - 1;
+				}
+				if (!item->inherited)
+					continue;
+
+				//check if the inherited struct is part of this package
+				if (std::ranges::find(mergedPackages, item->supers[0]->owningPackage) != mergedPackages.end())
+				{
+					auto neededIt = std::ranges::find(orderedStructsAndClasses, item->supers[0]);
+					if (neededIt > currentIt)
 					{
-						orderedStructsAndClasses.insert(currentIt, item->supers[0]);
+						//not in the list?
+						if (neededIt == orderedStructsAndClasses.end())
+						{
+							orderedStructsAndClasses.insert(currentIt, item->supers[0]);
+							continue;
+						}
+						//move up
+						auto it = *neededIt;
+						orderedStructsAndClasses.erase(neededIt);
+						orderedStructsAndClasses.insert(currentIt, it);
 					}
 				}
 			}
-		}
-		//we have to create new vecotr, if we erase item vector now, pointers are invalid
-		std::vector<EngineStructs::Struct*> newitems;
-		for (auto& pair : orderedStructsAndClasses)
-		{
-			newitems.push_back(pair);
-		}
-		p.package.combinedStructsAndClasses.clear();
-		p.package.combinedStructsAndClasses.insert(p.package.combinedStructsAndClasses.begin(), newitems.begin(), newitems.end());
+			//we have to create new vecotr, if we erase item vector now, pointers are invalid
+			std::vector<EngineStructs::Struct*> newitems;
+			for (auto& pair : orderedStructsAndClasses)
+			{
+				newitems.push_back(pair);
+			}
+			package.combinedStructsAndClasses.clear();
+			package.combinedStructsAndClasses.insert(package.combinedStructsAndClasses.begin(), newitems.begin(), newitems.end());
 
-	}
+		}
+
+	} while (didReordering);
+
 
 	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
-	bool didReordering = false;
+
 	do
 	{
 		progressDone = 0;
@@ -505,11 +580,17 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Baking package %s", pack->package.packageName.c_str());
 		masterHeader << "#include \"MDK/" + pack->package.packageName + ".h\"" << std::endl;
-		std::string packageName = pack->package.packageName + ".h";
-		std::ofstream package(SDKPath / packageName);
-		printCredits(package);
-		generatePackage(package, pack->package);
-		package.close();
+		if (pack->package.packageName == "BasicType")
+			generateBasicType();
+		else
+		{
+			std::string packageName = pack->package.packageName + ".h";
+			std::ofstream package(SDKPath / packageName);
+			printCredits(package);
+			generatePackage(package, pack->package);
+			package.close();
+		}
+
 		progressDone++;
 	}
 	masterHeader.close();
