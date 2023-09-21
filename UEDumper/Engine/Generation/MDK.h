@@ -9,6 +9,8 @@ class MDKGeneration
 
 	static inline std::filesystem::path SDKPath{};
 
+	static inline std::vector<std::string> allnames{};
+
 	static void printCredits(std::ofstream& stream);
 
 	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);

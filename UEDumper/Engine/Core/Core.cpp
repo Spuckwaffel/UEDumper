@@ -212,8 +212,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				result += c;
 
 		}
-		//guaranteed 0 termination
-		result += '\0';
 		return result;
 	};
 

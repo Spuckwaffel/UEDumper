@@ -77,9 +77,9 @@ inline void overrideStructs()
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
 	//because inheritance for a uclass is UStruct > UField > UObject.
 	//but in our case UField just inherits from UObject.
-	uField.superNames = std::vector<std::string>{ "UObject"}; 
+	uField.superNames = std::vector<std::string>{ "UObject" };
 	constexpr int uFieldOffet = sizeof(UObject);
-	uField.definedMembers = std::vector<EngineStructs::Member> {
+	uField.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,	"UField"},		"Next",				uFieldOffet, 8}
 	};
 	//add the struct/class
@@ -129,7 +129,7 @@ inline void addStructs()
 	Fname.inherited = false;
 	int FnameOffset = 0;
 	//of course we can also use defines, just be careful
-	Fname.definedMembers =  std::vector<EngineStructs::Member>{
+	Fname.definedMembers = std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::IntProperty,		"int"},		"ComparisonIndex",		0, 4},
 		#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER
@@ -143,9 +143,9 @@ inline void addStructs()
 
 
 	#if UE_VERSION < UE_5_01
-	/** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
-		{{false,		PropertyType::IntProperty,		"int"},		"Number",				FnameOffset += 4, 4}
-	#endif
+		/** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
+			{{false,		PropertyType::IntProperty,		"int"},		"Number",				FnameOffset += 4, 4}
+		#endif
 	};
 	//add it
 	EngineCore::createStruct(Fname);
@@ -158,7 +158,7 @@ inline void addStructs()
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
 	Tarray.definedMembers = std::vector<EngineStructs::Member>{
-		{{false,		PropertyType::ObjectProperty,	"T*"},			"Data",		TarrayOffset, 8},
+		{{false,		PropertyType::ObjectProperty,	"uint64_t"},			"Data",		TarrayOffset, 8},
 		{{false,		PropertyType::IntProperty,		"int"},		"Count",		TarrayOffset += 8, 4},
 		{{false,		PropertyType::IntProperty,		"int"},		"Max",			TarrayOffset += 4, 4},
 	};
@@ -195,7 +195,7 @@ inline void overrideUnknownMembers()
 	Engine.definedMembers = std::vector<EngineStructs::Member>{
 		//we can use the typename FSimpleMulticastDelegate even if its not defined in the engine at all, but thats still fine
 		{{true,		PropertyType::MulticastDelegateProperty,	"FSimpleMulticastDelegate"},			"OnPostEngineInit",		sizeof(UObject), 8},
-		
+
 	};
 	EngineCore::overrideStructMembers(Engine);
 }

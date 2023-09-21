@@ -40,47 +40,68 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 		//guaranteed 0 termination
 		return result;
 	};
-	auto generateStruct = [&](const std::vector<EngineStructs::Struct>& DataStruc)
+
+	for (auto& dependencies : package.dependencyPackages)
 	{
+		stream << "/// dependency: " << dependencies->packageName << std::endl;
+	}
+
+	stream << "\n";
+
+	auto generateStruct = [&](const std::vector<EngineStructs::Struct*> DataStruc)
+	{
+
 		for (const auto& struc : DataStruc)
 		{
-			if (struc.isClass)
-				stream << "/// Class " << struc.fullName << std::endl;
+			//stop fucking dupes
+			if (std::ranges::find(allnames, generateValidVarName(struc->cppName)) != allnames.end())
+				continue;
+			allnames.push_back(generateValidVarName(struc->cppName));
+
+			if (struc->isClass)
+				stream << "/// Class " << struc->fullName << std::endl;
 			else
-				stream << "/// Struct " << struc.fullName << std::endl;
+				stream << "/// Struct " << struc->fullName << std::endl;
 			char buf[100] = { 0 };
-			sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size);
+			sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->inheretedSize, struc->inheretedSize, struc->size);
 			stream << "/// " << buf << std::endl;
 			//if (struc.isClass)
-			stream << "class " << generateValidVarName(struc.cppName);
+			stream << "class " << generateValidVarName(struc->cppName);
 			//else
 			//    file << "struct " << struc.cppName;
 
-			if (struc.inherited)
-				stream << " : public " << generateValidVarName(struc.supers[0]->cppName);
+			if (struc->inherited)
+				stream << " : public " << generateValidVarName(struc->supers[0]->cppName);
 			//else if (struc.inherited)
 			//    file << " : " << struc.supers[0];
-			else if (!struc.inherited && struc.isClass)
+			else if (!struc->inherited && struc->isClass)
 				stream << " : public MDKBase";
-			else if (!struc.inherited && !struc.isClass)
+			else if (!struc->inherited && !struc->isClass)
 				stream << " : public MDKStruct";
 
 			stream << "\n{ " << std::endl;
 
-			if (struc.isClass)
+			if (struc->isClass)
 				stream << "	friend MDKHandler;\n";
 			else
 				stream << "	friend MDKBase;\n";
-			stream << "	static inline constexpr uint64_t __MDKClassSize = " << struc.size << ";\n\n";
+			stream << "	static inline constexpr uint64_t __MDKClassSize = " << struc->size << ";\n\n";
 
 			//if (struc.isClass)
 			stream << "public:" << std::endl;
 
-			for (const auto& member : struc.cookedMembers)
+			std::unordered_map<std::string, int> alreadyDefinedMembers{};
+
+
+			for (const auto& member : struc->cookedMembers)
 			{
 				if (member.missed)
 					continue;
 				char finalBuf[600];
+
+				std::string memberName = member.name;
+				if (member.name.empty())
+					memberName = "noname";
 
 				std::string macroType;
 				if (member.type.name[0] == 'F')
@@ -91,7 +112,24 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 					macroType = "CMember(" + member.type.stringify() + ")";
 
 				char nameBuf[500];
-				sprintf_s(nameBuf, "%-50s %s", macroType.c_str(), member.name.c_str());
+
+				if (memberName == "bool" || memberName == "char" || memberName == "int" || memberName == "float") {
+					memberName += "_";
+				}
+				if (alreadyDefinedMembers.contains(memberName))
+				{
+					int j = alreadyDefinedMembers[memberName];
+					alreadyDefinedMembers[memberName]++;
+					memberName += std::to_string(j);
+				}
+				else
+					alreadyDefinedMembers.insert(std::pair(memberName, 1));
+
+
+				if (std::isdigit(memberName[0]))
+					memberName.insert(0, 1, '_');
+
+				sprintf_s(nameBuf, "%-50s %s", macroType.c_str(), memberName.c_str());
 
 
 				if (!member.type.clickable)
@@ -102,7 +140,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 			stream << "};\n\n";
 			continue;
 
-			for (const auto& member : struc.cookedMembers)
+			for (const auto& member : struc->cookedMembers)
 			{
 
 				char finalBuf[600];
@@ -127,12 +165,12 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 			continue;
 
 			// Add function section header
-			if (!struc.functions.empty())
+			if (!struc->functions.empty())
 			{
 				stream << "\n\n\t/// Functions" << std::endl;
 			}
 
-			for (const auto& func : struc.functions)
+			for (const auto& func : struc->functions)
 			{
 				stream << "\t// Function " << func.fullName << std::endl;
 				char funcBuf[1200];
@@ -160,9 +198,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 		}
 	};
 
-	generateStruct(package.structs);
-
-	generateStruct(package.classes);
+	generateStruct(package.combinedStructsAndClasses);
 
 
 	for (const auto& enu : package.enums)
@@ -332,26 +368,29 @@ MDKGeneration::MDKGeneration()
 
 		for (auto& p : newPackages)
 		{
-			int tracker = 0;
+			int tracker = -1;
 			for (auto& p1 : newPackages)
 			{
-
+				tracker++;
 				if (p.package.packageName == p1.package.packageName)
 					continue;
 				if (p.mergedPackages.size() != p1.mergedPackages.size())
 					continue;
+
+
 
 				std::ranges::sort(p.mergedPackages);
 				std::ranges::sort(p1.mergedPackages);
 				if (p.mergedPackages == p1.mergedPackages)
 				{
 					printf("deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
+
 					//delete p1 package
 					newPackages.erase(newPackages.begin() + tracker);
 					eraseDone = true;
+					break;
 				}
-				tracker++;
-				break;
+
 			}
 			if (eraseDone)
 				break;
@@ -374,12 +413,11 @@ MDKGeneration::MDKGeneration()
 			}
 			if (item->inherited > 0) // inherited
 			{
-				if(std::ranges::find(p.mergedPackages, item->supers[0]->owningPackage) != p.mergedPackages.end())
+				if (std::ranges::find(p.mergedPackages, item->supers[0]->owningPackage) != p.mergedPackages.end())
 				{
-					if(std::ranges::find(orderedStructsAndClasses, item->supers[0]) > currentIt)
+					if (std::ranges::find(orderedStructsAndClasses, item->supers[0]) > currentIt)
 					{
 						orderedStructsAndClasses.insert(currentIt, item->supers[0]);
-						currentIt = orderedStructsAndClasses.end() - 1;
 					}
 				}
 			}
@@ -396,70 +434,77 @@ MDKGeneration::MDKGeneration()
 	}
 
 	std::vector<MergedPackage*> orderedPackages;
-	for (auto& p : newPackages)
+	bool didReordering = false;
+	do
 	{
-		printf("package %s\n", p.package.packageName.c_str());
-		auto currentPackageIt = std::ranges::find(
-			orderedPackages, &p);
+		didReordering = false;
+		for (auto& p : newPackages)
+		{
+			printf("package %s\n", p.package.packageName.c_str());
+			auto currentPackageIt = std::ranges::find(
+				orderedPackages, &p);
 
-		if (p.package.packageName == "Engine")
-			DebugBreak();
-		//is it not in? then add
-		if (currentPackageIt == orderedPackages.end())
-		{
-			orderedPackages.push_back(&p);
-			currentPackageIt = orderedPackages.end() - 1;
-		}
-		for (auto& neighbour : p.package.dependencyPackages)
-		{
-			printf("neighbour: %s\n", neighbour->packageName.c_str());
-			//iterate through all merged package until we find the neighbour this class needs, so
-			//we can ensure the dependeny is before our current packafwe
-			for (auto& p_ : newPackages)
+			//is it not in? then add
+			if (currentPackageIt == orderedPackages.end())
 			{
-				//check the mergedpackages if this is the package were actually looking for
-				//we have to look through the merged because maybe the package we need as dependency is merged with another package
-				if (std::ranges::find(p_.mergedPackages, neighbour) != p_.mergedPackages.end())
+				orderedPackages.push_back(&p);
+				currentPackageIt = orderedPackages.end() - 1;
+			}
+			for (auto& neighbour : p.package.dependencyPackages)
+			{
+				printf("neighbour: %s\n", neighbour->packageName.c_str());
+				//iterate through all merged package until we find the neighbour this class needs, so
+				//we can ensure the dependeny is before our current packafwe
+				for (auto& p_ : newPackages)
 				{
-					auto neededPackageIt = std::ranges::find(orderedPackages, &p_);
-					if (neededPackageIt > currentPackageIt) //also if that merge is not in the list before
+					//check the mergedpackages if this is the package were actually looking for
+					//we have to look through the merged because maybe the package we need as dependency is merged with another package
+					if (std::ranges::find(p_.mergedPackages, neighbour) != p_.mergedPackages.end())
 					{
-						if (neededPackageIt == orderedPackages.end())
+						auto neededPackageIt = std::ranges::find(orderedPackages, &p_);
+						if (neededPackageIt > currentPackageIt) //also if that merge is not in the list before
 						{
-							printf("inserting %s before %s because it needs it and isnt in it or above\n", p_.package.packageName.c_str(), p.package.packageName.c_str());
-							orderedPackages.insert(currentPackageIt, &p_);
-							currentPackageIt = std::ranges::find(
-								orderedPackages, &p);
-							//currentPackageIt = orderedPackages.end() - 1;
-						}
-						else
-						{
-							auto it = std::move(*neededPackageIt);
-							orderedPackages.erase(neededPackageIt);
-							currentPackageIt = std::ranges::find(
-								orderedPackages, &p);
-							orderedPackages.insert(currentPackageIt, it);
-							auto newNeededPackageIt = currentPackageIt;
-							currentPackageIt = std::ranges::find(
-								orderedPackages, &p);
-							//std::rotate(currentPackageIt, neededPackageIt, neededPackageIt + 1);
-							//printf("inserted %s before %s because it was too high up\n", newNeededPackageIt.operator*()->package.packageName.c_str(), currentPackageIt.operator*()->package.packageName.c_str());
+							didReordering = true;
+							if (neededPackageIt == orderedPackages.end())
+							{
+								//printf("inserting %s before %s because it needs it and isnt in it or above\n", p_.package.packageName.c_str(), p.package.packageName.c_str());
+								orderedPackages.insert(currentPackageIt, &p_);
+								currentPackageIt = std::ranges::find(
+									orderedPackages, &p);
+								break;
+								//currentPackageIt = orderedPackages.end() - 1;
+							}
+							else
+							{
+								auto it = *neededPackageIt;
+								orderedPackages.erase(neededPackageIt);
+								currentPackageIt = std::ranges::find(
+									orderedPackages, &p);
+								orderedPackages.insert(currentPackageIt, it);
+								currentPackageIt = std::ranges::find(
+									orderedPackages, &p);
+								break;
+								//std::rotate(currentPackageIt, neededPackageIt, neededPackageIt + 1);
+								//printf("inserted %s before %s because it was too high up\n", newNeededPackageIt.operator*()->package.packageName.c_str(), currentPackageIt.operator*()->package.packageName.c_str());
+							}
 						}
 					}
+
 				}
 			}
 		}
-	}
+	} while (didReordering);
+
 
 	puts("------------");
 	for (auto& pack : orderedPackages)
 	{
-		printf("%s", pack->package.packageName.c_str());
+		printf("%s\n", pack->package.packageName.c_str());
 	}
 	puts("------------");
-	for(auto& pack : orderedPackages)
+	for (auto& pack : orderedPackages)
 	{
-		masterHeader << "#include \"MDK/" +pack->package.packageName + ".h\"" << std::endl;
+		masterHeader << "#include \"MDK/" + pack->package.packageName + ".h\"" << std::endl;
 		std::string packageName = pack->package.packageName + ".h";
 		std::ofstream package(SDKPath / packageName);
 		printCredits(package);
