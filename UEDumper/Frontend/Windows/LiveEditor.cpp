@@ -215,12 +215,13 @@ void windows::LiveEditor::renderAddOffset()
 		if (Memory::read<UObject>(followAddress).getClass())
 		{
 			const std::string structName = Memory::read<UObject>(followAddress).getClass()->getCName();
-			if (structName != "nil")
+			if (structName != "nil" && !structName.empty())
 			{
 				const auto info = EngineCore::getInfoOfObject(structName);
-				if (info)
+				if (!info)
 				{
 					sprintf_s(errorText, "Object not found in the packages!");
+					LogWindow::Log(LogWindow::log_2, "LIVE EDITOR", "Object not found in the packages!");
 					goto failed;
 				}
 				tab.struc = static_cast<EngineStructs::Struct*>(info.target);
@@ -243,6 +244,7 @@ void windows::LiveEditor::renderAddOffset()
 				once = false;
 				return;
 			}
+			LogWindow::Log(LogWindow::log_2, "LIVE EDITOR", "Getting UObject type failed!");
 			sprintf_s(errorText, "Getting UObject type failed!");
 		}
 
