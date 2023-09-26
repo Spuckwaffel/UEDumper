@@ -125,23 +125,49 @@ namespace Dumpspace
             {
                 for (auto& struc : strucVec)
                 {
+                    //if (struc.inherited)
+                    //{
+                    //    nlohmann::json j;
+                    //    j[struc.cppName] = struc.supers[0]->cppName;
+                    //    AddInheritInfo(j);
+                    //}
+                    
+                    nlohmann::json members = nlohmann::json::array();
+                    
+                    nlohmann::json inheritInfo = nlohmann::json::array();
                     if (struc.inherited)
                     {
-                        nlohmann::json j;
-                        j[struc.cppName] = struc.supers[0]->cppName;
-                        AddInheritInfo(j);
+                        for(auto& super : struc.supers)
+                            inheritInfo.push_back(super->cppName);
                     }
-                    nlohmann::json members = nlohmann::json::array();
+                    nlohmann::json inheritInfoDesc;
+                    inheritInfoDesc["__InheritInfo"] = inheritInfo;
+                    members.push_back(inheritInfoDesc);
 
                     nlohmann::json gSize;
                     gSize["__MDKClassSize"] = struc.size;
+                    members.push_back(gSize);
 
                     for (auto& member : struc.definedMembers)
                     {
                         if (member.missed)
                             continue;
+
+                        std::string type;
+                        if (member.type.name[0] == 'F')
+                            type = "S";
+                        else if (member.type.name[0] == 'E')
+                            type = "E";
+                        else if (!member.type.clickable)
+                            type = "D";
+                        else
+                            type = "C";
+
                         nlohmann::json a;
-                        a[member.name + (member.isBit ? " : 1" : "")] = std::make_tuple(member.type.stringify(), member.offset, member.size);
+                        if(member.isBit)
+                            a[member.name + " : 1"] = std::make_tuple(member.type.stringify(), member.offset, member.size, type, member.bitOffset);
+                        else
+                            a[member.name] = std::make_tuple(member.type.stringify(), member.offset, member.size, type);
                         members.push_back(a);
                     }
                     nlohmann::json j;

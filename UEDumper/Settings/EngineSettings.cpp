@@ -84,6 +84,7 @@ nlohmann::json EngineSettings::toJson()
 	EngineSettings["UE_VERSION"] = _UE_VERSION;
 	EngineSettings["USE_FNAME_ENCRYPTION"] = _USE_FNAME_ENCRYPTION;
 	EngineSettings["WITH_CASE_PRESERVING_NAME"] = _WITH_CASE_PRESERVING_NAME;
+	EngineSettings["BREAK_IF_INVALID_NAME"] = _BREAK_IF_INVALID_NAME;
 
 	if (_UE_VERSION < UE_4_23)
 		EngineSettings["GNAMES_POOL_OFFSET"] = _GNAMES_POOL_OFFSET;
@@ -126,6 +127,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 		!json.contains("USE_FNAME_ENCRYPTION") ||
 		!json.contains("WITH_CASE_PRESERVING_NAME") ||
 		!json.contains("USE_FNAME_ENCRYPTION") ||
+		!json.contains("BREAK_IF_INVALID_NAME") ||
 		!json.contains("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"))
 
 	{
@@ -138,6 +140,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 
 	_USE_FNAME_ENCRYPTION = json["USE_FNAME_ENCRYPTION"];
 	_WITH_CASE_PRESERVING_NAME = json["WITH_CASE_PRESERVING_NAME"];
+	_BREAK_IF_INVALID_NAME = json["BREAK_IF_INVALID_NAME"];
 	_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS = json["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"];
 
 #define checkMacro(condition, name, save) \
@@ -195,8 +198,9 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	ImGui::Text("Log level: %d | %s", windows::LogWindow::getLogLevel(), windows::LogWindow::getLogLevelName().c_str());
 	ImGui::BeginDisabled();
 	ImGui::Text("FName settings");
-	ImGui::Checkbox("WITH_CASE_PRESERVING_NAME", reinterpret_cast<bool*>(&_WITH_CASE_PRESERVING_NAME));
 	ImGui::Checkbox("USE_FNAME_ENCRYPTION", reinterpret_cast<bool*>(&_USE_FNAME_ENCRYPTION));
+	ImGui::Checkbox("WITH_CASE_PRESERVING_NAME", reinterpret_cast<bool*>(&_WITH_CASE_PRESERVING_NAME));
+	ImGui::Checkbox("BREAK_IF_INVALID_NAME", reinterpret_cast<bool*>(&_BREAK_IF_INVALID_NAME));
 
 	if(_UE_VERSION < UE_4_23)
 		ImGui::Text("GNAMES_POOL_OFFSET %d", _GNAMES_POOL_OFFSET);

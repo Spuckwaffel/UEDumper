@@ -301,7 +301,7 @@ void windows::PackageWindow::renderProjectPopup()
 			}))).reset();
 	}
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " +Generate NEW MDK+")))
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate NEW MDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
@@ -315,13 +315,24 @@ void windows::PackageWindow::renderProjectPopup()
 			}))).reset();
 	}
 	ImGui::PopStyleColor();
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
+	ImGui::SameLine();
+	ImGui::Text(ICON_FA_QUESTION);
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted("The MDK files are a new SDK-type resolving all dependency errors and missing structs, so you never have a incomplete SDK. "
+						 "You can straight up put it into your project with the MDK library (found on my github). Try it out!");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumpspace Files")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumps.Host SDK...");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumpspace files...");
 			Dumpspace::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;

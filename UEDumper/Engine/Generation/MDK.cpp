@@ -343,14 +343,17 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 			{
 				for (auto& neighbourNeighbour : neighbour->dependencyPackages)
 				{
-					if (std::ranges::find(pack.mergedPackages, neighbourNeighbour) != pack.mergedPackages.end())
-					{
-						printf("merge found with %s and %s origin %s\n", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
-						anyMergeFound = true;
-						mergefound = true;
-						//add him to the merges
-						pack.mergedPackages.push_back(neighbour);
-						skippedPackageDueToMerge.push_back(neighbour->packageName);
+					if (std::ranges::find(pack.mergedPackages, neighbourNeighbour) == pack.mergedPackages.end())
+						continue;
+
+					windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+						"merge found with %s and %s origin %s", neighbour->packageName.c_str(), neighbourNeighbour->packageName.c_str(), pack.package.packageName.c_str());
+
+					anyMergeFound = true;
+					mergefound = true;
+					//add him to the merges
+					pack.mergedPackages.push_back(neighbour);
+					skippedPackageDueToMerge.push_back(neighbour->packageName);
 
 					break;
 				}
@@ -422,14 +425,16 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 				std::ranges::sort(p.mergedPackages);
 				std::ranges::sort(p1.mergedPackages);
-				if (p.mergedPackages == p1.mergedPackages)
-				{
-					printf("deleted %s because its same to %s\n", p1.package.packageName.c_str(), p.package.packageName.c_str());
-					//delete p1 package
-					newPackages.erase(newPackages.begin() + tracker);
-					eraseDone = true;
-				}
-				tracker++;
+
+				if (p.mergedPackages != p1.mergedPackages)
+					continue;
+
+				windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+					"deleted %s because its same to %s", p1.package.packageName.c_str(), p.package.packageName.c_str());
+
+				//delete p1 package
+				newPackages.erase(newPackages.begin() + tracker);
+				eraseDone = true;
 				break;
 
 			}
@@ -495,12 +500,22 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 		}
 
+	} while (didReordering);
+
+
+	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
-	for (auto& p : newPackages)
+
+	do
 	{
-		printf("package %s\n", p.package.packageName.c_str());
-		auto currentPackageIt = std::ranges::find(
-			orderedPackages, &p);
+		progressDone = 0;
+		didReordering = false;
+		for (auto& p : newPackages)
+		{
+			progressDone++;
+			windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
+			auto currentPackageIt = std::ranges::find(
+				orderedPackages, &p);
 
 			//is it not in? then add
 			if (currentPackageIt == orderedPackages.end())
@@ -558,106 +573,25 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	{
 		printf("%s\n", pack->package.packageName.c_str());
 	}
-	puts("------------");
-	for(auto& pack : orderedPackages)
+	puts("---------------------------");
+
+	progressDone = 0;
+	for (auto& pack : orderedPackages)
 	{
-		masterHeader << "#include \"MDK/" +pack->package.packageName + ".h\"" << std::endl;
-		std::string packageName = pack->package.packageName + ".h";
-		std::ofstream package(SDKPath / packageName);
-		printCredits(package);
-		generatePackage(package, pack->package);
-		package.close();
-	}
-	masterHeader.close();
-}
-
-/*
-//gets a package name that gets looked for and then returns a possible merged name
-	std::unordered_map<std::string, std::string> packagesThatGotMerged;
-	std::vector<EngineStructs::Package> packagesButMergeResolved;
-	std::vector<EngineStructs::Package> bakedAndOrderedPackages;
-
-	auto getMergedName = [&](const EngineStructs::Package* one, const EngineStructs::Package* two)
-	{
-		return std::string("merged" + one->packageName + "_" + two->packageName);
-	};
-
-	for(auto& currentPackage : EngineCore::getPackages())
-	{
-		//skip if our current package is already in, only happens when the package is a cycling one with a added one
-		if (packagesThatGotMerged.contains(currentPackage.packageName))
-			continue;
-		bool multiplecombine = false;
-		//contains al list of all combining packages, first one of course basic class
-		std::vector<EngineStructs::Package*> combiningPackages;
-		combiningPackages.push_back(&currentPackage);
-
-		//first go through all the dependencies
-		for(const auto& ownDepencendyPackage : currentPackage.dependencyPackages)
-		{
-			//now get the dependencies from that package
-			for(const auto& dependencyPackageFromOwnDepencendyPackage : ownDepencendyPackage->dependencyPackages)
-			{
-				//is there a dependency that is in the combined list? (own package or previous found cycles)
-				//so if own and abc cycles
-				//and this one contains any dependency from own or abc, we gotta add
-				//because then at the end own, this and abc have to be merged
-				for(auto& combiningPackage : combiningPackages)
-				{
-					if(dependencyPackageFromOwnDepencendyPackage == combiningPackage)
-					{
-						windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Combined classes %s from root (needed: %s ) %s due to cyclic dependencies", dependencyPackageFromOwnDepencendyPackage->packageName.c_str(), combiningPackage->packageName.c_str(),currentPackage.packageName.c_str());
-						combiningPackages.push_back(dependencyPackageFromOwnDepencendyPackage);
-						multiplecombine = true;
-						break;
-					}
-				}
-				//cycling?
-				//if(_dependencyPackages->index == currentPackage.index)
-				//{
-				//	if()
-				//	//this only happens with a third cycle
-				//	//so lets say we merged ab with cd
-				//	//and now de needs shit from ab and other too
-				//	if(packagesThatGotMerged.contains(_dependencyPackages->packageName))
-				//	{
-				//
-				//	}
-				//	combiningPackage.pu = _dependencyPackages;
-				//	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Combined classes %s and %s due to cyclic dependencies", _dependencyPackages->packageName.c_str(), currentPackage.packageName);
-				//	packagesThatGotMerged.insert(std::pair(_dependencyPackages->packageName, getMergedName(combiningPackage, &currentPackage)));
-				//	packagesThatGotMerged.insert(std::pair(currentPackage.packageName, getMergedName(combiningPackage, &currentPackage)));
-				//	combine = true;
-				//	break;
-				//}
-			}
-		}
-		if(multiplecombine)
-		{
-			EngineStructs::Package mergedPack;
-			mergedPack.packageName = packagesThatGotMerged[currentPackage.packageName];
-
-			//thats all needed for a barebones package
-
-			//mergedPack.functions.reserve(combiningPackage->functions.size() + currentPackage.functions.size());
-			//mergedPack.functions.insert(mergedPack.functions.end(), combiningPackage->functions.begin(), combiningPackage->functions.end());
-			//mergedPack.functions.insert(mergedPack.functions.end(), currentPackage.functions.begin(), currentPackage.functions.end());
-			mergedPack.combinedStructsAndClasses.reserve(combiningPackage->combinedStructsAndClasses.size() + currentPackage.combinedStructsAndClasses.size());
-			mergedPack.combinedStructsAndClasses.insert(mergedPack.combinedStructsAndClasses.end(), combiningPackage->combinedStructsAndClasses.begin(), combiningPackage->combinedStructsAndClasses.end());
-			mergedPack.combinedStructsAndClasses.insert(mergedPack.combinedStructsAndClasses.end(), currentPackage.combinedStructsAndClasses.begin(), currentPackage.combinedStructsAndClasses.end());
-			mergedPack.enums.reserve(combiningPackage->enums.size() + currentPackage.enums.size());
-			mergedPack.enums.insert(mergedPack.enums.end(), combiningPackage->enums.begin(), combiningPackage->enums.end());
-			mergedPack.enums.insert(mergedPack.enums.end(), currentPackage.enums.begin(), currentPackage.enums.end());
-			mergedPack.dependencyPackages.reserve(combiningPackage->dependencyPackages.size() + currentPackage.dependencyPackages.size());
-			mergedPack.dependencyPackages.insert(mergedPack.dependencyPackages.end(), combiningPackage->dependencyPackages.begin(), combiningPackage->dependencyPackages.end());
-			mergedPack.dependencyPackages.insert(mergedPack.dependencyPackages.end(), currentPackage.dependencyPackages.begin(), currentPackage.dependencyPackages.end());
-
-			packagesButMergeResolved.push_back(mergedPack);
-		}
+		windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Baking package %s", pack->package.packageName.c_str());
+		masterHeader << "#include \"MDK/" + pack->package.packageName + ".h\"" << std::endl;
+		if (pack->package.packageName == "BasicType")
+			generateBasicType();
 		else
 		{
-			packagesButMergeResolved.push_back(currentPackage);
+			std::string packageName = pack->package.packageName + ".h";
+			std::ofstream package(SDKPath / packageName);
+			printCredits(package);
+			generatePackage(package, pack->package);
+			package.close();
 		}
+
+		progressDone++;
 	}
 	masterHeader.close();
 

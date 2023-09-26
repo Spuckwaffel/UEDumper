@@ -154,6 +154,7 @@ inline void addStructs()
 	EngineStructs::Struct Tarray;
 	Tarray.fullName = "/Custom/TArray";
 	Tarray.cppName = "TArray";
+	Tarray.isClass = false;
 	Tarray.size = sizeof(TArray<uint64_t>);
 	Tarray.inherited = false;
 	int TarrayOffset = 0;

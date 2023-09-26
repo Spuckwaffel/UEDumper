@@ -152,7 +152,7 @@ namespace EngineStructs
 	 */
 	struct Function
 	{
-		Struct* owningStruct; //the struct this function resides in
+		Struct* owningStruct = nullptr; //the struct this function resides in
 		int owningVectorIndex = 0; //the vector index this function resides in
 		uintptr_t memoryAddress;
 		fieldType returnType;
