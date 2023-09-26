@@ -1,4 +1,4 @@
-#include "dumpshost.h"
+#include "dumpspace.h"
 
 
 #include <fstream>
@@ -7,7 +7,7 @@
 #include "Memory/memory.h"
 #include "Settings/EngineSettings.h"
 
-namespace DumpsHost
+namespace Dumpspace
 {
     std::string dumpTimeStamp = {};
 
@@ -93,7 +93,7 @@ namespace DumpsHost
     }
 
     void Dump(std::filesystem::path directory) {
-        directory /= "Dumps.host";
+        directory /= "Dumpspace";
         std::filesystem::create_directories(directory);
 
         dumpTimeStamp = std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
@@ -112,7 +112,7 @@ namespace DumpsHost
         totalProgress = EngineCore::getOffsets().size() + EngineCore::getPackages().size();
         for(const auto& offset : EngineCore::getOffsets())
         {
-	        if(offset.flag & OFFSET_DH)
+	        if(offset.flag & OFFSET_DS)
 	        {
                 AddOffset(offset.name, EngineCore::getOffsetAddress(offset) - Memory::getBaseAddress());
 	        }
@@ -133,15 +133,15 @@ namespace DumpsHost
                     }
                     nlohmann::json members = nlohmann::json::array();
 
+                    nlohmann::json gSize;
+                    gSize["__MDKClassSize"] = struc.size;
+
                     for (auto& member : struc.definedMembers)
                     {
                         if (member.missed)
                             continue;
                         nlohmann::json a;
-                        if (member.isBit)
-                            a[member.name + " : 1"] = std::make_tuple(member.offset, member.type.stringify());
-                        else
-                            a[member.name] = std::make_tuple(member.offset, member.type.stringify());
+                        a[member.name + (member.isBit ? " : 1" : "")] = std::make_tuple(member.type.stringify(), member.offset, member.size);
                         members.push_back(a);
                     }
                     nlohmann::json j;

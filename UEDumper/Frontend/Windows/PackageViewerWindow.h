@@ -25,11 +25,22 @@ namespace windows
 			{
 				nlohmann::json j;
 
-				//for(const auto& idx : tabIndex)
-				//	j["tabIndex"].push_back(idx);
+				nlohmann::json tabindexes;
+				for(int i = 0; i < tabIndex.size(); i++)
+				{
+					auto& idx = tabIndex[i];
 
-				j["currentVecIndex"] = currentVecIndex;
-				j["currentType"] = currentType;
+					if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Struct || idx.second == EngineCore::ObjectInfo::ObjectType::OI_Class)
+						tabindexes.push_back(static_cast<EngineStructs::Struct*>(idx.first)->cppName);
+
+					else if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Function)
+						tabindexes.push_back(static_cast<EngineStructs::Function*>(idx.first)->cppName);
+					else if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+							tabindexes.push_back(static_cast<EngineStructs::Enum*>(idx.first)->cppName);
+				}
+				j["ti"] = tabindexes;
+				j["cv"] = currentVecIndex;
+				j["ct"] = currentType;
 
 				return j;
 			}
@@ -37,11 +48,16 @@ namespace windows
 			static NavigationTab fromJson(const nlohmann::json& j)
 			{
 				NavigationTab n;
-				//for(const nlohmann::json& js : j["tabIndex"])
-				//	n.tabIndex.push_back(std::pair(js[0], js[1]));
+				for(const nlohmann::json& js : j["ti"])
+				{
+					if(auto info = EngineCore::getInfoOfObject(js))
+					{
+						n.tabIndex.push_back(std::pair(info.target, info.type));
+					}
+				}
 
-				n.currentVecIndex = j["currentVecIndex"];
-				n.currentType = j["currentType"];
+				n.currentVecIndex = j["cv"];
+				n.currentType = j["ct"];
 				return n;
 			}
 		};
@@ -71,9 +87,15 @@ namespace windows
 			{
 				nlohmann::json j;
 
-				//j["ps"] = packageSelected;
+				j["ps"] = packageSelected->packageName;
 				j["ts"] = typeSelected;
-				//j["is"] = itemSelected;
+				if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct || typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+					j["is"] = static_cast<EngineStructs::Struct*>(itemSelected)->cppName;
+
+				else if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
+					j["is"] = static_cast<EngineStructs::Function*>(itemSelected)->cppName;
+				else if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+					j["is"] = static_cast<EngineStructs::Enum*>(itemSelected)->cppName;
 				j["irs"] = itemRange_S;
 				j["irc"] = itemRange_C;
 				j["ire"] = itemRange_E;
@@ -90,9 +112,52 @@ namespace windows
 			static PackageTab fromJson(const nlohmann::json& j)
 			{
 				PackageTab p;
-				//p.packageSelected = j["ps"];
 				p.typeSelected = j["ts"];
-				//p.itemSelected = j["is"];
+				const std::string packagename = j["ps"];
+				const std::string structname = j["is"];
+				for(auto& pack : EngineCore::getPackages())
+				{
+					if(pack.packageName == packagename)
+					{
+						p.packageSelected = &pack;
+						if(p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct || p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+						{
+							for(const auto& st : pack.combinedStructsAndClasses)
+							{
+								if (st->cppName == structname)
+								{
+									p.itemSelected = st;
+									break;
+								}
+									
+							}
+						}
+						else if (p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
+						{
+							for(const auto& fn : pack.functions)
+							{
+								if(fn->cppName == structname)
+								{
+									p.itemSelected = fn;
+									break;
+								}
+							}
+						}
+						else if (p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+						{
+							for(auto& en : pack.enums)
+							{
+								if (en.cppName == structname)
+								{
+									p.itemSelected = &en;
+									break;
+								}
+							}
+						}
+
+						break;
+					}
+				}
 				p.itemRange_S = j["irs"];
 				p.itemRange_C = j["irc"];
 				p.itemRange_E = j["ire"];

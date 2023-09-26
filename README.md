@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/github/license/Spuckwaffel/UEDumper" alt="License">
   <img src="https://img.shields.io/github/stars/Spuckwaffel/UEDumper" alt="Stars">
   <img src="https://img.shields.io/github/forks/Spuckwaffel/UEDumper" alt="Forks">
+  <img src="https://komarev.com/ghpvc/?username=UEDumper&label=Views" alt="Views">
 </p>
 <p>UEDumper is a all in one Unreal Engine Dumper that supports Unreal Engine 4.19 - Unreal Engine 5.2.0 and a live editor, where you can view the generated SDK at runtime and modify the games' memory.</p>
 <p><a href="#features">Features</a> &bull; 
