@@ -53,7 +53,7 @@ std::string UObject::getCName()
 {
     std::string name = "nil";
 
-    if(!this)
+    if (!this)
         return name;
 
     if (IsA<UClass>())
@@ -61,7 +61,7 @@ std::string UObject::getCName()
         //read again but as a struct
         auto uStruct = castTo<UStruct>();
 
-        if(!uStruct)
+        if (!uStruct)
         {
             puts("WARN: invalid state! after casting its invalid????");
             name = "U";
@@ -99,8 +99,8 @@ std::string UObject::getCName()
         {
             printf("superstruct failed!\n");
             printf("name: %s\n", getFullName().c_str());
-            if(uStruct)
-				printf("name: %s\n", uStruct->getFullName().c_str());
+            if (uStruct)
+                printf("name: %s\n", uStruct->getFullName().c_str());
             else
                 puts("name: ???\n");
             //DebugBreak();
@@ -130,7 +130,7 @@ UObject* UObject::getOwnPointer() const
 
 UObject* UObject::getPackageObject() const
 {
-    if(const auto ptr = getPackageObjectFnPtr())
+    if (const auto ptr = getPackageObjectFnPtr())
     {
         return ObjectsManager::getUObject<UObject>(ptr);
     }
@@ -169,7 +169,7 @@ UObject* UObject::getPackageObjectFnPtr() const
 std::string UObject::getSecondPackageName() const
 {
     std::string package;
-    if(!getPackageObject())
+    if (!getPackageObject())
         package = getName().c_str();
     else
     {
@@ -196,19 +196,19 @@ std::string UObject::getSecondPackageName() const
 bool UObject::IsA(const UClass* staticClass) const
 {
     if (!ClassPrivate) return false;
-    for(auto super = getClass(); super; super = super->getSuper<UClass>())
+    for (auto super = getClass(); super; super = super->getSuper<UClass>())
     {
         if (!super)
             return false;
         std::string fullname = super->getFullName();
-	    if(super == staticClass)
-	    {
+        if (super == staticClass)
+        {
             //printf("%s\n", fullname.c_str());
             return true;
-	    }
+        }
     }
     return false;
-   
+
 }
 
 UClass* UObject::staticClass()
@@ -246,7 +246,7 @@ UStruct* UStruct::getSuper() const
 std::vector<UObject*> UStruct::getAllSupers() const
 {
     std::vector<UObject*> supers;
-    for(auto obj = getSuper(); obj; obj = obj->getSuper())
+    for (auto obj = getSuper(); obj; obj = obj->getSuper())
     {
         supers.push_back(obj);
     }
@@ -298,7 +298,7 @@ std::string UFunction::getFunctionFlagsString() const {
     std::string result;
     if (flags == FUNC_None)
         result = "None";
-    else 
+    else
     {
         if (flags & FUNC_Final)
             result += "Final|";
@@ -400,7 +400,7 @@ fieldType UProperty::getType()
     if (IsA<UClassProperty>())
     {
         if (const auto cast = castTo<UClassProperty>(); cast->getPropertyClass())
-    		return     { true, PropertyType::ClassProperty,  cast->typeName() };
+            return     { true, PropertyType::ClassProperty,  cast->typeName() };
     };
     if (IsA<UStructProperty>())
     {
@@ -409,31 +409,31 @@ fieldType UProperty::getType()
     };
     if (IsA<UNameProperty>()) { return      { true, PropertyType::NameProperty,   UNameProperty::typeName() }; };
     if (IsA<UBoolProperty>()) { return      { false, PropertyType::BoolProperty,   castTo<UBoolProperty>()->typeName() }; }
-	if (IsA<UByteProperty>()) {
+    if (IsA<UByteProperty>()) {
         const auto cast = castTo<UByteProperty>();
         if (cast->Enum && cast->getEnum())
         {
             return { true, PropertyType::ByteProperty, cast->typeName(), cast->getSubTypes() };
         }
         return { false, PropertyType::ByteProperty, cast->typeName() };
-    
+
     }
     if (IsA<UArrayProperty>())
     {
-	    if(const auto cast = castTo<UArrayProperty>(); cast->getInner())
-			return { true, PropertyType::ArrayProperty,  UArrayProperty::typeName(), cast->getSubTypes() };
+        if (const auto cast = castTo<UArrayProperty>(); cast->getInner())
+            return { true, PropertyType::ArrayProperty,  UArrayProperty::typeName(), cast->getSubTypes() };
     };
     if (IsA<UEnumProperty>())
     {
-	    if(const auto cast = castTo<UEnumProperty>(); cast->getEnum())
-			return { true, PropertyType::EnumProperty,   cast->typeName() };
+        if (const auto cast = castTo<UEnumProperty>(); cast->getEnum())
+            return { true, PropertyType::EnumProperty,   cast->typeName() };
     };
     //if (IsA<USetProperty>())  { return      { true, PropertyType::SetProperty,      USetProperty::typeName(), castTo<USetProperty>().getSubTypes() }; };
     if (IsA<UMapProperty>())
     {
         if (const auto cast = castTo<UMapProperty>(); cast->getKeyProp() && cast->getValueProp())
             return { true, PropertyType::MapProperty,   UMapProperty::typeName(), cast->getSubTypes() };
-	    
+
     };
     if (IsA<UInterfaceProperty>())
     {
@@ -442,22 +442,22 @@ fieldType UProperty::getType()
     };
     if (IsA<UMulticastDelegateProperty>())
     {
-	    return { true, PropertyType::MulticastDelegateProperty, UMulticastDelegateProperty::typeName() };
+        return { true, PropertyType::MulticastDelegateProperty, UMulticastDelegateProperty::typeName() };
     };
     if (IsA<UWeakObjectProperty>())
     {
         if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
-			return{ true, PropertyType::WeakObjectProperty, UObjectPropertyBase::weakTypeName(), cast->getSubTypes() };
+            return{ true, PropertyType::WeakObjectProperty, UObjectPropertyBase::weakTypeName(), cast->getSubTypes() };
     };
     if (IsA<UObjectPropertyBase>())
     {
         if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
-			return{ true, PropertyType::ObjectProperty, cast->typeName() };
+            return{ true, PropertyType::ObjectProperty, cast->typeName() };
     };
 
     //if (IsA<UClass>()) { return {PropertyType::SoftClassProperty, "struct FSoftClassPath"}; };
-    if(const auto clas = getClass())
-		return { false, PropertyType::Unknown, clas->getName() };
+    if (const auto clas = getClass())
+        return { false, PropertyType::Unknown, clas->getName() };
     return { false, PropertyType::Unknown, getName() };
 }
 
@@ -708,7 +708,7 @@ UBoolProperty::BitInfo UBoolProperty::getMissingBitsCount(const UBoolProperty& l
 
 /*
  *
- * UE 4.25 RELATED 
+ * UE 4.25 RELATED
  *
  */
 
@@ -808,7 +808,7 @@ fieldType FProperty::getType()
         return { true, PropertyType::TextProperty, UTextProperty::typeName() };
 
     case ECCF_FEnumProperty:
-        return { true, PropertyType::EnumProperty, castTo<FEnumProperty>()->typeName()};
+        return { true, PropertyType::EnumProperty, castTo<FEnumProperty>()->typeName() };
 
     case ECCF_FInterfaceProperty:
         return { true, PropertyType::InterfaceProperty, FInterfaceProperty::typeName(), castTo<FInterfaceProperty>()->getSubTypes() };
@@ -817,14 +817,14 @@ fieldType FProperty::getType()
         return { true, PropertyType::MapProperty, FMapProperty::typeName(), castTo<FMapProperty>()->getSubTypes() };
 
     case ECCF_FByteProperty:
-	    {
-		    const auto cast = castTo<FByteProperty>();
-            if(cast->Enum)
-            {
-                return { true, PropertyType::ByteProperty, cast->typeName(), cast->getSubTypes() };
-            }
-            return { false, PropertyType::ByteProperty, cast->typeName() };
-	    }
+    {
+        const auto cast = castTo<FByteProperty>();
+        if (cast->Enum)
+        {
+            return { true, PropertyType::ByteProperty, cast->typeName(), cast->getSubTypes() };
+        }
+        return { false, PropertyType::ByteProperty, cast->typeName() };
+    }
 
     case ECCF_FDelegateProperty:
         return { true, PropertyType::DelegateProperty, UDelegateProperty::typeName() };
@@ -833,7 +833,7 @@ fieldType FProperty::getType()
         return { true, PropertyType::MulticastDelegateProperty, UMulticastDelegateProperty::typeName() };
 
     case ECCF_FMulticastInlineDelegateProperty:
-        return { true, PropertyType::MulticastDelegateProperty, "FMulticastInlineDelegate"};
+        return { true, PropertyType::MulticastDelegateProperty, "FMulticastInlineDelegate" };
 
     case ECCF_FMulticastSparseDelegateProperty:
         return { true, PropertyType::MulticastDelegateProperty, "FMulticastSparseDelegate" };
@@ -851,9 +851,9 @@ fieldType FProperty::getType()
     case ECCF_FSetProperty:
         return { true, PropertyType::SetProperty, FSetProperty::typeName(), castTo<FSetProperty>()->getSubTypes() };
 
-    //case ECCF_FFieldPathProperty:
-    //    return { true, PropertyType::FieldPathProperty, FFieldPathProperty::typeName(), castTo<FFieldPathProperty>().getSubTypes() };
-        
+        //case ECCF_FFieldPathProperty:
+        //    return { true, PropertyType::FieldPathProperty, FFieldPathProperty::typeName(), castTo<FFieldPathProperty>().getSubTypes() };
+
     default:
         return { false, PropertyType::Unknown, getName() };
     }
