@@ -10,6 +10,7 @@
 
 #include "dumpspace.h"
 #include "Engine/Generation/MDK.h"
+#include "Engine/Generation/SDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
 #include "Resources/Dumpspace/dumpspace.h"
 
@@ -45,33 +46,6 @@ void windows::PackageWindow::renderUndefinedStructs()
 	}
 }
 
-void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
-{
-	totalProgress = 10;
-	progressDone = totalProgress;
-	totalProgress = EngineCore::getPackages().size();
-	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
-	if (!create_directories(path))
-		remove_all(path);
-	for (const auto& package : EngineCore::getPackages())
-	{
-		std::ofstream file(path / (package.packageName + ".h"));
-		file <<
-			R"(/********************************************************
-*                                                       *
-*   Package generated using UEDumper by Spuckwaffel.    *
-*                                                       *
-********************************************************/
-
-)";
-		file << "/// Package " + package.packageName << ".\n\n";
-
-		PackageViewerWindow::generatePackage(file, package);
-		file.close();
-		progressDone++;
-	}
-	progressDone = totalProgress;
-}
 
 void windows::PackageWindow::copyPackageNames()
 {
@@ -87,8 +61,8 @@ void windows::PackageWindow::copyPackageNames()
 
 windows::PackageWindow::PackageWindow()
 {
-
 }
+
 
 bool windows::PackageWindow::render()
 {
@@ -138,16 +112,9 @@ bool windows::PackageWindow::render()
 			if (ImGui::Button("Save package"))
 			{
 				std::ofstream file(EngineSettings::getWorkingDirectory() / (packages[packagePicked].packageName + ".h"));
-				file <<
-					R"(/********************************************************
-*                                                       *
-*   Package generated using UEDumper by Spuckwaffel.    *
-*                                                       *
-********************************************************/
-
-)";
+				SDKGeneration::printCredits(file);
 				file << "/// Package " + packages[packagePicked].packageName << ".\n\n";
-				PackageViewerWindow::generatePackage(file, packages[packagePicked]);
+				SDKGeneration::generatePackage(file, packages[packagePicked]);
 				LogWindow::Log(LogWindow::log_2, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
 			}
 			if (ImGui::Button("Copy package name"))
@@ -295,7 +262,7 @@ void windows::PackageWindow::renderProjectPopup()
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating SDK...");
-			generateSDK(anyProgressDone, anyProgressTotal);
+			SDKGeneration::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();
@@ -332,13 +299,35 @@ void windows::PackageWindow::renderProjectPopup()
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumpspace files...");
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating Dumpspace files...");
 			Dumpspace::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate FName Dump")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating FNames file...");
+			EngineCore::generateFNameFile(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	ImGui::SameLine();
+	ImGui::Text(ICON_FA_QUESTION);
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted("This will generate the FNames.txt file with all the names found that are paired to objects. "
+						 "This aso means that if a UObject didnt use for example fname index 1, there wont be that name in the dump.");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
 }
 
 void windows::PackageWindow::topmostCallback()

@@ -54,7 +54,7 @@ namespace Dumpspace
     void DumpClasses(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["classes"] = classes;
+        j["data"] = classes;
 
         std::ofstream file(directory / "ClassesInfo.json");
         file << j.dump();
@@ -63,7 +63,7 @@ namespace Dumpspace
     void DumpFunctions(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["functions"] = functions;
+        j["data"] = functions;
 
         std::ofstream file(directory / "FunctionsInfo.json");
         file << j.dump();
@@ -77,7 +77,7 @@ namespace Dumpspace
     void DumpStructs(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["structs"] = structs;
+        j["data"] = structs;
 
         std::ofstream file(directory / "StructsInfo.json");
         file << j.dump();
@@ -86,7 +86,7 @@ namespace Dumpspace
     void DumpEnums(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["enums"] = enums;
+        j["data"] = enums;
 
         std::ofstream file(directory / "EnumsInfo.json");
         file << j.dump();

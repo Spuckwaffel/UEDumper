@@ -297,5 +297,7 @@ public:
 	 */
 	static std::vector<Offset> getOffsets();
 
+	static bool generateFNameFile(int& progressDone, int& totalProgress);
+
 };
 

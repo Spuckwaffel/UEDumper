@@ -236,8 +236,6 @@ namespace windows
 
 		static bool openTabFromCName(const std::string& name);
 
-		static void generatePackage(std::ofstream& file, const EngineStructs::Package& package);
-
 		/**
 		 * \brief callback function that has to get called at the end of every frame in case
 		 * there's something that has to be rendered topmost. Use carefully!

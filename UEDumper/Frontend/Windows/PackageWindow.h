@@ -20,7 +20,6 @@ namespace windows
 		
 		static void renderUndefinedStructs();
 
-		static void generateSDK(int& progressDone, int& totalProgress);
 
 		static void copyPackageNames();
 

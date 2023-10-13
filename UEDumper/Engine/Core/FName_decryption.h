@@ -26,36 +26,37 @@ static uint64_t dword_4BF84A4 = 0;
 
 
 static unsigned int dword_5A1DA78 = 0;
-static unsigned int dword_E851E58 = 0;
+static unsigned int dword_E8A9618 = 0;
 
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)
 {
     //reversed either by me or credits to the people who post it on uc
 
-    char* v25 = inputBuf; // rdi
-    int v26 = namelength; // ebx
-    int v27;
-    unsigned int v28;
-    char* v29;
-    char v30;
 
-    v27 = 0;
+    char* v2; // rdi
+    unsigned int v4; // ebx
+    unsigned int v5; // eax
+    int v6; // edx
+    unsigned int v7; // er8
+    __int64 v8; // rax
+    __int16 v9; // ax
 
-    if (!dword_E851E58)
-        dword_E851E58 = Memory::read<unsigned int>(Memory::getBaseAddress() + 0xE851E58) >> 5;
-    v28 = dword_E851E58;
-
-    if (v26)
+    v2 = inputBuf;
+    v4 = namelength;
+    if (!dword_E8A9618)
+        dword_E8A9618 = Memory::read<__int64>(Memory::getBaseAddress() + 0xEC1A818);
+    v6 = 0;
+    v7 = 38;
+    if (v4)
     {
-        v29 = v25;
         do
         {
-            v30 = v28 ^ (16 * *v29) ^ (v28 ^ ((unsigned int)*v29 >> 4)) & 0xF;
-            v28 += 4 * v27;
-            *v29 = v30;
-            ++v27;
-            ++v29;
-        } while (v27 < v26);
+            v8 = v6++ | v7;
+            v9 = v8;
+            v7 = 2 * v8;
+            dword_E8A9618 = ~v9;
+            *v2++ ^= dword_E8A9618;
+        } while (v6 < v4);
     }
 }

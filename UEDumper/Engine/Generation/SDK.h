@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Engine/Core/EngineStructs.h"
 
 class SDKGeneration
 {
@@ -8,12 +9,18 @@ class SDKGeneration
 
 	static inline std::filesystem::path SDKPath{};
 
-	static void printCredits(std::ofstream& stream);
+	
 
 	static void generateBasicType();
+
+	
 
 public:
 	SDKGeneration();
 
-	static void Generate();
+	static void printCredits(std::ofstream& stream);
+
+	static void generatePackage(std::ofstream& file, const EngineStructs::Package& package);
+
+	static void Generate(int& progressDone, int& totalProgress);
 };
