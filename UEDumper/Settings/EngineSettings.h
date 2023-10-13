@@ -40,6 +40,8 @@ public:
 		"Version 1.4 Release",
 		"Version 1.5 BETA",
 		"Version 1.5 Release",
+		"Version 1.6 BETA",
+		"Version 1.6 Release",
 	};
 
 private:
@@ -144,6 +146,7 @@ public:
 	static inline int _UE_VERSION = 0;
 	static inline int _USE_FNAME_ENCRYPTION = 0;
 	static inline int _WITH_CASE_PRESERVING_NAME = 0;
+	static inline int _BREAK_IF_INVALID_NAME = 0;
 	static inline int _GNAMES_POOL_OFFSET = 0;
 	static inline int _UE_FNAME_OUTLINE_NUMBER = 0;
 	static inline int _USE_LOWERCASE_STRUCT = 0;
@@ -162,7 +165,8 @@ public:
 		_UE_VERSION = UE_VERSION;
 
 		_USE_FNAME_ENCRYPTION = USE_FNAME_ENCRYPTION;
-		_WITH_CASE_PRESERVING_NAME = WITH_CASE_PRESERVING_NAME;;
+		_WITH_CASE_PRESERVING_NAME = WITH_CASE_PRESERVING_NAME;
+		_BREAK_IF_INVALID_NAME = BREAK_IF_INVALID_NAME;
 #if UE_VERSION < UE_4_23
 		_GNAMES_POOL_OFFSET = GNAMES_POOL_OFFSET;
 #endif

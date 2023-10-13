@@ -52,19 +52,22 @@ public:
 			OI_MAX
 		};
 
+		bool valid = false;
+
 		ObjectType type;
-		//the raw package index, convert to runtime index
-		int packageIndex;
-		//index of the object in the specific vector
-		int objectIndex;
+
+		void* target = nullptr;;
+
+		operator bool() const { return valid; }
 
 		//converts the struct to a JSON object
 		nlohmann::json toJson() const
 		{
 			nlohmann::json j;
 			j["type"] = type;
-			j["packageIndex"] = packageIndex;
-			j["objectIndex"] = objectIndex;
+			j["valid"] = valid;
+			//j["packageIndex"] = packageIndex;
+			//j["objectIndex"] = objectIndex;
 			return j;
 		}
 
@@ -73,8 +76,9 @@ public:
 		{
 			ObjectInfo j;
 			j.type = json["type"];
-			j.packageIndex = json["packageIndex"];
-			j.objectIndex = json["objectIndex"];
+			j.valid = json["valid"];
+			//j.packageIndex = json["packageIndex"];
+			//j.objectIndex = json["objectIndex"];
 			return j;
 		}
 	};
@@ -114,7 +118,7 @@ private:
 	inline static std::vector<std::string> unknownProperties{};
 
 	//map that returns the package index in the vector for the Package.index
-	inline static std::unordered_map<int, int> packageIndexes{};
+	//inline static std::unordered_map<int, int> packageIndexes{};
 
 	//gets the manual overridden struct for the given full name
 	inline static std::unordered_map<std::string, EngineStructs::Struct> overridingStructs{};
@@ -198,36 +202,19 @@ public:
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION! Converts a CName to a ObjectInfo
-	 * \param CName CName of the UObject
+	 * \param CName CName  of the UObject
 	 * \return ObjectInfo of the UObject
 	 */
 	static ObjectInfo getInfoOfObject(const std::string& CName);
 
-	/**
-	 * \brief as functions store tuples for the function information this gets the function
-	 * \param package the package where the function is in
-	 * \param functionIndex index in the function vector
-	 * \return the function and its parent struct
-	 */
-	static std::pair<std::reference_wrapper<const EngineStructs::Function>, std::reference_wrapper<const EngineStructs::Struct>> getFunctionFromVectorIndex(
-		const EngineStructs::Package& package, int functionIndex);
+
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION!
-	 * As the packages vector is sorted by name, packages[i] wont match package.index.
-	 * This function returns you the right vector index
-	 * \param packageIndex the package.index
-	 * \return the vector index
-	 */
-	static int getVectorIndexForPackageIndex(const int packageIndex);
-
-	/**
-	 * \brief USE ONLY AFTER PACKAGE GENERATION!
-	 * getInfoOfObject might return -1 if a type definition is not found. This function lists all
-	 * types that were used in structs but were never defined. (e.g TArray or TMap)
+	 * This function lists all types that were used in structs but were never defined. (e.g TArray or TMap)
 	 * \return vector of all unknown types
 	 */
-	static std::vector<std::string>& getAllUnknownTypes();
+	static const std::vector<std::string>& getAllUnknownTypes();
 
 	/**
 	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides a existing struct with user defined data.
@@ -252,7 +239,8 @@ public:
 	 */
 	static void overrideStructMembers(const EngineStructs::Struct& eStruct);
 
-	
+
+	static void finishPackages();
 
 	/**
 	 * \brief RUNTIME ONLY! USE ONLY AFTER PACKAGE GENERATION!
@@ -308,6 +296,8 @@ public:
 	 * \return vector of offsets
 	 */
 	static std::vector<Offset> getOffsets();
+
+	static bool generateFNameFile(int& progressDone, int& totalProgress);
 
 };
 

@@ -1,4 +1,4 @@
-#include "dumpshost.h"
+#include "dumpspace.h"
 
 
 #include <fstream>
@@ -7,7 +7,7 @@
 #include "Memory/memory.h"
 #include "Settings/EngineSettings.h"
 
-namespace DumpsHost
+namespace Dumpspace
 {
     std::string dumpTimeStamp = {};
 
@@ -54,7 +54,7 @@ namespace DumpsHost
     void DumpClasses(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["classes"] = classes;
+        j["data"] = classes;
 
         std::ofstream file(directory / "ClassesInfo.json");
         file << j.dump();
@@ -63,7 +63,7 @@ namespace DumpsHost
     void DumpFunctions(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["functions"] = functions;
+        j["data"] = functions;
 
         std::ofstream file(directory / "FunctionsInfo.json");
         file << j.dump();
@@ -77,7 +77,7 @@ namespace DumpsHost
     void DumpStructs(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["structs"] = structs;
+        j["data"] = structs;
 
         std::ofstream file(directory / "StructsInfo.json");
         file << j.dump();
@@ -86,14 +86,14 @@ namespace DumpsHost
     void DumpEnums(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
-        j["enums"] = enums;
+        j["data"] = enums;
 
         std::ofstream file(directory / "EnumsInfo.json");
         file << j.dump();
     }
 
     void Dump(std::filesystem::path directory) {
-        directory /= "Dumps.host";
+        directory /= "Dumpspace";
         std::filesystem::create_directories(directory);
 
         dumpTimeStamp = std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
@@ -112,7 +112,7 @@ namespace DumpsHost
         totalProgress = EngineCore::getOffsets().size() + EngineCore::getPackages().size();
         for(const auto& offset : EngineCore::getOffsets())
         {
-	        if(offset.flag & OFFSET_DH)
+	        if(offset.flag & OFFSET_DS)
 	        {
                 AddOffset(offset.name, EngineCore::getOffsetAddress(offset) - Memory::getBaseAddress());
 	        }
@@ -125,23 +125,49 @@ namespace DumpsHost
             {
                 for (auto& struc : strucVec)
                 {
+                    //if (struc.inherited)
+                    //{
+                    //    nlohmann::json j;
+                    //    j[struc.cppName] = struc.supers[0]->cppName;
+                    //    AddInheritInfo(j);
+                    //}
+                    
+                    nlohmann::json members = nlohmann::json::array();
+                    
+                    nlohmann::json inheritInfo = nlohmann::json::array();
                     if (struc.inherited)
                     {
-                        nlohmann::json j;
-                        j[struc.cppName] = struc.supers[0];
-                        AddInheritInfo(j);
+                        for(auto& super : struc.supers)
+                            inheritInfo.push_back(super->cppName);
                     }
-                    nlohmann::json members = nlohmann::json::array();
+                    nlohmann::json inheritInfoDesc;
+                    inheritInfoDesc["__InheritInfo"] = inheritInfo;
+                    members.push_back(inheritInfoDesc);
+
+                    nlohmann::json gSize;
+                    gSize["__MDKClassSize"] = struc.size;
+                    members.push_back(gSize);
 
                     for (auto& member : struc.definedMembers)
                     {
                         if (member.missed)
                             continue;
-                        nlohmann::json a;
-                        if (member.isBit)
-                            a[member.name + " : 1"] = std::make_tuple(member.offset, member.type.stringify());
+
+                        std::string type;
+                        if (member.type.name[0] == 'F')
+                            type = "S";
+                        else if (member.type.name[0] == 'E')
+                            type = "E";
+                        else if (!member.type.clickable)
+                            type = "D";
                         else
-                            a[member.name] = std::make_tuple(member.offset, member.type.stringify());
+                            type = "C";
+
+                        nlohmann::json a;
+                        if(member.isBit)
+                            a[member.name + " : 1"] = std::make_tuple(member.type.stringify(), member.offset, member.size, type, member.bitOffset);
+                        else
+                            a[member.name] = std::make_tuple(member.type.stringify(), member.offset, member.size, type);
                         members.push_back(a);
                     }
                     nlohmann::json j;

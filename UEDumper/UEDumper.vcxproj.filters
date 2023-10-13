@@ -37,9 +37,6 @@
     <Filter Include="Resources\AES">
       <UniqueIdentifier>{bfd08943-78a5-4e4a-a2df-0070475a56d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Dumps Host">
-      <UniqueIdentifier>{991396f2-49ea-442e-8771-fc95017f0410}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources\json">
       <UniqueIdentifier>{7b42fe0b-587b-4e28-b0c3-e71f8d257093}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,12 @@
     </Filter>
     <Filter Include="Frontend\Texture\WICTextureLoader">
       <UniqueIdentifier>{6997e010-c276-4ae8-8e02-ce778319f608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Generation">
+      <UniqueIdentifier>{ff7627ad-8674-4a0f-939b-f93963210c61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Dumpspace">
+      <UniqueIdentifier>{991396f2-49ea-442e-8771-fc95017f0410}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,9 +120,6 @@
     <ClCompile Include="Resources\AES\AES.cpp">
       <Filter>Resources\AES</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Dumpshost\dumpshost.cpp">
-      <Filter>Resources\Dumps Host</Filter>
-    </ClCompile>
     <ClCompile Include="Settings\EngineSettings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -149,6 +149,15 @@
     </ClCompile>
     <ClCompile Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.cpp">
       <Filter>Frontend\Texture\WICTextureLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Generation\SDK.cpp">
+      <Filter>Engine\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Generation\MDK.cpp">
+      <Filter>Engine\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Dumpspace\dumpspace.cpp">
+      <Filter>Resources\Dumpspace</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +218,6 @@
     <ClInclude Include="Resources\AES\AES.h">
       <Filter>Resources\AES</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Dumpshost\dumpshost.h">
-      <Filter>Resources\Dumps Host</Filter>
-    </ClInclude>
     <ClInclude Include="Resources\Json\json.hpp">
       <Filter>Resources\json</Filter>
     </ClInclude>
@@ -259,6 +265,18 @@
     </ClInclude>
     <ClInclude Include="Frontend\Texture\WICTextureLoader\WICTextureLoader.h">
       <Filter>Frontend\Texture\WICTextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Generation\SDK.h">
+      <Filter>Engine\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Generation\BasicType.h">
+      <Filter>Engine\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Generation\MDK.h">
+      <Filter>Engine\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Dumpspace\dumpspace.h">
+      <Filter>Resources\Dumpspace</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

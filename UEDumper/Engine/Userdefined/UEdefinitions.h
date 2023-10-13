@@ -25,8 +25,10 @@
 #define RELEASE_1_4_FINAL	7
 #define RELEASE_1_5_BETA	8
 #define RELEASE_1_5_FINAL	9
+#define RELEASE_1_6_BETA	10
+#define RELEASE_1_6_FINAL	11
 
-#define DUMPER_VERSION RELEASE_1_5_BETA
+#define DUMPER_VERSION RELEASE_1_6_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -65,12 +67,17 @@
 //default FALSE
 #define WITH_CASE_PRESERVING_NAME FALSE
 
+//set this to false if your generation always stops and says you have a invalid fname offset
+//however all this does is check if the first item is /Scrupt/Core.UObject which should alwyays be the case
+//default TRUE
+#define BREAK_IF_INVALID_NAME TRUE
+
 
 #if UE_VERSION < UE_4_23
 //in EngineCore::FNameToString theres a premade FNameEntry calculation. Though games sometimes have a offset on that calculation
 //such as Fortnite (version 3.5). Make sure to find that offset and set it!
 //default 0
-#define GNAMES_POOL_OFFSET 0
+#define GNAMES_POOL_OFFSET 232
 #endif
 
 //only exists for UE version 5.1 and above

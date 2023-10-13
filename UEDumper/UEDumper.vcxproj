@@ -74,11 +74,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpshost/;../UEDumper/;$(IncludePath)</IncludePath>
+    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpspace/;../UEDumper/;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpshost/;../UEDumper/;$(IncludePath)</IncludePath>
+    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpspace/;../UEDumper/;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,6 +154,8 @@
   <ItemGroup>
     <ClCompile Include="Engine\Core\Core.cpp" />
     <ClCompile Include="Engine\Core\ObjectsManager.cpp" />
+    <ClCompile Include="Engine\Generation\MDK.cpp" />
+    <ClCompile Include="Engine\Generation\SDK.cpp" />
     <ClCompile Include="Engine\Live\LiveMemory.cpp" />
     <ClCompile Include="Engine\UEClasses\UnrealClasses.cpp" />
     <ClCompile Include="Frontend\IGHelper.cpp" />
@@ -175,7 +177,7 @@
     <ClCompile Include="Frontend\Windows\TopRowButtons.cpp" />
     <ClCompile Include="Memory\Memory.cpp" />
     <ClCompile Include="Resources\AES\AES.cpp" />
-    <ClCompile Include="Resources\Dumpshost\dumpshost.cpp" />
+    <ClCompile Include="Resources\Dumpspace\dumpspace.cpp" />
     <ClCompile Include="Settings\EngineSettings.cpp" />
     <ClCompile Include="UEDumper.cpp" />
   </ItemGroup>
@@ -185,6 +187,9 @@
     <ClInclude Include="Engine\Core\FName_decryption.h" />
     <ClInclude Include="Engine\Core\ObjectsManager.h" />
     <ClInclude Include="Engine\enums.h" />
+    <ClInclude Include="Engine\Generation\BasicType.h" />
+    <ClInclude Include="Engine\Generation\MDK.h" />
+    <ClInclude Include="Engine\Generation\SDK.h" />
     <ClInclude Include="Engine\Live\LiveMemory.h" />
     <ClInclude Include="Engine\structs.h" />
     <ClInclude Include="Engine\UEClasses\UnrealClasses.h" />
@@ -212,7 +217,7 @@
     <ClInclude Include="Memory\Memory.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources\AES\AES.h" />
-    <ClInclude Include="Resources\Dumpshost\dumpshost.h" />
+    <ClInclude Include="Resources\Dumpspace\dumpspace.h" />
     <ClInclude Include="Resources\Json\json.hpp" />
     <ClInclude Include="Settings\EngineSettings.h" />
     <ClInclude Include="stdafx.h" />

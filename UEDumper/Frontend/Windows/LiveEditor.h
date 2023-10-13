@@ -31,8 +31,7 @@ namespace windows
 			std::string name;
 			uint64_t address = 0; //use for TabTypeAddress or TabTypeOffset
 			std::string origin = ""; // use for TabTypeAdvanced or TabTypeOffset
-			int realPackageIndex = -1;
-			int structIndex = -1;
+			EngineStructs::Struct* struc;
 			bool isClass = false;
 		};
 
@@ -88,7 +87,7 @@ namespace windows
 		 * \param secret a secret key to make the members unique
 		 * \param offset data offset so it will use block + offset for the members
 		 */
-		static void drawStructProperty(const EngineStructs::Struct& struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset);
+		static void drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset);
 
 		/**
 		 * \brief draws a single member that is not clickable and has support to get written to
@@ -117,7 +116,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
 		 */
-		static void drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum& subEnum, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 		
 
 		/**
@@ -128,7 +127,7 @@ namespace windows
 		 * \param innerOffset in case a struct is in a struct (no ptr) we wanna display those fields too. We can do this by setting a inner offset
 		 * which is just the real struct + offset to the inner struct (member) and keeping the ADDRESS THE SAME. With this we also have click support
 		 */
-		static void drawMembers(const EngineStructs::Struct& struc, uint64_t address, const std::string& secret, int innerOffset = 0);
+		static void drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset = 0);
 
 		/**
 		 * \brief displays the entire struct/class properly
@@ -138,7 +137,7 @@ namespace windows
 		 * \param secret a secret key to make the members unique
 		 * \param origin whether the game address should be displayed or a specific origin
 		 */
-		static void renderStruct(const EngineStructs::Struct& struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin = "");
+		static void renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin = "");
 
 		/**
 		 * \brief checks whether the StructName is valid. Enabling lookForBest does additionally memory operations
@@ -150,7 +149,7 @@ namespace windows
 		 * \param lookForBest check whether it should look for the "real" class
 		 * \return if the struct and returning data is valid
 		 */
-		static bool isValidStructName(uint64_t classPointer, const std::string& CName, int& outPackageIndex, int& outStructIndex, bool& isClass, bool lookForBest = false);
+		static bool isValidStructName(uint64_t classPointer, const std::string& CName, EngineStructs::Struct*& outStruct, bool lookForBest = false);
 
 		/**
 		 * \brief checks whether the EnumName is valid.
@@ -159,7 +158,7 @@ namespace windows
 		 * \param outEnumIndex returning enum index
 		 * \return if the enum and returning data is valid
 		 */
-		static bool isValidEnumName(const std::string& CName, int& outPackageIndex, int& outEnumIndex);
+		static bool isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu);
 		
 
 	public:

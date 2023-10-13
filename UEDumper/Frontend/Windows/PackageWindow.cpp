@@ -8,8 +8,11 @@
 #include "Frontend/IGHelper.h"
 #include <Settings/EngineSettings.h>
 
-#include "dumpshost.h"
+#include "dumpspace.h"
+#include "Engine/Generation/MDK.h"
+#include "Engine/Generation/SDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Resources/Dumpspace/dumpspace.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
 {
@@ -29,7 +32,7 @@ void windows::PackageWindow::renderUndefinedStructs()
 		ImGui::TextWrapped("Here is a list of all structs that can be clicked but are not defined. To fix this, add them "
 			"in StructDefinitions.h");
 		ImGui::BeginChild("UndefinedStructsChild", ImVec2(495, 250), true);
-		for (auto& struc : EngineCore::getAllUnknownTypes())
+		for (const auto& struc : EngineCore::getAllUnknownTypes())
 		{
 			ImGui::Text(struc.c_str());
 		}
@@ -43,36 +46,11 @@ void windows::PackageWindow::renderUndefinedStructs()
 	}
 }
 
-void windows::PackageWindow::generateSDK(int& progressDone, int& totalProgress)
-{
-	totalProgress = EngineCore::getPackages().size();
-	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
-	if(!create_directories(path))
-		remove_all(path);
-	for(const auto& package : EngineCore::getPackages())
-	{
-		std::ofstream file(path / (package.packageName + ".h"));
-		file << 
-R"(/********************************************************
-*                                                       *
-*   Package generated using UEDumper by Spuckwaffel.    *
-*                                                       *
-********************************************************/
-
-)";
-		file << "/// Package " + package.packageName << ".\n\n";
-
-		PackageViewerWindow::generatePackage(file, package);
-		file.close();
-		progressDone++;
-	}
-	progressDone = totalProgress;
-}
 
 void windows::PackageWindow::copyPackageNames()
 {
 	std::string names = "";
-	for(const auto& package : EngineCore::getPackages())
+	for (const auto& package : EngineCore::getPackages())
 	{
 		names += package.packageName + "\n";
 	}
@@ -83,31 +61,41 @@ void windows::PackageWindow::copyPackageNames()
 
 windows::PackageWindow::PackageWindow()
 {
-
 }
+
 
 bool windows::PackageWindow::render()
 {
 	if (alreadyCompleted) return true;
 
-	static char CNameSearch[100] = {0};
+	static char CNameSearch[100] = { 0 };
 
 	ImGui::SetCursorPosY(35);
-	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true,  ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("PackageChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 
 	ImGui::Text("%d Packages", EngineCore::getPackages().size());
 	if (ImGui::BeginListBox("##packageslist", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 80)))
 	{
 		static int packagePicked = 0;
-		const auto& packages = EngineCore::getPackages();
+		auto& packages = EngineCore::getPackages();
 		for (int i = 0; i < packages.size(); i++)
 		{
 			const bool is_selected = (packagePicked == i);
 			if (ImGui::Selectable(packages[i].packageName.c_str(), is_selected))
 			{
+				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opening package %d", packagePicked);
 				packagePicked = i;
-				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opened package %d", packagePicked);
-				PackageViewerWindow::createTab(packagePicked);
+				if (packages[i].structs.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].structs[0], EngineCore::ObjectInfo::OI_Struct);
+				else if (packages[i].classes.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].classes[0], EngineCore::ObjectInfo::OI_Class);
+				else if (packages[i].functions.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].functions[0], EngineCore::ObjectInfo::OI_Function);
+				else if (packages[i].enums.size() > 0)
+					PackageViewerWindow::createTab(&packages[i].enums[0], EngineCore::ObjectInfo::OI_Enum);
+				else
+					LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "failed to open package: package is empty!");
+
 			}
 			if (ImGui::IsItemHovered() && ImGui::IsMouseReleased(ImGuiMouseButton_Right))
 			{
@@ -124,16 +112,9 @@ bool windows::PackageWindow::render()
 			if (ImGui::Button("Save package"))
 			{
 				std::ofstream file(EngineSettings::getWorkingDirectory() / (packages[packagePicked].packageName + ".h"));
-				file <<
-R"(/********************************************************
-*                                                       *
-*   Package generated using UEDumper by Spuckwaffel.    *
-*                                                       *
-********************************************************/
-
-)";
+				SDKGeneration::printCredits(file);
 				file << "/// Package " + packages[packagePicked].packageName << ".\n\n";
-				PackageViewerWindow::generatePackage(file, packages[packagePicked]);
+				SDKGeneration::generatePackage(file, packages[packagePicked]);
 				LogWindow::Log(LogWindow::log_2, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
 			}
 			if (ImGui::Button("Copy package name"))
@@ -147,8 +128,8 @@ R"(/********************************************************
 		ImGui::EndListBox();
 	}
 	ImGui::PushItemWidth(278);
-	
-	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) && 
+
+	if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", CNameSearch, sizeof(CNameSearch) - 1, ImGuiInputTextFlags_EnterReturnsTrue) &&
 		!PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
 		LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
@@ -166,12 +147,12 @@ R"(/********************************************************
 
 void windows::PackageWindow::renderEditPopup()
 {
-	if(EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
+	if (EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
 		return;
 
 	ImGui::Separator();
 
-	if(ImGui::Button(merge(ICON_FA_QUESTION, " Get Undefined Structs")))
+	if (ImGui::Button(merge(ICON_FA_QUESTION, " Get Undefined Structs")))
 	{
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(windows::LogWindow::log_2, "PACKAGEWINDOW", "Getting undefined structs...");
@@ -196,7 +177,7 @@ void windows::PackageWindow::renderEditPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("This won't save your project to disk! This will generate a StructDefinitions.h file with all the changes "
-						 "you made (this will include old changes too). ");
+			"you made (this will include old changes too). ");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
@@ -214,7 +195,7 @@ void windows::PackageWindow::renderProjectPopup()
 
 			ZeroMemory(&ofn, sizeof(OPENFILENAME));
 			ofn.lStructSize = sizeof(OPENFILENAME);
-			ofn.hwndOwner = NULL;
+			ofn.hwndOwner = nullptr;
 			ofn.lpstrFilter = "UEDumper Project File (*.uedproj)\0*.uedproj\0";
 			ofn.lpstrFile = filename;
 			ofn.nMaxFile = MAX_PATH;
@@ -227,7 +208,7 @@ void windows::PackageWindow::renderProjectPopup()
 				anyProgressDone = 0;
 				anyProgressTotal = 1;
 				std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [st] {
-					
+
 					if (EngineCore::loadProject(st, anyProgressDone, anyProgressTotal))
 					{
 						windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project loaded!");
@@ -240,25 +221,25 @@ void windows::PackageWindow::renderProjectPopup()
 		}
 	}
 
-	
+
 
 	if (EngineSettings::liveEditorEnabled() && !DumpProgress::isAlreadyCompleted())
 		return;
 
 	ImGui::Separator();
-	
+
 	//force the topmost window rendering when saving the project
 	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Save Project")) && !presentTopMostCallback)
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
-		
+
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			EngineCore::saveToDisk(anyProgressDone, anyProgressTotal);
 			presentTopMostCallback = false;
 			}))).reset();
-		
+
 	}
 
 	ImGui::SameLine();
@@ -268,50 +249,98 @@ void windows::PackageWindow::renderProjectPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("You can save your project to open up next time in OFFLINE mode. That means that you can do everything you want "
-						 "except using the live editor.");
+			"except using the live editor.");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
-	
-	
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Full SDK")))
+
+
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Legacy SDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating SDK...");
-			generateSDK(anyProgressDone, anyProgressTotal);
+			SDKGeneration::Generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumps.Host Files")))
+	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate NEW MDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
-			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Crerating Dumps.Host SDK...");
-			DumpsHost::Generate(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating MDK...");
+			MDKGeneration::MDKGeneration();
+			MDKGeneration::generate(anyProgressDone, anyProgressTotal);
 			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-	
+	ImGui::PopStyleColor();
+	ImGui::SameLine();
+	ImGui::Text(ICON_FA_QUESTION);
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted("The MDK files are a new SDK-type resolving all dependency errors and missing structs, so you never have a incomplete SDK. "
+						 "You can straight up put it into your project with the MDK library (found on my github). Try it out!");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Dumpspace Files")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating Dumpspace files...");
+			Dumpspace::Generate(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate FName Dump")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Creating FNames file...");
+			EngineCore::generateFNameFile(anyProgressDone, anyProgressTotal);
+			LogWindow::Log(LogWindow::log_2, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	ImGui::SameLine();
+	ImGui::Text(ICON_FA_QUESTION);
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted("This will generate the FNames.txt file with all the names found that are paired to objects. "
+						 "This aso means that if a UObject didnt use for example fname index 1, there wont be that name in the dump.");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
 }
 
 void windows::PackageWindow::topmostCallback()
 {
-	if(presentTopMostCallback)
+	if (presentTopMostCallback)
 	{
 		const ImVec2 bigWindow = IGHelper::getWindowSize();
 		ImGui::SetNextWindowFocus();
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
 
 		ImGui::Begin("Processing...", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-		ImGui::SetWindowSize(ImVec2(520, 100), ImGuiCond_Once);
-		
+		ImGui::SetWindowSize(ImVec2(520, 130), ImGuiCond_Once);
+
 		const ImVec2 smallWindow = ImGui::GetWindowSize();
 		ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
 		ImGui::PopStyleVar();
@@ -319,8 +348,8 @@ void windows::PackageWindow::topmostCallback()
 		ImGui::SameLine();
 		ImGui::Spinner();
 		const float progress = static_cast<float>(anyProgressDone) / anyProgressTotal;
-		ImGui::ProgressBar(progress, ImVec2(480, 30));
-		
+		ImGui::ProgressBar(progress, ImVec2(500, 30));
+		ImGui::Text(LogWindow::getLastLogMessage().c_str());
 		ImGui::End();
 	}
 }

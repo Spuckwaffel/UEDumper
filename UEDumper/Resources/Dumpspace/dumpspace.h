@@ -6,9 +6,9 @@
 #include <filesystem>
 
 
-namespace DumpsHost
+namespace Dumpspace
 {
-	//unchanged dumpsHost functions, thanks Hinnie!
+	//modified functions from dumpshost, thanks hinnie!
 	void AddOffset(const std::string& string, uint64_t offset);
 
 	void AddClass(const nlohmann::json& json);

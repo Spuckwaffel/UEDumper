@@ -3,8 +3,8 @@
 *													*
 *	StructDefinitions.h - Override structs here.	*
 *	This file is used to override or create structs *
-*	that are important for the live	editor to work	*
-*	properly and like you want to.					*
+*	that m,ay be important for the live	editor 		*
+*	to work properly and like you want to.			*
 *													*
 ****************************************************/
 
@@ -77,9 +77,9 @@ inline void overrideStructs()
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
 	//because inheritance for a uclass is UStruct > UField > UObject.
 	//but in our case UField just inherits from UObject.
-	uField.supers = std::vector<std::string>{ "UObject"}; 
+	uField.superNames = std::vector<std::string>{ "UObject" };
 	constexpr int uFieldOffet = sizeof(UObject);
-	uField.definedMembers = std::vector<EngineStructs::Member> {
+	uField.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,	"UField"},		"Next",				uFieldOffet, 8}
 	};
 	//add the struct/class
@@ -104,7 +104,7 @@ inline void overrideStructs()
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
 	//because inheritance for a uclass is UStruct > UField > UObject.
 	//but in our case UField just inherits from UObject.
-	uStruct.supers = std::vector<std::string>{ "UField","UObject" };
+	uStruct.superNames = std::vector<std::string>{ "UField","UObject" };
 	int uStructOffet = sizeof(UField);
 	uStruct.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,	"UStruct"},		"SuperStruct",				uStructOffet, 8},
@@ -114,7 +114,8 @@ inline void overrideStructs()
 	EngineCore::overrideStruct(uStruct);
 }
 
-//add a struct that does not exist in the SDK. They will be all in the BasicType package.
+//add a struct that is only for visual purposes only for the editor. They will not appear in the SDK.
+//for definitions that should appear, go to Engine/Generation/BasicType.h
 //keep in mind to follow the rules of the Member struct, setting wrong offsets and sizes or types may result in crashes.
 //the normal editor DOES NOT CHECK if a class/struct below also matches the size when the class/struct gets referenced, so make sure it does!
 //if its wrong, the live editor will most likely crash
@@ -128,7 +129,7 @@ inline void addStructs()
 	Fname.inherited = false;
 	int FnameOffset = 0;
 	//of course we can also use defines, just be careful
-	Fname.cookedMembers =  std::vector<EngineStructs::Member>{
+	Fname.definedMembers = std::vector<EngineStructs::Member>{
 		{{false,		PropertyType::IntProperty,		"int"},		"ComparisonIndex",		0, 4},
 		#if UE_VERSION >= UE_5_01
 	#if !UE_FNAME_OUTLINE_NUMBER
@@ -142,9 +143,9 @@ inline void addStructs()
 
 
 	#if UE_VERSION < UE_5_01
-	/** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
-		{{false,		PropertyType::IntProperty,		"int"},		"Number",				FnameOffset += 4, 4}
-	#endif
+		/** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
+			{{false,		PropertyType::IntProperty,		"int"},		"Number",				FnameOffset += 4, 4}
+		#endif
 	};
 	//add it
 	EngineCore::createStruct(Fname);
@@ -153,11 +154,12 @@ inline void addStructs()
 	EngineStructs::Struct Tarray;
 	Tarray.fullName = "/Custom/TArray";
 	Tarray.cppName = "TArray";
+	Tarray.isClass = false;
 	Tarray.size = sizeof(TArray<uint64_t>);
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
 	Tarray.definedMembers = std::vector<EngineStructs::Member>{
-		{{false,		PropertyType::ObjectProperty,	"T*"},			"Data",		TarrayOffset, 8},
+		{{false,		PropertyType::ObjectProperty,	"uint64_t"},			"Data",		TarrayOffset, 8},
 		{{false,		PropertyType::IntProperty,		"int"},		"Count",		TarrayOffset += 8, 4},
 		{{false,		PropertyType::IntProperty,		"int"},		"Max",			TarrayOffset += 4, 4},
 	};
@@ -194,7 +196,7 @@ inline void overrideUnknownMembers()
 	Engine.definedMembers = std::vector<EngineStructs::Member>{
 		//we can use the typename FSimpleMulticastDelegate even if its not defined in the engine at all, but thats still fine
 		{{true,		PropertyType::MulticastDelegateProperty,	"FSimpleMulticastDelegate"},			"OnPostEngineInit",		sizeof(UObject), 8},
-		
+
 	};
 	EngineCore::overrideStructMembers(Engine);
 }

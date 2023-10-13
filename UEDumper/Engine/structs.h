@@ -98,13 +98,6 @@ struct FUObjectItem
 };
 
 
-
-struct FQWord
-{
-	int32_t A;
-	int32_t B;
-};
-
 template <class T>
 struct TArray
 {

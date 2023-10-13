@@ -42,7 +42,7 @@ public:
 
 	/** Object this object resides in. */
 	class UObject*		OuterPrivate = nullptr;
-	
+
 	static std::string typeName() { return "UObject"; }
 
 	bool operator==(const UObject obj) const { return obj.objectptr == objectptr; }
@@ -58,7 +58,7 @@ public:
 	std::string getName() const;
 
 	static std::string getName(const FName& fName);
-	
+
 
 	std::string getFullName() const;
 
@@ -76,7 +76,7 @@ public:
 	//header code otherwise linker errors
 	/**
 	 * \brief casts the object to a different object. WARNING: OBJECT NEEDS TO EXIST OR NULLPTR
-	 * \tparam T type 
+	 * \tparam T type
 	 * \return casted object
 	 */
 	template <typename T>
@@ -189,7 +189,7 @@ public:
 	FStructBaseChain baseChainInheritance;
 #endif
 #endif
-	
+
 	/** Struct this inherits from, may be null */
 	UStruct*	SuperStruct;
 
@@ -203,7 +203,7 @@ public:
 
 	/** Total size of all UProperties, the allocated structure may be larger due to alignment */
 	int32_t		PropertiesSize;
-	
+
 	/** Alignment of structure in memory, structure will be at least this large */
 	int32_t		MinAlignment;
 
@@ -257,43 +257,43 @@ public:
 	/** Contains a list of script properties that could not be resolved at load time */
 	uintptr_t UnresolvedScriptProperties;
 
-	#if WITH_EDITORONLY_DATA
-		/** List of wrapper UObjects for FProperties */
-		TArray<uintptr_t> PropertyWrappers;
+#if WITH_EDITORONLY_DATA
+	/** List of wrapper UObjects for FProperties */
+	TArray<uintptr_t> PropertyWrappers;
 
-		/** Unique id incremented each time this class properties get destroyed */
-		int32_t FieldPathSerialNumber;
+	/** Unique id incremented each time this class properties get destroyed */
+	int32_t FieldPathSerialNumber;
 
-	#endif
+#endif
 
-	#if UE_VERSION < UE_5_00
-	
-		// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L335
-		// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
-		// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
-		/** Cached schema for optimized unversioned property serialization, owned by this. */
-		uintptr_t UnversionedSchema = 0;
-	#else
+#if UE_VERSION < UE_5_00
 
-		// https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L353
-		// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L413
-		/** Cached schema for optimized unversioned and filtereditoronly property serialization, owned by this. */
-		uintptr_t UnversionedGameSchema = 0;
+	// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L335
+	// https://github.com/EpicGames/UnrealEngine/blob/4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
+	// https://github.com/EpicGames/UnrealEngine/blob/4.27/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L344
+	/** Cached schema for optimized unversioned property serialization, owned by this. */
+	uintptr_t UnversionedSchema = 0;
+#else
 
-		#if WITH_EDITORONLY_DATA
-		
-			/** Cached schema for optimized unversioned property serialization, with editor data, owned by this. */
-			uintptr_t UnversionedEditorSchema = 0;
-		
-			#if UE_VERSION > UE_5_00
-				// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L423
-				bool bHasAssetRegistrySearchableProperties;
-			#endif
-		
-		
-		#endif
+	// https://github.com/EpicGames/UnrealEngine/blob/5.0/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L353
+	// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L413
+	/** Cached schema for optimized unversioned and filtereditoronly property serialization, owned by this. */
+	uintptr_t UnversionedGameSchema = 0;
 
-	#endif
+#if WITH_EDITORONLY_DATA
+
+	/** Cached schema for optimized unversioned property serialization, with editor data, owned by this. */
+	uintptr_t UnversionedEditorSchema = 0;
+
+#if UE_VERSION > UE_5_00
+	// https://github.com/EpicGames/UnrealEngine/blob/5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L423
+	bool bHasAssetRegistrySearchableProperties;
+#endif
+
+
+#endif
+
+#endif
 
 #endif
 
@@ -368,12 +368,12 @@ public:
 #endif
 
 #if UE_VERSION >= UE_5_00
-	#if WITH_LIVE_CODING
-		/** Pointer to the cached singleton pointer to this instance */
-		UFunction** SingletonPtr;
-	#endif
+#if WITH_LIVE_CODING
+	/** Pointer to the cached singleton pointer to this instance */
+	UFunction** SingletonPtr;
 #endif
-	
+#endif
+
 	/** C++ function this is bound to */
 	uintptr_t		Func;
 
@@ -572,7 +572,7 @@ public:
 
 	/** Mask of the field with the property value. Either equal to ByteMask or 255 in case of 'bool' type. */
 	uint8_t		FieldMask;
-	
+
 
 	static int getBitPosition(uint8_t byteMask);
 
@@ -625,7 +625,7 @@ class UClassProperty : public UObjectProperty
 public:
 	using UObjectProperty::UObjectProperty;
 
-	UClass*	MetaClass;
+	UClass* MetaClass;
 
 	UClass* getMetaClass() const;
 
@@ -640,7 +640,7 @@ class UInterfaceProperty : public UProperty
 public:
 	using UProperty::UProperty;
 
-	UProperty*	InterfaceClass;
+	UProperty* InterfaceClass;
 
 	UProperty* getInterfaceClass() const;
 
@@ -743,11 +743,11 @@ public:
 	UProperty* Inner;
 
 	UProperty* getInner() const;
-	
+
 	static std::string typeName() { return "TArray"; }
 
 	std::vector<fieldType> getSubTypes() const { return std::vector{ getInner()->getType() }; }
-	
+
 	static UClass* staticClass();
 };
 
@@ -776,7 +776,7 @@ public:
 	UProperty* ElementProp;
 
 	UProperty* getElementProp() const;
-	
+
 	static std::string typeName() { return "TSet"; }
 
 	std::vector<fieldType> getSubTypes() const { return std::vector{ getElementProp()->getType() }; }
@@ -797,7 +797,7 @@ public:
 	static std::string typeName() { return "FDelegateProperty"; }
 #endif
 
-	
+
 	static UClass* staticClass();
 };
 
@@ -830,11 +830,11 @@ public:
 
 	std::string typeName() const
 	{
-		if(const auto enu = getEnum())
+		if (const auto enu = getEnum())
 			return enu->getName();
 		return "";
 	}
-	
+
 	static UClass* staticClass();
 };
 
@@ -921,7 +921,6 @@ public:
 	FName NamePrivate;
 
 	/** Object flags */
-	//EObjectFlags FlagsPrivate;
 	EObjectFlags FlagsPrivate;
 
 
@@ -1006,7 +1005,7 @@ public:
 	static std::string typeName() { return "TWeakObjectPtr"; }
 
 	std::vector<fieldType> getSubTypes() const { return std::vector<fieldType>{ {true, PropertyType::ObjectProperty, getMetaClass()->getCName()}}; }
-	
+
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/UnrealType.h#L2734
