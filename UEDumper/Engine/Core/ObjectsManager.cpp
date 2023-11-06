@@ -10,7 +10,7 @@ void ObjectsManager::verifyUBigObjectSize(UObjectManager::UBigObject* bigObjectP
 	if (requiredSize > UOBJECT_MAX_SIZE)
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
-			"HARD ERROR! A UObject tried to acces more space (%d) than it can have max (%d). Try increasing UOBJECT_MAX_SIZE", requiredSize, UOBJECT_MAX_SIZE);
+			"HARD ERROR! A UObject tried to access more space (%d) than it can have max (%d). Try increasing UOBJECT_MAX_SIZE", requiredSize, UOBJECT_MAX_SIZE);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
 	}
@@ -194,7 +194,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 #endif
 
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Loaded GObjectPtrArray succesfully!");
+	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Loaded GObjectPtrArray successfully!");
 
 	bOperationSuccess = true;
 }
@@ -220,7 +220,6 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		return;
 	}
 
-
 	//go through each element
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
 	{
@@ -228,10 +227,12 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * 24);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
-		if (!UObjectAddress) {
+		if (!UObjectAddress) 
+		{
 			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for obect %d!", i);
 		}
-		else {
+		else 
+		{
 			//gets the memory address where the objects gonna be
 			UObjectManager::UBigObject* newBigObject = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + i * sizeof(UObjectManager::UBigObject));
 			newBigObject->readSize = sizeof(UObject);
@@ -250,7 +251,7 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		finishedBytes += sizeof(UObject);
 	}
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray succesfully!");
+	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray successfully!");
 	bOperationSuccess = true;
 }
 
@@ -258,7 +259,7 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 
 uint64_t ObjectsManager::cacheFField(uint64_t gamePtr)
 {
-	if(gFFieldManager.linkedFFieldIndexCount >= gFFieldManager.maxFFieldCacheNum)
+	if (gFFieldManager.linkedFFieldIndexCount >= gFFieldManager.maxFFieldCacheNum)
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
 			"HARD ERROR: cacheFField wanted to cache another field but the cache is full! Try increasing FFIELD_CT (currently: %d)", FFIELD_CT);
