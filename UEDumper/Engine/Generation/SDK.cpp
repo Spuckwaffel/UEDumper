@@ -204,6 +204,7 @@ void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Pa
 
 SDKGeneration::SDKGeneration()
 {
+
 }
 
 void SDKGeneration::Generate(int& progressDone, int& totalProgress)

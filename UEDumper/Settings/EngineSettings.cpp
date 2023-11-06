@@ -22,8 +22,7 @@ std::string EngineSettings::getDumperVersion()
 bool EngineSettings::setProjectName(const std::string& name)
 {
 	const auto path = std::filesystem::current_path() / name;
-	
-	
+
 	workingDir = path;
 	projectName = name;
 
@@ -109,17 +108,17 @@ nlohmann::json EngineSettings::toJson()
 
 bool EngineSettings::loadJson(const nlohmann::json& json)
 {
-	if(!json.contains("DUMPER_VERSION"))
+	if (!json.contains("DUMPER_VERSION"))
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
 			"version of the dumper and is not compatible with this version.");
 	}
 	const int ver = json["DUMPER_VERSION"];
-	if(ver != DUMPER_VERSION)
+	if (ver != DUMPER_VERSION)
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
 																	   "version of the dumper.");
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but Dumper has version %d.", ver, DUMPER_VERSION);
+		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
 		return false;
 	}
 
@@ -144,7 +143,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 	_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS = json["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"];
 
 #define checkMacro(condition, name, save) \
-	if(condition) { \
+	if (condition) { \
 		if (!json.contains(name)) { \
 			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
 			return false; \
@@ -164,7 +163,6 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 
 	checkMacro(_UE_VERSION >= UE_4_25, "WITH_EDITORONLY_DATA", _WITH_EDITORONLY_DATA);
 
-
 	projectName = json["projectName"];
 
 	workingDir = json.value("workingDir", std::filesystem::path());
@@ -176,13 +174,11 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 
 	targetApplicationName = json["targetApplicationName"];
 
-
 	return true;
 }
 
 void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 {
-
 	ImGui::BeginChild(merge(ICON_FA_INFO, " Engine Settings"), window, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
 	IGHelper::placeInCenter(merge(ICON_FA_INFO, " Engine Settings"));
 
