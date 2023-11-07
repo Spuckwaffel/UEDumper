@@ -21,7 +21,6 @@ UClass* UObject::getClass() const
     UREADORNULL(UClass, ClassPrivate)
 }
 
-
 std::string UObject::getName() const
 {
     return EngineCore::FNameToString(NamePrivate);
@@ -31,7 +30,6 @@ std::string UObject::getName(const FName& fName)
 {
     return EngineCore::FNameToString(fName);
 }
-
 
 std::string UObject::getFullName() const
 {
@@ -127,7 +125,6 @@ UObject* UObject::getOwnPointer() const
     return reinterpret_cast<UObject*>(objectptr);
 }
 
-
 UObject* UObject::getPackageObject() const
 {
     if (const auto ptr = getPackageObjectFnPtr())
@@ -137,10 +134,8 @@ UObject* UObject::getPackageObject() const
     return nullptr;
 }
 
-
 UObject* UObject::getPackageObjectFnPtr() const
 {
-
     UObject* pouter = OuterPrivate;
 
     auto package = getOuter();
@@ -241,7 +236,6 @@ UStruct* UStruct::getSuper() const
 {
     UREADORNULL(UStruct, SuperStruct)
 }
-
 
 std::vector<UObject*> UStruct::getAllSupers() const
 {
@@ -611,7 +605,6 @@ UClass* UObjectPropertyBase::staticClass()
     return ObjectsManager::findObject<UClass>("/Script/CoreUObject.ObjectPropertyBase");
 }
 
-
 int UBoolProperty::getBitPosition(uint8_t byteMask)
 {
     const int i4 = !(byteMask & 0xf) << 2;
@@ -701,10 +694,6 @@ UBoolProperty::BitInfo UBoolProperty::getMissingBitsCount(const UBoolProperty& l
     return { std::numeric_limits<uint8_t>::digits - getBitPosition(lastProp.ByteMask) - 1, getBitPosition(ByteMask) };
 
 }
-
-
-
-
 
 /*
  *

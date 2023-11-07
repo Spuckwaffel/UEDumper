@@ -3,13 +3,11 @@
 #include "Frontend/Windows/LogWindow.h"
 #include "Memory/memory.h"
 
-
 void LiveMemory::memoryLoop()
 {
 	windows::LogWindow::Log(windows::LogWindow::log_1, "LIVEMEM", "Started block loop!");
 	while(true)
 	{
-
 		// Store the current time in a variable
 		const auto time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 		auto i = memoryBlocks.begin();
@@ -20,7 +18,6 @@ void LiveMemory::memoryLoop()
 				++i;
 				continue;
 			}
-				
 
 			//if((*i).second.updateTimeStamp + 3000 < time)
 			//{
@@ -29,8 +26,6 @@ void LiveMemory::memoryLoop()
 			//	continue;
 			//}
 				
-
-
 			(*i).second.updateTimeStamp = time;
 			Memory::read((*i).first, (*i).second.buffer, (*i).second.size);
 			(*i).second.usageCounter = 0; //reset the usage counter to 0. Only update if there are usages.
@@ -53,6 +48,7 @@ void LiveMemory::memoryLoop()
 
 LiveMemory::LiveMemory()
 {
+
 }
 
 LiveMemory::MemoryBlock* LiveMemory::addNewBlock(uint64_t address, int size)
@@ -77,7 +73,6 @@ LiveMemory::MemoryBlock* LiveMemory::addNewBlock(uint64_t address, int size)
 	memoryBlocks.insert(std::pair(address, b));
 	windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Added block for 0x%p at 0x%p!", address, b.buffer);
 	return &memoryBlocks[address];
-	
 }
 
 void LiveMemory::freeBlock(uint64_t address)
@@ -88,7 +83,6 @@ void LiveMemory::freeBlock(uint64_t address)
 	free(reinterpret_cast<void*>(memoryBlocks[address].buffer));
 
 	windows::LogWindow::Log(windows::LogWindow::log_2, "LIVEMEM", "Deleted block for 0x%p!", address);
-	
 }
 
 void LiveMemory::cacheBlocks()
@@ -105,7 +99,7 @@ LiveMemory::MemoryBlock* LiveMemory::getMemoryBlock(uint64_t address)
 {
 	//increase usageCounter because the block was accessed
 
-	if(memoryBlocks.contains(address))
+	if (memoryBlocks.contains(address))
 	{
 		memoryBlocks[address].usageCounter++;
 		return &memoryBlocks[address];
