@@ -22,6 +22,47 @@ struct fieldType
 	//it makes it possible to click objects e.g in a TArray<x,y> for redirection
 	std::vector<fieldType> subTypes = {};
 
+	/**
+	 * \brief essentially for dumpspace, gets the short type
+	 * \return returns the short type of the fieldType (S, C, E, D)
+	 */
+	std::string getTypeShort() const
+	{
+		std::string typest;
+		if (!clickable) //not clickable? always a D (Default) type
+			typest = "D";
+		else if (name[0] == 'U' || name[0] == 'A')
+			typest = "C";
+		else if (name[0] == 'E') //Enums always start with a E
+			typest = "E";
+		else
+			typest = "S";
+
+		return typest;
+	}
+
+	bool isPointer() const
+	{
+		return (propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && clickable;
+	}
+
+	//essentially for dumspace formatting
+	nlohmann::json jsonify() const
+	{
+		//create a array for the fieldType
+		nlohmann::json arr = nlohmann::json::array();
+		arr.push_back(name);
+		arr.push_back(getTypeShort());
+		arr.push_back(isPointer() ? "*" : "");
+		nlohmann::json subTypeArr = nlohmann::json::array();
+		for (auto& subType : subTypes)
+			subTypeArr.push_back(subType.jsonify());
+
+		arr.push_back(subTypeArr);
+
+		return arr;
+	}
+
 	//essentially for dumps.host
 	std::string stringify() const
 	{
@@ -36,7 +77,7 @@ struct fieldType
 			{
 				typeStr += subTypes[i].name;
 
-				if ((subTypes[i].propertyType == PropertyType::ObjectProperty || subTypes[i].propertyType == PropertyType::ClassProperty) && clickable)
+				if (subTypes[i].propertyType == PropertyType::ObjectProperty || subTypes[i].propertyType == PropertyType::ClassProperty)
 					typeStr += "*";
 
 				if (i < subTypes.size() - 1)
@@ -169,7 +210,7 @@ namespace EngineStructs
 			j["r"] = returnType.toJson();
 			nlohmann::json jParams;
 			for (const auto& param : params)
-				jParams.push_back({std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param), std::get<3>(param) });
+				jParams.push_back({ std::get<0>(param).toJson(), std::get<1>(param), std::get<2>(param), std::get<3>(param) });
 			j["p"] = jParams;
 			j["fn"] = fullName;
 			j["c"] = cppName;
@@ -282,7 +323,7 @@ namespace EngineStructs
 			j["c"] = cppName;
 			j["t"] = type;
 			nlohmann::json jMembers;
-			for(const auto& member : members)
+			for (const auto& member : members)
 			{
 				nlohmann::json jMember;
 				jMember["f"] = member.first;
@@ -331,9 +372,9 @@ namespace EngineStructs
 			std::string sa = a.packageName;
 			std::string sb = b.packageName;
 			std::ranges::transform(sa, sa.begin(),
-			                       [](unsigned char c) { return std::tolower(c); });
+				[](unsigned char c) { return std::tolower(c); });
 			std::ranges::transform(sb, sb.begin(),
-			                       [](unsigned char c) { return std::tolower(c); });
+				[](unsigned char c) { return std::tolower(c); });
 			return sa < sb;
 		}
 
@@ -354,7 +395,7 @@ namespace EngineStructs
 			j["i"] = index;
 
 			nlohmann::json jStructs;
-			for(const auto& struc : structs)
+			for (const auto& struc : structs)
 				jStructs.push_back(struc.toJson());
 			j["s"] = jStructs;
 

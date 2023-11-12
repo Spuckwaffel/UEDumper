@@ -21,11 +21,12 @@
 <li>Rich GUI with the help of the ImGui library.</li>
 <li>Unreal Engine 4.19 - 5.2.0 support without having to modify any internal structures of the code.</li>
 <li>SDK generator and editor.</li>
+<li>New MDK type generator.</li>
 <li>Live editor to read/write the games' memory.</li>
-<li>Saving the SDK to use it in your C++ project.</li>
+<li>Saving the SDK and MDK to use it in your C++ project.</li>
 <li>Well documented source code for the Engine.</li>
 <li>Simple Definitions that change the Engine's behavior.</li>
-<li>Support for Dumps Host.</li>
+<li>Support for Dumpspace.</li>
 </ul>
 <h2>Getting Started</h2>
 <p>This project DOES NOT work out of the box! To support your game, you still have to reverse it on your own to find the information that is stated below.</p>
