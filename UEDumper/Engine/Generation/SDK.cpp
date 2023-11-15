@@ -11,8 +11,8 @@
 
 void SDKGeneration::printCredits(std::ofstream& stream)
 {
-	stream <<
-R"(
+    stream <<
+        R"(
 /********************************************************
 *                                                       *
 *   Package generated using UEDumper by Spuckwaffel.    *
@@ -24,55 +24,55 @@ R"(
 
 void SDKGeneration::generateBasicType()
 {
-	std::ofstream BasicType(SDKPath / "BasicType.h");
-	const auto& defs = basicDefinitions();
-	auto noDefs = EngineCore::getAllUnknownTypes();
-	for(const auto& [name, definition] : defs)
-		if (auto it = std::ranges::find(noDefs, name); it != noDefs.end())
-			noDefs.erase(it);
+    std::ofstream BasicType(SDKPath / "BasicType.h");
+    const auto& defs = basicDefinitions();
+    auto noDefs = EngineCore::getAllUnknownTypes();
+    for (const auto& [name, definition] : defs)
+        if (auto it = std::ranges::find(noDefs, name); it != noDefs.end())
+            noDefs.erase(it);
 
-	printCredits(BasicType);
-	BasicType << "/// This file contains all definitions of structs that werent defined automatically.\n\n";
+    printCredits(BasicType);
+    BasicType << "/// This file contains all definitions of structs that werent defined automatically.\n\n";
 
-	auto addIfCustom = [&](const char* base, const char* user)
-	{
-		if(strcmp(base, user) != 0)
-		{
-			BasicType << "typedef " << base << " " << user << ";\n";
-		}
-	};
+    auto addIfCustom = [&](const char* base, const char* user)
+    {
+        if (strcmp(base, user) != 0)
+        {
+            BasicType << "typedef " << base << " " << user << ";\n";
+        }
+    };
 
-	addIfCustom("bool", TYPE_BOOLEAN);
-	addIfCustom("unsigned char", TYPE_UCHAR);
-	addIfCustom("char", TYPE_CHAR);
-	addIfCustom("uint8_t", TYPE_UI8);
-	addIfCustom("uint16_t", TYPE_UI16);
-	addIfCustom("uint32_t", TYPE_UI32);
-	addIfCustom("uint64_t", TYPE_UI64);
-	addIfCustom("int8_t", TYPE_I8);
-	addIfCustom("int16_t", TYPE_I16);
-	addIfCustom("int32_t", TYPE_I32);
-	addIfCustom("int64_t", TYPE_I64);
-	addIfCustom("float", TYPE_FLOAT);
-	addIfCustom("double", TYPE_DOUBLE);
+    addIfCustom("bool", TYPE_BOOLEAN);
+    addIfCustom("unsigned char", TYPE_UCHAR);
+    addIfCustom("char", TYPE_CHAR);
+    addIfCustom("uint8_t", TYPE_UI8);
+    addIfCustom("uint16_t", TYPE_UI16);
+    addIfCustom("uint32_t", TYPE_UI32);
+    addIfCustom("uint64_t", TYPE_UI64);
+    addIfCustom("int8_t", TYPE_I8);
+    addIfCustom("int16_t", TYPE_I16);
+    addIfCustom("int32_t", TYPE_I32);
+    addIfCustom("int64_t", TYPE_I64);
+    addIfCustom("float", TYPE_FLOAT);
+    addIfCustom("double", TYPE_DOUBLE);
 
-	BasicType << "\n\n";
+    BasicType << "\n\n";
 
-	if (noDefs.size() > 0)
-		BasicType << "///\n/// THERE ARE MISSING STRUCTS!! This will result in errors!!!\n///\n\n";
+    if (noDefs.size() > 0)
+        BasicType << "///\n/// THERE ARE MISSING STRUCTS!! This will result in errors!!!\n///\n\n";
 
-	for(const auto& missingDef : noDefs)
-	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "WARNING: SDK ERRORS WILL APPEAR!! Missing definition for struct %s!!!", missingDef.c_str());
-		BasicType << "//TODO: Define " << missingDef << "!\n\n\n";
-	}
+    for (const auto& missingDef : noDefs)
+    {
+        windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "WARNING: SDK ERRORS WILL APPEAR!! Missing definition for struct %s!!!", missingDef.c_str());
+        BasicType << "//TODO: Define " << missingDef << "!\n\n\n";
+    }
 
-	for (const auto& [name, definition] : defs)
-	{
-		BasicType << "/// Definition for " << name << "\n";
-		BasicType << definition << "\n\n";
-	}
-	BasicType.close();
+    for (const auto& [name, definition] : defs)
+    {
+        BasicType << "/// Definition for " << name << "\n";
+        BasicType << definition << "\n\n";
+    }
+    BasicType.close();
 }
 
 void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Package& package)
@@ -208,35 +208,35 @@ SDKGeneration::SDKGeneration()
 
 void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 {
-	windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "Baking SDK...");
+    windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "Baking SDK...");
 
-	SDKPath = EngineSettings::getWorkingDirectory() / "SDK";
-	if (!create_directories(SDKPath))
-		remove_all(SDKPath);
+    SDKPath = EngineSettings::getWorkingDirectory() / "SDK";
+    if (!create_directories(SDKPath))
+        remove_all(SDKPath);
 
-	//the master header contains all the imports sorted
-	std::ofstream masterHeader(SDKPath / "SDK.h");
+    //the master header contains all the imports sorted
+    std::ofstream masterHeader(SDKPath / "SDK.h");
 
-	//yes, so all the SDK files are in path/to/stuff/SDK/SDK/
-	//because i can imagine theres some stupid game that has a package called SDK and that would ruin our master file
-	//so it will look like this
-	/// path/to/shit/
-	///				-> SDK/
-	///					  -> SDK.h					// master header you will include
-	///					  -> SDK/					// folder with all the packages
-	///							-> Engine.h			//random package by the game
-	///							-> XGame.h			//random package by the game
-	///							-> CoreUObject.h	//random package by the game
-	///							...
-	///
-	SDKPath = SDKPath / "SDK";
-	if (!create_directories(SDKPath))
-		remove_all(SDKPath);
+    //yes, so all the SDK files are in path/to/stuff/SDK/SDK/
+    //because i can imagine theres some stupid game that has a package called SDK and that would ruin our master file
+    //so it will look like this
+    /// path/to/shit/
+    ///				-> SDK/
+    ///					  -> SDK.h					// master header you will include
+    ///					  -> SDK/					// folder with all the packages
+    ///							-> Engine.h			//random package by the game
+    ///							-> XGame.h			//random package by the game
+    ///							-> CoreUObject.h	//random package by the game
+    ///							...
+    ///
+    SDKPath = SDKPath / "SDK";
+    if (!create_directories(SDKPath))
+        remove_all(SDKPath);
 
-	
 
-	masterHeader <<
-		R"(
+
+    masterHeader <<
+        R"(
 /********************************************************
 *                                                       *
 *     SDK generated using UEDumper by Spuckwaffel.		*
@@ -254,26 +254,23 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 
     generateBasicType();
 
-	totalProgress = 10;
-	progressDone = totalProgress;
-	totalProgress = EngineCore::getPackages().size();
-	const auto path = EngineSettings::getWorkingDirectory() / "SDK";
-	if (!create_directories(path))
-		remove_all(path);
-	for (const auto& package : EngineCore::getPackages())
-	{
+    totalProgress = 10;
+    progressDone = totalProgress;
+    totalProgress = EngineCore::getPackages().size();
+    for (const auto& package : EngineCore::getPackages())
+    {
         masterHeader << "#include \"" + package.packageName + ".h" + "\"" << std::endl;
 
         if (package.packageName == "BasicType")
             continue;
 
-		std::ofstream file(path / (package.packageName + ".h"));
-		printCredits(file);
-		file << "/// Package " + package.packageName << ".\n\n";
+        std::ofstream file(SDKPath / (package.packageName + ".h"));
+        printCredits(file);
+        file << "/// Package " + package.packageName << ".\n\n";
 
-		generatePackage(file, package);
-		file.close();
-		progressDone++;
-	}
-	progressDone = totalProgress;
+        generatePackage(file, package);
+        file.close();
+        progressDone++;
+    }
+    progressDone = totalProgress;
 }

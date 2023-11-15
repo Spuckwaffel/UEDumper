@@ -70,7 +70,8 @@ int main()
 
     //render loop
     bool done = false;
-    while (!done) {
+    while (!done) 
+    {
 
         //handles any messages
         IGHelper::handleMsg(&done);
@@ -85,7 +86,7 @@ int main()
         windows::TopRowButtons::renderTopRowButtons();
 
         //either render only the live editor or the package editor
-        if(windows::DumpProgress::isAlreadyCompleted() && windows::LiveEditor::LiveEditorStarted())
+        if (windows::DumpProgress::isAlreadyCompleted() && windows::LiveEditor::LiveEditorStarted())
         {
 	        windows::LiveEditor::renderLiveEditor();
         }

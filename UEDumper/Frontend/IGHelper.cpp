@@ -130,9 +130,9 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
     faFont = io.Fonts->AddFontFromMemoryCompressedTTF(faFont_compressed_data, sizeof(faFont_compressed_data), 20, &config, icon_ranges);
     titleFont = io.Fonts->AddFontFromMemoryCompressedTTF(InterFont_compressed_data, sizeof(InterFont_compressed_data), 35);
     smallFont = io.Fonts->AddFontFromMemoryCompressedTTF(InterFont_compressed_data, sizeof(InterFont_compressed_data), 18);
-    
 
-    if (applyDefaultStyle) {
+    if (applyDefaultStyle) 
+    {
         ImVec4* colors = ImGui::GetStyle().Colors;
         colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
         colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
@@ -191,7 +191,6 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
         colors[ImGuiCol_NavWindowingDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.20f);
         colors[ImGuiCol_ModalWindowDimBg] = ImVec4(1.00f, 0.00f, 0.00f, 0.35f);
 
-
         ImGuiStyle& style = ImGui::GetStyle();
         style.WindowPadding = ImVec2(8.00f, 8.00f);
         style.CellPadding = ImVec2(6.00f, 6.00f);
@@ -216,10 +215,10 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
         style.TabRounding = 4;
         ImGui::GetIO().IniFilename = nullptr;
     }
-    else {
+    else 
+    {
         ImGui::StyleColorsDark();
     }
-    
 
     // Setup Platform/Renderer backends
     ImGui_ImplWin32_Init(hwnd);
@@ -278,7 +277,8 @@ void IGHelper::placeInCenter(const std::string& st, const float off)
 
 void IGHelper::copyToClipBoard(const std::string& str)
 {
-    if (!OpenClipboard(nullptr)) {
+    if (!OpenClipboard(nullptr))
+    {
         return;
     }
 
@@ -286,13 +286,15 @@ void IGHelper::copyToClipBoard(const std::string& str)
 
     const auto size = str.size() + 1;
     const auto hGlobal = GlobalAlloc(GMEM_MOVEABLE, size);
-    if (!hGlobal) {
+    if (!hGlobal) 
+    {
         CloseClipboard();
         return;
     }
 
     const auto lpGlobal = GlobalLock(hGlobal);
-    if (!lpGlobal) {
+    if (!lpGlobal) 
+    {
         GlobalFree(hGlobal);
         CloseClipboard();
         return;
@@ -304,8 +306,6 @@ void IGHelper::copyToClipBoard(const std::string& str)
     SetClipboardData(CF_TEXT, hGlobal);
     CloseClipboard();
 }
-
-
 void IGHelper::setLayeredWindowAttributes(const COLORREF crKey, const BYTE bAlpha, const DWORD dwFlags, float key[4])
 {
     memcpy(&clearColorKey, &key, sizeof(clearColorKey));
