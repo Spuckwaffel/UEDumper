@@ -17,7 +17,6 @@ namespace Dumpspace
 	void AddStruct(const nlohmann::json& json);
 	void AddEnum(const nlohmann::json& json);
 
-	void AddInheritInfo(const nlohmann::json& json);
 
 	void Dump(std::filesystem::path directory);
 

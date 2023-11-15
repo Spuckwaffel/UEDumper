@@ -37,11 +37,6 @@ namespace Dumpspace
         enums.push_back(json);
     }
 
-    nlohmann::json inherits = nlohmann::json::array();
-    void AddInheritInfo(const nlohmann::json& json) {
-        inherits.push_back(json);
-    }
-
     void DumpOffsets(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
@@ -67,11 +62,6 @@ namespace Dumpspace
 
         std::ofstream file(directory / "FunctionsInfo.json");
         file << j.dump();
-    }
-
-    void DumpInheritInfo(const std::filesystem::path& directory) {
-        std::ofstream file(directory / "InheritInfo.json");
-        file << inherits.dump();
     }
 
     void DumpStructs(const std::filesystem::path& directory) {
@@ -102,7 +92,6 @@ namespace Dumpspace
         DumpOffsets(directory);
         DumpClasses(directory);
         DumpFunctions(directory);
-        DumpInheritInfo(directory);
         DumpStructs(directory);
         DumpEnums(directory);
     }
