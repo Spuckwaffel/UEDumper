@@ -133,6 +133,7 @@ uint64_t Memory::patternScan(int flag, const char* pattern, const std::string& m
 
 		ntHeaders = read<IMAGE_NT_HEADERS>(baseAddress + dosHeader.e_lfanew);
 
+
 		if (ntHeaders.Signature != IMAGE_NT_SIGNATURE)
 			throw std::runtime_error("ntHeaders.Signature invalid!");
 
@@ -141,7 +142,7 @@ uint64_t Memory::patternScan(int flag, const char* pattern, const std::string& m
 
 		//ReadProcessMemory(hProcess, (LPBYTE)baseAddress + dosHeader.e_lfanew + sizeof(DWORD) + sizeof(IMAGE_FILE_HEADER),
 		//sectionHeaders.data(), sectionHeadersSize, nullptr)
-		read(baseAddress + dosHeader.e_lfanew + sizeof(DWORD) + sizeof(IMAGE_FILE_HEADER), reinterpret_cast<DWORD64>(sectionHeaders.data()), sectionHeadersSize);
+		read(baseAddress + dosHeader.e_lfanew + sizeof(DWORD) + sizeof(IMAGE_FILE_HEADER) + ntHeaders.FileHeader.SizeOfOptionalHeader, reinterpret_cast<DWORD64>(sectionHeaders.data()), sectionHeadersSize);
 
 
 		for (const auto& section : sectionHeaders) {

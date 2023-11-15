@@ -26,7 +26,8 @@ public:
 		"Unreal Engine 4.27",
 		"Unreal Engine 5.0",
 		"Unreal Engine 5.1",
-		"Unreal Engine 5.2"
+		"Unreal Engine 5.2",
+		"Unreal Engine 5.3"
 	};
 
 	static const inline char* DumperVersionNames[] = {
