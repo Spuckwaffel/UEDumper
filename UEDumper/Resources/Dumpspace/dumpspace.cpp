@@ -204,11 +204,11 @@ namespace Dumpspace
                 for (int i = 0; i < enu.members.size(); i++)
                 {
                     nlohmann::json a;
-                    a[enu.members[i].first] = std::make_tuple(enu.members[i].second, enu.type);
+                    a[enu.members[i].first] = enu.members[i].second;
                     members.push_back(a);
                 }
                 nlohmann::json j;
-                j[enu.cppName] = members;
+                j[enu.cppName] = std::make_tuple(members, enu.type);
                 AddEnum(j);
             }
             progressDone++;
