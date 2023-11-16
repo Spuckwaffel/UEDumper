@@ -12,9 +12,9 @@ namespace Dumpspace
     std::string dumpTimeStamp = {};
 
     // Last std::string isn't used atm, but dumps.host expects it.
-    std::vector<std::tuple<std::string, uintptr_t, std::string>> offsets = {};
+    std::vector<std::pair<std::string, uintptr_t>> offsets = {};
     void AddOffset(const std::string& string, uint64_t offset) {
-        offsets.push_back(std::make_tuple(string, offset, "Offset"));
+        offsets.push_back(std::pair(string, offset));
     }
 
     nlohmann::json classes = nlohmann::json::array();
@@ -175,9 +175,9 @@ namespace Dumpspace
                             for (auto& param : func.params)
                             {
                                 std::string functionParamType = "";
-                                if (std::get<3>(param) > 1)
-                                    functionParamType += "*";
-                                else if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
+                                //if (std::get<3>(param) > 1)
+                                //    functionParamType += "*";
+                                if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
                                     functionParamType += "&";
 
                                 functionParams.push_back(std::make_tuple(std::get<0>(param).jsonify(), functionParamType, std::get<1>(param)));
@@ -204,11 +204,11 @@ namespace Dumpspace
                 for (int i = 0; i < enu.members.size(); i++)
                 {
                     nlohmann::json a;
-                    a[enu.members[i].first] = std::make_tuple(enu.members[i].second, enu.type);
+                    a[enu.members[i].first] = enu.members[i].second;
                     members.push_back(a);
                 }
                 nlohmann::json j;
-                j[enu.cppName] = members;
+                j[enu.cppName] = std::make_tuple(members, enu.type);
                 AddEnum(j);
             }
             progressDone++;
