@@ -110,7 +110,7 @@ void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Pa
 
             if (struc.inherited && struc.isClass)
                 file << " : public " << generateValidVarName(struc.supers[0]->cppName);
-            if (struc.inherited)
+            else if (struc.inherited)
                 file << " : " << generateValidVarName(struc.supers[0]->cppName);
 
 

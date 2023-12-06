@@ -32,7 +32,7 @@ inline void init()
 	//...
 }
 
-uint64_t getBaseAddress(const wchar_t* processName, int& pid);
+uint64_t _getBaseAddress(const wchar_t* processName, int& pid);
 
 void attachToProcess(const int& pid);
 
@@ -46,7 +46,7 @@ inline void loadData(std::string& processName, uint64_t& baseAddress, int& proce
 {
     const auto name = std::wstring(processName.begin(), processName.end());
 
-    baseAddress = getBaseAddress(name.c_str(), processID);
+    baseAddress = _getBaseAddress(name.c_str(), processID);
 
     attachToProcess(processID);
 }
@@ -91,26 +91,32 @@ inline void _write(void* address, const void* buffer, const DWORD64 size)
  * \param pid returns the process id
  * \return process base address
  */
-uint64_t getBaseAddress(const wchar_t* processName, int& pid)
+uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
 {
     uint64_t baseAddress = 0;
-	// Get a handle to the process
-    const HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-    if (hProcess == INVALID_HANDLE_VALUE) {
-        return false;
-    }
 
-    // Iterate through the list of processes to find the one with the given filename
-    PROCESSENTRY32 pe32 = { sizeof(PROCESSENTRY32) };
-    if (!Process32First(hProcess, &pe32)) {
-        CloseHandle(hProcess);
-        return false;
-    }
-    while (Process32Next(hProcess, &pe32)) {
-        if (wcscmp(pe32.szExeFile, processName) == 0) {
-            pid = pe32.th32ProcessID;
-            break;
+    if(!pid)
+    {
+        // Get a handle to the process
+        const HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+        if (hProcess == INVALID_HANDLE_VALUE) {
+            return false;
         }
+
+        // Iterate through the list of processes to find the one with the given filename
+        PROCESSENTRY32 pe32 = { sizeof(PROCESSENTRY32) };
+        if (!Process32First(hProcess, &pe32)) {
+            CloseHandle(hProcess);
+            return false;
+        }
+        while (Process32Next(hProcess, &pe32)) {
+            if (wcscmp(pe32.szExeFile, processName) == 0) {
+                pid = pe32.th32ProcessID;
+                break;
+            }
+        }
+
+        CloseHandle(hProcess);
     }
 
     // Get the base address of the process in memory
@@ -126,7 +132,7 @@ uint64_t getBaseAddress(const wchar_t* processName, int& pid)
     }
     
     // Clean up and return
-    CloseHandle(hProcess);
+    
     return baseAddress;
 }
 

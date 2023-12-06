@@ -20,6 +20,8 @@ bool windows::HelloWindow::render()
 	static char errorText[100] = { 0 };
 	static bool showEngineInfos = false;
 	static bool createdDir = false;
+	static bool ProcessIDInsteadOfName = false;
+	static bool PIDInHex = true;
 
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
@@ -41,7 +43,7 @@ bool windows::HelloWindow::render()
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "%22s", EngineSettings::getDumperVersion().c_str());
 		ImGui::SetCursorPos({ posX, 20 });
 		ImGui::BeginChild("NewProjectChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
-		ImGui::PushItemWidth(400);
+		ImGui::PushItemWidth(373);
 		ImGui::Dummy(ImVec2(0, 20));
 		ImGui::Text("Enter a project name (at least 5 characters)");
 		ImGui::InputTextWithHint("##projectNameInput", "Fortnite 5.0.1", projectName, sizeof(projectName));
@@ -60,22 +62,69 @@ bool windows::HelloWindow::render()
 		{
 			ImGui::Text("Created!");
 		}
-		
-		ImGui::Text("Enter running UE Game name");
-		ImGui::InputTextWithHint("##gameNameInput", "UEGame-Win64-Shipping.exe", processName, sizeof(processName));
+
 		ImGui::PopItemWidth();
-		ImGui::SameLine();
-		if (Memory::getStatus() != Memory::MemoryStatus::loaded)
+
+		if (ProcessIDInsteadOfName)
 		{
-			if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
-			{
+			ImGui::PushItemWidth(280);
+			if (PIDInHex)
+				ImGui::Text("Enter running UE Game PID (hex)");
+			else
+				ImGui::Text("Enter running UE Game PID (decimal)");
+
+			//we still use the procname buff
+			ImGui::InputTextWithHint("##gameNameInput", PIDInHex ? "123ABC" : "123456", processName, sizeof(processName), PIDInHex ? ImGuiInputTextFlags_CharsHexadecimal : ImGuiInputTextFlags_CharsHexadecimal);
+			ImGui::PopItemWidth();
+			ImGui::SameLine();
+			ImGui::BeginDisabled(Memory::getStatus() == Memory::MemoryStatus::loaded);
+			if (ImGui::Button(PIDInHex ? "DEC" : "HEX"))
+				PIDInHex = !PIDInHex;
+
+			ImGui::SameLine();
+			if (ImGui::Button("Name"))
+				ProcessIDInsteadOfName = false;
+			ImGui::EndDisabled();
+
+			auto sPID = std::string(processName);
+			if (sPID.empty())
+				sPID = "0";
+
+			const int PID = std::stoi(sPID, nullptr, PIDInHex ? 16 : 10);
+
+			ImGui::SameLine();
+
+			if (Memory::getStatus() == Memory::MemoryStatus::loaded)
+				ImGui::Text("Loaded!");
+
+			else if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
+				Memory::load(PID);
+		}
+
+		else
+		{
+			ImGui::PushItemWidth(350);
+			ImGui::Text("Enter running UE Game name");
+			ImGui::InputTextWithHint("##gameNameInput", "UEGame-Win64-Shipping.exe", processName, sizeof(processName));
+			ImGui::PopItemWidth();
+			ImGui::SameLine();
+
+			ImGui::BeginDisabled(Memory::getStatus() == Memory::MemoryStatus::loaded);
+
+			if (ImGui::Button("PID"))
+				ProcessIDInsteadOfName = true;
+			ImGui::EndDisabled();
+
+			ImGui::SameLine();
+
+			if (Memory::getStatus() == Memory::MemoryStatus::loaded)
+				ImGui::Text("Loaded!");
+
+			else if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
 				Memory::load(std::string(processName));
-			}
+			
 		}
-		else if (Memory::getStatus() == Memory::MemoryStatus::loaded)
-		{
-			ImGui::Text("Loaded!");
-		}
+
 
 		ImGui::Spacing();
 		if (ImGui::Button("Engine settings"))
