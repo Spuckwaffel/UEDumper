@@ -383,3 +383,89 @@ struct FText
     FTextData* Data;
     char UnknownData[0x10];
 };
+
+#if UE_VERSION >= UE_5_03
+
+//https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectPtr.h#L55
+struct FObjectPtr
+{
+public:
+
+
+    FORCEINLINE uint64_t Get() const
+    {
+        // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h#L214
+        //return UE::CoreUObject::Private::ResolveObjectHandle(Handle);
+        // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h#L291
+        return Handle;
+    }
+
+    union
+    {
+    	uint64_t Handle;
+        // DebugPtr allows for easier dereferencing of a resolved FObjectPtr in watch windows of debuggers.  If the address in the pointer
+        // is an odd/uneven number, that means the object reference is unresolved and you will not be able to dereference it successfully.
+        uint64_t DebugPtr;
+    };
+};
+
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectPtr.h#L348
+template <typename T>
+struct TObjectPtr
+{
+public:
+	TObjectPtr()
+		: ObjectPtr()
+	{
+	}
+	union
+	{
+		FObjectPtr ObjectPtr;
+		// DebugPtr allows for easier dereferencing of a resolved TObjectPtr in watch windows of debuggers.  If the address in the pointer
+		// is an odd/uneven number, that means the object reference is unresolved and you will not be able to dereference it successfully.
+		T* DebugPtr;
+	};
+};
+
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectPtr.h#L643
+
+template <typename T>
+class TNonAccessTrackedObjectPtr
+{
+public:
+    TNonAccessTrackedObjectPtr() = default;
+    explicit TNonAccessTrackedObjectPtr(T* Ptr) : ObjectPtr{ Ptr } {}
+
+    void Set(T* Value)
+    {
+        ObjectPtr = Value;
+    }
+
+    T* Get() const
+    {
+        // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectPtr.h#L636
+        //return ObjectPtr_Private::Friend::NoAccessTrackingGet(ObjectPtr);
+        // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h#L253
+        // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h#L291
+        return ObjectPtr.ObjectPtr.Handle;
+    }
+
+    TObjectPtr<T>& GetAccessTrackedObjectPtr()
+    {
+        return ObjectPtr;
+    }
+
+    operator T* () const
+    {
+        return Get();
+    }
+
+    T* operator->() const
+    {
+        return Get();
+    }
+
+private:
+    TObjectPtr<T> ObjectPtr{};
+};
+#endif

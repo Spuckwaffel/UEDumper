@@ -19,6 +19,7 @@ class UClass;
 
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBase.h#L222
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBase.h#L246
 /**
  * \brief The base class of all UE4 objects.
  */
@@ -114,9 +115,10 @@ public:
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L56
-/**
- * \brief Base class of reflection data objects.
- */
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L155
+//
+// Base class of reflection data objects.
+//
 class UField : public UObject {
 public:
 	using UObject::UObject;
@@ -130,6 +132,7 @@ public:
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L1495
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L1999
 //
 // Reflection data for an enumeration.
 //
@@ -174,8 +177,10 @@ public:
 #endif
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L218
-// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L283
 // https://github.com/EpicGames/UnrealEngine/blob/4.22/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L248
+// https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L283
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h#L383
+
 /**
  * \brief Base class for all UObject types that contain fields.
  */
@@ -190,11 +195,21 @@ public:
 #endif
 #endif
 
+#if UE_VERSION < UE_5_03
 	/** Struct this inherits from, may be null */
 	UStruct*	SuperStruct;
 
 	/** Pointer to start of linked list of child fields */
 	UField*		Children;
+
+#else
+	//commented out because its the same (most of the cases)
+	//TNonAccessTrackedObjectPtr<UStruct> SuperStruct;
+	UStruct* SuperStruct;
+
+	//TObjectPtr<UField> Children;
+	UField* Children;
+#endif
 
 #if UE_VERSION >= UE_4_25
 	/** Pointer to start of linked list of child fields */
@@ -247,9 +262,16 @@ public:
 	/** In memory only: Linked list of properties requiring post constructor initialization */
 	FProperty* PostConstructLink;
 
+#if UE_VERSION < UE_5_03
 	/** Array of object references embedded in script code and referenced by FProperties. Mirrored for easy access by realtime garbage collection code */
 	TArray<UObject*> ScriptAndPropertyObjectReferences;
+#else
 
+	/** Array of object references embedded in script code and referenced by FProperties. Mirrored for easy access by realtime garbage collection code */
+	TArray<TObjectPtr<UObject>> ScriptAndPropertyObjectReferences;
+	
+
+#endif
 	//things are defined easier because theres no reason implementing all classes
 
 	//typedef TArray<TPair<TFieldPath<FField>, int32>> FUnresolvedScriptPropertiesArray
@@ -896,10 +918,14 @@ public:
 		UObject* Object;
 	} Container;
 
+#if UE_VERSION < UE_5_03
 	bool bIsUObject;
+#endif
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/Field.h#L351
+// https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/CoreUObject/Public/UObject/Field.h#L261
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/Field.h#L264
 /**
  * \brief Base class of reflection data objects.
  */
@@ -1009,11 +1035,18 @@ public:
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/4.25/Engine/Source/Runtime/CoreUObject/Public/UObject/UnrealType.h#L2734
+// https://github.com/EpicGames/UnrealEngine/blob/5.2/Engine/Source/Runtime/CoreUObject/Public/UObject/UnrealType.h#L3702
+// https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/UnrealType.h#L3628
 class FArrayProperty : public FProperty
 {
 public:
+#if UE_VERSION < UE_5_03
 	FProperty* Inner;
 	EArrayPropertyFlags ArrayFlags;
+#else
+	EArrayPropertyFlags ArrayFlags;
+	FProperty* Inner;
+#endif
 
 	FProperty* getInner() const;
 

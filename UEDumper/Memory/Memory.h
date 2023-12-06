@@ -72,6 +72,13 @@ public:
 	 */
 	static LoadError load(std::string processName);
 
+	/**
+	* \brief REQUIRED! Gets base address from the given process ID
+	* \param processPID target process PID
+	* \return LoadError value
+	*/
+	static LoadError load(int processPID);
+
 	static void checkStatus();
 
 	static MemoryStatus getStatus();
