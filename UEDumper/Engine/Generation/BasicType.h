@@ -26,22 +26,22 @@
 
 struct DefinedStruct
 {
-	//the name of the struct. This name should match the name in the engine, this is case sensitive!!!!!
-	std::string name;
+    //the name of the struct. This name should match the name in the engine, this is case sensitive!!!!!
+    std::string name;
 
-	//your multiline definition of the struct. Dont forget the brackets and ";"
-	std::string definition;
+    //your multiline definition of the struct. Dont forget the brackets and ";"
+    std::string definition;
 };
 
 inline std::vector<DefinedStruct> basicDefinitions()
 {
     std::vector<DefinedStruct> definedStructs;
 
-	DefinedStruct dStruct;
+    DefinedStruct dStruct;
     dStruct.name = "TArray";
     dStruct.definition =
-R"(
-template <class T>
+        R"(
+template <class T = char>
 struct TArray
 {
     friend struct FString;
@@ -79,7 +79,7 @@ public:
         return Max - Count;
     }
 
-    FORCEINLINE bool RemoveSingle(const int Index)
+    __forceinline bool RemoveSingle(const int Index)
     {
         if (Index < Count)
         {
@@ -93,7 +93,7 @@ public:
         return false;
     }
 
-    FORCEINLINE void RemoveAt(int Index, int Length = 1)
+    __forceinline void RemoveAt(int Index, int Length = 1)
     {
         for (; Length != 0; --Length)
         {
@@ -120,10 +120,10 @@ struct FName
     /** Index into the Names array (used to find String portion of the string/number pair used for comparison) */
     FNameEntryId ComparisonIndex = 0;
 )";
-	dStruct.definition +=
+    dStruct.definition +=
 #if UE_VERSION >= UE_5_01
 #if !UE_FNAME_OUTLINE_NUMBER
-R"(
+        R"(
 	/** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
     FNameEntryId Number = 0;
 )";
@@ -132,7 +132,7 @@ R"(
 #endif
 
 #if WITH_CASE_PRESERVING_NAME
-R"(
+        R"(
 	/** Index into the Names array (used to find String portion of the string/number pair used for display) */
     FNameEntryId DisplayIndex = 0;
 )";
@@ -140,13 +140,13 @@ R"(
 #endif
 
 #if UE_VERSION < UE_5_01
-R"(
+        R"(
     /** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
 	int32_t Number = 0;
 )";
     dStruct.definition +=
 #endif
-R"(
+        R"(
 };
 )";
 
@@ -154,7 +154,7 @@ R"(
 
     dStruct.name = "FName";
     dStruct.definition =
-R"(
+        R"(
 struct FString : public TArray<wchar_t>
 {
     inline FString() {};
@@ -322,19 +322,19 @@ public:
     TPair(){};
 
 public:
-    FORCEINLINE KeyType& Key()
+    __forceinline KeyType& Key()
     {
         return First;
     }
-    FORCEINLINE const KeyType& Key() const
+    __forceinline const KeyType& Key() const
     {
         return First;
     }
-    FORCEINLINE ValueType& Value()
+    __forceinline ValueType& Value()
     {
         return Second;
     }
-    FORCEINLINE const ValueType& Value() const
+    __forceinline const ValueType& Value() const
     {
         return Second;
     }
@@ -358,32 +358,32 @@ public:
         return Ptr != nullptr;
     }
 
-    FORCEINLINE explicit operator bool() const
+    __forceinline explicit operator bool() const
     {
         return IsValid();
     }
 
-    FORCEINLINE bool operator!() const
+    __forceinline bool operator!() const
     {
         return !IsValid();
     }
 
-    FORCEINLINE PtrType* operator->() const
+    __forceinline PtrType* operator->() const
     {
         return Ptr;
     }
 
-    FORCEINLINE PtrType& operator*() const
+    __forceinline PtrType& operator*() const
     {
         return *Ptr;
     }
 
-    FORCEINLINE const PtrType*& Get() const
+    __forceinline const PtrType*& Get() const
     {
         return Ptr;
     }
 
-    FORCEINLINE PtrType*& Get()
+    __forceinline PtrType*& Get()
     {
         return Ptr;
     }

@@ -23,6 +23,7 @@ bool EngineSettings::setProjectName(const std::string& name)
 {
 	const auto path = std::filesystem::current_path() / name;
 
+
 	workingDir = path;
 	projectName = name;
 
@@ -92,7 +93,7 @@ nlohmann::json EngineSettings::toJson()
 
 	if (_UE_VERSION == UE_4_25)
 		EngineSettings["USE_LOWERCASE_STRUCT"] = _USE_LOWERCASE_STRUCT;
-	
+
 	EngineSettings["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"] = _UE_BLUEPRINT_EVENTGRAPH_FASTCALLS;
 
 	if (_UE_VERSION >= UE_5_00)
@@ -117,7 +118,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 	if (ver != DUMPER_VERSION)
 	{
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
-																	   "version of the dumper.");
+			"version of the dumper.");
 		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
 		return false;
 	}
@@ -143,7 +144,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 	_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS = json["UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"];
 
 #define checkMacro(condition, name, save) \
-	if (condition) { \
+	if(condition) { \
 		if (!json.contains(name)) { \
 			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
 			return false; \
@@ -163,6 +164,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 
 	checkMacro(_UE_VERSION >= UE_4_25, "WITH_EDITORONLY_DATA", _WITH_EDITORONLY_DATA);
 
+
 	projectName = json["projectName"];
 
 	workingDir = json.value("workingDir", std::filesystem::path());
@@ -174,15 +176,17 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 
 	targetApplicationName = json["targetApplicationName"];
 
+
 	return true;
 }
 
 void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 {
+
 	ImGui::BeginChild(merge(ICON_FA_INFO, " Engine Settings"), window, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
 	IGHelper::placeInCenter(merge(ICON_FA_INFO, " Engine Settings"));
 
-	
+
 	ImGui::Text("Dumper version: %s", getDumperVersion().c_str());
 	ImGui::Text("UE version: %s", getEngineVersion().name.c_str());
 	if (ImGui::ArrowButton("loglevel_btn_left", ImGuiDir_Left) && windows::LogWindow::getLogLevel() > 0)
@@ -198,7 +202,7 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	ImGui::Checkbox("WITH_CASE_PRESERVING_NAME", reinterpret_cast<bool*>(&_WITH_CASE_PRESERVING_NAME));
 	ImGui::Checkbox("BREAK_IF_INVALID_NAME", reinterpret_cast<bool*>(&_BREAK_IF_INVALID_NAME));
 
-	if(_UE_VERSION < UE_4_23)
+	if (_UE_VERSION < UE_4_23)
 		ImGui::Text("GNAMES_POOL_OFFSET %d", _GNAMES_POOL_OFFSET);
 	if (_UE_VERSION > UE_5_00)
 		ImGui::Checkbox("UE_FNAME_OUTLINE_NUMBER", reinterpret_cast<bool*>(&_UE_FNAME_OUTLINE_NUMBER));
@@ -208,7 +212,7 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 
 	ImGui::Text("UFunction settings");
 	ImGui::Checkbox("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS", reinterpret_cast<bool*>(&_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS));
-	
+
 	if (_UE_VERSION >= UE_5_00)
 		ImGui::Checkbox("WITH_LIVE_CODING", reinterpret_cast<bool*>(&_WITH_LIVE_CODING));
 
@@ -224,7 +228,7 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	}
 
 	ImGui::EndDisabled();
-	if(show)
+	if (show)
 	{
 		ImGui::Dummy(ImVec2(ImGui::GetWindowSize().x / 2 - 65, 0));
 		ImGui::SameLine();

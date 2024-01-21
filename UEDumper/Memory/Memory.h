@@ -56,8 +56,8 @@ private:
 
 	//counter for all writes done
 	inline static int totalWrites = 0;
-	
-	
+
+
 
 public:
 	//add your initializers here
@@ -89,9 +89,9 @@ public:
 	static int getProcessID();
 
 	static int getTotalReads();
-	
+
 	static int getTotalWrites();
-	
+
 
 	/*
 	 * Memory operations here. If you change any params on the templates,
@@ -99,7 +99,7 @@ public:
 	 * In general you dont have to change them.
 	 */
 
-	//read function that gets called from the templates
+	 //read function that gets called from the templates
 	static void read(const void* address, void* buffer, DWORD64 size);
 
 

@@ -29,8 +29,10 @@
 #define RELEASE_1_6_FINAL	11
 #define RELEASE_1_7_BETA	12
 #define RELEASE_1_7_FINAL	13
+#define RELEASE_1_8_BETA	14
+#define RELEASE_1_8_FINAL	15
 
-#define DUMPER_VERSION RELEASE_1_7_BETA
+#define DUMPER_VERSION RELEASE_1_8_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -60,10 +62,17 @@
 #define UE_VERSION UE_5_03
 
 
+/* Offset settings */
+
+//set this to true if the engine should guess offsets instead of using your offsets. This always has a chance of
+//failing, in general its better if you add the offsets manually.
+//In case names are encrypted, i would suggest manually adding the offsets.
+#define GUESS_OFFSETS TRUE
+
 /* FName settings */
 
 
- //in case the FNames are encrypted, it will use your decryption function in FName_decryption.h
+//in case the FNames are encrypted, it will use your decryption function in FName_decryption.h
 #define USE_FNAME_ENCRYPTION FALSE
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)

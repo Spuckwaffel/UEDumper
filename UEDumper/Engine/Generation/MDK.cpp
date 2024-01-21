@@ -232,14 +232,21 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 		stream << "/// " << buf << std::endl;
 		stream << "enum " << enu.cppName << " : " << enu.type << std::endl;
 		stream << "{" << std::endl;
+
 		int j = 0;
-		int i = 0;
+		std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char"};
+
 		for (const auto& member : enu.members)
 		{
 			j++;
 			char memberBuf[300];
 
-			std::string fir = member.first + std::to_string(i++);
+			std::string fir = member.first;
+
+			if (std::ranges::find(usedNames, fir) != usedNames.end())
+				fir += std::to_string(j);
+
+			usedNames.push_back(fir);
 
 			sprintf_s(memberBuf, "	%-80s = %d%s", fir.c_str(), member.second, j == enu.members.size() ? "" : ",");
 			stream << memberBuf << std::endl;
@@ -483,6 +490,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 							continue;
 						}
 						//move up
+						didReordering = true;
 						auto it = *neededIt;
 						orderedStructsAndClasses.erase(neededIt);
 						orderedStructsAndClasses.insert(currentIt, it);

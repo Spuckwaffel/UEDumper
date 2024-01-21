@@ -86,13 +86,13 @@ bool windows::PackageWindow::render()
 				LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "opening package %d", packagePicked);
 				packagePicked = i;
 				if (packages[i].structs.size() > 0)
-					PackageViewerWindow::createTab(&packages[i].structs[0], EngineCore::ObjectInfo::OI_Struct);
+					PackageViewerWindow::createTab(&packages[i].structs[0], ObjectInfo::OI_Struct);
 				else if (packages[i].classes.size() > 0)
-					PackageViewerWindow::createTab(&packages[i].classes[0], EngineCore::ObjectInfo::OI_Class);
+					PackageViewerWindow::createTab(&packages[i].classes[0], ObjectInfo::OI_Class);
 				else if (packages[i].functions.size() > 0)
-					PackageViewerWindow::createTab(&packages[i].functions[0], EngineCore::ObjectInfo::OI_Function);
+					PackageViewerWindow::createTab(&packages[i].functions[0], ObjectInfo::OI_Function);
 				else if (packages[i].enums.size() > 0)
-					PackageViewerWindow::createTab(&packages[i].enums[0], EngineCore::ObjectInfo::OI_Enum);
+					PackageViewerWindow::createTab(&packages[i].enums[0], ObjectInfo::OI_Enum);
 				else
 					LogWindow::Log(windows::LogWindow::log_2, "PACKAGE", "failed to open package: package is empty!");
 
@@ -289,7 +289,7 @@ void windows::PackageWindow::renderProjectPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("The MDK files are a new SDK-type resolving all dependency errors and missing structs, so you never have a incomplete SDK. "
-						 "You can straight up put it into your project with the MDK library (found on my github). Try it out!");
+			"You can straight up put it into your project with the MDK library (found on my github). Try it out!");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
@@ -324,7 +324,7 @@ void windows::PackageWindow::renderProjectPopup()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("This will generate the FNames.txt file with all the names found that are paired to objects. "
-						 "This aso means that if a UObject didnt use for example fname index 1, there wont be that name in the dump.");
+			"This aso means that if a UObject didnt use for example fname index 1, there wont be that name in the dump.");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}

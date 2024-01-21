@@ -8,6 +8,7 @@
 #include "Frontend/Windows/LogWindow.h"
 #include "Settings/EngineSettings.h"
 #include "BasicType.h"
+#include "packageSorter.h"
 
 void SDKGeneration::printCredits(std::ofstream& stream)
 {
@@ -59,7 +60,7 @@ void SDKGeneration::generateBasicType()
     BasicType << "\n\n";
 
     if (noDefs.size() > 0)
-        BasicType << "///\n/// THERE ARE MISSING STRUCTS!! This will result in errors!!!\n///\n\n";
+        BasicType << "///\n/// THERE ARE MISSING STRUCTS!! This will result in members having the SDK_UNDEFINED pragma!!!\n///\n\n";
 
     for (const auto& missingDef : noDefs)
     {
@@ -75,8 +76,10 @@ void SDKGeneration::generateBasicType()
     BasicType.close();
 }
 
-void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Package& package)
+
+void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::Package& package)
 {
+    stream << "#pragma once\n";
     //flag some invalid characters in a name
     auto generateValidVarName = [](const std::string& str)
     {
@@ -92,64 +95,132 @@ void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Pa
         //guaranteed 0 termination
         return result;
     };
-    auto generateStruct = [&](const std::vector<EngineStructs::Struct>& DataStruc)
+
+    for (auto& dependencies : package.dependencyPackages)
+    {
+        stream << "/// dependency: " << dependencies->packageName << std::endl;
+    }
+
+    stream << "\n";
+
+    auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
         for (const auto& struc : DataStruc)
         {
-            if (struc.isClass)
-                file << "/// Class " << struc.fullName << std::endl;
+            if (std::ranges::find(allnames, generateValidVarName(struc->cppName)) != allnames.end())
+                continue;
+            allnames.push_back(generateValidVarName(struc->cppName));
+
+            if (struc->isClass)
+                stream << "/// Class " << struc->fullName << std::endl;
             else
-                file << "/// Struct " << struc.fullName << std::endl;
+                stream << "/// Struct " << struc->fullName << std::endl;
             char buf[100] = { 0 };
-            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size);
-            file << "/// " << buf << std::endl;
-            if (struc.isClass)
-                file << "class " << generateValidVarName(struc.cppName);
+            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->inheretedSize, struc->inheretedSize, struc->size);
+            stream << "/// " << buf << std::endl;
+            if (struc->isClass)
+                stream << "class " << generateValidVarName(struc->cppName);
             else
-                file << "struct " << generateValidVarName(struc.cppName);
+                stream << "struct " << generateValidVarName(struc->cppName);
 
-            if (struc.inherited && struc.isClass)
-                file << " : public " << generateValidVarName(struc.supers[0]->cppName);
-            else if (struc.inherited)
-                file << " : " << generateValidVarName(struc.supers[0]->cppName);
+            if (struc->inherited && struc->isClass)
+                stream << " : public " << generateValidVarName(struc->supers[0]->cppName);
+            else if (struc->inherited)
+                stream << " : " << generateValidVarName(struc->supers[0]->cppName);
 
 
-            file << "\n{ " << std::endl;
+            stream << "\n{ " << std::endl;
 
-            if (struc.isClass)
-                file << "public:" << std::endl;
+            if (struc->isClass)
+                stream << "public:" << std::endl;
 
-            for (const auto& member : struc.cookedMembers)
+            std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE"};
+
+
+            int j = 0;
+
+            for (const auto& member : struc->cookedMembers)
             {
                 char finalBuf[600];
                 char nameBuf[500];
                 std::string name = member.name;
+
+                if (std::isdigit(name[0]))
+                    name = "_" + name;
+
+                if (name.empty())
+                    name = "noname";
+
+                if (std::ranges::find(usedNames, name) != usedNames.end())
+                    name += std::to_string(j++);
+
+
+
+                usedNames.push_back(name);
+
+                std::string memberType = member.type.stringify().c_str();
+
+                if (member.type.clickable)
+                {
+                    bool anyUndef = !member.type.info || !member.type.info->valid;
+                    if (!anyUndef && member.type.subTypes.size() > 0)
+                    {
+                        auto checkAllSubs = [&](const fieldType& type, auto& self) -> void
+                        {
+                            for (auto& sub : type.subTypes)
+                            {
+                                if (sub.clickable && (!sub.info || !sub.info->valid))
+                                {
+                                    anyUndef = true;
+                                    break;
+                                }
+                                if (sub.propertyType == PropertyType::Unknown)
+                                {
+                                    anyUndef = true;
+                                    break;
+                                }
+                                if (sub.subTypes.size() > 0)
+                                    self(sub, self);
+                            }
+                        };
+                        checkAllSubs(member.type, checkAllSubs);
+                    }
+
+                    if (anyUndef)
+                    {
+                        memberType = "SDK_UNDEFINED(" + std::to_string(member.size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
+                        name = "__um(" + member.name + ")";
+                    }
+                }
+
+
+
                 if (member.isBit)
                     name += " : 1";
-                sprintf_s(nameBuf, "%-50s %s;", member.type.stringify().c_str(), name.c_str());
+                sprintf_s(nameBuf, "%-50s %s;", memberType.c_str(), name.c_str());
                 if (member.isBit)
                     sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
                 else
                     sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
-                file << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
+                stream << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
                 if (member.userEdited)
-                    file << "USER-MODIFIED";
+                    stream << "USER-MODIFIED";
                 else if (member.missed)
-                    file << "MISSED";
-                file << std::endl;
+                    stream << "MISSED";
+                stream << std::endl;
             }
 
             // Add function section header
-            if (!struc.functions.empty())
+            if (!struc->functions.empty())
             {
-                file << "\n\n\t/// Functions" << std::endl;
+                stream << "\n\n\t/// Functions" << std::endl;
             }
 
-            for (const auto& func : struc.functions)
+            for (const auto& func : struc->functions)
             {
-                file << "\t// Function " << func.fullName << std::endl;
+                stream << "\t// Function " << func.fullName << std::endl;
                 char funcBuf[1200];
-                std::string params = func.returnType.stringify() + " " + func.cppName.c_str() + "(";
+                std::string params = "// " + func.returnType.stringify() + " " + func.cppName.c_str() + "(";
                 for (auto param : func.params)
                 {
                     params += std::get<0>(param).stringify();
@@ -166,40 +237,48 @@ void SDKGeneration::generatePackage(std::ofstream& file, const EngineStructs::Pa
 
 
                 sprintf_s(funcBuf, "	%-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
-                file << funcBuf << std::endl;
+                stream << funcBuf << std::endl;
             }
-            file << "};\n\n";
+            stream << "};\n\n";
 
         }
     };
 
-    generateStruct(package.structs);
-
-    generateStruct(package.classes);
-
+    //first we generate enums
 
     for (const auto& enu : package.enums)
     {
-        file << "/// Enum " << enu.fullName << std::endl;
+        stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
         sprintf_s(buf, "Size: 0x%02d", enu.members.size());
-        file << "/// " << buf << std::endl;
-        file << "enum " << enu.cppName << " : " << enu.type << std::endl;
-        file << "{" << std::endl;
+        stream << "/// " << buf << std::endl;
+        stream << "enum class " << enu.cppName << " : " << enu.type << std::endl;
+        stream << "{" << std::endl;
+
         int j = 0;
-        int i = 0;
+        std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char"};
+
         for (const auto& member : enu.members)
         {
             j++;
             char memberBuf[300];
 
-            std::string fir = member.first + std::to_string(i++);
+            std::string fir = member.first;
+
+            if (std::ranges::find(usedNames, fir) != usedNames.end())
+                fir += std::to_string(j);
+
+            usedNames.push_back(fir);
 
             sprintf_s(memberBuf, "	%-80s = %d%s", fir.c_str(), member.second, j == enu.members.size() ? "" : ",");
-            file << memberBuf << std::endl;
+            stream << memberBuf << std::endl;
         }
-        file << "};\n\n";
+        stream << "};\n\n";
     }
+
+
+    generateStruct(package.combinedStructsAndClasses);
+
 }
 
 SDKGeneration::SDKGeneration()
@@ -249,28 +328,44 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 
 #include <string>
 
-#include "SDK/BasicType.h"
+#define SDK_UNDEFINED(__ssize__, __cnt__, ...) char undefined##__cnt__[__ssize__]; //
+#define __um(...) // x
+
 )";
 
-    generateBasicType();
+    std::vector<MergedPackage> newPackages;
 
-    totalProgress = 10;
-    progressDone = totalProgress;
-    totalProgress = EngineCore::getPackages().size();
-    for (const auto& package : EngineCore::getPackages())
+    const auto soredPackages = sortPackages(progressDone, totalProgress, newPackages);
+
+
+    puts("------sorted packages------");
+    for (auto& pack : soredPackages)
     {
-        masterHeader << "#include \"" + package.packageName + ".h" + "\"" << std::endl;
+        printf("%s\n", pack->package.packageName.c_str());
+    }
+    puts("---------------------------");
 
-        if (package.packageName == "BasicType")
-            continue;
+    //generateBasicType();
 
-        std::ofstream file(SDKPath / (package.packageName + ".h"));
-        printCredits(file);
-        file << "/// Package " + package.packageName << ".\n\n";
+    totalProgress = soredPackages.size();
+    progressDone = 0;
+    for (auto& pack : soredPackages)
+    {
+        windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
+        masterHeader << "#include \"SDK/" + pack->package.packageName + ".h\"" << std::endl;
+        if (pack->package.packageName == "BasicType")
+            generateBasicType();
+        else
+        {
+            std::string packageName = pack->package.packageName + ".h";
+            std::ofstream package(SDKPath / packageName);
+            printCredits(package);
+            generatePackage(package, pack->package);
+            package.close();
+        }
 
-        generatePackage(file, package);
-        file.close();
         progressDone++;
     }
+    masterHeader.close();
     progressDone = totalProgress;
 }

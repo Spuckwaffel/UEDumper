@@ -32,7 +32,7 @@ namespace windows
 		struct log
 		{
 			std::string originandTime;
-			std::string message;
+			char message[2500];
 		};
 		static inline std::vector<log> logs{};
 		static inline int oldSize = 0;
@@ -42,13 +42,13 @@ namespace windows
 		static inline int logRange = 100;
 		static inline bool autoScroll = true;
 
-		static inline float logWindowYSize = 310;
+		static inline float logWindowYSize = 250;
 
 
 		static inline int logLevel = LOGLEVEL_ALL_DEBUG_MESSAGES;
 
 	public:
-		
+
 
 		LogWindow();
 

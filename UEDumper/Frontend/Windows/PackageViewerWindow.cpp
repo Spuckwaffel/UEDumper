@@ -451,7 +451,7 @@ void windows::PackageViewerWindow::setOpenTabsClosed()
 }
 
 
-void windows::PackageViewerWindow::updateNavBar(NavigationTab& navtab, void* itemSelected, EngineCore::ObjectInfo::ObjectType typeSelected)
+void windows::PackageViewerWindow::updateNavBar(NavigationTab& navtab, void* itemSelected, ObjectInfo::ObjectType typeSelected)
 {
     //dont do anything if the user tries to go into the tab that is currently the tab
     const auto currentTab = navtab.tabIndex[navtab.currentVecIndex];
@@ -471,10 +471,10 @@ void windows::PackageViewerWindow::updateNavBar(NavigationTab& navtab, void* ite
 bool windows::PackageViewerWindow::openTabFromCName(const std::string& name)
 {
     const auto info = EngineCore::getInfoOfObject(name);
-    if (!info)
+    if (!info || !info->valid)
         return false;
 
-    createTab(info.target, info.type);
+    createTab(info->target, info->type);
     return true;
 }
 
@@ -529,7 +529,7 @@ void windows::PackageViewerWindow::renderTabs()
             ImGui::SetCursorPosX(ImGui::GetWindowSize().x - 730);
             ImGui::PushItemWidth(278);
             //disabled if it snot a struct or class. I mean who needs enum search? And functions is useless, use the search top left....
-            ImGui::BeginDisabled(Tabs[currentTab].typeSelected != EngineCore::ObjectInfo::OI_Class && Tabs[currentTab].typeSelected != EngineCore::ObjectInfo::OI_Struct);
+            ImGui::BeginDisabled(Tabs[currentTab].typeSelected != ObjectInfo::OI_Class && Tabs[currentTab].typeSelected != ObjectInfo::OI_Struct);
             std::string beforeTest = std::string(Tabs[currentTab].objectBuf);
             //we cant scroll here as we arent in any scroll window
             if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", Tabs[currentTab].objectBuf, sizeof(Tabs[currentTab].objectBuf) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
@@ -562,7 +562,7 @@ void windows::PackageViewerWindow::renderTabs()
                     ImGui::Separator();
                 };
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Struct)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::OI_Struct)
                 {
                     for (auto& struc : package->structs)
                     {
@@ -571,7 +571,7 @@ void windows::PackageViewerWindow::renderTabs()
                     }
                 }
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Class)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::OI_Class)
                 {
                     for (auto& struc : package->classes)
                     {
@@ -580,7 +580,7 @@ void windows::PackageViewerWindow::renderTabs()
                     }
                 }
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Enum)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::OI_Enum)
                 {
                     for (const auto& enu : package->enums)
                     {
@@ -588,7 +588,7 @@ void windows::PackageViewerWindow::renderTabs()
                         addSpacing();
                     }
                 }
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Function)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::OI_Function)
                 {
                     for (const auto& func : package->functions)
                     {
@@ -599,16 +599,16 @@ void windows::PackageViewerWindow::renderTabs()
             }
             else
             {
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Class)
                     renderClassOrStruct(&Tabs[currentTab], *static_cast<EngineStructs::Struct*>(Tabs[currentTab].itemSelected));
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Struct)
                     renderClassOrStruct(&Tabs[currentTab], *static_cast<EngineStructs::Struct*>(Tabs[currentTab].itemSelected));
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Function)
                     renderFunction(*static_cast<EngineStructs::Function*>(Tabs[currentTab].itemSelected));
 
-                if (Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+                if (Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Enum)
                     renderEnum(*static_cast<EngineStructs::Enum*>(Tabs[currentTab].itemSelected));
 
             }
@@ -633,7 +633,7 @@ void windows::PackageViewerWindow::renderTabs()
             auto renderStructorClass = [&](bool isClass)
             {
                 auto& dataVector = isClass ? package->classes : package->structs;
-                const EngineCore::ObjectInfo::ObjectType type = isClass ? EngineCore::ObjectInfo::ObjectType::OI_Class : EngineCore::ObjectInfo::ObjectType::OI_Struct;
+                const ObjectInfo::ObjectType type = isClass ? ObjectInfo::ObjectType::OI_Class : ObjectInfo::ObjectType::OI_Struct;
                 auto& itemRange = isClass ? Tabs[currentTab].itemRange_C : Tabs[currentTab].itemRange_S;
                 renderItemRange(itemRange, dataVector.size());
 
@@ -677,7 +677,7 @@ void windows::PackageViewerWindow::renderTabs()
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable("Show all Functions")) {
                         Tabs[currentTab].itemSelected = nullptr;
-                        Tabs[currentTab].typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
+                        Tabs[currentTab].typeSelected = ObjectInfo::ObjectType::OI_Function;
                     }
                     ImGui::PopStyleColor();
 
@@ -693,12 +693,12 @@ void windows::PackageViewerWindow::renderTabs()
 
                         for (auto& func : struc->functions)
                         {
-                            const bool is_selected = (Tabs[currentTab].itemSelected == &func && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function);
+                            const bool is_selected = (Tabs[currentTab].itemSelected == &func && Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Function);
                             ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
                             if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLE_DOUBLE_RIGHT) + "##" + func.cppName).c_str(), is_selected)) {
 
                                 Tabs[currentTab].itemSelected = &func;
-                                Tabs[currentTab].typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Function;
+                                Tabs[currentTab].typeSelected = ObjectInfo::ObjectType::OI_Function;
                                 updateNavBar(Tabs[currentTab].navTab, &func, Tabs[currentTab].typeSelected);
                             }
                             ImGui::PopStyleColor();
@@ -725,17 +725,17 @@ void windows::PackageViewerWindow::renderTabs()
                     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
                     if (ImGui::Selectable("Show all Enums")) {
                         Tabs[currentTab].itemSelected = nullptr;
-                        Tabs[currentTab].typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Enum;
+                        Tabs[currentTab].typeSelected = ObjectInfo::ObjectType::OI_Enum;
                     }
                     ImGui::PopStyleColor();
 
                     for (int j = Tabs[currentTab].itemRange_E; j < package->enums.size() && j < Tabs[currentTab].itemRange_E + 99; j++)
                     {
                         auto& enu = package->enums[j];
-                        const bool is_selected = (Tabs[currentTab].itemSelected == &enu && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum);
+                        const bool is_selected = (Tabs[currentTab].itemSelected == &enu && Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Enum);
                         if (ImGui::Selectable(enu.cppName.c_str(), is_selected)) {
                             Tabs[currentTab].itemSelected = &enu;
-                            Tabs[currentTab].typeSelected = EngineCore::ObjectInfo::ObjectType::OI_Enum;
+                            Tabs[currentTab].typeSelected = ObjectInfo::ObjectType::OI_Enum;
                             updateNavBar(Tabs[currentTab].navTab, &enu, Tabs[currentTab].typeSelected);
                         }
                         if (is_selected && ImGui::IsItemHovered()) {
@@ -767,10 +767,10 @@ void windows::PackageViewerWindow::renderTabs()
                 //ugly code any %
                 //i hate pushstylecol and popstylecol
 
-                beginTab("Structs##PackageContentsTabBar", IGHelper::Colors::red, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Struct, renderStructorClass, false);
-                beginTab("Classes##PackageContentsTabBar", IGHelper::Colors::classOrange, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Class, renderStructorClass, true);
-                beginTab("Functions##PackageContentsTabBar", IGHelper::Colors::yellow, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Function, renderFunctions);
-                beginTab("Enums##PackageContentsTabBar", IGHelper::Colors::enumBlue, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == EngineCore::ObjectInfo::OI_Enum, renderEnums);
+                beginTab("Structs##PackageContentsTabBar", IGHelper::Colors::red, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == ObjectInfo::OI_Struct, renderStructorClass, false);
+                beginTab("Classes##PackageContentsTabBar", IGHelper::Colors::classOrange, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == ObjectInfo::OI_Class, renderStructorClass, true);
+                beginTab("Functions##PackageContentsTabBar", IGHelper::Colors::yellow, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == ObjectInfo::OI_Function, renderFunctions);
+                beginTab("Enums##PackageContentsTabBar", IGHelper::Colors::enumBlue, Tabs[currentTab].focus && Tabs[currentTab].typeSelected == ObjectInfo::OI_Enum, renderEnums);
 
                 ImGui::EndTabBar();
             }
@@ -817,20 +817,20 @@ bool windows::PackageViewerWindow::render()
     return false;
 }
 
-void windows::PackageViewerWindow::createTab(void* typeSt, const EngineCore::ObjectInfo::ObjectType type)
+void windows::PackageViewerWindow::createTab(void* typeSt, const ObjectInfo::ObjectType type)
 {
     //dont create double packages
     EngineStructs::Package* package = nullptr;
-    if (type == EngineCore::ObjectInfo::ObjectType::OI_Struct || type == EngineCore::ObjectInfo::ObjectType::OI_Class)
+    if (type == ObjectInfo::ObjectType::OI_Struct || type == ObjectInfo::ObjectType::OI_Class)
     {
         const auto st = static_cast<EngineStructs::Struct*>(typeSt);
         package = st->owningPackage;
 
     }
 
-    else if (type == EngineCore::ObjectInfo::ObjectType::OI_Function)
+    else if (type == ObjectInfo::ObjectType::OI_Function)
         package = static_cast<EngineStructs::Function*>(typeSt)->owningStruct->owningPackage;
-    else if (type == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+    else if (type == ObjectInfo::ObjectType::OI_Enum)
         package = static_cast<EngineStructs::Enum*>(typeSt)->owningPackage;
 
     if (!package)

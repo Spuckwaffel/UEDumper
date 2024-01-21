@@ -73,18 +73,18 @@ void windows::LiveEditor::renderAddAddress()
 				ImGui::EndDisabled();
 				return;
 			}
-				
+
 			LogWindow::Log(LogWindow::log_0, "LIVE", "Looking for %s...", structName.c_str());
 			const auto info = EngineCore::getInfoOfObject(structName);
-			if(!info)
+			if (!info || !info->valid)
 			{
 				sprintf_s(errorText, "Object not found in the packages!");
 				ImGui::EndDisabled();
 				return;
 			}
 
-			tab.struc = static_cast<EngineStructs::Struct*>(info.target);
-			tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
+			tab.struc = static_cast<EngineStructs::Struct*>(info->target);
+			tab.isClass = info->type == ObjectInfo::OI_Class;
 
 			tab.found = true;
 			memset(errorText, 0, sizeof(errorText));
@@ -96,10 +96,10 @@ void windows::LiveEditor::renderAddAddress()
 			memset(name, 0, sizeof(name));
 			memset(caddress, 0, sizeof(caddress));
 			return;
-			
+
 		}
 		sprintf_s(errorText, "Only hexadecimal characters supported!");
-			
+
 	}
 	ImGui::EndDisabled();
 }
@@ -112,25 +112,25 @@ void windows::LiveEditor::renderAddOffset()
 	static uint64_t followAddress = 0;
 	static bool checked = false;
 	static bool once = false;
-	
-	ImGui::TextWrapped("Add a offset you added in Offset.h. Any Offset or sig requires to lead to a pointer that points "
-					"to the UObject. e.g offset leads to 0x7FFF8001ABC where a pointer is pointing to 0x12333445C. Any time the "
-					"pointer points to a different address, the live editor will update too.");
 
-	
-	
+	ImGui::TextWrapped("Add a offset you added in Offset.h. Any Offset or sig requires to lead to a pointer that points "
+		"to the UObject. e.g offset leads to 0x7FFF8001ABC where a pointer is pointing to 0x12333445C. Any time the "
+		"pointer points to a different address, the live editor will update too.");
+
+
+
 	std::vector<Offset> offsetsVec{};
-	for(const auto& offset : EngineCore::getOffsets())
+	for (const auto& offset : EngineCore::getOffsets())
 	{
 		if (offset.flag & OFFSET_LIVE_EDITOR)
 			offsetsVec.push_back(offset);
 	}
-	if(offsetsVec.size() == 0)
+	if (offsetsVec.size() == 0)
 	{
 		ImGui::TextColored(IGHelper::Colors::red, "You have no offsets deined that have the OFFSET_LIVE_EDITOR flag.");
 		return;
 	}
-	
+
 	static int selector = 0;
 	auto check = [&]() mutable
 	{
@@ -156,8 +156,8 @@ void windows::LiveEditor::renderAddOffset()
 		once = true;
 		check();
 	}
-		
-	
+
+
 	if (ImGui::BeginCombo(std::string("OffsetCombo##renderAddOffset").c_str(), selector >= 0 ? offsetsVec[selector].name.c_str() : ""))
 	{
 
@@ -183,12 +183,12 @@ void windows::LiveEditor::renderAddOffset()
 
 	if (address > 0)
 		ImGui::Text("Offset leads to : 0x%llX", address);
-	if(followAddress > 0)
+	if (followAddress > 0)
 		ImGui::Text("Pointer at offset pointing to: 0x%llX", followAddress);
 	else
 		ImGui::TextColored(IGHelper::Colors::classOrange, errorText);
 
-	
+
 
 	ImGui::Dummy(ImVec2(100, 0));
 	ImGui::SameLine();
@@ -206,7 +206,7 @@ void windows::LiveEditor::renderAddOffset()
 	ImGui::BeginDisabled(address == 0 || followAddress == 0 || !checked);
 	if (ImGui::Button("Add##renderAddOffset", ImVec2(120, 30)))
 	{
-		
+
 		EditorTab tab;
 		tab.type = TabTypeOffset;
 		tab.name = std::string(displayName);
@@ -218,15 +218,15 @@ void windows::LiveEditor::renderAddOffset()
 			if (structName != "nil" && !structName.empty())
 			{
 				const auto info = EngineCore::getInfoOfObject(structName);
-				if (!info)
+				if (!info || !info->valid)
 				{
 					sprintf_s(errorText, "Object not found in the packages!");
 					LogWindow::Log(LogWindow::log_2, "LIVE EDITOR", "Object not found in the packages!");
 					goto failed;
 				}
-				tab.struc = static_cast<EngineStructs::Struct*>(info.target);
+				tab.struc = static_cast<EngineStructs::Struct*>(info->target);
 
-				tab.isClass = info.type == EngineCore::ObjectInfo::OI_Class;
+				tab.isClass = info->type == ObjectInfo::OI_Class;
 
 				tab.origin = std::string(offsetsVec[selector].name) + "->";
 				tab.found = true;
@@ -250,7 +250,7 @@ void windows::LiveEditor::renderAddOffset()
 
 	failed:
 		checked = false;
-		
+
 	}
 	ImGui::EndDisabled();
 }
@@ -258,9 +258,9 @@ void windows::LiveEditor::renderAddOffset()
 
 void windows::LiveEditor::renderAddInspector()
 {
-	if(!bRenderAddInspector)
+	if (!bRenderAddInspector)
 		return;
-	
+
 
 	static ImVec2 smallWindow = ImVec2(500, 270);
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
@@ -313,6 +313,107 @@ void windows::LiveEditor::drawReadWriteableField(LiveMemory::MemoryBlock* block,
 	switch (type.propertyType)
 	{
 	case PropertyType::Int8Property:
+	{
+		auto val = block->read<int8_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S8, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::Int16Property:
+	{
+		auto val = block->read<int16_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S16, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::IntProperty:
+	{
+		auto val = block->read<int>(offset);
+		if (ImGui::DragInt(varSecret.c_str(), &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::Int64Property:
+	{
+		auto val = block->read<int64_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S64, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::UInt16Property:
+	{
+		auto val = block->read<uint16_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U16, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::UInt32Property:
+	{
+		auto val = block->read<uint32_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U32, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::UInt64Property:
+	{
+		auto val = block->read<uint64_t>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U64, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+
+	case PropertyType::DoubleProperty:
+	{
+		auto val = block->read<double>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_Double, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+	case PropertyType::FloatProperty:
+	{
+		auto val = block->read<float>(offset);
+		if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_Float, &val))
+		{
+			block->write(offset, val);
+			Memory::write(block->gameAddress + offset, val);
+		}
+		break;
+	}
+	case PropertyType::ByteProperty:
+	case PropertyType::BoolProperty:
+	{
+		//these types should have a scalar
+		if (type.name == TYPE_CHAR)
 		{
 			auto val = block->read<int8_t>(offset);
 			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S8, &val))
@@ -322,139 +423,38 @@ void windows::LiveEditor::drawReadWriteableField(LiveMemory::MemoryBlock* block,
 			}
 			break;
 		}
-
-	case PropertyType::Int16Property:
+		if (type.name == TYPE_UCHAR)
 		{
-			auto val = block->read<int16_t>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S16, &val))
+			auto val = block->read<uint8_t>(offset);
+			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U8, &val))
 			{
 				block->write(offset, val);
 				Memory::write(block->gameAddress + offset, val);
 			}
 			break;
 		}
-
-	case PropertyType::IntProperty:
+		//or the basic boolean support
+		bool value;
+		if (isBit)
 		{
-			auto val = block->read<int>(offset);
-			if (ImGui::DragInt(varSecret.c_str(), &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
+			value = (block->read<char>(offset) >> bitOffset & 1) == 1;
 		}
-
-	case PropertyType::Int64Property:
+		else
 		{
-			auto val = block->read<int64_t>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S64, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
+			value = block->read<bool>(offset);
 		}
-
-	case PropertyType::UInt16Property:
+		if (ImGui::Checkbox(std::string("##" + secret + std::to_string(offset) + ":" + std::to_string(bitOffset)).c_str(), &value))
 		{
-			auto val = block->read<uint16_t>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U16, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
-		}
-
-	case PropertyType::UInt32Property:
-		{
-			auto val = block->read<uint32_t>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U32, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
-		}
-
-	case PropertyType::UInt64Property:
-		{
-			auto val = block->read<uint64_t>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U64, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
-		}
-
-	case PropertyType::DoubleProperty:
-		{
-			auto val = block->read<double>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_Double, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
-		}
-	case PropertyType::FloatProperty:
-		{
-			auto val = block->read<float>(offset);
-			if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_Float, &val))
-			{
-				block->write(offset, val);
-				Memory::write(block->gameAddress + offset, val);
-			}
-			break;
-		}
-	case PropertyType::ByteProperty:
-	case PropertyType::BoolProperty:
-		{
-			//these types should have a scalar
-			if(type.name == TYPE_CHAR)
-			{
-				auto val = block->read<int8_t>(offset);
-				if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_S8, &val))
-				{
-					block->write(offset, val);
-					Memory::write(block->gameAddress + offset, val);
-				}
-				break;
-			}
-			if (type.name == TYPE_UCHAR)
-			{
-				auto val = block->read<uint8_t>(offset);
-				if (ImGui::DragScalar(varSecret.c_str(), ImGuiDataType_U8, &val))
-				{
-					block->write(offset, val);
-					Memory::write(block->gameAddress + offset, val);
-				}
-				break;
-			}
-			//or the basic boolean support
-			bool value;
-			if (isBit)
-			{
-				value = (block->read<char>(offset) >> bitOffset & 1) == 1;
-			}
+			char c = Memory::read<char>(block->gameAddress + offset);
+			if (value) //upon clicking we obviously wanna change the value, so we take the inverted
+				c |= (1 << bitOffset);  // Set nth bit to 1
 			else
-			{
-				value = block->read<bool>(offset);
-			}
-			if (ImGui::Checkbox(std::string("##" + secret + std::to_string(offset) + ":" + std::to_string(bitOffset)).c_str(), &value))
-			{
-				char c = Memory::read<char>(block->gameAddress + offset);
-				if (value) //upon clicking we obviously wanna change the value, so we take the inverted
-					c |= (1 << bitOffset);  // Set nth bit to 1
-				else
-					c &= ~(1 << bitOffset);  // Set nth bit to 0
-				Memory::write(block->gameAddress + offset, c);
-				block->write(offset, c);
-			}
-			break;
+				c &= ~(1 << bitOffset);  // Set nth bit to 0
+			Memory::write(block->gameAddress + offset, c);
+			block->write(offset, c);
 		}
+		break;
+	}
 
 	default:
 		ImGui::PopItemWidth();
@@ -477,7 +477,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 	{
 		ImGui::PopStyleColor();
 		//if the TArray does not have 1 subtype its broken
-		if(member.type.subTypes.size() != 1)
+		if (member.type.subTypes.size() != 1)
 		{
 			ImGui::Text("Broken TArray!");
 			ImGui::TreePop();
@@ -501,9 +501,9 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 		const auto arr = block->read<TArray<uint64_t>>(member.offset + innerOffset);
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "(Count: %d) 0x%llX", arr.Count, arr.Data);
-		
+
 		//nothing to show if data is invalid
-		if(arr.Data == nullptr || arr.Count <= 0)
+		if (arr.Data == nullptr || arr.Count <= 0)
 		{
 			ImGui::TreePop();
 			return;
@@ -526,9 +526,9 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			ImGui::TreePop();
 			return;
 		}
-		
+
 		EngineStructs::Struct* st;
-		if(!isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, st))
+		if (!isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, st))
 		{
 			ImGui::TextColored(IGHelper::Colors::red, "Struct or Class doesnt exist in the SDK!");
 			ImGui::TreePop();
@@ -549,7 +549,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			//we get the first pointer so we can check what class the array indexes really are (tarray lies just like pointers)
 			const uint64_t firstIndexPtr = arrBlock->read<uint64_t>(0);
 			//look for the struct
-			if(!isValidStructName(firstIndexPtr, member.type.subTypes[0].name, st, true))
+			if (!isValidStructName(firstIndexPtr, member.type.subTypes[0].name, st, true))
 			{
 				//this should never fail!
 				ImGui::TextColored(IGHelper::Colors::red, "Struct or Class doesnt exist in the SDK!");
@@ -581,7 +581,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 					//add the *
 					ImGui::Text("*");
 					ImGui::SameLine();
-					
+
 					ImGui::TextColored(IGHelper::Colors::varBlue, std::string(addressBuf).c_str());
 					//add a memory block for the index struct
 					LiveMemory::addNewBlock(objPtr, st->size);
@@ -613,7 +613,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			}
 			//then draw every index
 			for (int i = 0; i < arr.Count; i++)
-				drawStructProperty(st, member.name + "_" + std::to_string(i), subBlock, 
+				drawStructProperty(st, member.name + "_" + std::to_string(i), subBlock,
 					appendSecret(secret, member.type.name + std::to_string(reinterpret_cast<uint64_t>(arr.Data)), i), st->size * i + innerOffset);
 		}
 		ImGui::TreePop();
@@ -673,7 +673,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 		return;
 	}
 	//show a cool color pallette
-	if(struc->cppName == "FLinearColor")
+	if (struc->cppName == "FLinearColor")
 	{
 		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
 		ImGui::TextColored(IGHelper::Colors::classGreen, struc->cppName.c_str());
@@ -749,7 +749,7 @@ void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Member& me
 	const int combinedOffset = member.offset + innerOffset;
 
 	//sometimes we dont wanna display the typename
-	if(simple)
+	if (simple)
 		ImGui::TextColored(IGHelper::Colors::varPink, "%s:", member.name.c_str());
 	else
 	{
@@ -765,7 +765,7 @@ void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Member& me
 		ImGui::Spinner();
 	else
 		drawReadWriteableField(block, combinedOffset, member.bitOffset, member.isBit, member.type, secret);
-	
+
 }
 
 void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
@@ -783,7 +783,7 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::varPink, member.name.c_str());
-		
+
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 150), "0x%llX", memberPtr);
 		//check whether its a valid struct and look for the best because SDKS dont point to the right one
@@ -792,7 +792,7 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 		if (memberPtr != 0 && isValidStructName(memberPtr, member.type.name, newStruct, true))
 		{
 			//add the new block so we can track the data for it
-			if(!LiveMemory::addNewBlock(memberPtr, newStruct->size))
+			if (!LiveMemory::addNewBlock(memberPtr, newStruct->size))
 			{
 				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "Could not add new memory block for %p (%s) with size %d!", memberPtr, member.name, newStruct->size);
 			}
@@ -825,9 +825,9 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 
 	// Use std::transform to extract the first elements of each pair
 	std::ranges::transform(subEnum->members, std::back_inserter(items),
-	                       [](const std::pair<std::string, int>& pair) {
-		                       return pair.first;
-	                       });
+		[](const std::pair<std::string, int>& pair) {
+			return pair.first;
+		});
 
 	ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
 
@@ -895,7 +895,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		ImGui::TextColored(IGHelper::Colors::red, "Invalid memory block??");
 		return;
 	}
-		
+
 
 	//draw the secret for debug purposes.
 	//ImGui::TextColored(IGHelper::Colors::grayedOut, secret.c_str());
@@ -910,7 +910,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		//get the current cursor pos so we can use it below
 		const auto posX = ImGui::GetCursorPosX();
 		//also draw the bit if it is one
-		if(member.isBit)
+		if (member.isBit)
 			ImGui::TextColored(IGHelper::Colors::red, "+%04X:%d", member.offset + innerOffset, member.bitOffset);
 		else
 			ImGui::TextColored(IGHelper::Colors::red, "+%04X", member.offset + innerOffset);
@@ -937,19 +937,19 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 				//for structs inside a struct that are directly in it
 				//applies to FVector etc too
 			case PropertyType::StructProperty:
-				{
-					//we have to resolve the struct here
+			{
+				//we have to resolve the struct here
 				EngineStructs::Struct* subStruct;
 
-					if (isValidStructName(address, member.type.name, subStruct))
-					{
-						//draw the substruct
-						//also inneroffset (thats always needed) plus member offset because the struct is within the current struct
-						drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset);
-					}
-					break;
+				if (isValidStructName(address, member.type.name, subStruct))
+				{
+					//draw the substruct
+					//also inneroffset (thats always needed) plus member offset because the struct is within the current struct
+					drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset);
 				}
-				
+				break;
+			}
+
 			case PropertyType::NameProperty:
 				//support for FNames
 				//all props that are directly displayed need a 10 indent
@@ -964,15 +964,15 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 
 				//TEnumAsByte support
 			case PropertyType::ByteProperty:
-				{
+			{
 				EngineStructs::Enum* subEnum;
-					//we have to use the first subtype which is the enum name
-					if(member.type.subTypes.size() == 1 &&isValidEnumName(member.type.subTypes[0].name, subEnum))
-					{
-						drawTEnumAsByteProperty(member, subEnum, block, secret, innerOffset);
-					}
-					break;
+				//we have to use the first subtype which is the enum name
+				if (member.type.subTypes.size() == 1 && isValidEnumName(member.type.subTypes[0].name, subEnum))
+				{
+					drawTEnumAsByteProperty(member, subEnum, block, secret, innerOffset);
 				}
+				break;
+			}
 			default:
 				//no support? Just draw the typename and name
 				//all props that are directly displayed need a 10 indent
@@ -993,10 +993,10 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 
 		//non clickable types can be (mostly) directly modified like ints floats etc
 		//all props that are directly displayed need a 10 indent
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX()+ 10);
+		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
 		drawNonclickableMember(member, block, innerOffset, secret);
 	}
-	
+
 }
 
 
@@ -1012,11 +1012,11 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 	}
 	//print the origin or the address
 	ImGui::SameLine();
-	if(origin.length() > 0)
+	if (origin.length() > 0)
 		ImGui::TextColored(IGHelper::Colors::red, origin.c_str());
 	else
 		ImGui::TextColored(IGHelper::Colors::red, "0x%llX", address);
-	
+
 	ImGui::SameLine();
 	//copy the struct name
 	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + struc->cppName + secret).c_str()))
@@ -1036,10 +1036,10 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 	//ustruct
 	//..
 	//finalClass
-	for(int i = struc->supers.size(); i > 0; i--)
+	for (int i = struc->supers.size(); i > 0; i--)
 	{
-		auto& super = struc->supers[i-1];
-		
+		auto& super = struc->supers[i - 1];
+
 		EngineStructs::Struct* superStruct;
 		//find the strucr for the given name
 		//dont look for best because we specifically want that struct
@@ -1068,7 +1068,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 	}
 	//two code pieces here, one we have to indicate via a treenode our real (in this case) uworld class
 	//but if there are no other supers (like uobject) we dont need a treenode and can draw it directly (just like below)
-	if(struc->supers.size() > 0)
+	if (struc->supers.size() > 0)
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 		//create a non indent treenode
@@ -1077,7 +1077,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 			ImGui::PopStyleColor();
 			//draw our struct
 			drawMembers(struc, address, secret);
-			
+
 		}
 		else
 			ImGui::PopStyleColor();
@@ -1093,14 +1093,14 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 
 bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::string& CName, EngineStructs::Struct*& outStruct, bool lookForBest)
 {
-	if(classPointer != 0 && guessSuperClass && lookForBest)
+	if (classPointer != 0 && guessSuperClass && lookForBest)
 	{
 		//get the super class by getting the uobjects class name
 
 		std::string superName = "";
 		bool found = false;
 		//already searched this address?
-		if(realSuperClassCache.contains(classPointer))
+		if (realSuperClassCache.contains(classPointer))
 		{
 			superName = realSuperClassCache[classPointer];
 			found = true;
@@ -1110,41 +1110,41 @@ bool windows::LiveEditor::isValidStructName(uint64_t classPointer, const std::st
 			//we cannot use enginecores functions because some objets arent in the object list generated
 			//for the SDK! So we have to do it all here and (most likely) read data multiple times
 			const auto obj = ObjectsManager::getUObject<UObject>(classPointer);
-			if(obj->getClass())
+			if (obj->getClass())
 				superName = obj->getClass()->getCName();
 		}
-		if(superName == "nil" || superName.empty())
+		if (superName == "nil" || superName.empty())
 			goto tryAgain;
 
 		const auto info = EngineCore::getInfoOfObject(superName);
-		if(!info || !(info.type == EngineCore::ObjectInfo::OI_Class || info.type == EngineCore::ObjectInfo::OI_Struct)) //invalid!
+		if (!info || !info->valid || !(info->type == ObjectInfo::OI_Class || info->type == ObjectInfo::OI_Struct)) //invalid!
 			goto tryAgain;
 
-		outStruct = static_cast<EngineStructs::Struct*>(info.target);
-		
+		outStruct = static_cast<EngineStructs::Struct*>(info->target);
+
 		//found it! Adding...
-		if(!found)
+		if (!found)
 			realSuperClassCache.insert(std::pair(classPointer, superName));
 		return true;
 	}
-	tryAgain:
+tryAgain:
 
 	const auto info = EngineCore::getInfoOfObject(CName);
-	if(!info)
+	if (!info || !info->valid)
 		return false;
 
-	outStruct = static_cast<EngineStructs::Struct*>(info.target);
-	
+	outStruct = static_cast<EngineStructs::Struct*>(info->target);
+
 	return true;
 }
 
 bool windows::LiveEditor::isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu)
 {
 	const auto info = EngineCore::getInfoOfObject(CName);
-	if (!info || info.type != EngineCore::ObjectInfo::OI_Enum) //invalid!
+	if (!info || !info->valid || info->type != ObjectInfo::OI_Enum) //invalid!
 		return false;
 
-	enu = static_cast<EngineStructs::Enum*>(info.target);
+	enu = static_cast<EngineStructs::Enum*>(info->target);
 
 	return true;
 
@@ -1159,7 +1159,7 @@ windows::LiveEditor::LiveEditor()
 bool windows::LiveEditor::renderLaunchPopup()
 {
 	static bool accepted = false;
-	if(accepted)
+	if (accepted)
 	{
 		liveEditorStarted = true;
 		return true;
@@ -1177,17 +1177,17 @@ bool windows::LiveEditor::renderLaunchPopup()
 	ImGui::PopStyleVar();
 
 	ImGui::TextWrapped("You are about to launch the live editor. Make sure you saved all your changes before starting "
-					"the the live editor, because crashes can happen very easily. This is still a beta feature!");
+		"the the live editor, because crashes can happen very easily. This is still a beta feature!");
 	ImGui::Dummy(ImVec2(60, 0));
 	ImGui::SameLine();
-	if(ImGui::Button("Cancel", ImVec2(120, 30)))
+	if (ImGui::Button("Cancel", ImVec2(120, 30)))
 	{
 		ImGui::End();
 		return true;
 	}
-		
+
 	ImGui::SameLine();
-	if(ImGui::Button("Continue", ImVec2(120, 30)))
+	if (ImGui::Button("Continue", ImVec2(120, 30)))
 	{
 		LiveMemory::cacheBlocks();
 		liveEditorStarted = true;
@@ -1195,7 +1195,7 @@ bool windows::LiveEditor::renderLaunchPopup()
 		ImGui::End();
 		return true;
 	}
-		
+
 	ImGui::End();
 	return false;
 }
@@ -1221,7 +1221,7 @@ bool windows::LiveEditor::renderQuitPopup()
 	ImGui::PopStyleVar();
 
 	ImGui::TextWrapped("You are about to quit the live editor. All your progress is saved and all structs automatically update "
-					"if you make any changes in the editor.");
+		"if you make any changes in the editor.");
 	ImGui::Dummy(ImVec2(60, 0));
 	ImGui::SameLine();
 	if (ImGui::Button("Cancel", ImVec2(120, 30)))
@@ -1229,7 +1229,7 @@ bool windows::LiveEditor::renderQuitPopup()
 		ImGui::End();
 		return true;
 	}
-		
+
 	ImGui::SameLine();
 	if (ImGui::Button("Continue", ImVec2(120, 30)))
 	{
@@ -1247,12 +1247,12 @@ void windows::LiveEditor::renderLiveEditor()
 {
 
 	ImGui::BeginChild("LiveTabChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
-	if(ImGui::Button("Add Inspector"))
+	if (ImGui::Button("Add Inspector"))
 		bRenderAddInspector = true;
 	if (ImGui::BeginListBox("##liveInspectorList", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
-		
-		for(int i = 0; i < tabs.size(); i++)
+
+		for (int i = 0; i < tabs.size(); i++)
 		{
 			const bool is_selected = (tabPicked == i);
 			if (ImGui::Selectable(tabs[i].name.c_str(), is_selected))
@@ -1268,12 +1268,12 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_HorizontalScrollbar);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 	//looks like we have to render a struct
-	if(tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
+	if (tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
 	{
 		const auto& tab = tabs[tabPicked];
 
 		//whether the given type is a direct address, then render the struct directly for the address
-		if(tab.type == TabTypeAddress)
+		if (tab.type == TabTypeAddress)
 		{
 			renderStruct(tab.struc, tab.address, tab.name, tab.name + std::to_string(tab.address)); //secret is a Address, so 0x3cFFFF
 		}
@@ -1285,12 +1285,12 @@ void windows::LiveEditor::renderLiveEditor()
 			const uint64_t address = block->read<uint64_t>(0); //read the address
 
 			//if the address is not 0 the pointer (should be) valid
-			if(address != 0)
+			if (address != 0)
 			{
 				//add a new block for the struct for the specific address and its size to fetch the data
 				LiveMemory::addNewBlock(address, tab.struc->size);
 
-				char addressBuf[30] = {0};
+				char addressBuf[30] = { 0 };
 				sprintf_s(addressBuf, "0x%llX", address);
 
 				//render it!
@@ -1304,7 +1304,7 @@ void windows::LiveEditor::renderLiveEditor()
 				ImGui::Spinner();
 			}
 		}
-		
+
 
 	}
 	ImGui::PopStyleVar();
@@ -1319,7 +1319,7 @@ bool windows::LiveEditor::LiveEditorStarted()
 
 void windows::LiveEditor::renderEditPopUp()
 {
-	if(!liveEditorStarted)
+	if (!liveEditorStarted)
 		return;
 
 	ImGui::Spacing();
@@ -1331,15 +1331,15 @@ void windows::LiveEditor::renderEditPopUp()
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 		ImGui::TextUnformatted("Normally when opening a node (e.g AActor* actor), it will display the AActor class and its inherited classes. "
-						 "Though most of the time the UObject actually has even more classes than defined from the Engine. By enabling this, the "
-						 "Engine will search the UObject->ClassPrivate->SuperStruct.Name to get the real class and inherited classes. Careful, this "
-						 "might give wong results! If no SuperStruct exists, it will use the Engine definition.");
+			"Though most of the time the UObject actually has even more classes than defined from the Engine. By enabling this, the "
+			"Engine will search the UObject->ClassPrivate->SuperStruct.Name to get the real class and inherited classes. Careful, this "
+			"might give wong results! If no SuperStruct exists, it will use the Engine definition.");
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
-	if(guessSuperClass)
+	if (guessSuperClass)
 	{
-		if(ImGui::Button("Clear superclass cache"))
+		if (ImGui::Button("Clear superclass cache"))
 		{
 			LogWindow::Log(LogWindow::log_2, "LIVE", "Cleared superclass cache!");
 			realSuperClassCache.clear();
@@ -1351,7 +1351,7 @@ void windows::LiveEditor::renderEditPopUp()
 			ImGui::BeginTooltip();
 			ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
 			ImGui::TextUnformatted("In case you enabled the \"Guess Object by class\" you can clear the cache that holds information of UObjects "
-						  "real classes in case you get wrong results.");
+				"real classes in case you get wrong results.");
 			ImGui::PopTextWrapPos();
 			ImGui::EndTooltip();
 		}
