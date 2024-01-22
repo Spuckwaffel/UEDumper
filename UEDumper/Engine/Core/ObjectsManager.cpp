@@ -228,12 +228,10 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * 24);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
-		if (!UObjectAddress)
-		{
-			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for object %d!", i);
+		if (!UObjectAddress) {
+			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for obect %d!", i);
 		}
-		else 
-		{
+		else {
 			//gets the memory address where the objects gonna be
 			UObjectManager::UBigObject* newBigObject = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + i * sizeof(UObjectManager::UBigObject));
 			newBigObject->readSize = sizeof(UObject);

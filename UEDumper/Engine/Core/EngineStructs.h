@@ -5,10 +5,57 @@
 #include <set>
 
 #include "../structs.h"
+#include "Engine/Userdefined/Datatypes.h"
+
+//objectinfo struct that holds the info of a defined struct/class/enum/function
+struct ObjectInfo
+{
+
+	enum ObjectType
+	{
+		OI_Struct,
+		OI_Class,
+		OI_Enum,
+		OI_Function,
+		OI_MAX
+	};
+
+	bool valid = false;
+
+	ObjectType type;
+
+	void* target = nullptr;;
+
+	operator bool() const { return valid; }
+
+	//converts the struct to a JSON object
+	nlohmann::json toJson() const
+	{
+		nlohmann::json j;
+		j["type"] = type;
+		j["valid"] = valid;
+		//j["packageIndex"] = packageIndex;
+		//j["objectIndex"] = objectIndex;
+		return j;
+	}
+
+	//returns a valid object from a JSON object
+	static ObjectInfo fromJson(nlohmann::json& json)
+	{
+		ObjectInfo j;
+		j.type = json["type"];
+		j.valid = json["valid"];
+		//j.packageIndex = json["packageIndex"];
+		//j.objectIndex = json["objectIndex"];
+		return j;
+	}
+};
 
 //type struct that is used for a field in the package
 struct fieldType
 {
+	//linked info if valid
+	const ObjectInfo* info = nullptr;
 	//clickable if redirection is supported
 	bool clickable = false;
 	//typedef of the type
@@ -21,6 +68,23 @@ struct fieldType
 	//a subtype is a (maybe) clickable type. Sometimes there exist more, so vector.
 	//it makes it possible to click objects e.g in a TArray<x,y> for redirection
 	std::vector<fieldType> subTypes = {};
+
+	fieldType() {}
+
+	fieldType(bool clickable, PropertyType propertyType, const std::string& name)
+	{
+		this->clickable = clickable;
+		this->propertyType = propertyType;
+		this->name = name;
+	}
+
+	fieldType(bool clickable, PropertyType propertyType, const std::string& name, const std::vector<fieldType>& subTypes)
+	{
+		this->clickable = clickable;
+		this->propertyType = propertyType;
+		this->name = name;
+		this->subTypes = subTypes;
+	}
 
 	/**
 	 * \brief essentially for dumpspace, gets the short type
@@ -63,10 +127,36 @@ struct fieldType
 		return arr;
 	}
 
-	//essentially for dumps.host
 	std::string stringify() const
 	{
-		std::string typeStr = name;
+
+		auto generateValidVarName = [](const std::string& str)
+		{
+			//hacky way to ignore shit like unsigned char get to unsigned_char
+			if (getSize(str) != -1)
+				return str;
+			std::string result = "";
+
+			for (const char c : str)
+			{
+				if (static_cast<int>(c) < 0 || !std::isalnum(c))
+					result += '_';
+				else
+					result += c;
+
+			}
+			//guaranteed 0 termination
+			return result;
+		};
+
+
+		std::string typeStr = generateValidVarName(name);
+
+		if ((propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && (info && info->valid))
+		{
+			const std::string prefix = info->type == ObjectInfo::OI_Class ? "class " : "struct ";
+			typeStr = prefix + typeStr;
+		}
 
 		if (subTypes.size() > 0)
 		{
@@ -75,10 +165,7 @@ struct fieldType
 
 			for (int i = 0; i < subTypes.size(); i++)
 			{
-				typeStr += subTypes[i].name;
-
-				if (subTypes[i].propertyType == PropertyType::ObjectProperty || subTypes[i].propertyType == PropertyType::ClassProperty)
-					typeStr += "*";
+				typeStr += subTypes[i].stringify();
 
 				if (i < subTypes.size() - 1)
 					typeStr += ", ";

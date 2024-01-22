@@ -35,55 +35,6 @@ namespace EngineStructs
 
 ENGINE_CORE EngineCore
 {
-public:
-
-
-
-	//objectinfo struct that holds the info of a defined struct/class/enum/function
-	struct ObjectInfo
-	{
-
-		enum ObjectType
-		{
-			OI_Struct,
-			OI_Class,
-			OI_Enum,
-			OI_Function,
-			OI_MAX
-		};
-
-		bool valid = false;
-
-		ObjectType type;
-
-		void* target = nullptr;;
-
-		operator bool() const { return valid; }
-
-		//converts the struct to a JSON object
-		nlohmann::json toJson() const
-		{
-			nlohmann::json j;
-			j["type"] = type;
-			j["valid"] = valid;
-			//j["packageIndex"] = packageIndex;
-			//j["objectIndex"] = objectIndex;
-			return j;
-		}
-
-		//returns a valid object from a JSON object
-		static ObjectInfo fromJson(nlohmann::json& json)
-		{
-			ObjectInfo j;
-			j.type = json["type"];
-			j.valid = json["valid"];
-			//j.packageIndex = json["packageIndex"];
-			//j.objectIndex = json["objectIndex"];
-			return j;
-		}
-	};
-	
-
 private:
 #if UE_VERSION < UE_4_25
 	//pointer to GNames on heap
@@ -131,7 +82,7 @@ private:
 
 	//vector of all offsets that got defined by the user
 	inline static std::vector<Offset> offsets{};
-	
+
 
 	/**
 	 * \brief generates all the members for the specific struct or class
@@ -166,7 +117,7 @@ private:
 	 * \param eStruct the struct where the cookedmembers array should be (re)generated
 	 */
 	static void cookMemberArray(EngineStructs::Struct& eStruct);
-	
+
 public:
 
 	/// constructors
@@ -205,13 +156,14 @@ public:
 	 * \param CName CName  of the UObject
 	 * \return ObjectInfo of the UObject
 	 */
-	static ObjectInfo getInfoOfObject(const std::string& CName);
+	static const ObjectInfo* getInfoOfObject(const std::string& CName);
 
 
 
 	/**
 	 * \brief USE ONLY AFTER PACKAGE GENERATION!
-	 * This function lists all types that were used in structs but were never defined. (e.g TArray or TMap)
+	 * This function lists all types that were used in structs but were never defined. (e.g TArray or TMap). Calling getInfoOfObject
+	 * is fine too, this does the same but actually return a entire list
 	 * \return vector of all unknown types
 	 */
 	static const std::vector<std::string>& getAllUnknownTypes();
@@ -227,7 +179,7 @@ public:
 
 	/**
 	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Creates a new struct that gets added to the BasicTypes package.
-	 * Use this to create structs the game has but arent present in the SDK. 
+	 * Use this to create structs the game has but arent present in the SDK.
 	 * \param eStruct the struct that gets created
 	 */
 	static void createStruct(const EngineStructs::Struct& eStruct);
@@ -253,7 +205,7 @@ public:
 
 	/**
 	 * \brief ONLY AFTER FULL PACKAGE GENERATION!
-	 * Saves all the states and data to disk into a .uedproj file that can get loaded 
+	 * Saves all the states and data to disk into a .uedproj file that can get loaded
 	 */
 	static void saveToDisk(int& progressDone, int& totalProgress);
 
@@ -300,4 +252,3 @@ public:
 	static bool generateFNameFile(int& progressDone, int& totalProgress);
 
 };
-

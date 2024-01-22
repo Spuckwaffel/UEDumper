@@ -46,7 +46,7 @@ inline void overrideStructs()
 	int uObjectOffset = 0; //just creating a variable for the offset that increases with the members (makes it a lot easier)
 	uObject.definedMembers = std::vector<EngineStructs::Member>{
 		// a void** is not clickable! The property is a ObjectProperty indicates that its a object (which means basically anything)
-		{{false,		PropertyType::ObjectProperty,	"void**"},		"vtable",				uObjectOffset, 8},
+		{{false,		PropertyType::ObjectProperty,	"uint64_t"},		"vtable",				uObjectOffset, 8},
 		// a enum is clickable! The property is a EnumProperty because, well, its a enum. We can freely use the typename EObjectFlags even if
 		// it doesnt exist in the engine. This is no problem. If we click it, nothing will happen, a console message will just appear.
 		{{true,		PropertyType::EnumProperty,		"EObjectFlags"},"ObjectFlags",		uObjectOffset += 8, sizeof(EObjectFlags)},

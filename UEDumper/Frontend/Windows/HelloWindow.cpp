@@ -13,7 +13,7 @@ windows::HelloWindow::HelloWindow()
 
 bool windows::HelloWindow::render()
 {
-	if(alreadyCompleted) return true;
+	if (alreadyCompleted) return true;
 
 	static char processName[100] = { 0 };
 	static char projectName[50] = { 0 };
@@ -25,9 +25,9 @@ bool windows::HelloWindow::render()
 
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
-	
+
 	//if we dont show engine infos render the new project child
-	if(!showEngineInfos)
+	if (!showEngineInfos)
 	{
 		constexpr auto childSize = ImVec2(750, 300);
 		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2));
@@ -50,7 +50,7 @@ bool windows::HelloWindow::render()
 		ImGui::SameLine();
 
 		//only allow any interaction if projectname > 4 and there is no created dir
-		if(!createdDir && (ImGui::Button(merge(ICON_FA_FOLDER, " Create##createProject")) && strlen(projectName) > 4))
+		if (!createdDir && (ImGui::Button(merge(ICON_FA_FOLDER, " Create##createProject")) && strlen(projectName) > 4))
 		{
 			createdDir = EngineSettings::setProjectName(projectName);
 			if (!createdDir)
@@ -58,7 +58,7 @@ bool windows::HelloWindow::render()
 			else
 				memset(errorText, 0, sizeof(errorText));
 		}
-		if(createdDir)
+		if (createdDir)
 		{
 			ImGui::Text("Created!");
 		}
@@ -122,7 +122,7 @@ bool windows::HelloWindow::render()
 
 			else if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
 				Memory::load(std::string(processName));
-			
+
 		}
 
 
@@ -130,20 +130,20 @@ bool windows::HelloWindow::render()
 		if (ImGui::Button("Engine settings"))
 			showEngineInfos = true;
 
-		if(strlen(errorText) > 0)
+		if (strlen(errorText) > 0)
 		{
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classOrange);
 			ImGui::TextWrapped(errorText);
 			ImGui::PopStyleColor();
 		}
-		
+
 		if (Memory::getStatus() == Memory::MemoryStatus::loaded)
 		{
 			ImGui::Text("Process ID: 0x%05X", Memory::getProcessID());
 			ImGui::Text("Base Address: 0x%p", Memory::getBaseAddress());
 
 		}
-		if(Memory::getStatus() == Memory::MemoryStatus::loaded && createdDir)
+		if (Memory::getStatus() == Memory::MemoryStatus::loaded && createdDir)
 		{
 			ImGui::SetCursorPosX(40);
 			ImGui::SetCursorPosY(240);
@@ -166,7 +166,7 @@ bool windows::HelloWindow::render()
 		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2 - 80));
 		EngineSettings::drawEngineSettings(childSize, &showEngineInfos);
 	}
-	
+
 
 	return false;
 }

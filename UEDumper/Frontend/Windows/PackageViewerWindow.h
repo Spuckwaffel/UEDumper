@@ -9,34 +9,34 @@ namespace windows
 {
 	class PackageViewerWindow
 	{
-		
+
 	public:
 		struct NavigationTab
 		{
 			//vector of all tab indexes we went through
-			std::vector<std::pair<void*, EngineCore::ObjectInfo::ObjectType>> tabIndex{};
+			std::vector<std::pair<void*, ObjectInfo::ObjectType>> tabIndex{};
 
 			//at what index are we in the vector? AKA tabindex[currentVecIndex] should be the package index displayed
 			int currentVecIndex = 0;
 
-			EngineCore::ObjectInfo::ObjectType currentType = EngineCore::ObjectInfo::ObjectType::OI_MAX;
+			ObjectInfo::ObjectType currentType = ObjectInfo::ObjectType::OI_MAX;
 
 			nlohmann::json toJson() const
 			{
 				nlohmann::json j;
 
 				nlohmann::json tabindexes;
-				for(int i = 0; i < tabIndex.size(); i++)
+				for (int i = 0; i < tabIndex.size(); i++)
 				{
 					auto& idx = tabIndex[i];
 
-					if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Struct || idx.second == EngineCore::ObjectInfo::ObjectType::OI_Class)
+					if (idx.second == ObjectInfo::ObjectType::OI_Struct || idx.second == ObjectInfo::ObjectType::OI_Class)
 						tabindexes.push_back(static_cast<EngineStructs::Struct*>(idx.first)->cppName);
 
-					else if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Function)
+					else if (idx.second == ObjectInfo::ObjectType::OI_Function)
 						tabindexes.push_back(static_cast<EngineStructs::Function*>(idx.first)->cppName);
-					else if (idx.second == EngineCore::ObjectInfo::ObjectType::OI_Enum)
-							tabindexes.push_back(static_cast<EngineStructs::Enum*>(idx.first)->cppName);
+					else if (idx.second == ObjectInfo::ObjectType::OI_Enum)
+						tabindexes.push_back(static_cast<EngineStructs::Enum*>(idx.first)->cppName);
 				}
 				j["ti"] = tabindexes;
 				j["cv"] = currentVecIndex;
@@ -48,11 +48,11 @@ namespace windows
 			static NavigationTab fromJson(const nlohmann::json& j)
 			{
 				NavigationTab n;
-				for(const nlohmann::json& js : j["ti"])
+				for (const nlohmann::json& js : j["ti"])
 				{
-					if(auto info = EngineCore::getInfoOfObject(js))
+					if (const auto info = EngineCore::getInfoOfObject(js))
 					{
-						n.tabIndex.push_back(std::pair(info.target, info.type));
+						n.tabIndex.push_back(std::pair(info->target, info->type));
 					}
 				}
 
@@ -65,7 +65,7 @@ namespace windows
 		struct PackageTab
 		{
 			EngineStructs::Package* packageSelected = 0; //selected package
-			EngineCore::ObjectInfo::ObjectType typeSelected = EngineCore::ObjectInfo::ObjectType::OI_MAX; //selected type
+			ObjectInfo::ObjectType typeSelected = ObjectInfo::ObjectType::OI_MAX; //selected type
 			void* itemSelected = 0; //selected item of the type
 			int itemRange_S = 0; //current range from n - n+100 of structs
 			int itemRange_C = 0; //current range from n - n+100 of classes
@@ -73,7 +73,7 @@ namespace windows
 			int itemRange_F = 0; //current range from n - n+100 of functions
 			bool focus = false;
 			bool open = false;
-			char objectBuf[250] = {0};
+			char objectBuf[250] = { 0 };
 			enum class findState {
 				FS_none, //no operation
 				FS_highlight,//only highlight
@@ -89,12 +89,12 @@ namespace windows
 
 				j["ps"] = packageSelected->packageName;
 				j["ts"] = typeSelected;
-				if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct || typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+				if (typeSelected == ObjectInfo::ObjectType::OI_Struct || typeSelected == ObjectInfo::ObjectType::OI_Class)
 					j["is"] = static_cast<EngineStructs::Struct*>(itemSelected)->cppName;
 
-				else if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
+				else if (typeSelected == ObjectInfo::ObjectType::OI_Function)
 					j["is"] = static_cast<EngineStructs::Function*>(itemSelected)->cppName;
-				else if (typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+				else if (typeSelected == ObjectInfo::ObjectType::OI_Enum)
 					j["is"] = static_cast<EngineStructs::Enum*>(itemSelected)->cppName;
 				j["irs"] = itemRange_S;
 				j["irc"] = itemRange_C;
@@ -115,37 +115,37 @@ namespace windows
 				p.typeSelected = j["ts"];
 				const std::string packagename = j["ps"];
 				const std::string structname = j["is"];
-				for(auto& pack : EngineCore::getPackages())
+				for (auto& pack : EngineCore::getPackages())
 				{
-					if(pack.packageName == packagename)
+					if (pack.packageName == packagename)
 					{
 						p.packageSelected = &pack;
-						if(p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Struct || p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Class)
+						if (p.typeSelected == ObjectInfo::ObjectType::OI_Struct || p.typeSelected == ObjectInfo::ObjectType::OI_Class)
 						{
-							for(const auto& st : pack.combinedStructsAndClasses)
+							for (const auto& st : pack.combinedStructsAndClasses)
 							{
 								if (st->cppName == structname)
 								{
 									p.itemSelected = st;
 									break;
 								}
-									
+
 							}
 						}
-						else if (p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Function)
+						else if (p.typeSelected == ObjectInfo::ObjectType::OI_Function)
 						{
-							for(const auto& fn : pack.functions)
+							for (const auto& fn : pack.functions)
 							{
-								if(fn->cppName == structname)
+								if (fn->cppName == structname)
 								{
 									p.itemSelected = fn;
 									break;
 								}
 							}
 						}
-						else if (p.typeSelected == EngineCore::ObjectInfo::ObjectType::OI_Enum)
+						else if (p.typeSelected == ObjectInfo::ObjectType::OI_Enum)
 						{
-							for(auto& en : pack.enums)
+							for (auto& en : pack.enums)
 							{
 								if (en.cppName == structname)
 								{
@@ -172,7 +172,7 @@ namespace windows
 				return p;
 			}
 		};
-		
+
 		static inline int packagePicked = 0;
 
 		static inline bool alreadyCompleted = false;
@@ -183,7 +183,7 @@ namespace windows
 		static nlohmann::json getTabsToJson()
 		{
 			nlohmann::json j;
-			for(const auto& tab: Tabs)
+			for (const auto& tab : Tabs)
 				j.push_back(tab.toJson());
 			return j;
 		}
@@ -204,14 +204,14 @@ namespace windows
 		static void renderSubTypes(const fieldType& type, bool inChild);
 
 		/**
-		 * \brief 
+		 * \brief
 		 * \param tab the current tab this functions gets called in
 		 * \param struc struct
 		 */
 		static void renderClassOrStruct(PackageTab* tab, EngineStructs::Struct& struc);
 
 		/**
-		 * \brief 
+		 * \brief
 		 * \param enu enum
 		 */
 		static void renderEnum(const EngineStructs::Enum& enu);
@@ -221,9 +221,9 @@ namespace windows
 
 		static void setOpenTabsClosed();
 
-		static void updateNavBar(NavigationTab& navtab, void* itemSelected, EngineCore::ObjectInfo::ObjectType typeSelected);
+		static void updateNavBar(NavigationTab& navtab, void* itemSelected, ObjectInfo::ObjectType typeSelected);
 
-		
+
 
 	public:
 		PackageViewerWindow();
@@ -232,7 +232,7 @@ namespace windows
 
 		static bool render();
 
-		static void createTab(void* typeSt, EngineCore::ObjectInfo::ObjectType type = EngineCore::ObjectInfo::ObjectType::OI_Struct);
+		static void createTab(void* typeSt, ObjectInfo::ObjectType type = ObjectInfo::ObjectType::OI_Struct);
 
 		static bool openTabFromCName(const std::string& name);
 

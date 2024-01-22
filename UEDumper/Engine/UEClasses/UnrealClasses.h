@@ -36,13 +36,13 @@ public:
 	int32_t				InternalIndex = 0;
 
 	/** Class the object belongs to. */
-	class UClass*		ClassPrivate = nullptr;
+	class UClass* ClassPrivate = nullptr;
 
 	/** Name of this object */
 	FName				NamePrivate = FName();
 
 	/** Object this object resides in. */
-	class UObject*		OuterPrivate = nullptr;
+	class UObject* OuterPrivate = nullptr;
 
 	static std::string typeName() { return "UObject"; }
 
@@ -197,10 +197,10 @@ public:
 
 #if UE_VERSION < UE_5_03
 	/** Struct this inherits from, may be null */
-	UStruct*	SuperStruct;
+	UStruct* SuperStruct;
 
 	/** Pointer to start of linked list of child fields */
-	UField*		Children;
+	UField* Children;
 
 #else
 	//commented out because its the same (most of the cases)
@@ -269,7 +269,7 @@ public:
 
 	/** Array of object references embedded in script code and referenced by FProperties. Mirrored for easy access by realtime garbage collection code */
 	TArray<TObjectPtr<UObject>> ScriptAndPropertyObjectReferences;
-	
+
 
 #endif
 	//things are defined easier because theres no reason implementing all classes
@@ -379,11 +379,11 @@ public:
 
 
 	/** pointer to first local struct property in this UFunction that contains defaults */
-	UProperty*		FirstPropertyToInit;
+	UProperty* FirstPropertyToInit;
 
 #if UE_BLUEPRINT_EVENTGRAPH_FASTCALLS
 	/** The event graph this function calls in to (persistent) */
-	UFunction*		EventGraphFunction;
+	UFunction* EventGraphFunction;
 
 	/** The state offset inside of the event graph (persistent) */
 	int32_t EventGraphCallOffset;
@@ -619,7 +619,7 @@ class UObjectPropertyBase : public UProperty
 public:
 	using UProperty::UProperty;
 
-	UClass*	PropertyClass;
+	UClass* PropertyClass;
 
 	UClass* getPropertyClass() const;
 
@@ -846,7 +846,7 @@ public:
 	using UProperty::UProperty;
 
 	uintptr_t	UnderlyingProp;
-	UEnum*		Enum;
+	UEnum* Enum;
 
 	UEnum* getEnum() const;
 
@@ -982,16 +982,16 @@ public:
 	FName			RepNotifyFunc;
 
 	/** In memory only: Linked list of properties from most-derived to base **/
-	FProperty*		PropertyLinkNext;
+	FProperty* PropertyLinkNext;
 
 	/** In memory only: Linked list of object reference properties from most-derived to base **/
-	FProperty*		NextRef;
+	FProperty* NextRef;
 
 	/** In memory only: Linked list of properties requiring destruction. Note this does not include things that will be destroyed byt he native destructor **/
-	FProperty*		DestructorLinkNext;
+	FProperty* DestructorLinkNext;
 
 	/** In memory only: Linked list of properties requiring post constructor initialization.**/
-	FProperty*		PostConstructLinkNext;
+	FProperty* PostConstructLinkNext;
 
 	//static std::string typeName() { return "UProperty"; }
 	//FIXMEEEE
@@ -999,6 +999,7 @@ public:
 
 	int32_t getOffset() const;
 
+	// this generates the field type for the given type. however, this will not add the Objectinfo as this has to be done manually at the very end of generation!
 	fieldType getType();
 
 };

@@ -29,7 +29,7 @@ HANDLE procHandle = nullptr;
 //use the function "load" below which will contain data about the process name
 inline void init()
 {
-	//...
+    //...
 }
 
 uint64_t _getBaseAddress(const wchar_t* processName, int& pid);
@@ -60,15 +60,15 @@ inline void loadData(std::string& processName, uint64_t& baseAddress, int& proce
 inline void _read(const void* address, void* buffer, const DWORD64 size)
 {
     size_t bytes_read = 0;
-	BOOL b = ReadProcessMemory(procHandle, address, buffer, size, &bytes_read);
+    BOOL b = ReadProcessMemory(procHandle, address, buffer, size, &bytes_read);
     //if failed, try with lower byte amount
     if (!b)
     {
         //always read 10 bytes lower
-	    for(int i = 1; i < size && !b; i+= 10)
-	    {
+        for (int i = 1; i < size && !b; i += 10)
+        {
             b = ReadProcessMemory(procHandle, address, buffer, size - i, nullptr);
-	    }
+        }
     }
 }
 
@@ -81,7 +81,7 @@ inline void _read(const void* address, void* buffer, const DWORD64 size)
  */
 inline void _write(void* address, const void* buffer, const DWORD64 size)
 {
-	WriteProcessMemory(procHandle, address, buffer, size, nullptr);
+    WriteProcessMemory(procHandle, address, buffer, size, nullptr);
 }
 
 
@@ -95,7 +95,7 @@ uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
 {
     uint64_t baseAddress = 0;
 
-    if(!pid)
+    if (!pid)
     {
         // Get a handle to the process
         const HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -130,9 +130,9 @@ uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
             CloseHandle(hModule);
         }
     }
-    
+
     // Clean up and return
-    
+
     return baseAddress;
 }
 
@@ -142,5 +142,5 @@ uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
  */
 void attachToProcess(const int& pid)
 {
-	procHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pid);
+    procHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pid);
 }

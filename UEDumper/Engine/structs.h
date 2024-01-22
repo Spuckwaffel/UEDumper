@@ -65,23 +65,23 @@ struct FName
     /** Index into the Names array (used to find String portion of the string/number pair used for comparison) */
     FNameEntryId ComparisonIndex = 0;
 
-	#if UE_VERSION >= UE_5_01
-	#if !UE_FNAME_OUTLINE_NUMBER
+#if UE_VERSION >= UE_5_01
+#if !UE_FNAME_OUTLINE_NUMBER
     /** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
     FNameEntryId Number = 0;
-	#endif
-	#endif
+#endif
+#endif
 
-	#if WITH_CASE_PRESERVING_NAME
+#if WITH_CASE_PRESERVING_NAME
     /** Index into the Names array (used to find String portion of the string/number pair used for display) */
     FNameEntryId DisplayIndex = 0;
-	#endif
+#endif
 
 
-	#if UE_VERSION < UE_5_01
+#if UE_VERSION < UE_5_01
     /** Number portion of the string/number pair (stored internally as 1 more than actual, so zero'd memory will be the default, no-instance case) */
-	int32_t Number = 0;
-	#endif
+    int32_t Number = 0;
+#endif
 };
 
 struct FUObjectItem
@@ -300,7 +300,7 @@ public:
         , Second(Value)
     {
     }
-    TPair(){};
+    TPair() {};
 
 public:
     FORCEINLINE KeyType& Key()
@@ -402,7 +402,7 @@ public:
 
     union
     {
-    	uint64_t Handle;
+        uint64_t Handle;
         // DebugPtr allows for easier dereferencing of a resolved FObjectPtr in watch windows of debuggers.  If the address in the pointer
         // is an odd/uneven number, that means the object reference is unresolved and you will not be able to dereference it successfully.
         uint64_t DebugPtr;
@@ -414,17 +414,17 @@ template <typename T>
 struct TObjectPtr
 {
 public:
-	TObjectPtr()
-		: ObjectPtr()
-	{
-	}
-	union
-	{
-		FObjectPtr ObjectPtr;
-		// DebugPtr allows for easier dereferencing of a resolved TObjectPtr in watch windows of debuggers.  If the address in the pointer
-		// is an odd/uneven number, that means the object reference is unresolved and you will not be able to dereference it successfully.
-		T* DebugPtr;
-	};
+    TObjectPtr()
+        : ObjectPtr()
+    {
+    }
+    union
+    {
+        FObjectPtr ObjectPtr;
+        // DebugPtr allows for easier dereferencing of a resolved TObjectPtr in watch windows of debuggers.  If the address in the pointer
+        // is an odd/uneven number, that means the object reference is unresolved and you will not be able to dereference it successfully.
+        T* DebugPtr;
+    };
 };
 
 // https://github.com/EpicGames/UnrealEngine/blob/5.3/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectPtr.h#L643

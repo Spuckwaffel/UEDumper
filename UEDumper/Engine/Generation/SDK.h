@@ -9,18 +9,20 @@ class SDKGeneration
 
 	static inline std::filesystem::path SDKPath{};
 
-	
+	static inline std::vector<std::string> allnames{};
+
+	static inline int undefinedCnt = 0;
 
 	static void generateBasicType();
 
-	
+
 
 public:
 	SDKGeneration();
 
 	static void printCredits(std::ofstream& stream);
 
-	static void generatePackage(std::ofstream& file, const EngineStructs::Package& package);
+	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);
 
 	static void Generate(int& progressDone, int& totalProgress);
 };
