@@ -59,15 +59,8 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_03
+#define UE_VERSION UE_5_02
 
-
-/* Offset settings */
-
-//set this to true if the engine should guess offsets instead of using your offsets. This always has a chance of
-//failing, in general its better if you add the offsets manually.
-//In case names are encrypted, i would suggest manually adding the offsets.
-#define GUESS_OFFSETS TRUE
 
 /* FName settings */
 
