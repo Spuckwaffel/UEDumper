@@ -40,7 +40,7 @@ uint64_t ObjectsManager::getUObjectPtrByIndex(int index)
 		STOP_OPERATION();
 	}
 
-	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * 24);
+	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * FUOBJECTITEM_SIZE);
 }
 
 void ObjectsManager::STOP_OPERATION()
@@ -134,7 +134,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 	bOperationSuccess = false;
 	status = CS_busy;
 	finishedBytes = 0;
-	totalBytes = gUObjectManager.UObjectArray.NumElements * 24;
+	totalBytes = gUObjectManager.UObjectArray.NumElements * FUOBJECTITEM_SIZE;
 	gUObjectManager.pGObjectPtrArray = reinterpret_cast<uint64_t>(calloc(1, totalBytes));
 	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocating 0x%p bytes of memory for GObjectPtrArray at 0x%p", totalBytes, gUObjectManager.pGObjectPtrArray);
 	if (!gUObjectManager.pGObjectPtrArray)
@@ -166,7 +166,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 	constexpr auto numElementsPerChunk = 64 * 1024;
 #endif
 
-	constexpr auto chunkBytesSize = numElementsPerChunk * 24;
+	constexpr auto chunkBytesSize = numElementsPerChunk * FUOBJECTITEM_SIZE;
 
 	for (int i = 0; i < gUObjectManager.UObjectArray.NumChunks; i++)
 	{
@@ -225,7 +225,7 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
 	{
 		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * 24);
+		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
 		if (!UObjectAddress) {

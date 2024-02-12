@@ -101,6 +101,23 @@
 #endif
 
 
+#if UE_VERSION >= UE_4_25
+
+//some UE server application enable STATS, FUObjectItem size will extend to 32
+#define STATS FALSE
+
+#if !STATS
+#define FUOBJECTITEM_SIZE 24
+#else
+#define FUOBJECTITEM_SIZE 32
+#endif
+
+#else	//UE_VERSION < UE_4_25
+#define FUOBJECTITEM_SIZE 24
+
+#endif
+
+
 /* UFunction settings */
 
 /** Enable fast calls for event thunks into an event graph that have no parameters  */
