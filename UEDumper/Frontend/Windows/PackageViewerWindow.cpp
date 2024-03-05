@@ -188,7 +188,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab* tab, EngineSt
                     ImGui::TextColored(IGHelper::Colors::white, "*");
                 }
 
-                if (clicked && !openTabFromCName(member.type.name))
+                if (clicked && !openTabFromCName(member->type.name))
                     LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Object %s not found!", member.type.name.c_str());
 
             }
