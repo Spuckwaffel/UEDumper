@@ -313,7 +313,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.name = generateValidVarName(child->getName());
 			if (member.size == 0)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "member %s size is 0! ", member.name.c_str());
 				//DebugBreak();
 				continue;
 			}
@@ -324,7 +324,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.offset = child->getOffset();
 			if (type.propertyType == PropertyType::Unknown)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
 				continue;
 			}
 
@@ -472,26 +472,26 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 	//below class base offset? 
 	if (newMember.offset < eStruct.inheretedSize)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.inheretedSize);
 		return false;
 	}
 	//above class?
 	if (newMember.offset > eStruct.size)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X is greater than class size 0x%X!", newMember.offset, eStruct.size);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is greater than class size 0x%X!", newMember.offset, eStruct.size);
 		return false;
 	}
 	//offset + size larger than class size?
 	if (newMember.offset + newMember.size > eStruct.size)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: offset 0x%X with size %d is greater than class size 0x%X!", newMember.offset + newMember.size, eStruct.size);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X with size %d is greater than class size 0x%X!", newMember.offset + newMember.size, eStruct.size);
 		return false;
 	}
 
 	//larger than class size? Thats weird and will only happen if offset is negative otherwise handled by above
 	if (newMember.size > eStruct.size - eStruct.inheretedSize)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.inheretedSize);
 		return false;
 	}
 
@@ -512,7 +512,7 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 			//is the new member somehow interferring the next member
 			if (newMember.offset + newMember.size > nextMember.offset)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: member is interferring other member (0x%X -> 0x%X -!- 0x%X)", newMember.offset, newMember.offset + newMember.size, nextMember.offset);
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is interferring other member (0x%X -> 0x%X -!- 0x%X)", newMember.offset, newMember.offset + newMember.size, nextMember.offset);
 				return false;
 			}
 			//yep we found place
@@ -525,12 +525,12 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 			//only allowed if they are bits
 			if (!newMember.isBit || !nextMember.isBit)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: attempted to override a existing member (one of them is not a bit) (isBit: %d isBit %d)", newMember.isBit, nextMember.isBit);
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: attempted to override a existing member (one of them is not a bit) (isBit: %d isBit %d)", newMember.isBit, nextMember.isBit);
 				return false;
 			}
 			if (newMember.bitOffset == nextMember.bitOffset)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Add member failed: attempted to override a existing member (both have the same botOffset) (%d, %d)", newMember.bitOffset, nextMember.bitOffset);
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: attempted to override a existing member (both have the same botOffset) (%d, %d)", newMember.bitOffset, nextMember.bitOffset);
 				return false;
 			}
 			if (newMember.bitOffset < nextMember.bitOffset)
@@ -748,7 +748,7 @@ EngineCore::EngineCore()
 	bSuccess = false;
 	if (!loaded)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Loading core...");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Loading core...");
 
 		offsets = setOffsets();
 
@@ -756,7 +756,7 @@ EngineCore::EngineCore()
 		gNames = getOffsetAddress(getOffsetForName("OFFSET_GNAMES"));
 		if (!gNames)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames offset not found!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset not found!");
 			return;
 		}
 
@@ -764,10 +764,10 @@ EngineCore::EngineCore()
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames -> 0x%p", gNames);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "GNames offset seems zero!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset seems zero!");
 			return;
 		}
 #endif
@@ -788,7 +788,7 @@ bool EngineCore::initSuccess()
 
 void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, CopyStatus & status)
 {
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Caching FNames...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Caching FNames...");
 	status = CS_busy;
 	totalNames = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedNames = 0;
@@ -804,7 +804,7 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 #if BREAK_IF_INVALID_NAME
 		if (finishedNames == 0 && res != "/Script/CoreUObject")
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE",
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE",
 				"ERROR: The first object name should be always /Script/CoreUObject! This is most likely the result of a invalid FName offset or no decryption!");
 			status = CS_error;
 			return;
@@ -813,12 +813,12 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 #endif
 	}
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Cached all FNames!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Cached all FNames!");
 }
 
 void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPackages, CopyStatus & status)
 {
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Caching all Packets...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packets...");
 	status = CS_busy;
 
 	//we already done?
@@ -827,7 +827,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		status = CS_success;
 		totalPackages = packages.size();
 		finishedPackages = packages.size();
-		windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Packets already got cached!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Packets already got cached!");
 		return;
 	}
 	std::unordered_map<std::string, std::vector<UObject*>> upackages;
@@ -835,11 +835,11 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	totalPackages = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedPackages = 0;
 
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "reading overriding structs....");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "reading overriding structs....");
 	overrideStructs();
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding custom structs....");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding custom structs....");
 	addStructs();
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "adding overrigind unknown members....");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overrigind unknown members....");
 	overrideUnknownMembers();
 
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
@@ -863,7 +863,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	//reset the counter to 0 as we are using it again but this time really for packages
 	finishedPackages = 0;
 	totalPackages = upackages.size();
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Total packages: %d", totalPackages);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Total packages: %d", totalPackages);
 
 
 
@@ -899,7 +899,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 				//is the struct predefined?
 				if (overridingStructs.contains(object->getFullName()))
 				{
-					windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "%s %s is predefined!", naming, object->getCName().c_str());
+					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "%s %s is predefined!", naming, object->getCName().c_str());
 					auto& struc = overridingStructs[object->getFullName()];
 					//last check, does the cpp name match?
 					if (struc.cppName == object->getCName())
@@ -913,7 +913,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 
 						generateFunctions(object->castTo<UStruct>(), generatedStruc.functions);
 
-						windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
+						windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
 
 						continue;
 					}
@@ -922,7 +922,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 				if (!ObjectsManager::operationSuccess())
 					return;
 
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE",
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 
 
@@ -934,12 +934,12 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 				auto& generatedStruc = dataVector.back();
 				generatedStruc.isClass = isClass;
 
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
 
 			}
 			else if (object->IsA<UEnum>())
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_0, "CORE", "Generating Enum %s", object->getCName().c_str());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Generating Enum %s", object->getCName().c_str());
 				const auto eObject = object->castTo<UEnum>();
 				if (!generateEnum(eObject, ePackage.enums))
 					continue;
@@ -957,7 +957,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	finishPackages();
 
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Done generating packets!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Done generating packets!");
 }
 
 std::vector<EngineStructs::Package>& EngineCore::getPackages()
@@ -1226,7 +1226,7 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 	totalProgress = 1 + FNameCache.size() + packageObjectInfos.size() +
 		overridingStructs.size() + packages.size() + unknownProperties.size() + customStructs.size() + offsets.size() + 5000;
 	progressDone = 0;
-	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saving to disk...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Saving to disk...");
 	nlohmann::json UEDProject;
 
 
@@ -1303,7 +1303,7 @@ void EngineCore::saveToDisk(int& progressDone, int& totalProgress)
 	free(strBytes);
 	delete[] c;
 
-	windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Saved!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Saved!");
 	progressDone = totalProgress;
 }
 
@@ -1314,7 +1314,7 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 	std::ifstream file(filepath, std::ios::binary | std::ios::ate);
 	if (!file)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Error opening file!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Error opening file!");
 		return false;
 	}
 
@@ -1323,14 +1323,14 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 
 	if (fileSize < 100)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "File invalid!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "File invalid!");
 		return false;
 	}
 
 	unsigned char* buffer = static_cast<unsigned char*>(calloc(1, fileSize));
 	if (!file.read(reinterpret_cast<char*>(buffer), fileSize))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to read file!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Failed to read file!");
 		free(buffer);
 		return false;
 	}
@@ -1348,7 +1348,7 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 
 	if (std::memcmp(c, cmp.c_str(), cmp.length()) != 0)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Wrong decryption key!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Wrong decryption key!");
 		delete[] c;
 		return false;
 	}
@@ -1374,7 +1374,7 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 	if (!unordered_maps.contains("FNameCache") ||
 		!unordered_maps.contains("OverridingStructs"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project corrupted! (-4)");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Project corrupted! (-4)");
 		return false;
 	}
 
@@ -1402,7 +1402,7 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 		!vectors.contains("CustomStructs") ||
 		!vectors.contains("Offsets"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Project corrupted! (-5)");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Project corrupted! (-5)");
 		return false;
 	}
 

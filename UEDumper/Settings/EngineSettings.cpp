@@ -111,15 +111,16 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 {
 	if (!json.contains("DUMPER_VERSION"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "The save file was generated with an older "
 			"version of the dumper and is not compatible with this version.");
+		return false;
 	}
 	const int ver = json["DUMPER_VERSION"];
 	if (ver != DUMPER_VERSION)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "The save file was generated with an older "
 			"version of the dumper.");
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
 		return false;
 	}
 
@@ -131,12 +132,12 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 		!json.contains("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"))
 
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "This project is missing special json settings and is corrupted.");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "This project is missing special json settings and is corrupted.");
 		return false;
 	}
 
 	_UE_VERSION = json["UE_VERSION"];
-	windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINESETTINGS", "This project uses %s.", getEngineVersion().name.c_str());
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "This project uses %s.", getEngineVersion().name.c_str());
 
 	_USE_FNAME_ENCRYPTION = json["USE_FNAME_ENCRYPTION"];
 	_WITH_CASE_PRESERVING_NAME = json["WITH_CASE_PRESERVING_NAME"];
@@ -146,7 +147,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 #define checkMacro(condition, name, save) \
 	if(condition) { \
 		if (!json.contains(name)) { \
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
 			return false; \
 		} \
 		save = json[name]; \
@@ -170,7 +171,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 	workingDir = json.value("workingDir", std::filesystem::path());
 	if (workingDir.empty())
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "WorkingDir is missing!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "WorkingDir is missing!");
 		return false;
 	}
 

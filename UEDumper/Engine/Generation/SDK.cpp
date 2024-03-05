@@ -64,7 +64,7 @@ void SDKGeneration::generateBasicType()
 
     for (const auto& missingDef : noDefs)
     {
-        windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "WARNING: SDK ERRORS WILL APPEAR!! Missing definition for struct %s!!!", missingDef.c_str());
+        windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "SDK GEN", "WARNING: SDK ERRORS WILL APPEAR!! Missing definition for struct %s!!!", missingDef.c_str());
         BasicType << "//TODO: Define " << missingDef << "!\n\n\n";
     }
 
@@ -314,7 +314,7 @@ SDKGeneration::SDKGeneration()
 
 void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 {
-    windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "Baking SDK...");
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking SDK...");
 
     SDKPath = EngineSettings::getWorkingDirectory() / "SDK";
     if (!create_directories(SDKPath))
@@ -378,7 +378,7 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
     progressDone = 0;
     for (auto& pack : soredPackages)
     {
-        windows::LogWindow::Log(windows::LogWindow::log_2, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
+        windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
         masterHeader << "#include \"SDK/" + pack->package.packageName + ".h\"" << std::endl;
         if (pack->package.packageName == "BasicType")
             generateBasicType();

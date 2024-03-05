@@ -18,8 +18,6 @@ void TextureCreator::createDefaultTextures()
 {
     createTexture(warningLogoData, sizeof(warningLogoData), "warninglogo");
     createTexture(logoData, sizeof(logoData), "logo");
-    
-    
 }
 
 ID3D11ShaderResourceView* TextureCreator::getTexture(const std::string& description)

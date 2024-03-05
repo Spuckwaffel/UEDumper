@@ -20,7 +20,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
     {
         if (!openTabFromCName(type.name))
         {
-            LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", type.name.c_str());
+            LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Object %s not found!", type.name.c_str());
         }
     }
     ImGui::SameLineEx(0);
@@ -34,7 +34,7 @@ void windows::PackageViewerWindow::renderSubTypes(const fieldType& type, bool in
         {
             if (ImGui::Button(std::string(subType.name + "##" + std::to_string(reinterpret_cast<__int64>(&subType.name))).c_str()) && !openTabFromCName(subType.name))
             {
-                LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", subType.name.c_str());
+                LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Object %s not found!", subType.name.c_str());
             }
             ImGui::SameLineEx(0);
             if (type.subTypes[j].propertyType == PropertyType::ObjectProperty || type.subTypes[j].propertyType == PropertyType::ClassProperty)
@@ -74,7 +74,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab* tab, EngineSt
         char address[30];
         sprintf_s(address, "0x%llX", struc.memoryAddress);
         IGHelper::copyToClipBoard(std::string(address));
-        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
+        LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
     }
     ImGui::SameLine();
     //render some infos in green
@@ -188,8 +188,8 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab* tab, EngineSt
                     ImGui::TextColored(IGHelper::Colors::white, "*");
                 }
 
-                if (clicked && !openTabFromCName(member->type.name))
-                    LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Object %s not found!", member->type.name.c_str());
+                if (clicked && !openTabFromCName(member.type.name))
+                    LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Object %s not found!", member.type.name.c_str());
 
             }
             ImGui::PopStyleColor(6);
@@ -271,7 +271,7 @@ void windows::PackageViewerWindow::renderEnum(const EngineStructs::Enum& enu)
         char address[30];
         sprintf_s(address, "0x%llX", enu.memoryAddress);
         IGHelper::copyToClipBoard(std::string(address));
-        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
+        LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
     }
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::commentGreen);
@@ -317,7 +317,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
             char addressBuf[30];
             sprintf_s(addressBuf, "0x%llX", address);
             IGHelper::copyToClipBoard(std::string(addressBuf));
-            LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
+            LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
         }
     };
 
@@ -360,7 +360,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
         if (ImGui::Button(std::string(func.returnType.name + "##" + std::to_string(reinterpret_cast<__int64>(&func.returnType.name))).c_str()))
         {
             if (!openTabFromCName(func.returnType.name))
-                LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Type %s not found!", func.returnType.name.c_str());
+                LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Type %s not found!", func.returnType.name.c_str());
         }
         ImGui::PopStyleColor(6);
     }
@@ -406,7 +406,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
                 if (ImGui::Button(std::string(std::get<0>(func.params.at(i)).name + "##" + std::to_string(reinterpret_cast<__int64>(&std::get<0>(func.params.at(i)).name))).c_str()))
                 {
                     if (!openTabFromCName(std::get<0>(func.params.at(i)).name))
-                        LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Param type %s not found!", std::get<0>(func.params.at(i)).name.c_str());
+                        LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Param type %s not found!", std::get<0>(func.params.at(i)).name.c_str());
                 }
                 ImGui::SameLineEx(0);
             }

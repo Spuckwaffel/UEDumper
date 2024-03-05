@@ -7,7 +7,7 @@
 
 Memory::Memory()
 {
-	windows::LogWindow::Log(windows::LogWindow::log_0, "MEMORY", "Initializing memory class...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "MEMORY", "Initializing memory class...");
 	//only call the init function if status is bad
 	if (status == bad)
 	{
@@ -16,7 +16,7 @@ Memory::Memory()
 
 		//set the status to inizilized
 		status = inizilaized;
-		windows::LogWindow::Log(windows::LogWindow::log_0, "MEMORY", "Initialized Memory class!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MEMORY", "Initialized Memory class!");
 	}
 
 }
@@ -32,16 +32,16 @@ Memory::LoadError Memory::load(std::string processName)
 		loadData(processName, baseAddress, processID);
 
 		if (!baseAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting base address!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "MEMORY", "Error getting base address!");
 			return noBaseAddress;
 		}
 
 		if (!processID) {
-			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting process ID!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "MEMORY", "Error getting process ID!");
 			return noProcessID;
 		}
 
-		windows::LogWindow::Log(windows::LogWindow::log_0, "MEMORY", "Loaded Memory class!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MEMORY", "Loaded Memory class!");
 	}
 
 	status = loaded;
@@ -59,19 +59,19 @@ Memory::LoadError Memory::load(int processPID)
 		baseAddress = _getBaseAddress(nullptr, processPID);
 
 		if (!baseAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting base address!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "MEMORY", "Error getting base address!");
 			return noBaseAddress;
 		}
 
 		processID = processPID;
 		if (!processID) {
-			windows::LogWindow::Log(windows::LogWindow::log_2, "MEMORY", "Error getting process ID!");
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "MEMORY", "Error getting process ID!");
 			return noProcessID;
 		}
 
 		attachToProcess(processID);
 
-		windows::LogWindow::Log(windows::LogWindow::log_0, "MEMORY", "Loaded Memory class!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MEMORY", "Loaded Memory class!");
 	}
 
 	status = loaded;

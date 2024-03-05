@@ -8,23 +8,21 @@ namespace windows
 	{
 	public:
 
-#define LOGLEVEL_ALL_DEBUG_MESSAGES log_0
-#define LOGLEVEL_SMALL_WARNINGS_AND_INFOS log_1
-#define LOGLEVEL_ONLY_IMPORTANT_MESSAGES log_2
+#define ENUM(x) (int)x
 
-		enum logLevels
+		enum class logLevels
 		{
-			LOGLEVEL_ALL_DEBUG_MESSAGES = 0, //a lot useless log shit
-			LOGLEVEL_SMALL_WARNINGS_AND_INFOS = 1, //somewhat important
-			LOGLEVEL_ONLY_IMPORTANT_MESSAGES = 2, //important messages
-			log_MAX = 3
+			LOGLEVEL_ONLY_LOG = 2 << 0, //a lot useless log shit
+			LOGLEVEL_INFO = 2 << 1,
+			LOGLEVEL_WARNING = 2 << 2,
+			LOGLEVEL_ERROR = 2 << 3,
+			LOGLEVEL_NORMAL =  LOGLEVEL_INFO | LOGLEVEL_WARNING | LOGLEVEL_ERROR,
+			LOGLEVEL_ALL = LOGLEVEL_ONLY_LOG | LOGLEVEL_INFO | LOGLEVEL_WARNING | LOGLEVEL_ERROR,
 		};
 
 		static const inline char* logLevelNames[] = {
 			"Everything",
-			"Frontend, Errors and Dumping Info",
-			"Frontend and Error Messages"
-			""
+			"Infos, warnings and errors"
 		};
 
 	private:
@@ -32,20 +30,17 @@ namespace windows
 		struct log
 		{
 			std::string originandTime;
-			char message[2500];
+			char message[201];
+			logLevels level;
 		};
 		static inline std::vector<log> logs{};
+		static inline std::vector<log> displayLogs{};
 		static inline int oldSize = 0;
-
-		static inline int selectedLog = 0;
-		static inline int selectedLogRange = 0;
-		static inline int logRange = 100;
-		static inline bool autoScroll = true;
 
 		static inline float logWindowYSize = 250;
 
 
-		static inline int logLevel = LOGLEVEL_ALL_DEBUG_MESSAGES;
+		static inline int logLevel = ENUM(logLevels::LOGLEVEL_NORMAL);
 
 	public:
 

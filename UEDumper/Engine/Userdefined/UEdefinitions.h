@@ -71,6 +71,7 @@
 #define USE_FNAME_ENCRYPTION FALSE
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
+//if GNames fail, try setting this to true
 //default FALSE
 #define WITH_CASE_PRESERVING_NAME FALSE
 
@@ -123,7 +124,7 @@
 /* UFunction settings */
 
 /** Enable fast calls for event thunks into an event graph that have no parameters  */
-//default TRUE
+//default TRUE, set to FALSE if function offsets are all 0
 #define UE_BLUEPRINT_EVENTGRAPH_FASTCALLS TRUE
 
 //only exists for UE version 5.0 and above
@@ -138,7 +139,7 @@
 
 #if UE_VERSION >= UE_4_22
 //stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
-//default TRUE
+//default TRUE, set to FALSE if the generation fails
 #define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
 #endif
 

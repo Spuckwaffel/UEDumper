@@ -69,7 +69,7 @@ bool windows::EditWindow::overrideStruct(std::vector<NewType>& newTypes, char* b
 	}
 	if (success)
 	{
-		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Updating Struct!");
+		LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Updating Struct!");
 		EngineCore::runtimeOverrideStructMembers(edit.editStruct, members);
 		return true;
 	}
@@ -284,7 +284,7 @@ void windows::EditWindow::renderEditBit()
             edit.editMember->userEdited = true;
 			edit.editMember->type.name = isBool ? "bool" : "unsigned char";
 
-            LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Named unknown object to %s!", tempNewNameBuf);
+            LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Named unknown object to %s!", tempNewNameBuf);
             memset(tempNewNameBuf, 0, sizeof(tempNewNameBuf));
 			memset(errorMsg, 0, 100);
         }
