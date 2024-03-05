@@ -1050,7 +1050,7 @@ void EngineCore::finishPackages()
 				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
 				if (packageObjectInfos.contains(struc.cppName))
 				{
-					windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Duplicate name found: %s", struc.cppName.c_str());
+					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "Duplicate name found: %s", struc.cppName.c_str());
 					struc.cppName += "dup_" + std::to_string(duplicatedNames++);
 				}
 				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
