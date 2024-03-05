@@ -31,8 +31,10 @@
 #define RELEASE_1_7_FINAL	13
 #define RELEASE_1_8_BETA	14
 #define RELEASE_1_8_FINAL	15
+#define RELEASE_1_9_BETA	16
+#define RELEASE_1_9_FINAL	17
 
-#define DUMPER_VERSION RELEASE_1_8_BETA
+#define DUMPER_VERSION RELEASE_1_9_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!

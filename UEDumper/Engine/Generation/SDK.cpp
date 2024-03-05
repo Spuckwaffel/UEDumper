@@ -118,10 +118,31 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
             char buf[100] = { 0 };
             sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->inheretedSize, struc->inheretedSize, struc->size);
             stream << "/// " << buf << std::endl;
+
+            bool needsHelp = false;
+
+            if (struc->cookedMembers.size() > 0)
+            {
+                if (struc->maxSize != struc->size)
+                {
+                    needsHelp = true;
+                    stream << "#pragma pack(push, 0x1)" << std::endl;
+                }
+            }
+
             if (struc->isClass)
-                stream << "class " << generateValidVarName(struc->cppName);
+                stream << "class ";
             else
-                stream << "struct " << generateValidVarName(struc->cppName);
+                stream << "struct ";
+
+            if (needsHelp)
+            {
+                char buf1[100] = { 0 };
+                sprintf_s(buf1, "alignas(0x%X) ", struc->minAlignment);
+                stream << buf1;
+            }
+
+            stream << generateValidVarName(struc->cppName);
 
             if (struc->inherited && struc->isClass)
                 stream << " : public " << generateValidVarName(struc->supers[0]->cppName);
@@ -139,11 +160,12 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
             int j = 0;
 
-            for (const auto& member : struc->cookedMembers)
+            for (int i = 0; i < struc->cookedMembers.size(); i++)
             {
+                const auto member = struc->getMemberForIndex(i);
                 char finalBuf[600];
                 char nameBuf[500];
-                std::string name = member.name;
+                std::string name = member->name;
 
                 if (std::isdigit(name[0]))
                     name = "_" + name;
@@ -158,12 +180,12 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
                 usedNames.push_back(name);
 
-                std::string memberType = member.type.stringify().c_str();
+                std::string memberType = member->type.stringify().c_str();
 
-                if (member.type.clickable)
+                if (member->type.clickable)
                 {
-                    bool anyUndef = !member.type.info || !member.type.info->valid;
-                    if (!anyUndef && member.type.subTypes.size() > 0)
+                    bool anyUndef = !member->type.info || !member->type.info->valid;
+                    if (!anyUndef && member->type.subTypes.size() > 0)
                     {
                         auto checkAllSubs = [&](const fieldType& type, auto& self) -> void
                         {
@@ -183,29 +205,29 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
                                     self(sub, self);
                             }
                         };
-                        checkAllSubs(member.type, checkAllSubs);
+                        checkAllSubs(member->type, checkAllSubs);
                     }
 
                     if (anyUndef)
                     {
-                        memberType = "SDK_UNDEFINED(" + std::to_string(member.size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
-                        name = "__um(" + member.name + ")";
+                        memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
+                        name = "__um(" + member->name + ")";
                     }
                 }
 
 
 
-                if (member.isBit)
+                if (member->isBit)
                     name += " : 1";
                 sprintf_s(nameBuf, "%-50s %s;", memberType.c_str(), name.c_str());
-                if (member.isBit)
-                    sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member.offset, member.bitOffset, member.size);
+                if (member->isBit)
+                    sprintf_s(finalBuf, "	%-110s // 0x%04X:%d (0x%04X) ", nameBuf, member->offset, member->bitOffset, member->size);
                 else
-                    sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member.offset, member.size);
-                stream << finalBuf << " "; // << static_cast<int>(member.type.propertyType);
-                if (member.userEdited)
+                    sprintf_s(finalBuf, "	%-110s // 0x%04X   (0x%04X) ", nameBuf, member->offset, member->size);
+                stream << finalBuf << " "; // << static_cast<int>(member->type.propertyType);
+                if (member->userEdited)
                     stream << "USER-MODIFIED";
-                else if (member.missed)
+                else if (member->missed)
                     stream << "MISSED";
                 stream << std::endl;
             }
@@ -239,7 +261,12 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
                 sprintf_s(funcBuf, "	%-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
                 stream << funcBuf << std::endl;
             }
-            stream << "};\n\n";
+            if (needsHelp)
+            {
+                stream << "};\n#pragma pack(pop)\n\n";
+            }
+            else stream << "};\n\n";
+
 
         }
     };

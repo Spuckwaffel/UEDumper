@@ -12,7 +12,7 @@ struct MergedPackage
 
 inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalProgress, std::vector<MergedPackage>& newPackages)
 {
-	
+
 	//first we cast all packages to merged packages
 	for (auto& pack : EngineCore::getPackages())
 	{
@@ -267,28 +267,29 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					//if the item is inherited check the super
 					fixOrder(item->supers[0]);
 				}
-					
+
 
 				//now we do the same check for every member
-				for (auto& member : item->cookedMembers)
+				for (int i = 0; i < item->cookedMembers.size(); i++)
 				{
+					const auto member = item->getMemberForIndex(i);
 					//if the member is not clickable its prob some bool or int
-					if (!member.type.clickable)
+					if (!member->type.clickable)
 						continue;
 
 
 					//these types are always pointers to classes or structs. They arent really a dependency as the compiler will know
 					//it will be 8 bytes large
-					if (member.type.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty)
+					if (member->type.propertyType == PropertyType::ObjectProperty || member->type.propertyType == PropertyType::ClassProperty)
 						continue;
 
 					//is the type a unknown type? Nothing we can do about it, SDK will handle it via macro (see SDK_UNDEFINED in SDK.cpp)
 					//unknown type means info.valid is false
-					auto info = member.type.info;
+					auto info = member->type.info;
 					if (!info || !info->valid)
 						continue;
 
-					
+
 
 					//if the type is function (never happens) or enum, we can ignore.
 					//enums are always at the top of the file
@@ -298,7 +299,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 						fixOrder(typeItem);
 					}
 
-					for(auto& sub : member.type.subTypes)
+					for (auto& sub : member->type.subTypes)
 					{
 						auto subInfo = sub.info;
 						if (!subInfo || !subInfo->valid)

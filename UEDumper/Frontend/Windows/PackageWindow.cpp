@@ -255,8 +255,7 @@ void windows::PackageWindow::renderProjectPopup()
 	}
 
 
-	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate SDK")))
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Legacy SDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
@@ -268,7 +267,8 @@ void windows::PackageWindow::renderProjectPopup()
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate MDK")))
+	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate NEW MDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;

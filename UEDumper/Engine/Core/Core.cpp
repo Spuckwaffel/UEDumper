@@ -219,6 +219,9 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	EngineStructs::Struct eStruct;
 	eStruct.memoryAddress = object->objectptr;
 	eStruct.size = object->PropertiesSize;
+	eStruct.minAlignment = object->MinAlignment;
+	//set this as the current max size, but it will get overridden
+	eStruct.maxSize = eStruct.size;
 	eStruct.fullName = object->getFullName();
 	eStruct.cppName = object->getCName();
 
@@ -340,9 +343,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 #endif
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
-
-
-	cookMemberArray(eStruct);
 
 	data.push_back(eStruct);
 	return true;
@@ -572,7 +572,8 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		unknown.name = std::string(name);
 		unknown.type = { false, PropertyType::BoolProperty, TYPE_UCHAR };
 		unknown.offset = from;
-		eStruct.cookedMembers.push_back(unknown);
+		eStruct.undefinedMembers.push_back(unknown);
+		eStruct.cookedMembers.push_back(std::pair(false, eStruct.undefinedMembers.size() - 1));
 	};
 
 	//end bit exclusive
@@ -627,23 +628,42 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 				startBit = startBit % 8;
 				startOffset++;
 			}
-			eStruct.cookedMembers.push_back(unknown);
+			eStruct.undefinedMembers.push_back(unknown);
+			eStruct.cookedMembers.push_back(std::pair(false, eStruct.undefinedMembers.size() - 1));
 		}
 	};
 
 	if (eStruct.size - eStruct.inheretedSize == 0)
 		return;
 
-	if (eStruct.definedMembers.size() == 0 && eStruct.size - eStruct.inheretedSize > 0)
+	if (eStruct.definedMembers.size() == 0)
 	{
-		genUnknownMember(eStruct.inheretedSize, eStruct.size, 1);
+		if (eStruct.inherited)
+		{
+			const auto& inherStruct = eStruct.supers[0];
+			if (eStruct.maxSize - inherStruct->maxSize > 0)
+			{
+				genUnknownMember(inherStruct->maxSize, eStruct.maxSize, 1);
+			}
+		}
+		else if (eStruct.maxSize > 0)
+		{
+			genUnknownMember(0, eStruct.maxSize, 2);
+		}
 		return;
 	}
 
-	if (eStruct.inheretedSize < eStruct.definedMembers[0].offset)
+	if (eStruct.inherited)
 	{
-		genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 2);
+		const auto& inherStruct = eStruct.supers[0];
+		if (inherStruct->maxSize < eStruct.definedMembers[0].offset)
+		{
+			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
+		}
+
 	}
+
+
 
 	//we are hoping (very hard) that definedmembers array is 1. sorted and 2. checked for collisions
 	for (int i = 0; i < eStruct.definedMembers.size() - 1; i++)
@@ -653,7 +673,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//bit shit
 		if (currentMember.isBit)
 		{
-			eStruct.cookedMembers.push_back(currentMember);
+			eStruct.cookedMembers.push_back(std::pair(true, i));
 			if (nextMember.isBit)
 			{
 				//not directly next to it?
@@ -695,7 +715,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 			}
 			continue;
 		}
-		eStruct.cookedMembers.push_back(currentMember);
+		eStruct.cookedMembers.push_back(std::pair(true, i));
 		//0x2 [0x4]
 		//0x7 [0x2]
 		//->
@@ -714,10 +734,10 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		}
 	}
 	//add the last member
-	eStruct.cookedMembers.push_back(eStruct.definedMembers[eStruct.definedMembers.size() - 1]);
-	const auto& last = eStruct.cookedMembers[eStruct.cookedMembers.size() - 1];
-	if (last.offset + last.size < eStruct.size)
-		genUnknownMember(last.offset + last.size, eStruct.size, 6);
+	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
+	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	if (last->offset + last->size < eStruct.maxSize)
+		genUnknownMember(last->offset + last->size, eStruct.maxSize, 6);
 }
 
 
@@ -852,7 +872,6 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	basicType.packageName = "BasicType"; //dont rename!!
 	for (auto& struc : customStructs)
 	{
-		cookMemberArray(struc);
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
 	}
@@ -886,8 +905,6 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 					if (struc.cppName == object->getCName())
 					{
 						struc.memoryAddress = reinterpret_cast<uintptr_t>(object->getOwnPointer());
-
-						cookMemberArray(struc);
 
 						dataVector.push_back(struc);
 
@@ -1015,6 +1032,7 @@ void EngineCore::overrideStructMembers(const EngineStructs::Struct & eStruct)
 void EngineCore::finishPackages()
 {
 	std::unordered_map<std::string, int> enumMap = {};
+	int duplicatedNames = 0;
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
 	for (int i = 0; i < packages.size(); i++)
 	{
@@ -1030,6 +1048,11 @@ void EngineCore::finishPackages()
 				struc.owningVectorIndex = j;
 
 				const auto OI_type = struc.isClass ? ObjectInfo::OI_Class : ObjectInfo::OI_Struct;
+				if (packageObjectInfos.contains(struc.cppName))
+				{
+					windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Duplicate name found: %s", struc.cppName.c_str());
+					struc.cppName += "dup_" + std::to_string(duplicatedNames++);
+				}
 				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
 				package.combinedStructsAndClasses.push_back(&struc);
 
@@ -1065,9 +1088,6 @@ void EngineCore::finishPackages()
 			enu.owningVectorIndex = j;
 			packageObjectInfos.insert(std::pair(enu.cppName, ObjectInfo(true, ObjectInfo::OI_Enum, &enu)));
 		}
-
-
-
 	}
 
 	//we have to loop again for dependency tracking and supers
@@ -1082,14 +1102,28 @@ void EngineCore::finishPackages()
 				const auto info = getInfoOfObject(name);
 				if (!info || !info->valid)
 					continue;
+				//get the super struct
 				auto superStruc = static_cast<EngineStructs::Struct*>(info->target);
+				//add the super struct as a super
 				struc->supers.push_back(superStruc);
+				//if they arent in the same package, add the supers package as dependency
 				if (superStruc->owningPackage->index != package.index)
 					package.dependencyPackages.insert(superStruc->owningPackage);
-
+				//add the current struct to the list of super of others of the super
+				superStruc->superOfOthers.push_back(struc);
+				//now if our current struct has defined members, we check the size of the super and possibly reduce the maxSize
+				//because of trailing and padding, we choose the lowest member
+				if (struc->definedMembers.size() > 0)
+				{
+					const auto& firstMember = struc->definedMembers[0];
+					if (firstMember.offset < superStruc->maxSize)
+					{
+						superStruc->maxSize = firstMember.offset;
+					}
+				}
 			}
 
-			for (auto& var : struc->cookedMembers)
+			for (auto& var : struc->definedMembers)
 			{
 				if (!var.type.clickable)
 					continue;
@@ -1164,6 +1198,14 @@ void EngineCore::finishPackages()
 			}
 		}
 
+	}
+
+	for (auto& package : packages)
+	{
+		for (auto& struc : package.structs)
+			cookMemberArray(struc);
+		for (auto& clas : package.classes)
+			cookMemberArray(clas);
 	}
 
 }
@@ -1415,14 +1457,14 @@ void EngineCore::generateStructDefinitionsFile()
 	file << "/// All changes made to structs are dumped here.\n\n" << std::endl;
 
 
-	auto printToFile = [&](const std::unordered_map<std::string, EngineStructs::Struct>& map) mutable
+	auto printToFile = [&](std::unordered_map<std::string, EngineStructs::Struct>& map) mutable
 	{
 		auto boolToSt = [](bool b)
 		{
 			return b ? "true" : "false";
 		};
 
-		for (const auto& val : map | std::views::values)
+		for (auto& val : map | std::views::values)
 		{
 			std::string spacing = "    ";
 			std::string objectName = "s" + val.cppName;
@@ -1433,7 +1475,7 @@ void EngineCore::generateStructDefinitionsFile()
 			file << spacing << objectName << ".inherited = " << boolToSt(val.inherited) << ";" << std::endl;
 			file << spacing << objectName << ".isClass = " << boolToSt(val.isClass) << ";" << std::endl;
 			file << spacing << objectName << ".members = std::vector<EngineStructs::Member> {" << std::endl;
-			for (const auto member : val.cookedMembers)
+			for (int i = 0; i < val.cookedMembers.size(); i++)
 			{
 				auto printFieldType = [&](const fieldType& type) mutable
 				{
@@ -1441,26 +1483,27 @@ void EngineCore::generateStructDefinitionsFile()
 						<< ", \"" << type.name << "\"";
 				};
 
+				const auto member = val.getMemberForIndex(i);
 				file << spacing << spacing << "{";
-				printFieldType(member.type);
+				printFieldType(member->type);
 
-				if (member.type.subTypes.size() > 0)
+				if (member->type.subTypes.size() > 0)
 				{
 					file << ", std::vector<fieldType>{";
-					for (int i = 0; i < member.type.subTypes.size(); i++)
+					for (int j = 0; j < member->type.subTypes.size(); j++)
 					{
-						printFieldType(member.type.subTypes[i]);
+						printFieldType(member->type.subTypes[j]);
 						file << "}";
-						if (i < member.type.subTypes.size() - 1)
+						if (j < member->type.subTypes.size() - 1)
 							file << ",";
 					}
 					file << "}";
 				}
-				file << "}, \"" << member.name << "\", " << member.offset << ", " << member.size << ", " << boolToSt(member.missed);
-				if (member.isBit)
+				file << "}, \"" << member->name << "\", " << member->offset << ", " << member->size << ", " << boolToSt(member->missed);
+				if (member->isBit)
 				{
 
-					file << ", " << boolToSt(member.isBit) << ", " << (member.bitOffset >= 99 ? member.bitOffset - 99 : member.bitOffset) << ", " << boolToSt(member.userEdited);
+					file << ", " << boolToSt(member->isBit) << ", " << (member->bitOffset >= 99 ? member->bitOffset - 99 : member->bitOffset) << ", " << boolToSt(member->userEdited);
 				}
 				file << "}," << std::endl;
 			}

@@ -252,3 +252,4 @@ public:
 	static bool generateFNameFile(int& progressDone, int& totalProgress);
 
 };
+

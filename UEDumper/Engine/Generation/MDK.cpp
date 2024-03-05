@@ -141,7 +141,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 			std::unordered_map<std::string, int> alreadyDefinedMembers{};
 
 
-			for (const auto& member : struc->cookedMembers)
+			for (const auto& member : struc->definedMembers)
 			{
 				if (member.missed)
 					continue;
@@ -230,7 +230,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 		char buf[100] = { 0 };
 		sprintf_s(buf, "Size: 0x%02d", enu.members.size());
 		stream << "/// " << buf << std::endl;
-		stream << "enum " << enu.cppName << " : " << enu.type << std::endl;
+		stream << "enum class " << enu.cppName << " : " << enu.type << std::endl;
 		stream << "{" << std::endl;
 
 		int j = 0;
