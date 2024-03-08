@@ -47,6 +47,8 @@ public:
 		"Version 1.7 Release",
 		"Version 1.8 BETA",
 		"Version 1.8 Release",
+		"Version 1.9 BETA",
+		"Version 1.9 Release",
 	};
 
 private:

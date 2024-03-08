@@ -129,7 +129,7 @@ void windows::LogWindow::render()
 			else if (ENUM(log.level) & ENUM(logLevels::LOGLEVEL_ERROR))
 				ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::red);
 			//fake push so we can just pop
-			else if (ENUM(log.level) & ENUM(logLevels::LOGLEVEL_INFO))
+			else 
 				ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_Text));
 			if (ImGui::Selectable(buf, is_selected)) {
 				selectedLog = i;

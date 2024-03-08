@@ -276,7 +276,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			//should not happen
 			if (member.size == 0)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_2, "CORE", "member %s size is 0! ", member.name.c_str());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "member %s size is 0! ", member.name.c_str());
 				//DebugBreak();
 				continue;
 			}
@@ -286,7 +286,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 			if (type.propertyType == PropertyType::Unknown)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_1, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "Struct %s: %s at 0x%p is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
 				continue;
 			}
 			if (type.propertyType == PropertyType::BoolProperty && prop->castTo<UBoolProperty>()->isBitField())

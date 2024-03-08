@@ -194,7 +194,7 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() - 1);
 	ImGui::SameLine();
 	if (ImGui::ArrowButton("loglevel_btn_right", ImGuiDir_Right))
-		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() + 1);
+		windows::LogWindow::setLogLevel(static_cast<int>(windows::LogWindow::logLevels::LOGLEVEL_ALL));
 	ImGui::SameLine();
 	ImGui::Text("Log level: %d | %s", windows::LogWindow::getLogLevel(), windows::LogWindow::getLogLevelName().c_str());
 	ImGui::BeginDisabled();
