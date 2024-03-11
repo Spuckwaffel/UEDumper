@@ -21,55 +21,32 @@
 // example:
 // static uint64_t dword_4B64088 = 0;
 
+static unsigned int dword_113C6B04 = 0;
+
 //use the Memory::read function for reading any memory.
 static void fname_decrypt(char* inputBuf, int namelength)
 {
-	/// Example:
-	///	char* v2 = inputBuf; // rdi
-	///	int v4 = namelength; // ebx
-	///	int v5 = 0;
-	///	uint64_t result = 38i64;
-	///	if (v4)
-	///	{
-	///		do
-	///		{
-	///			uint64_t v7 = v5 | result;
-	///			++v2;
-	///			++v5;
-	///			BYTE v8 = ~(BYTE)v7;
-	///			result = (unsigned int)(2 * v7);
-	///			*(BYTE*)(v2 - 1) ^= v8;
-	///		} while (v5 < v4);
-	///	}
-	///
+	//reversed either by me or credits to the people who post it on uc
 
-	/// Another example
-	/// if (dword_4CF88E4 == 0)
-	/// 	dword_4CF88E4 = Memory::read<uint64_t>(Memory::getBaseAddress() + 0x4CF88E4);
-	/// 
-	/// if (dword_4BF84A4 == 0)
-	/// 	dword_4BF84A4 = Memory::read<uint64_t>(Memory::getBaseAddress() + 0x4BF84A4);
-	/// 
-	/// const int v4 = dword_4BF84A4 ^ 0x9C677CC5;
-	/// unsigned int v5 = dword_4CF88E4 + v4;
-	/// char result = v5 ^ *inputBuf;
-	/// *(BYTE*)outputBuff = result;
-	/// const char* v7;
-	/// __int64 v8;
-	/// if (result)
-	/// {
-	/// 	v7 = &inputBuf[-outputBuff];
-	/// 	v8 = -outputBuff;
-	/// 	do
-	/// 	{
-	/// 		v5 += dword_4CF88E4 + v8 + ++outputBuff;
-	/// 		result = v5 ^ v7[outputBuff];
-	/// 		*(BYTE*)outputBuff = result;
-	/// 	} while (result);
-	/// }
+	int v14 = namelength; // r15d
+	int v15; // r8d
+	int v16; // ecx
+	char* v17 = inputBuf; // rdx
+	int v18; // eax
+	unsigned int v19; // ecx
 
-
-
-	//memcpy here if needed, also inputBuf should have the same size as decname otherwise buffer overflow
-	//memcpy(inputBuf, decname, sizeof(decname));
+	v15 = 0;
+	v16 = 28;
+	if (v14)
+	{
+		do
+		{
+			v18 = v15++;
+			v19 = (v18 | 0xB000) + v16;
+			v18 = v19 ^ ~*v17;
+			LOBYTE(v18);
+			v16 = v19 >> 2;
+			*v17++ = v18;
+		} while (v15 < v14);
+	}
 }

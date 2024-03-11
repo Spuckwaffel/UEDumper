@@ -114,9 +114,20 @@ std::string EngineCore::FNameToString(FName fname)
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
 #else
-	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
+	uint64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * chunkOffset + 16) + 2 * nameOffset;
 
-	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
+	uint16_t pool = Memory::read<uint16_t>(namePoolChunk);
+
+	if (pool < 64)
+	{
+		const int compIndex = Memory::read<DWORD>(namePoolChunk + 2);
+		const unsigned int _chunkOffset = compIndex >> 16;
+		const unsigned short _nameOffset = compIndex;
+		namePoolChunk = Memory::read<uint64_t>(gNames + 8 * _chunkOffset + 16) + 2 * _nameOffset;
+		pool = Memory::read<uint16_t>(namePoolChunk);
+	}
+
+	const auto nameLength = pool >> 6;
 
 	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
 #endif
@@ -140,6 +151,7 @@ std::string EngineCore::FNameToString(FName fname)
 
 	return finalName;
 }
+
 
 uint64_t EngineCore::getOffsetAddress(const Offset& offset)
 {

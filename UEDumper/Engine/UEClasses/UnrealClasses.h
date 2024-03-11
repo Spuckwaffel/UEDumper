@@ -919,7 +919,8 @@ public:
 	} Container;
 
 #if UE_VERSION < UE_5_03
-	bool bIsUObject;
+	//TODO: fortnite removed this. Check if this is always present
+	//bool bIsUObject;
 #endif
 };
 
@@ -947,7 +948,8 @@ public:
 	FName NamePrivate;
 
 	/** Object flags */
-	EObjectFlags FlagsPrivate;
+	//TODO: fortnite removed this. Check if this is always present
+	//EObjectFlags FlagsPrivate;
 
 
 	operator bool() const { return ClassPrivate != nullptr; }
@@ -1041,6 +1043,10 @@ public:
 class FArrayProperty : public FProperty
 {
 public:
+
+	//TODO: fortnite added this. Check if this is always present
+	//char pad[8];
+
 #if UE_VERSION < UE_5_03
 	FProperty* Inner;
 	EArrayPropertyFlags ArrayFlags;
@@ -1182,7 +1188,7 @@ public:
 
 	std::string typeName() const { return Enum ? "TEnumAsByte" : TYPE_CHAR; }
 
-	//only if Enum exists! Crash here? Then your UE version is probably wrong. If it still crashes, most likely offset error.
+	//only if Enum exists!
 	std::vector<fieldType> getSubTypes() const { if (!Enum) { DebugBreak(); } return std::vector<fieldType>{ {true, PropertyType::EnumProperty, getEnum()->getName()}}; };
 };
 
