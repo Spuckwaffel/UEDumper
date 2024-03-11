@@ -69,22 +69,21 @@ ObjectsManager::ObjectsManager()
 	if (!gUObjectManager.UObjectArray.Objects)
 	{
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "TUObject pointer is invalid!");
-		errorReason = "TUObject pointer is invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		errorReason = "TUObject pointer is invalid! This means the OFFSET_GOBJECTS offset is wrong. Please set the right offset in Offsets.h";
 		STOP_OPERATION();
 		return;
 	}
 
-	if (gUObjectManager.UObjectArray.NumElements < 100)
+	if (gUObjectManager.UObjectArray.NumElements < 100 || gUObjectManager.UObjectArray.NumElements > 50000000)
 	{
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "TUobject elements are invalid!");
-		errorReason = "TUobject elements are invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		errorReason = "TUobject elements are invalid! This means the OFFSET_GOBJECTS offset is wrong. The log below shows how many elements the dumper found.";
 		STOP_OPERATION();
 		return;
 	}
 
 #if UE_VERSION >= UE_4_25
 
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
 	//allocating a large enough buffer for all FFields using uobject size because that should be big enough
 	gFFieldManager.pFFieldArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CT * UOBJECT_MAX_SIZE));
 

@@ -3,6 +3,7 @@
 #include <imgui_internal.h>
 
 #include "resource.h"
+#include "Fonts/arials.h"
 #include "Fonts/InterFont.h"
 #include "Fonts/fontAwesome.h"
 #include "Fonts/fontAwesomeHelper.h"
@@ -127,9 +128,10 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
     config.MergeMode = true;
     config.GlyphMinAdvanceX = 22.0f; // Use if you want to make the icon monospaced
     static constexpr ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
-    faFont = io.Fonts->AddFontFromMemoryCompressedTTF(faFont_compressed_data, sizeof(faFont_compressed_data), 20, &config, icon_ranges);
+    faFont = io.Fonts->AddFontFromMemoryCompressedTTF(fontAwesome_compressed_data, sizeof(fontAwesome_compressed_data), 20, &config, icon_ranges);
     titleFont = io.Fonts->AddFontFromMemoryCompressedTTF(InterFont_compressed_data, sizeof(InterFont_compressed_data), 35);
     smallFont = io.Fonts->AddFontFromMemoryCompressedTTF(InterFont_compressed_data, sizeof(InterFont_compressed_data), 18);
+    consoleFont = io.Fonts->AddFontFromMemoryCompressedTTF(arials_compressed_data, sizeof(arials_compressed_data), 20);
 
     if (applyDefaultStyle) 
     {
@@ -137,7 +139,7 @@ IGHelper::IGHelper(const LPCWSTR name, const bool applyDefaultStyle, const int s
         colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
         colors[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
         colors[ImGuiCol_WindowBg] = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
-        colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+        colors[ImGuiCol_ChildBg] = ImVec4(0.09f, 0.09f, 0.09f, 1.00f);
         colors[ImGuiCol_PopupBg] = ImVec4(0.19f, 0.19f, 0.19f, 0.92f);
         colors[ImGuiCol_Border] = ImVec4(0.19f, 0.19f, 0.19f, 0.29f);
         colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.24f);
@@ -355,6 +357,11 @@ ImFont* IGHelper::getSmallFont()
 ImFont* IGHelper::getFaFont()
 {
     return faFont;
+}
+
+ImFont* IGHelper::getConsoleFont()
+{
+    return consoleFont;
 }
 
 ImVec4 IGHelper::colToVec(const float r, const float g, const float b, const float a)

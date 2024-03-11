@@ -330,7 +330,7 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
     copyToClipBoard(func.binaryOffset);
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::commentGreen);
-    ImGui::Text("Function offset in the Binary: 0x%p", func.binaryOffset);
+    ImGui::Text("Function offset in the Binary: 0x%06llX", func.binaryOffset);
     ImGui::Text("Name: %s", func.fullName.c_str());
     ImGui::PopStyleColor();
     if (ImGui::IsItemHovered())
@@ -368,7 +368,21 @@ void windows::PackageViewerWindow::renderFunction(const EngineStructs::Function&
         ImGui::TextColored(IGHelper::Colors::varTypeBlue, func.returnType.name.c_str());
 
     ImGui::SameLine();
-    ImGui::TextColored(IGHelper::Colors::classGreen, func.owningStruct->cppName.c_str());
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_BorderShadow, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
+
+
+    if (ImGui::Button(std::string(func.owningStruct->cppName + "##" + std::to_string(reinterpret_cast<__int64>(&func.owningStruct->cppName))).c_str()))
+    {
+        if (!openTabFromCName(func.owningStruct->cppName))
+            LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "PACKAGEVIEWER", "Type %s not found!", func.owningStruct->cppName.c_str());
+    }
+    ImGui::PopStyleColor(6);
+
     ImGui::SameLineEx(0);
     ImGui::TextColored(IGHelper::Colors::bracketGray, "::");
     ImGui::SameLineEx(0);
@@ -533,7 +547,7 @@ void windows::PackageViewerWindow::renderTabs()
             ImGui::BeginDisabled(Tabs[currentTab].typeSelected != ObjectInfo::OI_Class && Tabs[currentTab].typeSelected != ObjectInfo::OI_Struct);
             std::string beforeTest = std::string(Tabs[currentTab].objectBuf);
             //we cant scroll here as we arent in any scroll window
-            if (ImGui::InputTextWithHint("##CNameSearchBox", "Search for Object...", Tabs[currentTab].objectBuf, sizeof(Tabs[currentTab].objectBuf) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
+            if (ImGui::InputTextWithHint("##CNameSearchBox", "Search...", Tabs[currentTab].objectBuf, sizeof(Tabs[currentTab].objectBuf) - 1, ImGuiInputTextFlags_EnterReturnsTrue))
             {
                 //tells the renderX functions to find the Object (used for scrolling)
                 Tabs[currentTab].findObject = PackageTab::findState::FS_hard;
@@ -544,7 +558,7 @@ void windows::PackageViewerWindow::renderTabs()
                 Tabs[currentTab].findObject = PackageTab::findState::FS_none;
             }
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_SEARCH))
+            if (ImGui::Button(ICON_FA_MAGNIFYING_GLASS))
             {
                 Tabs[currentTab].findObject = PackageTab::findState::FS_hard;
             }
@@ -686,17 +700,20 @@ void windows::PackageViewerWindow::renderTabs()
                     {
                         auto& struc = package->combinedStructsAndClasses[j];
 
+                        if (struc->functions.size() == 0)
+                            continue;
+
                         ImGui::Selectable(std::string("##" + struc->cppName + " functions").c_str(), false, ImGuiSelectableFlags_Disabled);
                         ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
                         ImGui::SameLine();
-                        ImGui::Text(std::string(struc->cppName + " functions").c_str());
+                        ImGui::Text(struc->cppName.c_str());
                         ImGui::PopStyleColor();
 
                         for (auto& func : struc->functions)
                         {
                             const bool is_selected = (Tabs[currentTab].itemSelected == &func && Tabs[currentTab].typeSelected == ObjectInfo::ObjectType::OI_Function);
                             ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
-                            if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLE_DOUBLE_RIGHT) + "##" + func.cppName).c_str(), is_selected)) {
+                            if (ImGui::Selectable(std::string(std::string(ICON_FA_ANGLES_RIGHT) + "##" + func.cppName).c_str(), is_selected)) {
 
                                 Tabs[currentTab].itemSelected = &func;
                                 Tabs[currentTab].typeSelected = ObjectInfo::ObjectType::OI_Function;

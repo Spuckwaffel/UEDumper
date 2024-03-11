@@ -175,7 +175,7 @@ private:
 	static inline bool bOperationSuccess = false;
 	static inline std::string errorReason = "";
 
-	//loops shpuld call this for a shutdown
+	//loops should call this for a shutdown
 	static void STOP_OPERATION();
 
 public:

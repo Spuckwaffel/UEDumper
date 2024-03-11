@@ -1410,14 +1410,6 @@ bool EngineCore::loadProject(const std::string & filepath, int& progressDone, in
 	for (const nlohmann::json& package : jPackages)
 		packages.push_back(EngineStructs::Package::fromJson(package));
 
-	for (auto& package : packages)
-	{
-		for (auto& struc : package.structs)
-			cookMemberArray(struc);
-		for (auto& clas : package.classes)
-			cookMemberArray(clas);
-	}
-
 	finishPackages();
 
 	progressDone++;

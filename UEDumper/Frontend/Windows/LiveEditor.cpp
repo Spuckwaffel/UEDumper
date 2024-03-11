@@ -268,7 +268,7 @@ void windows::LiveEditor::renderAddInspector()
 	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
 
 	ImGui::BeginChild("Add New Inspector", smallWindow, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-	IGHelper::placeInCenter(merge(ICON_FA_SEARCH_PLUS, " Add New Inspector"));
+	IGHelper::placeInCenter(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, " Add New Inspector"));
 	if (ImGui::BeginTabBar("TabBar"))
 	{
 		if (ImGui::BeginTabItem("Add Address"))

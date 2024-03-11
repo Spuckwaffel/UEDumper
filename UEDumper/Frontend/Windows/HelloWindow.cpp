@@ -35,13 +35,18 @@ bool windows::HelloWindow::render()
 		ImGui::BeginChild("NewProjectChild", childSize, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollWithMouse);
 		IGHelper::placeInCenter("New project");
 
+		ImGui::SameLine();
+		ImGui::SetCursorPosX(710);
+		if (ImGui::Button(ICON_FA_GEAR))
+			showEngineInfos = true;
+
 		ImGui::SetCursorPosY(40);
 		ImGui::Image(TextureCreator::getTexture("logo"), ImVec2(230, 230));
 		ImGui::SameLine();
 		float posX = ImGui::GetCursorPosX();
 		ImGui::Dummy({ 0,0 });
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "%22s", EngineSettings::getDumperVersion().c_str());
-		ImGui::SetCursorPos({ posX, 20 });
+		ImGui::SetCursorPos({ posX, 35 });
 		ImGui::BeginChild("NewProjectChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
 		ImGui::PushItemWidth(373);
 		ImGui::Dummy(ImVec2(0, 20));
@@ -58,7 +63,7 @@ bool windows::HelloWindow::render()
 			else
 				memset(errorText, 0, sizeof(errorText));
 		}
-		if (createdDir)
+		else if (createdDir)
 		{
 			ImGui::Text("Created!");
 		}
@@ -97,7 +102,7 @@ bool windows::HelloWindow::render()
 			if (Memory::getStatus() == Memory::MemoryStatus::loaded)
 				ImGui::Text("Loaded!");
 
-			else if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
+			else if (ImGui::Button(merge(ICON_FA_MAGNIFYING_GLASS, " Find##FindProcess")))
 				Memory::load(PID);
 		}
 
@@ -120,15 +125,14 @@ bool windows::HelloWindow::render()
 			if (Memory::getStatus() == Memory::MemoryStatus::loaded)
 				ImGui::Text("Loaded!");
 
-			else if (ImGui::Button(merge(ICON_FA_SEARCH, " Find##FindProcess")))
+			else if (ImGui::Button(merge(ICON_FA_MAGNIFYING_GLASS, " Find##FindProcess")))
 				Memory::load(std::string(processName));
 
 		}
 
 
 		ImGui::Spacing();
-		if (ImGui::Button("Engine settings"))
-			showEngineInfos = true;
+
 
 		if (strlen(errorText) > 0)
 		{
@@ -146,7 +150,7 @@ bool windows::HelloWindow::render()
 		if (Memory::getStatus() == Memory::MemoryStatus::loaded && createdDir)
 		{
 			ImGui::SetCursorPosX(40);
-			ImGui::SetCursorPosY(240);
+			ImGui::SetCursorPosY(220);
 			//if we press dump game, this window is completed and not needed anymore
 			if (ImGui::Button(merge(ICON_FA_ROCKET, " Dump Game"), ImVec2(180, 35))) {
 				EngineSettings::setTargetApplicationName(processName);
@@ -158,12 +162,8 @@ bool windows::HelloWindow::render()
 	}
 	else
 	{
-#if UE_VERSION >= UE_5_00
-		constexpr auto childSize = ImVec2(510, 500);
-#else
-		constexpr auto childSize = ImVec2(510, 400);
-#endif
-		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2 - 80));
+		constexpr auto childSize = ImVec2(510, 310);
+		ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - childSize.x / 2, bigWindow.y / 2 - childSize.y / 2));
 		EngineSettings::drawEngineSettings(childSize, &showEngineInfos);
 	}
 

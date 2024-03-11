@@ -134,7 +134,7 @@ bool windows::PackageWindow::render()
 		LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}
 	ImGui::SameLine();
-	if (ImGui::Button(ICON_FA_SEARCH) && !PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
+	if (ImGui::Button(ICON_FA_MAGNIFYING_GLASS) && !PackageViewerWindow::openTabFromCName(std::string(CNameSearch)))
 	{
 		LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "%s not found! Searching for name is case-sensitive!", CNameSearch);
 	}
@@ -254,7 +254,8 @@ void windows::PackageWindow::renderProjectPopup()
 	}
 
 
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate Legacy SDK")))
+	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate SDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;
@@ -266,8 +267,7 @@ void windows::PackageWindow::renderProjectPopup()
 			presentTopMostCallback = false;
 			}))).reset();
 	}
-	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
-	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate NEW MDK")))
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate MDK")))
 	{
 		presentTopMostCallback = true;
 		anyProgressDone = 0;

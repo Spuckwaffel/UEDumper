@@ -1182,7 +1182,7 @@ public:
 
 	std::string typeName() const { return Enum ? "TEnumAsByte" : TYPE_CHAR; }
 
-	//only if Enum exists!
+	//only if Enum exists! Crash here? Then your UE version is probably wrong. If it still crashes, most likely offset error.
 	std::vector<fieldType> getSubTypes() const { if (!Enum) { DebugBreak(); } return std::vector<fieldType>{ {true, PropertyType::EnumProperty, getEnum()->getName()}}; };
 };
 

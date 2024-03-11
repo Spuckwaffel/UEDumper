@@ -46,8 +46,7 @@ std::string windows::LogWindow::getLogLevelName()
 
 void windows::LogWindow::setLogLevel(int level)
 {
-	if (level < sizeof(logLevelNames) && level > 0)
-		logLevel = level;
+	logLevel = level;
 }
 
 void windows::LogWindow::render()
@@ -117,6 +116,9 @@ void windows::LogWindow::render()
 	ImGui::Text("Showing %d logs", logRange);
 
 	char buf[sizeof(log::message) + 51] = { 0 };
+
+	ImGui::PushFont(IGHelper::getConsoleFont());
+
 	if (ImGui::BeginListBox("##loglistbox", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 		for (int i = selectedLogRange; i < logSize && i < selectedLogRange + logRange; i++) {
@@ -151,6 +153,8 @@ void windows::LogWindow::render()
 
 		ImGui::EndListBox();
 	}
+
+	ImGui::PopFont();
 
 	ImGui::EndChild();
 }

@@ -49,7 +49,7 @@
 #define UE_4_22		3
 #define UE_4_23		4
 #define UE_4_24		5
-#define UE_4_25		6 //if 4.25 fails, try 4.26
+#define UE_4_25		6
 #define UE_4_26		7
 #define UE_4_27		8
 #define UE_5_00		9
@@ -61,21 +61,14 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_4_19
+#define UE_VERSION UE_5_01
 
-
-/* Offset settings */
-
-//set this to true if the engine should guess offsets instead of using your offsets. This always has a chance of
-//failing, in general its better if you add the offsets manually.
-//In case names are encrypted, i would suggest manually adding the offsets.
-#define GUESS_OFFSETS TRUE
 
 /* FName settings */
 
 
 //in case the FNames are encrypted, it will use your decryption function in FName_decryption.h
-#define USE_FNAME_ENCRYPTION TRUE
+#define USE_FNAME_ENCRYPTION FALSE
 
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
 //if GNames fail, try setting this to true
@@ -83,7 +76,7 @@
 #define WITH_CASE_PRESERVING_NAME FALSE
 
 //set this to false if your generation always stops and says you have a invalid fname offset
-//however all this does is check if the first item is /Scrupt/Core.UObject which should alwyays be the case
+//however all this does is check if the first item is /Scrupt/Core.UObject which should always be the case
 //default TRUE
 #define BREAK_IF_INVALID_NAME TRUE
 
@@ -92,7 +85,7 @@
 //in EngineCore::FNameToString theres a premade FNameEntry calculation. Though games sometimes have a offset on that calculation
 //such as Fortnite (version 3.5). Make sure to find that offset and set it!
 //default 0
-#define GNAMES_POOL_OFFSET 232
+#define GNAMES_POOL_OFFSET 0
 #endif
 
 //only exists for UE version 5.1 and above
@@ -130,13 +123,14 @@
 
 /* UFunction settings */
 
-/** Enable fast calls for event thunks into an event graph that have no parameters  */
+/** UECOMMENT: Enable fast calls for event thunks into an event graph that have no parameters  */
+//set this to false if your function offsets are all 0 or some weird values
 //default TRUE
 #define UE_BLUEPRINT_EVENTGRAPH_FASTCALLS TRUE
 
 //only exists for UE version 5.0 and above
 #if UE_VERSION >= UE_5_00
-//Make sure that live coding define is available. Normally this is supplied by UBT
+//UECOMMENT: Make sure that live coding define is available. Normally this is supplied by UBT
 //default FALSE but in case function offsets are 0 set this to true
 #define WITH_LIVE_CODING FALSE
 #endif
@@ -145,7 +139,7 @@
 /* UStruct settings */
 
 #if UE_VERSION >= UE_4_22
-//stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
+//UECOMMENT: stores an array of parents per struct and uses this to compare - faster than 1 and thread-safe but can have issues with BP reinstancing and hot reload
 //default TRUE
 #define USTRUCT_FAST_ISCHILDOF_IMPL TRUE
 #endif
