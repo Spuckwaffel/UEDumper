@@ -16,7 +16,7 @@ void windows::TopRowButtons::renderHelpWindow()
     ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5f, 0.5f));
     ImGui::SetNextWindowFocus();
     ImGui::Begin("Help", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-    ImGui::SetWindowSize(ImVec2(800, 800), ImGuiCond_Once);
+    ImGui::SetWindowSize(ImVec2(800, 590), ImGuiCond_Once);
     const ImVec2 smallWindow = ImGui::GetWindowSize();
     ImGui::SetWindowPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
     ImGui::PopStyleVar();
@@ -24,15 +24,11 @@ void windows::TopRowButtons::renderHelpWindow()
     ImGui::SameLine();
     ImGui::BeginChild("HelpChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
     ImGui::TextWrapped("UE Dumper by Spuckwaffel. All rights reserved. Designed for personal use.");
-    if(ImGui::Button(merge(ICON_FA_TWITTER, " Follow")))
+    if(ImGui::Button(merge(ICON_FA_LINK, " Follow")))
         system("start https://twitter.com/Spuckwaffel");
     ImGui::EndChild();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 50);
-    ImVec2 childSize;
-    if(EngineSettings::_UE_VERSION >= UE_5_00)
-        childSize = ImVec2(780, 500);
-    else
-        childSize = ImVec2(780, 400);
+    constexpr auto childSize = ImVec2(783, 310);
     EngineSettings::drawEngineSettings(childSize, &bRenderHelpWindow);
     ImGui::End();
     
@@ -113,7 +109,7 @@ void windows::TopRowButtons::renderTopRowButtons()
     if(!EngineSettings::liveEditorEnabled() && HelloWindow::isCompleted())
     {
         ImGui::SameLineEx(20, -5);
-        ImGui::TextColored(IGHelper::Colors::grayedOut, "OFFLINE_MODE");
+        ImGui::TextColored(IGHelper::Colors::grayedOut, "OFFLINE MODE");
     }
 
     if(bRenderHelpWindow)

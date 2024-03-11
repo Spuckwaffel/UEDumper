@@ -32,6 +32,7 @@ private:
 	static inline ImFont* titleFont = nullptr;
 	static inline ImFont* textFont = nullptr;
 	static inline ImFont* smallFont = nullptr;
+	static inline ImFont* consoleFont = nullptr;
 	static inline ImFont* faFont = nullptr;
 
 	/**
@@ -84,6 +85,8 @@ public:
 	static ImFont* getSmallFont();
 
 	static ImFont* getFaFont();
+
+	static ImFont* getConsoleFont();
 	
 	static void handleMsg(bool* done);
 

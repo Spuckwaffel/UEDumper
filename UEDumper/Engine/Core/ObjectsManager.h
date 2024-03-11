@@ -175,7 +175,7 @@ private:
 	static inline bool bOperationSuccess = false;
 	static inline std::string errorReason = "";
 
-	//loops shpuld call this for a shutdown
+	//loops should call this for a shutdown
 	static void STOP_OPERATION();
 
 public:
@@ -221,7 +221,7 @@ public:
 		//should never happen
 		if (index > gUObjectManager.UObjectArray.NumElements)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 				"HARD ERROR: getUObjectByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 			errorReason = windows::LogWindow::getLastLogMessage();
 			STOP_OPERATION();
@@ -231,7 +231,7 @@ public:
 
 		if (!object->valid)
 		{
-			windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 				"WARN: Requested index %d in getUObjectByIndex is marked invalid!", index);
 			return nullptr;
 		}
@@ -259,7 +259,7 @@ public:
 		{
 			if(cacheState == CacheState::CS_SDKGEN)
 			{
-				windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", 
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 					"ERROR! Could not find the requested Pointer %llX in the cache!", gamePtr);
 				printf("ERROR! Could not find the requested Pointer %llX in the cache!\n", gamePtr);
 				return nullptr;
@@ -270,7 +270,7 @@ public:
 				UObjectManager::UBigObject* bigObject = static_cast<UObjectManager::UBigObject*>(calloc(1, sizeof(UObjectManager::UBigObject)));
 				if (bigObject == nullptr)
 				{
-					windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 						"HARD ERROR! Could not allocate a new bigObject (size %d) for %llX! Not enough ram?", sizeof(UObjectManager::UBigObject), gamePtr);
 					errorReason = windows::LogWindow::getLastLogMessage();
 					STOP_OPERATION();
@@ -349,7 +349,7 @@ public:
 			}
 
 		}
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
 		if(!raiseHardError)
 		{

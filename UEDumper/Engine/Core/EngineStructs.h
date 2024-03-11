@@ -334,13 +334,27 @@ namespace EngineStructs
 		std::string cppName; //the cppName of the struct
 		std::vector<std::string> superNames{}; //all the structs it inherits, empty, only used in package generation
 		std::vector<Struct*> supers{}; //all the structs it inherits
+		std::vector<Struct*> superOfOthers{}; //all the structs that use this class as a super
 		bool inherited = false; //if the struct is inherited
+		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
+		int minAlignment = 0; //minimal alignment defined by ue
 		int size = 0; //true size of the struct
 		int inheretedSize = 0; //size of the inherited structs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
-		std::vector<Member> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
+		std::vector<Member> undefinedMembers{}; //list of all members that are all valid and known
+		//listing: isDefined, vecIndex;
+		std::vector<std::pair<bool, int>> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
 		std::vector<Function> functions{}; //array of all functions of the struct
+
+		Member* getMemberForIndex(int i)
+		{
+			const auto& m = cookedMembers[i];
+			if (m.first)
+				return &definedMembers[m.second];
+			else
+				return &undefinedMembers[m.second];
+		}
 
 		bool operator==(const Struct& st) const
 		{

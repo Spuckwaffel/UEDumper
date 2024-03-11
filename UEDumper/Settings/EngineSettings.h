@@ -47,6 +47,8 @@ public:
 		"Version 1.7 Release",
 		"Version 1.8 BETA",
 		"Version 1.8 Release",
+		"Version 1.9 BETA",
+		"Version 1.9 Release",
 	};
 
 private:
@@ -140,7 +142,7 @@ public:
 	static bool loadJson(const nlohmann::json& json);
 
 	/**
-	 * \brief draws the engien settings window
+	 * \brief draws the engine settings window
 	 * \param window window size where the engine settings window will be in
 	 * \param show if you wanna support a exit button, add a pointer here to the bool
 	 */

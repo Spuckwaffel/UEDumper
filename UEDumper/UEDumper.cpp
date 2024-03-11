@@ -43,11 +43,14 @@ int main()
 {
     puts("Hello world! Do not close this window. Most of the log is in the imgui window, but some messages appear here.");
     //initialization of LogWindow not needed to call Log functions
-    windows::LogWindow::Log(windows::LogWindow::log_2, "MAIN", "Loading program...");
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MAIN", "**********************************");
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MAIN", "Loading UEDumper...");
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MAIN", "%s", EngineSettings::getDumperVersion().c_str());
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MAIN", "**********************************");
 
     //TextureCreator constructor that inherits IGHelper for our imgui window
     IGHelper(L"UE Dumper", true, 1920, 1050);
-    windows::LogWindow::Log(windows::LogWindow::log_2, "MAIN", "Loaded imgui helper library...");
+    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "MAIN", "Loaded imgui helper library...");
 
     //load class constructors
     Memory();
@@ -109,7 +112,7 @@ int main()
         windows::LogWindow::render();
 
         //topmost callbacks get called here
-        //please handle code within the callbacks carefully as all windows presented that most likely call setWindpwFocus will disable all interactions
+        //please handle code within the callbacks carefully as all windows presented that most likely call setWindowFocus will disable all interactions
         //with other buttons (such as the top row buttons)
         windows::LogWindow::topmostCallback();
         windows::LiveEditor::topmostCallback();

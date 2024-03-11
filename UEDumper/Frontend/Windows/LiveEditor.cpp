@@ -74,7 +74,7 @@ void windows::LiveEditor::renderAddAddress()
 				return;
 			}
 
-			LogWindow::Log(LogWindow::log_0, "LIVE", "Looking for %s...", structName.c_str());
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "LIVE", "Looking for %s...", structName.c_str());
 			const auto info = EngineCore::getInfoOfObject(structName);
 			if (!info || !info->valid)
 			{
@@ -221,7 +221,7 @@ void windows::LiveEditor::renderAddOffset()
 				if (!info || !info->valid)
 				{
 					sprintf_s(errorText, "Object not found in the packages!");
-					LogWindow::Log(LogWindow::log_2, "LIVE EDITOR", "Object not found in the packages!");
+					LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE EDITOR", "Object not found in the packages!");
 					goto failed;
 				}
 				tab.struc = static_cast<EngineStructs::Struct*>(info->target);
@@ -244,7 +244,7 @@ void windows::LiveEditor::renderAddOffset()
 				once = false;
 				return;
 			}
-			LogWindow::Log(LogWindow::log_2, "LIVE EDITOR", "Getting UObject type failed!");
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE EDITOR", "Getting UObject type failed!");
 			sprintf_s(errorText, "Getting UObject type failed!");
 		}
 
@@ -268,7 +268,7 @@ void windows::LiveEditor::renderAddInspector()
 	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
 
 	ImGui::BeginChild("Add New Inspector", smallWindow, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
-	IGHelper::placeInCenter(merge(ICON_FA_SEARCH_PLUS, " Add New Inspector"));
+	IGHelper::placeInCenter(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, " Add New Inspector"));
 	if (ImGui::BeginTabBar("TabBar"))
 	{
 		if (ImGui::BeginTabItem("Add Address"))
@@ -794,7 +794,7 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 			//add the new block so we can track the data for it
 			if (!LiveMemory::addNewBlock(memberPtr, newStruct->size))
 			{
-				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "Could not add new memory block for %p (%s) with size %d!", memberPtr, member.name, newStruct->size);
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVEEDITOR", "Could not add new memory block for %p (%s) with size %d!", memberPtr, member.name, newStruct->size);
 			}
 			//and render it
 			else
@@ -867,7 +867,7 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 			{
 				value = i;
 
-				LogWindow::Log(LogWindow::log_2, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum->members[value].first.c_str(), subEnum->members[value].second);
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "LIVEEDITOR", "selected new index %d (%s : %d)", value, subEnum->members[value].first.c_str(), subEnum->members[value].second);
 				uint8_t newData = subEnum->members[value].second;
 				block->write(member.offset + innerOffset, newData);
 				Memory::write(block->gameAddress + member.offset + innerOffset, newData);
@@ -1008,7 +1008,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 		char addressBuf[30];
 		sprintf_s(addressBuf, "0x%llX", address);
 		IGHelper::copyToClipBoard(std::string(addressBuf));
-		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied address to clipboard!");
+		LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
 	}
 	//print the origin or the address
 	ImGui::SameLine();
@@ -1022,7 +1022,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + struc->cppName + secret).c_str()))
 	{
 		IGHelper::copyToClipBoard(struc->cppName);
-		LogWindow::Log(LogWindow::log_2, "PACKAGEVIEWER", "Copied struct name to clipboard!");
+		LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "PACKAGEVIEWER", "Copied struct name to clipboard!");
 	}
 	ImGui::SameLine();
 	//print the struct name and representative name
@@ -1258,7 +1258,7 @@ void windows::LiveEditor::renderLiveEditor()
 			if (ImGui::Selectable(tabs[i].name.c_str(), is_selected))
 			{
 				tabPicked = i;
-				LogWindow::Log(LogWindow::log_1, "LIVE", "opened tab %d", tabPicked);
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened tab %d", tabPicked);
 			}
 		}
 		ImGui::EndListBox();
@@ -1341,7 +1341,7 @@ void windows::LiveEditor::renderEditPopUp()
 	{
 		if (ImGui::Button("Clear superclass cache"))
 		{
-			LogWindow::Log(LogWindow::log_2, "LIVE", "Cleared superclass cache!");
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "Cleared superclass cache!");
 			realSuperClassCache.clear();
 		}
 		ImGui::SameLine();

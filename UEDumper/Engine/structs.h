@@ -94,7 +94,9 @@ struct FUObjectItem
     int32_t ClusterRootIndex;
     // Weak Object Pointer Serial number associated with the object
     int32_t SerialNumber;
-
+#if STATS
+    uintptr_t StatID;
+#endif
 };
 
 

@@ -1,6 +1,7 @@
 #include "LogWindow.h"
 #include <Settings/EngineSettings.h>
 
+#include "Frontend/IGHelper.h"
 
 
 windows::LogWindow::LogWindow()
@@ -10,8 +11,6 @@ windows::LogWindow::LogWindow()
 
 void windows::LogWindow::Log(logLevels level, const std::string& origin, const char* fmt, ...)
 {
-	if (level < logLevel)
-		return;
 
 	log l;
 
@@ -24,33 +23,42 @@ void windows::LogWindow::Log(logLevels level, const std::string& origin, const c
 	oss << std::put_time(&time_info, "%H:%M:%S");
 	va_list args;
 	va_start(args, fmt);
-	vsprintf_s(logBuffer, 2000, fmt, args);
+	vsprintf_s(logBuffer, sizeof(logBuffer) - 1, fmt, args);
 	memset(l.message, 0, sizeof(l.message));
-	memcpy(l.message, logBuffer, 2000);
+	memcpy(l.message, logBuffer, sizeof(l.message) - 1);
 	l.originandTime = "[" + oss.str() + " - " + origin + "]:";
+	l.level = level;
 
 	logs.push_back(l);
+	if (ENUM(level) & ENUM(logLevels::LOGLEVEL_NORMAL))
+		displayLogs.push_back(l);
 }
 
 int windows::LogWindow::getLogLevel()
 {
-	return logLevel;
+	return logLevel == static_cast<int>(logLevels::LOGLEVEL_NORMAL) ? 1 : 0;
 }
 
 std::string windows::LogWindow::getLogLevelName()
 {
-	return logLevelNames[logLevel];
+	return logLevelNames[getLogLevel()];
 }
 
 void windows::LogWindow::setLogLevel(int level)
 {
-	if (level < logLevels::log_MAX)
-		logLevel = level;
+	logLevel = level;
 }
 
 void windows::LogWindow::render()
 {
-	const int logSize = logs.size();
+	static int selectedLog = 0;
+	static int selectedLogRange = 0;
+	static int logRange = 100;
+	static bool autoScroll = true;
+
+	const auto& _logs = getLogLevel() == 1 ? displayLogs : logs;
+
+	const int logSize = _logs.size();
 	const float BigWindowSizeY = ImGui::GetWindowSize().y;
 	ImGui::SetCursorPosY(ImGui::GetWindowSize().y - logWindowYSize);
 	ImGui::BeginChild("LogChild", ImVec2(ImGui::GetWindowSize().x - 15, logWindowYSize - 10), true, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
@@ -107,21 +115,34 @@ void windows::LogWindow::render()
 	ImGui::SameLine();
 	ImGui::Text("Showing %d logs", logRange);
 
-	char buf[2501] = { 0 };
+	char buf[sizeof(log::message) + 51] = { 0 };
+
+	ImGui::PushFont(IGHelper::getConsoleFont());
+
 	if (ImGui::BeginListBox("##loglistbox", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 		for (int i = selectedLogRange; i < logSize && i < selectedLogRange + logRange; i++) {
+			const auto& log = _logs[i];
 			const bool is_selected = (selectedLog == i);
-			memset(buf, 0, 2500);
-			sprintf_s(buf, 2500, "%d %s %s", i, logs[i].originandTime.c_str(), logs[i].message);
+			memset(buf, 0, sizeof(log::message) + 51);
+			sprintf_s(buf, sizeof(log::message) + 50, "%d %s %s", i, log.originandTime.c_str(), log.message);
+			if (ENUM(log.level) & ENUM(logLevels::LOGLEVEL_WARNING))
+				ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::yellow);
+			else if (ENUM(log.level) & ENUM(logLevels::LOGLEVEL_ERROR))
+				ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::red);
+			//fake push so we can just pop
+			else 
+				ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_Text));
 			if (ImGui::Selectable(buf, is_selected)) {
 				selectedLog = i;
 			}
+			
 			if (is_selected && ImGui::IsItemHovered()) {
 				ImGui::BeginTooltip();
 				ImGui::Text("%s", logs[i].message);
 				ImGui::EndTooltip();
 			}
+			ImGui::PopStyleColor();
 		}
 
 		if (oldSize != logs.size())
@@ -132,6 +153,8 @@ void windows::LogWindow::render()
 
 		ImGui::EndListBox();
 	}
+
+	ImGui::PopFont();
 
 	ImGui::EndChild();
 }
@@ -146,7 +169,7 @@ void windows::LogWindow::renderEditPopup()
 			file << i << " " << logs[i].originandTime << " " << logs[i].message << std::endl;
 		}
 		file.close();
-		Log(log_2, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
+		Log(logLevels::LOGLEVEL_INFO, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
 	}
 }
 

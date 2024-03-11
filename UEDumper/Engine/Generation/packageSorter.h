@@ -12,7 +12,7 @@ struct MergedPackage
 
 inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalProgress, std::vector<MergedPackage>& newPackages)
 {
-	
+
 	//first we cast all packages to merged packages
 	for (auto& pack : EngineCore::getPackages())
 	{
@@ -26,7 +26,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 	bool anyMergeFound = false;
 
-	windows::LogWindow::Log(windows::LogWindow::log_2, "SORTER", "Merging packages...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SORTER", "Merging packages...");
 
 	do
 	{
@@ -60,7 +60,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 					//if it is in, we have a cyclic dependency
 
-					windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN",
 						"merge found with %s and %s origin %s", dependencyPackage->packageName.c_str(), dependencyOfDependencyPackage->packageName.c_str(), pack.package.packageName.c_str());
 
 					anyMergeFound = true;
@@ -126,7 +126,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	totalProgress = newPackages.size();
 
 	//we cant get rid of all duplicates so we do it here just to check
-	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Eliminating double merges....");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Eliminating double merges....");
 	bool eraseDone = false;
 	do
 	{
@@ -159,7 +159,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 				//always a duplicate then
 
-				windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN",
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN",
 					"deleted %s because its same to %s", p1.package.packageName.c_str(), package.packageName.c_str());
 
 				//delete p1 package
@@ -180,13 +180,13 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	totalProgress = newPackages.size();
 
 	//now we reorder the structs inside the package so the compiler doesnt throw errors
-	windows::LogWindow::Log(windows::LogWindow::log_2, "SORTER", "Reordering structs");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SORTER", "Reordering structs");
 
 	bool didReordering = false;
 	int kk = 0;
 	do
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "SORTER", "%d", kk++);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SORTER", "%d", kk++);
 		didReordering = false;
 
 		//iterate through all packages
@@ -267,28 +267,29 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					//if the item is inherited check the super
 					fixOrder(item->supers[0]);
 				}
-					
+
 
 				//now we do the same check for every member
-				for (auto& member : item->cookedMembers)
+				for (int i = 0; i < item->cookedMembers.size(); i++)
 				{
+					const auto member = item->getMemberForIndex(i);
 					//if the member is not clickable its prob some bool or int
-					if (!member.type.clickable)
+					if (!member->type.clickable)
 						continue;
 
 
 					//these types are always pointers to classes or structs. They arent really a dependency as the compiler will know
 					//it will be 8 bytes large
-					if (member.type.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty)
+					if (member->type.propertyType == PropertyType::ObjectProperty || member->type.propertyType == PropertyType::ClassProperty)
 						continue;
 
 					//is the type a unknown type? Nothing we can do about it, SDK will handle it via macro (see SDK_UNDEFINED in SDK.cpp)
 					//unknown type means info.valid is false
-					auto info = member.type.info;
+					auto info = member->type.info;
 					if (!info || !info->valid)
 						continue;
 
-					
+
 
 					//if the type is function (never happens) or enum, we can ignore.
 					//enums are always at the top of the file
@@ -298,7 +299,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 						fixOrder(typeItem);
 					}
 
-					for(auto& sub : member.type.subTypes)
+					for (auto& sub : member->type.subTypes)
 					{
 						auto subInfo = sub.info;
 						if (!subInfo || !subInfo->valid)
@@ -331,7 +332,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	} while (didReordering);
 
 
-	windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "Reordering packages");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
 
 	do
@@ -343,7 +344,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 		for (auto& p : newPackages)
 		{
 			progressDone++;
-			windows::LogWindow::Log(windows::LogWindow::log_2, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
 			auto currentPackageIt = std::ranges::find(
 				orderedPackages, &p);
 

@@ -278,6 +278,9 @@
     <ClInclude Include="Resources\Dumpspace\dumpspace.h">
       <Filter>Resources\Dumpspace</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Generation\packageSorter.h">
+      <Filter>Engine\Generation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UEDumper.rc">

@@ -37,14 +37,14 @@ bool windows::DumpProgress::render()
 		//unique pointer using future so the render function can return without waiting for the async thread to complete
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			bIsBusy = true;
-			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Starting dump...");
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "DUMPPROGRESS", "Starting dump...");
 			startDumpTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
 			EngineCore();
 
 			if (!EngineCore::initSuccess()) {
 				errorMessage = LogWindow::getLastLogMessage();
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Failed to initialize EngineCore!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "Failed to initialize EngineCore!");
 				errorOccurred = true;
 				return;
 			}
@@ -52,7 +52,7 @@ bool windows::DumpProgress::render()
 			ObjectsManager();
 
 			if (!ObjectsManager::operationSuccess(errorMessage)) {
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Failed to initialize EngineCore!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "Failed to initialize EngineCore!");
 				errorOccurred = true;
 				errorMessage = ObjectsManager::getErrorMessage();
 				return;
@@ -63,7 +63,7 @@ bool windows::DumpProgress::render()
 
 			if (GObjectPtrs.status != CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at copyGObjectPtrs!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at copyGObjectPtrs!");
 				errorOccurred = true;
 				errorMessage = ObjectsManager::getErrorMessage();
 				return;
@@ -73,7 +73,7 @@ bool windows::DumpProgress::render()
 			ObjectsManager::copyUBigObjects(UBigObjects.finishedBytes, UBigObjects.totalBytes, UBigObjects.status);
 			if (UBigObjects.status != CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at copyUBigObjects!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at copyUBigObjects!");
 				errorOccurred = true;
 				errorMessage = ObjectsManager::getErrorMessage();
 				return;
@@ -81,7 +81,7 @@ bool windows::DumpProgress::render()
 			EngineCore::cacheFNames(FNames.finishedBytes, FNames.totalBytes, FNames.status);
 			if (FNames.status != CopyStatus::CS_success)
 			{
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at caching FNames!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at caching FNames!");
 				errorOccurred = true;
 				errorMessage = LogWindow::getLastLogMessage();
 				return;
@@ -90,15 +90,15 @@ bool windows::DumpProgress::render()
 			if (packages.status != CopyStatus::CS_success)
 			{
 				errorMessage = LogWindow::getLastLogMessage();
-				LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "No success at generating Packages!");
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at generating Packages!");
 				errorOccurred = true;
 				return;
 			}
-			LogWindow::Log(LogWindow::log_2, "DUMPPROGRESS", "Finished dumping!");
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "DUMPPROGRESS", "Finished dumping!");
 			//we're done
 			bAlreadyCompleted = true;
 			bIsBusy = false;
-			LogWindow::Log(LogWindow::log_0, "DUMPPROGRESS", "Finished everything with %d memory operations!", Memory::getTotalReads());
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "DUMPPROGRESS", "Finished everything with %d memory operations!", Memory::getTotalReads());
 
 			ObjectsManager::setSDKGenerationDone();
 			EngineSettings::setLiveEditor(true);

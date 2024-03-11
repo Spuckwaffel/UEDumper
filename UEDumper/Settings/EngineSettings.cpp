@@ -111,15 +111,16 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 {
 	if (!json.contains("DUMPER_VERSION"))
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "The save file was generated with an older "
 			"version of the dumper and is not compatible with this version.");
+		return false;
 	}
 	const int ver = json["DUMPER_VERSION"];
 	if (ver != DUMPER_VERSION)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "The save file was generated with an older "
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "The save file was generated with an older "
 			"version of the dumper.");
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "File has version %d but dumper has version %d.", ver, DUMPER_VERSION);
 		return false;
 	}
 
@@ -131,12 +132,12 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 		!json.contains("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS"))
 
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "This project is missing special json settings and is corrupted.");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "This project is missing special json settings and is corrupted.");
 		return false;
 	}
 
 	_UE_VERSION = json["UE_VERSION"];
-	windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINESETTINGS", "This project uses %s.", getEngineVersion().name.c_str());
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "This project uses %s.", getEngineVersion().name.c_str());
 
 	_USE_FNAME_ENCRYPTION = json["USE_FNAME_ENCRYPTION"];
 	_WITH_CASE_PRESERVING_NAME = json["WITH_CASE_PRESERVING_NAME"];
@@ -146,7 +147,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 #define checkMacro(condition, name, save) \
 	if(condition) { \
 		if (!json.contains(name)) { \
-			windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "Project is missing the %s macro!", name); \
 			return false; \
 		} \
 		save = json[name]; \
@@ -170,7 +171,7 @@ bool EngineSettings::loadJson(const nlohmann::json& json)
 	workingDir = json.value("workingDir", std::filesystem::path());
 	if (workingDir.empty())
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINESETTINGS", "WorkingDir is missing!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINESETTINGS", "WorkingDir is missing!");
 		return false;
 	}
 
@@ -190,10 +191,10 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	ImGui::Text("Dumper version: %s", getDumperVersion().c_str());
 	ImGui::Text("UE version: %s", getEngineVersion().name.c_str());
 	if (ImGui::ArrowButton("loglevel_btn_left", ImGuiDir_Left) && windows::LogWindow::getLogLevel() > 0)
-		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() - 1);
+		windows::LogWindow::setLogLevel(static_cast<int>(windows::LogWindow::logLevels::LOGLEVEL_ALL));
 	ImGui::SameLine();
 	if (ImGui::ArrowButton("loglevel_btn_right", ImGuiDir_Right))
-		windows::LogWindow::setLogLevel(windows::LogWindow::getLogLevel() + 1);
+		windows::LogWindow::setLogLevel(static_cast<int>(windows::LogWindow::logLevels::LOGLEVEL_NORMAL));
 	ImGui::SameLine();
 	ImGui::Text("Log level: %d | %s", windows::LogWindow::getLogLevel(), windows::LogWindow::getLogLevelName().c_str());
 	ImGui::BeginDisabled();
@@ -201,38 +202,12 @@ void EngineSettings::drawEngineSettings(ImVec2 window, bool* show)
 	ImGui::Checkbox("USE_FNAME_ENCRYPTION", reinterpret_cast<bool*>(&_USE_FNAME_ENCRYPTION));
 	ImGui::Checkbox("WITH_CASE_PRESERVING_NAME", reinterpret_cast<bool*>(&_WITH_CASE_PRESERVING_NAME));
 	ImGui::Checkbox("BREAK_IF_INVALID_NAME", reinterpret_cast<bool*>(&_BREAK_IF_INVALID_NAME));
-
-	if (_UE_VERSION < UE_4_23)
-		ImGui::Text("GNAMES_POOL_OFFSET %d", _GNAMES_POOL_OFFSET);
-	if (_UE_VERSION > UE_5_00)
-		ImGui::Checkbox("UE_FNAME_OUTLINE_NUMBER", reinterpret_cast<bool*>(&_UE_FNAME_OUTLINE_NUMBER));
-
-	if (_UE_VERSION == UE_4_25)
-		ImGui::Checkbox("USE_LOWERCASE_STRUCT", reinterpret_cast<bool*>(&_USE_LOWERCASE_STRUCT));
-
-	ImGui::Text("UFunction settings");
-	ImGui::Checkbox("UE_BLUEPRINT_EVENTGRAPH_FASTCALLS", reinterpret_cast<bool*>(&_UE_BLUEPRINT_EVENTGRAPH_FASTCALLS));
-
-	if (_UE_VERSION >= UE_5_00)
-		ImGui::Checkbox("WITH_LIVE_CODING", reinterpret_cast<bool*>(&_WITH_LIVE_CODING));
-
-	if (_UE_VERSION >= UE_4_22)
-	{
-		ImGui::Text("UStruct settings");
-		ImGui::Checkbox("USTRUCT_FAST_ISCHILDOF_IMPL", reinterpret_cast<bool*>(&EngineSettings::_USTRUCT_FAST_ISCHILDOF_IMPL));
-	}
-
-	if (_UE_VERSION >= UE_4_25)
-	{
-		ImGui::Checkbox("WITH_EDITORONLY_DATA", reinterpret_cast<bool*>(&EngineSettings::_WITH_EDITORONLY_DATA));
-	}
-
 	ImGui::EndDisabled();
 	if (show)
 	{
 		ImGui::Dummy(ImVec2(ImGui::GetWindowSize().x / 2 - 65, 0));
 		ImGui::SameLine();
-		if (ImGui::Button("Exit", ImVec2(90, 40)))
+		if (ImGui::Button("Exit", ImVec2(80, 40)))
 		{
 			*show = false;
 		}

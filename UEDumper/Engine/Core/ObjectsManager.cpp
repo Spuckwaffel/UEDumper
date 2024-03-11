@@ -9,7 +9,7 @@ void ObjectsManager::verifyUBigObjectSize(UObjectManager::UBigObject* bigObjectP
 {
 	if (requiredSize > UOBJECT_MAX_SIZE)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"HARD ERROR! A UObject tried to access more space (%d) than it can have max (%d). Try increasing UOBJECT_MAX_SIZE", requiredSize, UOBJECT_MAX_SIZE);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
@@ -34,13 +34,13 @@ uint64_t ObjectsManager::getUObjectPtrByIndex(int index)
 	//should never happen
 	if (index > gUObjectManager.UObjectArray.NumElements)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 			"HARD ERROR: getUObjectPtrByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
 	}
 
-	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * 24);
+	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * FUOBJECTITEM_SIZE);
 }
 
 void ObjectsManager::STOP_OPERATION()
@@ -55,7 +55,7 @@ ObjectsManager::ObjectsManager()
 	const auto UObjectAddr = EngineCore::getOffsetAddress(EngineCore::getOffsetForName("OFFSET_GOBJECTS"));
 	if (!UObjectAddr)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "GObject address offset not found / invalid!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "GObject address offset not found / invalid!");
 		errorReason = "GObject address offset not found / invalid!";
 		STOP_OPERATION();
 		return;
@@ -63,51 +63,50 @@ ObjectsManager::ObjectsManager()
 
 	gUObjectManager.UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
 
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "TUObject elements: %d", gUObjectManager.UObjectArray.NumElements);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject elements: %d", gUObjectManager.UObjectArray.NumElements);
 
 	if (!gUObjectManager.UObjectArray.Objects)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "TUObject pointer is invalid!");
-		errorReason = "TUObject pointer is invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "TUObject pointer is invalid!");
+		errorReason = "TUObject pointer is invalid! This means the OFFSET_GOBJECTS offset is wrong. Please set the right offset in Offsets.h";
 		STOP_OPERATION();
 		return;
 	}
 
-	if (gUObjectManager.UObjectArray.NumElements < 100)
+	if (gUObjectManager.UObjectArray.NumElements < 100 || gUObjectManager.UObjectArray.NumElements > 50000000)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "TUobject elements are invalid!");
-		errorReason = "TUobject elements are invalid! This means the OFFSET_GOBJECTS offset is wrong. Please fix this!";
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "TUobject elements are invalid!");
+		errorReason = "TUobject elements are invalid! This means the OFFSET_GOBJECTS offset is wrong. The log below shows how many elements the dumper found.";
 		STOP_OPERATION();
 		return;
 	}
 
 #if UE_VERSION >= UE_4_25
 
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
 	//allocating a large enough buffer for all FFields using uobject size because that should be big enough
 	gFFieldManager.pFFieldArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CT * UOBJECT_MAX_SIZE));
 
 	if (!gFFieldManager.pFFieldArray)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "Could not allocate bytes for the FFields! Is FFIELD_CT too large?");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "Could not allocate bytes for the FFields! Is FFIELD_CT too large?");
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
 		return;
 	}
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocated %llX bytes for FFields cache", FFIELD_CT * UOBJECT_MAX_SIZE);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Allocated %llX bytes for FFields cache", FFIELD_CT * UOBJECT_MAX_SIZE);
 
 
 	gFFieldManager.pFFieldClassArray = reinterpret_cast<uint64_t>(calloc(1, FFIELD_CLASSES_CT * sizeof(FFieldClass)));
 
 	if (!gFFieldManager.pFFieldClassArray)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "Could not allocate bytes for the FFieldClasses! Is FFIELD_CLASSES_CT too large?");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "Could not allocate bytes for the FFieldClasses! Is FFIELD_CLASSES_CT too large?");
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
 		return;
 	}
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocated %llX bytes for FFieldClass cache", FFIELD_CLASSES_CT * sizeof(FFieldClass));
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Allocated %llX bytes for FFieldClass cache", FFIELD_CLASSES_CT * sizeof(FFieldClass));
 
 #endif
 	bOperationSuccess = true;
@@ -134,13 +133,13 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 	bOperationSuccess = false;
 	status = CS_busy;
 	finishedBytes = 0;
-	totalBytes = gUObjectManager.UObjectArray.NumElements * 24;
+	totalBytes = gUObjectManager.UObjectArray.NumElements * FUOBJECTITEM_SIZE;
 	gUObjectManager.pGObjectPtrArray = reinterpret_cast<uint64_t>(calloc(1, totalBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Allocating 0x%p bytes of memory for GObjectPtrArray at 0x%p", totalBytes, gUObjectManager.pGObjectPtrArray);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Allocating 0x%p bytes of memory for GObjectPtrArray at 0x%p", totalBytes, gUObjectManager.pGObjectPtrArray);
 	if (!gUObjectManager.pGObjectPtrArray)
 	{
 		status = CS_error;
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER", "Failed to allocate memory for GObjectPtrArray!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "Failed to allocate memory for GObjectPtrArray!");
 		errorReason = windows::LogWindow::getLastLogMessage();
 		return;
 	}
@@ -166,7 +165,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 	constexpr auto numElementsPerChunk = 64 * 1024;
 #endif
 
-	constexpr auto chunkBytesSize = numElementsPerChunk * 24;
+	constexpr auto chunkBytesSize = numElementsPerChunk * FUOBJECTITEM_SIZE;
 
 	for (int i = 0; i < gUObjectManager.UObjectArray.NumChunks; i++)
 	{
@@ -194,7 +193,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 #endif
 
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "OBJECTSMANAGER", "Loaded GObjectPtrArray successfully!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Loaded GObjectPtrArray successfully!");
 
 	bOperationSuccess = true;
 }
@@ -209,13 +208,13 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 	status = CS_busy;
 	//allocate UOBJECT_MAX_SIZE bytes for every UObject
 	gUObjectManager.pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, allocatedBytes));
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, gUObjectManager.pUBigObjectArray);
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, gUObjectManager.pUBigObjectArray);
 
 	if (!gUObjectManager.pUBigObjectArray)
 	{
 		status = CS_error;
 
-		windows::LogWindow::Log(windows::LogWindow::log_2, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
 		errorReason = windows::LogWindow::getLastLogMessage();
 		return;
 	}
@@ -225,11 +224,11 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
 	{
 		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * 24);
+		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
 		if (!UObjectAddress) {
-			windows::LogWindow::Log(windows::LogWindow::log_1, "ENGINECORE", "Could not resolve address for obect %d!", i);
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Could not resolve address for obect %d!", i);
 		}
 		else {
 			//gets the memory address where the objects gonna be
@@ -250,7 +249,7 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		finishedBytes += sizeof(UObject);
 	}
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::log_0, "ENGINECORE", "Loaded UBigObjectArray successfully!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Loaded UBigObjectArray successfully!");
 	bOperationSuccess = true;
 }
 
@@ -260,7 +259,7 @@ uint64_t ObjectsManager::cacheFField(uint64_t gamePtr)
 {
 	if (gFFieldManager.linkedFFieldIndexCount >= gFFieldManager.maxFFieldCacheNum)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 			"HARD ERROR: cacheFField wanted to cache another field but the cache is full! Try increasing FFIELD_CT (currently: %d)", FFIELD_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
@@ -283,7 +282,7 @@ FFieldClass* ObjectsManager::getFFieldClass(void* gamePtr)
 	//element is not cached, go add it
 	if (gFFieldManager.linkedFFieldClassIndexCount >= gFFieldManager.maxFFieldClassCacheNum)
 	{
-		windows::LogWindow::Log(windows::LogWindow::log_2, "OBJECTSMANAGER",
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
 			"HARD ERROR: getFFieldClass wanted to cache another fieldclass but the cache is full! Try increasing FFIELD_CLASSES_CT (currently: %d)", FFIELD_CLASSES_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
