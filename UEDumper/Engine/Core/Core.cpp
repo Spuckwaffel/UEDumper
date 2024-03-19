@@ -100,8 +100,8 @@ std::string EngineCore::FNameToString(FName fname)
 	char name[NAME_SIZE] = { 0 };
 
 	//>4.23 name chunks exist
-	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
-	const unsigned short nameOffset = fname.ComparisonIndex;
+	const unsigned int chunkOffset = fname.ComparisonIndex >> 16; //HIWORD
+	const unsigned short nameOffset = fname.ComparisonIndex; //unsigned __int16
 
 
 	//average function since 4.25
@@ -754,6 +754,7 @@ EngineCore::EngineCore()
 
 
 		gNames = getOffsetAddress(getOffsetForName("OFFSET_GNAMES"));
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset not found!");
@@ -764,7 +765,7 @@ EngineCore::EngineCore()
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames -> 0x%p", gNames);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset seems zero!");

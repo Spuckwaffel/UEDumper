@@ -333,6 +333,9 @@ public:
 			//get the uobject for i
 			auto obj = getUObjectByIndex<T>(i);
 
+			if (!obj)
+				continue;
+
 			//get the fn ptr
 			auto ptr = getUObjectPtrByIndex(i);
 
