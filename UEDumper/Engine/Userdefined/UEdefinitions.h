@@ -14,6 +14,13 @@
 *
 ************************************************************************************************/
 
+// XOR keys for GObject encryption in some games
+#define GOBJECTS_XOR_ENCRYPTION_KEY_BACK4BLOOD 0x8375
+
+#define CHUNK_PADDING 0x8
+
+#define GOBJECTS_XOR_ECRYPTION_KEY GOBJECTS_XOR_ENCRYPTION_KEY_BACK4BLOOD
+
 //Dumper versions. Do not change this!
 #define RELEASE_1_1_BETA	0
 #define RELEASE_1_1_FINAL	1
@@ -61,7 +68,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_01
+#define UE_VERSION UE_4_25
 
 
 /* FName settings */

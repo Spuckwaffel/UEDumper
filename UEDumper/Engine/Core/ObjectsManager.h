@@ -68,10 +68,6 @@ public:
 	//-> https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L960
 	struct FChunkedFixedUObjectArray
 	{
-		/** Master table to chunks of pointers **/
-		FUObjectItem** Objects;
-		/** If requested, a contiguous memory where all objects are allocated **/
-		FUObjectItem* PreAllocatedObjects;
 		/** Maximum number of elements **/
 		int32_t MaxElements;
 		/** Number of elements we currently have **/
@@ -80,6 +76,10 @@ public:
 		int32_t MaxChunks;
 		/** Number of chunks we currently have **/
 		int32_t NumChunks;
+		/** Master table to chunks of pointers **/
+		FUObjectItem** Objects;
+		/** If requested, a contiguous memory where all objects are allocated **/
+		FUObjectItem* PreAllocatedObjects;
 	};
 
 	typedef FChunkedFixedUObjectArray TypeUObjectArray;
@@ -106,6 +106,8 @@ private:
 		struct UBigObject
 		{
 			bool valid = false;
+			int chunkNumber = 0;
+			int chunkIndex = 0;
 			//valid bytes in the char array
 			size_t readSize = 0;
 			//if you ask where if the paired UObject game ptr?
@@ -254,7 +256,10 @@ public:
 	template <typename T>
 	static T* getUObject(uint64_t gamePtr)
 	{
-		
+		if (gamePtr < 0x100) {
+			// if your pointer is less than 0x100, it's likely invalid and there's a bug. Check your structs
+			DebugBreak();
+		}
 		if(!gUObjectManager.linkedUObjectPtrs.contains(gamePtr))
 		{
 			if(cacheState == CacheState::CS_SDKGEN)
@@ -332,26 +337,29 @@ public:
 
 			//get the uobject for i
 			auto obj = getUObjectByIndex<T>(i);
+			if (obj == nullptr) {
+				// Object is marked as invalid
+				continue;
+			}
 
 			//get the fn ptr
 			auto ptr = getUObjectPtrByIndex(i);
 
 			std::string cname = obj->getFullName();
 
-
 			if (cname == name)
 			{
 				//FullStringCache.insert(std::pair(name, ptr));
 				//just insert here, we make a findobject only on specific objects 
 				EngineCore::fullStringCache.insert(std::pair(cname, ptr));
-				return obj;
 
+				return obj;
 			}
 
 		}
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
-		if(!raiseHardError)
+		if(raiseHardError)
 		{
 			errorReason = windows::LogWindow::getLastLogMessage();
 			STOP_OPERATION();
@@ -410,4 +418,12 @@ public:
 
 	static void setSDKGenerationDone();
 
+	inline static uint64_t decryptPointer(uint64_t ptr)
+	{
+#ifdef GOBJECTS_XOR_ECRYPTION_KEY
+		return ptr ^ GOBJECTS_XOR_ECRYPTION_KEY;
+#else
+		return ptr;
+#endif
+	}
 };

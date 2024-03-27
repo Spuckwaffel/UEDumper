@@ -90,8 +90,21 @@ std::string EngineCore::FNameToString(FName fname)
 	const uint64_t AnsiName = FNameEntryPtr + 0x10;
 #endif
 
+	if (nameLength > NAME_SIZE)
+	{
+		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG!");
+		printf("Memory corruption avoided! This is a BUG!\n");
+		//DebugBreak();
+	}
+
 	int nameLength = NAME_SIZE - 1;
-	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
+	Memory::read(
+		reinterpret_cast<void*>(AnsiName),
+		name,
+		// safeguard against overflow and memory corruption
+		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+	);
 
 #else // >= 4_23
 
@@ -112,13 +125,39 @@ std::string EngineCore::FNameToString(FName fname)
 
 	const auto nameLength = Memory::read<uint16_t>(namePoolChunk + 4) >> 1;
 
-	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
+	if (nameLength > NAME_SIZE)
+	{
+		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG! Maybe try with WITH_CASE_PRESERVING_NAME=FALSE");
+		printf("Memory corruption avoided! This is a BUG!\n");
+		//DebugBreak();
+	}
+
+	Memory::read(
+		reinterpret_cast<void*>(namePoolChunk + 6), 
+		name, 
+		// safeguard against overflow and memory corruption
+		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+	);
 #else
 	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
 
 	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
 
-	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
+	if (nameLength > NAME_SIZE)
+	{
+		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG! Maybe try with WITH_CASE_PRESERVING_NAME=TRUE");
+		printf("Memory corruption avoided! This is a BUG!\n");
+		//DebugBreak();
+	}
+
+	Memory::read(
+		reinterpret_cast<void*>(namePoolChunk + 2),
+		name,
+		// safeguard against overflow and memory corruption
+		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+	);
 #endif
 
 #endif
@@ -134,7 +173,6 @@ std::string EngineCore::FNameToString(FName fname)
 	if (finalName.empty())
 		finalName = "null";
 	//throw std::runtime_error("empty name is trying to get cached");
-
 
 	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
@@ -792,6 +830,8 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 	status = CS_busy;
 	totalNames = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedNames = 0;
+	bool bIsFirstValidObject = true;
+
 	for (; finishedNames < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedNames++)
 	{
 		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
@@ -802,13 +842,14 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 		auto res = object->getName();
 
 #if BREAK_IF_INVALID_NAME
-		if (finishedNames == 0 && res != "/Script/CoreUObject")
+		if (bIsFirstValidObject && res != "/Script/CoreUObject")
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE",
-				"ERROR: The first object name should be always /Script/CoreUObject! This is most likely the result of a invalid FName offset or no decryption!");
+				"ERROR: The first object name should be always /Script/CoreUObject! Instead got \"%s\".This is most likely the result of a invalid FName offset or no decryption!", res.c_str());
 			status = CS_error;
 			return;
 		}
+		bIsFirstValidObject = false;
 
 #endif
 	}
@@ -839,7 +880,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	overrideStructs();
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding custom structs....");
 	addStructs();
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overrigind unknown members....");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overriding unknown members....");
 	overrideUnknownMembers();
 
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
