@@ -28,25 +28,24 @@ static void fname_decrypt(char* inputBuf, int namelength)
 {
 	//reversed either by me or credits to the people who post it on uc
 
-	int v14 = namelength; // r15d
-	int v15; // r8d
-	int v16; // ecx
-	char* v17 = inputBuf; // rdx
-	int v18; // eax
-	unsigned int v19; // ecx
+    char* v2; // rdi
+    int v4; // ebx
+    __int64 result; // rax
+    int v6; // er8
+    __int16 v7; // dx
 
-	v15 = 0;
-	v16 = 28;
-	if (v14)
-	{
-		do
-		{
-			v18 = v15++;
-			v19 = (v18 | 0xB000) + v16;
-			v18 = v19 ^ ~*v17;
-			LOBYTE(v18);
-			v16 = v19 >> 2;
-			*v17++ = v18;
-		} while (v15 < v14);
-	}
+    v2 = inputBuf;
+    v4 = namelength;
+    result = Memory::read<unsigned int>(Memory::getBaseAddress() + 0x1280B698) >> 5; //if didn't work : 0x1259925C
+    v6 = 0;
+    if (v4)
+    {
+        do
+        {
+            v7 = result ^ (*v2 << 8);
+            result = (unsigned int)(result + 8 * v6++);
+            *v2 = (v7 & 0xFF00) | ((*v2 >> 8) & 0xFF);
+            ++v2;
+        } while (v6 < v4);
+    }
 }
