@@ -51,7 +51,7 @@ bool windows::DumpProgress::render()
 
 			ObjectsManager();
 
-			if (!ObjectsManager::operationSuccess(errorMessage)) {
+			if (ObjectsManager::CRITICAL_STOP_CALLED()) {
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "Failed to initialize EngineCore!");
 				errorOccurred = true;
 				errorMessage = ObjectsManager::getErrorMessage();
@@ -61,7 +61,7 @@ bool windows::DumpProgress::render()
 			ObjectsManager::copyGObjectPtrs(GObjectPtrs.finishedBytes, GObjectPtrs.totalBytes, GObjectPtrs.status);
 			
 
-			if (GObjectPtrs.status != CopyStatus::CS_success)
+			if (GObjectPtrs.status != CopyStatus::CS_success || ObjectsManager::CRITICAL_STOP_CALLED())
 			{
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at copyGObjectPtrs!");
 				errorOccurred = true;
@@ -71,7 +71,7 @@ bool windows::DumpProgress::render()
 				
 			
 			ObjectsManager::copyUBigObjects(UBigObjects.finishedBytes, UBigObjects.totalBytes, UBigObjects.status);
-			if (UBigObjects.status != CopyStatus::CS_success)
+			if (UBigObjects.status != CopyStatus::CS_success || ObjectsManager::CRITICAL_STOP_CALLED())
 			{
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at copyUBigObjects!");
 				errorOccurred = true;
@@ -79,7 +79,7 @@ bool windows::DumpProgress::render()
 				return;
 			}
 			EngineCore::cacheFNames(FNames.finishedBytes, FNames.totalBytes, FNames.status);
-			if (FNames.status != CopyStatus::CS_success)
+			if (FNames.status != CopyStatus::CS_success || ObjectsManager::CRITICAL_STOP_CALLED())
 			{
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at caching FNames!");
 				errorOccurred = true;
@@ -87,7 +87,7 @@ bool windows::DumpProgress::render()
 				return;
 			}
 			EngineCore::generatePackages(packages.finishedBytes, packages.totalBytes, packages.status);
-			if (packages.status != CopyStatus::CS_success)
+			if (packages.status != CopyStatus::CS_success || ObjectsManager::CRITICAL_STOP_CALLED())
 			{
 				errorMessage = LogWindow::getLastLogMessage();
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "DUMPPROGRESS", "No success at generating Packages!");
@@ -167,6 +167,7 @@ bool windows::DumpProgress::render()
 		}
 		else
 		{
+			ImGui::Text("Initializing...");
 			//no progress bar if status is unknown
 			goto skip;
 		}

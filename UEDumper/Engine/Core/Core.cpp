@@ -113,8 +113,8 @@ std::string EngineCore::FNameToString(FName fname)
 	char name[NAME_SIZE] = { 0 };
 
 	//>4.23 name chunks exist
-	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
-	const unsigned short nameOffset = fname.ComparisonIndex;
+	const unsigned int chunkOffset = fname.ComparisonIndex >> 16; //HIWORD
+	const unsigned short nameOffset = fname.ComparisonIndex; //unsigned __int16
 
 
 	//average function since 4.25
@@ -454,6 +454,9 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 	//in every version we have to go through the children to 
 	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
 	{
+		if (ObjectsManager::CRITICAL_STOP_CALLED())
+			return false;
+
 		if (!fieldChild || !fieldChild->IsA<UFunction>())
 			continue;
 
@@ -792,6 +795,7 @@ EngineCore::EngineCore()
 
 
 		gNames = getOffsetAddress(getOffsetForName("OFFSET_GNAMES"));
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset not found!");
@@ -802,7 +806,7 @@ EngineCore::EngineCore()
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames -> 0x%p", gNames);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset seems zero!");
@@ -888,7 +892,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
 
 		//instantly go if any operation was not successful!
-		if (!ObjectsManager::operationSuccess())
+		if (ObjectsManager::CRITICAL_STOP_CALLED())
 			return;
 
 		//is it even valid? Some indexes arent
@@ -928,7 +932,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		for (const auto& object : package.second)
 		{
 			const bool isClass = object->IsA<UClass>();
-			if (!ObjectsManager::operationSuccess())
+			if (ObjectsManager::CRITICAL_STOP_CALLED())
 				return;
 			if (isClass || object->IsA<UScriptStruct>())
 			{
@@ -960,7 +964,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 					}
 				}
 
-				if (!ObjectsManager::operationSuccess())
+				if (ObjectsManager::CRITICAL_STOP_CALLED())
 					return;
 
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
