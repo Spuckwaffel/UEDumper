@@ -519,7 +519,7 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 	// Using some very large number - it's to prevent infinite loops, not break too early before convergence
 	const auto maxIterations = 20 * one_thousand;
 	progressDone = 0;
-	totalProgress = maxIterations; // Note: we may converge before this and end up with a Microsoft style progress bar that magically jumps to 100%} while (didReordering && progressDone < totalProgress);
+	totalProgress = maxIterations; // Note: we may converge before this and end up with a Microsoft style progress bar that magically jumps to 100% while (didReordering && progressDone < totalProgress);
 
 	do
 	{
