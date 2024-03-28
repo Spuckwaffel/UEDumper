@@ -69,7 +69,7 @@ ObjectsManager::ObjectsManager()
 
 	gUObjectManager.UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
 
-#ifdef GOBJECTS_XOR_ECRYPTION_KEY
+#if GOBJECTS_XOR_ECRYPTION_KEY
 	gUObjectManager.UObjectArray.Objects = reinterpret_cast<FUObjectItem**>((decryptPointer(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects))));
 #endif
 

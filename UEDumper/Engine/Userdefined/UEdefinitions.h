@@ -14,15 +14,6 @@
 *
 ************************************************************************************************/
 
-// XOR keys for GObject encryption in some games
-#define GOBJECTS_XOR_ENCRYPTION_KEY_BACK4BLOOD 0x8375
-
-//#define GOBJECTS_XOR_ECRYPTION_KEY GOBJECTS_XOR_ENCRYPTION_KEY_BACK4BLOOD
-
-// Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
-// This is used when a chunk using XOR encryption has a nullptr at the start and needs padding
-#define CHUNK_PADDING 0x0
-
 //Dumper versions. Do not change this!
 #define RELEASE_1_1_BETA	0
 #define RELEASE_1_1_FINAL	1
@@ -158,3 +149,10 @@
 //default false
 #define WITH_EDITORONLY_DATA FALSE
 #endif
+
+// If you game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
+#define GOBJECTS_XOR_ECRYPTION_KEY 0x0
+
+// Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
+// This is used when a chunk using XOR encryption has a nullptr at the start and needs padding
+#define CHUNK_PADDING 0x0
