@@ -228,12 +228,6 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		return;
 	}
 
-#if UE_VERSION == UE_4_20
-	constexpr auto numElementsPerChunk = 65 * 1024;
-#else
-	constexpr auto numElementsPerChunk = 64 * 1024;
-#endif
-
 	//go through each element
 	int32_t numInvalidElements = 0;
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
@@ -258,10 +252,6 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
 
 			newBigObject->valid = true;
-
-			// additional info to help with debugging
-			newBigObject->chunkNumber = i / numElementsPerChunk;
-			newBigObject->chunkIndex = i % numElementsPerChunk;
 
 			//link the list to the ptr
 			gUObjectManager.linkedUObjectPtrs.insert(std::pair(UObjectAddress, newBigObject));

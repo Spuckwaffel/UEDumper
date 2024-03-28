@@ -186,8 +186,6 @@ public:
  */
 class UStruct : public UField
 {
-	uint64_t pad[1]; // Back4Blood
-
 public:
 	using UField::UField;
 

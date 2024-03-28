@@ -106,8 +106,6 @@ private:
 		struct UBigObject
 		{
 			bool valid = false;
-			int chunkNumber = 0;
-			int chunkIndex = 0;
 			//valid bytes in the char array
 			size_t readSize = 0;
 			//if you ask where if the paired UObject game ptr?
@@ -357,10 +355,6 @@ public:
 
 			//get the uobject for i
 			auto obj = getUObjectByIndex<T>(i);
-			if (obj == nullptr) {
-				// Object is marked as invalid
-				continue;
-			}
 
 			if (CRITICAL_STOP_CALLED())
 				return nullptr;
@@ -387,6 +381,7 @@ public:
 		}
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
+		printf("ERROR? Could not find name %s in FindObject!!\n", name.c_str());
 		if(raiseHardError)
 		{
 			errorReason = windows::LogWindow::getLastLogMessage();

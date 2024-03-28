@@ -863,7 +863,7 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 
 void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPackages, CopyStatus & status)
 {
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packets...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packages...");
 	status = CS_busy;
 
 	//we already done?
@@ -872,7 +872,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		status = CS_success;
 		totalPackages = packages.size();
 		finishedPackages = packages.size();
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Packets already got cached!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Packages already got cached!");
 		return;
 	}
 	std::unordered_map<std::string, std::vector<UObject*>> upackages;
@@ -887,6 +887,8 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overriding unknown members....");
 	overrideUnknownMembers();
 
+	int numUStructsFound = 0;
+	int numEnumsFound = 0;
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
 		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
@@ -899,10 +901,27 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		if (!object)
 			continue;
 
-		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
+		bool isUStruct = false, isEnum = false;
+		if (object->IsA<UStruct>()) {
+			numUStructsFound++;
+			isUStruct = true;
+		}
+
+		if (object->IsA<UEnum>()) {
+			numEnumsFound++;
+			isEnum = true;
+		}
+
+		if (!isUStruct && !isEnum)
 			continue;
 
 		upackages[object->getSecondPackageName()].push_back(object);
+	}
+	if (numUStructsFound == 0) {
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "WARN: No UStruct objects found");
+	}
+	if (numEnumsFound == 0) {
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "WARN: No Enum objects found");
 	}
 
 	//reset the counter to 0 as we are using it again but this time really for packages
@@ -969,6 +988,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				printf("Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 
 
 				const auto sObject = object->castTo<UStruct>();
