@@ -988,7 +988,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
-				printf("Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				printf("Generating %s %s::%s\n", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 
 
 				const auto sObject = object->castTo<UStruct>();
