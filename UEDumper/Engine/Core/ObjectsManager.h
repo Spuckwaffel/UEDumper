@@ -193,6 +193,9 @@ public:
 	 */
 	static bool CRITICAL_STOP_CALLED();
 
+	/**
+	 * \brief Only call this function if you are able to recover from a critical stop!
+	 */
 	static void resolvedStop();
 	
 	static std::string getErrorMessage();
