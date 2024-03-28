@@ -266,7 +266,12 @@ public:
 	template <typename T>
 	static T* getUObject(uint64_t gamePtr)
 	{
-		
+#ifdef _DEBUG
+		if (gamePtr < 0x100) {
+			// if your pointer is less than 0x100, it's likely invalid and there's a bug. Check your structs
+			DebugBreak();
+		}
+#endif
 		if(!gUObjectManager.linkedUObjectPtrs.contains(gamePtr))
 		{
 			if(cacheState == CacheState::CS_SDKGEN)
@@ -365,7 +370,6 @@ public:
 
 			std::string cname = obj->getFullName();
 
-
 			if (cname == name)
 			{
 				//FullStringCache.insert(std::pair(name, ptr));
@@ -377,7 +381,8 @@ public:
 		}
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
-		if(!raiseHardError)
+		printf("ERROR? Could not find name %s in FindObject!!\n", name.c_str());
+		if(raiseHardError)
 		{
 			errorReason = windows::LogWindow::getLastLogMessage();
 			STOP_OPERATION();
@@ -436,4 +441,12 @@ public:
 
 	static void setSDKGenerationDone();
 
+	inline static uint64_t decryptPointer(uint64_t ptr)
+	{
+#if GOBJECTS_XOR_ECRYPTION_KEY
+		return ptr ^ GOBJECTS_XOR_ECRYPTION_KEY;
+#else
+		return ptr;
+#endif
+	}
 };

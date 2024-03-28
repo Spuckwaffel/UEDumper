@@ -261,7 +261,7 @@ UField* UStruct::getChildren() const
 UClass* UStruct::staticClass()
 {
 #if UE_VERSION == UE_4_25 && USE_LOWERCASE_STRUCT
-    //please can someone explain what the fuck they decided to write struct in lowercase
+    //please can someone explain why the fuck they decided to write struct in lowercase
     return ObjectsManager::findObject<UClass>("/Script/CoreUObject.struct", true);
 #else
     return ObjectsManager::findObject<UClass>("/Script/CoreUObject.Struct", true);

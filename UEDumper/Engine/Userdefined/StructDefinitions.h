@@ -88,8 +88,8 @@ inline void overrideStructs()
 
 	//Ufield example here
 	EngineStructs::Struct uStruct;
-#if UE_VERSION == UE_4_25
-	//please can someone explain what the fuck they decided to write struct in lowercase
+#if UE_VERSION == UE_4_25 && USE_LOWERCASE_STRUCT
+	//please can someone explain why the fuck they decided to write struct in lowercase
 	uStruct.fullName = "/Script/CoreUObject.struct";
 #else
 	uStruct.fullName = "/Script/CoreUObject.Struct";

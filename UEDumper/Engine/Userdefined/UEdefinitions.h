@@ -149,3 +149,10 @@
 //default false
 #define WITH_EDITORONLY_DATA FALSE
 #endif
+
+// If your game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
+#define GOBJECTS_XOR_ECRYPTION_KEY 0x0
+
+// Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
+// This is used when a chunk using XOR encryption has a nullptr at the start and needs padding
+#define CHUNK_PADDING 0x0

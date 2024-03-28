@@ -42,7 +42,7 @@ uint64_t ObjectsManager::getUObjectPtrByIndex(int index)
 		return 0;
 	}
 
-	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * FUOBJECTITEM_SIZE);
+	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + (index * FUOBJECTITEM_SIZE));
 }
 
 void ObjectsManager::STOP_OPERATION()
@@ -68,6 +68,10 @@ ObjectsManager::ObjectsManager()
 	}
 
 	gUObjectManager.UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
+
+#if GOBJECTS_XOR_ECRYPTION_KEY
+	gUObjectManager.UObjectArray.Objects = reinterpret_cast<FUObjectItem**>((decryptPointer(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects))));
+#endif
 
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject elements: %d", gUObjectManager.UObjectArray.NumElements);
@@ -173,12 +177,13 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 
 	for (int i = 0; i < gUObjectManager.UObjectArray.NumChunks; i++)
 	{
-		//chunks are in objects* 
-		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects) + i * 8);
+		//chunks are in objects*
+		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects) + (i * 0x8)) + CHUNK_PADDING;
+
 		auto chunkBytesRead = 0;
 		printf("chunk %i from %llX to %llX\n", i, chunkStart, chunkStart + chunkBytesSize);
 		//256 bytes is good enough, a full chunk would take 6144 reads.
-		//if the cunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
+		//if the chunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
 		while (finishedBytes + 0x100 < totalBytes && chunkBytesRead < chunkBytesSize)
 		{
 			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(gUObjectManager.pGObjectPtrArray + finishedBytes), 0x100);
@@ -223,23 +228,25 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 		return;
 	}
 
-
 	//go through each element
+	int32_t numInvalidElements = 0;
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
 	{
 		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
+		const uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
 		if (!UObjectAddress) {
-			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Could not resolve address for obect %d!", i);
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Could not resolve address for object %d!", i);
+			numInvalidElements += 1;
 		}
 		else {
-			//gets the memory address where the objects gonna be
+			//gets the memory address where the object's gonna be
 			UObjectManager::UBigObject* newBigObject = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + i * sizeof(UObjectManager::UBigObject));
 			newBigObject->readSize = sizeof(UObject);
 			//read the UObject inside the buffer with UOBJECT_MAX_SIZE bytes size
-			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, sizeof(UObject));
+
+			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, newBigObject->readSize);
 
 			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
 			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
@@ -252,6 +259,12 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 
 		finishedBytes += sizeof(UObject);
 	}
+
+	if (numInvalidElements > 0)
+	{
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "Failed to resolve address for %d/%d objects", numInvalidElements, gUObjectManager.UObjectArray.NumElements);
+	}
+
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Loaded UBigObjectArray successfully!");
 }
