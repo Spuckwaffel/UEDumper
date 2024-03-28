@@ -150,7 +150,7 @@
 #define WITH_EDITORONLY_DATA FALSE
 #endif
 
-// If you game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
+// If your game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
 #define GOBJECTS_XOR_ECRYPTION_KEY 0x0
 
 // Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
