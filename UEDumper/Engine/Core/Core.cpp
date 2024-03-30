@@ -699,9 +699,13 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		const auto& inherStruct = eStruct.supers[0];
 		if (inherStruct->maxSize < eStruct.definedMembers[0].offset)
 		{
+			// If this happens for CoreUObject, then we are about to introduce excessive padding of an unknown member and not take in to account the parent's members, resulting in members being offset from reality
+			if (inherStruct->maxSize == 0 && inherStruct->fullName == "/Script/CoreUObject.Object") {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "%s maxSize is zero! SDK for %s may not work correctly!", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
+				printf("%s maxSize is zero! SDK for %s may not work correctly!\n", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
+			}
 			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
 		}
-
 	}
 
 

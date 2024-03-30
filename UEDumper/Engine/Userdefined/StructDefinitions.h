@@ -40,6 +40,7 @@ inline void overrideStructs()
 	uObject.fullName = "/Script/CoreUObject.Object"; //the full name
 	uObject.cppName = "UObject"; //cpp name
 	uObject.size = sizeof(UObject); //this works, because if UObject in engine != UObject in game the UEDumper will fail anyways
+	uObject.maxSize = uObject.size;
 	uObject.inherited = false; //is not inherited
 	uObject.isClass = true; //is it a class? - Yes
 
@@ -69,6 +70,7 @@ inline void overrideStructs()
 	uField.fullName = "/Script/CoreUObject.Field";
 	uField.cppName = "UField";
 	uField.size = sizeof(UField);
+	uField.maxSize = uField.size;
 	uField.isClass = true;
 	uField.inherited = true; //Ufield is inherited
 	uField.inheretedSize = sizeof(UObject); //you can use the size from our UnrealClasses
@@ -96,6 +98,7 @@ inline void overrideStructs()
 #endif
 	uStruct.cppName = "UStruct";
 	uStruct.size = sizeof(UStruct);
+	uStruct.maxSize = uStruct.size;
 	uStruct.isClass = true;
 	uStruct.inherited = true; //Ufield is inherited
 	uStruct.inheretedSize = sizeof(UField); //you can use the size from our UnrealClasses
@@ -125,6 +128,7 @@ inline void addStructs()
 	Fname.fullName = "/Custom/FName"; //Any fullname, preferable with /Custom/ at the beginning
 	Fname.cppName = "FName";
 	Fname.size = sizeof(FName);
+	Fname.maxSize = Fname.size;
 	Fname.isClass = false; //FName is just a struct
 	Fname.inherited = false;
 	int FnameOffset = 0;
@@ -156,6 +160,7 @@ inline void addStructs()
 	Tarray.cppName = "TArray";
 	Tarray.isClass = false;
 	Tarray.size = sizeof(TArray<uint64_t>);
+	Tarray.maxSize = Tarray.size;
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
 	Tarray.definedMembers = std::vector<EngineStructs::Member>{
