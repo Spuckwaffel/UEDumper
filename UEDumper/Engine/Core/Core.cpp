@@ -696,12 +696,10 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 
 	if (eStruct.inherited)
 	{
-		const auto& inherStruct = eStruct.supers[0];
-		if (inherStruct->maxSize < eStruct.definedMembers[0].offset)
+		if (eStruct.inheretedSize < eStruct.definedMembers[0].offset)
 		{
-			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
+			genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 3);
 		}
-
 	}
 
 
