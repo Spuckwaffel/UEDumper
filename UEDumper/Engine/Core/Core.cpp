@@ -696,9 +696,12 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 
 	if (eStruct.inherited)
 	{
-		if (eStruct.inheretedSize < eStruct.definedMembers[0].offset)
+		const auto& inherStruct = eStruct.supers[0];
+		// in some cases, CoreUObject may have a zero maxSize, which leads to incorrect SDK generation
+		auto parentSize = inherStruct->maxSize == 0 ? eStruct.inheretedSize : inherStruct->maxSize;
+		if (parentSize < eStruct.definedMembers[0].offset)
 		{
-			genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 3);
+			genUnknownMember(parentSize, eStruct.definedMembers[0].offset, 3);
 		}
 	}
 
