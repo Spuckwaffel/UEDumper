@@ -127,32 +127,32 @@ struct fieldType
 		return arr;
 	}
 
-	std::string stringify() const
+	std::string stringify(bool bAddTypePrefix = true) const
 	{
 
 		auto generateValidVarName = [](const std::string& str)
-		{
-			//hacky way to ignore shit like unsigned char get to unsigned_char
-			if (getSize(str) != -1)
-				return str;
-			std::string result = "";
-
-			for (const char c : str)
 			{
-				if (static_cast<int>(c) < 0 || !std::isalnum(c))
-					result += '_';
-				else
-					result += c;
+				//hacky way to ignore shit like unsigned char get to unsigned_char
+				if (getSize(str) != -1)
+					return str;
+				std::string result = "";
 
-			}
-			//guaranteed 0 termination
-			return result;
-		};
+				for (const char c : str)
+				{
+					if (static_cast<int>(c) < 0 || !std::isalnum(c))
+						result += '_';
+					else
+						result += c;
+
+				}
+				//guaranteed 0 termination
+				return result;
+			};
 
 
 		std::string typeStr = generateValidVarName(name);
 
-		if ((propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && (info && info->valid))
+		if (bAddTypePrefix && (propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && (info && info->valid))
 		{
 			const std::string prefix = info->type == ObjectInfo::OI_Class ? "class " : "struct ";
 			typeStr = prefix + typeStr;
