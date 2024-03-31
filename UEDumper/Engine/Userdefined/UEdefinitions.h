@@ -61,7 +61,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_03
+#define UE_VERSION UE_5_01
 
 
 /* FName settings */
@@ -73,7 +73,7 @@
 //set this to TRUE if your game uses WITH_CASE_PRESERVING_NAME (WITH_EDITORONLY_DATA)
 //if GNames fail, try setting this to true
 //default FALSE
-#define WITH_CASE_PRESERVING_NAME TRUE
+#define WITH_CASE_PRESERVING_NAME FALSE
 
 //set this to false if your generation always stops and says you have a invalid fname offset
 //however all this does is check if the first item is /Scrupt/Core.UObject which should always be the case
