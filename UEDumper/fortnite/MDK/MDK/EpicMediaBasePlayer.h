@@ -34,59 +34,59 @@ public:
 
 	/// Functions
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.Stop
-	// void Stop(bool bRelease, bool bStopPlayer);                                                                              // [0x7d9a9b4] Native|Public|BlueprintCallable 
+	// void Stop(bool bRelease, bool bStopPlayer);                                                                              // [0x817626c] Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.Start
-	// void Start(FString InVUID, class UMediaTexture* InVideoTexture);                                                         // [0x7d9a808] Final|Native|Public|BlueprintCallable 
+	// void Start(FString InVUID, class UMediaTexture* InVideoTexture);                                                         // [0x8175ba4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.SetVideoSize
-	// void SetVideoSize(int32_t Width, int32_t Height);                                                                        // [0x7d9a73c] Final|Native|Public|BlueprintCallable 
+	// void SetVideoSize(int32_t Width, int32_t Height);                                                                        // [0x8175a5c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.SetSyncTimes
-	// void SetSyncTimes(FDateTime InNowTime, FDateTime InStartTime, bool DynamicStart, float InOffset_s, float InDelay_s);     // [0x7d9a2a4] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetSyncTimes(FDateTime InNowTime, FDateTime InStartTime, bool DynamicStart, float InOffset_s, float InDelay_s);     // [0x8175790] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.SetSoundSubmixes
-	// void SetSoundSubmixes(class UMediaSoundComponent* InSoundComponent, class USoundSubmixBase* InDefault, class USoundSubmixBase* InLicensed); // [0x7d9a18c] Final|Native|Public|BlueprintCallable 
+	// void SetSoundSubmixes(class UMediaSoundComponent* InSoundComponent, class USoundSubmixBase* InDefault, class USoundSubmixBase* InLicensed); // [0x81755b4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.SetOpenTimeout
-	// void SetOpenTimeout(double InTimeoutTime);                                                                               // [0x7d9a108] Final|Native|Public|BlueprintCallable 
+	// void SetOpenTimeout(double InTimeoutTime);                                                                               // [0x81754ec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.SetCreateAudioComponent
-	// void SetCreateAudioComponent(bool bInCreateAudioComponent);                                                              // [0x7d9a088] Final|Native|Public|BlueprintCallable 
+	// void SetCreateAudioComponent(bool bInCreateAudioComponent);                                                              // [0x817542c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.RetryOnError
-	// bool RetryOnError(EBaseMediaTerminalErrorReason Reason);                                                                 // [0x7d99ffc] Final|Native|Private 
+	// bool RetryOnError(EBaseMediaTerminalErrorReason Reason);                                                                 // [0x817535c] Final|Native|Private 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.Release
-	// void Release();                                                                                                          // [0x35bd900] Native|Public|BlueprintCallable 
+	// void Release();                                                                                                          // [0x1bbc518] Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.Open
-	// bool Open(FMediaPlayerOptions InMediaOptions);                                                                           // [0x7d99e90] Native|Public|BlueprintCallable 
+	// bool Open(FMediaPlayerOptions InMediaOptions);                                                                           // [0x817525c] Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.OnSuccessfulURL
-	// void OnSuccessfulURL(FString URL);                                                                                       // [0x7d99d24] Final|Native|Private 
+	// void OnSuccessfulURL(FString URL);                                                                                       // [0x8174c00] Final|Native|Private 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.OnFailedURL
-	// void OnFailedURL(FString URL);                                                                                           // [0x7d99bb8] Final|Native|Private 
+	// void OnFailedURL(FString URL);                                                                                           // [0x81745a4] Final|Native|Private 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.MethodDebounce
-	// void MethodDebounce(bool bDebounce);                                                                                     // [0x7d99b38] Final|Native|Public|BlueprintCallable 
+	// void MethodDebounce(bool bDebounce);                                                                                     // [0x81744e4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.IsSyncStartTimeSet
-	// bool IsSyncStartTimeSet();                                                                                               // [0x7d99b20] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSyncStartTimeSet();                                                                                               // [0x81744cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.Init
-	// bool Init(class UMediaTexture* InVideoTexture, class UMediaPlayer* InMediaPlayer, class UEpicStreamMediaSource* InMediaSource, bool InCDNFailover); // [0x7d999dc] Native|Public|BlueprintCallable 
+	// bool Init(class UMediaTexture* InVideoTexture, class UMediaPlayer* InMediaPlayer, class UEpicStreamMediaSource* InMediaSource, bool InCDNFailover); // [0x817428c] Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleMediaResumed
-	// void HandleMediaResumed();                                                                                               // [0x681406c] Native|Protected     
+	// void HandleMediaResumed();                                                                                               // [0x685ca18] Native|Protected     
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleMediaOpenedFailed
-	// void HandleMediaOpenedFailed(FString FailedUrl);                                                                         // [0x7d99870] Final|Native|Protected 
+	// void HandleMediaOpenedFailed(FString FailedUrl);                                                                         // [0x8173c30] Final|Native|Protected 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleMediaOpened
-	// void HandleMediaOpened(FString OpenedUrl);                                                                               // [0x7d99704] Final|Native|Protected 
+	// void HandleMediaOpened(FString OpenedUrl);                                                                               // [0x81735d4] Final|Native|Protected 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleMediaEndReached
-	// void HandleMediaEndReached();                                                                                            // [0x7d996e4] Final|Native|Protected 
+	// void HandleMediaEndReached();                                                                                            // [0x81735b4] Final|Native|Protected 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleMediaClosed
-	// void HandleMediaClosed();                                                                                                // [0x7d996d0] Final|Native|Protected 
+	// void HandleMediaClosed();                                                                                                // [0x81735a0] Final|Native|Protected 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.HandleLicensedAudioTreatmentChanged
-	// void HandleLicensedAudioTreatmentChanged(UCPTypes UCPType);                                                              // [0x7d9964c] Final|Native|Private 
+	// void HandleLicensedAudioTreatmentChanged(UCPTypes UCPType);                                                              // [0x81734dc] Final|Native|Private 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.GetSoundComponent
-	// class UMediaSoundComponent* GetSoundComponent();                                                                         // [0x2f32370] Final|Native|Public|BlueprintCallable 
+	// class UMediaSoundComponent* GetSoundComponent();                                                                         // [0x2f215c4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.GetMediaSource
-	// class UEpicStreamMediaSource* GetMediaSource();                                                                          // [0x2bbd154] Final|Native|Public|BlueprintCallable 
+	// class UEpicStreamMediaSource* GetMediaSource();                                                                          // [0x2a7655c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.GetMediaPlayerOptions
-	// FMediaPlayerOptions GetMediaPlayerOptions();                                                                             // [0x7d9960c] Native|Public        
+	// FMediaPlayerOptions GetMediaPlayerOptions();                                                                             // [0x817349c] Native|Public        
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.GetMediaPlayer
-	// class UMediaPlayer* GetMediaPlayer();                                                                                    // [0x3b55e70] Final|Native|Public|BlueprintCallable 
+	// class UMediaPlayer* GetMediaPlayer();                                                                                    // [0x8173484] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.GetLicensedAudio
-	// bool GetLicensedAudio();                                                                                                 // [0x65c4110] Final|Native|Public|BlueprintCallable 
+	// bool GetLicensedAudio();                                                                                                 // [0x657a700] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicMediaBasePlayer.EpicBaseStreamingVideo.ClearSyncTimes
-	// void ClearSyncTimes();                                                                                                   // [0x7d995f8] Final|Native|Public|BlueprintCallable 
+	// void ClearSyncTimes();                                                                                                   // [0x8173470] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/EpicMediaBasePlayer.BaseMediaDelayConfig
@@ -125,7 +125,7 @@ enum class EBaseMediaDelayAction : uint8_t
 };
 
 /// Enum /Script/EpicMediaBasePlayer.EBaseMediaPlayerState
-/// Size: 0x08
+/// Size: 0x09
 enum class EBaseMediaPlayerState : uint8_t
 {
 	EBaseMediaPlayerState__None                                                      = 0,
@@ -134,7 +134,8 @@ enum class EBaseMediaPlayerState : uint8_t
 	EBaseMediaPlayerState__Started                                                   = 3,
 	EBaseMediaPlayerState__Opened                                                    = 4,
 	EBaseMediaPlayerState__Playing                                                   = 5,
-	EBaseMediaPlayerState__Error                                                     = 6,
-	EBaseMediaPlayerState__EBaseMediaPlayerState_MAX                                 = 7
+	EBaseMediaPlayerState__Ended                                                     = 6,
+	EBaseMediaPlayerState__Error                                                     = 7,
+	EBaseMediaPlayerState__EBaseMediaPlayerState_MAX                                 = 8
 };
 

@@ -72,7 +72,7 @@ public:
 
 	/// Functions
 	// Function /Script/NearestNeighborModel.NearestNeighborOptimizedNetwork.Empty
-	// void Empty();                                                                                                            // [0x15d82c4] Native|Public|BlueprintCallable 
+	// void Empty();                                                                                                            // [0x1e34ac0] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/NearestNeighborModel.NearestNeighborOptimizedNetworkInstance
@@ -98,9 +98,9 @@ public:
 
 	/// Functions
 	// Function /Script/NearestNeighborModel.NearestNeighborOptimizedNetworkLoader.LoadOptimizedNetwork
-	// bool LoadOptimizedNetwork(FString OnnxPath);                                                                             // [0x18a39e4] Event|Public|BlueprintEvent 
+	// bool LoadOptimizedNetwork(FString OnnxPath);                                                                             // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NearestNeighborModel.NearestNeighborOptimizedNetworkLoader.GetOptimizedNetwork
-	// class UNearestNeighborOptimizedNetwork* GetOptimizedNetwork();                                                           // [0x78ca134] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UNearestNeighborOptimizedNetwork* GetOptimizedNetwork();                                                           // [0x7cc2558] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/NearestNeighborModel.NearestNeighborModelSection
@@ -117,14 +117,19 @@ public:
 	CMember(TArray<float>)                             RuntimeNeighborCoeffs                                       OFFSET(get<T>, {0x38, 16, 0, 0})
 	DMember(bool)                                      bIsReadyForTraining                                         OFFSET(get<bool>, {0x48, 1, 0, 0})
 	DMember(bool)                                      bIsReadyForInference                                        OFFSET(get<bool>, {0x49, 1, 0, 0})
+
+
+	/// Functions
+	// Function /Script/NearestNeighborModel.NearestNeighborModelSection.GetNumBasis
+	// int32_t GetNumBasis();                                                                                                   // [0x6d9ccb0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/NearestNeighborModel.NearestNeighborModel
-/// Size: 0x0090 (0x0001A8 - 0x000238)
+/// Size: 0x0098 (0x0001A8 - 0x000240)
 class UNearestNeighborModel : public UMLDeformerMorphModel
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 568;
+	static inline constexpr uint64_t __MDKClassSize = 576;
 
 public:
 	DMember(int32_t)                                   InputDim                                                    OFFSET(get<int32_t>, {0x1A8, 4, 0, 0})
@@ -133,31 +138,35 @@ public:
 	CMember(TArray<FVector3f>)                         InputMultipliers                                            OFFSET(get<T>, {0x1B8, 16, 0, 0})
 	CMember(TArray<float>)                             InputsMin                                                   OFFSET(get<T>, {0x1C8, 16, 0, 0})
 	CMember(TArray<float>)                             InputsMax                                                   OFFSET(get<T>, {0x1D8, 16, 0, 0})
-	DMember(bool)                                      bUseDualQuaternionDeltas                                    OFFSET(get<bool>, {0x1E8, 1, 0, 0})
-	DMember(float)                                     DecayFactor                                                 OFFSET(get<float>, {0x1EC, 4, 0, 0})
-	DMember(float)                                     NearestNeighborOffsetWeight                                 OFFSET(get<float>, {0x1F0, 4, 0, 0})
-	DMember(bool)                                      bUseRBF                                                     OFFSET(get<bool>, {0x1F4, 1, 0, 0})
-	DMember(float)                                     RBFSigma                                                    OFFSET(get<float>, {0x1F8, 4, 0, 0})
-	CMember(TArray<class UNearestNeighborModelSection*>) Sections                                                  OFFSET(get<T>, {0x200, 16, 0, 0})
-	CMember(TArray<int32_t>)                           PCACoeffStarts                                              OFFSET(get<T>, {0x210, 16, 0, 0})
-	DMember(bool)                                      bIsReadyForTraining                                         OFFSET(get<bool>, {0x220, 1, 0, 0})
-	DMember(bool)                                      bIsReadyForInference                                        OFFSET(get<bool>, {0x221, 1, 0, 0})
-	CMember(class UNearestNeighborOptimizedNetwork*)   OptimizedNetwork                                            OFFSET(get<T>, {0x228, 8, 0, 0})
+	DMember(bool)                                      bUsePCA                                                     OFFSET(get<bool>, {0x1E8, 1, 0, 0})
+	DMember(int32_t)                                   NumBasisPerSection                                          OFFSET(get<int32_t>, {0x1EC, 4, 0, 0})
+	DMember(bool)                                      bUseDualQuaternionDeltas                                    OFFSET(get<bool>, {0x1F0, 1, 0, 0})
+	DMember(float)                                     DecayFactor                                                 OFFSET(get<float>, {0x1F4, 4, 0, 0})
+	DMember(float)                                     NearestNeighborOffsetWeight                                 OFFSET(get<float>, {0x1F8, 4, 0, 0})
+	DMember(bool)                                      bUseRBF                                                     OFFSET(get<bool>, {0x1FC, 1, 0, 0})
+	DMember(float)                                     RBFSigma                                                    OFFSET(get<float>, {0x200, 4, 0, 0})
+	CMember(TArray<class UNearestNeighborModelSection*>) Sections                                                  OFFSET(get<T>, {0x208, 16, 0, 0})
+	CMember(TArray<int32_t>)                           PCACoeffStarts                                              OFFSET(get<T>, {0x218, 16, 0, 0})
+	DMember(bool)                                      bIsReadyForTraining                                         OFFSET(get<bool>, {0x228, 1, 0, 0})
+	DMember(bool)                                      bIsReadyForInference                                        OFFSET(get<bool>, {0x229, 1, 0, 0})
+	CMember(class UNearestNeighborOptimizedNetwork*)   OptimizedNetwork                                            OFFSET(get<T>, {0x230, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/NearestNeighborModel.NearestNeighborModel.IsReadyForTraining
-	// bool IsReadyForTraining();                                                                                               // [0xaa37d54] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsReadyForTraining();                                                                                               // [0x91cf89c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NearestNeighborModel.NearestNeighborModel.IsReadyForInference
-	// bool IsReadyForInference();                                                                                              // [0xaa37d3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
-	// Function /Script/NearestNeighborModel.NearestNeighborModel.GetTotalNumPCACoeffs
-	// int32_t GetTotalNumPCACoeffs();                                                                                          // [0xaa37d18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsReadyForInference();                                                                                              // [0xb8bc6d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// Function /Script/NearestNeighborModel.NearestNeighborModel.GetTotalNumBasis
+	// int32_t GetTotalNumBasis();                                                                                              // [0xb8bc6b0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NearestNeighborModel.NearestNeighborModel.GetSectionPtr
-	// class UNearestNeighborModelSection* GetSectionPtr(int32_t Index);                                                        // [0xaa37c88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UNearestNeighborModelSection* GetSectionPtr(int32_t Index);                                                        // [0xb8bc5dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NearestNeighborModel.NearestNeighborModel.GetPCACoeffStarts
-	// TArray<int32_t> GetPCACoeffStarts();                                                                                     // [0xaa37c6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<int32_t> GetPCACoeffStarts();                                                                                     // [0xb8bc5c0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NearestNeighborModel.NearestNeighborModel.GetNumSections
-	// int32_t GetNumSections();                                                                                                // [0x66deec4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumSections();                                                                                                // [0xb16bd6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// Function /Script/NearestNeighborModel.NearestNeighborModel.DoesUsePCA
+	// bool DoesUsePCA();                                                                                                       // [0xb8bc4a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/NearestNeighborModel.NearestNeighborModelInputInfo
@@ -172,19 +181,21 @@ public:
 };
 
 /// Class /Script/NearestNeighborModel.NearestNeighborModelInstance
-/// Size: 0x0028 (0x000090 - 0x0000B8)
+/// Size: 0x0030 (0x000090 - 0x0000C0)
 class UNearestNeighborModelInstance : public UMLDeformerMorphModelInstance
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 184;
+	static inline constexpr uint64_t __MDKClassSize = 192;
 
 public:
-	CMember(class UNearestNeighborOptimizedNetworkInstance*) OptimizedNetworkInstance                              OFFSET(get<T>, {0xB0, 8, 0, 0})
+	CMember(class UNearestNeighborOptimizedNetworkInstance*) OptimizedNetworkInstance                              OFFSET(get<T>, {0xB8, 8, 0, 0})
 
 
 	/// Functions
+	// Function /Script/NearestNeighborModel.NearestNeighborModelInstance.Reset
+	// void Reset();                                                                                                            // [0xb8bc6ec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/NearestNeighborModel.NearestNeighborModelInstance.Eval
-	// TArray<float> Eval(TArray<float>& InputData);                                                                            // [0xaa37b68] Final|Native|Private|HasOutParms|BlueprintCallable 
+	// TArray<float> Eval(TArray<float>& InputData);                                                                            // [0xb8bc4bc] Final|Native|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/NearestNeighborModel.OptimusSkeletonWithQuatsDataInterface

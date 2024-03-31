@@ -69,9 +69,9 @@ public:
 
 	/// Functions
 	// Function /Script/VerseInput.VerseReplicatedInputDataComponent.ServerInputActionTriggered
-	// void ServerInputActionTriggered(FGuid Guid, FVector InputValue);                                                         // [0xba3701c] Final|Net|NetReliableNative|Event|Private|NetServer|HasDefaults|Const 
+	// void ServerInputActionTriggered(FGuid Guid, FVector InputValue);                                                         // [0xcbce288] Final|Net|NetReliableNative|Event|Private|NetServer|HasDefaults|Const 
 	// Function /Script/VerseInput.VerseReplicatedInputDataComponent.OnInputActionTriggered
-	// void OnInputActionTriggered(FInputActionInstance& ActionInstance);                                                       // [0xba36f78] Final|Native|Private|HasOutParms 
+	// void OnInputActionTriggered(FInputActionInstance& ActionInstance);                                                       // [0xcbce1e4] Final|Native|Private|HasOutParms 
 };
 
 /// Struct /Script/VerseInput.VerseInputActionData

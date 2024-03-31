@@ -26,12 +26,12 @@ public:
 
 	/// Functions
 	// Function /Script/DynamicAthenaHUD.DynamicAthenaHUDDirector.HandleHiringNpc
-	// void HandleHiringNpc();                                                                                                  // [0xa8f0584] Final|Native|Private 
+	// void HandleHiringNpc();                                                                                                  // [0xb722480] Final|Native|Private 
 	// Function /Script/DynamicAthenaHUD.DynamicAthenaHUDDirector.HandleExitingVehicle
-	// void HandleExitingVehicle();                                                                                             // [0xa8f0570] Final|Native|Private 
+	// void HandleExitingVehicle();                                                                                             // [0xb72246c] Final|Native|Private 
 	// Function /Script/DynamicAthenaHUD.DynamicAthenaHUDDirector.HandleEnteringVehicle
-	// void HandleEnteringVehicle();                                                                                            // [0xa8f055c] Final|Native|Private 
+	// void HandleEnteringVehicle();                                                                                            // [0xb722458] Final|Native|Private 
 	// Function /Script/DynamicAthenaHUD.DynamicAthenaHUDDirector.HandleCreativeQuickbarEquippedChanged
-	// void HandleCreativeQuickbarEquippedChanged(bool bIsQuickbarEquipped);                                                    // [0xa8f04dc] Final|Native|Private 
+	// void HandleCreativeQuickbarEquippedChanged(bool bIsQuickbarEquipped);                                                    // [0xb722394] Final|Native|Private 
 };
 

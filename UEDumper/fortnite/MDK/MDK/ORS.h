@@ -84,7 +84,7 @@ public:
 
 	/// Functions
 	// Function /Script/ORS.ORSActorComponent.OnOwnerAdded
-	// void OnOwnerAdded(class AActor* Actor);                                                                                  // [0xaecacd0] Final|Native|Private 
+	// void OnOwnerAdded(class AActor* Actor);                                                                                  // [0xc1ba7b0] Final|Native|Private 
 };
 
 /// Class /Script/ORS.ORSCheatManager
@@ -99,9 +99,9 @@ public:
 
 	/// Functions
 	// Function /Script/ORS.ORSCheatManager.ORSListObjects
-	// void ORSListObjects();                                                                                                   // [0x36203b0] Final|Exec|Native|Protected 
+	// void ORSListObjects();                                                                                                   // [0x3518b8c] Final|Exec|Native|Protected 
 	// Function /Script/ORS.ORSCheatManager.ORSDebug
-	// void ORSDebug(FName& Path);                                                                                              // [0xaecac68] Final|Exec|Native|Protected|HasOutParms 
+	// void ORSDebug(FName& Path);                                                                                              // [0xc1ba748] Final|Exec|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/ORS.ORSClassTuple
@@ -185,11 +185,11 @@ public:
 
 	/// Functions
 	// Function /Script/ORS.ORSGroupComponent.OnRep_ReplicatedObjectReferences
-	// void OnRep_ReplicatedObjectReferences();                                                                                 // [0xaecad78] Final|Native|Protected 
+	// void OnRep_ReplicatedObjectReferences();                                                                                 // [0xc1ba898] Final|Native|Protected 
 	// Function /Script/ORS.ORSGroupComponent.OnRep_ReplicatedNetSerializeObjects
-	// void OnRep_ReplicatedNetSerializeObjects();                                                                              // [0xaecad64] Final|Native|Protected 
+	// void OnRep_ReplicatedNetSerializeObjects();                                                                              // [0xc1ba884] Final|Native|Protected 
 	// Function /Script/ORS.ORSGroupComponent.OnRep_ReplayNetSerializeObjects
-	// void OnRep_ReplayNetSerializeObjects();                                                                                  // [0xaecad50] Final|Native|Protected 
+	// void OnRep_ReplayNetSerializeObjects();                                                                                  // [0xc1ba870] Final|Native|Protected 
 };
 
 /// Class /Script/ORS.ORSInstance
@@ -263,7 +263,7 @@ public:
 
 	/// Functions
 	// Function /Script/ORS.ORSSubsystem.OnActorDestroyed
-	// void OnActorDestroyed(class AActor* Actor);                                                                              // [0x1c32298] Final|Native|Protected 
+	// void OnActorDestroyed(class AActor* Actor);                                                                              // [0x1e31db4] Final|Native|Protected 
 };
 
 /// Class /Script/ORS.ORSSystemActor

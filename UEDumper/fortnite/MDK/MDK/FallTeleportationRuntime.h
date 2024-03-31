@@ -27,9 +27,9 @@ public:
 
 	/// Functions
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportSpawnerComponent.HandleWarmupCountdownEndTimeUpdated
-	// void HandleWarmupCountdownEndTimeUpdated(float NewEndTime);                                                              // [0xa925378] Final|Native|Protected 
+	// void HandleWarmupCountdownEndTimeUpdated(float NewEndTime);                                                              // [0xb76373c] Final|Native|Protected 
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportSpawnerComponent.HandleGamePhaseChanged
-	// void HandleGamePhaseChanged(FFortGamePhaseUpdatedEvent& Event);                                                          // [0xa9252ec] Final|Native|Protected|HasOutParms 
+	// void HandleGamePhaseChanged(FFortGamePhaseUpdatedEvent& Event);                                                          // [0xb7636b0] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/FallTeleportationRuntime.FortFallTeleportCheatManager
@@ -44,7 +44,7 @@ public:
 
 	/// Functions
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportCheatManager.EnableFallTeleportationIndefinitely
-	// void EnableFallTeleportationIndefinitely();                                                                              // [0x36203b0] Final|Exec|Native|Private 
+	// void EnableFallTeleportationIndefinitely();                                                                              // [0x3518b8c] Final|Exec|Native|Private 
 };
 
 /// Class /Script/FallTeleportationRuntime.FortFallTeleportComponentBase
@@ -78,10 +78,10 @@ public:
 
 	/// Functions
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportComponentBase.UpdateLastGroundLocation
-	// void UpdateLastGroundLocation(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0xa92557c] Final|Native|Protected 
+	// void UpdateLastGroundLocation(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0xb7639c0] Final|Native|Protected 
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportComponentBase.IsValidActorToTeleportOn
-	// bool IsValidActorToTeleportOn(class AActor* ActorToTeleportOn);                                                          // [0xa9254c8] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsValidActorToTeleportOn(class AActor* ActorToTeleportOn);                                                          // [0xb7638cc] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FallTeleportationRuntime.FortFallTeleportComponentBase.IsTeleportLocationValid
-	// bool IsTeleportLocationValid(FVector& LocationToTest);                                                                   // [0xa9253f4] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool IsTeleportLocationValid(FVector& LocationToTest);                                                                   // [0xb7637f8] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 

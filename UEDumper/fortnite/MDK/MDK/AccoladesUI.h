@@ -35,17 +35,17 @@ public:
 
 	/// Functions
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetTitle
-	// void SetTitle(FText& TitleText);                                                                                         // [0x18a39e4] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void SetTitle(FText& TitleText);                                                                                         // [0x186becc] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetSource
-	// void SetSource(FText& SourceText);                                                                                       // [0x18a39e4] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void SetSource(FText& SourceText);                                                                                       // [0x186becc] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetJustCompleted
-	// void SetJustCompleted(bool bJustCompleted);                                                                              // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void SetJustCompleted(bool bJustCompleted);                                                                              // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetIconImage
-	// void SetIconImage(TWeakObjectPtr<UTexture2D*>& IconImage, EFortAccoladeType AccoladeType);                               // [0x18a39e4] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void SetIconImage(TWeakObjectPtr<UTexture2D*>& IconImage, EFortAccoladeType AccoladeType);                               // [0x186becc] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetIcon
-	// void SetIcon(class UFortAccoladeItemDefinition* ItemDef);                                                                // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void SetIcon(class UFortAccoladeItemDefinition* ItemDef);                                                                // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/AccoladesUI.AthenaAccoladeListEntryWidget.SetCount
-	// void SetCount(int32_t Count);                                                                                            // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void SetCount(int32_t Count);                                                                                            // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/AccoladesUI.AthenaAccoladeListWidget
@@ -60,6 +60,6 @@ public:
 
 	/// Functions
 	// Function /Script/AccoladesUI.AthenaAccoladeListWidget.PopulateWidget
-	// void PopulateWidget();                                                                                                   // [0xa178c08] Final|Native|Public|BlueprintCallable 
+	// void PopulateWidget();                                                                                                   // [0xae6f880] Final|Native|Public|BlueprintCallable 
 };
 

@@ -28,9 +28,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoPlayerAvatarContainer.RepresentRemotePlayer
-	// void RepresentRemotePlayer(FUniqueNetIdRepl& UniqueID, class UFortPlayerAvatarViewModel* InPlayerAvatarViewModel);       // [0xb50aa20] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// void RepresentRemotePlayer(FUniqueNetIdRepl& UniqueID, class UFortPlayerAvatarViewModel* InPlayerAvatarViewModel);       // [0xc63afc4] Final|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerAvatarContainer.RepresentLocalPlayer
-	// void RepresentLocalPlayer(class UFortPlayerAvatarViewModel* InPlayerAvatarViewModel);                                    // [0xb50a900] Final|Native|Protected|BlueprintCallable 
+	// void RepresentLocalPlayer(class UFortPlayerAvatarViewModel* InPlayerAvatarViewModel);                                    // [0xc63ae64] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/JunoCoreUI.JunoPlayerCardViewModel
@@ -57,19 +57,19 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.ShowNotificationToast
-	// void ShowNotificationToast(class AFortPlayerController* FortPlayerController, FText& Title, FText& Description, EFortNotificationType NotificationType); // [0xb50ac8c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void ShowNotificationToast(class AFortPlayerController* FortPlayerController, FText& Title, FText& Description, EFortNotificationType NotificationType); // [0xc63b230] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.RevokeWorldKey
-	// void RevokeWorldKey();                                                                                                   // [0xb50ac50] Final|Native|Public|BlueprintCallable 
+	// void RevokeWorldKey();                                                                                                   // [0xc63b1f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.OpenSidebarUserProfile
-	// void OpenSidebarUserProfile(class UCommonActivatableWidget* CurrentStateWidget, class ULocalPlayer* LocalPlayer);        // [0xb50a82c] Final|Native|Public|BlueprintCallable 
+	// void OpenSidebarUserProfile(class UCommonActivatableWidget* CurrentStateWidget, class ULocalPlayer* LocalPlayer);        // [0xc63ad18] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.OnWorldKeyRevoked__DelegateSignature
-	// void OnWorldKeyRevoked__DelegateSignature();                                                                             // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnWorldKeyRevoked__DelegateSignature();                                                                             // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.OnWorldKeyGranted__DelegateSignature
-	// void OnWorldKeyGranted__DelegateSignature();                                                                             // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnWorldKeyGranted__DelegateSignature();                                                                             // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.KickWorldUser
-	// void KickWorldUser();                                                                                                    // [0xb50a818] Final|Native|Public|BlueprintCallable 
+	// void KickWorldUser();                                                                                                    // [0xc63ad04] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerCardViewModel.GrantWorldKey
-	// void GrantWorldKey();                                                                                                    // [0xb50a570] Final|Native|Public|BlueprintCallable 
+	// void GrantWorldKey();                                                                                                    // [0xc63a924] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoCoreUI.JunoPlayerManagementViewModel
@@ -97,11 +97,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoPlayerManagementViewModel.UpdateFromData
-	// void UpdateFromData(class APlayerController* WidgetOwner, class UJunoWorld* JunoWorld);                                  // [0xb50ae50] Final|Native|Public|BlueprintCallable 
+	// void UpdateFromData(class APlayerController* WidgetOwner, class UJunoWorld* JunoWorld);                                  // [0xc63b42c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerManagementViewModel.SetupDummyData
-	// void SetupDummyData();                                                                                                   // [0xb50ac78] Final|Native|Private|BlueprintCallable 
+	// void SetupDummyData();                                                                                                   // [0xc63b21c] Final|Native|Private|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoPlayerManagementViewModel.IsInGame
-	// bool IsInGame();                                                                                                         // [0xb50a7f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsInGame();                                                                                                         // [0xc63ace0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoCoreUI.JunoWorldDataViewModel
@@ -146,25 +146,25 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.SaveChanges
-	// void SaveChanges();                                                                                                      // [0xb50ac64] Final|Native|Public|BlueprintCallable 
+	// void SaveChanges();                                                                                                      // [0xc63b208] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.RemoveSharedWorld
-	// void RemoveSharedWorld();                                                                                                // [0xb50a8ec] Final|Native|Public|BlueprintCallable 
+	// void RemoveSharedWorld();                                                                                                // [0xc63ae50] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.HandlePlayClicked
-	// void HandlePlayClicked();                                                                                                // [0xb50a6e0] Final|Native|Protected|BlueprintCallable 
+	// void HandlePlayClicked();                                                                                                // [0xc63ab50] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.GetTagNames
-	// TArray<FText> GetTagNames();                                                                                             // [0xb50a4f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FText> GetTagNames();                                                                                             // [0xc63a8a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.GetSelectedWorldImageIndex
-	// int32_t GetSelectedWorldImageIndex();                                                                                    // [0xb50a4a0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSelectedWorldImageIndex();                                                                                    // [0xc63a854] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.GetLastPlayedFormatted
-	// FText GetLastPlayedFormatted();                                                                                          // [0xb50a3fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetLastPlayedFormatted();                                                                                          // [0xc63a7b0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.GetCreationDateFormatted
-	// FText GetCreationDateFormatted();                                                                                        // [0xb50a390] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetCreationDateFormatted();                                                                                        // [0xc63a744] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.DeleteWorld
-	// void DeleteWorld();                                                                                                      // [0xb50a37c] Final|Native|Public|BlueprintCallable 
+	// void DeleteWorld();                                                                                                      // [0xc63a730] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.CheckWorldMatchmakingAvailability
-	// bool CheckWorldMatchmakingAvailability();                                                                                // [0xb50a358] Final|Native|Public|BlueprintCallable 
+	// bool CheckWorldMatchmakingAvailability();                                                                                // [0xc63a70c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldDataViewModel.CancelChanges
-	// void CancelChanges();                                                                                                    // [0xb50a2e0] Final|Native|Public|BlueprintCallable 
+	// void CancelChanges();                                                                                                    // [0xc63a694] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoCoreUI.JunoWorldImageObject
@@ -181,11 +181,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoWorldImageObject.UpdateImageReference
-	// void UpdateImageReference(FName& NewRowName);                                                                            // [0xb50af14] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void UpdateImageReference(FName& NewRowName);                                                                            // [0xc63b56c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoWorldImageObject.GetTexture
-	// TWeakObjectPtr<UTexture2D*> GetTexture();                                                                                // [0xb50a52c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TWeakObjectPtr<UTexture2D*> GetTexture();                                                                                // [0xc63a8e0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldImageObject.GetImageReferenceName
-	// FName GetImageReferenceName();                                                                                           // [0x3932b2c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetImageReferenceName();                                                                                           // [0x38d07f0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoCoreUI.JunoWorldSettingViewModel
@@ -213,13 +213,13 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoWorldSettingViewModel.IsDefaultOptionSelected
-	// bool IsDefaultOptionSelected();                                                                                          // [0xb50a7c8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsDefaultOptionSelected();                                                                                          // [0xc63acb4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldSettingViewModel.GetOptionName
-	// FText GetOptionName();                                                                                                   // [0xb50a470] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetOptionName();                                                                                                   // [0xc63a824] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldSettingViewModel.GetOptionDescription
-	// FText GetOptionDescription();                                                                                            // [0xb50a440] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetOptionDescription();                                                                                            // [0xc63a7f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoCoreUI.JunoWorldSettingViewModel.GetCurrentDefaultIndex
-	// int32_t GetCurrentDefaultIndex();                                                                                        // [0xb50a3d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentDefaultIndex();                                                                                        // [0xc63a788] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoCoreUI.JunoDropSplitModal
@@ -235,11 +235,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoDropSplitModal.OnOperationSet
-	// void OnOperationSet(EJunoContextMenuAction ActionType, FText& ActionText, int32_t StackCount, int32_t QuantityDisplayMultiplier); // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnOperationSet(EJunoContextMenuAction ActionType, FText& ActionText, int32_t StackCount, int32_t QuantityDisplayMultiplier); // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/JunoCoreUI.JunoDropSplitModal.HandleQuantityChanged
-	// void HandleQuantityChanged(EJunoContextMenuAction InActionType, int32_t InUpdatedCount);                                 // [0xb50a6f4] Final|Native|Protected|BlueprintCallable 
+	// void HandleQuantityChanged(EJunoContextMenuAction InActionType, int32_t InUpdatedCount);                                 // [0xc63ab64] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoDropSplitModal.HandleConfirmOperation
-	// void HandleConfirmOperation(EJunoContextMenuAction InActionType, int32_t InDesiredCount);                                // [0xb50a584] Final|Native|Protected|BlueprintCallable 
+	// void HandleConfirmOperation(EJunoContextMenuAction InActionType, int32_t InDesiredCount);                                // [0xc63a938] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/JunoCoreUI.JunoContextMenu
@@ -257,13 +257,13 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCoreUI.JunoContextMenu.OnShowQuantitySelectorState
-	// void OnShowQuantitySelectorState();                                                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnShowQuantitySelectorState();                                                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/JunoCoreUI.JunoContextMenu.OnAddMenuEntry
-	// void OnAddMenuEntry(EJunoContextMenuAction MenuAction, bool bDisabled);                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnAddMenuEntry(EJunoContextMenuAction MenuAction, bool bDisabled);                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/JunoCoreUI.JunoContextMenu.HandleContextEntrySelected
-	// void HandleContextEntrySelected(EJunoContextMenuAction MenuAction);                                                      // [0xb50a660] Final|Native|Protected|BlueprintCallable 
+	// void HandleContextEntrySelected(EJunoContextMenuAction MenuAction);                                                      // [0xc63aa90] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/JunoCoreUI.JunoContextMenu.GetAllAvailableActions
-	// TSet<EJunoContextMenuAction> GetAllAvailableActions();                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// TSet<EJunoContextMenuAction> GetAllAvailableActions();                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Struct /Script/JunoCoreUI.JunoContextMenuInfo
@@ -345,7 +345,7 @@ enum class EJunoPlayerCardStatus : uint8_t
 };
 
 /// Enum /Script/JunoCoreUI.EJunoContextMenuAction
-/// Size: 0x18
+/// Size: 0x19
 enum class EJunoContextMenuAction : uint8_t
 {
 	EJunoContextMenuAction__None                                                     = 0,
@@ -362,10 +362,11 @@ enum class EJunoContextMenuAction : uint8_t
 	EJunoContextMenuAction__MoveToInventory                                          = 11,
 	EJunoContextMenuAction__MoveToMainHand                                           = 12,
 	EJunoContextMenuAction__MoveToOffHand                                            = 13,
-	EJunoContextMenuAction__OpenInventory                                            = 14,
-	EJunoContextMenuAction__Spawn                                                    = 15,
-	EJunoContextMenuAction__SpawnMultiple                                            = 16,
-	EJunoContextMenuAction__EJunoContextMenuAction_MAX                               = 17
+	EJunoContextMenuAction__SmartTransfer                                            = 14,
+	EJunoContextMenuAction__OpenInventory                                            = 15,
+	EJunoContextMenuAction__Spawn                                                    = 16,
+	EJunoContextMenuAction__SpawnMultiple                                            = 17,
+	EJunoContextMenuAction__EJunoContextMenuAction_MAX                               = 18
 };
 
 /// Enum /Script/JunoCoreUI.EJunoContextMenuActionState

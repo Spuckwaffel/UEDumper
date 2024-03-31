@@ -642,7 +642,7 @@ class FVkTransferProjectRequest : public MDKBase
 	static inline constexpr uint64_t __MDKClassSize = 16;
 
 public:
-	SMember(FString)                                   TeamId                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
+	SMember(FString)                                   TeamID                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
 };
 
 /// Struct /Script/VkEngineTypes.VkCreateModuleRequest
@@ -804,7 +804,7 @@ public:
 	CMember(TMap<FString, bool>)                       Access                                                      OFFSET(get<T>, {0x10, 80, 0, 0})
 	SMember(FString)                                   Status                                                      OFFSET(getStruct<T>, {0x60, 16, 0, 0})
 	SMember(FString)                                   MembershipId                                                OFFSET(getStruct<T>, {0x70, 16, 0, 0})
-	SMember(FString)                                   TeamId                                                      OFFSET(getStruct<T>, {0x80, 16, 0, 0})
+	SMember(FString)                                   TeamID                                                      OFFSET(getStruct<T>, {0x80, 16, 0, 0})
 	SMember(FString)                                   AccountId                                                   OFFSET(getStruct<T>, {0x90, 16, 0, 0})
 	SMember(FDateTime)                                 Updated                                                     OFFSET(getStruct<T>, {0xA0, 8, 0, 0})
 };
@@ -860,7 +860,7 @@ class FVkTeamDoc : public MDKBase
 	static inline constexpr uint64_t __MDKClassSize = 144;
 
 public:
-	SMember(FString)                                   TeamId                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
+	SMember(FString)                                   TeamID                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
 	SMember(FDateTime)                                 Created                                                     OFFSET(getStruct<T>, {0x10, 8, 0, 0})
 	SMember(FDateTime)                                 Updated                                                     OFFSET(getStruct<T>, {0x18, 8, 0, 0})
 	SMember(FVkTypedId)                                Owner                                                       OFFSET(getStruct<T>, {0x20, 24, 0, 0})
@@ -1022,7 +1022,7 @@ public:
 	DMember(int32_t)                                   LinkVersion                                                 OFFSET(get<int32_t>, {0x10, 4, 0, 0})
 	SMember(FDateTime)                                 LastPublished                                               OFFSET(getStruct<T>, {0x18, 8, 0, 0})
 	SMember(FVkTypedId)                                PublishedBy                                                 OFFSET(getStruct<T>, {0x20, 24, 0, 0})
-	SMember(FString)                                   base                                                        OFFSET(getStruct<T>, {0x38, 16, 0, 0})
+	SMember(FString)                                   Base                                                        OFFSET(getStruct<T>, {0x38, 16, 0, 0})
 	SMember(FString)                                   CommitMessage                                               OFFSET(getStruct<T>, {0x48, 16, 0, 0})
 	SMember(FVkProfileBuildResult)                     ProfileResult                                               OFFSET(getStruct<T>, {0x58, 168, 0, 0})
 };

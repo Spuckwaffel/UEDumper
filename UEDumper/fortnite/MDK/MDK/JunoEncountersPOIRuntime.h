@@ -126,9 +126,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoEncountersPOIRuntime.JunoPOIEncounterPrefab.OnRep_EncounterShouldBeLoaded
-	// void OnRep_EncounterShouldBeLoaded();                                                                                    // [0x887d078] Final|Native|Private 
+	// void OnRep_EncounterShouldBeLoaded();                                                                                    // [0x8e5d11c] Final|Native|Private 
 	// Function /Script/JunoEncountersPOIRuntime.JunoPOIEncounterPrefab.OnRep_EncounterInitialized
-	// void OnRep_EncounterInitialized();                                                                                       // [0xb4e4558] Final|Native|Private 
+	// void OnRep_EncounterInitialized();                                                                                       // [0xc60651c] Final|Native|Private 
 };
 
 /// Class /Script/JunoEncountersPOIRuntime.JunoPOIEncounterSpawner
@@ -140,6 +140,30 @@ class AJunoPOIEncounterSpawner : public AActor
 
 public:
 	CMember(TWeakObjectPtr<UJunoPOIEncounterPlayspaceComponent*>) POIEncountersPlayspace                           OFFSET(get<T>, {0x290, 8, 0, 0})
+};
+
+/// Struct /Script/JunoEncountersPOIRuntime.JunoCampApplyPersistentTagsStateTreeTaskInstanceData
+/// Size: 0x0028 (0x000000 - 0x000028)
+class FJunoCampApplyPersistentTagsStateTreeTaskInstanceData : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 40;
+
+public:
+	SMember(FGameplayTagContainer)                     Tags                                                        OFFSET(getStruct<T>, {0x0, 32, 0, 0})
+	CMember(class AActor*)                             UserActor                                                   OFFSET(get<T>, {0x20, 8, 0, 0})
+};
+
+/// Struct /Script/JunoEncountersPOIRuntime.JunoCampApplyPersistentTagsStateTreeTask
+/// Size: 0x0000 (0x000020 - 0x000020)
+class FJunoCampApplyPersistentTagsStateTreeTask : public FStateTreeTaskCommonBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 32;
+
+public:
 };
 
 /// Struct /Script/JunoEncountersPOIRuntime.JunoEnableVillagerProviderStateTreeTaskInstanceData
@@ -159,6 +183,30 @@ public:
 /// Struct /Script/JunoEncountersPOIRuntime.JunoEnableVillagerProviderStateTreeTask
 /// Size: 0x0000 (0x000020 - 0x000020)
 class FJunoEnableVillagerProviderStateTreeTask : public FStateTreeTaskCommonBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 32;
+
+public:
+};
+
+/// Struct /Script/JunoEncountersPOIRuntime.JunoGetCampLevelStateTreeTaskInstanceData
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FJunoGetCampLevelStateTreeTaskInstanceData : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	DMember(int32_t)                                   Value                                                       OFFSET(get<int32_t>, {0x0, 4, 0, 0})
+	CMember(class AActor*)                             UserActor                                                   OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Script/JunoEncountersPOIRuntime.JunoGetCampLevelStateTreeTask
+/// Size: 0x0000 (0x000020 - 0x000020)
+class FJunoGetCampLevelStateTreeTask : public FStateTreeTaskCommonBase
 { 
 	friend MDKHandler;
 	friend MDKBase;

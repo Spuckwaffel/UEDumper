@@ -13,31 +13,31 @@
 /// dependency: ModelViewViewModel
 
 /// Class /Script/JunoBuildingCosmeticsUI.JunoBuildSetLockerCategoryConfig
-/// Size: 0x0000 (0x000180 - 0x000180)
+/// Size: 0x0000 (0x0001A0 - 0x0001A0)
 class UJunoBuildSetLockerCategoryConfig : public UAthenaLockerCategoryConfig
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 384;
+	static inline constexpr uint64_t __MDKClassSize = 416;
 
 public:
 };
 
 /// Class /Script/JunoBuildingCosmeticsUI.JunoPropBundleLockerCategoryConfig
-/// Size: 0x0000 (0x000180 - 0x000180)
+/// Size: 0x0000 (0x0001A0 - 0x0001A0)
 class UJunoPropBundleLockerCategoryConfig : public UAthenaLockerCategoryConfig
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 384;
+	static inline constexpr uint64_t __MDKClassSize = 416;
 
 public:
 };
 
-/// Class /Script/JunoBuildingCosmeticsUI.JunoLockerCategoryVM
-/// Size: 0x0000 (0x0001B0 - 0x0001B0)
-class UJunoLockerCategoryVM : public UAthenaLockerCategoryVM
+/// Class /Script/JunoBuildingCosmeticsUI.JunoCollectiblesLockerCategoryVM
+/// Size: 0x0000 (0x000238 - 0x000238)
+class UJunoCollectiblesLockerCategoryVM : public UAthenaLockerCategoryVM
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 432;
+	static inline constexpr uint64_t __MDKClassSize = 568;
 
 public:
 };
@@ -66,11 +66,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoBuildingCosmeticsUI.JunoShopBuildSetItemDetailsVM.GetTotalPartCount
-	// int32_t GetTotalPartCount();                                                                                             // [0xb50078c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetTotalPartCount();                                                                                             // [0xc62b6c8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoBuildingCosmeticsUI.JunoShopBuildSetItemDetailsVM.GetFormattedPartList
-	// TArray<FText> GetFormattedPartList();                                                                                    // [0xb500714] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FText> GetFormattedPartList();                                                                                    // [0xc62b650] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoBuildingCosmeticsUI.JunoShopBuildSetItemDetailsVM.ForceUpdateItemDetails
-	// void ForceUpdateItemDetails();                                                                                           // [0xb500700] Final|Native|Public|BlueprintCallable 
+	// void ForceUpdateItemDetails();                                                                                           // [0xc62b63c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoBuildingCosmeticsUI.JunoShopPropBundleVM
@@ -97,7 +97,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoBuildingCosmeticsUI.JunoShopPropBundleItemDetailsVM.GetPropNames
-	// TArray<FText> GetPropNames();                                                                                            // [0xb500750] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FText> GetPropNames();                                                                                            // [0xc62b68c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Struct /Script/JunoBuildingCosmeticsUI.JunoShopBuildPartInfo

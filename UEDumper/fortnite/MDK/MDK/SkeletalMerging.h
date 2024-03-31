@@ -21,9 +21,9 @@ public:
 
 	/// Functions
 	// Function /Script/SkeletalMerging.SkeletalMergingLibrary.MergeSkeletons
-	// class USkeleton* MergeSkeletons(FSkeletonMergeParams& Params);                                                           // [0x72065a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class USkeleton* MergeSkeletons(FSkeletonMergeParams& Params);                                                           // [0x74cc954] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SkeletalMerging.SkeletalMergingLibrary.MergeMeshes
-	// class USkeletalMesh* MergeMeshes(FSkeletalMeshMergeParams& Params);                                                      // [0x7206508] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class USkeletalMesh* MergeMeshes(FSkeletalMeshMergeParams& Params);                                                      // [0x74cc8b8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/SkeletalMerging.SkeletalMeshMergeParams

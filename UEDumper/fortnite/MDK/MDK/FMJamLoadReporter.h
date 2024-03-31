@@ -21,15 +21,15 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamLoadReporter.JamLoadReporter.TryGet
-	// class UJamLoadReporter* TryGet(class UObject* WorldContext);                                                             // [0xa4ffc30] Final|Native|Static|Public|BlueprintCallable 
+	// class UJamLoadReporter* TryGet(class UObject* WorldContext);                                                             // [0xb275bf0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/FMJamLoadReporter.JamLoadReporter.OnResolveComplete
-	// void OnResolveComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess);                              // [0xa4ffed8] Final|Native|Private 
+	// void OnResolveComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess);                              // [0xb276484] Final|Native|Private 
 	// Function /Script/FMJamLoadReporter.JamLoadReporter.OnResolveAndLoadComplete
-	// void OnResolveAndLoadComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess, bool bWasAlreadyLoaded); // [0xa4ffcb0] Final|Native|Private 
+	// void OnResolveAndLoadComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess, bool bWasAlreadyLoaded); // [0xb275cb0] Final|Native|Private 
 	// Function /Script/FMJamLoadReporter.JamLoadReporter.Get
-	// class UJamLoadReporter* Get(class UObject* WorldContext);                                                                // [0xa4ffc30] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UJamLoadReporter* Get(class UObject* WorldContext);                                                                // [0xb275bf0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/FMJamLoadReporter.JamLoadReporter.GenerateFullReport
-	// TArray<FString> GenerateFullReport();                                                                                    // [0xa4ffbf4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FString> GenerateFullReport();                                                                                    // [0xb275bb4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Enum /Script/FMJamLoadReporter.EJamLoadState

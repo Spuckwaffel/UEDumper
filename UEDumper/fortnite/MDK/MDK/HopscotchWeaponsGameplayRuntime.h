@@ -47,10 +47,10 @@ public:
 
 	/// Functions
 	// Function /Script/HopscotchWeaponsGameplayRuntime.FortGameplayAbility_AppleSunSmall_Passive.UpdateIsCloseToGround
-	// void UpdateIsCloseToGround();                                                                                            // [0xa94a8b8] Final|Native|Protected|BlueprintCallable 
+	// void UpdateIsCloseToGround();                                                                                            // [0xb78d6e4] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/HopscotchWeaponsGameplayRuntime.FortGameplayAbility_AppleSunSmall_Passive.UpdateCanCrashpad
-	// void UpdateCanCrashpad();                                                                                                // [0xa94a8a4] Final|Native|Protected|BlueprintCallable 
+	// void UpdateCanCrashpad();                                                                                                // [0xb78d6d0] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/HopscotchWeaponsGameplayRuntime.FortGameplayAbility_AppleSunSmall_Passive.OnPlayerMovementModeChanged
-	// void OnPlayerMovementModeChanged(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0xa94a5bc] Final|Native|Private 
+	// void OnPlayerMovementModeChanged(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0xb78d328] Final|Native|Private 
 };
 

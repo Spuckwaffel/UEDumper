@@ -20,19 +20,19 @@ public:
 
 	/// Functions
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.RequestClose
-	// void RequestClose(FString CloseInfo);                                                                                    // [0x7fcd34c] Final|Native|Public  
+	// void RequestClose(FString CloseInfo);                                                                                    // [0x84324cc] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.Receipt
-	// void Receipt(FPurchaseFlowReceiptParam Receipt);                                                                         // [0x7fcd1e4] Final|Native|Public  
+	// void Receipt(FPurchaseFlowReceiptParam Receipt);                                                                         // [0x8432370] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.LaunchValidatedExternalBrowserUrl
-	// bool LaunchValidatedExternalBrowserUrl(FString AllowedBrowserID, FString URL);                                           // [0x7fccff0] Final|Native|Public  
+	// bool LaunchValidatedExternalBrowserUrl(FString AllowedBrowserID, FString URL);                                           // [0x8431c78] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.LaunchExternalBrowserUrl
-	// bool LaunchExternalBrowserUrl(FString URL);                                                                              // [0x7fcce3c] Final|Native|Public  
+	// bool LaunchExternalBrowserUrl(FString URL);                                                                              // [0x84315dc] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.GetExternalBrowserPath
-	// FString GetExternalBrowserPath(FString BrowserId);                                                                       // [0x7fccca0] Final|Native|Public  
+	// FString GetExternalBrowserPath(FString BrowserId);                                                                       // [0x8430f54] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.GetExternalBrowserName
-	// FString GetExternalBrowserName(FString BrowserId);                                                                       // [0x7fccb04] Final|Native|Public  
+	// FString GetExternalBrowserName(FString BrowserId);                                                                       // [0x84308cc] Final|Native|Public  
 	// Function /Script/PurchaseFlow.PurchaseFlowJSBridge.GetDefaultExternalBrowserID
-	// FString GetDefaultExternalBrowserID(FString URL);                                                                        // [0x7fcc97c] Final|Native|Public  
+	// FString GetDefaultExternalBrowserID(FString URL);                                                                        // [0x8430258] Final|Native|Public  
 };
 
 /// Struct /Script/PurchaseFlow.PurchaseFlowItem

@@ -11,11 +11,11 @@
 /// dependency: MotorcycleRuntime
 
 /// Class /Script/DirtbikeRuntime.FortDirtbikeVehicle
-/// Size: 0x0010 (0x002470 - 0x002480)
+/// Size: 0x0010 (0x0024A0 - 0x0024B0)
 class AFortDirtbikeVehicle : public AFortMotorcycleVehicle
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 9344;
+	static inline constexpr uint64_t __MDKClassSize = 9392;
 
 public:
 };

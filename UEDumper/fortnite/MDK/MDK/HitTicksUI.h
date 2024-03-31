@@ -13,11 +13,11 @@
 /// dependency: UMG
 
 /// Class /Script/HitTicksUI.FortUserWidget_HitTicks
-/// Size: 0x0180 (0x0002D0 - 0x000450)
+/// Size: 0x0190 (0x0002D0 - 0x000460)
 class UFortUserWidget_HitTicks : public UFortUserWidget
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1104;
+	static inline constexpr uint64_t __MDKClassSize = 1120;
 
 public:
 	DMember(bool)                                      bShield                                                     OFFSET(get<bool>, {0x2D0, 1, 0, 0})
@@ -57,16 +57,16 @@ public:
 
 	/// Functions
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.UpdateTickMarkerOpacity
-	// void UpdateTickMarkerOpacity(float NewOpacity);                                                                          // [0xa940c8c] Final|Native|Protected|BlueprintCallable 
+	// void UpdateTickMarkerOpacity(float NewOpacity);                                                                          // [0xb782020] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.OnShieldBreak
-	// void OnShieldBreak(bool bInOverShield);                                                                                  // [0xa940c0c] Final|Native|Protected 
+	// void OnShieldBreak(bool bInOverShield);                                                                                  // [0xb781f5c] Final|Native|Protected 
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.OnReticleSettingsChanged
-	// void OnReticleSettingsChanged();                                                                                         // [0xa940bd8] Final|Native|Protected|BlueprintCallable 
+	// void OnReticleSettingsChanged();                                                                                         // [0xb781f28] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.OnPawnSet
-	// void OnPawnSet();                                                                                                        // [0xa940bc4] Final|Native|Protected|BlueprintCallable 
+	// void OnPawnSet();                                                                                                        // [0xb781f14] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.OnDisplayHitNotify
-	// void OnDisplayHitNotify(double InDamage, bool bInCritical, bool bInFatal, bool bInShield, class AActor* InPawn, FVector HitLocation, FGameplayTagContainer Tags); // [0xa9406e4] Final|Native|Protected|HasDefaults|BlueprintCallable 
+	// void OnDisplayHitNotify(double InDamage, bool bInCritical, bool bInFatal, bool bInShield, class AActor* InPawn, FVector HitLocation, FGameplayTagContainer Tags); // [0xb7819a4] Final|Native|Protected|HasDefaults|BlueprintCallable 
 	// Function /Script/HitTicksUI.FortUserWidget_HitTicks.HudScaleChanged
-	// void HudScaleChanged();                                                                                                  // [0xa9406d0] Final|Native|Protected|BlueprintCallable 
+	// void HudScaleChanged();                                                                                                  // [0xb781990] Final|Native|Protected|BlueprintCallable 
 };
 

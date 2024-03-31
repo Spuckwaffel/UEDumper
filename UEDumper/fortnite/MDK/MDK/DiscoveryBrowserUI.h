@@ -54,7 +54,7 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortDiscoverHomespace.OnPeekPushPercentMobileCVarChanged
-	// void OnPeekPushPercentMobileCVarChanged(float PeekPushPercent);                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPeekPushPercentMobileCVarChanged(float PeekPushPercent);                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortDiscoverPreviewManager
@@ -96,9 +96,9 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserListView.NavigateToActivityInFirstRow
-	// void NavigateToActivityInFirstRow(int32_t ActivityItemIndex);                                                            // [0x1f51cb0] Final|Native|Public|BlueprintCallable 
+	// void NavigateToActivityInFirstRow(int32_t ActivityItemIndex);                                                            // [0xc3d7c54] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserListView.HandleVisibleEntriesChanged
-	// void HandleVisibleEntriesChanged();                                                                                      // [0xacda2fc] Final|Native|Protected|BlueprintCallable|Const 
+	// void HandleVisibleEntriesChanged();                                                                                      // [0xc3d7940] Final|Native|Protected|BlueprintCallable|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserTileBase
@@ -135,41 +135,41 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateSingleFriendName
-	// void UpdateSingleFriendName(FText& SingleFriendName);                                                                    // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateSingleFriendName(FText& SingleFriendName);                                                                    // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateRichPresence
-	// void UpdateRichPresence(FText& RichPresence);                                                                            // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateRichPresence(FText& RichPresence);                                                                            // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdatePartyMemberNames
-	// void UpdatePartyMemberNames(FText& Names);                                                                               // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdatePartyMemberNames(FText& Names);                                                                               // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateOtherPlayersSubText
-	// void UpdateOtherPlayersSubText(FText& OtherPlayersSubText);                                                              // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateOtherPlayersSubText(FText& OtherPlayersSubText);                                                              // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateLastInteraction
-	// void UpdateLastInteraction(FText& LastInteraction);                                                                      // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateLastInteraction(FText& LastInteraction);                                                                      // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateIslandThumbnail
-	// void UpdateIslandThumbnail(class UTexture* ThumbnailTexture);                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UpdateIslandThumbnail(class UTexture* ThumbnailTexture);                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateCTAButtonInteraction
-	// void UpdateCTAButtonInteraction(bool bIsInteractionEnabled);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UpdateCTAButtonInteraction(bool bIsInteractionEnabled);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.UpdateCTAButtonInfo
-	// void UpdateCTAButtonInfo(FText& InteractionText, bool bInteractionFound);                                                // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateCTAButtonInfo(FText& InteractionText, bool bInteractionFound);                                                // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OpenSidebar
-	// void OpenSidebar();                                                                                                      // [0xacda5ac] Final|Native|Protected|BlueprintCallable 
+	// void OpenSidebar();                                                                                                      // [0xc3d7d68] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OnUpdateColumnSize
-	// void OnUpdateColumnSize(int32_t NewColumnSize);                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateColumnSize(int32_t NewColumnSize);                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OnTileActiveChanged
-	// void OnTileActiveChanged(bool bIsTileActive);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTileActiveChanged(bool bIsTileActive);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OnTextureLoadingComplete
-	// void OnTextureLoadingComplete(class UTexture* ThumbnailTexture);                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTextureLoadingComplete(class UTexture* ThumbnailTexture);                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OnTextureBeginLoading
-	// void OnTextureBeginLoading();                                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTextureBeginLoading();                                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.OnGameActivityChanged
-	// void OnGameActivityChanged(class UFortGameActivity* GameActivity);                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnGameActivityChanged(class UFortGameActivity* GameActivity);                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.HandleCTAButtonClicked
-	// void HandleCTAButtonClicked();                                                                                           // [0xacda140] Final|Native|Protected|BlueprintCallable 
+	// void HandleCTAButtonClicked();                                                                                           // [0xc3d7700] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.GetMaxPartySize
-	// int32_t GetMaxPartySize();                                                                                               // [0xacda08c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetMaxPartySize();                                                                                               // [0xc3d7624] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.GetCTAButtonText
-	// FText GetCTAButtonText();                                                                                                // [0xacd9f18] Final|Native|Public|BlueprintCallable 
+	// FText GetCTAButtonText();                                                                                                // [0xc3d744c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserPlayWithFriendsTile.BP_PartyInformationUpdated
-	// void BP_PartyInformationUpdated(bool bInIsTileSelected);                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_PartyInformationUpdated(bool bInIsTileSelected);                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserRow
@@ -186,23 +186,23 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnRowPeekStateChanged
-	// void OnRowPeekStateChanged(bool bIsInPeekState);                                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRowPeekStateChanged(bool bIsInPeekState);                                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnRowMoveUp
-	// void OnRowMoveUp(bool bMovingOffscreen);                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRowMoveUp(bool bMovingOffscreen);                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnRowMoveDown
-	// void OnRowMoveDown(bool bMovingOffscreen);                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRowMoveDown(bool bMovingOffscreen);                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnRowIsSelectedChanged
-	// void OnRowIsSelectedChanged(bool bIsSelected);                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRowIsSelectedChanged(bool bIsSelected);                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnRowIsActiveChanged
-	// void OnRowIsActiveChanged(bool bIsActive);                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRowIsActiveChanged(bool bIsActive);                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.OnCategoryItemChanged
-	// void OnCategoryItemChanged(bool bPlayAnimation);                                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCategoryItemChanged(bool bPlayAnimation);                                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.GetIsSelected
-	// bool GetIsSelected();                                                                                                    // [0xacda03c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetIsSelected();                                                                                                    // [0xc3d75d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.GetIsInPeekState
-	// bool GetIsInPeekState();                                                                                                 // [0x38739fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetIsInPeekState();                                                                                                 // [0xc3d75ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRow.GetIsActive
-	// bool GetIsActive();                                                                                                      // [0x39c3090] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetIsActive();                                                                                                      // [0xc3d7544] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserRowList
@@ -220,7 +220,7 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowList.OnQueryStatusChanged
-	// void OnQueryStatusChanged(bool bIsActive);                                                                               // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnQueryStatusChanged(bool bIsActive);                                                                               // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserView
@@ -241,9 +241,9 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserView.OnSurfaceDataDirty
-	// void OnSurfaceDataDirty();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSurfaceDataDirty();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserView.GetInvalidActivityReason
-	// EFortInvalidActivityReason GetInvalidActivityReason();                                                                   // [0xacd9fd8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EFortInvalidActivityReason GetInvalidActivityReason();                                                                   // [0xc3d750c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserRowView
@@ -263,15 +263,15 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowView.OnRowChanged
-	// void OnRowChanged(int32_t NewCategoryIndex);                                                                             // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnRowChanged(int32_t NewCategoryIndex);                                                                             // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowView.OnQueryActivitiesFinished
-	// void OnQueryActivitiesFinished();                                                                                        // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnQueryActivitiesFinished();                                                                                        // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowView.OnListViewScrolled
-	// void OnListViewScrolled(float ItemOffset, float DistanceRemaining);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnListViewScrolled(float ItemOffset, float DistanceRemaining);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowView.OnActivityUpdated
-	// void OnActivityUpdated();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnActivityUpdated();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserRowView.HandleVerticalSwipe
-	// void HandleVerticalSwipe(int32_t Direction);                                                                             // [0xacda224] Final|Native|Private|BlueprintCallable 
+	// void HandleVerticalSwipe(int32_t Direction);                                                                             // [0xc3d7824] Final|Native|Private|BlueprintCallable 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityBrowserTile
@@ -287,9 +287,9 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserTile.HandleDisplayTileDetailsHoldTriggered
-	// void HandleDisplayTileDetailsHoldTriggered(class UCommonButtonBase* Button);                                             // [0xacda154] Final|Native|Private 
+	// void HandleDisplayTileDetailsHoldTriggered(class UCommonButtonBase* Button);                                             // [0xc3d7714] Final|Native|Private 
 	// Function /Script/DiscoveryBrowserUI.FortActivityBrowserTile.HandleActivitySelected
-	// void HandleActivitySelected();                                                                                           // [0x2cfba40] Final|Native|Private 
+	// void HandleActivitySelected();                                                                                           // [0xc3d76c4] Final|Native|Private 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView
@@ -309,15 +309,15 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView.PlayViewIntro
-	// void PlayViewIntro();                                                                                                    // [0xacda5dc] Final|Native|Public|BlueprintCallable 
+	// void PlayViewIntro();                                                                                                    // [0xc3d7d98] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView.OnQueryActivitiesStarted
-	// void OnQueryActivitiesStarted();                                                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnQueryActivitiesStarted();                                                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView.OnQueryActivitiesComplete
-	// void OnQueryActivitiesComplete();                                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnQueryActivitiesComplete();                                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView.OnPlayViewIntro
-	// void OnPlayViewIntro();                                                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPlayViewIntro();                                                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserView.BP_OnTileViewUpdated
-	// void BP_OnTileViewUpdated();                                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnTileViewUpdated();                                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityCategoryPageView
@@ -359,7 +359,7 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryTile.OnTileActiveSet
-	// void OnTileActiveSet(bool bIsTileActive);                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTileActiveSet(bool bIsTileActive);                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityCategoryTilePanel
@@ -393,15 +393,15 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryView.OnSurfaceDataReady
-	// void OnSurfaceDataReady();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSurfaceDataReady();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryView.OnCategoryTilePanelSelected
-	// void OnCategoryTilePanelSelected(class UFortActivityCategoryTilePanel* SelectedPanel);                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCategoryTilePanelSelected(class UFortActivityCategoryTilePanel* SelectedPanel);                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryView.NavigateFromPanel
-	// class UFortActivityCategoryTilePanel* NavigateFromPanel(EUINavigation Direction, class UFortActivityCategoryTilePanel* NavigatingPanel); // [0xacda494] Final|Native|Protected|BlueprintCallable 
+	// class UFortActivityCategoryTilePanel* NavigateFromPanel(EUINavigation Direction, class UFortActivityCategoryTilePanel* NavigatingPanel); // [0xc3d7b04] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryView.GetTopMostVisiblePanel
-	// class UFortActivityCategoryTilePanel* GetTopMostVisiblePanel();                                                          // [0xacda104] Native|Event|Protected|BlueprintEvent|Const 
+	// class UFortActivityCategoryTilePanel* GetTopMostVisiblePanel();                                                          // [0xc3d769c] Native|Event|Protected|BlueprintEvent|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityCategoryView.GetCurrentSelectedPanel
-	// class UFortActivityCategoryTilePanel* GetCurrentSelectedPanel();                                                         // [0x3583eb4] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// class UFortActivityCategoryTilePanel* GetCurrentSelectedPanel();                                                         // [0x348126c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityCreatorPageView
@@ -419,9 +419,9 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityCreatorPageView.OnNoContentFoundForCreator
-	// void OnNoContentFoundForCreator();                                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnNoContentFoundForCreator();                                                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityCreatorPageView.OnCreatorActivitiesQueryFinished
-	// void OnCreatorActivitiesQueryFinished();                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCreatorActivitiesQueryFinished();                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityDiscoverView
@@ -446,39 +446,39 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnUpdateDetailsDisplay
-	// void OnUpdateDetailsDisplay();                                                                                           // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnUpdateDetailsDisplay();                                                                                           // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnPreviewImageChanged
-	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnPlayKeyArtOutro
-	// void OnPlayKeyArtOutro();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnPlayKeyArtOutro();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnPlayKeyArtIntro
-	// void OnPlayKeyArtIntro();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnPlayKeyArtIntro();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnMoviePreEndEvent
-	// void OnMoviePreEndEvent();                                                                                               // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnMoviePreEndEvent();                                                                                               // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.OnMoviePlayingChanged
-	// void OnMoviePlayingChanged(bool bIsPlaying);                                                                             // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnMoviePlayingChanged(bool bIsPlaying);                                                                             // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.IsShowingSeasonalContent
-	// bool IsShowingSeasonalContent();                                                                                         // [0xacda468] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsShowingSeasonalContent();                                                                                         // [0xc3d7ad8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.IsShowingPromotedContent
-	// bool IsShowingPromotedContent();                                                                                         // [0x3d91728] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsShowingPromotedContent();                                                                                         // [0xc3d7aac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.IsInOutroState
-	// bool IsInOutroState();                                                                                                   // [0xacda420] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsInOutroState();                                                                                                   // [0xc3d7a64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.IsImageLoading
-	// bool IsImageLoading();                                                                                                   // [0xacda408] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsImageLoading();                                                                                                   // [0xc3d7a4c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.HandleMovieWidgetMediaStarted
-	// void HandleMovieWidgetMediaStarted();                                                                                    // [0xacda1e8] Final|Native|Private 
+	// void HandleMovieWidgetMediaStarted();                                                                                    // [0xc3d77e8] Final|Native|Private 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.HandleMovieWidgetMediaPreEndEvent
-	// void HandleMovieWidgetMediaPreEndEvent();                                                                                // [0xacda1d4] Final|Native|Private 
+	// void HandleMovieWidgetMediaPreEndEvent();                                                                                // [0xc3d77d4] Final|Native|Private 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.GetPromotedMovieWidget
-	// class UFortActivatableMovieWidget* GetPromotedMovieWidget();                                                             // [0xacda0ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFortActivatableMovieWidget* GetPromotedMovieWidget();                                                             // [0xc3d7684] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.GetMovieWidget
-	// class UFortActivatableMovieWidget* GetMovieWidget();                                                                     // [0xacda0d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFortActivatableMovieWidget* GetMovieWidget();                                                                     // [0xc3d766c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.GetKeyArtOutroAnimation
-	// class UWidgetAnimation* GetKeyArtOutroAnimation();                                                                       // [0xacda064] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// class UWidgetAnimation* GetKeyArtOutroAnimation();                                                                       // [0xc3d75fc] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.GetCurrentTexture
-	// class UTexture* GetCurrentTexture();                                                                                     // [0xacd9f68] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// class UTexture* GetCurrentTexture();                                                                                     // [0xc3d749c] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverView.CheckUpdateDetailsDelay
-	// void CheckUpdateDetailsDelay();                                                                                          // [0xacd9db8] Final|Native|Private 
+	// void CheckUpdateDetailsDelay();                                                                                          // [0xc3d72d8] Final|Native|Private 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2
@@ -504,17 +504,17 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.UpdateMiscActionBindingVisibility
-	// void UpdateMiscActionBindingVisibility(bool bVisible);                                                                   // [0x3b3428c] Final|Native|Private|BlueprintCallable 
+	// void UpdateMiscActionBindingVisibility(bool bVisible);                                                                   // [0xc3d80e8] Final|Native|Private|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.StartDiscoverAnalyticSession
-	// void StartDiscoverAnalyticSession();                                                                                     // [0x42cb058] Final|Native|Public|BlueprintCallable 
+	// void StartDiscoverAnalyticSession();                                                                                     // [0xc3d8004] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.IsShowingSeasonalContent
-	// bool IsShowingSeasonalContent();                                                                                         // [0xacda468] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsShowingSeasonalContent();                                                                                         // [0xc3d7ad8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.IsShowingPromotedContent
-	// bool IsShowingPromotedContent();                                                                                         // [0x3d91728] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsShowingPromotedContent();                                                                                         // [0xc3d7aac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.FireDiscoverExitedAnalyticEvent
-	// void FireDiscoverExitedAnalyticEvent();                                                                                  // [0x3ee1500] Final|Native|Public|BlueprintCallable 
+	// void FireDiscoverExitedAnalyticEvent();                                                                                  // [0xc3d73d4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityDiscoverViewV2.DeactivationTransitionCompleted
-	// void DeactivationTransitionCompleted();                                                                                  // [0xacd9de0] Final|Native|Public|BlueprintCallable 
+	// void DeactivationTransitionCompleted();                                                                                  // [0xc3d7300] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityListView
@@ -534,9 +534,9 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityListView.GetInViewCount
-	// int32_t GetInViewCount();                                                                                                // [0xacd9f90] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetInViewCount();                                                                                                // [0xc3d74c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityListView.AddTileType
-	// void AddTileType(EActivityBrowserTileStyle style, class UClass* WidgetClass);                                            // [0xacd9cb4] Final|Native|Public|BlueprintCallable 
+	// void AddTileType(EActivityBrowserTileStyle style, class UClass* WidgetClass);                                            // [0xc3d7148] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityLobbyTile
@@ -555,17 +555,17 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.ShowModeSetSelectionModal
-	// void ShowModeSetSelectionModal();                                                                                        // [0xacda6b8] Final|Native|Public|BlueprintCallable 
+	// void ShowModeSetSelectionModal();                                                                                        // [0xc3d7ff0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.ShouldShowSubmodeSelectButton
-	// bool ShouldShowSubmodeSelectButton();                                                                                    // [0x358df48] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool ShouldShowSubmodeSelectButton();                                                                                    // [0xc3d7fcc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.OnPreviewImageChanged
-	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.OnDetailsUpdated
-	// void OnDetailsUpdated();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnDetailsUpdated();                                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.IsActivityEpicCreated
-	// bool IsActivityEpicCreated();                                                                                            // [0xacda318] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsActivityEpicCreated();                                                                                            // [0xc3d795c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityLobbyTile.GetChildActivityDisplayName
-	// FText GetChildActivityDisplayName();                                                                                     // [0x233a868] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetChildActivityDisplayName();                                                                                     // [0x2676b34] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal
@@ -587,21 +587,21 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.SetIsRankedSwitchAvailable
-	// void SetIsRankedSwitchAvailable(bool bIsRankedSwitchAvailable);                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void SetIsRankedSwitchAvailable(bool bIsRankedSwitchAvailable);                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.SetHabaneroValues
-	// void SetHabaneroValues(bool bHabaneroEnabled, bool bHabaneroExists);                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void SetHabaneroValues(bool bHabaneroEnabled, bool bHabaneroExists);                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.SaveSelectionAndClose
-	// void SaveSelectionAndClose();                                                                                            // [0xacda6a4] Final|Native|Protected|BlueprintCallable 
+	// void SaveSelectionAndClose();                                                                                            // [0xc3d7ea4] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.OnSubModeSelectionChanged
-	// void OnSubModeSelectionChanged();                                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSubModeSelectionChanged();                                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.OnSubModeSelected
-	// void OnSubModeSelected();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSubModeSelected();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.OnPreviewImageChanged
-	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.OnActivityChanged
-	// void OnActivityChanged(class UFortGameActivity* GameActivity, FString StartingSelectedMnemonic);                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnActivityChanged(class UFortGameActivity* GameActivity, FString StartingSelectedMnemonic);                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityModeSetSelectionModal.IsCreativeModeSetActivity
-	// bool IsCreativeModeSetActivity();                                                                                        // [0xacda3c8] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsCreativeModeSetActivity();                                                                                        // [0xc3d7a0c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserTile
@@ -618,7 +618,7 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityPlayerBrowserTile.HandleActivitySelected
-	// void HandleActivitySelected();                                                                                           // [0xacda12c] Final|Native|Private 
+	// void HandleActivitySelected();                                                                                           // [0xc3d76d8] Final|Native|Private 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivitySelector
@@ -637,17 +637,17 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.ToggleFavorite
-	// void ToggleFavorite();                                                                                                   // [0xacda6f4] Final|Native|Public|BlueprintCallable 
+	// void ToggleFavorite();                                                                                                   // [0xc3d8040] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.OpenCreatorPage
-	// void OpenCreatorPage();                                                                                                  // [0xacda598] Final|Native|Private|BlueprintCallable 
+	// void OpenCreatorPage();                                                                                                  // [0xc3d7d54] Final|Native|Private|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.OnSwapColorScheme
-	// void OnSwapColorScheme(bool bInIsUsingAlternateColorScheme);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSwapColorScheme(bool bInIsUsingAlternateColorScheme);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.OnEnableColorScheme
-	// void OnEnableColorScheme(bool bIsColorSchemeActive);                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnEnableColorScheme(bool bIsColorSchemeActive);                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.HandleShowActivityDetails
-	// void HandleShowActivityDetails();                                                                                        // [0xacda1fc] Final|Native|Public|BlueprintCallable 
+	// void HandleShowActivityDetails();                                                                                        // [0xc3d77fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivitySelector.ConfirmSelectedActivity
-	// void ConfirmSelectedActivity();                                                                                          // [0xacd9dcc] Final|Native|Public|BlueprintCallable 
+	// void ConfirmSelectedActivity();                                                                                          // [0xc3d72ec] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay
@@ -681,69 +681,69 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.UpdateSqueegeeWidgets
-	// void UpdateSqueegeeWidgets(class UFortGameActivity* GameActivity);                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UpdateSqueegeeWidgets(class UFortGameActivity* GameActivity);                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.UpdateFromFortActivityViewModel
-	// void UpdateFromFortActivityViewModel();                                                                                  // [0xacda788] Final|Native|Protected|BlueprintCallable 
+	// void UpdateFromFortActivityViewModel();                                                                                  // [0xc3d80d4] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.UpdateCCU
-	// void UpdateCCU(int32_t CCUCount);                                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UpdateCCU(int32_t CCUCount);                                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.UpdateActivitySelector
-	// void UpdateActivitySelector();                                                                                           // [0xacda774] Final|Native|Public|BlueprintCallable 
+	// void UpdateActivitySelector();                                                                                           // [0xc3d80c0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.StopTileVideo
-	// void StopTileVideo();                                                                                                    // [0xacda6e0] Final|Native|Protected|BlueprintCallable 
+	// void StopTileVideo();                                                                                                    // [0xc3d802c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.StartTileVideo
-	// void StartTileVideo();                                                                                                   // [0xacda6cc] Final|Native|Protected|BlueprintCallable 
+	// void StartTileVideo();                                                                                                   // [0xc3d8018] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.ShouldPlayTileVideo
-	// void ShouldPlayTileVideo(bool& bOutResult);                                                                              // [0x18a39e4] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
+	// void ShouldPlayTileVideo(bool& bOutResult);                                                                              // [0x186becc] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnTileClicked
-	// void OnTileClicked();                                                                                                    // [0xacda584] Final|Native|Protected|BlueprintCallable 
+	// void OnTileClicked();                                                                                                    // [0xc3d7d40] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnTileActiveSet
-	// void OnTileActiveSet(bool bIsTileActive);                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTileActiveSet(bool bIsTileActive);                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnRespondToTileViewVisibilityChange
-	// void OnRespondToTileViewVisibilityChange(bool bIsVisible);                                                               // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnRespondToTileViewVisibilityChange(bool bIsVisible);                                                               // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnRequiresPurchaseChanged
-	// void OnRequiresPurchaseChanged(bool bRequiresPurchase);                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRequiresPurchaseChanged(bool bRequiresPurchase);                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnPreviewImageChanged
-	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPreviewImageChanged(bool bIsLoading, class UTexture* Texture);                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnPartySizeChanged
-	// void OnPartySizeChanged(int32_t PartySize);                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPartySizeChanged(int32_t PartySize);                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnLogoImageChanged
-	// void OnLogoImageChanged(bool bIsLoading, class UTexture* Texture);                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnLogoImageChanged(bool bIsLoading, class UTexture* Texture);                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnLocalPlayerPromotedToLeader
-	// void OnLocalPlayerPromotedToLeader();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnLocalPlayerPromotedToLeader();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnLocalPlayerDemoted
-	// void OnLocalPlayerDemoted();                                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnLocalPlayerDemoted();                                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnIsFavoriteChanged
-	// void OnIsFavoriteChanged(bool bIsFavorite);                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIsFavoriteChanged(bool bIsFavorite);                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnFriendsPlayingChanged
-	// void OnFriendsPlayingChanged(int32_t NumPlaying);                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnFriendsPlayingChanged(int32_t NumPlaying);                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnDetailsUpdated
-	// void OnDetailsUpdated();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnDetailsUpdated();                                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnActivityUnSelected__DelegateSignature
-	// void OnActivityUnSelected__DelegateSignature();                                                                          // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActivityUnSelected__DelegateSignature();                                                                          // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.OnActivitySelected__DelegateSignature
-	// void OnActivitySelected__DelegateSignature();                                                                            // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActivitySelected__DelegateSignature();                                                                            // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.IsModeSetActivity
-	// bool IsModeSetActivity();                                                                                                // [0xacda438] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsModeSetActivity();                                                                                                // [0xc3d7a7c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.IsActivityLocked
-	// bool IsActivityLocked();                                                                                                 // [0xacda374] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsActivityLocked();                                                                                                 // [0xc3d79b8] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.IsActivityFavorited
-	// bool IsActivityFavorited();                                                                                              // [0xacda350] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsActivityFavorited();                                                                                              // [0xc3d7994] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.HandleShowActivityDetails
-	// void HandleShowActivityDetails();                                                                                        // [0xacda210] Final|Native|Private 
+	// void HandleShowActivityDetails();                                                                                        // [0xc3d7810] Final|Native|Private 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.HandleActivitySelected
-	// void HandleActivitySelected();                                                                                           // [0x3ff6e3c] Final|Native|Private 
+	// void HandleActivitySelected();                                                                                           // [0xc3d76ec] Final|Native|Private 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.GetIsActivityLockedReason
-	// EFortActivityIsLockedReason GetIsActivityLockedReason();                                                                 // [0xacd9fec] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// EFortActivityIsLockedReason GetIsActivityLockedReason();                                                                 // [0xc3d755c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.GetInvalidActivityReason
-	// EFortInvalidActivityReason GetInvalidActivityReason();                                                                   // [0x252b240] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// EFortInvalidActivityReason GetInvalidActivityReason();                                                                   // [0xc3d7520] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.GetActivitySelector
-	// class UFortActivitySelector* GetActivitySelector();                                                                      // [0xacd9ef4] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// class UFortActivitySelector* GetActivitySelector();                                                                      // [0xc3d7428] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.GetActivityCreatorDisplayText
-	// FString GetActivityCreatorDisplayText();                                                                                 // [0xacd9eb4] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// FString GetActivityCreatorDisplayText();                                                                                 // [0xc3d73e8] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.DoesActivityRequirePurchase
-	// bool DoesActivityRequirePurchase();                                                                                      // [0xacd9e3c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesActivityRequirePurchase();                                                                                      // [0xc3d735c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileDetailsDisplay.BroadcastOnActivityConfirmed
-	// void BroadcastOnActivityConfirmed();                                                                                     // [0xacd9d9c] Final|Native|Public|BlueprintCallable|Const 
+	// void BroadcastOnActivityConfirmed();                                                                                     // [0xc3d72bc] Final|Native|Public|BlueprintCallable|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortActivityTileView
@@ -758,11 +758,11 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileView.SetListenForMouseWheelInput
-	// void SetListenForMouseWheelInput(bool bListenForInput);                                                                  // [0x1f51dcc] Final|Native|Public|BlueprintCallable 
+	// void SetListenForMouseWheelInput(bool bListenForInput);                                                                  // [0xc3d7eb8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileView.RespondToVisibilityChange
-	// void RespondToVisibilityChange(bool bIsVisible);                                                                         // [0xacda624] Final|Native|Public|BlueprintCallable 
+	// void RespondToVisibilityChange(bool bIsVisible);                                                                         // [0xc3d7de0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/DiscoveryBrowserUI.FortActivityTileView.NavigateToTop
-	// void NavigateToTop();                                                                                                    // [0xacda558] Final|Native|Public|BlueprintCallable 
+	// void NavigateToTop();                                                                                                    // [0xc3d7d14] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/DiscoveryBrowserUI.FortDiscoverItemBrowserRow
@@ -796,7 +796,7 @@ public:
 
 	/// Functions
 	// Function /Script/DiscoveryBrowserUI.FortDiscoverItemListView.GetInViewCount
-	// int32_t GetInViewCount();                                                                                                // [0xacd9fb4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetInViewCount();                                                                                                // [0xc3d74e8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DiscoveryBrowserUI.ActivityLibraryComponent

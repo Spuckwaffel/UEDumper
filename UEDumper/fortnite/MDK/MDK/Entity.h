@@ -12,15 +12,15 @@
 /// dependency: NetCore
 
 /// Class /Script/Entity.BaseEntity
-/// Size: 0x0060 (0x000028 - 0x000088)
+/// Size: 0x0020 (0x000028 - 0x000048)
 class UBaseEntity : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 136;
+	static inline constexpr uint64_t __MDKClassSize = 72;
 
 public:
-	CMember(TMap<UClass*, UObject*>)                   Components                                                  OFFSET(get<T>, {0x28, 80, 0, 0})
-	CMember(TArray<class UObject*>)                    OwnedEntities                                               OFFSET(get<T>, {0x78, 16, 0, 0})
+	CMember(TArray<class UObject*>)                    Components                                                  OFFSET(get<T>, {0x28, 16, 0, 0})
+	CMember(TArray<class UObject*>)                    OwnedEntities                                               OFFSET(get<T>, {0x38, 16, 0, 0})
 };
 
 /// Class /Script/Entity.CoreEntityPrefabBlueprint
@@ -44,19 +44,21 @@ public:
 };
 
 /// Class /Script/Entity.CoreEntityReplicator
-/// Size: 0x0180 (0x000290 - 0x000410)
+/// Size: 0x01B0 (0x000290 - 0x000440)
 class ACoreEntityReplicator : public AActor
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1040;
+	static inline constexpr uint64_t __MDKClassSize = 1088;
 
 public:
 	DMember(bool)                                      bIsNetInitialized                                           OFFSET(get<bool>, {0x290, 1, 0, 0})
 	CMember(TWeakObjectPtr<UObject*>)                  EntityPtr                                                   OFFSET(get<T>, {0x298, 32, 0, 0})
 	CMember(TWeakObjectPtr<UObject*>)                  EntityOwnerPtr                                              OFFSET(get<T>, {0x2B8, 32, 0, 0})
-	SMember(FFastCoreEntityComponentArray)             NonDynamicEntityComponents                                  OFFSET(getStruct<T>, {0x2D8, 280, 0, 0})
-	CMember(class UObject*)                            EntityPendingInitialization                                 OFFSET(get<T>, {0x3F0, 8, 0, 0})
-	CMember(TArray<class UObject*>)                    EntityComponentsPendingInitialization                       OFFSET(get<T>, {0x3F8, 16, 0, 0})
+	SMember(FSoftObjectPath)                           EntityServerPath                                            OFFSET(getStruct<T>, {0x2D8, 24, 0, 0})
+	SMember(FSoftObjectPath)                           EntityOwnerServerPath                                       OFFSET(getStruct<T>, {0x2F0, 24, 0, 0})
+	SMember(FFastCoreEntityComponentArray)             NonDynamicEntityComponents                                  OFFSET(getStruct<T>, {0x308, 280, 0, 0})
+	CMember(class UObject*)                            EntityPendingInitialization                                 OFFSET(get<T>, {0x420, 8, 0, 0})
+	CMember(TArray<class UObject*>)                    EntityComponentsPendingInitialization                       OFFSET(get<T>, {0x428, 16, 0, 0})
 };
 
 /// Class /Script/Entity.WorldExecutionSubsystem
@@ -156,14 +158,14 @@ enum class EEntityNotificationState : uint8_t
 	EEntityNotificationState__Created                                                = 0,
 	EEntityNotificationState__Initializing                                           = 1,
 	EEntityNotificationState__Initialized                                            = 2,
-	EEntityNotificationState__AddingToWorld                                          = 3,
-	EEntityNotificationState__AddedToWorld                                           = 4,
-	EEntityNotificationState__BeginningPlay                                          = 5,
-	EEntityNotificationState__BeganPlay                                              = 6,
-	EEntityNotificationState__EndingPlay                                             = 7,
-	EEntityNotificationState__EndedPlay                                              = 8,
-	EEntityNotificationState__RemovingFromWorld                                      = 9,
-	EEntityNotificationState__RemovedFromWorld                                       = 10,
+	EEntityNotificationState__AddingToScene                                          = 3,
+	EEntityNotificationState__AddedToScene                                           = 4,
+	EEntityNotificationState__BeginningSimulation                                    = 5,
+	EEntityNotificationState__BeganSimulation                                        = 6,
+	EEntityNotificationState__EndingSimulation                                       = 7,
+	EEntityNotificationState__EndedSimulation                                        = 8,
+	EEntityNotificationState__RemovingFromScene                                      = 9,
+	EEntityNotificationState__RemovedFromScene                                       = 10,
 	EEntityNotificationState__Uninitializing                                         = 11,
 	EEntityNotificationState__Uninitialized                                          = 12,
 	EEntityNotificationState__TearingDown                                            = 13,

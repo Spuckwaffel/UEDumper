@@ -24,7 +24,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoCraftingBaseRuntime.JunoCraftingBaseSettings.Get
-	// class UJunoCraftingBaseSettings* Get();                                                                                  // [0xb4fd534] Final|Native|Static|Public|BlueprintCallable 
+	// class UJunoCraftingBaseSettings* Get();                                                                                  // [0xc629800] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoCraftingBaseRuntime.JunoCraftingCategoryUIData

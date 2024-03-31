@@ -26,15 +26,15 @@ public:
 
 	/// Functions
 	// Function /Script/PerformanceCaptureCore.CaptureCharacter.SetSourcePerformer
-	// void SetSourcePerformer(class ACapturePerformer* InPerformer);                                                           // [0xb899c44] Final|Native|Public|BlueprintCallable 
+	// void SetSourcePerformer(class ACapturePerformer* InPerformer);                                                           // [0xca58084] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CaptureCharacter.SetRetargetAsset
-	// void SetRetargetAsset(class UIKRetargeter* InRetargetAsset);                                                             // [0xb899b28] Final|Native|Public|BlueprintCallable 
+	// void SetRetargetAsset(class UIKRetargeter* InRetargetAsset);                                                             // [0xca57ee8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CaptureCharacter.SetForceAllSkeletalMeshesToFollowLeader
-	// void SetForceAllSkeletalMeshesToFollowLeader(bool InFollowLeader);                                                       // [0xb8997a8] Final|Native|Public|BlueprintCallable 
+	// void SetForceAllSkeletalMeshesToFollowLeader(bool InFollowLeader);                                                       // [0xca57bc8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CaptureCharacter.SetCustomRetargetProfile
-	// void SetCustomRetargetProfile(FRetargetProfile InProfile);                                                               // [0xb899374] Final|Native|Public|BlueprintCallable 
+	// void SetCustomRetargetProfile(FRetargetProfile InProfile);                                                               // [0xca577e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CaptureCharacter.GetCustomRetargetProfile
-	// FRetargetProfile GetCustomRetargetProfile();                                                                             // [0xb8991e0] Final|Native|Public|BlueprintCallable 
+	// FRetargetProfile GetCustomRetargetProfile();                                                                             // [0xca57614] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PerformanceCaptureCore.CapturePerformer
@@ -52,15 +52,15 @@ public:
 
 	/// Functions
 	// Function /Script/PerformanceCaptureCore.CapturePerformer.SetMocapMesh
-	// void SetMocapMesh(class USkeletalMesh* MocapMesh);                                                                       // [0xb899a9c] Final|Native|Public|BlueprintCallable 
+	// void SetMocapMesh(class USkeletalMesh* MocapMesh);                                                                       // [0xca57e1c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CapturePerformer.SetLiveLinkSubject
-	// void SetLiveLinkSubject(FLiveLinkSubjectName Subject);                                                                   // [0xb899834] Final|Native|Public|BlueprintCallable 
+	// void SetLiveLinkSubject(FLiveLinkSubjectName Subject);                                                                   // [0xca57c94] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CapturePerformer.SetEvaluateLiveLinkData
-	// void SetEvaluateLiveLinkData(bool bEvaluateLinkLink);                                                                    // [0xb89969c] Final|Native|Public|BlueprintCallable 
+	// void SetEvaluateLiveLinkData(bool bEvaluateLinkLink);                                                                    // [0xca57a38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.CapturePerformer.GetLiveLinkSubject
-	// FLiveLinkSubjectName GetLiveLinkSubject();                                                                               // [0xb8992d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FLiveLinkSubjectName GetLiveLinkSubject();                                                                               // [0xca57708] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/PerformanceCaptureCore.CapturePerformer.GetEvaluateLiveLinkData
-	// bool GetEvaluateLiveLinkData();                                                                                          // [0xb8992b0] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool GetEvaluateLiveLinkData();                                                                                          // [0xca576e4] Final|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/PerformanceCaptureCore.PerformerComponent
@@ -79,13 +79,13 @@ public:
 
 	/// Functions
 	// Function /Script/PerformanceCaptureCore.PerformerComponent.SetLiveLinkSubject
-	// void SetLiveLinkSubject(FLiveLinkSubjectName Subject);                                                                   // [0xb89996c] Final|Native|Public|BlueprintCallable 
+	// void SetLiveLinkSubject(FLiveLinkSubjectName Subject);                                                                   // [0xca57d5c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.PerformerComponent.SetEvaluateLiveLinkData
-	// void SetEvaluateLiveLinkData(bool bEvaluateLinkLink);                                                                    // [0xb899728] Final|Native|Public|BlueprintCallable 
+	// void SetEvaluateLiveLinkData(bool bEvaluateLinkLink);                                                                    // [0xca57b04] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.PerformerComponent.GetLiveLinkSubject
-	// FLiveLinkSubjectName GetLiveLinkSubject();                                                                               // [0x8ebd450] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FLiveLinkSubjectName GetLiveLinkSubject();                                                                               // [0x9623f98] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/PerformanceCaptureCore.PerformerComponent.GetEvaluateLiveLinkData
-	// bool GetEvaluateLiveLinkData();                                                                                          // [0x945cf30] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool GetEvaluateLiveLinkData();                                                                                          // [0x9dd5ef4] Final|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/PerformanceCaptureCore.RetargetAnimInstance
@@ -116,15 +116,15 @@ public:
 
 	/// Functions
 	// Function /Script/PerformanceCaptureCore.RetargetComponent.SetSourcePerformerMesh
-	// void SetSourcePerformerMesh(class USkeletalMeshComponent* InPerformerMesh);                                              // [0xb899cc4] Final|Native|Public|BlueprintCallable 
+	// void SetSourcePerformerMesh(class USkeletalMeshComponent* InPerformerMesh);                                              // [0xca58144] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.RetargetComponent.SetRetargetAsset
-	// void SetRetargetAsset(class UIKRetargeter* InRetargetAsset);                                                             // [0xb899bc4] Final|Native|Public|BlueprintCallable 
+	// void SetRetargetAsset(class UIKRetargeter* InRetargetAsset);                                                             // [0xca57fc4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.RetargetComponent.SetCustomRetargetProfile
-	// void SetCustomRetargetProfile(FRetargetProfile InProfile);                                                               // [0xb899508] Final|Native|Public|BlueprintCallable 
+	// void SetCustomRetargetProfile(FRetargetProfile InProfile);                                                               // [0xca57920] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.RetargetComponent.SetControlledMesh
-	// void SetControlledMesh(class USkeletalMeshComponent* InControlledMesh);                                                  // [0xb8992f4] Final|Native|Public|BlueprintCallable 
+	// void SetControlledMesh(class USkeletalMeshComponent* InControlledMesh);                                                  // [0xca57728] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PerformanceCaptureCore.RetargetComponent.GetCustomRetargetProfile
-	// FRetargetProfile GetCustomRetargetProfile();                                                                             // [0xb89924c] Final|Native|Public|BlueprintCallable 
+	// FRetargetProfile GetCustomRetargetProfile();                                                                             // [0xca57680] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/PerformanceCaptureCore.RetargetAnimInstanceProxy

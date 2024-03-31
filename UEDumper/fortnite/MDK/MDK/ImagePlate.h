@@ -33,11 +33,11 @@ public:
 
 	/// Functions
 	// Function /Script/ImagePlate.ImagePlateComponent.SetImagePlate
-	// void SetImagePlate(FImagePlateParameters Plate);                                                                         // [0xb7185b4] Final|Native|Public|BlueprintCallable 
+	// void SetImagePlate(FImagePlateParameters Plate);                                                                         // [0xc8950b0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ImagePlate.ImagePlateComponent.OnRenderTextureChanged
-	// void OnRenderTextureChanged();                                                                                           // [0xb7185a0] Final|Native|Public  
+	// void OnRenderTextureChanged();                                                                                           // [0xc89509c] Final|Native|Public  
 	// Function /Script/ImagePlate.ImagePlateComponent.GetPlate
-	// FImagePlateParameters GetPlate();                                                                                        // [0xb718528] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FImagePlateParameters GetPlate();                                                                                        // [0xc895024] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ImagePlate.ImagePlateSettings

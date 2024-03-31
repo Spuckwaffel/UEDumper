@@ -45,21 +45,21 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.IsNoteOn
-	// bool IsNoteOn(FMidiEventInfo& Event);                                                                                    // [0xa424994] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsNoteOn(FMidiEventInfo& Event);                                                                                    // [0xb18b278] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.IsNoteOff
-	// bool IsNoteOff(FMidiEventInfo& Event);                                                                                   // [0xa4248fc] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsNoteOff(FMidiEventInfo& Event);                                                                                   // [0xb18b1e0] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.IsNote
-	// bool IsNote(FMidiEventInfo& Event);                                                                                      // [0xa424868] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsNote(FMidiEventInfo& Event);                                                                                      // [0xb18b14c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.IsMidiEventInfo
-	// bool IsMidiEventInfo(FMetaSoundOutput& Output);                                                                          // [0xa424730] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsMidiEventInfo(FMetaSoundOutput& Output);                                                                          // [0xb18b014] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.GetVelocity
-	// int32_t GetVelocity(FMidiEventInfo& Event);                                                                              // [0xa424400] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// int32_t GetVelocity(FMidiEventInfo& Event);                                                                              // [0xb18ab34] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.GetNoteNumber
-	// int32_t GetNoteNumber(FMidiEventInfo& Event);                                                                            // [0xa42422c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// int32_t GetNoteNumber(FMidiEventInfo& Event);                                                                            // [0xb18a960] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.GetMidiEventInfo
-	// FMidiEventInfo GetMidiEventInfo(FMetaSoundOutput& Output, bool& Success);                                                // [0xa423bf0] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FMidiEventInfo GetMidiEventInfo(FMetaSoundOutput& Output, bool& Success);                                                // [0xb18a1c4] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiEventInfoBlueprintLibrary.GetChannel
-	// int32_t GetChannel(FMidiEventInfo& Event);                                                                               // [0xa423b4c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// int32_t GetChannel(FMidiEventInfo& Event);                                                                               // [0xb18a120] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.MidiStepSequence
@@ -78,39 +78,39 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MidiStepSequence.ToggleCellOnPage
-	// FStepSequenceCell ToggleCellOnPage(int32_t Page, int32_t Row, int32_t Column);                                           // [0xa425c40] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell ToggleCellOnPage(int32_t Page, int32_t Row, int32_t Column);                                           // [0xb18ccb4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.ToggleCell
-	// FStepSequenceCell ToggleCell(int32_t Row, int32_t Column);                                                               // [0xa425b6c] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell ToggleCell(int32_t Row, int32_t Column);                                                               // [0xb18cb64] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetStepTable
-	// void SetStepTable(FStepSequenceTable& NewStepTable);                                                                     // [0xa425ac8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetStepTable(FStepSequenceTable& NewStepTable);                                                                     // [0xb18cac0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetStepSkipIndex
-	// bool SetStepSkipIndex(int32_t StepIndex);                                                                                // [0xa425a3c] Final|Native|Public|BlueprintCallable 
+	// bool SetStepSkipIndex(int32_t StepIndex);                                                                                // [0xb18c9f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetRowVelocity
-	// bool SetRowVelocity(int32_t RowIndex, int32_t MidiVelocoty);                                                             // [0xa425954] Final|Native|Public|BlueprintCallable 
+	// bool SetRowVelocity(int32_t RowIndex, int32_t MidiVelocoty);                                                             // [0xb18c888] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetRowNoteNumber
-	// bool SetRowNoteNumber(int32_t RowIndex, int32_t MidiNoteNumber);                                                         // [0xa425894] Final|Native|Public|BlueprintCallable 
+	// bool SetRowNoteNumber(int32_t RowIndex, int32_t MidiNoteNumber);                                                         // [0xb18c73c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetNumRows
-	// void SetNumRows(int32_t Count);                                                                                          // [0xa425814] Final|Native|Public|BlueprintCallable 
+	// void SetNumRows(int32_t Count);                                                                                          // [0xb18c67c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetNumPages
-	// void SetNumPages(int32_t Count);                                                                                         // [0xa425794] Final|Native|Public|BlueprintCallable 
+	// void SetNumPages(int32_t Count);                                                                                         // [0xb18c5bc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetNumColumns
-	// void SetNumColumns(int32_t Count);                                                                                       // [0xa425714] Final|Native|Public|BlueprintCallable 
+	// void SetNumColumns(int32_t Count);                                                                                       // [0xb18c4fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetCellOnPage
-	// FStepSequenceCell SetCellOnPage(int32_t Page, int32_t Row, int32_t Column, bool State);                                  // [0xa424e28] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell SetCellOnPage(int32_t Page, int32_t Row, int32_t Column, bool State);                                  // [0xb18b990] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetCellContinuationOnPage
-	// FStepSequenceCell SetCellContinuationOnPage(int32_t Page, int32_t Row, int32_t Column, bool bState);                     // [0xa424ce0] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell SetCellContinuationOnPage(int32_t Page, int32_t Row, int32_t Column, bool bState);                     // [0xb18b74c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetCellContinuation
-	// FStepSequenceCell SetCellContinuation(int32_t Row, int32_t Column, bool bState);                                         // [0xa424bd4] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell SetCellContinuation(int32_t Row, int32_t Column, bool bState);                                         // [0xb18b57c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.SetCell
-	// FStepSequenceCell SetCell(int32_t Row, int32_t Column, bool State);                                                      // [0xa424ac8] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell SetCell(int32_t Row, int32_t Column, bool State);                                                      // [0xb18b3ac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.GetStepTable
-	// FStepSequenceTable GetStepTable();                                                                                       // [0xa4242c8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FStepSequenceTable GetStepTable();                                                                                       // [0xb18a9fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.GetCellOnPage
-	// FStepSequenceCell GetCellOnPage(int32_t Page, int32_t Row, int32_t Column);                                              // [0xa423a48] Final|Native|Public|BlueprintCallable 
+	// FStepSequenceCell GetCellOnPage(int32_t Page, int32_t Row, int32_t Column);                                              // [0xb189f5c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.GetCell
-	// FStepSequenceCell GetCell(int32_t Row, int32_t Column);                                                                  // [0xa423974] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// FStepSequenceCell GetCell(int32_t Row, int32_t Column);                                                                  // [0xb189e0c] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/HarmonixMetasound.MidiStepSequence.DisableRowsAbove
-	// void DisableRowsAbove(int32_t FirstDisabledRow);                                                                         // [0xa4238f4] Final|Native|Public|BlueprintCallable 
+	// void DisableRowsAbove(int32_t FirstDisabledRow);                                                                         // [0xb189d4c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.MusicParameterBlueprintLibrary
@@ -125,23 +125,23 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.SetMusicTimestamp
-	// void SetMusicTimestamp(class UMetasoundParameterPack* Target, FName ParameterName, FMusicTimestamp& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xa425498] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// void SetMusicTimestamp(class UMetasoundParameterPack* Target, FName ParameterName, FMusicTimestamp& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xb18c1fc] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.SetMusicSeekRequest
-	// void SetMusicSeekRequest(class UMetasoundParameterPack* Target, FName ParameterName, FMusicSeekRequest& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xa425204] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// void SetMusicSeekRequest(class UMetasoundParameterPack* Target, FName ParameterName, FMusicSeekRequest& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xb18bee8] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.SetMusicLoopConfiguration
-	// void SetMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName ParameterName, FMusicLoopConfiguration& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xa424f70] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// void SetMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName ParameterName, FMusicLoopConfiguration& Value, ESetParamResult& Result, bool OnlyIfExists); // [0xb18bbd4] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.HasMusicTimestamp
-	// bool HasMusicTimestamp(class UMetasoundParameterPack* Target, FName Name);                                               // [0xa424658] Final|Native|Private|BlueprintCallable 
+	// bool HasMusicTimestamp(class UMetasoundParameterPack* Target, FName Name);                                               // [0xb18aeac] Final|Native|Private|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.HasMusicSeekRequest
-	// bool HasMusicSeekRequest(class UMetasoundParameterPack* Target, FName Name);                                             // [0xa424580] Final|Native|Private|BlueprintCallable 
+	// bool HasMusicSeekRequest(class UMetasoundParameterPack* Target, FName Name);                                             // [0xb18ad44] Final|Native|Private|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.HasMusicLoopConfiguration
-	// bool HasMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName Name);                                       // [0xa4244a8] Final|Native|Private|BlueprintCallable 
+	// bool HasMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName Name);                                       // [0xb18abdc] Final|Native|Private|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.GetMusicTimestamp
-	// FMusicTimestamp GetMusicTimestamp(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result);  // [0xa423fc4] Final|Native|Private|HasOutParms|BlueprintCallable 
+	// FMusicTimestamp GetMusicTimestamp(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result);  // [0xb18a688] Final|Native|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.GetMusicSeekRequest
-	// FMusicSeekRequest GetMusicSeekRequest(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result); // [0xa423e6c] Final|Native|Private|HasOutParms|BlueprintCallable 
+	// FMusicSeekRequest GetMusicSeekRequest(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result); // [0xb18a4b8] Final|Native|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicParameterBlueprintLibrary.GetMusicLoopConfiguration
-	// FMusicLoopConfiguration GetMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result); // [0xa423d14] Final|Native|Private|HasOutParms|BlueprintCallable 
+	// FMusicLoopConfiguration GetMusicLoopConfiguration(class UMetasoundParameterPack* Target, FName ParameterName, ESetParamResult& Result); // [0xb18a2e8] Final|Native|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.MusicTimestampBlueprintLibrary
@@ -156,9 +156,9 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MusicTimestampBlueprintLibrary.IsMusicTimestamp
-	// bool IsMusicTimestamp(FMetaSoundOutput& Output);                                                                         // [0xa4247cc] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsMusicTimestamp(FMetaSoundOutput& Output);                                                                         // [0xb18b0b0] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicTimestampBlueprintLibrary.GetMusicTimestamp
-	// FMusicTimestamp GetMusicTimestamp(FMetaSoundOutput& Output, bool& Success);                                              // [0xa424108] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FMusicTimestamp GetMusicTimestamp(FMetaSoundOutput& Output, bool& Success);                                              // [0xb18a83c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.HarmonixPeakTamer
@@ -173,15 +173,15 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.HarmonixPeakTamer.Update
-	// void Update(float InputValue, float DeltaTimeSeconds);                                                                   // [0xa425d44] Final|Native|Public|BlueprintCallable 
+	// void Update(float InputValue, float DeltaTimeSeconds);                                                                   // [0xb18ce78] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.HarmonixPeakTamer.GetValue
-	// float GetValue();                                                                                                        // [0x3932b2c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetValue();                                                                                                        // [0x38d07f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.HarmonixPeakTamer.GetPeak
-	// float GetPeak();                                                                                                         // [0x3888b24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetPeak();                                                                                                         // [0x3850a04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.HarmonixPeakTamer.CreateHarmonixPeakTamer
-	// class UHarmonixPeakTamer* CreateHarmonixPeakTamer();                                                                     // [0xa4238c8] Final|Native|Static|Public|BlueprintCallable 
+	// class UHarmonixPeakTamer* CreateHarmonixPeakTamer();                                                                     // [0xb189d20] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.HarmonixPeakTamer.Configure
-	// void Configure(FHarmonixPeakTamerSettings& Settings);                                                                    // [0xa42381c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void Configure(FHarmonixPeakTamerSettings& Settings);                                                                    // [0xb189c74] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.TimeSignatureBlueprintLibrary
@@ -196,9 +196,9 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.TimeSignatureBlueprintLibrary.IsTimeSignature
-	// bool IsTimeSignature(FMetaSoundOutput& Output);                                                                          // [0xa424a2c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsTimeSignature(FMetaSoundOutput& Output);                                                                          // [0xb18b310] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.TimeSignatureBlueprintLibrary.GetTimeSignature
-	// FTimeSignature GetTimeSignature(FMetaSoundOutput& Output, bool& Success);                                                // [0xa4242e4] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FTimeSignature GetTimeSignature(FMetaSoundOutput& Output, bool& Success);                                                // [0xb18aa18] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/HarmonixMetasound.MusicClockComponent
@@ -234,103 +234,103 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MusicClockComponent.TickToMs
-	// float TickToMs(float Tick);                                                                                              // [0xa4c8588] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float TickToMs(float Tick);                                                                                              // [0xb23914c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.Stop
-	// void Stop();                                                                                                             // [0xa4c8574] Final|Native|Public|BlueprintCallable 
+	// void Stop();                                                                                                             // [0xb239138] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.Start
-	// void Start();                                                                                                            // [0xa4c8560] Final|Native|Public|BlueprintCallable 
+	// void Start();                                                                                                            // [0xb239124] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.Pause
-	// void Pause();                                                                                                            // [0xa4c8314] Final|Native|Public|BlueprintCallable 
+	// void Pause();                                                                                                            // [0xb238e18] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.MeasureSpanProgress
-	// float MeasureSpanProgress(FMusicalTimeSpan& Span, ECalibratedMusicTimebase Timebase);                                    // [0xa4c8180] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// float MeasureSpanProgress(FMusicalTimeSpan& Span, ECalibratedMusicTimebase Timebase);                                    // [0xb238c78] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetState
-	// EMusicClockState GetState();                                                                                             // [0xa4c8080] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMusicClockState GetState();                                                                                             // [0x9e96a18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongSections
-	// TArray<FSongSection> GetSongSections();                                                                                  // [0xa4c8054] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FSongSection> GetSongSections();                                                                                  // [0xb238b64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongRemainingMs
-	// float GetSongRemainingMs(ECalibratedMusicTimebase Timebase);                                                             // [0xa4c7fc4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSongRemainingMs(ECalibratedMusicTimebase Timebase);                                                             // [0xb238a94] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongPos
-	// FMidiSongPos GetSongPos(ECalibratedMusicTimebase Timebase);                                                              // [0xa4c7ef0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMidiSongPos GetSongPos(ECalibratedMusicTimebase Timebase);                                                              // [0xb238980] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongLengthMs
-	// float GetSongLengthMs();                                                                                                 // [0xa4c7ec0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSongLengthMs();                                                                                                 // [0xb238950] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongLengthBeats
-	// float GetSongLengthBeats();                                                                                              // [0xa4c7e90] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSongLengthBeats();                                                                                              // [0xb238920] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSongLengthBars
-	// int32_t GetSongLengthBars();                                                                                             // [0xa4c7e64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSongLengthBars();                                                                                             // [0xb2388f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSectionStartMsAtMs
-	// float GetSectionStartMsAtMs(float Ms);                                                                                   // [0xa4c7dc0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSectionStartMsAtMs(float Ms);                                                                                   // [0xb23880c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSectionNameAtMs
-	// FString GetSectionNameAtMs(float Ms);                                                                                    // [0xa4c7d08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetSectionNameAtMs(float Ms);                                                                                    // [0xb238710] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSectionLengthMsAtMs
-	// float GetSectionLengthMsAtMs(float Ms);                                                                                  // [0xa4c7c78] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSectionLengthMsAtMs(float Ms);                                                                                  // [0xb23863c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSectionEndMsAtMs
-	// float GetSectionEndMsAtMs(float Ms);                                                                                     // [0xa4c7bd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSectionEndMsAtMs(float Ms);                                                                                     // [0xb238554] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSecondsIncludingCountIn
-	// float GetSecondsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                     // [0xa4c7b0c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSecondsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                     // [0xb23844c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetSecondsFromBarOne
-	// float GetSecondsFromBarOne(ECalibratedMusicTimebase Timebase);                                                           // [0xa4c7a44] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSecondsFromBarOne(ECalibratedMusicTimebase Timebase);                                                           // [0xb238344] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetNumSections
-	// int32_t GetNumSections();                                                                                                // [0xa4c7a1c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumSections();                                                                                                // [0xb23831c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetNumBeatsInBarAtMs
-	// float GetNumBeatsInBarAtMs(float Ms);                                                                                    // [0xa4c798c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetNumBeatsInBarAtMs(float Ms);                                                                                    // [0xb238248] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetMsPerBeatAtMs
-	// float GetMsPerBeatAtMs(float Ms);                                                                                        // [0xa4c78fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetMsPerBeatAtMs(float Ms);                                                                                        // [0xb238174] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetMsPerBarAtMs
-	// float GetMsPerBarAtMs(float Ms);                                                                                         // [0xa4c786c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetMsPerBarAtMs(float Ms);                                                                                         // [0xb2380a0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceToNextBeat
-	// float GetDistanceToNextBeat(ECalibratedMusicTimebase Timebase);                                                          // [0xa4c778c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceToNextBeat(ECalibratedMusicTimebase Timebase);                                                          // [0xb237f80] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceToNextBar
-	// float GetDistanceToNextBar(ECalibratedMusicTimebase Timebase);                                                           // [0xa4c76fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceToNextBar(ECalibratedMusicTimebase Timebase);                                                           // [0xb237eb0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceToClosestBeat
-	// float GetDistanceToClosestBeat(ECalibratedMusicTimebase Timebase);                                                       // [0xa4c766c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceToClosestBeat(ECalibratedMusicTimebase Timebase);                                                       // [0xb237de0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceToClosestBar
-	// float GetDistanceToClosestBar(ECalibratedMusicTimebase Timebase);                                                        // [0xa4c75dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceToClosestBar(ECalibratedMusicTimebase Timebase);                                                        // [0xb237d10] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceFromCurrentBeat
-	// float GetDistanceFromCurrentBeat(ECalibratedMusicTimebase Timebase);                                                     // [0xa4c754c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceFromCurrentBeat(ECalibratedMusicTimebase Timebase);                                                     // [0xb237c40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDistanceFromCurrentBar
-	// float GetDistanceFromCurrentBar(ECalibratedMusicTimebase Timebase);                                                      // [0xa4c74bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDistanceFromCurrentBar(ECalibratedMusicTimebase Timebase);                                                      // [0xb237b70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDeltaBeat
-	// float GetDeltaBeat(ECalibratedMusicTimebase Timebase);                                                                   // [0xa4c742c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDeltaBeat(ECalibratedMusicTimebase Timebase);                                                                   // [0xb237aa0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetDeltaBar
-	// float GetDeltaBar(ECalibratedMusicTimebase Timebase);                                                                    // [0xa4c739c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDeltaBar(ECalibratedMusicTimebase Timebase);                                                                    // [0xb2379d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentVideoRenderSongPos
-	// FMidiSongPos GetCurrentVideoRenderSongPos();                                                                             // [0xa4c7360] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMidiSongPos GetCurrentVideoRenderSongPos();                                                                             // [0xb237994] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentTimestamp
-	// FMusicTimestamp GetCurrentTimestamp(ECalibratedMusicTimebase Timebase);                                                  // [0xa4c72d8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMusicTimestamp GetCurrentTimestamp(ECalibratedMusicTimebase Timebase);                                                  // [0xb2378cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentSmoothedAudioRenderSongPos
-	// FMidiSongPos GetCurrentSmoothedAudioRenderSongPos();                                                                     // [0xa4c7290] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMidiSongPos GetCurrentSmoothedAudioRenderSongPos();                                                                     // [0xb237884] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentSectionStartMs
-	// float GetCurrentSectionStartMs(ECalibratedMusicTimebase Timebase);                                                       // [0xa4c7200] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurrentSectionStartMs(ECalibratedMusicTimebase Timebase);                                                       // [0xb2377b4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentSectionName
-	// FString GetCurrentSectionName(ECalibratedMusicTimebase Timebase);                                                        // [0xa4c7154] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetCurrentSectionName(ECalibratedMusicTimebase Timebase);                                                        // [0xb2376c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentSectionLengthMs
-	// float GetCurrentSectionLengthMs(ECalibratedMusicTimebase Timebase);                                                      // [0xa4c70c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurrentSectionLengthMs(ECalibratedMusicTimebase Timebase);                                                      // [0xb2375f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentSectionIndex
-	// int32_t GetCurrentSectionIndex(ECalibratedMusicTimebase Timebase);                                                       // [0xa4c701c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentSectionIndex(ECalibratedMusicTimebase Timebase);                                                       // [0xb23750c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCurrentPlayerExperiencedSongPos
-	// FMidiSongPos GetCurrentPlayerExperiencedSongPos();                                                                       // [0xa4c6fd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMidiSongPos GetCurrentPlayerExperiencedSongPos();                                                                       // [0xb2374c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetCountInSeconds
-	// float GetCountInSeconds();                                                                                               // [0xa4c6fa4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCountInSeconds();                                                                                               // [0xb237494] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetBeatsIncludingCountIn
-	// float GetBeatsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                       // [0xa4c6e64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBeatsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                       // [0xb237314] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetBeatInBarAtMs
-	// float GetBeatInBarAtMs(float Ms);                                                                                        // [0xa4c6d84] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBeatInBarAtMs(float Ms);                                                                                        // [0xb2371f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.GetBarsIncludingCountIn
-	// float GetBarsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                        // [0xa4c6cbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBarsIncludingCountIn(ECalibratedMusicTimebase Timebase);                                                        // [0xb2370e8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.CreateWallClockDrivenMusicClock
-	// class UMusicClockComponent* CreateWallClockDrivenMusicClock(class UObject* WorldContextObject, class UMidiFile* WithTempoMap, bool Start); // [0xa4c6b28] Final|Native|Static|Public|BlueprintCallable 
+	// class UMusicClockComponent* CreateWallClockDrivenMusicClock(class UObject* WorldContextObject, class UMidiFile* WithTempoMap, bool Start); // [0xb236e94] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.CreateMetasoundDrivenMusicClock
-	// class UMusicClockComponent* CreateMetasoundDrivenMusicClock(class UObject* WorldContextObject, class UAudioComponent* InAudioComponent, FName MetasoundOuputPinName, bool Start); // [0xa4c69ec] Final|Native|Static|Public|BlueprintCallable 
+	// class UMusicClockComponent* CreateMetasoundDrivenMusicClock(class UObject* WorldContextObject, class UAudioComponent* InAudioComponent, FName MetasoundOuputPinName, bool Start); // [0xb236c60] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.Continue
-	// void Continue();                                                                                                         // [0xa4c6998] Final|Native|Public|BlueprintCallable 
+	// void Continue();                                                                                                         // [0xb236c0c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.ConnectToWallClockForMidi
-	// void ConnectToWallClockForMidi(class UMidiFile* InTempoMap);                                                             // [0xa4c6918] Final|Native|Public|BlueprintCallable 
+	// void ConnectToWallClockForMidi(class UMidiFile* InTempoMap);                                                             // [0xb236b4c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.ConnectToMetasoundOnAudioComponent
-	// bool ConnectToMetasoundOnAudioComponent(class UAudioComponent* InAudioComponent);                                        // [0xa4c6888] Final|Native|Public|BlueprintCallable 
+	// bool ConnectToMetasoundOnAudioComponent(class UAudioComponent* InAudioComponent);                                        // [0xb236a7c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.BeatToMs
-	// float BeatToMs(float Beat);                                                                                              // [0xa4c67f8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float BeatToMs(float Beat);                                                                                              // [0xb2369a8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicClockComponent.BarToMs
-	// float BarToMs(float Bar);                                                                                                // [0xa4c6768] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float BarToMs(float Bar);                                                                                                // [0xb2368d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/HarmonixMetasound.MusicTempometerComponent
@@ -360,39 +360,39 @@ public:
 
 	/// Functions
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.SetMaterialParameterCollection
-	// void SetMaterialParameterCollection(class UMaterialParameterCollection* InMaterialParameterCollection);                  // [0xa4c84bc] Final|Native|Public|BlueprintCallable 
+	// void SetMaterialParameterCollection(class UMaterialParameterCollection* InMaterialParameterCollection);                  // [0xb239040] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.SetClockFromActor
-	// void SetClockFromActor(class AActor* Actor);                                                                             // [0xa4c8410] Final|Native|Public|BlueprintCallable 
+	// void SetClockFromActor(class AActor* Actor);                                                                             // [0xb238f54] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.SetClock
-	// void SetClock(class UMusicClockComponent* InClockComponent);                                                             // [0xa4c8368] Final|Native|Public|BlueprintCallable 
+	// void SetClock(class UMusicClockComponent* InClockComponent);                                                             // [0xb238e6c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetTimeStamp
-	// FMusicTimestamp GetTimeStamp();                                                                                          // [0xa4c8148] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMusicTimestamp GetTimeStamp();                                                                                          // [0xb238c40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetTimeSignatureNumerator
-	// float GetTimeSignatureNumerator();                                                                                       // [0xa4c810c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTimeSignatureNumerator();                                                                                       // [0xb238c04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetTimeSignatureDenominator
-	// float GetTimeSignatureDenominator();                                                                                     // [0xa4c80d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTimeSignatureDenominator();                                                                                     // [0xb238bc8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetTempo
-	// float GetTempo();                                                                                                        // [0xa4c8098] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTempo();                                                                                                        // [0xb238b90] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetSongPos
-	// FMidiSongPos GetSongPos();                                                                                               // [0xa4c7f88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMidiSongPos GetSongPos();                                                                                               // [0xb238a58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetSecondsIncludingCountIn
-	// float GetSecondsIncludingCountIn();                                                                                      // [0xa4c7b9c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSecondsIncludingCountIn();                                                                                      // [0xb23851c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetSecondsFromBarOne
-	// float GetSecondsFromBarOne();                                                                                            // [0xa4c7ad4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSecondsFromBarOne();                                                                                            // [0xb238414] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetMaterialParameterCollection
-	// class UMaterialParameterCollection* GetMaterialParameterCollection();                                                    // [0xa4c781c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMaterialParameterCollection* GetMaterialParameterCollection();                                                    // [0xb238050] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetClockNoMutex
-	// class UMusicClockComponent* GetClockNoMutex();                                                                           // [0xa4c6f80] Final|Native|Private|BlueprintCallable|BlueprintPure|Const 
+	// class UMusicClockComponent* GetClockNoMutex();                                                                           // [0xb237470] Final|Native|Private|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetClock
-	// class UMusicClockComponent* GetClock();                                                                                  // [0xa4c6f2c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMusicClockComponent* GetClock();                                                                                  // [0xb23741c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetBeatsIncludingCountIn
-	// float GetBeatsIncludingCountIn();                                                                                        // [0xa4c6ef4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBeatsIncludingCountIn();                                                                                        // [0xb2373e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetBeatProgress
-	// float GetBeatProgress();                                                                                                 // [0xa4c6e14] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBeatProgress();                                                                                                 // [0xb2372c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetBarsIncludingCountIn
-	// float GetBarsIncludingCountIn();                                                                                         // [0xa4c6d4c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBarsIncludingCountIn();                                                                                         // [0xb2371b8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HarmonixMetasound.MusicTempometerComponent.GetBarProgress
-	// float GetBarProgress();                                                                                                  // [0xa4c6c6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBarProgress();                                                                                                  // [0xb237098] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Struct /Script/HarmonixMetasound.MidiEventInfo

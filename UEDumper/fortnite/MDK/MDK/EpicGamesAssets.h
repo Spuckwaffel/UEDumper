@@ -25,10 +25,10 @@ public:
 
 	/// Functions
 	// Function /Script/EpicGamesAssets.SpawnedParticleSystemReplication.OnSystemFinished
-	// void OnSystemFinished(class UNiagaraComponent* FinishedComponent);                                                       // [0xa051d50] Final|Native|Private 
+	// void OnSystemFinished(class UNiagaraComponent* FinishedComponent);                                                       // [0xad09e7c] Final|Native|Private 
 	// Function /Script/EpicGamesAssets.SpawnedParticleSystemReplication.OnRep_VFXAsset
-	// void OnRep_VFXAsset();                                                                                                   // [0xa051d3c] Final|Native|Private 
+	// void OnRep_VFXAsset();                                                                                                   // [0xad09e68] Final|Native|Private 
 	// Function /Script/EpicGamesAssets.SpawnedParticleSystemReplication.OnRep_StartTime
-	// void OnRep_StartTime();                                                                                                  // [0xa051ccc] Final|Native|Private 
+	// void OnRep_StartTime();                                                                                                  // [0xad09e54] Final|Native|Private 
 };
 

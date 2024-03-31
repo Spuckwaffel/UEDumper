@@ -44,21 +44,21 @@ public:
 };
 
 /// Class /Script/SunRoseChainWhipGameplay.Hades_Player_LayerAnimInstance
-/// Size: 0x0020 (0x001620 - 0x001640)
+/// Size: 0x0020 (0x0015F0 - 0x001610)
 class UHades_Player_LayerAnimInstance : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5696;
+	static inline constexpr uint64_t __MDKClassSize = 5648;
 
 public:
-	DMember(bool)                                      bIsMotorcycle                                               OFFSET(get<bool>, {0x1620, 1, 0, 0})
-	DMember(bool)                                      bIsHookshot                                                 OFFSET(get<bool>, {0x1621, 1, 0, 0})
-	DMember(bool)                                      bIsTechniqueActive                                          OFFSET(get<bool>, {0x1622, 1, 0, 0})
-	DMember(bool)                                      bIsHadesAO                                                  OFFSET(get<bool>, {0x1623, 1, 0, 0})
-	DMember(bool)                                      bIsUpperBodyReplacement                                     OFFSET(get<bool>, {0x1624, 1, 0, 0})
-	SMember(FGameplayTag)                              MotorcycleTag                                               OFFSET(getStruct<T>, {0x1628, 4, 0, 0})
-	SMember(FGameplayTag)                              HookshotTag                                                 OFFSET(getStruct<T>, {0x162C, 4, 0, 0})
-	SMember(FGameplayTag)                              DisableGrindRailUpperBodyCorrectTag                         OFFSET(getStruct<T>, {0x1630, 4, 0, 0})
+	DMember(bool)                                      bIsMotorcycle                                               OFFSET(get<bool>, {0x15F0, 1, 0, 0})
+	DMember(bool)                                      bIsHookshot                                                 OFFSET(get<bool>, {0x15F1, 1, 0, 0})
+	DMember(bool)                                      bIsTechniqueActive                                          OFFSET(get<bool>, {0x15F2, 1, 0, 0})
+	DMember(bool)                                      bIsHadesAO                                                  OFFSET(get<bool>, {0x15F3, 1, 0, 0})
+	DMember(bool)                                      bIsUpperBodyReplacement                                     OFFSET(get<bool>, {0x15F4, 1, 0, 0})
+	SMember(FGameplayTag)                              MotorcycleTag                                               OFFSET(getStruct<T>, {0x15F8, 4, 0, 0})
+	SMember(FGameplayTag)                              HookshotTag                                                 OFFSET(getStruct<T>, {0x15FC, 4, 0, 0})
+	SMember(FGameplayTag)                              DisableGrindRailUpperBodyCorrectTag                         OFFSET(getStruct<T>, {0x1600, 4, 0, 0})
 };
 
 /// Class /Script/SunRoseChainWhipGameplay.FortCheatManager_SunRoseChainWhip
@@ -75,11 +75,11 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseChainWhipGameplay.FortCheatManager_SunRoseChainWhip.SunRoseSpawnHookShotShooter
-	// void SunRoseSpawnHookShotShooter();                                                                                      // [0x36203b0] Final|Exec|Native|Public 
+	// void SunRoseSpawnHookShotShooter();                                                                                      // [0x3518b8c] Final|Exec|Native|Public 
 	// Function /Script/SunRoseChainWhipGameplay.FortCheatManager_SunRoseChainWhip.SunRoseRemoveHookShotShooter
-	// void SunRoseRemoveHookShotShooter();                                                                                     // [0xa2b7e18] Final|Exec|Native|Public 
+	// void SunRoseRemoveHookShotShooter();                                                                                     // [0xafdc628] Final|Exec|Native|Public 
 	// Function /Script/SunRoseChainWhipGameplay.FortCheatManager_SunRoseChainWhip.SunRoseApplyHookShot
-	// void SunRoseApplyHookShot(float Delay);                                                                                  // [0x67d85bc] Final|Exec|Native|Public 
+	// void SunRoseApplyHookShot(float Delay);                                                                                  // [0x67dbeb4] Final|Exec|Native|Public 
 };
 
 /// Class /Script/SunRoseChainWhipGameplay.TargetingSelectionTask_SunRoseChainWhip

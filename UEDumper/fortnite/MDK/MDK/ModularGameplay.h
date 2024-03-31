@@ -42,19 +42,19 @@ public:
 
 	/// Functions
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.UnregisterClassInitStateDelegate
-	// bool UnregisterClassInitStateDelegate(TWeakObjectPtr<UClass*> ActorClass, FDelegateProperty DelegateToRemove);           // [0x6f87434] Final|Native|Public|BlueprintCallable 
+	// bool UnregisterClassInitStateDelegate(TWeakObjectPtr<UClass*> ActorClass, FDelegateProperty DelegateToRemove);           // [0x71f2880] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.UnregisterActorInitStateDelegate
-	// bool UnregisterActorInitStateDelegate(class AActor* Actor, FDelegateProperty DelegateToRemove);                          // [0x6f871ac] Final|Native|Public|BlueprintCallable 
+	// bool UnregisterActorInitStateDelegate(class AActor* Actor, FDelegateProperty DelegateToRemove);                          // [0x71f2574] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.SendExtensionEvent
-	// void SendExtensionEvent(class AActor* Receiver, FName EventName, bool bOnlyInGameWorlds);                                // [0x6f87074] Final|Native|Public|BlueprintCallable 
+	// void SendExtensionEvent(class AActor* Receiver, FName EventName, bool bOnlyInGameWorlds);                                // [0x71f2378] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.RemoveReceiver
-	// void RemoveReceiver(class AActor* Receiver);                                                                             // [0x6f86ff8] Final|Native|Public|BlueprintCallable 
+	// void RemoveReceiver(class AActor* Receiver);                                                                             // [0x71f22b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.RegisterAndCallForClassInitState
-	// bool RegisterAndCallForClassInitState(TWeakObjectPtr<UClass*> ActorClass, FName FeatureName, FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately); // [0x6f868fc] Final|Native|Public|BlueprintCallable 
+	// bool RegisterAndCallForClassInitState(TWeakObjectPtr<UClass*> ActorClass, FName FeatureName, FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately); // [0x71f1d84] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.RegisterAndCallForActorInitState
-	// bool RegisterAndCallForActorInitState(class AActor* Actor, FName FeatureName, FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately); // [0x6f8645c] Final|Native|Public|BlueprintCallable 
+	// bool RegisterAndCallForActorInitState(class AActor* Actor, FName FeatureName, FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately); // [0x71f198c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkComponentManager.AddReceiver
-	// void AddReceiver(class AActor* Receiver, bool bAddOnlyInGameWorlds);                                                     // [0x6f86200] Final|Native|Public|BlueprintCallable 
+	// void AddReceiver(class AActor* Receiver, bool bAddOnlyInGameWorlds);                                                     // [0x71f1718] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ModularGameplay.GameFrameworkInitStateInterface
@@ -69,15 +69,15 @@ public:
 
 	/// Functions
 	// Function /Script/ModularGameplay.GameFrameworkInitStateInterface.UnregisterInitStateDelegate
-	// bool UnregisterInitStateDelegate(FDelegateProperty Delegate);                                                            // [0x6f87584] Native|Public|BlueprintCallable 
+	// bool UnregisterInitStateDelegate(FDelegateProperty Delegate);                                                            // [0x71f2a48] Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkInitStateInterface.RegisterAndCallForInitStateChange
-	// bool RegisterAndCallForInitStateChange(FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately);   // [0x6f86cf8] Native|Public|BlueprintCallable 
+	// bool RegisterAndCallForInitStateChange(FGameplayTag RequiredState, FDelegateProperty Delegate, bool bCallImmediately);   // [0x71f20d0] Native|Public|BlueprintCallable 
 	// Function /Script/ModularGameplay.GameFrameworkInitStateInterface.HasReachedInitState
-	// bool HasReachedInitState(FGameplayTag DesiredState);                                                                     // [0x6f8631c] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasReachedInitState(FGameplayTag DesiredState);                                                                     // [0x71f18bc] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModularGameplay.GameFrameworkInitStateInterface.GetInitState
-	// FGameplayTag GetInitState();                                                                                             // [0x28d2d7c] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTag GetInitState();                                                                                             // [0x1c535e4] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModularGameplay.GameFrameworkInitStateInterface.GetFeatureName
-	// FName GetFeatureName();                                                                                                  // [0x6f862f0] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetFeatureName();                                                                                                  // [0x71f1890] Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ModularGameplay.GameStateComponent

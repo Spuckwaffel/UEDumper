@@ -73,13 +73,13 @@ public:
 
 	/// Functions
 	// Function /Script/VerseGameplayTags.VerseGameplayTagAssetInterface.HasMatchingGameplayTag
-	// bool HasMatchingGameplayTag(FVerseGameplayTag TagToCheck);                                                               // [0x777400c] Native|Public|Const  
+	// bool HasMatchingGameplayTag(FVerseGameplayTag TagToCheck);                                                               // [0x7b3d8a4] Native|Public|Const  
 	// Function /Script/VerseGameplayTags.VerseGameplayTagAssetInterface.HasAnyMatchingGameplayTags
-	// bool HasAnyMatchingGameplayTags(FVerseGameplayTagContainer& TagContainer);                                               // [0x7773e90] Native|Public|HasOutParms|Const 
+	// bool HasAnyMatchingGameplayTags(FVerseGameplayTagContainer& TagContainer);                                               // [0x7b3d26c] Native|Public|HasOutParms|Const 
 	// Function /Script/VerseGameplayTags.VerseGameplayTagAssetInterface.HasAllMatchingGameplayTags
-	// bool HasAllMatchingGameplayTags(FVerseGameplayTagContainer& TagContainer);                                               // [0x7773d14] Native|Public|HasOutParms|Const 
+	// bool HasAllMatchingGameplayTags(FVerseGameplayTagContainer& TagContainer);                                               // [0x7b3cc34] Native|Public|HasOutParms|Const 
 	// Function /Script/VerseGameplayTags.VerseGameplayTagAssetInterface.GetOwnedGameplayTags
-	// void GetOwnedGameplayTags(FVerseGameplayTagContainer& TagContainer);                                                     // [0x7773ba8] Native|Public|HasOutParms|Const 
+	// void GetOwnedGameplayTags(FVerseGameplayTagContainer& TagContainer);                                                     // [0x7b3c600] Native|Public|HasOutParms|Const 
 };
 
 /// Class /Script/VerseGameplayTags.VerseTagMarkupComponent

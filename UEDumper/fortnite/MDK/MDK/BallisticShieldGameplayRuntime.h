@@ -48,19 +48,19 @@ public:
 
 	/// Functions
 	// Function /Script/BallisticShieldGameplayRuntime.BallisticShieldWeaponInterface.GetBallisticShieldData
-	// void GetBallisticShieldData(EBallisticShieldPlayerActionState& BallisticShieldPlayerState, float& StaggerBuildupPercent); // [0xa327368] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// void GetBallisticShieldData(EBallisticShieldPlayerActionState& BallisticShieldPlayerState, float& StaggerBuildupPercent); // [0xb06a944] Native|Event|Public|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/BallisticShieldGameplayRuntime.FortMovementMode_ELBShieldSprint
-/// Size: 0x0038 (0x0003C8 - 0x000400)
+/// Size: 0x0038 (0x0003F0 - 0x000428)
 class UFortMovementMode_ELBShieldSprint : public UFortMovementMode_ELTacSprint
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1024;
+	static inline constexpr uint64_t __MDKClassSize = 1064;
 
 public:
-	SMember(FScalableFloat)                            ChargeRotationRate                                          OFFSET(getStruct<T>, {0x3C8, 40, 0, 0})
-	CMember(class UClass*)                             GrantedAbility                                              OFFSET(get<T>, {0x3F0, 8, 0, 0})
+	SMember(FScalableFloat)                            ChargeRotationRate                                          OFFSET(getStruct<T>, {0x3F0, 40, 0, 0})
+	CMember(class UClass*)                             GrantedAbility                                              OFFSET(get<T>, {0x418, 8, 0, 0})
 };
 
 /// Class /Script/BallisticShieldGameplayRuntime.TargetingFilterTask_BShieldCharge

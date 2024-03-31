@@ -21,12 +21,12 @@ public:
 
 	/// Functions
 	// Function /Script/AISpawner.AISpawnerPreviewerComponent.SetCIDForPreview
-	// void SetCIDForPreview(class UAthenaCharacterItemDefinition* InCID);                                                      // [0xab73c48] Final|Native|Protected|BlueprintCallable 
+	// void SetCIDForPreview(class UAthenaCharacterItemDefinition* InCID);                                                      // [0xc02d55c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/AISpawner.AISpawnerPreviewerComponent.SetActorForPreview
-	// void SetActorForPreview(class UClass* InActorClass);                                                                     // [0xab73b34] Final|Native|Protected|BlueprintCallable 
+	// void SetActorForPreview(class UClass* InActorClass);                                                                     // [0xc02d404] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/AISpawner.AISpawnerPreviewerComponent.ClearCIDPreview
-	// void ClearCIDPreview();                                                                                                  // [0xab73b20] Final|Native|Protected|BlueprintCallable 
+	// void ClearCIDPreview();                                                                                                  // [0xc02d3f0] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/AISpawner.AISpawnerPreviewerComponent.ClearActorPreview
-	// void ClearActorPreview();                                                                                                // [0xab73b20] Final|Native|Protected|BlueprintCallable 
+	// void ClearActorPreview();                                                                                                // [0xc02d3f0] Final|Native|Protected|BlueprintCallable 
 };
 

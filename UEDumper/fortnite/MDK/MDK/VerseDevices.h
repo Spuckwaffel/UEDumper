@@ -50,9 +50,9 @@ public:
 
 	/// Functions
 	// Function /Script/VerseDevices.ScriptDevice.SetEnabled
-	// void SetEnabled(bool bInEnabled);                                                                                        // [0xa0deee8] Final|Native|Protected|BlueprintCallable 
+	// void SetEnabled(bool bInEnabled);                                                                                        // [0xadb860c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/VerseDevices.ScriptDevice.BP_SetVisibility
-	// void BP_SetVisibility(bool bVisible);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_SetVisibility(bool bVisible);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/VerseDevices.VerseMovableObjectBase

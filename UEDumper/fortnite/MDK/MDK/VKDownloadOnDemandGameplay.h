@@ -25,7 +25,7 @@ public:
 
 	/// Functions
 	// Function /Script/VKDownloadOnDemandGameplay.DownloadOnDemandComponent.HandleMnemonicsFromValkyriePaletteProviderReceived
-	// void HandleMnemonicsFromValkyriePaletteProviderReceived(TArray<FString>& Mnemonics);                                     // [0xacf5ba4] Final|Native|Private|HasOutParms 
+	// void HandleMnemonicsFromValkyriePaletteProviderReceived(TArray<FString>& Mnemonics);                                     // [0xc45986c] Final|Native|Private|HasOutParms 
 };
 
 /// Class /Script/VKDownloadOnDemandGameplay.DownloadOnDemandPlot

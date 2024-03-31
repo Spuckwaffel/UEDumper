@@ -29,9 +29,9 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigShapeLibraryLink.SetShapeLibrary
-	// void SetShapeLibrary(class UControlRigShapeLibrary* InShapeLibrary);                                                     // [0x778f460] Final|Native|Public|BlueprintCallable 
+	// void SetShapeLibrary(class UControlRigShapeLibrary* InShapeLibrary);                                                     // [0x7b540e0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeLibraryLink.GetShapeLibrary
-	// class UControlRigShapeLibrary* GetShapeLibrary();                                                                        // [0x70fa334] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UControlRigShapeLibrary* GetShapeLibrary();                                                                        // [0x73a6cf0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ControlRig.ControlRig
@@ -60,35 +60,35 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRig.SupportsBackwardsSolve
-	// bool SupportsBackwardsSolve();                                                                                           // [0x77d30dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SupportsBackwardsSolve();                                                                                           // [0x7ba42f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.SetInteractionRigClass
-	// void SetInteractionRigClass(class UClass* InInteractionRigClass);                                                        // [0x66eea34] Final|Native|Public|BlueprintCallable 
+	// void SetInteractionRigClass(class UClass* InInteractionRigClass);                                                        // [0x66ce800] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRig.SetInteractionRig
-	// void SetInteractionRig(class UControlRig* InInteractionRig);                                                             // [0x6414600] Final|Native|Public|BlueprintCallable 
+	// void SetInteractionRig(class UControlRig* InInteractionRig);                                                             // [0x63b1a60] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRig.SelectControl
-	// void SelectControl(FName& InControlName, bool bSelect);                                                                  // [0x77d0510] Native|Public|HasOutParms|BlueprintCallable 
+	// void SelectControl(FName& InControlName, bool bSelect);                                                                  // [0x7ba0f38] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRig.RequestConstruction
-	// void RequestConstruction();                                                                                              // [0x77d04e8] Final|Native|Public|BlueprintCallable 
+	// void RequestConstruction();                                                                                              // [0x7ba0f10] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRig.OnControlSelectedBP__DelegateSignature
-	// void OnControlSelectedBP__DelegateSignature(class UControlRig* Rig, FRigControlElement& Control, bool bSelected);        // [0x18a39e4] MulticastDelegate|Public|Delegate|HasOutParms 
+	// void OnControlSelectedBP__DelegateSignature(class UControlRig* Rig, FRigControlElement& Control, bool bSelected);        // [0x186becc] MulticastDelegate|Public|Delegate|HasOutParms 
 	// Function /Script/ControlRig.ControlRig.IsControlSelected
-	// bool IsControlSelected(FName& InControlName);                                                                            // [0x77cf73c] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool IsControlSelected(FName& InControlName);                                                                            // [0x7b9f0bc] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.GetInteractionRigClass
-	// class UClass* GetInteractionRigClass();                                                                                  // [0x77cf50c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UClass* GetInteractionRigClass();                                                                                  // [0x7b9edc4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.GetInteractionRig
-	// class UControlRig* GetInteractionRig();                                                                                  // [0x69f1ed4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UControlRig* GetInteractionRig();                                                                                  // [0x6a43348] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.GetHostingActor
-	// class AActor* GetHostingActor();                                                                                         // [0x77cf2ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AActor* GetHostingActor();                                                                                         // [0x7b9ea54] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.GetHierarchy
-	// class URigHierarchy* GetHierarchy();                                                                                     // [0x2f3a9a4] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// class URigHierarchy* GetHierarchy();                                                                                     // [0x31ca3a8] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRig.FindControlRigs
-	// TArray<UControlRig*> FindControlRigs(class UObject* Outer, class UClass* OptionalClass);                                 // [0x77ce5dc] Final|Native|Static|Public|BlueprintCallable 
+	// TArray<UControlRig*> FindControlRigs(class UObject* Outer, class UClass* OptionalClass);                                 // [0x7b9d808] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRig.CurrentControlSelection
-	// TArray<FName> CurrentControlSelection();                                                                                 // [0x77ce008] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> CurrentControlSelection();                                                                                 // [0x7b9cc50] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.CreateTransformableControlHandle
-	// class UTransformableControlHandle* CreateTransformableControlHandle(FName& ControlName);                                 // [0x77cdf70] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UTransformableControlHandle* CreateTransformableControlHandle(FName& ControlName);                                 // [0x7b9cbb8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRig.ClearControlSelection
-	// bool ClearControlSelection();                                                                                            // [0x77cd884] Native|Public|BlueprintCallable 
+	// bool ClearControlSelection();                                                                                            // [0x7b9bde4] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ModularRig
@@ -127,353 +127,353 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.RigHierarchy.UnsetCurveValueByIndex
-	// void UnsetCurveValueByIndex(int32_t InElementIndex, bool bSetupUndo);                                                    // [0x77910a4] Final|Native|Public|BlueprintCallable 
+	// void UnsetCurveValueByIndex(int32_t InElementIndex, bool bSetupUndo);                                                    // [0x7b55398] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.UnsetCurveValue
-	// void UnsetCurveValue(FRigElementKey InKey, bool bSetupUndo);                                                             // [0x7790e84] Final|Native|Public|BlueprintCallable 
+	// void UnsetCurveValue(FRigElementKey InKey, bool bSetupUndo);                                                             // [0x7b55248] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SwitchToWorldSpace
-	// bool SwitchToWorldSpace(FRigElementKey InChild, bool bInitial, bool bAffectChildren);                                    // [0x7790b90] Final|Native|Public|BlueprintCallable 
+	// bool SwitchToWorldSpace(FRigElementKey InChild, bool bInitial, bool bAffectChildren);                                    // [0x7b55060] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SwitchToParent
-	// bool SwitchToParent(FRigElementKey InChild, FRigElementKey InParent, bool bInitial, bool bAffectChildren);               // [0x77907bc] Final|Native|Public|BlueprintCallable 
+	// bool SwitchToParent(FRigElementKey InChild, FRigElementKey InParent, bool bInitial, bool bAffectChildren);               // [0x7b54e0c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SwitchToDefaultParent
-	// bool SwitchToDefaultParent(FRigElementKey InChild, bool bInitial, bool bAffectChildren);                                 // [0x77904c8] Final|Native|Public|BlueprintCallable 
+	// bool SwitchToDefaultParent(FRigElementKey InChild, bool bInitial, bool bAffectChildren);                                 // [0x7b54c38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SortKeys
-	// TArray<FRigElementKey> SortKeys(TArray<FRigElementKey>& InKeys);                                                         // [0x7790400] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> SortKeys(TArray<FRigElementKey>& InKeys);                                                         // [0x7b54b70] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.SetVectorMetadata
-	// bool SetVectorMetadata(FRigElementKey InItem, FName InMetadataName, FVector InValue);                                    // [0x7790108] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// bool SetVectorMetadata(FRigElementKey InItem, FName InMetadataName, FVector InValue);                                    // [0x7b54990] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetVectorArrayMetadata
-	// bool SetVectorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FVector> InValue);                       // [0x778fdcc] Final|Native|Public|BlueprintCallable 
+	// bool SetVectorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FVector> InValue);                       // [0x7b54774] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetTransformMetadata
-	// bool SetTransformMetadata(FRigElementKey InItem, FName InMetadataName, FTransform InValue);                              // [0x778fa38] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// bool SetTransformMetadata(FRigElementKey InItem, FName InMetadataName, FTransform InValue);                              // [0x7b54510] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetTransformArrayMetadata
-	// bool SetTransformArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FTransform> InValue);                 // [0x778f6fc] Final|Native|Public|BlueprintCallable 
+	// bool SetTransformArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FTransform> InValue);                 // [0x7b542f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetTag
-	// bool SetTag(FRigElementKey InItem, FName InTag);                                                                         // [0x778f4e0] Final|Native|Public|BlueprintCallable 
+	// bool SetTag(FRigElementKey InItem, FName InTag);                                                                         // [0x7b541a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetRotatorMetadata
-	// bool SetRotatorMetadata(FRigElementKey InItem, FName InMetadataName, FRotator InValue);                                  // [0x778f168] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// bool SetRotatorMetadata(FRigElementKey InItem, FName InMetadataName, FRotator InValue);                                  // [0x7b53f00] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetRotatorArrayMetadata
-	// bool SetRotatorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FRotator> InValue);                     // [0x778ee48] Final|Native|Public|BlueprintCallable 
+	// bool SetRotatorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FRotator> InValue);                     // [0x7b53d00] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetRigElementKeyMetadata
-	// bool SetRigElementKeyMetadata(FRigElementKey InItem, FName InMetadataName, FRigElementKey InValue);                      // [0x778eb60] Final|Native|Public|BlueprintCallable 
+	// bool SetRigElementKeyMetadata(FRigElementKey InItem, FName InMetadataName, FRigElementKey InValue);                      // [0x7b53b3c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetRigElementKeyArrayMetadata
-	// bool SetRigElementKeyArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FRigElementKey> InValue);         // [0x778e840] Final|Native|Public|BlueprintCallable 
+	// bool SetRigElementKeyArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FRigElementKey> InValue);         // [0x7b5393c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetQuatMetadata
-	// bool SetQuatMetadata(FRigElementKey InItem, FName InMetadataName, FQuat InValue);                                        // [0x778e54c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// bool SetQuatMetadata(FRigElementKey InItem, FName InMetadataName, FQuat InValue);                                        // [0x7b53760] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetQuatArrayMetadata
-	// bool SetQuatArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FQuat> InValue);                           // [0x778e22c] Final|Native|Public|BlueprintCallable 
+	// bool SetQuatArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FQuat> InValue);                           // [0x7b53560] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetPose_ForBlueprint
-	// void SetPose_ForBlueprint(FRigPose InPose);                                                                              // [0x778e088] Final|Native|Public|BlueprintCallable 
+	// void SetPose_ForBlueprint(FRigPose InPose);                                                                              // [0x7b53428] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetParentWeightArray
-	// bool SetParentWeightArray(FRigElementKey InChild, TArray<FRigElementWeight> InWeights, bool bInitial, bool bAffectChildren); // [0x778dc88] Final|Native|Public|BlueprintCallable 
+	// bool SetParentWeightArray(FRigElementKey InChild, TArray<FRigElementWeight> InWeights, bool bInitial, bool bAffectChildren); // [0x7b53180] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetParentWeight
-	// bool SetParentWeight(FRigElementKey InChild, FRigElementKey InParent, FRigElementWeight InWeight, bool bInitial, bool bAffectChildren); // [0x778d7c0] Final|Native|Public|BlueprintCallable 
+	// bool SetParentWeight(FRigElementKey InChild, FRigElementKey InParent, FRigElementWeight InWeight, bool bInitial, bool bAffectChildren); // [0x7b52e90] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetNameMetadata
-	// bool SetNameMetadata(FRigElementKey InItem, FName InMetadataName, FName InValue);                                        // [0x778d4dc] Final|Native|Public|BlueprintCallable 
+	// bool SetNameMetadata(FRigElementKey InItem, FName InMetadataName, FName InValue);                                        // [0x7b52cd0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetNameArrayMetadata
-	// bool SetNameArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FName> InValue);                           // [0x778d1a4] Final|Native|Public|BlueprintCallable 
+	// bool SetNameArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FName> InValue);                           // [0x7b52ab8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetLocalTransformByIndex
-	// void SetLocalTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x778cc00] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetLocalTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b526d0] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetLocalTransform
-	// void SetLocalTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x778c5cc] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetLocalTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b522e4] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetLinearColorMetadata
-	// bool SetLinearColorMetadata(FRigElementKey InItem, FName InMetadataName, FLinearColor InValue);                          // [0x778c2dc] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// bool SetLinearColorMetadata(FRigElementKey InItem, FName InMetadataName, FLinearColor InValue);                          // [0x7b52110] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetLinearColorArrayMetadata
-	// bool SetLinearColorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FLinearColor> InValue);             // [0x778bfbc] Final|Native|Public|BlueprintCallable 
+	// bool SetLinearColorArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<FLinearColor> InValue);             // [0x7b51f10] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetInt32Metadata
-	// bool SetInt32Metadata(FRigElementKey InItem, FName InMetadataName, int32_t InValue);                                     // [0x778bcd8] Final|Native|Public|BlueprintCallable 
+	// bool SetInt32Metadata(FRigElementKey InItem, FName InMetadataName, int32_t InValue);                                     // [0x7b51d50] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetInt32ArrayMetadata
-	// bool SetInt32ArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<int32_t> InValue);                        // [0x778b9a0] Final|Native|Public|BlueprintCallable 
+	// bool SetInt32ArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<int32_t> InValue);                        // [0x7b51b38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetGlobalTransformByIndex
-	// void SetGlobalTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommand); // [0x778b3fc] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetGlobalTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommand); // [0x7b51750] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetGlobalTransform
-	// void SetGlobalTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommand); // [0x778adc8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetGlobalTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommand); // [0x7b51364] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetFloatMetadata
-	// bool SetFloatMetadata(FRigElementKey InItem, FName InMetadataName, float InValue);                                       // [0x778aae4] Final|Native|Public|BlueprintCallable 
+	// bool SetFloatMetadata(FRigElementKey InItem, FName InMetadataName, float InValue);                                       // [0x7b511a4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetFloatArrayMetadata
-	// bool SetFloatArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<float> InValue);                          // [0x778a7ac] Final|Native|Public|BlueprintCallable 
+	// bool SetFloatArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<float> InValue);                          // [0x7b50f8c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetCurveValueByIndex
-	// void SetCurveValueByIndex(int32_t InElementIndex, float InValue, bool bSetupUndo);                                       // [0x778a6ac] Final|Native|Public|BlueprintCallable 
+	// void SetCurveValueByIndex(int32_t InElementIndex, float InValue, bool bSetupUndo);                                       // [0x7b50dcc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetCurveValue
-	// void SetCurveValue(FRigElementKey InKey, float InValue, bool bSetupUndo);                                                // [0x778a3d0] Final|Native|Public|BlueprintCallable 
+	// void SetCurveValue(FRigElementKey InKey, float InValue, bool bSetupUndo);                                                // [0x7b50c14] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlVisibilityByIndex
-	// void SetControlVisibilityByIndex(int32_t InElementIndex, bool bVisibility);                                              // [0x778a30c] Final|Native|Public|BlueprintCallable 
+	// void SetControlVisibilityByIndex(int32_t InElementIndex, bool bVisibility);                                              // [0x7b50ad4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlVisibility
-	// void SetControlVisibility(FRigElementKey InKey, bool bVisibility);                                                       // [0x778a0e4] Final|Native|Public|BlueprintCallable 
+	// void SetControlVisibility(FRigElementKey InKey, bool bVisibility);                                                       // [0x7b50978] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlValueByIndex
-	// void SetControlValueByIndex(int32_t InElementIndex, FRigControlValue InValue, ERigControlValueType InValueType, bool bSetupUndo, bool bPrintPythonCommands); // [0x7789c5c] Final|Native|Public|BlueprintCallable 
+	// void SetControlValueByIndex(int32_t InElementIndex, FRigControlValue InValue, ERigControlValueType InValueType, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b5063c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlValue
-	// void SetControlValue(FRigElementKey InKey, FRigControlValue InValue, ERigControlValueType InValueType, bool bSetupUndo, bool bPrintPythonCommands); // [0x7789720] Final|Native|Public|BlueprintCallable 
+	// void SetControlValue(FRigElementKey InKey, FRigControlValue InValue, ERigControlValueType InValueType, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b502fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlShapeTransformByIndex
-	// void SetControlShapeTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bSetupUndo);    // [0x7789354] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlShapeTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bSetupUndo);    // [0x7b50018] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlShapeTransform
-	// void SetControlShapeTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bSetupUndo);             // [0x7788eec] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlShapeTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bSetupUndo);             // [0x7b4fd2c] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlSettingsByIndex
-	// void SetControlSettingsByIndex(int32_t InElementIndex, FRigControlSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x7788a84] Final|Native|Public|BlueprintCallable 
+	// void SetControlSettingsByIndex(int32_t InElementIndex, FRigControlSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x7b4fa24] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlSettings
-	// void SetControlSettings(FRigElementKey InKey, FRigControlSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x778857c] Final|Native|Public|BlueprintCallable 
+	// void SetControlSettings(FRigElementKey InKey, FRigControlSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x7b4f6e4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredRotatorByIndex
-	// void SetControlPreferredRotatorByIndex(int32_t InElementIndex, FRotator& InRotator, bool bInitial, bool bFixEulerFlips); // [0x77883a4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetControlPreferredRotatorByIndex(int32_t InElementIndex, FRotator& InRotator, bool bInitial, bool bFixEulerFlips); // [0x7b4f4d4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredRotator
-	// void SetControlPreferredRotator(FRigElementKey InKey, FRotator& InRotator, bool bInitial, bool bFixEulerFlips);          // [0x7788004] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetControlPreferredRotator(FRigElementKey InKey, FRotator& InRotator, bool bInitial, bool bFixEulerFlips);          // [0x7b4f2ac] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredRotationOrderByIndex
-	// void SetControlPreferredRotationOrderByIndex(int32_t InElementIndex, EEulerRotationOrder InRotationOrder);               // [0x7787f40] Final|Native|Public|BlueprintCallable 
+	// void SetControlPreferredRotationOrderByIndex(int32_t InElementIndex, EEulerRotationOrder InRotationOrder);               // [0x7b4f170] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredRotationOrder
-	// void SetControlPreferredRotationOrder(FRigElementKey InKey, EEulerRotationOrder InRotationOrder);                        // [0x7787d1c] Final|Native|Public|BlueprintCallable 
+	// void SetControlPreferredRotationOrder(FRigElementKey InKey, EEulerRotationOrder InRotationOrder);                        // [0x7b4f018] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredEulerAnglesByIndex
-	// void SetControlPreferredEulerAnglesByIndex(int32_t InElementIndex, FVector& InEulerAngles, EEulerRotationOrder InRotationOrder, bool bInitial, bool bFixEulerFlips); // [0x7787a78] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetControlPreferredEulerAnglesByIndex(int32_t InElementIndex, FVector& InEulerAngles, EEulerRotationOrder InRotationOrder, bool bInitial, bool bFixEulerFlips); // [0x7b4ed50] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlPreferredEulerAngles
-	// void SetControlPreferredEulerAngles(FRigElementKey InKey, FVector& InEulerAngles, EEulerRotationOrder InRotationOrder, bool bInitial, bool bFixEulerFlips); // [0x77875c4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetControlPreferredEulerAngles(FRigElementKey InKey, FVector& InEulerAngles, EEulerRotationOrder InRotationOrder, bool bInitial, bool bFixEulerFlips); // [0x7b4ea6c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlOffsetTransformByIndex
-	// void SetControlOffsetTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x7787020] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlOffsetTransformByIndex(int32_t InElementIndex, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b4e684] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetControlOffsetTransform
-	// void SetControlOffsetTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x77869ec] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlOffsetTransform(FRigElementKey InKey, FTransform InTransform, bool bInitial, bool bAffectChildren, bool bSetupUndo, bool bPrintPythonCommands); // [0x7b4e298] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetConnectorSettingsByIndex
-	// void SetConnectorSettingsByIndex(int32_t InElementIndex, FRigConnectorSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x77865b8] Final|Native|Public|BlueprintCallable 
+	// void SetConnectorSettingsByIndex(int32_t InElementIndex, FRigConnectorSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x7b4dfb0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetConnectorSettings
-	// void SetConnectorSettings(FRigElementKey InKey, FRigConnectorSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x77860f0] Final|Native|Public|BlueprintCallable 
+	// void SetConnectorSettings(FRigElementKey InKey, FRigConnectorSettings InSettings, bool bSetupUndo, bool bForce, bool bPrintPythonCommands); // [0x7b4dcc0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetBoolMetadata
-	// bool SetBoolMetadata(FRigElementKey InItem, FName InMetadataName, bool InValue);                                         // [0x7785e08] Final|Native|Public|BlueprintCallable 
+	// bool SetBoolMetadata(FRigElementKey InItem, FName InMetadataName, bool InValue);                                         // [0x7b4db00] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SetBoolArrayMetadata
-	// bool SetBoolArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<bool> InValue);                            // [0x7785ad4] Final|Native|Public|BlueprintCallable 
+	// bool SetBoolArrayMetadata(FRigElementKey InItem, FName InMetadataName, TArray<bool> InValue);                            // [0x7b4d8ec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.SendAutoKeyEvent
-	// void SendAutoKeyEvent(FRigElementKey InElement, float InOffsetInSeconds, bool bAsynchronous);                            // [0x77857f0] Final|Native|Public|BlueprintCallable 
+	// void SendAutoKeyEvent(FRigElementKey InElement, float InOffsetInSeconds, bool bAsynchronous);                            // [0x7b4d72c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.RestoreSocketsFromStates
-	// TArray<FRigElementKey> RestoreSocketsFromStates(TArray<FRigSocketState> InStates, bool bSetupUndoRedo);                  // [0x77856e0] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> RestoreSocketsFromStates(TArray<FRigSocketState> InStates, bool bSetupUndoRedo);                  // [0x7b4d59c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.RestoreConnectorsFromStates
-	// TArray<FRigElementKey> RestoreConnectorsFromStates(TArray<FRigConnectorState> InStates, bool bSetupUndoRedo);            // [0x778558c] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> RestoreConnectorsFromStates(TArray<FRigConnectorState> InStates, bool bSetupUndoRedo);            // [0x7b4d3c4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.ResetToDefault
-	// void ResetToDefault();                                                                                                   // [0x7785578] Final|Native|Public|BlueprintCallable 
+	// void ResetToDefault();                                                                                                   // [0x7b4d3b0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.ResetPoseToInitial
-	// void ResetPoseToInitial(ERigElementType InTypeFilter);                                                                   // [0x77854f8] Final|Native|Public|BlueprintCallable 
+	// void ResetPoseToInitial(ERigElementType InTypeFilter);                                                                   // [0x7b4d2f0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.ResetCurveValues
-	// void ResetCurveValues();                                                                                                 // [0x77854a0] Final|Native|Public|BlueprintCallable 
+	// void ResetCurveValues();                                                                                                 // [0x7b4d298] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.Reset
-	// void Reset();                                                                                                            // [0x778548c] Final|Native|Public|BlueprintCallable 
+	// void Reset();                                                                                                            // [0x7b4d284] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.RemoveMetadata
-	// bool RemoveMetadata(FRigElementKey InItem, FName InMetadataName);                                                        // [0x7785270] Final|Native|Public|BlueprintCallable 
+	// bool RemoveMetadata(FRigElementKey InItem, FName InMetadataName);                                                        // [0x7b4d130] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.RemoveAllMetadata
-	// bool RemoveAllMetadata(FRigElementKey InItem);                                                                           // [0x7785124] Final|Native|Public|BlueprintCallable 
+	// bool RemoveAllMetadata(FRigElementKey InItem);                                                                           // [0x7b4d054] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.Num
-	// int32_t Num();                                                                                                           // [0x3eadac8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t Num();                                                                                                           // [0x3da1594] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromVector2D
-	// FRigControlValue MakeControlValueFromVector2D(FVector2D InValue);                                                        // [0x7784db8] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromVector2D(FVector2D InValue);                                                        // [0x7b4cdc0] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromVector
-	// FRigControlValue MakeControlValueFromVector(FVector InValue);                                                            // [0x7784f68] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromVector(FVector InValue);                                                            // [0x7b4cf04] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromTransformNoScale
-	// FRigControlValue MakeControlValueFromTransformNoScale(FTransformNoScale InValue);                                        // [0x7784bec] Final|Native|Static|Public|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromTransformNoScale(FTransformNoScale InValue);                                        // [0x7b4cc64] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromTransform
-	// FRigControlValue MakeControlValueFromTransform(FTransform InValue);                                                      // [0x77849dc] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromTransform(FTransform InValue);                                                      // [0x7b4ca78] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromRotator
-	// FRigControlValue MakeControlValueFromRotator(FRotator InValue);                                                          // [0x7784848] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromRotator(FRotator InValue);                                                          // [0x7b4c950] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromInt
-	// FRigControlValue MakeControlValueFromInt(int32_t InValue);                                                               // [0x7784754] Final|Native|Static|Public|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromInt(int32_t InValue);                                                               // [0x7b4c81c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromFloat
-	// FRigControlValue MakeControlValueFromFloat(float InValue);                                                               // [0x778465c] Final|Native|Static|Public|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromFloat(float InValue);                                                               // [0x7b4c6e0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromEulerTransform
-	// FRigControlValue MakeControlValueFromEulerTransform(FEulerTransform InValue);                                            // [0x7784470] Final|Native|Static|Public|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromEulerTransform(FEulerTransform InValue);                                            // [0x7b4c564] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.MakeControlValueFromBool
-	// FRigControlValue MakeControlValueFromBool(bool InValue);                                                                 // [0x7784364] Final|Native|Static|Public|BlueprintCallable 
+	// FRigControlValue MakeControlValueFromBool(bool InValue);                                                                 // [0x7b4c418] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.IsValidIndex
-	// bool IsValidIndex(int32_t InElementIndex);                                                                               // [0x77842d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsValidIndex(int32_t InElementIndex);                                                                               // [0x7b4c340] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsSelectedByIndex
-	// bool IsSelectedByIndex(int32_t InIndex);                                                                                 // [0x7784220] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSelectedByIndex(int32_t InIndex);                                                                                 // [0x7b4c250] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsSelected
-	// bool IsSelected(FRigElementKey InKey);                                                                                   // [0x77840e0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSelected(FRigElementKey InKey);                                                                                   // [0x7b4c17c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsProcedural
-	// bool IsProcedural(FRigElementKey& InKey);                                                                                // [0x7784038] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool IsProcedural(FRigElementKey& InKey);                                                                                // [0x7b4c0d4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsParentedTo
-	// bool IsParentedTo(FRigElementKey InChild, FRigElementKey InParent);                                                      // [0x7783e18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsParentedTo(FRigElementKey InChild, FRigElementKey InParent);                                                      // [0x7b4bf7c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsCurveValueSetByIndex
-	// bool IsCurveValueSetByIndex(int32_t InElementIndex);                                                                     // [0x7783d8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsCurveValueSetByIndex(int32_t InElementIndex);                                                                     // [0x7b4beb0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsCurveValueSet
-	// bool IsCurveValueSet(FRigElementKey InKey);                                                                              // [0x7783c40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsCurveValueSet(FRigElementKey InKey);                                                                              // [0x7b4bdd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.IsControllerAvailable
-	// bool IsControllerAvailable();                                                                                            // [0x7783c28] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsControllerAvailable();                                                                                            // [0x7b4bdbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.HasTag
-	// bool HasTag(FRigElementKey InItem, FName InTag);                                                                         // [0x7783a0c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasTag(FRigElementKey InItem, FName InTag);                                                                         // [0x7b4bc68] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetVectorMetadata
-	// FVector GetVectorMetadata(FRigElementKey InItem, FName InMetadataName, FVector DefaultValue);                            // [0x77836f4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetVectorMetadata(FRigElementKey InItem, FName InMetadataName, FVector DefaultValue);                            // [0x7b4ba68] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetVectorFromControlValue
-	// FVector GetVectorFromControlValue(FRigControlValue InValue);                                                             // [0x7783598] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FVector GetVectorFromControlValue(FRigControlValue InValue);                                                             // [0x7b4b974] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetVectorArrayMetadata
-	// TArray<FVector> GetVectorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                     // [0x7783368] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FVector> GetVectorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                     // [0x7b4b80c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetVector2DFromControlValue
-	// FVector2D GetVector2DFromControlValue(FRigControlValue InValue);                                                         // [0x7783218] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FVector2D GetVector2DFromControlValue(FRigControlValue InValue);                                                         // [0x7b4b728] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetTransformNoScaleFromControlValue
-	// FTransformNoScale GetTransformNoScaleFromControlValue(FRigControlValue InValue);                                         // [0x7783054] Final|Native|Static|Public|BlueprintCallable 
+	// FTransformNoScale GetTransformNoScaleFromControlValue(FRigControlValue InValue);                                         // [0x7b4b5d4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetTransformMetadata
-	// FTransform GetTransformMetadata(FRigElementKey InItem, FName InMetadataName, FTransform DefaultValue);                   // [0x7782c88] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetTransformMetadata(FRigElementKey InItem, FName InMetadataName, FTransform DefaultValue);                   // [0x7b4b338] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetTransformFromControlValue
-	// FTransform GetTransformFromControlValue(FRigControlValue InValue);                                                       // [0x7782a94] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FTransform GetTransformFromControlValue(FRigControlValue InValue);                                                       // [0x7b4b1b4] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetTransformArrayMetadata
-	// TArray<FTransform> GetTransformArrayMetadata(FRigElementKey InItem, FName InMetadataName);                               // [0x7782864] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FTransform> GetTransformArrayMetadata(FRigElementKey InItem, FName InMetadataName);                               // [0x7b4b04c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetTags
-	// TArray<FName> GetTags(FRigElementKey InItem);                                                                            // [0x778270c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetTags(FRigElementKey InItem);                                                                            // [0x7b4af5c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetSocketStates
-	// TArray<FRigSocketState> GetSocketStates();                                                                               // [0x778266c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigSocketState> GetSocketStates();                                                                               // [0x7b4aebc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetSocketKeys
-	// TArray<FRigElementKey> GetSocketKeys(bool bTraverse);                                                                    // [0x77825c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetSocketKeys(bool bTraverse);                                                                    // [0x7b4add0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetSelectedKeys
-	// TArray<FRigElementKey> GetSelectedKeys(ERigElementType InTypeFilter);                                                    // [0x7782520] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetSelectedKeys(ERigElementType InTypeFilter);                                                    // [0x7b4acec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRuleManager
-	// class UModularRigRuleManager* GetRuleManager(bool bCreateIfNeeded);                                                      // [0x7782490] Final|Native|Public|BlueprintCallable 
+	// class UModularRigRuleManager* GetRuleManager(bool bCreateIfNeeded);                                                      // [0x7b4ac1c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetRotatorMetadata
-	// FRotator GetRotatorMetadata(FRigElementKey InItem, FName InMetadataName, FRotator DefaultValue);                         // [0x7782178] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FRotator GetRotatorMetadata(FRigElementKey InItem, FName InMetadataName, FRotator DefaultValue);                         // [0x7b4aa1c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRotatorFromControlValue
-	// FRotator GetRotatorFromControlValue(FRigControlValue InValue);                                                           // [0x7782010] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FRotator GetRotatorFromControlValue(FRigControlValue InValue);                                                           // [0x7b4a920] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetRotatorArrayMetadata
-	// TArray<FRotator> GetRotatorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                   // [0x7781de0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRotator> GetRotatorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                   // [0x7b4a760] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRootElementKeys
-	// TArray<FRigElementKey> GetRootElementKeys();                                                                             // [0x7781d7c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetRootElementKeys();                                                                             // [0x7b4a6fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRigidBodyKeys
-	// TArray<FRigElementKey> GetRigidBodyKeys(bool bTraverse);                                                                 // [0x7781cd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetRigidBodyKeys(bool bTraverse);                                                                 // [0x7b4a610] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRigElementKeyMetadata
-	// FRigElementKey GetRigElementKeyMetadata(FRigElementKey InItem, FName InMetadataName, FRigElementKey DefaultValue);       // [0x77819dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementKey GetRigElementKeyMetadata(FRigElementKey InItem, FName InMetadataName, FRigElementKey DefaultValue);       // [0x7b4a440] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetRigElementKeyArrayMetadata
-	// TArray<FRigElementKey> GetRigElementKeyArrayMetadata(FRigElementKey InItem, FName InMetadataName);                       // [0x77817ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetRigElementKeyArrayMetadata(FRigElementKey InItem, FName InMetadataName);                       // [0x7b4a280] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetReferenceKeys
-	// TArray<FRigElementKey> GetReferenceKeys(bool bTraverse);                                                                 // [0x7781704] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetReferenceKeys(bool bTraverse);                                                                 // [0x7b4a194] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetQuatMetadata
-	// FQuat GetQuatMetadata(FRigElementKey InItem, FName InMetadataName, FQuat DefaultValue);                                  // [0x77813f0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FQuat GetQuatMetadata(FRigElementKey InItem, FName InMetadataName, FQuat DefaultValue);                                  // [0x7b49f98] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetQuatArrayMetadata
-	// TArray<FQuat> GetQuatArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                         // [0x77811c0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FQuat> GetQuatArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                         // [0x7b49dbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetPreviousParent
-	// FRigElementKey GetPreviousParent(FRigElementKey& InKey);                                                                 // [0x7781128] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementKey GetPreviousParent(FRigElementKey& InKey);                                                                 // [0x7b49d24] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetPreviousName
-	// FName GetPreviousName(FRigElementKey& InKey);                                                                            // [0x7781094] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FName GetPreviousName(FRigElementKey& InKey);                                                                            // [0x7b49c90] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetPose
-	// FRigPose GetPose(bool bInitial, bool bIncludeTransientControls);                                                         // [0x7780f8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigPose GetPose(bool bInitial, bool bIncludeTransientControls);                                                         // [0x7b49afc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetParentWeightArray
-	// TArray<FRigElementWeight> GetParentWeightArray(FRigElementKey InChild, bool bInitial);                                   // [0x7780b24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementWeight> GetParentWeightArray(FRigElementKey InChild, bool bInitial);                                   // [0x7b49824] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetParentWeight
-	// FRigElementWeight GetParentWeight(FRigElementKey InChild, FRigElementKey InParent, bool bInitial);                       // [0x7780820] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementWeight GetParentWeight(FRigElementKey InChild, FRigElementKey InParent, bool bInitial);                       // [0x7b49620] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetParentTransformByIndex
-	// FTransform GetParentTransformByIndex(int32_t InElementIndex, bool bInitial);                                             // [0x7780700] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetParentTransformByIndex(int32_t InElementIndex, bool bInitial);                                             // [0x7b49484] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetParentTransform
-	// FTransform GetParentTransform(FRigElementKey InKey, bool bInitial);                                                      // [0x7780498] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetParentTransform(FRigElementKey InKey, bool bInitial);                                                      // [0x7b492e4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetParents
-	// TArray<FRigElementKey> GetParents(FRigElementKey InKey, bool bRecursive);                                                // [0x7780d58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetParents(FRigElementKey InKey, bool bRecursive);                                                // [0x7b49990] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNumberOfParents
-	// int32_t GetNumberOfParents(FRigElementKey InKey);                                                                        // [0x7780354] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumberOfParents(FRigElementKey InKey);                                                                        // [0x7b4920c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNullKeys
-	// TArray<FRigElementKey> GetNullKeys(bool bTraverse);                                                                      // [0x77802ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetNullKeys(bool bTraverse);                                                                      // [0x7b49120] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNameSpaceFName
-	// FName GetNameSpaceFName(FRigElementKey InItem);                                                                          // [0x7780170] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetNameSpaceFName(FRigElementKey InItem);                                                                          // [0x7b49054] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNameSpace
-	// FString GetNameSpace(FRigElementKey InItem);                                                                             // [0x7780018] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetNameSpace(FRigElementKey InItem);                                                                             // [0x7b48f6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNameMetadata
-	// FName GetNameMetadata(FRigElementKey InItem, FName InMetadataName, FName DefaultValue);                                  // [0x777fd28] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetNameMetadata(FRigElementKey InItem, FName InMetadataName, FName DefaultValue);                                  // [0x7b48da4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetNameArrayMetadata
-	// TArray<FName> GetNameArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                         // [0x777faf8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetNameArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                         // [0x7b48c3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetModulePathFName
-	// FName GetModulePathFName(FRigElementKey InItem);                                                                         // [0x777f9bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetModulePathFName(FRigElementKey InItem);                                                                         // [0x7b48b70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetModulePath
-	// FString GetModulePath(FRigElementKey InItem);                                                                            // [0x777f864] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetModulePath(FRigElementKey InItem);                                                                            // [0x7b48a88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetMetadataType
-	// ERigMetadataType GetMetadataType(FRigElementKey InItem, FName InMetadataName);                                           // [0x777f648] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ERigMetadataType GetMetadataType(FRigElementKey InItem, FName InMetadataName);                                           // [0x7b48934] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetMetadataNames
-	// TArray<FName> GetMetadataNames(FRigElementKey InItem);                                                                   // [0x777f4f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetMetadataNames(FRigElementKey InItem);                                                                   // [0x7b4884c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLocalTransformByIndex
-	// FTransform GetLocalTransformByIndex(int32_t InElementIndex, bool bInitial);                                              // [0x777f3dc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetLocalTransformByIndex(int32_t InElementIndex, bool bInitial);                                              // [0x7b486ac] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLocalTransform
-	// FTransform GetLocalTransform(FRigElementKey InKey, bool bInitial);                                                       // [0x777f180] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetLocalTransform(FRigElementKey InKey, bool bInitial);                                                       // [0x7b48508] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLocalIndex_ForBlueprint
-	// int32_t GetLocalIndex_ForBlueprint(FRigElementKey InKey);                                                                // [0x777f034] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetLocalIndex_ForBlueprint(FRigElementKey InKey);                                                                // [0x7b4842c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLocalControlShapeTransformByIndex
-	// FTransform GetLocalControlShapeTransformByIndex(int32_t InElementIndex, bool bInitial);                                  // [0x777ef20] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetLocalControlShapeTransformByIndex(int32_t InElementIndex, bool bInitial);                                  // [0x7b4828c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLocalControlShapeTransform
-	// FTransform GetLocalControlShapeTransform(FRigElementKey InKey, bool bInitial);                                           // [0x777ecbc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetLocalControlShapeTransform(FRigElementKey InKey, bool bInitial);                                           // [0x7b480ec] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLinearColorMetadata
-	// FLinearColor GetLinearColorMetadata(FRigElementKey InItem, FName InMetadataName, FLinearColor DefaultValue);             // [0x777e9c0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetLinearColorMetadata(FRigElementKey InItem, FName InMetadataName, FLinearColor DefaultValue);             // [0x7b47f08] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetLinearColorArrayMetadata
-	// TArray<FLinearColor> GetLinearColorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                           // [0x777e790] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FLinearColor> GetLinearColorArrayMetadata(FRigElementKey InItem, FName InMetadataName);                           // [0x7b47d48] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetKeys
-	// TArray<FRigElementKey> GetKeys(TArray<int32_t> InElementIndices);                                                        // [0x777e62c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetKeys(TArray<int32_t> InElementIndices);                                                        // [0x7b47ba4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetKey
-	// FRigElementKey GetKey(int32_t InElementIndex);                                                                           // [0x777e5a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementKey GetKey(int32_t InElementIndex);                                                                           // [0x7b47adc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetIntFromControlValue
-	// int32_t GetIntFromControlValue(FRigControlValue InValue);                                                                // [0x777e464] Final|Native|Static|Public|BlueprintCallable 
+	// int32_t GetIntFromControlValue(FRigControlValue InValue);                                                                // [0x7b47a0c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetInt32Metadata
-	// int32_t GetInt32Metadata(FRigElementKey InItem, FName InMetadataName, int32_t DefaultValue);                             // [0x777e180] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetInt32Metadata(FRigElementKey InItem, FName InMetadataName, int32_t DefaultValue);                             // [0x7b4784c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetInt32ArrayMetadata
-	// TArray<int32_t> GetInt32ArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                      // [0x777df50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<int32_t> GetInt32ArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                      // [0x7b476e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetIndex_ForBlueprint
-	// int32_t GetIndex_ForBlueprint(FRigElementKey InKey);                                                                     // [0x777de14] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetIndex_ForBlueprint(FRigElementKey InKey);                                                                     // [0x7b47614] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalTransformByIndex
-	// FTransform GetGlobalTransformByIndex(int32_t InElementIndex, bool bInitial);                                             // [0x777dd00] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalTransformByIndex(int32_t InElementIndex, bool bInitial);                                             // [0x7b47474] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalTransform
-	// FTransform GetGlobalTransform(FRigElementKey InKey, bool bInitial);                                                      // [0x777daa4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalTransform(FRigElementKey InKey, bool bInitial);                                                      // [0x7b472d0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalControlShapeTransformByIndex
-	// FTransform GetGlobalControlShapeTransformByIndex(int32_t InElementIndex, bool bInitial);                                 // [0x777d990] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalControlShapeTransformByIndex(int32_t InElementIndex, bool bInitial);                                 // [0x7b47130] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalControlShapeTransform
-	// FTransform GetGlobalControlShapeTransform(FRigElementKey InKey, bool bInitial);                                          // [0x777d72c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalControlShapeTransform(FRigElementKey InKey, bool bInitial);                                          // [0x7b46f90] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalControlOffsetTransformByIndex
-	// FTransform GetGlobalControlOffsetTransformByIndex(int32_t InElementIndex, bool bInitial);                                // [0x777d618] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalControlOffsetTransformByIndex(int32_t InElementIndex, bool bInitial);                                // [0x7b46df0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetGlobalControlOffsetTransform
-	// FTransform GetGlobalControlOffsetTransform(FRigElementKey InKey, bool bInitial);                                         // [0x777d3bc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalControlOffsetTransform(FRigElementKey InKey, bool bInitial);                                         // [0x7b46c4c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetFloatMetadata
-	// float GetFloatMetadata(FRigElementKey InItem, FName InMetadataName, float DefaultValue);                                 // [0x777d0d8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetFloatMetadata(FRigElementKey InItem, FName InMetadataName, float DefaultValue);                                 // [0x7b46a8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetFloatFromControlValue
-	// float GetFloatFromControlValue(FRigControlValue InValue);                                                                // [0x777cfa0] Final|Native|Static|Public|BlueprintCallable 
+	// float GetFloatFromControlValue(FRigControlValue InValue);                                                                // [0x7b469b8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetFloatArrayMetadata
-	// TArray<float> GetFloatArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                        // [0x777cd70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<float> GetFloatArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                        // [0x7b46850] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetFirstParent
-	// FRigElementKey GetFirstParent(FRigElementKey InKey);                                                                     // [0x777cc34] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementKey GetFirstParent(FRigElementKey InKey);                                                                     // [0x7b46784] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetEulerTransformFromControlValue
-	// FEulerTransform GetEulerTransformFromControlValue(FRigControlValue InValue);                                             // [0x777ca68] Final|Native|Static|Public|BlueprintCallable 
+	// FEulerTransform GetEulerTransformFromControlValue(FRigControlValue InValue);                                             // [0x7b46628] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetDefaultParent
-	// FRigElementKey GetDefaultParent(FRigElementKey InKey);                                                                   // [0x777c92c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigElementKey GetDefaultParent(FRigElementKey InKey);                                                                   // [0x7b4655c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetCurveValueByIndex
-	// float GetCurveValueByIndex(int32_t InElementIndex);                                                                      // [0x777c89c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurveValueByIndex(int32_t InElementIndex);                                                                      // [0x7b4648c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetCurveValue
-	// float GetCurveValue(FRigElementKey InKey);                                                                               // [0x777c750] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurveValue(FRigElementKey InKey);                                                                               // [0x7b463b0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetCurveKeys
-	// TArray<FRigElementKey> GetCurveKeys();                                                                                   // [0x777c70c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetCurveKeys();                                                                                   // [0x7b4636c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlValueByIndex
-	// FRigControlValue GetControlValueByIndex(int32_t InElementIndex, ERigControlValueType InValueType);                       // [0x777c54c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigControlValue GetControlValueByIndex(int32_t InElementIndex, ERigControlValueType InValueType);                       // [0x7b460dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlValue
-	// FRigControlValue GetControlValue(FRigElementKey InKey, ERigControlValueType InValueType);                                // [0x777c2d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigControlValue GetControlValue(FRigElementKey InKey, ERigControlValueType InValueType);                                // [0x7b45f18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredRotatorByIndex
-	// FRotator GetControlPreferredRotatorByIndex(int32_t InElementIndex, bool bInitial);                                       // [0x777c1f8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FRotator GetControlPreferredRotatorByIndex(int32_t InElementIndex, bool bInitial);                                       // [0x7b45db4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredRotator
-	// FRotator GetControlPreferredRotator(FRigElementKey InKey, bool bInitial);                                                // [0x777bfbc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FRotator GetControlPreferredRotator(FRigElementKey InKey, bool bInitial);                                                // [0x7b45c40] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredEulerRotationOrderByIndex
-	// EEulerRotationOrder GetControlPreferredEulerRotationOrderByIndex(int32_t InElementIndex, bool bFromSettings);            // [0x777bef8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EEulerRotationOrder GetControlPreferredEulerRotationOrderByIndex(int32_t InElementIndex, bool bFromSettings);            // [0x7b45af0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredEulerRotationOrder
-	// EEulerRotationOrder GetControlPreferredEulerRotationOrder(FRigElementKey InKey, bool bFromSettings);                     // [0x777bcd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EEulerRotationOrder GetControlPreferredEulerRotationOrder(FRigElementKey InKey, bool bFromSettings);                     // [0x7b45994] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredEulerAnglesByIndex
-	// FVector GetControlPreferredEulerAnglesByIndex(int32_t InElementIndex, EEulerRotationOrder InRotationOrder, bool bInitial); // [0x777bbc4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetControlPreferredEulerAnglesByIndex(int32_t InElementIndex, EEulerRotationOrder InRotationOrder, bool bInitial); // [0x7b457c0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetControlPreferredEulerAngles
-	// FVector GetControlPreferredEulerAngles(FRigElementKey InKey, EEulerRotationOrder InRotationOrder, bool bInitial);        // [0x777b8c0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetControlPreferredEulerAngles(FRigElementKey InKey, EEulerRotationOrder InRotationOrder, bool bInitial);        // [0x7b455d0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetController
-	// class URigHierarchyController* GetController(bool bCreateIfNeeded);                                                      // [0x777c67c] Final|Native|Public|BlueprintCallable 
+	// class URigHierarchyController* GetController(bool bCreateIfNeeded);                                                      // [0x7b4629c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.GetControlKeys
-	// TArray<FRigElementKey> GetControlKeys(bool bTraverse);                                                                   // [0x777b818] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetControlKeys(bool bTraverse);                                                                   // [0x7b454e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetConnectorStates
-	// TArray<FRigConnectorState> GetConnectorStates();                                                                         // [0x777b778] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigConnectorState> GetConnectorStates();                                                                         // [0x7b45444] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetConnectorKeys
-	// TArray<FRigElementKey> GetConnectorKeys(bool bTraverse);                                                                 // [0x777b6d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetConnectorKeys(bool bTraverse);                                                                 // [0x7b45358] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetChildren
-	// TArray<FRigElementKey> GetChildren(FRigElementKey InKey, bool bRecursive);                                               // [0x777b49c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetChildren(FRigElementKey InKey, bool bRecursive);                                               // [0x7b451ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetBoolMetadata
-	// bool GetBoolMetadata(FRigElementKey InItem, FName InMetadataName, bool DefaultValue);                                    // [0x777b1b4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetBoolMetadata(FRigElementKey InItem, FName InMetadataName, bool DefaultValue);                                    // [0x7b4502c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetBoolArrayMetadata
-	// TArray<bool> GetBoolArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                          // [0x777af84] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<bool> GetBoolArrayMetadata(FRigElementKey InItem, FName InMetadataName);                                          // [0x7b44ec4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetBoneKeys
-	// TArray<FRigElementKey> GetBoneKeys(bool bTraverse);                                                                      // [0x777aedc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetBoneKeys(bool bTraverse);                                                                      // [0x7b44dd8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.GetAllKeys_ForBlueprint
-	// TArray<FRigElementKey> GetAllKeys_ForBlueprint(bool bTraverse);                                                          // [0x777ae34] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FRigElementKey> GetAllKeys_ForBlueprint(bool bTraverse);                                                          // [0x7b44cec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.FindNull_ForBlueprintOnly
-	// FRigNullElement FindNull_ForBlueprintOnly(FRigElementKey& InKey);                                                        // [0x777acdc] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FRigNullElement FindNull_ForBlueprintOnly(FRigElementKey& InKey);                                                        // [0x7b44be4] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.FindControl_ForBlueprintOnly
-	// FRigControlElement FindControl_ForBlueprintOnly(FRigElementKey& InKey);                                                  // [0x777abfc] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FRigControlElement FindControl_ForBlueprintOnly(FRigElementKey& InKey);                                                  // [0x7b44b04] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.FindBone_ForBlueprintOnly
-	// FRigBoneElement FindBone_ForBlueprintOnly(FRigElementKey& InKey);                                                        // [0x777aab8] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FRigBoneElement FindBone_ForBlueprintOnly(FRigElementKey& InKey);                                                        // [0x7b449c0] Final|Native|Private|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchy.CopyPose
-	// void CopyPose(class URigHierarchy* InHierarchy, bool bCurrent, bool bInitial, bool bWeights, bool bMatchPoseInGlobalIfNeeded); // [0x777a914] Final|Native|Public|BlueprintCallable 
+	// void CopyPose(class URigHierarchy* InHierarchy, bool bCurrent, bool bInitial, bool bWeights, bool bMatchPoseInGlobalIfNeeded); // [0x7b446f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.CopyHierarchy
-	// void CopyHierarchy(class URigHierarchy* InHierarchy);                                                                    // [0x777a894] Final|Native|Public|BlueprintCallable 
+	// void CopyHierarchy(class URigHierarchy* InHierarchy);                                                                    // [0x7b44634] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchy.Contains_ForBlueprint
-	// bool Contains_ForBlueprint(FRigElementKey InKey);                                                                        // [0x777a750] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool Contains_ForBlueprint(FRigElementKey InKey);                                                                        // [0x7b44560] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ControlRig.RigHierarchyProvider
@@ -498,11 +498,11 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.AnimNodeControlRigLibrary.SetControlRigClass
-	// FControlRigReference SetControlRigClass(FControlRigReference& Node, class UClass* ControlRigClass);                      // [0x77d1644] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FControlRigReference SetControlRigClass(FControlRigReference& Node, class UClass* ControlRigClass);                      // [0x7ba248c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.AnimNodeControlRigLibrary.ConvertToControlRigPure
-	// void ConvertToControlRigPure(FAnimNodeReference& Node, FControlRigReference& ControlRig, bool& Result);                  // [0x77cdb90] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void ConvertToControlRigPure(FAnimNodeReference& Node, FControlRigReference& ControlRig, bool& Result);                  // [0x7b9c2d4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.AnimNodeControlRigLibrary.ConvertToControlRig
-	// FControlRigReference ConvertToControlRig(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result);          // [0x77cda64] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FControlRigReference ConvertToControlRig(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result);          // [0x7b9c1a8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.TransformableControlHandle
@@ -569,99 +569,99 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigComponent.Update
-	// void Update(float DeltaTime);                                                                                            // [0x77d333c] Final|Native|Public|BlueprintCallable 
+	// void Update(float DeltaTime);                                                                                            // [0x7ba4a3c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetObjectBinding
-	// void SetObjectBinding(class UObject* InObjectToBind);                                                                    // [0x77d2cf0] Final|Native|Public|BlueprintCallable 
+	// void SetObjectBinding(class UObject* InObjectToBind);                                                                    // [0x7ba3e8c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetMappedElements
-	// void SetMappedElements(TArray<FControlRigComponentMappedElement> NewMappedElements);                                     // [0x77d2a00] Final|Native|Public|BlueprintCallable 
+	// void SetMappedElements(TArray<FControlRigComponentMappedElement> NewMappedElements);                                     // [0x7ba3614] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetInitialSpaceTransform
-	// void SetInitialSpaceTransform(FName SpaceName, FTransform InitialTransform, EControlRigComponentSpace Space);            // [0x77d2710] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetInitialSpaceTransform(FName SpaceName, FTransform InitialTransform, EControlRigComponentSpace Space);            // [0x7ba3348] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetInitialBoneTransform
-	// void SetInitialBoneTransform(FName BoneName, FTransform InitialTransform, EControlRigComponentSpace Space, bool bPropagateToChildren); // [0x77d233c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetInitialBoneTransform(FName BoneName, FTransform InitialTransform, EControlRigComponentSpace Space, bool bPropagateToChildren); // [0x7ba3068] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlVector2D
-	// void SetControlVector2D(FName ControlName, FVector2D Value);                                                             // [0x77d2030] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlVector2D(FName ControlName, FVector2D Value);                                                             // [0x7ba2d04] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlTransform
-	// void SetControlTransform(FName ControlName, FTransform Value, EControlRigComponentSpace Space);                          // [0x77d1d40] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlTransform(FName ControlName, FTransform Value, EControlRigComponentSpace Space);                          // [0x7ba2aa8] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlScale
-	// void SetControlScale(FName ControlName, FVector Value, EControlRigComponentSpace Space);                                 // [0x77d1ae8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlScale(FName ControlName, FVector Value, EControlRigComponentSpace Space);                                 // [0x7ba28e0] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlRotator
-	// void SetControlRotator(FName ControlName, FRotator Value, EControlRigComponentSpace Space);                              // [0x77d1890] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlRotator(FName ControlName, FRotator Value, EControlRigComponentSpace Space);                              // [0x7ba2718] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlRigClass
-	// void SetControlRigClass(class UClass* InControlRigClass);                                                                // [0x77d17e8] Final|Native|Public|BlueprintCallable 
+	// void SetControlRigClass(class UClass* InControlRigClass);                                                                // [0x7ba262c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlPosition
-	// void SetControlPosition(FName ControlName, FVector Value, EControlRigComponentSpace Space);                              // [0x77d13ec] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlPosition(FName ControlName, FVector Value, EControlRigComponentSpace Space);                              // [0x7ba22c4] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlOffset
-	// void SetControlOffset(FName ControlName, FTransform OffsetTransform, EControlRigComponentSpace Space);                   // [0x77d10fc] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetControlOffset(FName ControlName, FTransform OffsetTransform, EControlRigComponentSpace Space);                   // [0x7ba2068] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlInt
-	// void SetControlInt(FName ControlName, int32_t Value);                                                                    // [0x77d0ffc] Final|Native|Public|BlueprintCallable 
+	// void SetControlInt(FName ControlName, int32_t Value);                                                                    // [0x7ba1eec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlFloat
-	// void SetControlFloat(FName ControlName, float Value);                                                                    // [0x77d0f38] Final|Native|Public|BlueprintCallable 
+	// void SetControlFloat(FName ControlName, float Value);                                                                    // [0x7ba1db0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetControlBool
-	// void SetControlBool(FName ControlName, bool Value);                                                                      // [0x77d0e38] Final|Native|Public|BlueprintCallable 
+	// void SetControlBool(FName ControlName, bool Value);                                                                      // [0x7ba1c30] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetBoneTransform
-	// void SetBoneTransform(FName BoneName, FTransform Transform, EControlRigComponentSpace Space, float Weight, bool bPropagateToChildren); // [0x77d06bc] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetBoneTransform(FName BoneName, FTransform Transform, EControlRigComponentSpace Space, float Weight, bool bPropagateToChildren); // [0x7ba1128] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.SetBoneInitialTransformsFromSkeletalMesh
-	// void SetBoneInitialTransformsFromSkeletalMesh(class USkeletalMesh* InSkeletalMesh);                                      // [0x77d0624] Final|Native|Public|BlueprintCallable 
+	// void SetBoneInitialTransformsFromSkeletalMesh(class USkeletalMesh* InSkeletalMesh);                                      // [0x7ba104c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.OnPreInitialize
-	// void OnPreInitialize(class UControlRigComponent* Component);                                                             // [0x77cfdb4] Native|Event|Public|BlueprintEvent 
+	// void OnPreInitialize(class UControlRigComponent* Component);                                                             // [0x7b9fce0] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.OnPreForwardsSolve
-	// void OnPreForwardsSolve(class UControlRigComponent* Component);                                                          // [0x77cfd30] Native|Event|Public|BlueprintEvent 
+	// void OnPreForwardsSolve(class UControlRigComponent* Component);                                                          // [0x7b9fc1c] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.OnPreConstruction
-	// void OnPreConstruction(class UControlRigComponent* Component);                                                           // [0x77cfcac] Native|Event|Public|BlueprintEvent 
+	// void OnPreConstruction(class UControlRigComponent* Component);                                                           // [0x7b9fb58] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.OnPostInitialize
-	// void OnPostInitialize(class UControlRigComponent* Component);                                                            // [0x77cfc28] Native|Event|Public|BlueprintEvent 
+	// void OnPostInitialize(class UControlRigComponent* Component);                                                            // [0x7b9fa94] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.OnPostForwardsSolve
-	// void OnPostForwardsSolve(class UControlRigComponent* Component);                                                         // [0x66f6478] Native|Event|Public|BlueprintEvent 
+	// void OnPostForwardsSolve(class UControlRigComponent* Component);                                                         // [0x66d6308] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.OnPostConstruction
-	// void OnPostConstruction(class UControlRigComponent* Component);                                                          // [0x77cfba4] Native|Event|Public|BlueprintEvent 
+	// void OnPostConstruction(class UControlRigComponent* Component);                                                          // [0x7b9f9d0] Native|Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigComponent.Initialize
-	// void Initialize();                                                                                                       // [0x77cf728] Final|Native|Public|BlueprintCallable 
+	// void Initialize();                                                                                                       // [0x7b9f0a8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.GetSpaceTransform
-	// FTransform GetSpaceTransform(FName SpaceName, EControlRigComponentSpace Space);                                          // [0x77cf578] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetSpaceTransform(FName SpaceName, EControlRigComponentSpace Space);                                          // [0x7b9ee30] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetInitialSpaceTransform
-	// FTransform GetInitialSpaceTransform(FName SpaceName, EControlRigComponentSpace Space);                                   // [0x77cf3f8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetInitialSpaceTransform(FName SpaceName, EControlRigComponentSpace Space);                                   // [0x7b9ec28] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetInitialBoneTransform
-	// FTransform GetInitialBoneTransform(FName BoneName, EControlRigComponentSpace Space);                                     // [0x77cf2e4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetInitialBoneTransform(FName BoneName, EControlRigComponentSpace Space);                                     // [0x7b9ea8c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetElementNames
-	// TArray<FName> GetElementNames(ERigElementType ElementType);                                                              // [0x77cf080] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FName> GetElementNames(ERigElementType ElementType);                                                              // [0x7b9e75c] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlVector2D
-	// FVector2D GetControlVector2D(FName ControlName);                                                                         // [0x77cefe8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FVector2D GetControlVector2D(FName ControlName);                                                                         // [0x7b9e684] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlTransform
-	// FTransform GetControlTransform(FName ControlName, EControlRigComponentSpace Space);                                      // [0x77ceed4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetControlTransform(FName ControlName, EControlRigComponentSpace Space);                                      // [0x7b9e4e8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlScale
-	// FVector GetControlScale(FName ControlName, EControlRigComponentSpace Space);                                             // [0x77cedd4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FVector GetControlScale(FName ControlName, EControlRigComponentSpace Space);                                             // [0x7b9e36c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlRotator
-	// FRotator GetControlRotator(FName ControlName, EControlRigComponentSpace Space);                                          // [0x77cecc8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FRotator GetControlRotator(FName ControlName, EControlRigComponentSpace Space);                                          // [0x7b9e1d0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlRig
-	// class UControlRig* GetControlRig();                                                                                      // [0x77ceca4] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UControlRig* GetControlRig();                                                                                      // [0x7b9e1ac] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlPosition
-	// FVector GetControlPosition(FName ControlName, EControlRigComponentSpace Space);                                          // [0x77ceba4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FVector GetControlPosition(FName ControlName, EControlRigComponentSpace Space);                                          // [0x7b9e030] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlOffset
-	// FTransform GetControlOffset(FName ControlName, EControlRigComponentSpace Space);                                         // [0x77cea90] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FTransform GetControlOffset(FName ControlName, EControlRigComponentSpace Space);                                         // [0x7b9de94] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlInt
-	// int32_t GetControlInt(FName ControlName);                                                                                // [0x77ce9a4] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// int32_t GetControlInt(FName ControlName);                                                                                // [0x7b9dd68] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlFloat
-	// float GetControlFloat(FName ControlName);                                                                                // [0x77ce914] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// float GetControlFloat(FName ControlName);                                                                                // [0x7b9dc98] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetControlBool
-	// bool GetControlBool(FName ControlName);                                                                                  // [0x77ce828] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool GetControlBool(FName ControlName);                                                                                  // [0x7b9db68] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetBoneTransform
-	// FTransform GetBoneTransform(FName BoneName, EControlRigComponentSpace Space);                                            // [0x77ce714] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetBoneTransform(FName BoneName, EControlRigComponentSpace Space);                                            // [0x7b9d9cc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.GetAbsoluteTime
-	// float GetAbsoluteTime();                                                                                                 // [0x77ce6e8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetAbsoluteTime();                                                                                                 // [0x7b9d9a0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigComponent.DoesElementExist
-	// bool DoesElementExist(FName Name, ERigElementType ElementType);                                                          // [0x77ce4f4] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool DoesElementExist(FName Name, ERigElementType ElementType);                                                          // [0x7b9d6a0] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.ClearMappedElements
-	// void ClearMappedElements();                                                                                              // [0x77cd8ac] Final|Native|Public|BlueprintCallable 
+	// void ClearMappedElements();                                                                                              // [0x7b9be0c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.CanExecute
-	// bool CanExecute();                                                                                                       // [0x77cd84c] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool CanExecute();                                                                                                       // [0x7b9bdac] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/ControlRig.ControlRigComponent.AddMappedSkeletalMesh
-	// void AddMappedSkeletalMesh(class USkeletalMeshComponent* SkeletalMeshComponent, TArray<FControlRigComponentMappedBone> Bones, TArray<FControlRigComponentMappedCurve> Curves, EControlRigComponentMapDirection InDirection); // [0x77cc998] Final|Native|Public|BlueprintCallable 
+	// void AddMappedSkeletalMesh(class USkeletalMeshComponent* SkeletalMeshComponent, TArray<FControlRigComponentMappedBone> Bones, TArray<FControlRigComponentMappedCurve> Curves, EControlRigComponentMapDirection InDirection); // [0x7b99b14] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.AddMappedElements
-	// void AddMappedElements(TArray<FControlRigComponentMappedElement> NewMappedElements);                                     // [0x77cc8f0] Final|Native|Public|BlueprintCallable 
+	// void AddMappedElements(TArray<FControlRigComponentMappedElement> NewMappedElements);                                     // [0x7b99a2c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.AddMappedComponents
-	// void AddMappedComponents(TArray<FControlRigComponentMappedComponent> Components);                                        // [0x77cc71c] Final|Native|Public|BlueprintCallable 
+	// void AddMappedComponents(TArray<FControlRigComponentMappedComponent> Components);                                        // [0x7b9937c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigComponent.AddMappedCompleteSkeletalMesh
-	// void AddMappedCompleteSkeletalMesh(class USkeletalMeshComponent* SkeletalMeshComponent, EControlRigComponentMapDirection InDirection); // [0x77cc634] Final|Native|Public|BlueprintCallable 
+	// void AddMappedCompleteSkeletalMesh(class USkeletalMeshComponent* SkeletalMeshComponent, EControlRigComponentMapDirection InDirection); // [0x7b99218] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ControlRigControlActor
@@ -690,11 +690,11 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigControlActor.ResetControlActor
-	// void ResetControlActor();                                                                                                // [0x77d04fc] Final|Native|Public|BlueprintCallable 
+	// void ResetControlActor();                                                                                                // [0x7ba0f24] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigControlActor.Refresh
-	// void Refresh();                                                                                                          // [0x77d0048] Final|Native|Public|BlueprintCallable 
+	// void Refresh();                                                                                                          // [0x7ba0038] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigControlActor.Clear
-	// void Clear();                                                                                                            // [0x77cd870] Final|Native|Public|BlueprintCallable 
+	// void Clear();                                                                                                            // [0x7b9bdd0] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ControlRigShapeActor
@@ -718,33 +718,33 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigShapeActor.SetSelected
-	// void SetSelected(bool bInSelected);                                                                                      // [0x77d2df4] Native|Public|BlueprintCallable 
+	// void SetSelected(bool bInSelected);                                                                                      // [0x672e2dc] Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeActor.SetSelectable
-	// void SetSelectable(bool bInSelectable);                                                                                  // [0x77d2d70] Native|Public|BlueprintCallable 
+	// void SetSelectable(bool bInSelectable);                                                                                  // [0x7ba3f4c] Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeActor.SetHovered
-	// void SetHovered(bool bInHovered);                                                                                        // [0x77d22b8] Native|Public|BlueprintCallable 
+	// void SetHovered(bool bInHovered);                                                                                        // [0x7ba2fa0] Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeActor.SetGlobalTransform
-	// void SetGlobalTransform(FTransform& InTransform);                                                                        // [0x77d21a8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetGlobalTransform(FTransform& InTransform);                                                                        // [0x7ba2e90] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeActor.SetEnabled
-	// void SetEnabled(bool bInEnabled);                                                                                        // [0x647bb24] Native|Public|BlueprintCallable 
+	// void SetEnabled(bool bInEnabled);                                                                                        // [0x6420298] Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigShapeActor.OnTransformChanged
-	// void OnTransformChanged(FTransform& NewTransform);                                                                       // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnTransformChanged(FTransform& NewTransform);                                                                       // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigShapeActor.OnSelectionChanged
-	// void OnSelectionChanged(bool bIsSelected);                                                                               // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnSelectionChanged(bool bIsSelected);                                                                               // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigShapeActor.OnManipulatingChanged
-	// void OnManipulatingChanged(bool bIsManipulating);                                                                        // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnManipulatingChanged(bool bIsManipulating);                                                                        // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigShapeActor.OnHoveredChanged
-	// void OnHoveredChanged(bool bIsSelected);                                                                                 // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnHoveredChanged(bool bIsSelected);                                                                                 // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigShapeActor.OnEnabledChanged
-	// void OnEnabledChanged(bool bIsEnabled);                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnEnabledChanged(bool bIsEnabled);                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/ControlRig.ControlRigShapeActor.IsSelectedInEditor
-	// bool IsSelectedInEditor();                                                                                               // [0x6953644] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSelectedInEditor();                                                                                               // [0x69ca788] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigShapeActor.IsHovered
-	// bool IsHovered();                                                                                                        // [0x77cf804] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsHovered();                                                                                                        // [0x7b9f184] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigShapeActor.IsEnabled
-	// bool IsEnabled();                                                                                                        // [0x77cf7dc] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabled();                                                                                                        // [0x7b9f15c] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigShapeActor.GetGlobalTransform
-	// FTransform GetGlobalTransform();                                                                                         // [0x77cf1f0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetGlobalTransform();                                                                                         // [0x7b9e998] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ControlRig.ControlRigShapeLibrary
@@ -780,23 +780,23 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigTestData.SetupReplay
-	// bool SetupReplay(class UControlRig* InControlRig, bool bGroundTruth);                                                    // [0x77d2e78] Final|Native|Public|BlueprintCallable 
+	// bool SetupReplay(class UControlRig* InControlRig, bool bGroundTruth);                                                    // [0x7ba4014] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigTestData.ReleaseReplay
-	// void ReleaseReplay();                                                                                                    // [0x77d005c] Final|Native|Public|BlueprintCallable 
+	// void ReleaseReplay();                                                                                                    // [0x7ba004c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigTestData.Record
-	// bool Record(class UControlRig* InControlRig, double InRecordingDuration);                                                // [0x77cfe38] Final|Native|Public|BlueprintCallable 
+	// bool Record(class UControlRig* InControlRig, double InRecordingDuration);                                                // [0x7b9fda4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigTestData.IsReplaying
-	// bool IsReplaying();                                                                                                      // [0x77cf850] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsReplaying();                                                                                                      // [0x7b9f1d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigTestData.IsRecording
-	// bool IsRecording();                                                                                                      // [0x77cf82c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsRecording();                                                                                                      // [0x7b9f1ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigTestData.GetTimeRange
-	// FVector2D GetTimeRange(bool bInput);                                                                                     // [0x77cf68c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector2D GetTimeRange(bool bInput);                                                                                     // [0x7b9efcc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigTestData.GetPlaybackMode
-	// EControlRigTestDataPlaybackMode GetPlaybackMode();                                                                       // [0x77cf538] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EControlRigTestDataPlaybackMode GetPlaybackMode();                                                                       // [0x7b9edf0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigTestData.GetFrameIndexForTime
-	// int32_t GetFrameIndexForTime(double InSeconds, bool bInput);                                                             // [0x77cf124] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetFrameIndexForTime(double InSeconds, bool bInput);                                                             // [0x7b9e840] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigTestData.CreateNewAsset
-	// class UControlRigTestData* CreateNewAsset(FString InDesiredPackagePath, FString InBlueprintPathName);                    // [0x77cdd6c] Final|Native|Static|Public|BlueprintCallable 
+	// class UControlRigTestData* CreateNewAsset(FString InDesiredPackagePath, FString InBlueprintPathName);                    // [0x7b9c4b0] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ControlRigValidator
@@ -832,35 +832,35 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ModularRigController.UnBindModuleVariable
-	// bool UnBindModuleVariable(FString InModulePath, FName& InVariableName, bool bSetupUndo);                                 // [0x77d310c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool UnBindModuleVariable(FString InModulePath, FName& InVariableName, bool bSetupUndo);                                 // [0x7ba4324] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.SetModuleShortName
-	// bool SetModuleShortName(FString InModulePath, FString InNewShortName, bool bSetupUndo);                                  // [0x77d2adc] Final|Native|Public|BlueprintCallable 
+	// bool SetModuleShortName(FString InModulePath, FString InNewShortName, bool bSetupUndo);                                  // [0x7ba3730] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.SetConfigValueInModule
-	// bool SetConfigValueInModule(FString InModulePath, FName& InVariableName, FString InValue, bool bSetupUndo);              // [0x77d0b60] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetConfigValueInModule(FString InModulePath, FName& InVariableName, FString InValue, bool bSetupUndo);              // [0x7ba148c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.ReparentModule
-	// FString ReparentModule(FString InModulePath, FString InNewParentModulePath, bool bSetupUndo);                            // [0x77d02bc] Final|Native|Public|BlueprintCallable 
+	// FString ReparentModule(FString InModulePath, FString InNewParentModulePath, bool bSetupUndo);                            // [0x7ba0798] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.RenameModule
-	// FString RenameModule(FString InModulePath, FName& InNewName, bool bSetupUndo);                                           // [0x77d0070] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FString RenameModule(FString InModulePath, FName& InNewName, bool bSetupUndo);                                           // [0x7ba0060] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.MirrorModule
-	// FString MirrorModule(FString InModulePath, FRigVMMirrorSettings& InSettings, bool bSetupUndo);                           // [0x77cf874] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FString MirrorModule(FString InModulePath, FRigVMMirrorSettings& InSettings, bool bSetupUndo);                           // [0x7b9f1f4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.DisconnectCyclicConnectors
-	// TArray<FRigElementKey> DisconnectCyclicConnectors(bool bSetupUndo);                                                      // [0x77ce460] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> DisconnectCyclicConnectors(bool bSetupUndo);                                                      // [0x7b9d5c8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.DisconnectConnector
-	// bool DisconnectConnector(FRigElementKey& InConnectorKey, bool bDisconnectSubModules, bool bSetupUndo);                   // [0x77ce1f8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool DisconnectConnector(FRigElementKey& InConnectorKey, bool bDisconnectSubModules, bool bSetupUndo);                   // [0x7b9d364] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.DeleteModule
-	// bool DeleteModule(FString InModulePath, bool bSetupUndo);                                                                // [0x77ce04c] Final|Native|Public|BlueprintCallable 
+	// bool DeleteModule(FString InModulePath, bool bSetupUndo);                                                                // [0x7b9cc94] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.ConnectConnectorToElement
-	// bool ConnectConnectorToElement(FRigElementKey& InConnectorKey, FRigElementKey& InTargetKey, bool bSetupUndo, bool bAutoResolveOtherConnectors, bool bCheckValidConnection); // [0x77cd8c0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool ConnectConnectorToElement(FRigElementKey& InConnectorKey, FRigElementKey& InTargetKey, bool bSetupUndo, bool bAutoResolveOtherConnectors, bool bCheckValidConnection); // [0x7b9be20] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.CanConnectConnectorToElement
-	// bool CanConnectConnectorToElement(FRigElementKey& InConnectorKey, FRigElementKey& InTargetKey, FText& OutErrorMessage);  // [0x77cd6a0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool CanConnectConnectorToElement(FRigElementKey& InConnectorKey, FRigElementKey& InTargetKey, FText& OutErrorMessage);  // [0x7b9bc58] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.BindModuleVariable
-	// bool BindModuleVariable(FString InModulePath, FName& InVariableName, FString InSourcePath, bool bSetupUndo);             // [0x77cd3c8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool BindModuleVariable(FString InModulePath, FName& InVariableName, FString InSourcePath, bool bSetupUndo);             // [0x7b9b4b4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.AutoConnectSecondaryConnectors
-	// bool AutoConnectSecondaryConnectors(TArray<FRigElementKey>& InConnectorKeys, bool bReplaceExistingConnections, bool bSetupUndo); // [0x77cd178] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool AutoConnectSecondaryConnectors(TArray<FRigElementKey>& InConnectorKeys, bool bReplaceExistingConnections, bool bSetupUndo); // [0x7b9b260] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.AutoConnectModules
-	// bool AutoConnectModules(TArray<FString>& InModulePaths, bool bReplaceExistingConnections, bool bSetupUndo);              // [0x77ccf2c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool AutoConnectModules(TArray<FString>& InModulePaths, bool bReplaceExistingConnections, bool bSetupUndo);              // [0x7b9b010] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ModularRigController.AddModule
-	// FString AddModule(FName& InModuleName, class UClass* InClass, FString InParentModulePath, bool bSetupUndo);              // [0x77ccc08] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FString AddModule(FName& InModuleName, class UClass* InClass, FString InParentModulePath, bool bSetupUndo);              // [0x7b9a840] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ModularRigRuleManager
@@ -908,67 +908,67 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.RigHierarchyController.SetSelection
-	// bool SetSelection(TArray<FRigElementKey>& InKeys, bool bPrintPythonCommand);                                             // [0x7836a90] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetSelection(TArray<FRigElementKey>& InKeys, bool bPrintPythonCommand);                                             // [0x7c0aa9c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.SetParent
-	// bool SetParent(FRigElementKey InChild, FRigElementKey InParent, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x78365f0] Final|Native|Public|BlueprintCallable 
+	// bool SetParent(FRigElementKey InChild, FRigElementKey InParent, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c0a7dc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.SetHierarchy
-	// void SetHierarchy(class URigHierarchy* InHierarchy);                                                                     // [0x7836570] Final|Native|Public|BlueprintCallable 
+	// void SetHierarchy(class URigHierarchy* InHierarchy);                                                                     // [0x7c0a71c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.SetDisplayName
-	// FName SetDisplayName(FRigElementKey InControl, FName InDisplayName, bool bRenameElement, bool bSetupUndo, bool bPrintPythonCommand); // [0x78360cc] Final|Native|Public|BlueprintCallable 
+	// FName SetDisplayName(FRigElementKey InControl, FName InDisplayName, bool bRenameElement, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c0a458] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.SetControlSettings
-	// bool SetControlSettings(FRigElementKey InKey, FRigControlSettings InSettings, bool bSetupUndo);                          // [0x7835d88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SetControlSettings(FRigElementKey InKey, FRigControlSettings InSettings, bool bSetupUndo);                          // [0x7c0a248] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchyController.SelectElement
-	// bool SelectElement(FRigElementKey InKey, bool bSelect, bool bClearSelection);                                            // [0x7835a94] Final|Native|Public|BlueprintCallable 
+	// bool SelectElement(FRigElementKey InKey, bool bSelect, bool bClearSelection);                                            // [0x7c0a074] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.ReorderElement
-	// bool ReorderElement(FRigElementKey InElement, int32_t InIndex, bool bSetupUndo, bool bPrintPythonCommand);               // [0x7835478] Final|Native|Public|BlueprintCallable 
+	// bool ReorderElement(FRigElementKey InElement, int32_t InIndex, bool bSetupUndo, bool bPrintPythonCommand);               // [0x7c09aec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.RenameElement
-	// FRigElementKey RenameElement(FRigElementKey InElement, FName InName, bool bSetupUndo, bool bPrintPythonCommand, bool bClearSelection); // [0x7834fe4] Final|Native|Public|BlueprintCallable 
+	// FRigElementKey RenameElement(FRigElementKey InElement, FName InName, bool bSetupUndo, bool bPrintPythonCommand, bool bClearSelection); // [0x7c09838] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.RemoveParent
-	// bool RemoveParent(FRigElementKey InChild, FRigElementKey InParent, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7834b44] Final|Native|Public|BlueprintCallable 
+	// bool RemoveParent(FRigElementKey InChild, FRigElementKey InParent, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c09578] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.RemoveElement
-	// bool RemoveElement(FRigElementKey InElement, bool bSetupUndo, bool bPrintPythonCommand);                                 // [0x7834868] Final|Native|Public|BlueprintCallable 
+	// bool RemoveElement(FRigElementKey InElement, bool bSetupUndo, bool bPrintPythonCommand);                                 // [0x7c093b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.RemoveAllParents
-	// bool RemoveAllParents(FRigElementKey InChild, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x78344a0] Final|Native|Public|BlueprintCallable 
+	// bool RemoveAllParents(FRigElementKey InChild, bool bMaintainGlobalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c09174] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.MirrorElements
-	// TArray<FRigElementKey> MirrorElements(TArray<FRigElementKey> InKeys, FRigVMMirrorSettings InSettings, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7833cdc] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> MirrorElements(TArray<FRigElementKey> InKeys, FRigVMMirrorSettings InSettings, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7c085a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.ImportFromText
-	// TArray<FRigElementKey> ImportFromText(FString InContent, bool bReplaceExistingElements, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7833a3c] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> ImportFromText(FString InContent, bool bReplaceExistingElements, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7c07d1c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.ImportCurves
-	// TArray<FRigElementKey> ImportCurves(class USkeleton* InSkeleton, FName InNameSpace, bool bSelectCurves, bool bSetupUndo, bool bPrintPythonCommand); // [0x78337e8] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> ImportCurves(class USkeleton* InSkeleton, FName InNameSpace, bool bSelectCurves, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c0799c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.ImportBones
-	// TArray<FRigElementKey> ImportBones(class USkeleton* InSkeleton, FName InNameSpace, bool bReplaceExistingBones, bool bRemoveObsoleteBones, bool bSelectBones, bool bSetupUndo, bool bPrintPythonCommand); // [0x7833564] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> ImportBones(class USkeleton* InSkeleton, FName InNameSpace, bool bReplaceExistingBones, bool bRemoveObsoleteBones, bool bSelectBones, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c0753c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.GetHierarchy
-	// class URigHierarchy* GetHierarchy();                                                                                     // [0x7833540] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class URigHierarchy* GetHierarchy();                                                                                     // [0x7c07518] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchyController.GetControlSettings
-	// FRigControlSettings GetControlSettings(FRigElementKey InKey);                                                            // [0x78332ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FRigControlSettings GetControlSettings(FRigElementKey InKey);                                                            // [0x7c0727c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchyController.ExportToText
-	// FString ExportToText(TArray<FRigElementKey> InKeys);                                                                     // [0x78330bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString ExportToText(TArray<FRigElementKey> InKeys);                                                                     // [0x7c06bac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchyController.ExportSelectionToText
-	// FString ExportSelectionToText();                                                                                         // [0x7832f64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString ExportSelectionToText();                                                                                         // [0x7c065ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.RigHierarchyController.DuplicateElements
-	// TArray<FRigElementKey> DuplicateElements(TArray<FRigElementKey> InKeys, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7832d48] Final|Native|Public|BlueprintCallable 
+	// TArray<FRigElementKey> DuplicateElements(TArray<FRigElementKey> InKeys, bool bSelectNewElements, bool bSetupUndo, bool bPrintPythonCommands); // [0x7c062a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.DeselectElement
-	// bool DeselectElement(FRigElementKey InKey);                                                                              // [0x7832b30] Final|Native|Public|BlueprintCallable 
+	// bool DeselectElement(FRigElementKey InKey);                                                                              // [0x7c060bc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.ClearSelection
-	// bool ClearSelection();                                                                                                   // [0x7832b0c] Final|Native|Public|BlueprintCallable 
+	// bool ClearSelection();                                                                                                   // [0x7c06098] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddSocket
-	// FRigElementKey AddSocket(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, FLinearColor& InColor, FString InDescription, bool bSetupUndo, bool bPrintPythonCommand); // [0x7832404] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// FRigElementKey AddSocket(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, FLinearColor& InColor, FString InDescription, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c05664] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddRigidBody
-	// FRigElementKey AddRigidBody(FName InName, FRigElementKey InParent, FRigRigidBodySettings InSettings, FTransform InLocalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7831e60] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FRigElementKey AddRigidBody(FName InName, FRigElementKey InParent, FRigRigidBodySettings InSettings, FTransform InLocalTransform, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c05280] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddParent
-	// bool AddParent(FRigElementKey InChild, FRigElementKey InParent, float InWeight, bool bMaintainGlobalTransform, bool bSetupUndo); // [0x78319c0] Final|Native|Public|BlueprintCallable 
+	// bool AddParent(FRigElementKey InChild, FRigElementKey InParent, float InWeight, bool bMaintainGlobalTransform, bool bSetupUndo); // [0x7c04fbc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddNull
-	// FRigElementKey AddNull(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, bool bSetupUndo, bool bPrintPythonCommand); // [0x783140c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FRigElementKey AddNull(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c04bcc] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddCurve
-	// FRigElementKey AddCurve(FName InName, float InValue, bool bSetupUndo, bool bPrintPythonCommand);                         // [0x78312d4] Final|Native|Public|BlueprintCallable 
+	// FRigElementKey AddCurve(FName InName, float InValue, bool bSetupUndo, bool bPrintPythonCommand);                         // [0x7c04998] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddControl_ForBlueprint
-	// FRigElementKey AddControl_ForBlueprint(FName InName, FRigElementKey InParent, FRigControlSettings InSettings, FRigControlValue InValue, bool bSetupUndo, bool bPrintPythonCommand); // [0x7830cc4] Final|Native|Public|BlueprintCallable 
+	// FRigElementKey AddControl_ForBlueprint(FName InName, FRigElementKey InParent, FRigControlSettings InSettings, FRigControlValue InValue, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c0455c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddConnector
-	// FRigElementKey AddConnector(FName InName, FRigConnectorSettings InSettings, bool bSetupUndo, bool bPrintPythonCommand);  // [0x7830970] Final|Native|Public|BlueprintCallable 
+	// FRigElementKey AddConnector(FName InName, FRigConnectorSettings InSettings, bool bSetupUndo, bool bPrintPythonCommand);  // [0x7c042fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddBone
-	// FRigElementKey AddBone(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, ERigBoneType InBoneType, bool bSetupUndo, bool bPrintPythonCommand); // [0x78302d0] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FRigElementKey AddBone(FName InName, FRigElementKey InParent, FTransform InTransform, bool bTransformInGlobal, ERigBoneType InBoneType, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c03e90] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/ControlRig.RigHierarchyController.AddAnimationChannel_ForBlueprint
-	// FRigElementKey AddAnimationChannel_ForBlueprint(FName InName, FRigElementKey InParentControl, FRigControlSettings InSettings, bool bSetupUndo, bool bPrintPythonCommand); // [0x782fe58] Final|Native|Public|BlueprintCallable 
+	// FRigElementKey AddAnimationChannel_ForBlueprint(FName InName, FRigElementKey InParentControl, FRigControlSettings InSettings, bool bSetupUndo, bool bPrintPythonCommand); // [0x7c03b6c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ControlRig.ControlRigLayerInstance
@@ -1050,19 +1050,19 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigPoseAsset.SelectControls
-	// void SelectControls(class UControlRig* InControlRig, bool bDoMirror);                                                    // [0x78359cc] Final|Native|Public|BlueprintCallable 
+	// void SelectControls(class UControlRig* InControlRig, bool bDoMirror);                                                    // [0x7c09f34] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigPoseAsset.SavePose
-	// void SavePose(class UControlRig* InControlRig, bool bUseAll);                                                            // [0x7835904] Final|Native|Public|BlueprintCallable 
+	// void SavePose(class UControlRig* InControlRig, bool bUseAll);                                                            // [0x7c09df4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigPoseAsset.ReplaceControlName
-	// void ReplaceControlName(FName& CurrentName, FName& NewName);                                                             // [0x783582c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void ReplaceControlName(FName& CurrentName, FName& NewName);                                                             // [0x7c09d1c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigPoseAsset.PastePose
-	// void PastePose(class UControlRig* InControlRig, bool bDoKey, bool bDoMirror);                                            // [0x78342a8] Final|Native|Public|BlueprintCallable 
+	// void PastePose(class UControlRig* InControlRig, bool bDoKey, bool bDoMirror);                                            // [0x7c08e80] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigPoseAsset.GetCurrentPose
-	// void GetCurrentPose(class UControlRig* InControlRig, FControlRigControlPose& OutPose);                                   // [0x7833424] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetCurrentPose(class UControlRig* InControlRig, FControlRigControlPose& OutPose);                                   // [0x7c073b4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ControlRig.ControlRigPoseAsset.GetControlNames
-	// TArray<FName> GetControlNames();                                                                                         // [0x7833264] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetControlNames();                                                                                         // [0x7c07234] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ControlRig.ControlRigPoseAsset.DoesMirrorMatch
-	// bool DoesMirrorMatch(class UControlRig* ControlRig, FName& ControlName);                                                 // [0x7832c78] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesMirrorMatch(class UControlRig* ControlRig, FName& ControlName);                                                 // [0x7c06194] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ControlRig.ControlRigPoseMirrorSettings
@@ -1104,7 +1104,7 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigWorkflowOptions.EnsureAtLeastOneRigElementSelected
-	// bool EnsureAtLeastOneRigElementSelected();                                                                               // [0x7832ef0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool EnsureAtLeastOneRigElementSelected();                                                                               // [0x7c06538] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ControlRig.ControlRigTransformWorkflowOptions
@@ -1120,7 +1120,7 @@ public:
 
 	/// Functions
 	// Function /Script/ControlRig.ControlRigTransformWorkflowOptions.ProvideWorkflows
-	// TArray<FRigVMUserWorkflow> ProvideWorkflows(class UObject* InSubject);                                                   // [0x78343d4] Final|Native|Public  
+	// TArray<FRigVMUserWorkflow> ProvideWorkflows(class UObject* InSubject);                                                   // [0x7c09064] Final|Native|Public  
 };
 
 /// Class /Script/ControlRig.ControlRigNumericalValidationPass
@@ -3245,7 +3245,7 @@ class FRigUnit_Control : public FRigUnit
 
 public:
 	SMember(FEulerTransform)                           Transform                                                   OFFSET(getStruct<T>, {0x8, 72, 0, 0})
-	SMember(FTransform)                                base                                                        OFFSET(getStruct<T>, {0x50, 96, 0, 0})
+	SMember(FTransform)                                Base                                                        OFFSET(getStruct<T>, {0x50, 96, 0, 0})
 	SMember(FTransform)                                InitTransform                                               OFFSET(getStruct<T>, {0xB0, 96, 0, 0})
 	SMember(FTransform)                                Result                                                      OFFSET(getStruct<T>, {0x110, 96, 0, 0})
 	SMember(FTransformFilter)                          Filter                                                      OFFSET(getStruct<T>, {0x170, 9, 0, 0})

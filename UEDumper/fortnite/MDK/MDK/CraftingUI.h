@@ -37,9 +37,9 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.AthenaCraftingQuickBarButton.OnIsCraftableItemChanged
-	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaCraftingQuickBarButton.OnCanCraftNowChanged
-	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CraftingUI.AthenaEquippedItemCraftingIndicator
@@ -54,11 +54,11 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.AthenaEquippedItemCraftingIndicator.OnIsCraftableItemChanged
-	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaEquippedItemCraftingIndicator.OnCanCraftNowChanged
-	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaEquippedItemCraftingIndicator.HandleWeaponEquipped
-	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0xa3d8aa8] Final|Native|Private 
+	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0xb12edb0] Final|Native|Private 
 };
 
 /// Class /Script/CraftingUI.AthenaInventoryItemInfoCraftingIndicator
@@ -73,11 +73,11 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.AthenaInventoryItemInfoCraftingIndicator.OnIsCraftableItemChanged
-	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaInventoryItemInfoCraftingIndicator.OnCanCraftNowChanged
-	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaInventoryItemInfoCraftingIndicator.HandleInventoryItemSelected
-	// void HandleInventoryItemSelected(class UFortItem* SelectedItem);                                                         // [0xa3d89a8] Final|Native|Private 
+	// void HandleInventoryItemSelected(class UFortItem* SelectedItem);                                                         // [0xb12ec30] Final|Native|Private 
 };
 
 /// Class /Script/CraftingUI.AthenaQuickBarSlotCraftingIndicator
@@ -93,13 +93,13 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.AthenaQuickBarSlotCraftingIndicator.OnIsCraftableItemChanged
-	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIsCraftableItemChanged(bool bIsCraftableItem);                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaQuickBarSlotCraftingIndicator.OnIngredientChanged
-	// void OnIngredientChanged(bool bCanCraftNow);                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIngredientChanged(bool bCanCraftNow);                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaQuickBarSlotCraftingIndicator.OnCanCraftNowChanged
-	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCanCraftNowChanged(bool bCanCraftNow);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.AthenaQuickBarSlotCraftingIndicator.HandleWeaponEquipped
-	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0xa3d8b6c] Final|Native|Private 
+	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0xb12eef0] Final|Native|Private 
 };
 
 /// Class /Script/CraftingUI.FortCookingScreen
@@ -146,7 +146,7 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.FortCraftingIngredientWidget.OnIngredientWidgetUpdated
-	// void OnIngredientWidgetUpdated(int32_t NumAvailable, int32_t NumRequired, bool bIsPrimaryIngredient, bool bIsLastIngredient); // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnIngredientWidgetUpdated(int32_t NumAvailable, int32_t NumRequired, bool bIsPrimaryIngredient, bool bIsLastIngredient); // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CraftingUI.FortCraftingItemInfoWidget
@@ -170,7 +170,7 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.FortCraftingItemInfoWidget.OnItemRaritySet
-	// void OnItemRaritySet(EFortRarity Rarity, FFortRarityItemData RarityItemData);                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnItemRaritySet(EFortRarity Rarity, FFortRarityItemData RarityItemData);                                            // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CraftingUI.FortCraftingListEntry
@@ -187,7 +187,7 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.FortCraftingListEntry.OnCraftingListItemSet
-	// void OnCraftingListItemSet();                                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCraftingListItemSet();                                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CraftingUI.FortCraftingTab
@@ -209,9 +209,9 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.FortCraftingTab.OnFormulaListUpdated
-	// void OnFormulaListUpdated(int32_t NumFormulas);                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnFormulaListUpdated(int32_t NumFormulas);                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CraftingUI.FortCraftingTab.HandleInventoryItemSelected
-	// void HandleInventoryItemSelected(class UFortItem* Item);                                                                 // [0xa3d8a28] Final|Native|Private 
+	// void HandleInventoryItemSelected(class UFortItem* Item);                                                                 // [0xb12ecf0] Final|Native|Private 
 };
 
 /// Class /Script/CraftingUI.FortPotContentsPopup
@@ -230,7 +230,7 @@ public:
 
 	/// Functions
 	// Function /Script/CraftingUI.FortPotContentsPopup.SetOwningCraftingObject
-	// void SetOwningCraftingObject(class ACraftingObjectBGA* InCraftingObject);                                                // [0xa3d8c28] Final|Native|Public|BlueprintCallable 
+	// void SetOwningCraftingObject(class ACraftingObjectBGA* InCraftingObject);                                                // [0xb12f024] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/CraftingUI.FortPotContentsTile

@@ -22,6 +22,6 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseEnvGameplayRuntime.FortChargingSet_SunroseDash.OnRep_CurrentCharges
-	// void OnRep_CurrentCharges(FFortGameplayAttributeData& OldValue);                                                         // [0xa9373c4] Final|Native|Protected|HasOutParms 
+	// void OnRep_CurrentCharges(FFortGameplayAttributeData& OldValue);                                                         // [0x21d6f9c] Final|Native|Protected|HasOutParms 
 };
 

@@ -24,17 +24,17 @@ public:
 
 	/// Functions
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.UnregisterModularBlock
-	// void UnregisterModularBlock(class UFNE_UIBlock* bLock);                                                                  // [0xaca3fa4] Final|Native|Public|BlueprintCallable 
+	// void UnregisterModularBlock(class UFNE_UIBlock* bLock);                                                                  // [0xc3815d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.UnregisterAllModularBlocks
-	// void UnregisterAllModularBlocks();                                                                                       // [0xaca3f90] Final|Native|Public|BlueprintCallable 
+	// void UnregisterAllModularBlocks();                                                                                       // [0xc3815c4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.SetBlocksTiming
-	// void SetBlocksTiming(FFNE_UIBlockTiming& Timing);                                                                        // [0xaca3dc8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetBlocksTiming(FFNE_UIBlockTiming& Timing);                                                                        // [0xc3813fc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.RequestTransitionOnBlocks
-	// void RequestTransitionOnBlocks(EFNE_UIBlockVisualState State);                                                           // [0xaca3c94] Final|Native|Public|BlueprintCallable 
+	// void RequestTransitionOnBlocks(EFNE_UIBlockVisualState State);                                                           // [0xc381288] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.RequestInstantTransitionOnBlocks
-	// void RequestInstantTransitionOnBlocks(EFNE_UIBlockInstantTransitionState State);                                         // [0xaca3b94] Final|Native|Public|BlueprintCallable 
+	// void RequestInstantTransitionOnBlocks(EFNE_UIBlockInstantTransitionState State);                                         // [0xc381108] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_ModularButton.RegisterModularBlock
-	// void RegisterModularBlock(class UFNE_UIBlock* bLock);                                                                    // [0xaca3a38] Final|Native|Public|BlueprintCallable 
+	// void RegisterModularBlock(class UFNE_UIBlock* bLock);                                                                    // [0xc380f28] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/FNE_UILibrary.FNE_UIBlock
@@ -50,49 +50,49 @@ public:
 
 	/// Functions
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.SetBlockTiming
-	// void SetBlockTiming(FFNE_UIBlockTiming& Timing);                                                                         // [0xaca3d14] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetBlockTiming(FFNE_UIBlockTiming& Timing);                                                                         // [0xc381348] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.RequestTransition
-	// void RequestTransition(EFNE_UIBlockVisualState State);                                                                   // [0xaca3c14] Final|Native|Public|BlueprintCallable 
+	// void RequestTransition(EFNE_UIBlockVisualState State);                                                                   // [0xc3811c8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.RequestInstantTransition
-	// void RequestInstantTransition(EFNE_UIBlockInstantTransitionState State);                                                 // [0xaca3b14] Final|Native|Public|BlueprintCallable 
+	// void RequestInstantTransition(EFNE_UIBlockInstantTransitionState State);                                                 // [0xc381048] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.PlayTransition
-	// void PlayTransition(class UWidgetAnimation* Animation, bool bPlayForward);                                               // [0xaca38e8] Final|Native|Public|BlueprintCallable 
+	// void PlayTransition(class UWidgetAnimation* Animation, bool bPlayForward);                                               // [0xc380d50] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionUnhoveredRequested
-	// void OnTransitionUnhoveredRequested();                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionUnhoveredRequested();                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionUnfocusedRequested
-	// void OnTransitionUnfocusedRequested();                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionUnfocusedRequested();                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionSelectedRequested
-	// void OnTransitionSelectedRequested();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionSelectedRequested();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionReleasedRequested
-	// void OnTransitionReleasedRequested();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionReleasedRequested();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionPressedRequested
-	// void OnTransitionPressedRequested();                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionPressedRequested();                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionHoveredRequested
-	// void OnTransitionHoveredRequested();                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionHoveredRequested();                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionFocusedRequested
-	// void OnTransitionFocusedRequested();                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionFocusedRequested();                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionEnabledRequested
-	// void OnTransitionEnabledRequested();                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionEnabledRequested();                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionDisabledRequested
-	// void OnTransitionDisabledRequested();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionDisabledRequested();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionDeselectedIdleRequested
-	// void OnTransitionDeselectedIdleRequested();                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionDeselectedIdleRequested();                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnTransitionDeselectedFocusedRequested
-	// void OnTransitionDeselectedFocusedRequested();                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTransitionDeselectedFocusedRequested();                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToUnlocked
-	// void OnInstantTransitionToUnlocked();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToUnlocked();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToSelected
-	// void OnInstantTransitionToSelected();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToSelected();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToLocked
-	// void OnInstantTransitionToLocked();                                                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToLocked();                                                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToEnabled
-	// void OnInstantTransitionToEnabled();                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToEnabled();                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToDisabled
-	// void OnInstantTransitionToDisabled();                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToDisabled();                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.OnInstantTransitionToDeselected
-	// void OnInstantTransitionToDeselected();                                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInstantTransitionToDeselected();                                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_UIBlock.GetTransitionTime
-	// float GetTransitionTime(EFNE_UIBlockVisualState State);                                                                  // [0xaca3858] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// float GetTransitionTime(EFNE_UIBlockVisualState State);                                                                  // [0xc380c80] Final|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FNE_UILibrary.FNE_UIBlueprintFunctionLibrary
@@ -107,7 +107,7 @@ public:
 
 	/// Functions
 	// Function /Script/FNE_UILibrary.FNE_UIBlueprintFunctionLibrary.PlayAnimationDuringTime
-	// void PlayAnimationDuringTime(class UUserWidget* Widget, class UWidgetAnimation* Animation, float PlayTime, bool bPlayForward); // [0x99ce0e4] Final|Native|Static|Public|BlueprintCallable 
+	// void PlayAnimationDuringTime(class UUserWidget* Widget, class UWidgetAnimation* Animation, float PlayTime, bool bPlayForward); // [0xa4ac690] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/FNE_UILibrary.FNE_CTAButton
@@ -124,13 +124,13 @@ public:
 
 	/// Functions
 	// Function /Script/FNE_UILibrary.FNE_CTAButton.SetText
-	// void SetText(FText& ButtonText);                                                                                         // [0xaca3ef4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetText(FText& ButtonText);                                                                                         // [0xc381528] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_CTAButton.SetSecondaryText
-	// void SetSecondaryText(FText& ButtonSecondaryText);                                                                       // [0xaca3e58] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetSecondaryText(FText& ButtonSecondaryText);                                                                       // [0xc38148c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/FNE_UILibrary.FNE_CTAButton.BP_SetText
-	// void BP_SetText(FText& ButtonText);                                                                                      // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_SetText(FText& ButtonText);                                                                                      // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/FNE_UILibrary.FNE_CTAButton.BP_SetSecondaryText
-	// void BP_SetSecondaryText(FText& ButtonSecondaryText);                                                                    // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_SetSecondaryText(FText& ButtonSecondaryText);                                                                    // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Struct /Script/FNE_UILibrary.FNE_UIBlockTiming

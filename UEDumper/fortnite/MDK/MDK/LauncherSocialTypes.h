@@ -259,7 +259,7 @@ class FProfanityData : public MDKBase
 public:
 	SMember(FString)                                   CountryCode                                                 OFFSET(getStruct<T>, {0x0, 16, 0, 0})
 	SMember(FString)                                   ProfanityList                                               OFFSET(getStruct<T>, {0x10, 16, 0, 0})
-	SMember(FString)                                   WhiteList                                                   OFFSET(getStruct<T>, {0x20, 16, 0, 0})
+	SMember(FString)                                   Whitelist                                                   OFFSET(getStruct<T>, {0x20, 16, 0, 0})
 	DMember(bool)                                      bAutoAdd                                                    OFFSET(get<bool>, {0x30, 1, 0, 0})
 };
 

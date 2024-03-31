@@ -23,7 +23,7 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMConversionLibrary.Conv_BoolToSlateVisibility
-	// ESlateVisibility Conv_BoolToSlateVisibility(bool bIsVisible, ESlateVisibility TrueVisibility, ESlateVisibility FalseVisibility); // [0x34e6c1c] Final|Native|Static|Private|BlueprintCallable|BlueprintPure 
+	// ESlateVisibility Conv_BoolToSlateVisibility(bool bIsVisible, ESlateVisibility TrueVisibility, ESlateVisibility FalseVisibility); // [0x7a6db14] Final|Native|Static|Private|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMViewModelContextResolver
@@ -38,9 +38,9 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMViewModelContextResolver.K2_DestroyInstance
-	// void K2_DestroyInstance(class UObject* ViewModel, class UMVVMView* View);                                                // [0x18a39e4] Event|Public|BlueprintEvent|Const 
+	// void K2_DestroyInstance(class UObject* ViewModel, class UMVVMView* View);                                                // [0x186becc] Event|Public|BlueprintEvent|Const 
 	// Function /Script/ModelViewViewModel.MVVMViewModelContextResolver.K2_CreateInstance
-	// TScriptInterface<Class> K2_CreateInstance(class UClass* ExpectedType, class UUserWidget* UserWidget);                    // [0x18a39e4] Event|Public|BlueprintEvent|Const 
+	// TScriptInterface<Class> K2_CreateInstance(class UClass* ExpectedType, class UUserWidget* UserWidget);                    // [0x186becc] Event|Public|BlueprintEvent|Const 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMGameSubsystem
@@ -56,7 +56,7 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMGameSubsystem.GetViewModelCollection
-	// class UMVVMViewModelCollectionObject* GetViewModelCollection();                                                          // [0x68142b8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMVVMViewModelCollectionObject* GetViewModelCollection();                                                          // [0x68105a8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMSubsystem
@@ -71,15 +71,15 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMSubsystem.K2_GetViewFromUserWidget
-	// class UMVVMView* K2_GetViewFromUserWidget(class UUserWidget* UserWidget);                                                // [0x76c9a58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMVVMView* K2_GetViewFromUserWidget(class UUserWidget* UserWidget);                                                // [0x7a6ecf4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMSubsystem.K2_GetAvailableBindings
-	// TArray<FMVVMAvailableBinding> K2_GetAvailableBindings(class UClass* Class, class UClass* Accessor);                      // [0x76c982c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FMVVMAvailableBinding> K2_GetAvailableBindings(class UClass* Class, class UClass* Accessor);                      // [0x7a6e5a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMSubsystem.K2_GetAvailableBinding
-	// FMVVMAvailableBinding K2_GetAvailableBinding(class UClass* Class, FMVVMBindingName BindingName, class UClass* Accessor); // [0x76c9574] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMVVMAvailableBinding K2_GetAvailableBinding(class UClass* Class, FMVVMBindingName BindingName, class UClass* Accessor); // [0x7a6e374] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMSubsystem.GetGlobalViewModelCollection
-	// class UMVVMViewModelCollectionObject* GetGlobalViewModelCollection();                                                    // [0x69f1ed4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMVVMViewModelCollectionObject* GetGlobalViewModelCollection();                                                    // [0x6a43348] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMSubsystem.DoesWidgetTreeContainedWidget
-	// bool DoesWidgetTreeContainedWidget(class UWidgetTree* WidgetTree, class UWidget* ViewWidget);                            // [0x76c9030] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesWidgetTreeContainedWidget(class UWidgetTree* WidgetTree, class UWidget* ViewWidget);                            // [0x7a6dcd8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMViewModelBase
@@ -94,13 +94,13 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMViewModelBase.K2_SetPropertyValue
-	// bool K2_SetPropertyValue(int32_t& OldValue, int32_t& NewValue);                                                          // [0x76c9cf8] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// bool K2_SetPropertyValue(int32_t& OldValue, int32_t& NewValue);                                                          // [0x7a6ef30] Final|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMViewModelBase.K2_RemoveFieldValueChangedDelegate
-	// void K2_RemoveFieldValueChangedDelegate(FFieldNotificationId FieldId, FDelegateProperty Delegate);                       // [0x76c9ad8] Final|Native|Public|BlueprintCallable 
+	// void K2_RemoveFieldValueChangedDelegate(FFieldNotificationId FieldId, FDelegateProperty Delegate);                       // [0x7a6edb4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMViewModelBase.K2_BroadcastFieldValueChanged
-	// void K2_BroadcastFieldValueChanged(FFieldNotificationId FieldId);                                                        // [0x76c9444] Final|Native|Protected|BlueprintCallable 
+	// void K2_BroadcastFieldValueChanged(FFieldNotificationId FieldId);                                                        // [0x7a6e28c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMViewModelBase.K2_AddFieldValueChangedDelegate
-	// void K2_AddFieldValueChangedDelegate(FFieldNotificationId FieldId, FDelegateProperty Delegate);                          // [0x1f08f78] Final|Native|Public|BlueprintCallable 
+	// void K2_AddFieldValueChangedDelegate(FFieldNotificationId FieldId, FDelegateProperty Delegate);                          // [0x7a6e138] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMViewModelCollectionObject
@@ -116,15 +116,15 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMViewModelCollectionObject.RemoveViewModel
-	// bool RemoveViewModel(FMVVMViewModelContext Context);                                                                     // [0x76ca100] Final|Native|Public|BlueprintCallable 
+	// bool RemoveViewModel(FMVVMViewModelContext Context);                                                                     // [0x7a6f2b0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMViewModelCollectionObject.RemoveAllViewModelInstance
-	// int32_t RemoveAllViewModelInstance(class UMVVMViewModelBase* ViewModel);                                                 // [0x76ca060] Final|Native|Public|BlueprintCallable 
+	// int32_t RemoveAllViewModelInstance(class UMVVMViewModelBase* ViewModel);                                                 // [0x7a6f1cc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMViewModelCollectionObject.FindViewModelInstance
-	// class UMVVMViewModelBase* FindViewModelInstance(FMVVMViewModelContext Context);                                          // [0x76c921c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMVVMViewModelBase* FindViewModelInstance(FMVVMViewModelContext Context);                                          // [0x7a6df40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMViewModelCollectionObject.FindFirstViewModelInstanceOfType
-	// class UMVVMViewModelBase* FindFirstViewModelInstanceOfType(class UClass*& ViewModelClass);                               // [0x76c9144] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UMVVMViewModelBase* FindFirstViewModelInstanceOfType(class UClass*& ViewModelClass);                               // [0x7a6de68] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMViewModelCollectionObject.AddViewModelInstance
-	// bool AddViewModelInstance(FMVVMViewModelContext Context, class UMVVMViewModelBase* ViewModel);                           // [0x76c8dc4] Final|Native|Public|BlueprintCallable 
+	// bool AddViewModelInstance(FMVVMViewModelContext Context, class UMVVMViewModelBase* ViewModel);                           // [0x7a6d974] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMInstancedViewModelGeneratedClass
@@ -180,29 +180,29 @@ public:
 
 	/// Functions
 	// Function /Script/ModelViewViewModel.MVVMView.UninitializeSources
-	// void UninitializeSources();                                                                                              // [0x76ca3c8] Final|Native|Public|BlueprintCallable 
+	// void UninitializeSources();                                                                                              // [0x7a6f49c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.UninitializeEvents
-	// void UninitializeEvents();                                                                                               // [0x76ca3b4] Final|Native|Public|BlueprintCallable 
+	// void UninitializeEvents();                                                                                               // [0x7a6f488] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.UninitializeBindings
-	// void UninitializeBindings();                                                                                             // [0x76ca3a0] Final|Native|Public|BlueprintCallable 
+	// void UninitializeBindings();                                                                                             // [0x7a6f474] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.SetViewModelByClass
-	// bool SetViewModelByClass(TScriptInterface<Class> NewValue);                                                              // [0x76ca250] Final|Native|Public|BlueprintCallable 
+	// bool SetViewModelByClass(TScriptInterface<Class> NewValue);                                                              // [0x7a6f390] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.SetViewModel
-	// bool SetViewModel(FName ViewModelName, TScriptInterface<Class> ViewModel);                                               // [0x252b7b8] Final|Native|Public|BlueprintCallable 
+	// bool SetViewModel(FName ViewModelName, TScriptInterface<Class> ViewModel);                                               // [0x1cd08e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.InitializeSources
-	// void InitializeSources();                                                                                                // [0x76c9430] Final|Native|Public|BlueprintCallable 
+	// void InitializeSources();                                                                                                // [0x7a6e124] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.InitializeEvents
-	// void InitializeEvents();                                                                                                 // [0x76c941c] Final|Native|Public|BlueprintCallable 
+	// void InitializeEvents();                                                                                                 // [0x7a6e110] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.InitializeBindings
-	// void InitializeBindings();                                                                                               // [0x76c9408] Final|Native|Public|BlueprintCallable 
+	// void InitializeBindings();                                                                                               // [0x7a6e0fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ModelViewViewModel.MVVMView.GetViewModel
-	// TScriptInterface<Class> GetViewModel(FName ViewModelName);                                                               // [0x76c936c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TScriptInterface<Class> GetViewModel(FName ViewModelName);                                                               // [0x7a6e020] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMView.AreSourcesInitialized
-	// bool AreSourcesInitialized();                                                                                            // [0x76c901c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool AreSourcesInitialized();                                                                                            // [0x7a6db00] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMView.AreEventsInitialized
-	// bool AreEventsInitialized();                                                                                             // [0x76c9008] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool AreEventsInitialized();                                                                                             // [0x7a6daec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ModelViewViewModel.MVVMView.AreBindingsInitialized
-	// bool AreBindingsInitialized();                                                                                           // [0x76c8ff4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool AreBindingsInitialized();                                                                                           // [0x7a6dad8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/ModelViewViewModel.MVVMViewClass

@@ -10,23 +10,26 @@
 /// dependency: FortniteGame
 
 /// Class /Script/JunoRidableRuntime.JunoRidableCheatManager
-/// Size: 0x0040 (0x000028 - 0x000068)
+/// Size: 0x0048 (0x000028 - 0x000070)
 class UJunoRidableCheatManager : public UChildCheatManager
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 104;
+	static inline constexpr uint64_t __MDKClassSize = 112;
 
 public:
 	CMember(TWeakObjectPtr<UClass*>)                   CreatureRidableComponentClass                               OFFSET(get<T>, {0x28, 32, 0, 0})
 	CMember(TWeakObjectPtr<UClass*>)                   PlayerRidingComponentClass                                  OFFSET(get<T>, {0x48, 32, 0, 0})
+	CMember(class UClass*)                             RestoreRiderComponentClass                                  OFFSET(get<T>, {0x68, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/JunoRidableRuntime.JunoRidableCheatManager.NativeAddToCheatManager
-	// void NativeAddToCheatManager();                                                                                          // [0x36203b0] Final|Native|Protected|BlueprintCallable 
+	// void NativeAddToCheatManager();                                                                                          // [0x3518b8c] Final|Native|Protected|BlueprintCallable 
+	// Function /Script/JunoRidableRuntime.JunoRidableCheatManager.JunoStopRidingDelayedResetRiderComponent
+	// void JunoStopRidingDelayedResetRiderComponent();                                                                         // [0x3518b8c] Final|Native|Protected 
 	// Function /Script/JunoRidableRuntime.JunoRidableCheatManager.JunoStopRiding
-	// void JunoStopRiding();                                                                                                   // [0x1c791ec] BlueprintAuthorityOnly|Exec|Native|Public 
+	// void JunoStopRiding();                                                                                                   // [0x25e21a0] BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/JunoRidableRuntime.JunoRidableCheatManager.JunoStartRiding
-	// void JunoStartRiding();                                                                                                  // [0x35bd900] BlueprintAuthorityOnly|Exec|Native|Public 
+	// void JunoStartRiding();                                                                                                  // [0x1bbc518] BlueprintAuthorityOnly|Exec|Native|Public 
 };
 

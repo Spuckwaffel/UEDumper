@@ -30,9 +30,24 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HideWeapon.AnimNotifyState_HideWeapon_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HideWeapon.AnimNotifyState_HideWeapon_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+};
+
+/// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_R.AnimNotify_Player_HandSplash_R_C
+/// Size: 0x0000 (0x000038 - 0x000038)
+class UAnimNotify_Player_HandSplash_R_C : public UAnimNotify
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 56;
+
+public:
+
+
+	/// Functions
+	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_R.AnimNotify_Player_HandSplash_R_C.Received_Notify
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/Game/BP_AnimNotify_CameraShake.BP_AnimNotify_CameraShake_C
@@ -50,7 +65,7 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/Game/BP_AnimNotify_CameraShake.BP_AnimNotify_CameraShake_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/Game/MainPlayer/Locomotion/Medium/Male/Jog/HeavyWeapon/BP_GCSteps.BP_GCSteps_C
@@ -77,11 +92,11 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HolsterWeapon.AnimNotifyState_HolsterWeapon_C.CanApplyHolster
-	// bool CanApplyHolster(FName& HolsterId);                                                                                  // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool CanApplyHolster(FName& HolsterId);                                                                                  // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HolsterWeapon.AnimNotifyState_HolsterWeapon_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HolsterWeapon.AnimNotifyState_HolsterWeapon_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_PlaySoundWithCondition.AnimNotify_PlaySoundWithCondition_C
@@ -96,7 +111,7 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_PlaySoundWithCondition.AnimNotify_PlaySoundWithCondition_C.ShouldTriggerAnimNotify
-	// bool ShouldTriggerAnimNotify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation);                // [0x18a39e4] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool ShouldTriggerAnimNotify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation);                // [0x186becc] Event|Protected|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep.AnimNotify_FootStep_C
@@ -113,24 +128,9 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep.AnimNotify_FootStep_C.AudioPreview
-	// void AudioPreview(class AActor* InActor);                                                                                // [0x18a39e4] Public|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
+	// void AudioPreview(class AActor* InActor);                                                                                // [0x186becc] Public|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep.AnimNotify_FootStep_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
-};
-
-/// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Right.AnimNotify_FootStep_Right_C
-/// Size: 0x0000 (0x000078 - 0x000078)
-class UAnimNotify_FootStep_Right_C : public UAnimNotify_FootStep_C
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 120;
-
-public:
-
-
-	/// Functions
-	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Right.AnimNotify_FootStep_Right_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Left.AnimNotify_FootStep_Left_C
@@ -145,7 +145,22 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Left.AnimNotify_FootStep_Left_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+};
+
+/// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Right.AnimNotify_FootStep_Right_C
+/// Size: 0x0000 (0x000078 - 0x000078)
+class UAnimNotify_FootStep_Right_C : public UAnimNotify_FootStep_C
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 120;
+
+public:
+
+
+	/// Functions
+	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_FootStep_Right.AnimNotify_FootStep_Right_C.Received_Notify
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_L.AnimNotify_Player_HandSplash_L_C
@@ -160,151 +175,138 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_L.AnimNotify_Player_HandSplash_L_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
-};
-
-/// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_R.AnimNotify_Player_HandSplash_R_C
-/// Size: 0x0000 (0x000038 - 0x000038)
-class UAnimNotify_Player_HandSplash_R_C : public UAnimNotify
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 56;
-
-public:
-
-
-	/// Functions
-	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_Player_HandSplash_R.AnimNotify_Player_HandSplash_R_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/Game/MainPlayer/Facial/FaceGameplay/Gameplay_FaceSystem_StateMachine_AnimBP.Gameplay_FaceSystem_StateMachine_AnimBP_C
-/// Size: 0x1620 (0x001640 - 0x002C60)
+/// Size: 0x1728 (0x001610 - 0x002D38)
 class UGameplay_FaceSystem_StateMachine_AnimBP_C : public UFortPlayerFaceSystemStateMachineAnimInstance
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 11360;
+	static inline constexpr uint64_t __MDKClassSize = 11576;
 
 public:
-	SMember(FPointerToUberGraphFrame)                  UberGraphFrame                                              OFFSET(getStruct<T>, {0x1640, 8, 0, 0})
-	SMember(FAnimBlueprintGeneratedMutableData)        __AnimBlueprintMutables                                     OFFSET(getStruct<T>, {0x1648, 20, 0, 0})
-	SMember(FAnimSubsystemInstance)                    AnimBlueprintExtension_PropertyAccess                       OFFSET(getStruct<T>, {0x1660, 8, 0, 0})
-	SMember(FAnimSubsystemInstance)                    AnimBlueprintExtension_Base                                 OFFSET(getStruct<T>, {0x1668, 8, 0, 0})
-	SMember(FAnimNode_Root)                            AnimGraphNode_Root                                          OFFSET(getStruct<T>, {0x1670, 32, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult                              OFFSET(getStruct<T>, {0x1690, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult1                             OFFSET(getStruct<T>, {0x16B8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult2                             OFFSET(getStruct<T>, {0x16E0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult3                             OFFSET(getStruct<T>, {0x1708, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult4                             OFFSET(getStruct<T>, {0x1730, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult5                             OFFSET(getStruct<T>, {0x1758, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult6                             OFFSET(getStruct<T>, {0x1780, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult7                             OFFSET(getStruct<T>, {0x17A8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult8                             OFFSET(getStruct<T>, {0x17D0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult9                             OFFSET(getStruct<T>, {0x17F8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult10                            OFFSET(getStruct<T>, {0x1820, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult11                            OFFSET(getStruct<T>, {0x1848, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult12                            OFFSET(getStruct<T>, {0x1870, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult13                            OFFSET(getStruct<T>, {0x1898, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult14                            OFFSET(getStruct<T>, {0x18C0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult15                            OFFSET(getStruct<T>, {0x18E8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult16                            OFFSET(getStruct<T>, {0x1910, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult17                            OFFSET(getStruct<T>, {0x1938, 40, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer                                OFFSET(getStruct<T>, {0x1960, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult                                   OFFSET(getStruct<T>, {0x19A8, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer1                               OFFSET(getStruct<T>, {0x19C8, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult1                                  OFFSET(getStruct<T>, {0x1A10, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer2                               OFFSET(getStruct<T>, {0x1A30, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult2                                  OFFSET(getStruct<T>, {0x1A78, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer3                               OFFSET(getStruct<T>, {0x1A98, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult3                                  OFFSET(getStruct<T>, {0x1AE0, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer4                               OFFSET(getStruct<T>, {0x1B00, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult4                                  OFFSET(getStruct<T>, {0x1B48, 32, 0, 0})
-	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer                              OFFSET(getStruct<T>, {0x1B68, 112, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult5                                  OFFSET(getStruct<T>, {0x1BD8, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer5                               OFFSET(getStruct<T>, {0x1BF8, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult6                                  OFFSET(getStruct<T>, {0x1C40, 32, 0, 0})
-	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer1                             OFFSET(getStruct<T>, {0x1C60, 112, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult7                                  OFFSET(getStruct<T>, {0x1CD0, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer6                               OFFSET(getStruct<T>, {0x1CF0, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult8                                  OFFSET(getStruct<T>, {0x1D38, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer7                               OFFSET(getStruct<T>, {0x1D58, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult9                                  OFFSET(getStruct<T>, {0x1DA0, 32, 0, 0})
-	SMember(FAnimNode_StateMachine)                    AnimGraphNode_StateMachine                                  OFFSET(getStruct<T>, {0x1DC0, 200, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult18                            OFFSET(getStruct<T>, {0x1E88, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult19                            OFFSET(getStruct<T>, {0x1EB0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult20                            OFFSET(getStruct<T>, {0x1ED8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult21                            OFFSET(getStruct<T>, {0x1F00, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult22                            OFFSET(getStruct<T>, {0x1F28, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult23                            OFFSET(getStruct<T>, {0x1F50, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult24                            OFFSET(getStruct<T>, {0x1F78, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult25                            OFFSET(getStruct<T>, {0x1FA0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult26                            OFFSET(getStruct<T>, {0x1FC8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult27                            OFFSET(getStruct<T>, {0x1FF0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult28                            OFFSET(getStruct<T>, {0x2018, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult29                            OFFSET(getStruct<T>, {0x2040, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult30                            OFFSET(getStruct<T>, {0x2068, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult31                            OFFSET(getStruct<T>, {0x2090, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult32                            OFFSET(getStruct<T>, {0x20B8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult33                            OFFSET(getStruct<T>, {0x20E0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult34                            OFFSET(getStruct<T>, {0x2108, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult35                            OFFSET(getStruct<T>, {0x2130, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult36                            OFFSET(getStruct<T>, {0x2158, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult37                            OFFSET(getStruct<T>, {0x2180, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult38                            OFFSET(getStruct<T>, {0x21A8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult39                            OFFSET(getStruct<T>, {0x21D0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult40                            OFFSET(getStruct<T>, {0x21F8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult41                            OFFSET(getStruct<T>, {0x2220, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult42                            OFFSET(getStruct<T>, {0x2248, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult43                            OFFSET(getStruct<T>, {0x2270, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult44                            OFFSET(getStruct<T>, {0x2298, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult45                            OFFSET(getStruct<T>, {0x22C0, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult46                            OFFSET(getStruct<T>, {0x22E8, 40, 0, 0})
-	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult47                            OFFSET(getStruct<T>, {0x2310, 40, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer8                               OFFSET(getStruct<T>, {0x2338, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult10                                 OFFSET(getStruct<T>, {0x2380, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer9                               OFFSET(getStruct<T>, {0x23A0, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult11                                 OFFSET(getStruct<T>, {0x23E8, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer10                              OFFSET(getStruct<T>, {0x2408, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult12                                 OFFSET(getStruct<T>, {0x2450, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer11                              OFFSET(getStruct<T>, {0x2470, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult13                                 OFFSET(getStruct<T>, {0x24B8, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer12                              OFFSET(getStruct<T>, {0x24D8, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult14                                 OFFSET(getStruct<T>, {0x2520, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer13                              OFFSET(getStruct<T>, {0x2540, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult15                                 OFFSET(getStruct<T>, {0x2588, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer14                              OFFSET(getStruct<T>, {0x25A8, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult16                                 OFFSET(getStruct<T>, {0x25F0, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer15                              OFFSET(getStruct<T>, {0x2610, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult17                                 OFFSET(getStruct<T>, {0x2658, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer16                              OFFSET(getStruct<T>, {0x2678, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult18                                 OFFSET(getStruct<T>, {0x26C0, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer17                              OFFSET(getStruct<T>, {0x26E0, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult19                                 OFFSET(getStruct<T>, {0x2728, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer18                              OFFSET(getStruct<T>, {0x2748, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult20                                 OFFSET(getStruct<T>, {0x2790, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer19                              OFFSET(getStruct<T>, {0x27B0, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult21                                 OFFSET(getStruct<T>, {0x27F8, 32, 0, 0})
-	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer2                             OFFSET(getStruct<T>, {0x2818, 112, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult22                                 OFFSET(getStruct<T>, {0x2888, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer20                              OFFSET(getStruct<T>, {0x28A8, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult23                                 OFFSET(getStruct<T>, {0x28F0, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer21                              OFFSET(getStruct<T>, {0x2910, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult24                                 OFFSET(getStruct<T>, {0x2958, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer22                              OFFSET(getStruct<T>, {0x2978, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult25                                 OFFSET(getStruct<T>, {0x29C0, 32, 0, 0})
-	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer3                             OFFSET(getStruct<T>, {0x29E0, 112, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult26                                 OFFSET(getStruct<T>, {0x2A50, 32, 0, 0})
-	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer23                              OFFSET(getStruct<T>, {0x2A70, 72, 0, 0})
-	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult27                                 OFFSET(getStruct<T>, {0x2AB8, 32, 0, 0})
-	SMember(FAnimNode_StateMachine)                    AnimGraphNode_StateMachine1                                 OFFSET(getStruct<T>, {0x2AD8, 200, 0, 0})
-	SMember(FAnimNode_TwoWayBlend)                     AnimGraphNode_TwoWayBlend                                   OFFSET(getStruct<T>, {0x2BA0, 192, 0, 0})
+	SMember(FPointerToUberGraphFrame)                  UberGraphFrame                                              OFFSET(getStruct<T>, {0x1610, 8, 0, 0})
+	SMember(FAnimBlueprintGeneratedMutableData)        __AnimBlueprintMutables                                     OFFSET(getStruct<T>, {0x1618, 20, 0, 0})
+	SMember(FAnimSubsystemInstance)                    AnimBlueprintExtension_PropertyAccess                       OFFSET(getStruct<T>, {0x1630, 8, 0, 0})
+	SMember(FAnimSubsystemInstance)                    AnimBlueprintExtension_Base                                 OFFSET(getStruct<T>, {0x1638, 8, 0, 0})
+	SMember(FAnimNode_Root)                            AnimGraphNode_Root                                          OFFSET(getStruct<T>, {0x1640, 32, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult                              OFFSET(getStruct<T>, {0x1660, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult1                             OFFSET(getStruct<T>, {0x1688, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult2                             OFFSET(getStruct<T>, {0x16B0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult3                             OFFSET(getStruct<T>, {0x16D8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult4                             OFFSET(getStruct<T>, {0x1700, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult5                             OFFSET(getStruct<T>, {0x1728, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult6                             OFFSET(getStruct<T>, {0x1750, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult7                             OFFSET(getStruct<T>, {0x1778, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult8                             OFFSET(getStruct<T>, {0x17A0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult9                             OFFSET(getStruct<T>, {0x17C8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult10                            OFFSET(getStruct<T>, {0x17F0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult11                            OFFSET(getStruct<T>, {0x1818, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult12                            OFFSET(getStruct<T>, {0x1840, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult13                            OFFSET(getStruct<T>, {0x1868, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult14                            OFFSET(getStruct<T>, {0x1890, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult15                            OFFSET(getStruct<T>, {0x18B8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult16                            OFFSET(getStruct<T>, {0x18E0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult17                            OFFSET(getStruct<T>, {0x1908, 40, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer                                OFFSET(getStruct<T>, {0x1930, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult                                   OFFSET(getStruct<T>, {0x1978, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer1                               OFFSET(getStruct<T>, {0x1998, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult1                                  OFFSET(getStruct<T>, {0x19E0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer2                               OFFSET(getStruct<T>, {0x1A00, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult2                                  OFFSET(getStruct<T>, {0x1A48, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer3                               OFFSET(getStruct<T>, {0x1A68, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult3                                  OFFSET(getStruct<T>, {0x1AB0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer4                               OFFSET(getStruct<T>, {0x1AD0, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult4                                  OFFSET(getStruct<T>, {0x1B18, 32, 0, 0})
+	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer                              OFFSET(getStruct<T>, {0x1B38, 112, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult5                                  OFFSET(getStruct<T>, {0x1BA8, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer5                               OFFSET(getStruct<T>, {0x1BC8, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult6                                  OFFSET(getStruct<T>, {0x1C10, 32, 0, 0})
+	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer1                             OFFSET(getStruct<T>, {0x1C30, 112, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult7                                  OFFSET(getStruct<T>, {0x1CA0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer6                               OFFSET(getStruct<T>, {0x1CC0, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult8                                  OFFSET(getStruct<T>, {0x1D08, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer7                               OFFSET(getStruct<T>, {0x1D28, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult9                                  OFFSET(getStruct<T>, {0x1D70, 32, 0, 0})
+	SMember(FAnimNode_StateMachine)                    AnimGraphNode_StateMachine                                  OFFSET(getStruct<T>, {0x1D90, 200, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult18                            OFFSET(getStruct<T>, {0x1E58, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult19                            OFFSET(getStruct<T>, {0x1E80, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult20                            OFFSET(getStruct<T>, {0x1EA8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult21                            OFFSET(getStruct<T>, {0x1ED0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult22                            OFFSET(getStruct<T>, {0x1EF8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult23                            OFFSET(getStruct<T>, {0x1F20, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult24                            OFFSET(getStruct<T>, {0x1F48, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult25                            OFFSET(getStruct<T>, {0x1F70, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult26                            OFFSET(getStruct<T>, {0x1F98, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult27                            OFFSET(getStruct<T>, {0x1FC0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult28                            OFFSET(getStruct<T>, {0x1FE8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult29                            OFFSET(getStruct<T>, {0x2010, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult30                            OFFSET(getStruct<T>, {0x2038, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult31                            OFFSET(getStruct<T>, {0x2060, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult32                            OFFSET(getStruct<T>, {0x2088, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult33                            OFFSET(getStruct<T>, {0x20B0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult34                            OFFSET(getStruct<T>, {0x20D8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult35                            OFFSET(getStruct<T>, {0x2100, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult36                            OFFSET(getStruct<T>, {0x2128, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult37                            OFFSET(getStruct<T>, {0x2150, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult38                            OFFSET(getStruct<T>, {0x2178, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult39                            OFFSET(getStruct<T>, {0x21A0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult40                            OFFSET(getStruct<T>, {0x21C8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult41                            OFFSET(getStruct<T>, {0x21F0, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult42                            OFFSET(getStruct<T>, {0x2218, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult43                            OFFSET(getStruct<T>, {0x2240, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult44                            OFFSET(getStruct<T>, {0x2268, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult45                            OFFSET(getStruct<T>, {0x2290, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult46                            OFFSET(getStruct<T>, {0x22B8, 40, 0, 0})
+	SMember(FAnimNode_TransitionResult)                AnimGraphNode_TransitionResult47                            OFFSET(getStruct<T>, {0x22E0, 40, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer8                               OFFSET(getStruct<T>, {0x2308, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult10                                 OFFSET(getStruct<T>, {0x2350, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer9                               OFFSET(getStruct<T>, {0x2370, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult11                                 OFFSET(getStruct<T>, {0x23B8, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer10                              OFFSET(getStruct<T>, {0x23D8, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult12                                 OFFSET(getStruct<T>, {0x2420, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer11                              OFFSET(getStruct<T>, {0x2440, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult13                                 OFFSET(getStruct<T>, {0x2488, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer12                              OFFSET(getStruct<T>, {0x24A8, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult14                                 OFFSET(getStruct<T>, {0x24F0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer13                              OFFSET(getStruct<T>, {0x2510, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult15                                 OFFSET(getStruct<T>, {0x2558, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer14                              OFFSET(getStruct<T>, {0x2578, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult16                                 OFFSET(getStruct<T>, {0x25C0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer15                              OFFSET(getStruct<T>, {0x25E0, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult17                                 OFFSET(getStruct<T>, {0x2628, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer16                              OFFSET(getStruct<T>, {0x2648, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult18                                 OFFSET(getStruct<T>, {0x2690, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer17                              OFFSET(getStruct<T>, {0x26B0, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult19                                 OFFSET(getStruct<T>, {0x26F8, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer18                              OFFSET(getStruct<T>, {0x2718, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult20                                 OFFSET(getStruct<T>, {0x2760, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer19                              OFFSET(getStruct<T>, {0x2780, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult21                                 OFFSET(getStruct<T>, {0x27C8, 32, 0, 0})
+	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer2                             OFFSET(getStruct<T>, {0x27E8, 112, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult22                                 OFFSET(getStruct<T>, {0x2858, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer20                              OFFSET(getStruct<T>, {0x2878, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult23                                 OFFSET(getStruct<T>, {0x28C0, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer21                              OFFSET(getStruct<T>, {0x28E0, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult24                                 OFFSET(getStruct<T>, {0x2928, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer22                              OFFSET(getStruct<T>, {0x2948, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult25                                 OFFSET(getStruct<T>, {0x2990, 32, 0, 0})
+	SMember(FAnimNode_BlendSpacePlayer)                AnimGraphNode_BlendSpacePlayer3                             OFFSET(getStruct<T>, {0x29B0, 112, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult26                                 OFFSET(getStruct<T>, {0x2A20, 32, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer23                              OFFSET(getStruct<T>, {0x2A40, 72, 0, 0})
+	SMember(FAnimNode_StateResult)                     AnimGraphNode_StateResult27                                 OFFSET(getStruct<T>, {0x2A88, 32, 0, 0})
+	SMember(FAnimNode_StateMachine)                    AnimGraphNode_StateMachine1                                 OFFSET(getStruct<T>, {0x2AA8, 200, 0, 0})
+	SMember(FAnimNode_TwoWayBlend)                     AnimGraphNode_TwoWayBlend                                   OFFSET(getStruct<T>, {0x2B70, 192, 0, 0})
+	SMember(FAnimNode_TwoWayBlend)                     AnimGraphNode_TwoWayBlend1                                  OFFSET(getStruct<T>, {0x2C30, 192, 0, 0})
+	SMember(FAnimNode_SequencePlayer)                  AnimGraphNode_SequencePlayer24                              OFFSET(getStruct<T>, {0x2CF0, 72, 0, 0})
 
 
 	/// Functions
 	// Function /Game/Animation/Game/MainPlayer/Facial/FaceGameplay/Gameplay_FaceSystem_StateMachine_AnimBP.Gameplay_FaceSystem_StateMachine_AnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Game/MainPlayer/Facial/FaceGameplay/Gameplay_FaceSystem_StateMachine_AnimBP.Gameplay_FaceSystem_StateMachine_AnimBP_C.ExecuteUbergraph_Gameplay_FaceSystem_StateMachine_AnimBP
-	// void ExecuteUbergraph_Gameplay_FaceSystem_StateMachine_AnimBP(int32_t EntryPoint);                                       // [0x18a39e4] Final                
+	// void ExecuteUbergraph_Gameplay_FaceSystem_StateMachine_AnimBP(int32_t EntryPoint);                                       // [0x186becc] Final                
 };
 
 /// Class /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C
@@ -319,92 +321,77 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Vehicle Dynamics Scaler Function
-	// void Vehicle Dynamics Scaler Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, bool Debug, class UObject* __WorldContext, double& InVehicleHeadScaleAlpha, double& InVehicleHeadSimAlpha, double& InVehicleSkirtScaleAlpha, double& InVehicleSkirtSimAlpha); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Vehicle Dynamics Scaler Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, bool Debug, class UObject* __WorldContext, double& InVehicleHeadScaleAlpha, double& InVehicleHeadSimAlpha, double& InVehicleSkirtScaleAlpha, double& InVehicleSkirtSimAlpha); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cloth Controller Function Nativization Wrapper
-	// void Cloth Controller Function Nativization Wrapper(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString& ClothingAssetName, FClothControllerClothParameterMap& Cloth Paramaters, FClothCoreSettings& Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_Speed_Limit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, float DeltaTime, float GameTimeInSeconds, FClothControllerWindParameterMap& WindGustsParams, FWindGustSettings& WindGustLocalSettings, class UObject* __WorldContext, FName& CharacterStateOut, FClothParameters& Cloth Settings Out, FWindGustSettings& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Cloth Controller Function Nativization Wrapper(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString& ClothingAssetName, FClothControllerClothParameterMap& Cloth Paramaters, FClothCoreSettings& Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_Speed_Limit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, float DeltaTime, float GameTimeInSeconds, FClothControllerWindParameterMap& WindGustsParams, FWindGustSettings& WindGustLocalSettings, class UObject* __WorldContext, FName& CharacterStateOut, FClothParameters& Cloth Settings Out, FWindGustSettings& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cloth Controller Convert To Nativized Parameters
-	// void Cloth Controller Convert To Nativized Parameters(FClothParamsStruct ClothParametersStruct, FWindGustParamsStruct WindParametersStruct, FClothCoreSettingStruct Cloth Core Settings, FWindGustLocalSettingStruct Wind Gust Settings, FName Character State Name, class UObject* __WorldContext, FClothParameters& Cloth Parameters Nativized, FWindGustParameters& Wind Parameters Nativized, FClothCoreSettings& ClothCoreSettings, FWindGustSettings& Wind Settings Nativized); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Cloth Controller Convert To Nativized Parameters(FClothParamsStruct ClothParametersStruct, FWindGustParamsStruct WindParametersStruct, FClothCoreSettingStruct Cloth Core Settings, FWindGustLocalSettingStruct Wind Gust Settings, FName Character State Name, class UObject* __WorldContext, FClothParameters& Cloth Parameters Nativized, FWindGustParameters& Wind Parameters Nativized, FClothCoreSettings& ClothCoreSettings, FWindGustSettings& Wind Settings Nativized); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.ConvertToNativizedWindParameters
-	// void ConvertToNativizedWindParameters(FWindGustSettingStruct& WindGustSettingStruct, class UObject* __WorldContext, FWindGustParameters& WindGustParameters); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void ConvertToNativizedWindParameters(FWindGustSettingStruct& WindGustSettingStruct, class UObject* __WorldContext, FWindGustParameters& WindGustParameters); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.ConvertToNativizedClothParameters
-	// void ConvertToNativizedClothParameters(FClothSettingStruct& ClothSettingStruct, class UObject* __WorldContext, FClothParameters& ClothParameters); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void ConvertToNativizedClothParameters(FClothSettingStruct& ClothSettingStruct, class UObject* __WorldContext, FClothParameters& ClothParameters); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Get Joint Location Relative to Bone
-	// void Get Joint Location Relative to Bone(FName Target Joint, FName Relative Joint, FVector Offset, class UMeshComponent* SkelMeshComponent, bool Debug Draw, class UObject* __WorldContext, FVector& Joint Location Vector); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Get Joint Location Relative to Bone(FName Target Joint, FName Relative Joint, FVector Offset, class UMeshComponent* SkelMeshComponent, bool Debug Draw, class UObject* __WorldContext, FVector& Joint Location Vector); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cape Spine05 Pelvis Rotation Function
-	// void Cape Spine05 Pelvis Rotation Function(class USkinnedMeshComponent* SkeletalMeshComponent, class UObject* __WorldContext, FRotator& Rotate Z Output); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Cape Spine05 Pelvis Rotation Function(class USkinnedMeshComponent* SkeletalMeshComponent, class UObject* __WorldContext, FRotator& Rotate Z Output); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Separated Cloth Control Function
-	// void Separated Cloth Control Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString ClothingAssetName, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct WindGustsParams, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FString& CurrentStateOut, FClothCoreSettingStruct& Cloth Core Settings Out, FClothSettingStruct& Cloth Settings Out, FWindGustSettingStruct& WindGustSettings Out, FWindGustLocalSettingStruct& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Separated Cloth Control Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString ClothingAssetName, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct WindGustsParams, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FString& CurrentStateOut, FClothCoreSettingStruct& Cloth Core Settings Out, FClothSettingStruct& Cloth Settings Out, FWindGustSettingStruct& WindGustSettings Out, FWindGustLocalSettingStruct& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Separated Cloth Control Write To Instance
-	// void Separated Cloth Control Write To Instance(class UCustomCharacterPartAnimInstance* Character Part Anim Instance, FString Clothing Asset Name, FClothCoreSettingStruct Cloth Core Settings, FClothSettingStruct Cloth Settings, FVector Gust Strength - Wind Velocity, FName Joint Name, class UObject* __WorldContext); // [0x18a39e4] Static|Public|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Separated Cloth Control Write To Instance(class UCustomCharacterPartAnimInstance* Character Part Anim Instance, FString Clothing Asset Name, FClothCoreSettingStruct Cloth Core Settings, FClothSettingStruct Cloth Settings, FVector Gust Strength - Wind Velocity, FName Joint Name, class UObject* __WorldContext); // [0x186becc] Static|Public|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Separated Cloth Control Calculate Parameters
-	// void Separated Cloth Control Calculate Parameters(class UCustomCharacterPartAnimInstance* InCharacterPartAnimInstance, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct InWindGustParams, FWindGustLocalSettingStruct InWindGustLocalSettings, class UObject* __WorldContext, FString& OutCurrentState, FClothCoreSettingStruct& OutClothCoreSettings, FClothSettingStruct& OutClothSettings, FWindGustSettingStruct& OutWindGustSettings, FWindGustLocalSettingStruct& OutWindGustLocalSettings, FVector& OutGustStrength, FVector& LinearVelVector-DELETE LATER); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Separated Cloth Control Calculate Parameters(class UCustomCharacterPartAnimInstance* InCharacterPartAnimInstance, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct InWindGustParams, FWindGustLocalSettingStruct InWindGustLocalSettings, class UObject* __WorldContext, FString& OutCurrentState, FClothCoreSettingStruct& OutClothCoreSettings, FClothSettingStruct& OutClothSettings, FWindGustSettingStruct& OutWindGustSettings, FWindGustLocalSettingStruct& OutWindGustLocalSettings, FVector& OutGustStrength, FVector& LinearVelVector-DELETE LATER); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Separated Cloth Control Wind Gust Function
-	// void Separated Cloth Control Wind Gust Function(double DeltaTime, double GameTimeInSeconds, FName JointName, FWindGustSettingStruct WindGustSettings, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FVector& GustStrengthWindVelocity Out, FWindGustLocalSettingStruct& WindGustLocalSettingsOut); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Separated Cloth Control Wind Gust Function(double DeltaTime, double GameTimeInSeconds, FName JointName, FWindGustSettingStruct WindGustSettings, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FVector& GustStrengthWindVelocity Out, FWindGustLocalSettingStruct& WindGustLocalSettingsOut); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Set WPO Regional Function
-	// void Set WPO Regional Function(class UMaterialInstanceDynamic* Material, class UMaterialInstanceDynamic* Overlay Material, class USkeletalMeshComponent* Skeletal Mesh, FName Velocity Transform, double Velocity Interp Speed, FName Collision Transform, TEnumAsByte<EAxis> Collision Transform Axis, bool Invert Collision Transform Axis, double Delta Time X, FVector& Previous Velocity Transform Location, FVector& Previous Velocity Transform Velocity, int32_t Region, class UObject* __WorldContext); // [0x18a39e4] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Set WPO Regional Function(class UMaterialInstanceDynamic* Material, class UMaterialInstanceDynamic* Overlay Material, class USkeletalMeshComponent* Skeletal Mesh, FName Velocity Transform, double Velocity Interp Speed, FName Collision Transform, TEnumAsByte<EAxis> Collision Transform Axis, bool Invert Collision Transform Axis, double Delta Time X, FVector& Previous Velocity Transform Location, FVector& Previous Velocity Transform Velocity, int32_t Region, class UObject* __WorldContext); // [0x186becc] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Get WPO Regional Param Names Function
-	// void Get WPO Regional Param Names Function(int32_t& Region, class UObject* __WorldContext, FName& Velocity, FName& Bone Position, FName& Bone Vector); // [0x18a39e4] Private|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Get WPO Regional Param Names Function(int32_t& Region, class UObject* __WorldContext, FName& Velocity, FName& Bone Position, FName& Bone Vector); // [0x186becc] Private|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Set WPO Globals Function
-	// void Set WPO Globals Function(class UMaterialInstanceDynamic* Material, class UMaterialInstanceDynamic* Overlay Material, class USkeletalMeshComponent* Skeletal Mesh, FName Local Noise Reference Transform, double Local Noise Offset Multiplier, FVector& Local Noise Transform  Location, FVector& Local Noise Offset, FName Local Turbulence Vector Transform, TEnumAsByte<EAxis> Local Turbulence Vector Transform Axis, class UObject* __WorldContext); // [0x18a39e4] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Set WPO Globals Function(class UMaterialInstanceDynamic* Material, class UMaterialInstanceDynamic* Overlay Material, class USkeletalMeshComponent* Skeletal Mesh, FName Local Noise Reference Transform, double Local Noise Offset Multiplier, FVector& Local Noise Transform  Location, FVector& Local Noise Offset, FName Local Turbulence Vector Transform, TEnumAsByte<EAxis> Local Turbulence Vector Transform Axis, class UObject* __WorldContext); // [0x186becc] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Get  Motion Vector For Transform Function
-	// void Get  Motion Vector For Transform Function(class USceneComponent* Skeletal Mesh, FName Transform Name, FVector& Previous Transform Location, class UObject* __WorldContext, FVector& Transform Motion Vector, FVector& Transform Location, FTransform& Transform); // [0x18a39e4] Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Get  Motion Vector For Transform Function(class USceneComponent* Skeletal Mesh, FName Transform Name, FVector& Previous Transform Location, class UObject* __WorldContext, FVector& Transform Motion Vector, FVector& Transform Location, FTransform& Transform); // [0x186becc] Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Debug Cloth Teleport Threshold Function
-	// void Debug Cloth Teleport Threshold Function(double MinDistance, double MinRotation, class USceneComponent* SkelMeshComponent, bool PrintToScreen, FName BoneName, FVector& InVector, FRotator PawnDeltaRotation, double PrintToScreenDuration, class UObject* __WorldContext, double& Distance, double& Rotation); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Debug Cloth Teleport Threshold Function(double MinDistance, double MinRotation, class USceneComponent* SkelMeshComponent, bool PrintToScreen, FName BoneName, FVector& InVector, FRotator PawnDeltaRotation, double PrintToScreenDuration, class UObject* __WorldContext, double& Distance, double& Rotation); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cloth Controller Helper Scale For Player Movement
-	// void Cloth Controller Helper Scale For Player Movement(FVector LinearVelScale, double PlayerFwdVector, double PlayerFwdVectorJump, double ClothUpX, double ClothUpZ, class UObject* __WorldContext, FVector& LinearVelVectorOut); // [0x18a39e4] Static|Private|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Cloth Controller Helper Scale For Player Movement(FVector LinearVelScale, double PlayerFwdVector, double PlayerFwdVectorJump, double ClothUpX, double ClothUpZ, class UObject* __WorldContext, FVector& LinearVelVectorOut); // [0x186becc] Static|Private|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Scale Joint Rotation Function
-	// void Scale Joint Rotation Function(FRotator Scale, FName TargetBone, FName ReferenceBone, class USkinnedMeshComponent* SkelMeshComponent, class UObject* __WorldContext, FRotator& FinalRotation, FRotator& OriginalRotation); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Scale Joint Rotation Function(FRotator Scale, FName TargetBone, FName ReferenceBone, class USkinnedMeshComponent* SkelMeshComponent, class UObject* __WorldContext, FRotator& FinalRotation, FRotator& OriginalRotation); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Adjust Emote Vehicle Wheel Rotation
-	// void Adjust Emote Vehicle Wheel Rotation(class AActor* Owning Actor, double CurrentWheelRotation, double DeltaTime, double CurrentActorRotation, class UObject* __WorldContext, double& NewActorRotation, double& NewWheelRotation); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Adjust Emote Vehicle Wheel Rotation(class AActor* Owning Actor, double CurrentWheelRotation, double DeltaTime, double CurrentActorRotation, class UObject* __WorldContext, double& NewActorRotation, double& NewWheelRotation); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Gravity Override Setter Function
-	// void Gravity Override Setter Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, class UMeshComponent* SkelMeshComponent, FGravityOverrideSettingStruct GravityOverride Settings, double GameTimeInSeconds, class UObject* __WorldContext, FGravityOverrideSettingStruct& GravityOverride Settings Out, FVector& GravityOverride Out); // [0x18a39e4] Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Gravity Override Setter Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, class UMeshComponent* SkelMeshComponent, FGravityOverrideSettingStruct GravityOverride Settings, double GameTimeInSeconds, class UObject* __WorldContext, FGravityOverrideSettingStruct& GravityOverride Settings Out, FVector& GravityOverride Out); // [0x186becc] Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Gravity Override State Function
-	// void Gravity Override State Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double GameTimeInSeconds, FGravityOverrideParamsStruct& GravityOverrideParams, FRBANParamsStruct& RBAN Params, bool DebugDraw, FName DebugJointName, class UObject* __WorldContext, FVector& GravityOverride, FString& CurrentStateOut, FGravityOverrideSettingStruct& GravityOverrideSettingsOut, FRBANSettingStruct& RBAN SettingsOut); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Gravity Override State Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double GameTimeInSeconds, FGravityOverrideParamsStruct& GravityOverrideParams, FRBANParamsStruct& RBAN Params, bool DebugDraw, FName DebugJointName, class UObject* __WorldContext, FVector& GravityOverride, FString& CurrentStateOut, FGravityOverrideSettingStruct& GravityOverrideSettingsOut, FRBANSettingStruct& RBAN SettingsOut); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.FN_PSDPoseReaderFNC
-	// void FN_PSDPoseReaderFNC(FString startJnt, FString endJnt, FString poseJnt, double Angle, bool Debug, class USkeletalMeshComponent* SkeletalMeshComponent, class UObject* __WorldContext, double& pose_output); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void FN_PSDPoseReaderFNC(FString startJnt, FString endJnt, FString poseJnt, double Angle, bool Debug, class USkeletalMeshComponent* SkeletalMeshComponent, class UObject* __WorldContext, double& pose_output); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Wind Gust Control Function
-	// void Wind Gust Control Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double DeltaTime, double GameTimeInSeconds, FName JointName, FWindGustSettingStruct WindGustSettings, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FVector& GustStrengthWindVelocity Out, FWindGustLocalSettingStruct& WindGustLocalSettingsOut); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Wind Gust Control Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double DeltaTime, double GameTimeInSeconds, FName JointName, FWindGustSettingStruct WindGustSettings, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FVector& GustStrengthWindVelocity Out, FWindGustLocalSettingStruct& WindGustLocalSettingsOut); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.WindGustGeneratorFunction
-	// void WindGustGeneratorFunction(double DeltaTime, FWindGustSettingStruct GustSettings, FWindGustLocalSettingStruct ClothGustLocalSettings, class UObject* __WorldContext, double& GustStrength - WindVelocity, FWindGustLocalSettingStruct& ClothGustLocalSettingsOut); // [0x18a39e4] Static|Private|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void WindGustGeneratorFunction(double DeltaTime, FWindGustSettingStruct GustSettings, FWindGustLocalSettingStruct ClothGustLocalSettings, class UObject* __WorldContext, double& GustStrength - WindVelocity, FWindGustLocalSettingStruct& ClothGustLocalSettingsOut); // [0x186becc] Static|Private|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Play Transformation Montage
-	// void Play Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UObject* __WorldContext);                  // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void Play Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UObject* __WorldContext);                  // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Clear Transformation Montage
-	// void Clear Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UObject* __WorldContext);                 // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void Clear Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UObject* __WorldContext);                 // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Set Transformation Montage
-	// void Set Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UAnimMontage* Montage, double StartTime, class UObject* __WorldContext); // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void Set Transformation Montage(class AFortPlayerPawn* FortPlayerPawn, class UAnimMontage* Montage, double StartTime, class UObject* __WorldContext); // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cloth Controller Setter Function
-	// void Cloth Controller Setter Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FClothSettingStruct Cloth Settings, class UObject* __WorldContext, FClothSettingStruct& Cloth Settings Out); // [0x18a39e4] Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Cloth Controller Setter Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FClothSettingStruct Cloth Settings, class UObject* __WorldContext, FClothSettingStruct& Cloth Settings Out); // [0x186becc] Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Cloth Controller Function
-	// void Cloth Controller Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString ClothingAssetName, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct WindGustsParams, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FString& CurrentStateOut, FClothSettingStruct& Cloth Settings Out, FClothCoreSettingStruct& Cloth Core Settings Out, FWindGustSettingStruct& WindGustSettings Out, FWindGustLocalSettingStruct& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x18a39e4] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void Cloth Controller Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString ClothingAssetName, FClothParamsStruct Cloth Paramaters, FClothCoreSettingStruct Cloth Core Settings, FVector ClothUpAxis, double OnGround_Moving_SpeedLimit, double OnGround_Moving_AngularVel_Max, double OnGround_Moving_FictitiousVel_Max, double LinVelScale_FwdBwd_Clamp, double LinVelScale_UpDwn_Clamp, double DeltaTime, double GameTimeInSeconds, FWindGustParamsStruct WindGustsParams, FWindGustLocalSettingStruct WindGustLocalSettings, class UObject* __WorldContext, FString& CurrentStateOut, FClothSettingStruct& Cloth Settings Out, FClothCoreSettingStruct& Cloth Core Settings Out, FWindGustSettingStruct& WindGustSettings Out, FWindGustLocalSettingStruct& WindGustLocalSettings Out, FVector& GustStrength - WindVelocityOut, FVector& LinearVelVector-DELETE LATER); // [0x186becc] Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.RandomRotatorFunction
-	// void RandomRotatorFunction(double GameTimeInSeconds, double PerlinScale, FRotator Frequency, FRotator Amplitude, FRotator Offset, double TimeOffset, class UObject* __WorldContext, FRotator& RandomRotator); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void RandomRotatorFunction(double GameTimeInSeconds, double PerlinScale, FRotator Frequency, FRotator Amplitude, FRotator Offset, double TimeOffset, class UObject* __WorldContext, FRotator& RandomRotator); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Player Movement Function
-	// void Player Movement Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double X Dot Product, double Y Dot Product, double Z Dot Product, bool DrawDebug, double Debug Scalar, class UObject* __WorldContext, double& X Movement, double& Y Movement, double& Z Movement); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Player Movement Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double X Dot Product, double Y Dot Product, double Z Dot Product, bool DrawDebug, double Debug Scalar, class UObject* __WorldContext, double& X Movement, double& Y Movement, double& Z Movement); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Random Vector Function
-	// void Random Vector Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, class UMeshComponent* SkelMeshComponent, FName JointName, double GameTimeInSeconds, double TimeOffset, double PerlinScale, FVector Frequency, FVector Amplitude, FVector Offset, class UObject* __WorldContext, FVector& VectorOut); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Random Vector Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, class UMeshComponent* SkelMeshComponent, FName JointName, double GameTimeInSeconds, double TimeOffset, double PerlinScale, FVector Frequency, FVector Amplitude, FVector Offset, class UObject* __WorldContext, FVector& VectorOut); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.DrawVectorFromJointFunction
-	// void DrawVectorFromJointFunction(class USceneComponent* SkelMeshComponent, FName JointName, FVector LineEnd, FVector JointOffset, FLinearColor LineColor, double Thickness, class UObject* __WorldContext); // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void DrawVectorFromJointFunction(class USceneComponent* SkelMeshComponent, FName JointName, FVector LineEnd, FVector JointOffset, FLinearColor LineColor, double Thickness, class UObject* __WorldContext); // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.DrawJointDebugFunction
-	// void DrawJointDebugFunction(class USceneComponent* SkelMeshComponent, FVector JointOffset, TArray<FName>& JointName, double Scale, double duration, double Thickness, bool DebugDraw, class UObject* __WorldContext); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void DrawJointDebugFunction(class USceneComponent* SkelMeshComponent, FVector JointOffset, TArray<FName>& JointName, double Scale, double duration, double Thickness, bool DebugDraw, class UObject* __WorldContext); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.ComplexSimSpaceFunction
-	// void ComplexSimSpaceFunction(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double InterpSpeedMax, double PawnSpeedMax, double RInterpErrorTolerance, double DeltaTime, bool DebugDraw, FRotator sim_space_rotation_in, bool inComponentSpaceIn, bool inComponentSpaceLastFrameIn, bool lockedOnSimSpaceIn, double InterpSpeedIn, class UObject* __WorldContext, FRotator& sim_space_rotation, bool& inComponentSpaceOut, bool& inComponentSpaceLastFrameOut, bool& lockedOnSimSpaceOut, double& InterpSpeedOut); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void ComplexSimSpaceFunction(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double InterpSpeedMax, double PawnSpeedMax, double RInterpErrorTolerance, double DeltaTime, bool DebugDraw, FRotator sim_space_rotation_in, bool inComponentSpaceIn, bool inComponentSpaceLastFrameIn, bool lockedOnSimSpaceIn, double InterpSpeedIn, class UObject* __WorldContext, FRotator& sim_space_rotation, bool& inComponentSpaceOut, bool& inComponentSpaceLastFrameOut, bool& lockedOnSimSpaceOut, double& InterpSpeedOut); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Animation/Libraries/FortAnimationBPFunctionLibrary.FortAnimationBPFunctionLibrary_C.Gravity Override Function
-	// void Gravity Override Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double GameTimeInSeconds, FVector WindFreq, FVector WindAmp, FVector WindOffset, FVector GoingUpGravityOverride, FVector ComingDownGravityOverride, FVector DivingDownGravityOverride, FVector ParachuteOpenedGravityOverride, FVector GroundWindFreq, FVector GroundWindAmp, FVector GroundWindOffset, FVector OnGroundGravityOverride, FVector SwimmingGravityOverride, FName JointName, class UObject* __WorldContext, FVector& GravityOverride); // [0x18a39e4] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
-};
-
-/// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HightBeam_HandFX_HologramHide.AnimNotifyState_HightBeam_HandFX_HologramHide_C
-/// Size: 0x0000 (0x0000A3 - 0x0000A3)
-class UAnimNotifyState_HightBeam_HandFX_HologramHide_C : public UFN_TimedNiagaraNotify_C
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 163;
-
-public:
-
-
-	/// Functions
-	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HightBeam_HandFX_HologramHide.AnimNotifyState_HightBeam_HandFX_HologramHide_C.Received_NotifyTick
-	// bool Received_NotifyTick(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float FrameDeltaTime, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// void Gravity Override Function(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, double GameTimeInSeconds, FVector WindFreq, FVector WindAmp, FVector WindOffset, FVector GoingUpGravityOverride, FVector ComingDownGravityOverride, FVector DivingDownGravityOverride, FVector ParachuteOpenedGravityOverride, FVector GroundWindFreq, FVector GroundWindAmp, FVector GroundWindOffset, FVector OnGroundGravityOverride, FVector SwimmingGravityOverride, FName JointName, class UObject* __WorldContext, FVector& GravityOverride); // [0x186becc] Static|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_DisablePawnRotation.AnimNotifyState_DisablePawnRotation_C
@@ -419,9 +406,9 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_DisablePawnRotation.AnimNotifyState_DisablePawnRotation_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_DisablePawnRotation.AnimNotifyState_DisablePawnRotation_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_AttachAsset.AnimNotifyState_AttachAsset_C
@@ -441,9 +428,9 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_AttachAsset.AnimNotifyState_AttachAsset_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_AttachAsset.AnimNotifyState_AttachAsset_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_StopMontageGroup.AnimNotifyState_StopMontageGroup_C
@@ -460,7 +447,7 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_StopMontageGroup.AnimNotifyState_StopMontageGroup_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_PlayForceFeedback.AnimNotify_PlayForceFeedback_C
@@ -480,7 +467,7 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_PlayForceFeedback.AnimNotify_PlayForceFeedback_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_EliminationBotM2.AnimNotify_EliminationBotM2_C
@@ -495,7 +482,7 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyEvent/AnimNotify_EliminationBotM2.AnimNotify_EliminationBotM2_C.Received_Notify
-	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_Notify(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_TeleportFinished.AnimNotifyState_TeleportFinished_C
@@ -510,9 +497,24 @@ public:
 
 	/// Functions
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_TeleportFinished.AnimNotifyState_TeleportFinished_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_TeleportFinished.AnimNotifyState_TeleportFinished_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
+};
+
+/// Class /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HightBeam_HandFX_HologramHide.AnimNotifyState_HightBeam_HandFX_HologramHide_C
+/// Size: 0x0000 (0x0000A3 - 0x0000A3)
+class UAnimNotifyState_HightBeam_HandFX_HologramHide_C : public UFN_TimedNiagaraNotify_C
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 163;
+
+public:
+
+
+	/// Functions
+	// Function /Game/Animation/AnimNotifies/AnimNotifyState/AnimNotifyState_HightBeam_HandFX_HologramHide.AnimNotifyState_HightBeam_HandFX_HologramHide_C.Received_NotifyTick
+	// bool Received_NotifyTick(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float FrameDeltaTime, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /RidingContent/Animation/Notifies/AnimNotifyState_SyncPettingCreature.AnimNotifyState_SyncPettingCreature_C
@@ -527,11 +529,11 @@ public:
 
 	/// Functions
 	// Function /RidingContent/Animation/Notifies/AnimNotifyState_SyncPettingCreature.AnimNotifyState_SyncPettingCreature_C.GetRiderPettingMontage
-	// void GetRiderPettingMontage(class AActor* RiderActor, class UAnimMontage*& RiderPettingMontage);                         // [0x18a39e4] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// void GetRiderPettingMontage(class AActor* RiderActor, class UAnimMontage*& RiderPettingMontage);                         // [0x186becc] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /RidingContent/Animation/Notifies/AnimNotifyState_SyncPettingCreature.AnimNotifyState_SyncPettingCreature_C.Received_NotifyEnd
-	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyEnd(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
 	// Function /RidingContent/Animation/Notifies/AnimNotifyState_SyncPettingCreature.AnimNotifyState_SyncPettingCreature_C.Received_NotifyBegin
-	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
+	// bool Received_NotifyBegin(class USkeletalMeshComponent* MeshComp, class UAnimSequenceBase* Animation, float TotalDuration, FAnimNotifyEventReference& EventReference); // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C
@@ -808,23 +810,23 @@ public:
 
 	/// Functions
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.VehicleFinalPoseOverride
-	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.VehicleFullBodyOverride
-	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.VehicleLowerBodyOverride
-	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.VehicleSplitBodyOverride
-	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.GetMainAnimBPData_Boar
-	// void GetMainAnimBPData_Boar(class UObject* AnimInstance);                                                                // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void GetMainAnimBPData_Boar(class UObject* AnimInstance);                                                                // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_BoarRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_3AC2A6BB409F97D93A87FE8016464FEE
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_BoarRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_3AC2A6BB409F97D93A87FE8016464FEE(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_BoarRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_3AC2A6BB409F97D93A87FE8016464FEE(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.BlueprintCollectRidableAnimBPData
-	// void BlueprintCollectRidableAnimBPData(class UAnimInstance* RidableAnimInstance);                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BlueprintCollectRidableAnimBPData(class UAnimInstance* RidableAnimInstance);                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.ExecuteUbergraph_BoarRidingPlayerLayerAnimBP
-	// void ExecuteUbergraph_BoarRidingPlayerLayerAnimBP(int32_t EntryPoint);                                                   // [0x18a39e4] Final                
+	// void ExecuteUbergraph_BoarRidingPlayerLayerAnimBP(int32_t EntryPoint);                                                   // [0x186becc] Final                
 };
 
 /// Class /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C
@@ -1099,31 +1101,31 @@ public:
 
 	/// Functions
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.VehicleFinalPoseOverride
-	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.VehicleFullBodyOverride
-	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.VehicleLowerBodyOverride
-	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.VehicleSplitBodyOverride
-	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.GetMainAnimBPData_Wolf
-	// void GetMainAnimBPData_Wolf(class UObject* AnimInstance);                                                                // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void GetMainAnimBPData_Wolf(class UObject* AnimInstance);                                                                // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_0A1EFC344EF1A6E586A54FAEC4F5F766
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_0A1EFC344EF1A6E586A54FAEC4F5F766(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_0A1EFC344EF1A6E586A54FAEC4F5F766(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_4EDCD4F04E8D5963547EB2BE1F10FA2D
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_4EDCD4F04E8D5963547EB2BE1F10FA2D(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_SequencePlayer_4EDCD4F04E8D5963547EB2BE1F10FA2D(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D7C43EB141CFE2929E3D23914954FA93
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D7C43EB141CFE2929E3D23914954FA93(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_WolfRidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D7C43EB141CFE2929E3D23914954FA93(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.BlueprintCollectRidableAnimBPData
-	// void BlueprintCollectRidableAnimBPData(class UAnimInstance* RidableAnimInstance);                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BlueprintCollectRidableAnimBPData(class UAnimInstance* RidableAnimInstance);                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.UpdateBoostPlayRate
-	// void UpdateBoostPlayRate();                                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UpdateBoostPlayRate();                                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.PlaceHandIKTargets
-	// void PlaceHandIKTargets();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void PlaceHandIKTargets();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.ExecuteUbergraph_WolfRidingPlayerLayerAnimBP
-	// void ExecuteUbergraph_WolfRidingPlayerLayerAnimBP(int32_t EntryPoint);                                                   // [0x18a39e4] Final                
+	// void ExecuteUbergraph_WolfRidingPlayerLayerAnimBP(int32_t EntryPoint);                                                   // [0x186becc] Final                
 };
 
 /// Class /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C
@@ -1207,32 +1209,32 @@ public:
 
 	/// Functions
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.VehicleFinalPoseOverride
-	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFinalPoseOverride(FPoseLink InFinalPose, FPoseLink& VehicleFinalPoseOverride);                               // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.VehicleFullBodyOverride
-	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleFullBodyOverride(FPoseLink InPoseFullBody, FPoseLink& VehicleFullBodyOverride);                              // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.VehicleLowerBodyOverride
-	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleLowerBodyOverride(FPoseLink InPoseLowerBodyDefault, FPoseLink InPoseUpperBody, FPoseLink& VehicleLowerBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.VehicleSplitBodyOverride
-	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void VehicleSplitBodyOverride(FPoseLink InPoseSplitBody, FPoseLink InPoseUpperAndLowerBody, FPoseLink InPoseUpperAndLowerBodyRemoveRoot, FPoseLink& VehicleSplitBodyOverride); // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D1B22730415169A7290CBFAD6C915976
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D1B22730415169A7290CBFAD6C915976(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_BlendListByBool_D1B22730415169A7290CBFAD6C915976(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_RotateRootBone_D73766CE4BF0C956278D7FA8259A40CA
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_RotateRootBone_D73766CE4BF0C956278D7FA8259A40CA(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_RidingPlayerLayerAnimBP_AnimGraphNode_RotateRootBone_D73766CE4BF0C956278D7FA8259A40CA(); // [0x186becc] BlueprintEvent       
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.BlueprintUpdateAnimation
-	// void BlueprintUpdateAnimation(float DeltaTimeX);                                                                         // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BlueprintUpdateAnimation(float DeltaTimeX);                                                                         // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.ExecuteUbergraph_RidingPlayerLayerAnimBP
-	// void ExecuteUbergraph_RidingPlayerLayerAnimBP(int32_t EntryPoint);                                                       // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_RidingPlayerLayerAnimBP(int32_t EntryPoint);                                                       // [0x186becc] Final|HasDefaults    
 };
 
 /// Struct /Game/Animation/Game/MainPlayer/Facial/FaceGameplay/Gameplay_FaceSystem_StateMachine_AnimBP.Gameplay_FaceSystem_StateMachine_AnimBP_C.AnimBlueprintGeneratedConstantData
-/// Size: 0x15EF (0x000001 - 0x0015F0)
-class FAnimBlueprintGeneratedConstantDatadup_128 : public FAnimBlueprintConstantData
+/// Size: 0x164F (0x000001 - 0x001650)
+class FAnimBlueprintGeneratedConstantDatadup_131 : public FAnimBlueprintConstantData
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 5616;
+	static inline constexpr uint64_t __MDKClassSize = 5712;
 
 public:
 	SMember(FName)                                     __NameProperty                                              OFFSET(getStruct<T>, {0x4, 4, 0, 0})
@@ -1279,18 +1281,18 @@ public:
 	DMember(int32_t)                                   __IntProperty15                                             OFFSET(get<int32_t>, {0xA8, 4, 0, 0})
 	SMember(FName)                                     __NameProperty26                                            OFFSET(getStruct<T>, {0xAC, 4, 0, 0})
 	DMember(int32_t)                                   __IntProperty16                                             OFFSET(get<int32_t>, {0xB0, 4, 0, 0})
-	DMember(bool)                                      __BoolProperty                                              OFFSET(get<bool>, {0xB4, 1, 0, 0})
-	DMember(float)                                     __FloatProperty                                             OFFSET(get<float>, {0xB8, 4, 0, 0})
-	SMember(FInputScaleBiasClampConstants)             __StructProperty                                            OFFSET(getStruct<T>, {0xBC, 44, 0, 0})
-	DMember(float)                                     __FloatProperty1                                            OFFSET(get<float>, {0xE8, 4, 0, 0})
-	DMember(bool)                                      __BoolProperty1                                             OFFSET(get<bool>, {0xEC, 1, 0, 0})
-	CMember(EAnimSyncMethod)                           __EnumProperty                                              OFFSET(get<T>, {0xED, 1, 0, 0})
-	CMember(TEnumAsByte<EAnimGroupRole>)               __ByteProperty                                              OFFSET(get<T>, {0xEE, 1, 0, 0})
-	SMember(FName)                                     __NameProperty27                                            OFFSET(getStruct<T>, {0xF0, 4, 0, 0})
-	SMember(FName)                                     __NameProperty28                                            OFFSET(getStruct<T>, {0xF4, 4, 0, 0})
-	SMember(FName)                                     __NameProperty29                                            OFFSET(getStruct<T>, {0xF8, 4, 0, 0})
-	DMember(int32_t)                                   __IntProperty17                                             OFFSET(get<int32_t>, {0xFC, 4, 0, 0})
-	SMember(FAnimNodeFunctionRef)                      __StructProperty1                                           OFFSET(getStruct<T>, {0x100, 24, 0, 0})
+	SMember(FName)                                     __NameProperty27                                            OFFSET(getStruct<T>, {0xB4, 4, 0, 0})
+	SMember(FName)                                     __NameProperty28                                            OFFSET(getStruct<T>, {0xB8, 4, 0, 0})
+	DMember(int32_t)                                   __IntProperty17                                             OFFSET(get<int32_t>, {0xBC, 4, 0, 0})
+	SMember(FAnimNodeFunctionRef)                      __StructProperty                                            OFFSET(getStruct<T>, {0xC0, 24, 0, 0})
+	DMember(bool)                                      __BoolProperty                                              OFFSET(get<bool>, {0xD8, 1, 0, 0})
+	DMember(float)                                     __FloatProperty                                             OFFSET(get<float>, {0xDC, 4, 0, 0})
+	SMember(FInputScaleBiasClampConstants)             __StructProperty1                                           OFFSET(getStruct<T>, {0xE0, 44, 0, 0})
+	DMember(float)                                     __FloatProperty1                                            OFFSET(get<float>, {0x10C, 4, 0, 0})
+	DMember(bool)                                      __BoolProperty1                                             OFFSET(get<bool>, {0x110, 1, 0, 0})
+	CMember(EAnimSyncMethod)                           __EnumProperty                                              OFFSET(get<T>, {0x111, 1, 0, 0})
+	CMember(TEnumAsByte<EAnimGroupRole>)               __ByteProperty                                              OFFSET(get<T>, {0x112, 1, 0, 0})
+	SMember(FName)                                     __NameProperty29                                            OFFSET(getStruct<T>, {0x114, 4, 0, 0})
 	SMember(FAnimSubsystem_PropertyAccess)             AnimBlueprintExtension_PropertyAccess                       OFFSET(getStruct<T>, {0x118, 128, 0, 0})
 	SMember(FAnimSubsystem_Base)                       AnimBlueprintExtension_Base                                 OFFSET(getStruct<T>, {0x198, 24, 0, 0})
 	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_Root                                        OFFSET(getStruct<T>, {0x1B0, 48, 0, 0})
@@ -1401,11 +1403,13 @@ public:
 	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_StateResult27                               OFFSET(getStruct<T>, {0x1560, 48, 0, 0})
 	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_StateMachine1                               OFFSET(getStruct<T>, {0x1590, 48, 0, 0})
 	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_TwoWayBlend                                 OFFSET(getStruct<T>, {0x15C0, 48, 0, 0})
+	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_TwoWayBlend1                                OFFSET(getStruct<T>, {0x15F0, 48, 0, 0})
+	SMember(FAnimNodeExposedValueHandler_PropertyAccess) AnimGraphNode_SequencePlayer24                            OFFSET(getStruct<T>, {0x1620, 48, 0, 0})
 };
 
 /// Struct /Game/Animation/Game/MainPlayer/Facial/FaceGameplay/Gameplay_FaceSystem_StateMachine_AnimBP.Gameplay_FaceSystem_StateMachine_AnimBP_C.AnimBlueprintGeneratedMutableData
 /// Size: 0x0013 (0x000001 - 0x000014)
-class FAnimBlueprintGeneratedMutableDatadup_129 : public FAnimBlueprintMutableData
+class FAnimBlueprintGeneratedMutableDatadup_132 : public FAnimBlueprintMutableData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -1416,6 +1420,37 @@ public:
 	DMember(float)                                     __FloatProperty1                                            OFFSET(get<float>, {0x8, 4, 0, 0})
 	DMember(float)                                     __FloatProperty2                                            OFFSET(get<float>, {0xC, 4, 0, 0})
 	DMember(float)                                     __FloatProperty3                                            OFFSET(get<float>, {0x10, 4, 0, 0})
+};
+
+/// Struct /Game/Animation/Libraries/WindGustParamsStruct.WindGustParamsStruct
+/// Size: 0x0960 (0x000000 - 0x000960)
+class FWindGustParamsStruct : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 2400;
+
+public:
+	SMember(FWindGustSettingStruct)                    Skydive_GoingUp_28_C026BDA74BFBABA6672DFE8FFDAAFC1B         OFFSET(getStruct<T>, {0x0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Skydive_FloatingDown_29_2CBF3D3F421785F8994502931454A81F    OFFSET(getStruct<T>, {0x78, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Skydive_DivingDown_30_EC7BEC4D406A8A98E60D7B9374C5E457      OFFSET(getStruct<T>, {0xF0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Skydive_Parachuting_31_A88C4A0A407F497561D31287CB20250F     OFFSET(getStruct<T>, {0x168, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    OnGround_Standing_32_267DB1464D0D3A29D99E94ADFCB4AFEC       OFFSET(getStruct<T>, {0x1E0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    OnGround_Moving_33_807A66B64D7B3B2FCF080B833B8A6254         OFFSET(getStruct<T>, {0x258, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    OnGround_Crouch_Moving_34_CE0B8BFB4E3417C0F790F7AE38DD7735  OFFSET(getStruct<T>, {0x2D0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    EmoteOrMelee_35_CFCF66B5492987CBD638EC98EB34D572            OFFSET(getStruct<T>, {0x348, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Swimming_36_33CE87CE4D4F712B1384E29115845962                OFFSET(getStruct<T>, {0x3C0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Front_End_37_C7A4562A48E9BC9B4CD34D963CFC6490               OFFSET(getStruct<T>, {0x438, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    DBNO_41_0C046BF1406AB4B752DB3A99949FE3A3                    OFFSET(getStruct<T>, {0x4B0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    DBNO_Carried_42_3E9FADC247359FEE88C7B4A3453449E6            OFFSET(getStruct<T>, {0x528, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    OnGround_Falling_46_2CC5CD2149D12B7C53D91E8D6AA90C03        OFFSET(getStruct<T>, {0x5A0, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Ziplining_47_B8BBEA804F8C515EA80FE7897BB99CF6               OFFSET(getStruct<T>, {0x618, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Skydive_Surfing_50_2B64886E4E6F0E8CFC180E81FDF37F62         OFFSET(getStruct<T>, {0x690, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Riding_Standing_55_206A781845EAC0A66D2BBC8981041DBD         OFFSET(getStruct<T>, {0x708, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Riding_Moving_56_963FD3424B0D070C81120599A5AED02A           OFFSET(getStruct<T>, {0x780, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Riding_Moving_Targeting_59_93868B48485365007E3BD8BD8A527B39 OFFSET(getStruct<T>, {0x7F8, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Tactical_Sprint_58_7E4BD4244308EE1199AA48ACF8871E68         OFFSET(getStruct<T>, {0x870, 120, 0, 0})
+	SMember(FWindGustSettingStruct)                    Rail_Grinding_62_FF88FD5F4A9AB308E2F095B9F0657D82           OFFSET(getStruct<T>, {0x8E8, 120, 0, 0})
 };
 
 /// Struct /Game/Animation/Libraries/RBANParamsStruct.RBANParamsStruct
@@ -1480,37 +1515,6 @@ public:
 	SMember(FClothSettingStruct)                       Rail_Grinding_55_DEEB00A04DB992DF5EEB40BD6518EA4E           OFFSET(getStruct<T>, {0x720, 96, 0, 0})
 };
 
-/// Struct /Game/Animation/Libraries/WindGustParamsStruct.WindGustParamsStruct
-/// Size: 0x0960 (0x000000 - 0x000960)
-class FWindGustParamsStruct : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 2400;
-
-public:
-	SMember(FWindGustSettingStruct)                    Skydive_GoingUp_28_C026BDA74BFBABA6672DFE8FFDAAFC1B         OFFSET(getStruct<T>, {0x0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Skydive_FloatingDown_29_2CBF3D3F421785F8994502931454A81F    OFFSET(getStruct<T>, {0x78, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Skydive_DivingDown_30_EC7BEC4D406A8A98E60D7B9374C5E457      OFFSET(getStruct<T>, {0xF0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Skydive_Parachuting_31_A88C4A0A407F497561D31287CB20250F     OFFSET(getStruct<T>, {0x168, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    OnGround_Standing_32_267DB1464D0D3A29D99E94ADFCB4AFEC       OFFSET(getStruct<T>, {0x1E0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    OnGround_Moving_33_807A66B64D7B3B2FCF080B833B8A6254         OFFSET(getStruct<T>, {0x258, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    OnGround_Crouch_Moving_34_CE0B8BFB4E3417C0F790F7AE38DD7735  OFFSET(getStruct<T>, {0x2D0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    EmoteOrMelee_35_CFCF66B5492987CBD638EC98EB34D572            OFFSET(getStruct<T>, {0x348, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Swimming_36_33CE87CE4D4F712B1384E29115845962                OFFSET(getStruct<T>, {0x3C0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Front_End_37_C7A4562A48E9BC9B4CD34D963CFC6490               OFFSET(getStruct<T>, {0x438, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    DBNO_41_0C046BF1406AB4B752DB3A99949FE3A3                    OFFSET(getStruct<T>, {0x4B0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    DBNO_Carried_42_3E9FADC247359FEE88C7B4A3453449E6            OFFSET(getStruct<T>, {0x528, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    OnGround_Falling_46_2CC5CD2149D12B7C53D91E8D6AA90C03        OFFSET(getStruct<T>, {0x5A0, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Ziplining_47_B8BBEA804F8C515EA80FE7897BB99CF6               OFFSET(getStruct<T>, {0x618, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Skydive_Surfing_50_2B64886E4E6F0E8CFC180E81FDF37F62         OFFSET(getStruct<T>, {0x690, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Riding_Standing_55_206A781845EAC0A66D2BBC8981041DBD         OFFSET(getStruct<T>, {0x708, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Riding_Moving_56_963FD3424B0D070C81120599A5AED02A           OFFSET(getStruct<T>, {0x780, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Riding_Moving_Targeting_59_93868B48485365007E3BD8BD8A527B39 OFFSET(getStruct<T>, {0x7F8, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Tactical_Sprint_58_7E4BD4244308EE1199AA48ACF8871E68         OFFSET(getStruct<T>, {0x870, 120, 0, 0})
-	SMember(FWindGustSettingStruct)                    Rail_Grinding_62_FF88FD5F4A9AB308E2F095B9F0657D82           OFFSET(getStruct<T>, {0x8E8, 120, 0, 0})
-};
-
 /// Struct /Game/Animation/Libraries/RBANSettingStruct.RBANSettingStruct
 /// Size: 0x0090 (0x000000 - 0x000090)
 class FRBANSettingStruct : public MDKBase
@@ -1523,6 +1527,22 @@ public:
 	SMember(FVector)                                   ComponentLinearAccScale_28_9CBE863E417FC965C07809A2FE55ADFD OFFSET(getStruct<T>, {0x0, 24, 0, 0})
 	SMember(FVector)                                   ComponentLinearVelScale_31_6A3DFE4A481AD4D7CB18D79F95CC88E8 OFFSET(getStruct<T>, {0x18, 24, 0, 0})
 	SMember(FSimSpaceSettings)                         SimSpaceSettings_34_FE68F666411FF9F29BA84CB4BE726A52        OFFSET(getStruct<T>, {0x30, 96, 0, 0})
+};
+
+/// Struct /Game/Animation/Libraries/WindGustLocalSettingStruct.WindGustLocalSettingStruct
+/// Size: 0x0014 (0x000000 - 0x000014)
+class FWindGustLocalSettingStruct : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 20;
+
+public:
+	DMember(float)                                     ElapsedTime_48_9A24DA0842E21D5736699499F1DE1171             OFFSET(get<float>, {0x0, 4, 0, 0})
+	DMember(float)                                     TimeBetweenGusts_54_E1D59EA94088FB83508636942434066D        OFFSET(get<float>, {0x4, 4, 0, 0})
+	DMember(float)                                     GustStrength_55_7788D1D04920E9BC2F96FCBDDCA7C33A            OFFSET(get<float>, {0x8, 4, 0, 0})
+	DMember(float)                                     GustDuration_56_E42A0C8341E10ACAC2016FA7F726B406            OFFSET(get<float>, {0xC, 4, 0, 0})
+	DMember(float)                                     FinalGustStrengthLocal_57_BD76FBFF47687A7C38D40EAD653D5618  OFFSET(get<float>, {0x10, 4, 0, 0})
 };
 
 /// Struct /Game/Animation/Libraries/ClothSettingStruct.ClothSettingStruct
@@ -1543,20 +1563,28 @@ public:
 	SMember(FName)                                     JointName_27_C74F3B2245EA319DE82A629FF3C17CCA               OFFSET(getStruct<T>, {0x58, 4, 0, 0})
 };
 
-/// Struct /Game/Animation/Libraries/WindGustLocalSettingStruct.WindGustLocalSettingStruct
-/// Size: 0x0014 (0x000000 - 0x000014)
-class FWindGustLocalSettingStruct : public MDKBase
+/// Struct /Game/Animation/Libraries/ClothCoreSettingStruct.ClothCoreSettingStruct
+/// Size: 0x0080 (0x000000 - 0x000080)
+class FClothCoreSettingStruct : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 20;
+	static inline constexpr uint64_t __MDKClassSize = 128;
 
 public:
-	DMember(float)                                     ElapsedTime_48_9A24DA0842E21D5736699499F1DE1171             OFFSET(get<float>, {0x0, 4, 0, 0})
-	DMember(float)                                     TimeBetweenGusts_54_E1D59EA94088FB83508636942434066D        OFFSET(get<float>, {0x4, 4, 0, 0})
-	DMember(float)                                     GustStrength_55_7788D1D04920E9BC2F96FCBDDCA7C33A            OFFSET(get<float>, {0x8, 4, 0, 0})
-	DMember(float)                                     GustDuration_56_E42A0C8341E10ACAC2016FA7F726B406            OFFSET(get<float>, {0xC, 4, 0, 0})
-	DMember(float)                                     FinalGustStrengthLocal_57_BD76FBFF47687A7C38D40EAD653D5618  OFFSET(get<float>, {0x10, 4, 0, 0})
+	SMember(FVector2D)                                 EdgeStiffness_28_9A24DA0842E21D5736699499F1DE1171           OFFSET(getStruct<T>, {0x0, 16, 0, 0})
+	SMember(FVector2D)                                 BendingStiffness_29_6CD0864B4078D8378C061197E9B1B094        OFFSET(getStruct<T>, {0x10, 16, 0, 0})
+	SMember(FVector2D)                                 AreaStiffness_30_0D981B4E4039D5A0C6A4C78D6F09D510           OFFSET(getStruct<T>, {0x20, 16, 0, 0})
+	SMember(FVector2D)                                 TetherStiffness_24_A5C4B017498D3154D76CECAB9AE7BDF2         OFFSET(getStruct<T>, {0x30, 16, 0, 0})
+	DMember(float)                                     CollisionThickness_14_DACF320B4C03C6BD248A8E9B7B867FC7      OFFSET(get<float>, {0x40, 4, 0, 0})
+	DMember(float)                                     FrictionCoefficient_15_E5761CE84E8E52EEBD663B9DC3A0906F     OFFSET(get<float>, {0x44, 4, 0, 0})
+	DMember(float)                                     SelfCollisionThickness_16_98974B1C4B5ABE4EA1CFF7A791319392  OFFSET(get<float>, {0x48, 4, 0, 0})
+	DMember(float)                                     DampingCoefficient_17_A343D5A54D704F5B249C8E907DA80101      OFFSET(get<float>, {0x4C, 4, 0, 0})
+	DMember(float)                                     LocalDampingCoefficient_33_993AFAEA430EEBF424A7D0B8BB57CFB5 OFFSET(get<float>, {0x50, 4, 0, 0})
+	SMember(FVector2D)                                 AnimDriveStiffness_27_E54C28B348B4C35A1D0817AFA9FF0423      OFFSET(getStruct<T>, {0x58, 16, 0, 0})
+	SMember(FVector2D)                                 AnimDriveDamping_26_F9EDBF5240E75A4905AFA1A8240922C8        OFFSET(getStruct<T>, {0x68, 16, 0, 0})
+	DMember(int32_t)                                   NumberIterations_21_8E04A8E94B2040C7DBF93194733AC36A        OFFSET(get<int32_t>, {0x78, 4, 0, 0})
+	DMember(int32_t)                                   NumberSubsteps_23_5108D5FA40140A1AAD38459100B14261          OFFSET(get<int32_t>, {0x7C, 4, 0, 0})
 };
 
 /// Struct /Game/Animation/Libraries/WindGustSettingStruct.WindGustSettingStruct
@@ -1583,30 +1611,6 @@ public:
 	SMember(FVector)                                   WindFrequency_51_9F209DFA4F7AB96CE220578516F0B4CF           OFFSET(getStruct<T>, {0x30, 24, 0, 0})
 	SMember(FVector)                                   WindAmplitude_54_E174BDEC415CE55F6A1475B799695475           OFFSET(getStruct<T>, {0x48, 24, 0, 0})
 	SMember(FVector)                                   WindOffset_55_91DD775940222EE47FDA3BA8695E8FE9              OFFSET(getStruct<T>, {0x60, 24, 0, 0})
-};
-
-/// Struct /Game/Animation/Libraries/ClothCoreSettingStruct.ClothCoreSettingStruct
-/// Size: 0x0080 (0x000000 - 0x000080)
-class FClothCoreSettingStruct : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 128;
-
-public:
-	SMember(FVector2D)                                 EdgeStiffness_28_9A24DA0842E21D5736699499F1DE1171           OFFSET(getStruct<T>, {0x0, 16, 0, 0})
-	SMember(FVector2D)                                 BendingStiffness_29_6CD0864B4078D8378C061197E9B1B094        OFFSET(getStruct<T>, {0x10, 16, 0, 0})
-	SMember(FVector2D)                                 AreaStiffness_30_0D981B4E4039D5A0C6A4C78D6F09D510           OFFSET(getStruct<T>, {0x20, 16, 0, 0})
-	SMember(FVector2D)                                 TetherStiffness_24_A5C4B017498D3154D76CECAB9AE7BDF2         OFFSET(getStruct<T>, {0x30, 16, 0, 0})
-	DMember(float)                                     CollisionThickness_14_DACF320B4C03C6BD248A8E9B7B867FC7      OFFSET(get<float>, {0x40, 4, 0, 0})
-	DMember(float)                                     FrictionCoefficient_15_E5761CE84E8E52EEBD663B9DC3A0906F     OFFSET(get<float>, {0x44, 4, 0, 0})
-	DMember(float)                                     SelfCollisionThickness_16_98974B1C4B5ABE4EA1CFF7A791319392  OFFSET(get<float>, {0x48, 4, 0, 0})
-	DMember(float)                                     DampingCoefficient_17_A343D5A54D704F5B249C8E907DA80101      OFFSET(get<float>, {0x4C, 4, 0, 0})
-	DMember(float)                                     LocalDampingCoefficient_33_993AFAEA430EEBF424A7D0B8BB57CFB5 OFFSET(get<float>, {0x50, 4, 0, 0})
-	SMember(FVector2D)                                 AnimDriveStiffness_27_E54C28B348B4C35A1D0817AFA9FF0423      OFFSET(getStruct<T>, {0x58, 16, 0, 0})
-	SMember(FVector2D)                                 AnimDriveDamping_26_F9EDBF5240E75A4905AFA1A8240922C8        OFFSET(getStruct<T>, {0x68, 16, 0, 0})
-	DMember(int32_t)                                   NumberIterations_21_8E04A8E94B2040C7DBF93194733AC36A        OFFSET(get<int32_t>, {0x78, 4, 0, 0})
-	DMember(int32_t)                                   NumberSubsteps_23_5108D5FA40140A1AAD38459100B14261          OFFSET(get<int32_t>, {0x7C, 4, 0, 0})
 };
 
 /// Struct /Game/Animation/Libraries/GravityOverrideParamsStruct.GravityOverrideParamsStruct
@@ -1657,7 +1661,7 @@ public:
 
 /// Struct /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedConstantData
 /// Size: 0x2EF7 (0x000001 - 0x002EF8)
-class FAnimBlueprintGeneratedConstantDatadup_130 : public FAnimBlueprintConstantData
+class FAnimBlueprintGeneratedConstantDatadup_133 : public FAnimBlueprintConstantData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -1974,7 +1978,7 @@ public:
 
 /// Struct /RidingContent/Animation/HardSaddle/Boar/BoarRidingPlayerLayerAnimBP.BoarRidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedMutableData
 /// Size: 0x008C (0x000001 - 0x00008D)
-class FAnimBlueprintGeneratedMutableDatadup_131 : public FAnimBlueprintMutableData
+class FAnimBlueprintGeneratedMutableDatadup_134 : public FAnimBlueprintMutableData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -2025,7 +2029,7 @@ public:
 
 /// Struct /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedConstantData
 /// Size: 0x2E67 (0x000001 - 0x002E68)
-class FAnimBlueprintGeneratedConstantDatadup_132 : public FAnimBlueprintConstantData
+class FAnimBlueprintGeneratedConstantDatadup_135 : public FAnimBlueprintConstantData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -2339,7 +2343,7 @@ public:
 
 /// Struct /RidingContent/Animation/HardSaddle/Wolf/WolfRidingPlayerLayerAnimBP.WolfRidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedMutableData
 /// Size: 0x00A7 (0x000001 - 0x0000A8)
-class FAnimBlueprintGeneratedMutableDatadup_133 : public FAnimBlueprintMutableData
+class FAnimBlueprintGeneratedMutableDatadup_136 : public FAnimBlueprintMutableData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -2394,7 +2398,7 @@ public:
 
 /// Struct /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedConstantData
 /// Size: 0x0AC7 (0x000001 - 0x000AC8)
-class FAnimBlueprintGeneratedConstantDatadup_134 : public FAnimBlueprintConstantData
+class FAnimBlueprintGeneratedConstantDatadup_137 : public FAnimBlueprintConstantData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -2479,7 +2483,7 @@ public:
 
 /// Struct /RidingContent/Animation/Proto/RidingPlayerLayerAnimBP.RidingPlayerLayerAnimBP_C.AnimBlueprintGeneratedMutableData
 /// Size: 0x001B (0x000001 - 0x00001C)
-class FAnimBlueprintGeneratedMutableDatadup_135 : public FAnimBlueprintMutableData
+class FAnimBlueprintGeneratedMutableDatadup_138 : public FAnimBlueprintMutableData
 { 
 	friend MDKHandler;
 	friend MDKBase;

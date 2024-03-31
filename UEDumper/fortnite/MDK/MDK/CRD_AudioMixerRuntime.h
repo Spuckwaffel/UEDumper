@@ -42,25 +42,25 @@ public:
 
 	/// Functions
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnProxyDataChanged
-	// void OnProxyDataChanged(class ACreativePlayerReplicationProxy* ProxyData);                                               // [0xad0f43c] Final|Native|Private 
+	// void OnProxyDataChanged(class ACreativePlayerReplicationProxy* ProxyData);                                               // [0xc396c9c] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnPreAnyPropertyChanged
-	// void OnPreAnyPropertyChanged();                                                                                          // [0xad0f428] Final|Native|Private 
+	// void OnPreAnyPropertyChanged();                                                                                          // [0xc396c88] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnPlayerUnregistered
-	// void OnPlayerUnregistered(class AFortPlayerState* PlayerState);                                                          // [0xad0f3a4] Final|Native|Private 
+	// void OnPlayerUnregistered(class AFortPlayerState* PlayerState);                                                          // [0xc396bc0] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnPlayerRegistered
-	// void OnPlayerRegistered(class AFortPlayerState* PlayerState);                                                            // [0xad0f320] Final|Native|Private 
+	// void OnPlayerRegistered(class AFortPlayerState* PlayerState);                                                            // [0xc396af8] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnPlayerAdded
-	// void OnPlayerAdded(FUniqueNetIdRepl NetId, bool bIsLocalPlayer);                                                         // [0xad0f0ac] Final|Native|Private 
+	// void OnPlayerAdded(FUniqueNetIdRepl NetId, bool bIsLocalPlayer);                                                         // [0xc396950] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnMinigameStarted
-	// void OnMinigameStarted();                                                                                                // [0xad0f090] Final|Native|Private 
+	// void OnMinigameStarted();                                                                                                // [0xc396934] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnMinigameEnded
-	// void OnMinigameEnded();                                                                                                  // [0xad0f074] Final|Native|Private 
+	// void OnMinigameEnded();                                                                                                  // [0xc396918] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.OnAllPlayersUnregistered
-	// void OnAllPlayersUnregistered();                                                                                         // [0xad0f058] Final|Native|Private 
+	// void OnAllPlayersUnregistered();                                                                                         // [0xc3968fc] Final|Native|Private 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.DeactivateMix
-	// void DeactivateMix();                                                                                                    // [0x36203b0] Final|Native|Public|BlueprintCallable 
+	// void DeactivateMix();                                                                                                    // [0x3518b8c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_AudioMixerRuntime.CreativeAudioMixerDevice.ActivateMix
-	// void ActivateMix();                                                                                                      // [0x36203b0] Final|Native|Public|BlueprintCallable 
+	// void ActivateMix();                                                                                                      // [0x3518b8c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/CRD_AudioMixerRuntime.CreativeAudioMixerReplicationProxy

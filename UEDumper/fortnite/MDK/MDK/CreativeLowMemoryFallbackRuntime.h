@@ -36,7 +36,7 @@ public:
 
 	/// Functions
 	// Function /Script/CreativeLowMemoryFallbackRuntime.CreativeLowMemoryFallbackWorldSubsystem.OnPlaylistDataChanged
-	// void OnPlaylistDataChanged(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& PlaylistContextTags); // [0xaca24d0] Final|Native|Private|HasOutParms 
+	// void OnPlaylistDataChanged(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& PlaylistContextTags); // [0xc1ad124] Final|Native|Private|HasOutParms 
 };
 
 /// Struct /Script/CreativeLowMemoryFallbackRuntime.CreativeLowMemoryFallbackUserFacingText

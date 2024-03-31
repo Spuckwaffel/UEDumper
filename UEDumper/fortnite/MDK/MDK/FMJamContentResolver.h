@@ -25,8 +25,8 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamContentResolver.JamContentResolver.HandleResolveComplete
-	// void HandleResolveComplete(bool bSuccess, FString LinkCode, TArray<FString>& PluginURLs);                                // [0xa4f9058] Final|Native|Private|HasOutParms 
+	// void HandleResolveComplete(bool bSuccess, FString LinkCode, TArray<FString>& PluginURLs);                                // [0xb26e454] Final|Native|Private|HasOutParms 
 	// Function /Script/FMJamContentResolver.JamContentResolver.HandleGameFeatureLoadComplete
-	// void HandleGameFeatureLoadComplete(bool bSuccess, FString LinkCode, FString PluginURL);                                  // [0xa4f8e40] Final|Native|Private 
+	// void HandleGameFeatureLoadComplete(bool bSuccess, FString LinkCode, FString PluginURL);                                  // [0xb26dcf0] Final|Native|Private 
 };
 

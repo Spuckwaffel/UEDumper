@@ -25,7 +25,7 @@ public:
 
 	/// Functions
 	// Function /Script/CoreUObject.Object.ExecuteUbergraph
-	// void ExecuteUbergraph(int32_t EntryPoint);                                                                               // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void ExecuteUbergraph(int32_t EntryPoint);                                                                               // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/CoreUObject.Interface
@@ -2630,7 +2630,7 @@ enum class EMouseCursor : uint8_t
 };
 
 /// Enum /Script/CoreUObject.EUnit
-/// Size: 0x59
+/// Size: 0x62
 enum class EUnit : uint8_t
 {
 	EUnit__Micrometers                                                               = 0,
@@ -2670,28 +2670,31 @@ enum class EUnit : uint8_t
 	EUnit__KilogramCentimetersPerSecondSquared                                       = 38,
 	EUnit__NewtonMeters                                                              = 39,
 	EUnit__KilogramCentimetersSquaredPerSecondSquared                                = 40,
-	EUnit__Hertz                                                                     = 41,
-	EUnit__Kilohertz                                                                 = 42,
-	EUnit__Megahertz                                                                 = 43,
-	EUnit__Gigahertz                                                                 = 44,
-	EUnit__RevolutionsPerMinute                                                      = 45,
-	EUnit__Bytes                                                                     = 46,
-	EUnit__Kilobytes                                                                 = 47,
-	EUnit__Megabytes                                                                 = 48,
-	EUnit__Gigabytes                                                                 = 49,
-	EUnit__Terabytes                                                                 = 50,
-	EUnit__Lumens                                                                    = 51,
-	EUnit__Milliseconds                                                              = 58,
-	EUnit__Seconds                                                                   = 59,
-	EUnit__Minutes                                                                   = 60,
-	EUnit__Hours                                                                     = 61,
-	EUnit__Days                                                                      = 62,
-	EUnit__Months                                                                    = 63,
-	EUnit__Years                                                                     = 64,
-	EUnit__Multiplier                                                                = 67,
-	EUnit__Percentage                                                                = 66,
-	EUnit__Unspecified                                                               = 72,
-	EUnit__EUnit_MAX                                                                 = 73
+	EUnit__NewtonSeconds                                                             = 41,
+	EUnit__KilogramCentimeters                                                       = 42,
+	EUnit__KilogramMeters                                                            = 43,
+	EUnit__Hertz                                                                     = 44,
+	EUnit__Kilohertz                                                                 = 45,
+	EUnit__Megahertz                                                                 = 46,
+	EUnit__Gigahertz                                                                 = 47,
+	EUnit__RevolutionsPerMinute                                                      = 48,
+	EUnit__Bytes                                                                     = 49,
+	EUnit__Kilobytes                                                                 = 50,
+	EUnit__Megabytes                                                                 = 51,
+	EUnit__Gigabytes                                                                 = 52,
+	EUnit__Terabytes                                                                 = 53,
+	EUnit__Lumens                                                                    = 54,
+	EUnit__Milliseconds                                                              = 61,
+	EUnit__Seconds                                                                   = 62,
+	EUnit__Minutes                                                                   = 63,
+	EUnit__Hours                                                                     = 64,
+	EUnit__Days                                                                      = 65,
+	EUnit__Months                                                                    = 66,
+	EUnit__Years                                                                     = 67,
+	EUnit__Multiplier                                                                = 70,
+	EUnit__Percentage                                                                = 69,
+	EUnit__Unspecified                                                               = 75,
+	EUnit__EUnit_MAX                                                                 = 76
 };
 
 /// Enum /Script/CoreUObject.EPropertyAccessChangeNotifyMode

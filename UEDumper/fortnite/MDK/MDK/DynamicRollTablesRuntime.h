@@ -30,7 +30,7 @@ public:
 
 	/// Functions
 	// Function /Script/DynamicRollTablesRuntime.FortControllerComponent_DynamicRollPlayerComponent.AuthorityRollChoices
-	// TArray<FFortDynamicRollResult> AuthorityRollChoices(int32_t NumChoices, TArray<UFortItemDefinition*>& IgnoreItems);      // [0xa2cde60] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// TArray<FFortDynamicRollResult> AuthorityRollChoices(int32_t NumChoices, TArray<UFortItemDefinition*>& IgnoreItems);      // [0xb0008d8] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/DynamicRollTablesRuntime.FortGamestateComponent_DynamicRollTableManager
@@ -48,7 +48,7 @@ public:
 
 	/// Functions
 	// Function /Script/DynamicRollTablesRuntime.FortGamestateComponent_DynamicRollTableManager.HandlePlaylistDataReady
-	// void HandlePlaylistDataReady(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& PlaylistContextTags); // [0xa2ce048] Final|Native|Private|HasOutParms 
+	// void HandlePlaylistDataReady(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& PlaylistContextTags); // [0xb000fa0] Final|Native|Private|HasOutParms 
 };
 
 /// Struct /Script/DynamicRollTablesRuntime.FortDynamicRollResult

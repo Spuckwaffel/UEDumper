@@ -22,27 +22,32 @@ public:
 
 	/// Functions
 	// Function /Script/AnimationWarpingRuntime.AnimationWarpingLibrary.GetOffsetRootTransform
-	// FTransform GetOffsetRootTransform(FAnimNodeReference& Node);                                                             // [0xba56b54] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FTransform GetOffsetRootTransform(FAnimNodeReference& Node);                                                             // [0xcbfa560] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// Function /Script/AnimationWarpingRuntime.AnimationWarpingLibrary.GetCurveValueFromAnimation
+	// bool GetCurveValueFromAnimation(class UAnimSequenceBase* Animation, FName CurveName, float Time, float& OutValue);       // [0xcbfa2b0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 };
 
 /// Struct /Script/AnimationWarpingRuntime.FootPlacementInterpolationSettings
-/// Size: 0x0024 (0x000000 - 0x000024)
+/// Size: 0x002C (0x000000 - 0x00002C)
 class FFootPlacementInterpolationSettings : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 36;
+	static inline constexpr uint64_t __MDKClassSize = 44;
 
 public:
 	DMember(float)                                     UnplantLinearStiffness                                      OFFSET(get<float>, {0x0, 4, 0, 0})
 	DMember(float)                                     UnplantLinearDamping                                        OFFSET(get<float>, {0x4, 4, 0, 0})
 	DMember(float)                                     UnplantAngularStiffness                                     OFFSET(get<float>, {0x8, 4, 0, 0})
 	DMember(float)                                     UnplantAngularDamping                                       OFFSET(get<float>, {0xC, 4, 0, 0})
-	DMember(float)                                     FloorLinearStiffness                                        OFFSET(get<float>, {0x10, 4, 0, 0})
-	DMember(float)                                     FloorLinearDamping                                          OFFSET(get<float>, {0x14, 4, 0, 0})
-	DMember(float)                                     FloorAngularStiffness                                       OFFSET(get<float>, {0x18, 4, 0, 0})
-	DMember(float)                                     FloorAngularDamping                                         OFFSET(get<float>, {0x1C, 4, 0, 0})
-	DMember(bool)                                      bEnableFloorInterpolation                                   OFFSET(get<bool>, {0x20, 1, 0, 0})
+	DMember(float)                                     SeparationStiffness                                         OFFSET(get<float>, {0x10, 4, 0, 0})
+	DMember(float)                                     SeparationDamping                                           OFFSET(get<float>, {0x14, 4, 0, 0})
+	DMember(float)                                     FloorLinearStiffness                                        OFFSET(get<float>, {0x18, 4, 0, 0})
+	DMember(float)                                     FloorLinearDamping                                          OFFSET(get<float>, {0x1C, 4, 0, 0})
+	DMember(float)                                     FloorAngularStiffness                                       OFFSET(get<float>, {0x20, 4, 0, 0})
+	DMember(float)                                     FloorAngularDamping                                         OFFSET(get<float>, {0x24, 4, 0, 0})
+	DMember(bool)                                      bEnableFloorInterpolation                                   OFFSET(get<bool>, {0x28, 1, 0, 0})
+	DMember(bool)                                      bEnableSeparationInterpolation                              OFFSET(get<bool>, {0x29, 1, 0, 0})
 };
 
 /// Struct /Script/AnimationWarpingRuntime.FootPlacementTraceSettings
@@ -95,6 +100,7 @@ public:
 	CMember(EPelvisHeightMode)                         PelvisHeightMode                                            OFFSET(get<T>, {0x18, 1, 0, 0})
 	CMember(EActorMovementCompensationMode)            ActorMovementCompensationMode                               OFFSET(get<T>, {0x19, 1, 0, 0})
 	DMember(bool)                                      bEnableInterpolation                                        OFFSET(get<bool>, {0x1A, 1, 0, 0})
+	DMember(bool)                                      bDisablePelvisOffsetInAir                                   OFFSET(get<bool>, {0x1B, 1, 0, 0})
 	SMember(FName)                                     DisablePelvisCurveName                                      OFFSET(getStruct<T>, {0x1C, 4, 0, 0})
 };
 
@@ -141,12 +147,12 @@ public:
 };
 
 /// Struct /Script/AnimationWarpingRuntime.AnimNode_FootPlacement
-/// Size: 0x0348 (0x0000C8 - 0x000410)
+/// Size: 0x0358 (0x0000C8 - 0x000420)
 class FAnimNode_FootPlacement : public FAnimNode_SkeletalControlBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 1040;
+	static inline constexpr uint64_t __MDKClassSize = 1056;
 
 public:
 	CMember(EWarpingEvaluationMode)                    PlantSpeedMode                                              OFFSET(get<T>, {0xC8, 1, 0, 0})
@@ -155,17 +161,17 @@ public:
 	SMember(FFootPlacementPelvisSettings)              PelvisSettings                                              OFFSET(getStruct<T>, {0xE4, 32, 0, 0})
 	CMember(TArray<FFootPlacemenLegDefinition>)        LegDefinitions                                              OFFSET(get<T>, {0x108, 16, 0, 0})
 	SMember(FFootPlacementPlantSettings)               PlantSettings                                               OFFSET(getStruct<T>, {0x118, 52, 0, 0})
-	SMember(FFootPlacementInterpolationSettings)       InterpolationSettings                                       OFFSET(getStruct<T>, {0x14C, 36, 0, 0})
-	SMember(FFootPlacementTraceSettings)               TraceSettings                                               OFFSET(getStruct<T>, {0x170, 28, 0, 0})
+	SMember(FFootPlacementInterpolationSettings)       InterpolationSettings                                       OFFSET(getStruct<T>, {0x14C, 44, 0, 0})
+	SMember(FFootPlacementTraceSettings)               TraceSettings                                               OFFSET(getStruct<T>, {0x178, 28, 0, 0})
 };
 
 /// Struct /Script/AnimationWarpingRuntime.AnimNode_OffsetRootBone
-/// Size: 0x00D0 (0x000010 - 0x0000E0)
+/// Size: 0x00F0 (0x000010 - 0x000100)
 class FAnimNode_OffsetRootBone : public FAnimNode_Base
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 224;
+	static inline constexpr uint64_t __MDKClassSize = 256;
 
 public:
 	SMember(FPoseLink)                                 Source                                                      OFFSET(getStruct<T>, {0x10, 16, 0, 0})
@@ -363,6 +369,16 @@ enum class EOffsetRootBoneMode : uint8_t
 	EOffsetRootBoneMode__Hold                                                        = 2,
 	EOffsetRootBoneMode__Release                                                     = 3,
 	EOffsetRootBoneMode__EOffsetRootBoneMode_MAX                                     = 4
+};
+
+/// Enum /Script/AnimationWarpingRuntime.EOffsetRootBone_CollisionTestingMode
+/// Size: 0x04
+enum class EOffsetRootBone_CollisionTestingMode : uint8_t
+{
+	EOffsetRootBone_CollisionTestingMode__Disabled                                   = 0,
+	EOffsetRootBone_CollisionTestingMode__ShrinkMaxTranslation                       = 1,
+	EOffsetRootBone_CollisionTestingMode__PlanarCollision                            = 2,
+	EOffsetRootBone_CollisionTestingMode__EOffsetRootBone_MAX                        = 3
 };
 
 /// Enum /Script/AnimationWarpingRuntime.EOrientationWarpingSpace

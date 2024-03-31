@@ -26,19 +26,19 @@ public:
 
 	/// Functions
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.ServerRemoveDynamicCapsule
-	// void ServerRemoveDynamicCapsule(FGameplayTag tag);                                                                       // [0xa8c13fc] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
+	// void ServerRemoveDynamicCapsule(FGameplayTag tag);                                                                       // [0xb6e1838] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.ServerApplyDynamicCapsule
-	// void ServerApplyDynamicCapsule(FGameplayTag tag, float CapsuleRadius, float CapsuleHalfHeight, double NewRelativeMeshHeight); // [0xa8c1008] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
+	// void ServerApplyDynamicCapsule(FGameplayTag tag, float CapsuleRadius, float CapsuleHalfHeight, double NewRelativeMeshHeight); // [0xb6e15c0] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.RemoveDynamicCapsule
-	// bool RemoveDynamicCapsule(FGameplayTag& tag);                                                                            // [0xa8c0f34] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// bool RemoveDynamicCapsule(FGameplayTag& tag);                                                                            // [0xb6e14ec] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.OnRep_ReplicatedCapsuleState
-	// void OnRep_ReplicatedCapsuleState();                                                                                     // [0x32b8b74] Final|Native|Private 
+	// void OnRep_ReplicatedCapsuleState();                                                                                     // [0x2eff66c] Final|Native|Private 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.OnRep_DynamicCapsuleEntryStack
-	// void OnRep_DynamicCapsuleEntryStack();                                                                                   // [0xa8c0f20] Final|Native|Private 
+	// void OnRep_DynamicCapsuleEntryStack();                                                                                   // [0xb6e14d8] Final|Native|Private 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.ApplyDynamicCapsuleWithLocationAdjust
-	// bool ApplyDynamicCapsuleWithLocationAdjust(FGameplayTag& tag, float CapsuleRadius, float CapsuleHalfHeight, double NewRelativeMeshHeight); // [0xa8c0cc8] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// bool ApplyDynamicCapsuleWithLocationAdjust(FGameplayTag& tag, float CapsuleRadius, float CapsuleHalfHeight, double NewRelativeMeshHeight); // [0xb6e1280] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleComponent.ApplyDynamicCapsule
-	// bool ApplyDynamicCapsule(FGameplayTag& tag, float CapsuleRadius, float CapsuleHalfHeight);                               // [0xa8c0af4] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// bool ApplyDynamicCapsule(FGameplayTag& tag, float CapsuleRadius, float CapsuleHalfHeight);                               // [0xb6e10ac] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/DynamicCapsuleCodeRuntime.AnimNotifyState_SetCapsuleSize
@@ -68,11 +68,11 @@ public:
 
 	/// Functions
 	// Function /Script/DynamicCapsuleCodeRuntime.JumpSlideComponent.OnMovementModeChange
-	// void OnMovementModeChange(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0x14e13bc] Final|Native|Private 
+	// void OnMovementModeChange(class ACharacter* Character, TEnumAsByte<EMovementMode> PrevMovementMode, char PreviousCustomMode); // [0x1962878] Final|Native|Private 
 	// Function /Script/DynamicCapsuleCodeRuntime.JumpSlideComponent.OnJumpSlideStart
-	// void OnJumpSlideStart();                                                                                                 // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnJumpSlideStart();                                                                                                 // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/DynamicCapsuleCodeRuntime.JumpSlideComponent.OnJumpSlideEnd
-	// void OnJumpSlideEnd();                                                                                                   // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnJumpSlideEnd();                                                                                                   // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Struct /Script/DynamicCapsuleCodeRuntime.DynamicCapsuleState

@@ -47,8 +47,8 @@ public:
 
 	/// Functions
 	// Function /Script/LatencyUI.LatencyWidget.StopTimer
-	// void StopTimer();                                                                                                        // [0xba05594] Final|Native|Protected|BlueprintCallable 
+	// void StopTimer();                                                                                                        // [0xcb96878] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/LatencyUI.LatencyWidget.StartTimer
-	// void StartTimer();                                                                                                       // [0xba0557c] Final|Native|Protected|BlueprintCallable 
+	// void StartTimer();                                                                                                       // [0xcb96860] Final|Native|Protected|BlueprintCallable 
 };
 

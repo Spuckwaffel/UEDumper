@@ -88,9 +88,9 @@ public:
 
 	/// Functions
 	// Function /Script/AccoladesRuntime.FortCheatManager_Accolades.TriggerAccolade
-	// void TriggerAccolade(FString AccoladeName);                                                                              // [0x6b8287c] Final|BlueprintAuthorityOnly|Exec|Native|Private 
+	// void TriggerAccolade(FString AccoladeName);                                                                              // [0x6c014e8] Final|BlueprintAuthorityOnly|Exec|Native|Private 
 	// Function /Script/AccoladesRuntime.FortCheatManager_Accolades.ResetAccoladeData
-	// void ResetAccoladeData();                                                                                                // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Private 
+	// void ResetAccoladeData();                                                                                                // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Private 
 };
 
 /// Class /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection
@@ -108,15 +108,15 @@ public:
 
 	/// Functions
 	// Function /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection.ServerPinAccolade
-	// void ServerPinAccolade(FName AccoladeName);                                                                              // [0xa175e94] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerPinAccolade(FName AccoladeName);                                                                              // [0xae6d674] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection.ServerMarkAccoladesAsSeen
-	// void ServerMarkAccoladesAsSeen(TArray<FName> AccoladeNames);                                                             // [0x8af0184] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerMarkAccoladesAsSeen(TArray<FName> AccoladeNames);                                                             // [0x919231c] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection.HandlePlayerProfileInitialized
-	// void HandlePlayerProfileInitialized();                                                                                   // [0xa175e48] Final|Native|Private 
+	// void HandlePlayerProfileInitialized();                                                                                   // [0xae6d628] Final|Native|Private 
 	// Function /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection.HandlePinnedQuestChanged
-	// void HandlePinnedQuestChanged(FAthenaPinnedQuestData& PinnedQuestData);                                                  // [0xa175dbc] Final|Native|Private|HasOutParms 
+	// void HandlePinnedQuestChanged(FAthenaPinnedQuestData& PinnedQuestData);                                                  // [0xae6d59c] Final|Native|Private|HasOutParms 
 	// Function /Script/AccoladesRuntime.FortControllerComponent_AccoladeCollection.ClientResetAccoladeData
-	// void ClientResetAccoladeData();                                                                                          // [0x81db0dc] Final|Net|NetReliableNative|Event|Private|NetClient 
+	// void ClientResetAccoladeData();                                                                                          // [0x86776a8] Final|Net|NetReliableNative|Event|Private|NetClient 
 };
 
 /// Class /Script/AccoladesRuntime.FortControllerComponent_Accolades

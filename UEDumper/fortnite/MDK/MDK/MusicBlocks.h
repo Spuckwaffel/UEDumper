@@ -27,17 +27,17 @@ public:
 
 	/// Functions
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.ReplicateMusicSequencerHit
-	// bool ReplicateMusicSequencerHit(class UObject* WorldContextObject, TScriptInterface<Class> HitInterface, class AController* Instigator); // [0xaa43d40] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
+	// bool ReplicateMusicSequencerHit(class UObject* WorldContextObject, TScriptInterface<Class> HitInterface, class AController* Instigator); // [0xb8cd4c8] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.RegisterMusicSequencerActor
-	// bool RegisterMusicSequencerActor(class UObject* WorldContextObject, TScriptInterface<Class> Actor);                      // [0xaa43bbc] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
+	// bool RegisterMusicSequencerActor(class UObject* WorldContextObject, TScriptInterface<Class> Actor);                      // [0xb8cd36c] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.ProcessSequenceHitEvent
-	// bool ProcessSequenceHitEvent(FMusicSequencerHitEntry& Event);                                                            // [0xaa43ad4] Final|Native|Protected|HasOutParms 
+	// bool ProcessSequenceHitEvent(FMusicSequencerHitEntry& Event);                                                            // [0xb8cd284] Final|Native|Protected|HasOutParms 
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.OnSequenceHitEventExpired
-	// void OnSequenceHitEventExpired(FMusicSequencerHitHandle ExpiredHandle);                                                  // [0xaa439a4] Final|Native|Protected 
+	// void OnSequenceHitEventExpired(FMusicSequencerHitHandle ExpiredHandle);                                                  // [0xb8cd1c4] Final|Native|Protected 
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.AddSequenceHitEvent
-	// bool AddSequenceHitEvent(TScriptInterface<Class> HitInterface, class AController* Instigator);                           // [0xaa43750] Final|Native|Protected 
+	// bool AddSequenceHitEvent(TScriptInterface<Class> HitInterface, class AController* Instigator);                           // [0xb8cd038] Final|Native|Protected 
 	// Function /Script/MusicBlocks.MusicSequencerHitComponent.AddMusicSequencerActor
-	// bool AddMusicSequencerActor(TScriptInterface<Class> HitInterface);                                                       // [0xaa43600] Final|Native|Protected 
+	// bool AddMusicSequencerActor(TScriptInterface<Class> HitInterface);                                                       // [0xb8ccf54] Final|Native|Protected 
 };
 
 /// Class /Script/MusicBlocks.MusicSequencerHitActor
@@ -53,7 +53,7 @@ public:
 
 	/// Functions
 	// Function /Script/MusicBlocks.MusicSequencerHitActor.GetMusicSequencerHitComponent
-	// class UMusicSequencerHitComponent* GetMusicSequencerHitComponent();                                                      // [0x6473e98] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMusicSequencerHitComponent* GetMusicSequencerHitComponent();                                                      // [0x6416864] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/MusicBlocks.MusicSequencerHitAdderComponent
@@ -70,7 +70,7 @@ public:
 
 	/// Functions
 	// Function /Script/MusicBlocks.MusicSequencerHitAdderComponent.GetMusicSequencerHitActor
-	// class AMusicSequencerHitActor* GetMusicSequencerHitActor();                                                              // [0xaa43980] Final|Native|Public|Const 
+	// class AMusicSequencerHitActor* GetMusicSequencerHitActor();                                                              // [0xb8cd1a0] Final|Native|Public|Const 
 };
 
 /// Struct /Script/MusicBlocks.MusicSequencerHitHandle

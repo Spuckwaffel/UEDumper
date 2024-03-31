@@ -42,27 +42,27 @@ public:
 
 	/// Functions
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.SetExternalComponents
-	// void SetExternalComponents(class UMediaTexture* ExtMediaTexture, class USoundSourceBus* ExtSourceBus, class UMediaSoundComponent* ExtMediaSoundComponent); // [0xab83b48] Final|Native|Public|BlueprintCallable 
+	// void SetExternalComponents(class UMediaTexture* ExtMediaTexture, class USoundSourceBus* ExtSourceBus, class UMediaSoundComponent* ExtMediaSoundComponent); // [0xc044afc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.ServerLeaveFullscreenMode
-	// void ServerLeaveFullscreenMode();                                                                                        // [0x82b9fb4] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerLeaveFullscreenMode();                                                                                        // [0x878dc7c] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.ServerEnterFullscreenMode
-	// void ServerEnterFullscreenMode();                                                                                        // [0x92aae80] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerEnterFullscreenMode();                                                                                        // [0x8fd6abc] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.OnFullscreenUIEnds
-	// void OnFullscreenUIEnds();                                                                                               // [0xab83b34] Final|Native|Private 
+	// void OnFullscreenUIEnds();                                                                                               // [0xc044ae8] Final|Native|Private 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.HandleEnterFullscreenActionReleased
-	// void HandleEnterFullscreenActionReleased();                                                                              // [0xab83b20] Final|Native|Private 
+	// void HandleEnterFullscreenActionReleased();                                                                              // [0xc044ad4] Final|Native|Private 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.HandleEnterFullscreenActionPressed
-	// void HandleEnterFullscreenActionPressed();                                                                               // [0x36203b0] Final|Native|Private 
+	// void HandleEnterFullscreenActionPressed();                                                                               // [0x3518b8c] Final|Native|Private 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.ExitFullscreenState
-	// void ExitFullscreenState();                                                                                              // [0xab83af4] Final|Native|Public|BlueprintCallable 
+	// void ExitFullscreenState();                                                                                              // [0xc044aa8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.EnterFullscreenStateWithOptions
-	// void EnterFullscreenStateWithOptions(FCreativeVideoPlayerFullscreenOptions Options);                                     // [0xab839c0] Final|Native|Public|BlueprintCallable 
+	// void EnterFullscreenStateWithOptions(FCreativeVideoPlayerFullscreenOptions Options);                                     // [0xc0449e4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.EnterFullscreenState
-	// void EnterFullscreenState();                                                                                             // [0xab83994] Final|Native|Public|BlueprintCallable 
+	// void EnterFullscreenState();                                                                                             // [0xc0449b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.ClientTransitionToFullscreenVideo
-	// void ClientTransitionToFullscreenVideo();                                                                                // [0x82b9fcc] Final|Net|NetReliableNative|Event|Private|NetClient 
+	// void ClientTransitionToFullscreenVideo();                                                                                // [0x878dc94] Final|Net|NetReliableNative|Event|Private|NetClient 
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFullscreenGameplayAbility.ClientLeaveFullscreenVideo
-	// void ClientLeaveFullscreenVideo();                                                                                       // [0x82b9ed4] Final|Net|NetReliableNative|Event|Private|NetClient 
+	// void ClientLeaveFullscreenVideo();                                                                                       // [0x878db20] Final|Net|NetReliableNative|Event|Private|NetClient 
 };
 
 /// Class /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFunctionLibrary
@@ -77,7 +77,7 @@ public:
 
 	/// Functions
 	// Function /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerFunctionLibrary.ShutdownFullscreenVideoMode
-	// void ShutdownFullscreenVideoMode(class AController* Controller);                                                         // [0xab83c40] Final|Native|Static|Public|BlueprintCallable 
+	// void ShutdownFullscreenVideoMode(class AController* Controller);                                                         // [0xc044cb8] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/CreativeVideoPlayerRuntime.CreativeVideoPlayerWorldSubsystem

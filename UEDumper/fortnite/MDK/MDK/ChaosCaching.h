@@ -39,25 +39,25 @@ public:
 
 	/// Functions
 	// Function /Script/ChaosCaching.ChaosCacheManager.TriggerComponentByCache
-	// void TriggerComponentByCache(FName InCacheName);                                                                         // [0xa359400] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void TriggerComponentByCache(FName InCacheName);                                                                         // [0xb0aaf68] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.TriggerComponent
-	// void TriggerComponent(class UPrimitiveComponent* InComponent);                                                           // [0xa359380] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void TriggerComponent(class UPrimitiveComponent* InComponent);                                                           // [0xb0aaea8] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.TriggerAll
-	// void TriggerAll();                                                                                                       // [0xa3592f8] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void TriggerAll();                                                                                                       // [0xb0aae20] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.SetStartTime
-	// void SetStartTime(float InStartTime);                                                                                    // [0xa359278] Final|RequiredAPI|Native|Public 
+	// void SetStartTime(float InStartTime);                                                                                    // [0xb0aad5c] Final|RequiredAPI|Native|Public 
 	// Function /Script/ChaosCaching.ChaosCacheManager.SetCurrentTime
-	// void SetCurrentTime(float CurrentTime);                                                                                  // [0xa359278] Final|Native|Public|BlueprintCallable 
+	// void SetCurrentTime(float CurrentTime);                                                                                  // [0xb0aad5c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.SetCacheCollection
-	// void SetCacheCollection(class UChaosCacheCollection* InCacheCollection);                                                 // [0xa3591f8] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void SetCacheCollection(class UChaosCacheCollection* InCacheCollection);                                                 // [0xb0aac9c] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.ResetSingleTransform
-	// void ResetSingleTransform(int32_t InIndex);                                                                              // [0xa359124] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ResetSingleTransform(int32_t InIndex);                                                                              // [0xb0aab84] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.ResetAllComponentTransforms
-	// void ResetAllComponentTransforms();                                                                                      // [0xa359110] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ResetAllComponentTransforms();                                                                                      // [0xb0aab70] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.EnablePlaybackByCache
-	// void EnablePlaybackByCache(FName InCacheName, bool bEnable);                                                             // [0xa359024] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void EnablePlaybackByCache(FName InCacheName, bool bEnable);                                                             // [0xb0aa9fc] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 	// Function /Script/ChaosCaching.ChaosCacheManager.EnablePlayback
-	// void EnablePlayback(int32_t Index, bool bEnable);                                                                        // [0xa358f54] Final|RequiredAPI|Native|Protected|BlueprintCallable 
+	// void EnablePlayback(int32_t Index, bool bEnable);                                                                        // [0xb0aa8a0] Final|RequiredAPI|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/ChaosCaching.ChaosCachePlayer

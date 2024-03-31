@@ -13,48 +13,48 @@
 /// dependency: Engine
 
 /// Class /Script/ChaosClothAssetEngine.ChaosClothComponent
-/// Size: 0x0030 (0x000890 - 0x0008C0)
+/// Size: 0x0030 (0x0008A0 - 0x0008D0)
 class UChaosClothComponent : public USkinnedMeshComponent
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2240;
+	static inline constexpr uint64_t __MDKClassSize = 2256;
 
 public:
-	DMember(bool)                                      bUseAttachedParentAsPoseComponent                           OFFSET(get<bool>, {0x888, 1, 1, 0})
-	DMember(bool)                                      bWaitForParallelTask                                        OFFSET(get<bool>, {0x888, 1, 1, 1})
-	DMember(bool)                                      bEnableSimulation                                           OFFSET(get<bool>, {0x888, 1, 1, 2})
-	DMember(bool)                                      bSuspendSimulation                                          OFFSET(get<bool>, {0x888, 1, 1, 3})
-	DMember(bool)                                      bBindToLeaderComponent                                      OFFSET(get<bool>, {0x888, 1, 1, 4})
-	DMember(bool)                                      bTeleport                                                   OFFSET(get<bool>, {0x888, 1, 1, 5})
-	DMember(bool)                                      bReset                                                      OFFSET(get<bool>, {0x888, 1, 1, 6})
-	DMember(float)                                     BlendWeight                                                 OFFSET(get<float>, {0x88C, 4, 0, 0})
+	DMember(bool)                                      bUseAttachedParentAsPoseComponent                           OFFSET(get<bool>, {0x898, 1, 1, 0})
+	DMember(bool)                                      bWaitForParallelTask                                        OFFSET(get<bool>, {0x898, 1, 1, 1})
+	DMember(bool)                                      bEnableSimulation                                           OFFSET(get<bool>, {0x898, 1, 1, 2})
+	DMember(bool)                                      bSuspendSimulation                                          OFFSET(get<bool>, {0x898, 1, 1, 3})
+	DMember(bool)                                      bBindToLeaderComponent                                      OFFSET(get<bool>, {0x898, 1, 1, 4})
+	DMember(bool)                                      bTeleport                                                   OFFSET(get<bool>, {0x898, 1, 1, 5})
+	DMember(bool)                                      bReset                                                      OFFSET(get<bool>, {0x898, 1, 1, 6})
+	DMember(float)                                     BlendWeight                                                 OFFSET(get<float>, {0x89C, 4, 0, 0})
 
 
 	/// Functions
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.SuspendSimulation
-	// void SuspendSimulation();                                                                                                // [0xba6decc] Final|Native|Public|BlueprintCallable 
+	// void SuspendSimulation();                                                                                                // [0xcc135b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.SetEnableSimulation
-	// void SetEnableSimulation(bool bEnable);                                                                                  // [0xba6de40] Final|Native|Public|BlueprintCallable 
+	// void SetEnableSimulation(bool bEnable);                                                                                  // [0xcc134e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.SetClothAsset
-	// void SetClothAsset(class UChaosClothAsset* InClothAsset);                                                                // [0xba6ddb8] Final|Native|Public|BlueprintCallable 
+	// void SetClothAsset(class UChaosClothAsset* InClothAsset);                                                                // [0xcc13420] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.ResumeSimulation
-	// void ResumeSimulation();                                                                                                 // [0xba6dda0] Final|Native|Public|BlueprintCallable 
+	// void ResumeSimulation();                                                                                                 // [0xcc13408] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.ResetTeleportMode
-	// void ResetTeleportMode();                                                                                                // [0xba6dd88] Final|Native|Public|BlueprintCallable 
+	// void ResetTeleportMode();                                                                                                // [0xcc133f0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.ResetConfigProperties
-	// void ResetConfigProperties();                                                                                            // [0xba6dd74] Final|Native|Public|BlueprintCallable 
+	// void ResetConfigProperties();                                                                                            // [0xcc133dc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.RecreateClothSimulationProxy
-	// void RecreateClothSimulationProxy();                                                                                     // [0xba6dd60] Final|Native|Public|BlueprintCallable 
+	// void RecreateClothSimulationProxy();                                                                                     // [0xcc133c8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.IsSimulationSuspended
-	// bool IsSimulationSuspended();                                                                                            // [0xba6dd3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSimulationSuspended();                                                                                            // [0xcc133a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.IsSimulationEnabled
-	// bool IsSimulationEnabled();                                                                                              // [0xba6dd18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSimulationEnabled();                                                                                              // [0xcc13380] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.GetClothAsset
-	// class UChaosClothAsset* GetClothAsset();                                                                                 // [0xba6dcf4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UChaosClothAsset* GetClothAsset();                                                                                 // [0xcc1335c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.ForceNextUpdateTeleportAndReset
-	// void ForceNextUpdateTeleportAndReset();                                                                                  // [0xba6dcdc] Final|Native|Public|BlueprintCallable 
+	// void ForceNextUpdateTeleportAndReset();                                                                                  // [0xcc13344] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ChaosClothAssetEngine.ChaosClothComponent.ForceNextUpdateTeleport
-	// void ForceNextUpdateTeleport();                                                                                          // [0xba6dcbc] Final|Native|Public|BlueprintCallable 
+	// void ForceNextUpdateTeleport();                                                                                          // [0xcc13324] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ChaosClothAssetEngine.ChaosClothAsset
@@ -84,7 +84,7 @@ public:
 
 	/// Functions
 	// Function /Script/ChaosClothAssetEngine.ChaosClothAsset.GetShadowPhysicsAsset
-	// class UPhysicsAsset* GetShadowPhysicsAsset();                                                                            // [0x6bf6324] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UPhysicsAsset* GetShadowPhysicsAsset();                                                                            // [0x6c84e0c] Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Struct /Script/ChaosClothAssetEngine.ChaosClothAssetLodTransitionDataCache

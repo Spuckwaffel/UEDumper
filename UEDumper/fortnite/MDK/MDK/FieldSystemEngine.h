@@ -48,27 +48,27 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ResetFieldSystem
-	// void ResetFieldSystem();                                                                                                 // [0x648175c] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ResetFieldSystem();                                                                                                 // [0x642441c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.RemovePersistentFields
-	// void RemovePersistentFields();                                                                                           // [0x6481748] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void RemovePersistentFields();                                                                                           // [0x378f298] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyUniformVectorFalloffForce
-	// void ApplyUniformVectorFalloffForce(bool Enabled, FVector Position, FVector Direction, float Radius, float Magnitude);   // [0x648132c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyUniformVectorFalloffForce(bool Enabled, FVector Position, FVector Direction, float Radius, float Magnitude);   // [0x642412c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyStrainField
-	// void ApplyStrainField(bool Enabled, FVector Position, float Radius, float Magnitude, int32_t Iterations);                // [0x6480f28] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyStrainField(bool Enabled, FVector Position, float Radius, float Magnitude, int32_t Iterations);                // [0x6423e5c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyStayDynamicField
-	// void ApplyStayDynamicField(bool Enabled, FVector Position, float Radius);                                                // [0x6480ccc] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyStayDynamicField(bool Enabled, FVector Position, float Radius);                                                // [0x6423c80] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyRadialVectorFalloffForce
-	// void ApplyRadialVectorFalloffForce(bool Enabled, FVector Position, float Radius, float Magnitude);                       // [0x6480994] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyRadialVectorFalloffForce(bool Enabled, FVector Position, float Radius, float Magnitude);                       // [0x6423a24] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyRadialForce
-	// void ApplyRadialForce(bool Enabled, FVector Position, float Magnitude);                                                  // [0x6480738] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyRadialForce(bool Enabled, FVector Position, float Magnitude);                                                  // [0x6423848] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyPhysicsField
-	// void ApplyPhysicsField(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x64805e8] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ApplyPhysicsField(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x64235fc] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.ApplyLinearForce
-	// void ApplyLinearForce(bool Enabled, FVector Direction, float Magnitude);                                                 // [0x648038c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
+	// void ApplyLinearForce(bool Enabled, FVector Direction, float Magnitude);                                                 // [0x6423420] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.AddPersistentField
-	// void AddPersistentField(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x648023c] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void AddPersistentField(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x35d8634] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/FieldSystemEngine.FieldSystemComponent.AddFieldCommand
-	// void AddFieldCommand(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x64800ec] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void AddFieldCommand(bool Enabled, TEnumAsByte<EFieldPhysicsType> Target, class UFieldSystemMetaData* MetaData, class UFieldNodeBase* Field); // [0x64231d4] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/FieldSystemEngine.FieldSystemMetaData
@@ -94,7 +94,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.FieldSystemMetaDataIteration.SetMetaDataIteration
-	// class UFieldSystemMetaDataIteration* SetMetaDataIteration(int32_t Iterations);                                           // [0x6481d7c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UFieldSystemMetaDataIteration* SetMetaDataIteration(int32_t Iterations);                                           // [0x6424bf0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.FieldSystemMetaDataProcessingResolution
@@ -110,7 +110,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.FieldSystemMetaDataProcessingResolution.SetMetaDataaProcessingResolutionType
-	// class UFieldSystemMetaDataProcessingResolution* SetMetaDataaProcessingResolutionType(TEnumAsByte<EFieldResolutionType> ResolutionType); // [0x6481e08] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UFieldSystemMetaDataProcessingResolution* SetMetaDataaProcessingResolutionType(TEnumAsByte<EFieldResolutionType> ResolutionType); // [0x6424cc0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.FieldSystemMetaDataFilter
@@ -128,7 +128,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.FieldSystemMetaDataFilter.SetMetaDataFilterType
-	// class UFieldSystemMetaDataFilter* SetMetaDataFilterType(TEnumAsByte<EFieldFilterType> FilterType, TEnumAsByte<EFieldObjectType> ObjectType, TEnumAsByte<EFieldPositionType> PositionType); // [0x6481c78] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UFieldSystemMetaDataFilter* SetMetaDataFilterType(TEnumAsByte<EFieldFilterType> FilterType, TEnumAsByte<EFieldObjectType> ObjectType, TEnumAsByte<EFieldPositionType> PositionType); // [0x6424a28] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.FieldNodeBase
@@ -184,7 +184,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.UniformInteger.SetUniformInteger
-	// class UUniformInteger* SetUniformInteger(int32_t Magnitude);                                                             // [0x6481d7c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UUniformInteger* SetUniformInteger(int32_t Magnitude);                                                             // [0x6424bf0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.RadialIntMask
@@ -204,7 +204,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.RadialIntMask.SetRadialIntMask
-	// class URadialIntMask* SetRadialIntMask(float Radius, FVector Position, int32_t InteriorValue, int32_t ExteriorValue, TEnumAsByte<ESetMaskConditionType> SetMaskConditionIn); // [0x64829e4] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class URadialIntMask* SetRadialIntMask(float Radius, FVector Position, int32_t InteriorValue, int32_t ExteriorValue, TEnumAsByte<ESetMaskConditionType> SetMaskConditionIn); // [0x6425470] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.UniformScalar
@@ -220,7 +220,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.UniformScalar.SetUniformScalar
-	// class UUniformScalar* SetUniformScalar(float Magnitude);                                                                 // [0x6482f98] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UUniformScalar* SetUniformScalar(float Magnitude);                                                                 // [0x6425744] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.WaveScalar
@@ -241,7 +241,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.WaveScalar.SetWaveScalar
-	// class UWaveScalar* SetWaveScalar(float Magnitude, FVector Position, float WaveLength, float Period, float Time, TEnumAsByte<EWaveFunctionType> Function, TEnumAsByte<EFieldFalloffType> Falloff); // [0x64830dc] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class UWaveScalar* SetWaveScalar(float Magnitude, FVector Position, float WaveLength, float Period, float Time, TEnumAsByte<EWaveFunctionType> Function, TEnumAsByte<EFieldFalloffType> Falloff); // [0x33e4dac] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.RadialFalloff
@@ -263,7 +263,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.RadialFalloff.SetRadialFalloff
-	// class URadialFalloff* SetRadialFalloff(float Magnitude, float MinRange, float MaxRange, float Default, float Radius, FVector Position, TEnumAsByte<EFieldFalloffType> Falloff); // [0x648267c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class URadialFalloff* SetRadialFalloff(float Magnitude, float MinRange, float MaxRange, float Default, float Radius, FVector Position, TEnumAsByte<EFieldFalloffType> Falloff); // [0x352fb0c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.PlaneFalloff
@@ -286,7 +286,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.PlaneFalloff.SetPlaneFalloff
-	// class UPlaneFalloff* SetPlaneFalloff(float Magnitude, float MinRange, float MaxRange, float Default, float Distance, FVector Position, FVector Normal, TEnumAsByte<EFieldFalloffType> Falloff); // [0x6482230] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class UPlaneFalloff* SetPlaneFalloff(float Magnitude, float MinRange, float MaxRange, float Default, float Distance, FVector Position, FVector Normal, TEnumAsByte<EFieldFalloffType> Falloff); // [0x6425004] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.BoxFalloff
@@ -307,7 +307,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.BoxFalloff.SetBoxFalloff
-	// class UBoxFalloff* SetBoxFalloff(float Magnitude, float MinRange, float MaxRange, float Default, FTransform Transform, TEnumAsByte<EFieldFalloffType> Falloff); // [0x6481770] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class UBoxFalloff* SetBoxFalloff(float Magnitude, float MinRange, float MaxRange, float Default, FTransform Transform, TEnumAsByte<EFieldFalloffType> Falloff); // [0x6424430] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.NoiseField
@@ -325,7 +325,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.NoiseField.SetNoiseField
-	// class UNoiseField* SetNoiseField(float MinRange, float MaxRange, FTransform Transform);                                  // [0x6481e98] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class UNoiseField* SetNoiseField(float MinRange, float MaxRange, FTransform Transform);                                  // [0x6424d90] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.UniformVector
@@ -342,7 +342,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.UniformVector.SetUniformVector
-	// class UUniformVector* SetUniformVector(float Magnitude, FVector Direction);                                              // [0x6482e04] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class UUniformVector* SetUniformVector(float Magnitude, FVector Direction);                                              // [0x642590c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.RadialVector
@@ -359,7 +359,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.RadialVector.SetRadialVector
-	// class URadialVector* SetRadialVector(float Magnitude, FVector Position);                                                 // [0x6482e04] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
+	// class URadialVector* SetRadialVector(float Magnitude, FVector Position);                                                 // [0x36b54b4] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.RandomVector
@@ -375,7 +375,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.RandomVector.SetRandomVector
-	// class URandomVector* SetRandomVector(float Magnitude);                                                                   // [0x6482f98] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class URandomVector* SetRandomVector(float Magnitude);                                                                   // [0x6425744] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.OperatorField
@@ -394,7 +394,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.OperatorField.SetOperatorField
-	// class UOperatorField* SetOperatorField(float Magnitude, class UFieldNodeBase* LeftField, class UFieldNodeBase* RightField, TEnumAsByte<EFieldOperationType> Operation); // [0x64820f0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UOperatorField* SetOperatorField(float Magnitude, class UFieldNodeBase* LeftField, class UFieldNodeBase* RightField, TEnumAsByte<EFieldOperationType> Operation); // [0x331c69c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.ToIntegerField
@@ -410,7 +410,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.ToIntegerField.SetToIntegerField
-	// class UToIntegerField* SetToIntegerField(class UFieldNodeFloat* FloatField);                                             // [0x6483040] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UToIntegerField* SetToIntegerField(class UFieldNodeFloat* FloatField);                                             // [0x642582c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.ToFloatField
@@ -426,7 +426,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.ToFloatField.SetToFloatField
-	// class UToFloatField* SetToFloatField(class UFieldNodeInt* IntegerField);                                                 // [0x6483040] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UToFloatField* SetToFloatField(class UFieldNodeInt* IntegerField);                                                 // [0x642582c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.CullingField
@@ -444,7 +444,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.CullingField.SetCullingField
-	// class UCullingField* SetCullingField(class UFieldNodeBase* Culling, class UFieldNodeBase* Field, TEnumAsByte<EFieldCullingOperationType> Operation); // [0x6481b30] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UCullingField* SetCullingField(class UFieldNodeBase* Culling, class UFieldNodeBase* Field, TEnumAsByte<EFieldCullingOperationType> Operation); // [0x6424824] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/FieldSystemEngine.ReturnResultsTerminal
@@ -459,7 +459,7 @@ public:
 
 	/// Functions
 	// Function /Script/FieldSystemEngine.ReturnResultsTerminal.SetReturnResultsTerminal
-	// class UReturnResultsTerminal* SetReturnResultsTerminal();                                                                // [0x648302c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
+	// class UReturnResultsTerminal* SetReturnResultsTerminal();                                                                // [0x6425818] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Struct /Script/FieldSystemEngine.FieldObjectCommands

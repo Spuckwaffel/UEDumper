@@ -59,11 +59,11 @@ public:
 
 	/// Functions
 	// Function /Script/LabradorRuntime.FortLabradorComponent_Telemetry.OnWakeUp
-	// void OnWakeUp(class AActor* GoalActor);                                                                                  // [0xa8be914] Final|Native|Public|BlueprintCallable 
+	// void OnWakeUp(class AActor* GoalActor);                                                                                  // [0xb6df01c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LabradorRuntime.FortLabradorComponent_Telemetry.OnTeleport
-	// void OnTeleport();                                                                                                       // [0xa8be8fc] Final|Native|Public|BlueprintCallable 
+	// void OnTeleport();                                                                                                       // [0xb6df004] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LabradorRuntime.FortLabradorComponent_Telemetry.OnDamaged
-	// void OnDamaged(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa8be464] Final|Native|Private|HasDefaults 
+	// void OnDamaged(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xb6debe8] Final|Native|Private|HasDefaults 
 };
 
 /// Enum /Script/LabradorRuntime.ELabradorDespawnReason

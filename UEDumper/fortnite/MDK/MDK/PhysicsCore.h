@@ -52,11 +52,11 @@ public:
 };
 
 /// Class /Script/PhysicsCore.PhysicalMaterial
-/// Size: 0x0068 (0x000028 - 0x000090)
+/// Size: 0x0070 (0x000028 - 0x000098)
 class UPhysicalMaterial : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 144;
+	static inline constexpr uint64_t __MDKClassSize = 152;
 
 public:
 	DMember(float)                                     Friction                                                    OFFSET(get<float>, {0x28, 4, 0, 0})
@@ -76,6 +76,10 @@ public:
 	CMember(TEnumAsByte<EPhysicalSurface>)             SurfaceType                                                 OFFSET(get<T>, {0x60, 1, 0, 0})
 	SMember(FPhysicalMaterialStrength)                 Strength                                                    OFFSET(getStruct<T>, {0x64, 12, 0, 0})
 	SMember(FPhysicalMaterialDamageModifier)           DamageModifier                                              OFFSET(getStruct<T>, {0x70, 4, 0, 0})
+	DMember(bool)                                      bShowExperimentalProperties                                 OFFSET(get<bool>, {0x74, 1, 0, 0})
+	CMember(EPhysicalMaterialSoftCollisionMode)        SoftCollisionMode                                           OFFSET(get<T>, {0x75, 1, 0, 0})
+	DMember(float)                                     SoftCollisionThickness                                      OFFSET(get<float>, {0x78, 4, 0, 0})
+	DMember(float)                                     BaseFrictionImpulse                                         OFFSET(get<float>, {0x7C, 4, 0, 0})
 };
 
 /// Class /Script/PhysicsCore.PhysicsSettingsCore
@@ -324,5 +328,15 @@ enum class EFrictionCombineMode : uint8_t
 	EFrictionCombineMode__Min                                                        = 1,
 	EFrictionCombineMode__Multiply                                                   = 2,
 	EFrictionCombineMode__Max                                                        = 3
+};
+
+/// Enum /Script/PhysicsCore.EPhysicalMaterialSoftCollisionMode
+/// Size: 0x04
+enum class EPhysicalMaterialSoftCollisionMode : uint8_t
+{
+	EPhysicalMaterialSoftCollisionMode__None                                         = 0,
+	EPhysicalMaterialSoftCollisionMode__RelativeThickness                            = 1,
+	EPhysicalMaterialSoftCollisionMode__AbsoluteThickess                             = 2,
+	EPhysicalMaterialSoftCollisionMode__EPhysicalMaterialSoftCollisionMode_MAX       = 3
 };
 

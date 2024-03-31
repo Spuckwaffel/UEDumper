@@ -23,7 +23,7 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureFNEvents.LiveEventHUDAd.ShowAdvertisement
-	// void ShowAdvertisement(bool& Result);                                                                                    // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void ShowAdvertisement(bool& Result);                                                                                    // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager
@@ -38,19 +38,19 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.StopPiPBouncingLlama
-	// void StopPiPBouncingLlama();                                                                                             // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void StopPiPBouncingLlama();                                                                                             // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.StartPiPBouncingLlama
-	// void StartPiPBouncingLlama();                                                                                            // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void StartPiPBouncingLlama();                                                                                            // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.SelectPiPEvent
-	// void SelectPiPEvent(FString EventName);                                                                                  // [0x8b6e5a0] Final|Exec|Native|Public|BlueprintCallable 
+	// void SelectPiPEvent(FString EventName);                                                                                  // [0x91f846c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.RemovePiPEvent
-	// void RemovePiPEvent(FString EventName);                                                                                  // [0x8b6e5a0] Final|Exec|Native|Public|BlueprintCallable 
+	// void RemovePiPEvent(FString EventName);                                                                                  // [0x91f846c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.ListPiPEvents
-	// void ListPiPEvents();                                                                                                    // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void ListPiPEvents();                                                                                                    // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.ListAllPiPEvents
-	// void ListAllPiPEvents();                                                                                                 // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void ListAllPiPEvents();                                                                                                 // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsCheatManager.AddPiPEvent
-	// void AddPiPEvent(FString EventName, FString VUID);                                                                       // [0x84f5678] Final|Exec|Native|Public|BlueprintCallable 
+	// void AddPiPEvent(FString EventName, FString VUID);                                                                       // [0x8a2b9f8] Final|Exec|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PictureInPictureFNEvents.PictureInPictureFNEventsClient
@@ -77,18 +77,18 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.UpdateClientLoginState
-	// void UpdateClientLoginState(TArray<FPiPPartnerSource>& UpdatedSources);                                                  // [0x269d164] Final|Native|Private|HasOutParms 
+	// void UpdateClientLoginState(TArray<FPiPPartnerSource>& UpdatedSources);                                                  // [0xb8ea700] Final|Native|Private|HasOutParms 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.OnClientLogoutSuccess
-	// void OnClientLogoutSuccess();                                                                                            // [0xaa52120] Final|Native|Private 
+	// void OnClientLogoutSuccess();                                                                                            // [0xb8ea6b4] Final|Native|Private 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.OnClientLoginSuccess
-	// void OnClientLoginSuccess();                                                                                             // [0xaa5210c] Final|Native|Private 
+	// void OnClientLoginSuccess();                                                                                             // [0xb8ea6a0] Final|Native|Private 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.HandleFNMediaRemoveEventsStream
-	// void HandleFNMediaRemoveEventsStream(FString InEventName);                                                               // [0xaa51fac] Final|Native|Protected 
+	// void HandleFNMediaRemoveEventsStream(FString InEventName);                                                               // [0xb8ea03c] Final|Native|Protected 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.HandleFNMediaEventsStreams
-	// void HandleFNMediaEventsStreams(FFortMediaEventsStreamAssets& VideoStreamAssets);                                        // [0xaa51e04] Final|Native|Protected|HasOutParms 
+	// void HandleFNMediaEventsStreams(FFortMediaEventsStreamAssets& VideoStreamAssets);                                        // [0xb8e99f0] Final|Native|Protected|HasOutParms 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.ExitEvent
-	// void ExitEvent();                                                                                                        // [0xaa51df0] Final|Native|Private 
+	// void ExitEvent();                                                                                                        // [0xb8e99dc] Final|Native|Private 
 	// Function /Script/PictureInPictureFNEvents.PictureInPictureFNEventsController.AddPartnerActionAnalytics
-	// void AddPartnerActionAnalytics(FString InPartnerName, PictureInPictureAction InActionType);                              // [0xaa51c44] Final|Native|Private 
+	// void AddPartnerActionAnalytics(FString InPartnerName, PictureInPictureAction InActionType);                              // [0xb8e9314] Final|Native|Private 
 };
 

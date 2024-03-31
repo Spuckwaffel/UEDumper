@@ -20,21 +20,21 @@ public:
 
 	/// Functions
 	// Function /Script/Reflex.ReflexBlueprintLibrary.SetReflexMode
-	// void SetReflexMode(EReflexMode Mode);                                                                                    // [0xb8c1c70] Final|Native|Static|Public|BlueprintCallable 
+	// void SetReflexMode(EReflexMode Mode);                                                                                    // [0xca8be38] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.SetFlashIndicatorEnabled
-	// void SetFlashIndicatorEnabled(bool bEnabled);                                                                            // [0xb8c1c00] Final|Native|Static|Public|BlueprintCallable 
+	// void SetFlashIndicatorEnabled(bool bEnabled);                                                                            // [0xca8bd84] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetRenderLatencyInMs
-	// float GetRenderLatencyInMs();                                                                                            // [0xb8c1bd8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetRenderLatencyInMs();                                                                                            // [0xca8bd5c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetReflexMode
-	// EReflexMode GetReflexMode();                                                                                             // [0xb8c1b54] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EReflexMode GetReflexMode();                                                                                             // [0xca8bcd8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetReflexAvailable
-	// bool GetReflexAvailable();                                                                                               // [0xb8c1b30] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool GetReflexAvailable();                                                                                               // [0xca8bcb4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetGameToRenderLatencyInMs
-	// float GetGameToRenderLatencyInMs();                                                                                      // [0xb8c1b08] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetGameToRenderLatencyInMs();                                                                                      // [0xca8bc8c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetGameLatencyInMs
-	// float GetGameLatencyInMs();                                                                                              // [0xb8c1ae0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetGameLatencyInMs();                                                                                              // [0xca8bc64] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Reflex.ReflexBlueprintLibrary.GetFlashIndicatorEnabled
-	// bool GetFlashIndicatorEnabled();                                                                                         // [0xb8c1a5c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool GetFlashIndicatorEnabled();                                                                                         // [0xca8bbe0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Enum /Script/Reflex.EReflexMode

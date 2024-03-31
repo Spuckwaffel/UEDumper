@@ -33,26 +33,26 @@ public:
 
 	/// Functions
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.SetProjectileBudgetMesh
-	// void SetProjectileBudgetMesh(class USkeletalMeshComponentBudgeted* ProjectileBudgetMesh);                                // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void SetProjectileBudgetMesh(class USkeletalMeshComponentBudgeted* ProjectileBudgetMesh);                                // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.SetShouldUpdateFromOwner
-	// void SetShouldUpdateFromOwner(bool ShouldUpdate, class UObject* Owner);                                                  // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void SetShouldUpdateFromOwner(bool ShouldUpdate, class UObject* Owner);                                                  // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.UpdateFromTrajectoryOwner
-	// void UpdateFromTrajectoryOwner();                                                                                        // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void UpdateFromTrajectoryOwner();                                                                                        // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.UserConstructionScript
-	// void UserConstructionScript();                                                                                           // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void UserConstructionScript();                                                                                           // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.ReceiveBeginPlay
-	// void ReceiveBeginPlay();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ReceiveBeginPlay();                                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.ReceiveTick
-	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.SetTrajectorySpline
-	// void SetTrajectorySpline(TArray<FVector>& SplinePoints, TArray<FVector>& SplineTangents);                                // [0x18a39e4] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void SetTrajectorySpline(TArray<FVector>& SplinePoints, TArray<FVector>& SplineTangents);                                // [0x186becc] Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.SetTrajectoryValid
-	// void SetTrajectoryValid(bool bIsTrajectoryValid);                                                                        // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void SetTrajectoryValid(bool bIsTrajectoryValid);                                                                        // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.UpdateTargetMeshVisibility
-	// void UpdateTargetMeshVisibility();                                                                                       // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void UpdateTargetMeshVisibility();                                                                                       // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.ReceiveEndPlay
-	// void ReceiveEndPlay(TEnumAsByte<EEndPlayReason> EndPlayReason);                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ReceiveEndPlay(TEnumAsByte<EEndPlayReason> EndPlayReason);                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/BP_ProjectileTrajectory.BP_ProjectileTrajectory_C.ExecuteUbergraph_BP_ProjectileTrajectory
-	// void ExecuteUbergraph_BP_ProjectileTrajectory(int32_t EntryPoint);                                                       // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_BP_ProjectileTrajectory(int32_t EntryPoint);                                                       // [0x186becc] Final|HasDefaults    
 };
 

@@ -30,29 +30,29 @@ public:
 
 	/// Functions
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnRep_SyncType
-	// void OnRep_SyncType();                                                                                                   // [0xacb6ce4] Final|Native|Protected 
+	// void OnRep_SyncType();                                                                                                   // [0xc388e2c] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnPlayspaceVolumeReplicated
-	// void OnPlayspaceVolumeReplicated(class APlayspace* Playspace);                                                           // [0xacb6c64] Final|Native|Protected 
+	// void OnPlayspaceVolumeReplicated(class APlayspace* Playspace);                                                           // [0xc388d6c] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricTempoChanged
-	// void OnFabricTempoChanged(int32_t CurrentTempo);                                                                         // [0xacb6be4] Final|Native|Protected 
+	// void OnFabricTempoChanged(int32_t CurrentTempo);                                                                         // [0xc388cac] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricPlayStateChanged
-	// void OnFabricPlayStateChanged(EFabricMetasoundPlayState CurrentState);                                                   // [0xacb6b60] Final|Native|Protected 
+	// void OnFabricPlayStateChanged(EFabricMetasoundPlayState CurrentState);                                                   // [0xc388be4] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricMusicEventPriorityChanged
-	// void OnFabricMusicEventPriorityChanged(EFabricMetasoundMusicEventPriority CurrentMusicEventPriority);                    // [0xacb6ae4] Final|Native|Protected 
+	// void OnFabricMusicEventPriorityChanged(EFabricMetasoundMusicEventPriority CurrentMusicEventPriority);                    // [0xc388b28] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricMusicEventGroupChanged
-	// void OnFabricMusicEventGroupChanged(FName& CurrentMusicEventGroup);                                                      // [0xacb6a68] Final|Native|Protected|HasOutParms 
+	// void OnFabricMusicEventGroupChanged(FName& CurrentMusicEventGroup);                                                      // [0xc388aac] Final|Native|Protected|HasOutParms 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricModeChanged
-	// void OnFabricModeChanged(EMusicKeyMode CurrentMode);                                                                     // [0xacb69e8] Final|Native|Protected 
+	// void OnFabricModeChanged(EMusicKeyMode CurrentMode);                                                                     // [0xc3889ec] Final|Native|Protected 
 	// Function /Script/JamFabricRuntime.JamFabricBridgePlayspaceComponent.OnFabricKeyChanged
-	// void OnFabricKeyChanged(EMusicKey CurrentKey);                                                                           // [0xacb6968] Final|Native|Protected 
+	// void OnFabricKeyChanged(EMusicKey CurrentKey);                                                                           // [0xc38892c] Final|Native|Protected 
 };
 
 /// Class /Script/JamFabricRuntime.JamFabricPatchWrapper
-/// Size: 0x0000 (0x0006A8 - 0x0006A8)
+/// Size: 0x0000 (0x0006C0 - 0x0006C0)
 class UJamFabricPatchWrapper : public UFabricMetaSoundPatchWrapper
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1704;
+	static inline constexpr uint64_t __MDKClassSize = 1728;
 
 public:
 };

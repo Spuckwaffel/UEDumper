@@ -767,7 +767,7 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.PolyEditTopologyProperties.RegenerateExtraCorners
-	// void RegenerateExtraCorners();                                                                                           // [0xb036314] Final|Native|Public  
+	// void RegenerateExtraCorners();                                                                                           // [0xbca22bc] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsToolActions
@@ -782,41 +782,41 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.SimplifyByGroups
-	// void SimplifyByGroups();                                                                                                 // [0xb03635c] Final|Native|Public  
+	// void SimplifyByGroups();                                                                                                 // [0xbca2304] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Retriangulate
-	// void Retriangulate();                                                                                                    // [0xb03632c] Final|Native|Public  
+	// void Retriangulate();                                                                                                    // [0xbca22d4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.RecalcNormals
-	// void RecalcNormals();                                                                                                    // [0xb0362fc] Final|Native|Public  
+	// void RecalcNormals();                                                                                                    // [0xbca22a4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.PushPull
-	// void PushPull();                                                                                                         // [0xb0362e4] Final|Native|Public  
+	// void PushPull();                                                                                                         // [0xbca228c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Outset
-	// void Outset();                                                                                                           // [0xb03629c] Final|Native|Public  
+	// void Outset();                                                                                                           // [0xbca2244] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Offset
-	// void Offset();                                                                                                           // [0xb036284] Final|Native|Public  
+	// void Offset();                                                                                                           // [0xbca222c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Merge
-	// void Merge();                                                                                                            // [0xb03626c] Final|Native|Public  
+	// void Merge();                                                                                                            // [0xbca2214] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Inset
-	// void Inset();                                                                                                            // [0xb036254] Final|Native|Public  
+	// void Inset();                                                                                                            // [0xbca21fc] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.InsertEdgeLoop
-	// void InsertEdgeLoop();                                                                                                   // [0xb03623c] Final|Native|Public  
+	// void InsertEdgeLoop();                                                                                                   // [0xbca21e4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.InsertEdge
-	// void InsertEdge();                                                                                                       // [0xb036224] Final|Native|Public  
+	// void InsertEdge();                                                                                                       // [0xbca21cc] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Flip
-	// void Flip();                                                                                                             // [0xb0361bc] Final|Native|Public  
+	// void Flip();                                                                                                             // [0xbca2164] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Extrude
-	// void Extrude();                                                                                                          // [0xb036174] Final|Native|Public  
+	// void Extrude();                                                                                                          // [0xbca211c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Duplicate
-	// void Duplicate();                                                                                                        // [0xb03615c] Final|Native|Public  
+	// void Duplicate();                                                                                                        // [0xbca2104] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Disconnect
-	// void Disconnect();                                                                                                       // [0xb036144] Final|Native|Public  
+	// void Disconnect();                                                                                                       // [0xbca20ec] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Delete
-	// void Delete();                                                                                                           // [0xb03612c] Final|Native|Public  
+	// void Delete();                                                                                                           // [0xbca20d4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Decompose
-	// void Decompose();                                                                                                        // [0xb036114] Final|Native|Public  
+	// void Decompose();                                                                                                        // [0xbca20bc] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.CutFaces
-	// void CutFaces();                                                                                                         // [0xb0360fc] Final|Native|Public  
+	// void CutFaces();                                                                                                         // [0xbca20a4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions.Bevel
-	// void Bevel();                                                                                                            // [0xb03609c] Final|Native|Public  
+	// void Bevel();                                                                                                            // [0xbca2044] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles
@@ -831,29 +831,29 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.RecalcNormals
-	// void RecalcNormals();                                                                                                    // [0xb0362fc] Final|Native|Public  
+	// void RecalcNormals();                                                                                                    // [0xbca22a4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.PushPull
-	// void PushPull();                                                                                                         // [0xb0362e4] Final|Native|Public  
+	// void PushPull();                                                                                                         // [0xbca228c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Poke
-	// void Poke();                                                                                                             // [0xb0362cc] Final|Native|Public  
+	// void Poke();                                                                                                             // [0xbca2274] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Outset
-	// void Outset();                                                                                                           // [0xb03629c] Final|Native|Public  
+	// void Outset();                                                                                                           // [0xbca2244] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Offset
-	// void Offset();                                                                                                           // [0xb036284] Final|Native|Public  
+	// void Offset();                                                                                                           // [0xbca222c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Inset
-	// void Inset();                                                                                                            // [0xb036254] Final|Native|Public  
+	// void Inset();                                                                                                            // [0xbca21fc] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Flip
-	// void Flip();                                                                                                             // [0xb0361bc] Final|Native|Public  
+	// void Flip();                                                                                                             // [0xbca2164] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Extrude
-	// void Extrude();                                                                                                          // [0xb036174] Final|Native|Public  
+	// void Extrude();                                                                                                          // [0xbca211c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Duplicate
-	// void Duplicate();                                                                                                        // [0xb03615c] Final|Native|Public  
+	// void Duplicate();                                                                                                        // [0xbca2104] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Disconnect
-	// void Disconnect();                                                                                                       // [0xb036144] Final|Native|Public  
+	// void Disconnect();                                                                                                       // [0xbca20ec] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.Delete
-	// void Delete();                                                                                                           // [0xb03612c] Final|Native|Public  
+	// void Delete();                                                                                                           // [0xbca20d4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolActions_Triangles.CutFaces
-	// void CutFaces();                                                                                                         // [0xb0360fc] Final|Native|Public  
+	// void CutFaces();                                                                                                         // [0xbca20a4] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsToolUVActions
@@ -868,7 +868,7 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolUVActions.PlanarProjection
-	// void PlanarProjection();                                                                                                 // [0xb0362b4] Final|Native|Public  
+	// void PlanarProjection();                                                                                                 // [0xbca225c] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions
@@ -883,21 +883,21 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Weld
-	// void Weld();                                                                                                             // [0xb0363a4] Final|Native|Public  
+	// void Weld();                                                                                                             // [0xbca234c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Straighten
-	// void Straighten();                                                                                                       // [0xb03638c] Final|Native|Public  
+	// void Straighten();                                                                                                       // [0xbca2334] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Simplify
-	// void Simplify();                                                                                                         // [0xb036344] Final|Native|Public  
+	// void Simplify();                                                                                                         // [0xbca22ec] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.FillHole
-	// void FillHole();                                                                                                         // [0xb0361a4] Final|Native|Public  
+	// void FillHole();                                                                                                         // [0xbca214c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Extrude
-	// void Extrude();                                                                                                          // [0xb03618c] Final|Native|Public  
+	// void Extrude();                                                                                                          // [0xbca2134] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.DeleteEdge
-	// void DeleteEdge();                                                                                                       // [0xb03612c] Final|Native|Public  
+	// void DeleteEdge();                                                                                                       // [0xbca20d4] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Bridge
-	// void Bridge();                                                                                                           // [0xb0360cc] Final|Native|Public  
+	// void Bridge();                                                                                                           // [0xbca2074] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions.Bevel
-	// void Bevel();                                                                                                            // [0xb0360b4] Final|Native|Public  
+	// void Bevel();                                                                                                            // [0xbca205c] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles
@@ -912,19 +912,19 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Weld
-	// void Weld();                                                                                                             // [0xb0363a4] Final|Native|Public  
+	// void Weld();                                                                                                             // [0xbca234c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Split
-	// void Split();                                                                                                            // [0xb036374] Final|Native|Public  
+	// void Split();                                                                                                            // [0xbca231c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Flip
-	// void Flip();                                                                                                             // [0xb0361d4] Final|Native|Public  
+	// void Flip();                                                                                                             // [0xbca217c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.FillHole
-	// void FillHole();                                                                                                         // [0xb0361a4] Final|Native|Public  
+	// void FillHole();                                                                                                         // [0xbca214c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Extrude
-	// void Extrude();                                                                                                          // [0xb03618c] Final|Native|Public  
+	// void Extrude();                                                                                                          // [0xbca2134] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Collapse
-	// void Collapse();                                                                                                         // [0xb0360e4] Final|Native|Public  
+	// void Collapse();                                                                                                         // [0xbca208c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.EditMeshPolygonsToolEdgeActions_Triangles.Bridge
-	// void Bridge();                                                                                                           // [0xb0360cc] Final|Native|Public  
+	// void Bridge();                                                                                                           // [0xbca2074] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.EditMeshPolygonsTool
@@ -991,7 +991,7 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.ExistingMeshMaterialProperties.GetUVChannelNamesFunc
-	// TArray<FString> GetUVChannelNamesFunc();                                                                                 // [0xb0361ec] Final|Native|Public|Const 
+	// TArray<FString> GetUVChannelNamesFunc();                                                                                 // [0xbca2194] Final|Native|Public|Const 
 };
 
 /// Class /Script/MeshModelingTools.MeshEditingViewProperties
@@ -1027,7 +1027,7 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.MeshUVChannelProperties.GetUVChannelNamesFunc
-	// TArray<FString> GetUVChannelNamesFunc();                                                                                 // [0xb036208] Final|Native|Public|Const 
+	// TArray<FString> GetUVChannelNamesFunc();                                                                                 // [0xbca21b0] Final|Native|Public|Const 
 };
 
 /// Class /Script/MeshModelingTools.RecomputeUVsToolBuilder
@@ -1337,11 +1337,11 @@ public:
 
 	/// Functions
 	// Function /Script/MeshModelingTools.UVProjectionToolEditActions.Reset
-	// void Reset();                                                                                                            // [0xb036174] Final|Native|Public  
+	// void Reset();                                                                                                            // [0xbca211c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.UVProjectionToolEditActions.AutoFitAlign
-	// void AutoFitAlign();                                                                                                     // [0xb036084] Final|Native|Public  
+	// void AutoFitAlign();                                                                                                     // [0xbca202c] Final|Native|Public  
 	// Function /Script/MeshModelingTools.UVProjectionToolEditActions.AutoFit
-	// void AutoFit();                                                                                                          // [0xb03606c] Final|Native|Public  
+	// void AutoFit();                                                                                                          // [0xbca2014] Final|Native|Public  
 };
 
 /// Class /Script/MeshModelingTools.UVProjectionToolProperties

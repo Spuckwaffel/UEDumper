@@ -45,11 +45,11 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkPlayerComponent.ServerRemoveWidgetRootFromTree
-	// void ServerRemoveWidgetRootFromTree(FUIFrameworkWidgetId WidgetId);                                                      // [0x76f7d70] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerRemoveWidgetRootFromTree(FUIFrameworkWidgetId WidgetId);                                                      // [0x7aaf294] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/UIFramework.UIFrameworkPlayerComponent.RemoveWidget
-	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x76f7c70] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x7aaf114] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkPlayerComponent.AddWidget
-	// void AddWidget(FUIFrameworkGameLayerSlot Widget);                                                                        // [0x76f7420] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AddWidget(FUIFrameworkGameLayerSlot Widget);                                                                        // [0x7aae924] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/UIFramework.UIFrameworkPresenter
@@ -101,9 +101,9 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkWidget.OnRep_Visibility
-	// void OnRep_Visibility();                                                                                                 // [0x76f7b3c] Final|Native|Private 
+	// void OnRep_Visibility();                                                                                                 // [0x7aaef60] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkWidget.OnRep_IsEnabled
-	// void OnRep_IsEnabled();                                                                                                  // [0x76f794c] Final|Native|Private 
+	// void OnRep_IsEnabled();                                                                                                  // [0x7aaed70] Final|Native|Private 
 };
 
 /// Class /Script/UIFramework.UIFrameworkButton
@@ -119,15 +119,15 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkButton.SetContent
-	// void SetContent(FUIFrameworkSimpleSlot Content);                                                                         // [0x76f7fdc] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetContent(FUIFrameworkSimpleSlot Content);                                                                         // [0x7aaf424] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkButton.ServerClick
-	// void ServerClick(class APlayerController* PlayerController);                                                             // [0x66f6008] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerClick(class APlayerController* PlayerController);                                                             // [0x66d5d50] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/UIFramework.UIFrameworkButton.OnRep_Slot
-	// void OnRep_Slot();                                                                                                       // [0x76f7aec] Final|Native|Private 
+	// void OnRep_Slot();                                                                                                       // [0x7aaef10] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkButton.HandleClick
-	// void HandleClick();                                                                                                      // [0x76f78fc] Final|Native|Private 
+	// void HandleClick();                                                                                                      // [0x7aaed20] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkButton.GetContent
-	// FUIFrameworkSimpleSlot GetContent();                                                                                     // [0x76f7780] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FUIFrameworkSimpleSlot GetContent();                                                                                     // [0x7aaeba4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UIFramework.UIFrameworkButtonWidget
@@ -153,9 +153,9 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkCanvasBox.RemoveWidget
-	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x76f7b70] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x7aaef94] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkCanvasBox.AddWidget
-	// void AddWidget(FUIFrameworkCanvasBoxSlot Widget);                                                                        // [0x76f7188] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AddWidget(FUIFrameworkCanvasBoxSlot Widget);                                                                        // [0x7aae768] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/UIFramework.UIFrameworkColorBlock
@@ -172,17 +172,17 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkColorBlock.SetDesiredSize
-	// void SetDesiredSize(FVector2f DesiredSize);                                                                              // [0x76f8128] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetDesiredSize(FVector2f DesiredSize);                                                                              // [0x7aaf500] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkColorBlock.SetColor
-	// void SetColor(FLinearColor Tint);                                                                                        // [0x76f7ea4] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetColor(FLinearColor Tint);                                                                                        // [0x7aaf35c] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkColorBlock.OnRep_DesiredSize
-	// void OnRep_DesiredSize();                                                                                                // [0x76f7910] Final|Native|Private 
+	// void OnRep_DesiredSize();                                                                                                // [0x7aaed34] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkColorBlock.OnRep_Color
-	// void OnRep_Color();                                                                                                      // [0x76f7910] Final|Native|Private 
+	// void OnRep_Color();                                                                                                      // [0x7aaed34] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkColorBlock.GetDesiredSize
-	// FVector2f GetDesiredSize();                                                                                              // [0x76f77fc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector2f GetDesiredSize();                                                                                              // [0x7aaec20] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkColorBlock.GetColor
-	// FLinearColor GetColor();                                                                                                 // [0x76f7764] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetColor();                                                                                                 // [0x7aaeb88] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UIFramework.UIFrameworkImageBlock
@@ -199,25 +199,25 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkImageBlock.SetTint
-	// void SetTint(FLinearColor Tint);                                                                                         // [0x76f7ea4] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetTint(FLinearColor Tint);                                                                                         // [0x7aaf35c] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.SetTiling
-	// void SetTiling(TEnumAsByte<ESlateBrushTileType> OverflowPolicy);                                                         // [0x76f8bf4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetTiling(TEnumAsByte<ESlateBrushTileType> OverflowPolicy);                                                         // [0x7aaff60] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.SetTexture
-	// void SetTexture(TWeakObjectPtr<UTexture2D*> Texture, bool bUseTextureSize);                                              // [0x76f8ac4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetTexture(TWeakObjectPtr<UTexture2D*> Texture, bool bUseTextureSize);                                              // [0x7aafdac] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.SetMaterial
-	// void SetMaterial(TWeakObjectPtr<UMaterialInterface*> Material);                                                          // [0x76f8400] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetMaterial(TWeakObjectPtr<UMaterialInterface*> Material);                                                          // [0x7aaf738] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.SetDesiredSize
-	// void SetDesiredSize(FVector2f DesiredSize);                                                                              // [0x76f8254] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetDesiredSize(FVector2f DesiredSize);                                                                              // [0x7aaf5bc] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.OnRep_Data
-	// void OnRep_Data();                                                                                                       // [0x76f7938] Final|Native|Private 
+	// void OnRep_Data();                                                                                                       // [0x7aaed5c] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.GetTint
-	// FLinearColor GetTint();                                                                                                  // [0x76f7764] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetTint();                                                                                                  // [0x7aaeb88] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.GetTiling
-	// TEnumAsByte<ESlateBrushTileType> GetTiling();                                                                            // [0x76f78e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TEnumAsByte<ESlateBrushTileType> GetTiling();                                                                            // [0x7aaed08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.GetDesiredSize
-	// FVector2f GetDesiredSize();                                                                                              // [0x6581ba4] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector2f GetDesiredSize();                                                                                              // [0x653b314] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkImageBlock.GeResourceObject
-	// TWeakObjectPtr<UObject*> GeResourceObject();                                                                             // [0x76f76b8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TWeakObjectPtr<UObject*> GeResourceObject();                                                                             // [0x7aaeadc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UIFramework.UIFrameworkOverlay
@@ -233,9 +233,9 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkOverlay.RemoveWidget
-	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x76f7bf0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x7aaf054] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkOverlay.AddWidget
-	// void AddWidget(FUIFrameworkOverlaySlot Widget);                                                                          // [0x76f72d4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AddWidget(FUIFrameworkOverlaySlot Widget);                                                                          // [0x7aae848] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/UIFramework.UIFrameworkStackBox
@@ -252,11 +252,11 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkStackBox.RemoveWidget
-	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x76f7cf0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void RemoveWidget(class UUIFrameworkWidget* Widget);                                                                     // [0x7aaf1d4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkStackBox.OnRep_Orientation
-	// void OnRep_Orientation();                                                                                                // [0x76f79f8] Final|Native|Private 
+	// void OnRep_Orientation();                                                                                                // [0x7aaee1c] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkStackBox.AddWidget
-	// void AddWidget(FUIFrameworkStackBoxSlot Widget);                                                                         // [0x76f756c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AddWidget(FUIFrameworkStackBoxSlot Widget);                                                                         // [0x7aaea00] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/UIFramework.UIFrameworkTextBase
@@ -276,27 +276,27 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkTextBase.SetTextColor
-	// void SetTextColor(FLinearColor TextColor);                                                                               // [0x76f898c] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetTextColor(FLinearColor TextColor);                                                                               // [0x7aafce4] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkTextBase.SetOverflowPolicy
-	// void SetOverflowPolicy(ETextOverflowPolicy OverflowPolicy);                                                              // [0x76f86a8] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetOverflowPolicy(ETextOverflowPolicy OverflowPolicy);                                                              // [0x7aafaa0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkTextBase.SetJustification
-	// void SetJustification(TEnumAsByte<ETextJustify> Justification);                                                          // [0x76f8380] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetJustification(TEnumAsByte<ETextJustify> Justification);                                                          // [0x7aaf678] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkTextBase.OnRep_TextColor
-	// void OnRep_TextColor();                                                                                                  // [0x76f7b00] Final|Native|Private 
+	// void OnRep_TextColor();                                                                                                  // [0x7aaef24] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBase.OnRep_OverflowPolicy
-	// void OnRep_OverflowPolicy();                                                                                             // [0x76f7a50] Final|Native|Private 
+	// void OnRep_OverflowPolicy();                                                                                             // [0x7aaee74] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBase.OnRep_Message
-	// void OnRep_Message();                                                                                                    // [0x76f79b0] Final|Native|Private 
+	// void OnRep_Message();                                                                                                    // [0x7aaedd4] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBase.OnRep_Justification
-	// void OnRep_Justification();                                                                                              // [0x76f7980] Final|Native|Private 
+	// void OnRep_Justification();                                                                                              // [0x7aaeda4] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBase.GetTextColor
-	// FLinearColor GetTextColor();                                                                                             // [0x76f78c8] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetTextColor();                                                                                             // [0x7aaecec] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkTextBase.GetText
-	// FText GetText();                                                                                                         // [0x76f7878] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetText();                                                                                                         // [0x7aaec9c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkTextBase.GetOverflowPolicy
-	// ETextOverflowPolicy GetOverflowPolicy();                                                                                 // [0x76f782c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ETextOverflowPolicy GetOverflowPolicy();                                                                                 // [0x7aaec50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkTextBase.GetJustification
-	// TEnumAsByte<ETextJustify> GetJustification();                                                                            // [0x76f7814] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TEnumAsByte<ETextJustify> GetJustification();                                                                            // [0x7aaec38] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UIFramework.UIFrameworkTextBlock
@@ -313,17 +313,17 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkTextBlock.SetShadowOffset
-	// void SetShadowOffset(FVector2f ShadowOffset);                                                                            // [0x76f8860] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetShadowOffset(FVector2f ShadowOffset);                                                                            // [0x7aafc28] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkTextBlock.SetShadowColor
-	// void SetShadowColor(FLinearColor ShadowColor);                                                                           // [0x76f8728] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetShadowColor(FLinearColor ShadowColor);                                                                           // [0x7aafb60] Final|BlueprintAuthorityOnly|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkTextBlock.OnRep_ShadowOffset
-	// void OnRep_ShadowOffset();                                                                                               // [0x76f7abc] Final|Native|Private 
+	// void OnRep_ShadowOffset();                                                                                               // [0x7aaeee0] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBlock.OnRep_ShadowColor
-	// void OnRep_ShadowColor();                                                                                                // [0x76f7a80] Final|Native|Private 
+	// void OnRep_ShadowColor();                                                                                                // [0x7aaeea4] Final|Native|Private 
 	// Function /Script/UIFramework.UIFrameworkTextBlock.GetShadowOffset
-	// FVector2f GetShadowOffset();                                                                                             // [0x76f7860] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector2f GetShadowOffset();                                                                                             // [0x7aaec84] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UIFramework.UIFrameworkTextBlock.GetShadowColor
-	// FLinearColor GetShadowColor();                                                                                           // [0x76f7844] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetShadowColor();                                                                                           // [0x7aaec68] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UIFramework.UIFrameworkUserWidget
@@ -339,9 +339,9 @@ public:
 
 	/// Functions
 	// Function /Script/UIFramework.UIFrameworkUserWidget.SetWidgetClass
-	// void SetWidgetClass(TWeakObjectPtr<UClass*> Value);                                                                      // [0x76f8c74] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetWidgetClass(TWeakObjectPtr<UClass*> Value);                                                                      // [0x7ab0020] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/UIFramework.UIFrameworkUserWidget.SetNamedSlot
-	// void SetNamedSlot(FName SlotName, class UUIFrameworkWidget* Widget);                                                     // [0x76f84f4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetNamedSlot(FName SlotName, class UUIFrameworkWidget* Widget);                                                     // [0x7aaf86c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/UIFramework.UIFrameworkSimpleEventArgument

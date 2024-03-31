@@ -24,6 +24,6 @@ public:
 
 	/// Functions
 	// Function /Script/MediaMovieStreamer.MediaMovieAssets.OnMediaEnd
-	// void OnMediaEnd();                                                                                                       // [0x7e49998] Final|Native|Private 
+	// void OnMediaEnd();                                                                                                       // [0x8252368] Final|Native|Private 
 };
 

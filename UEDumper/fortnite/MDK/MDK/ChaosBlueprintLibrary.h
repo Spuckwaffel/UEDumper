@@ -20,6 +20,6 @@ public:
 
 	/// Functions
 	// Function /Script/ChaosBlueprintLibrary.ChaosBlueprintLibraryBPLibrary.ClothControllerWriteToSimulation
-	// void ClothControllerWriteToSimulation(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString& ClothingAssetName, FClothCoreSettings& ClothCoreSettings, FClothParameters& ClothSettings, FVector& WindVelocity, FClothParameters& OutWorldSpaceClothSettings, FVector& OutWorldSpaceWindVelocity); // [0xba7577c] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void ClothControllerWriteToSimulation(class UCustomCharacterPartAnimInstance* CharacterPartAnimInstance, FString& ClothingAssetName, FClothCoreSettings& ClothCoreSettings, FClothParameters& ClothSettings, FVector& WindVelocity, FClothParameters& OutWorldSpaceClothSettings, FVector& OutWorldSpaceWindVelocity); // [0xcc20ea4] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 

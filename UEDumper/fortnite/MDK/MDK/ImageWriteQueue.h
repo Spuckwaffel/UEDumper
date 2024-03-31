@@ -20,7 +20,7 @@ public:
 
 	/// Functions
 	// Function /Script/ImageWriteQueue.ImageWriteBlueprintLibrary.ExportToDisk
-	// void ExportToDisk(class UTexture* Texture, FString Filename, FImageWriteOptions& Options);                               // [0x5f9b7a4] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void ExportToDisk(class UTexture* Texture, FString Filename, FImageWriteOptions& Options);                               // [0x5f49698] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/ImageWriteQueue.ImageWriteOptions

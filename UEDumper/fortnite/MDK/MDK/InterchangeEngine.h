@@ -33,9 +33,9 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeEngine.InterchangeFilePickerBase.ScriptedFilePickerForTranslatorType
-	// bool ScriptedFilePickerForTranslatorType(EInterchangeTranslatorType TranslatorType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames); // [0xbb35254] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// bool ScriptedFilePickerForTranslatorType(EInterchangeTranslatorType TranslatorType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames); // [0xcd43510] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/InterchangeEngine.InterchangeFilePickerBase.ScriptedFilePickerForTranslatorAssetType
-	// bool ScriptedFilePickerForTranslatorAssetType(EInterchangeTranslatorAssetType TranslatorAssetType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames); // [0xbb35104] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// bool ScriptedFilePickerForTranslatorAssetType(EInterchangeTranslatorAssetType TranslatorAssetType, FInterchangeFilePickerParameters& Parameters, TArray<FString>& OutFilenames); // [0xcd43388] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/InterchangeEngine.InterchangePipelineConfigurationBase
@@ -50,11 +50,11 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeEngine.InterchangePipelineConfigurationBase.ScriptedShowScenePipelineConfigurationDialog
-	// EInterchangePipelineConfigurationDialogResult ScriptedShowScenePipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer); // [0xbb35dbc] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// EInterchangePipelineConfigurationDialogResult ScriptedShowScenePipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer); // [0xcd44a1c] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/InterchangeEngine.InterchangePipelineConfigurationBase.ScriptedShowReimportPipelineConfigurationDialog
-	// EInterchangePipelineConfigurationDialogResult ScriptedShowReimportPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer, class UObject* ReimportAsset); // [0xbb3583c] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// EInterchangePipelineConfigurationDialogResult ScriptedShowReimportPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer, class UObject* ReimportAsset); // [0xcd43fe8] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/InterchangeEngine.InterchangePipelineConfigurationBase.ScriptedShowPipelineConfigurationDialog
-	// EInterchangePipelineConfigurationDialogResult ScriptedShowPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer); // [0xbb353a4] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// EInterchangePipelineConfigurationDialogResult ScriptedShowPipelineConfigurationDialog(TArray<FInterchangeStackInfo>& PipelineStacks, TArray<UInterchangePipelineBase*>& OutPipelines, class UInterchangeSourceData* SourceData, class UInterchangeTranslatorBase* Translator, class UInterchangeBaseNodeContainer* BaseNodeContainer); // [0xcd43698] RequiredAPI|Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/InterchangeEngine.InterchangeProjectSettings
@@ -124,29 +124,29 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.SetTranslatorSettings
-	// void SetTranslatorSettings(class UInterchangeTranslatorSettings* TranslatorSettings);                                    // [0xbb36370] Final|RequiredAPI|Native|Public|BlueprintCallable|Const 
+	// void SetTranslatorSettings(class UInterchangeTranslatorSettings* TranslatorSettings);                                    // [0xcd454c8] Final|RequiredAPI|Native|Public|BlueprintCallable|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.SetPipelines
-	// void SetPipelines(TArray<UObject*>& InPipelines);                                                                        // [0xbb362d4] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void SetPipelines(TArray<UObject*>& InPipelines);                                                                        // [0xcd4542c] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.SetNodeContainer
-	// void SetNodeContainer(class UInterchangeBaseNodeContainer* InNodeContainer);                                             // [0xbb36254] Final|RequiredAPI|Native|Public|BlueprintCallable|Const 
+	// void SetNodeContainer(class UInterchangeBaseNodeContainer* InNodeContainer);                                             // [0xcd4536c] Final|RequiredAPI|Native|Public|BlueprintCallable|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.ScriptGetFirstFilename
-	// FString ScriptGetFirstFilename();                                                                                        // [0x6a0269c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString ScriptGetFirstFilename();                                                                                        // [0x6a55a58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.ScriptExtractFilenames
-	// TArray<FString> ScriptExtractFilenames();                                                                                // [0x672c0a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FString> ScriptExtractFilenames();                                                                                // [0x67189d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.ScriptExtractDisplayLabels
-	// TArray<FString> ScriptExtractDisplayLabels();                                                                            // [0x672c0a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FString> ScriptExtractDisplayLabels();                                                                            // [0x67189d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetTranslatorSettings
-	// class UInterchangeTranslatorSettings* GetTranslatorSettings();                                                           // [0xbb34c00] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UInterchangeTranslatorSettings* GetTranslatorSettings();                                                           // [0xcd42408] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetStoredNode
-	// class UInterchangeBaseNode* GetStoredNode(FString InNodeUniqueId);                                                       // [0xbb34a80] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UInterchangeBaseNode* GetStoredNode(FString InNodeUniqueId);                                                       // [0xcd41d88] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetStoredFactoryNode
-	// class UInterchangeFactoryBaseNode* GetStoredFactoryNode(FString InNodeUniqueId);                                         // [0xbb34900] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UInterchangeFactoryBaseNode* GetStoredFactoryNode(FString InNodeUniqueId);                                         // [0xcd41708] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetPipelines
-	// TArray<UObject*> GetPipelines();                                                                                         // [0xbb34830] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UObject*> GetPipelines();                                                                                         // [0xcd415f8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetNumberOfPipelines
-	// int32_t GetNumberOfPipelines();                                                                                          // [0xbb347fc] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumberOfPipelines();                                                                                          // [0xcd415c4] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeAssetImportData.GetNodeContainer
-	// class UInterchangeBaseNodeContainer* GetNodeContainer();                                                                 // [0xbb347d8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UInterchangeBaseNodeContainer* GetNodeContainer();                                                                 // [0xcd415a0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeEngine.InterchangeAssetImportDataConverterBase
@@ -172,11 +172,11 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeEngine.InterchangePipelineStackOverride.AddPythonPipeline
-	// void AddPythonPipeline(class UInterchangePythonPipelineBase* PipelineBase);                                              // [0xbb34574] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void AddPythonPipeline(class UInterchangePythonPipelineBase* PipelineBase);                                              // [0xcd40df0] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangePipelineStackOverride.AddPipeline
-	// void AddPipeline(class UInterchangePipelineBase* PipelineBase);                                                          // [0xbb34574] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void AddPipeline(class UInterchangePipelineBase* PipelineBase);                                                          // [0xcd40df0] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangePipelineStackOverride.AddBlueprintPipeline
-	// void AddBlueprintPipeline(class UInterchangeBlueprintPipelineBase* PipelineBase);                                        // [0xbb34574] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void AddBlueprintPipeline(class UInterchangeBlueprintPipelineBase* PipelineBase);                                        // [0xcd40df0] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeEngine.InterchangeManager
@@ -195,19 +195,19 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeEngine.InterchangeManager.ImportScene
-	// bool ImportScene(FString ContentPath, class UInterchangeSourceData* SourceData, FImportAssetParameters& ImportAssetParameters); // [0xbb34ea4] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// bool ImportScene(FString ContentPath, class UInterchangeSourceData* SourceData, FImportAssetParameters& ImportAssetParameters); // [0xcd42be8] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangeManager.ImportAsset
-	// bool ImportAsset(FString ContentPath, class UInterchangeSourceData* SourceData, FImportAssetParameters& ImportAssetParameters); // [0xbb34c38] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// bool ImportAsset(FString ContentPath, class UInterchangeSourceData* SourceData, FImportAssetParameters& ImportAssetParameters); // [0xcd42440] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangeManager.GetRegisteredFactoryClass
-	// class UClass* GetRegisteredFactoryClass(class UClass* ClassToMake);                                                      // [0xbb34870] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UClass* GetRegisteredFactoryClass(class UClass* ClassToMake);                                                      // [0xcd41638] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeEngine.InterchangeManager.GetInterchangeManagerScripted
-	// class UInterchangeManager* GetInterchangeManagerScripted();                                                              // [0xbb347b4] Final|Native|Static|Public|BlueprintCallable 
+	// class UInterchangeManager* GetInterchangeManagerScripted();                                                              // [0xcd4157c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangeManager.ExportScene
-	// bool ExportScene(class UObject* World, bool bIsAutomated);                                                               // [0x9810c44] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// bool ExportScene(class UObject* World, bool bIsAutomated);                                                               // [0xa271834] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangeManager.ExportAsset
-	// bool ExportAsset(class UObject* Asset, bool bIsAutomated);                                                               // [0x9810c44] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// bool ExportAsset(class UObject* Asset, bool bIsAutomated);                                                               // [0xa271834] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeEngine.InterchangeManager.CreateSourceData
-	// class UInterchangeSourceData* CreateSourceData(FString InFilename);                                                      // [0xbb34654] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// class UInterchangeSourceData* CreateSourceData(FString InFilename);                                                      // [0xcd40f14] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeEngine.InterchangeMeshUtilities

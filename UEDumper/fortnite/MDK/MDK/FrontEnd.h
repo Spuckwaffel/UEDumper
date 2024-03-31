@@ -25,11 +25,11 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Cameras/SpecialEventsCamera_Blueprint.SpecialEventsCamera_Blueprint_C.BP_OnActivated
-	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/SpecialEventsCamera_Blueprint.SpecialEventsCamera_Blueprint_C.BP_OnDeactivated
-	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/SpecialEventsCamera_Blueprint.SpecialEventsCamera_Blueprint_C.ExecuteUbergraph_SpecialEventsCamera_Blueprint
-	// void ExecuteUbergraph_SpecialEventsCamera_Blueprint(int32_t EntryPoint);                                                 // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_SpecialEventsCamera_Blueprint(int32_t EntryPoint);                                                 // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C
@@ -51,29 +51,29 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.GetCampaignQuestManager
-	// void GetCampaignQuestManager(class UFortQuestManager*& QuestManager);                                                    // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
+	// void GetCampaignQuestManager(class UFortQuestManager*& QuestManager);                                                    // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.RecheckNeedToPlayEventMovie
-	// void RecheckNeedToPlayEventMovie(bool& WaitingToCheckAgain);                                                             // [0x18a39e4] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void RecheckNeedToPlayEventMovie(bool& WaitingToCheckAgain);                                                             // [0x186becc] Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.NeedsToPlayEventMovie
-	// bool NeedsToPlayEventMovie();                                                                                            // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
+	// bool NeedsToPlayEventMovie();                                                                                            // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent|BlueprintPure 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.OnCanceled_856A325D44ECC73B857CE5B301E90D33
-	// void OnCanceled_856A325D44ECC73B857CE5B301E90D33();                                                                      // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OnCanceled_856A325D44ECC73B857CE5B301E90D33();                                                                      // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.OnAllClientsReady_856A325D44ECC73B857CE5B301E90D33
-	// void OnAllClientsReady_856A325D44ECC73B857CE5B301E90D33();                                                               // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OnAllClientsReady_856A325D44ECC73B857CE5B301E90D33();                                                               // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.OnFailure_50CD26324B96B121A5B49DA66113AE5D
-	// void OnFailure_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OnFailure_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.OnIgnored_50CD26324B96B121A5B49DA66113AE5D
-	// void OnIgnored_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OnIgnored_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.OnSuccess_50CD26324B96B121A5B49DA66113AE5D
-	// void OnSuccess_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OnSuccess_50CD26324B96B121A5B49DA66113AE5D();                                                                       // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.HandlePlayEventCine
-	// void HandlePlayEventCine();                                                                                              // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void HandlePlayEventCine();                                                                                              // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.HandleClientEvent_PlayEventMovie
-	// void HandleClientEvent_PlayEventMovie(class UObject* EventSource, class UObject* EventFocus, FFortClientEvent& ClientEvent); // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void HandleClientEvent_PlayEventMovie(class UObject* EventSource, class UObject* EventFocus, FFortClientEvent& ClientEvent); // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.StartFlow
-	// void StartFlow();                                                                                                        // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void StartFlow();                                                                                                        // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/HBOnboardingFlow.HBOnboardingFlow_C.ExecuteUbergraph_HBOnboardingFlow
-	// void ExecuteUbergraph_HBOnboardingFlow(int32_t EntryPoint);                                                              // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_HBOnboardingFlow(int32_t EntryPoint);                                                              // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C
@@ -93,17 +93,17 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.OnClientAnnouncementStop
-	// void OnClientAnnouncementStop();                                                                                         // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void OnClientAnnouncementStop();                                                                                         // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.OnPlayerSkippedCutscene
-	// void OnPlayerSkippedCutscene();                                                                                          // [0x18a39e4] BlueprintCosmetic|Event|Public|BlueprintEvent 
+	// void OnPlayerSkippedCutscene();                                                                                          // [0x186becc] BlueprintCosmetic|Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.HandleClientEvent_CinematicFinishedPlaying
-	// void HandleClientEvent_CinematicFinishedPlaying(class UObject* EventSource, class UObject* EventFocus, FFortClientEvent& ClientEvent); // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void HandleClientEvent_CinematicFinishedPlaying(class UObject* EventSource, class UObject* EventFocus, FFortClientEvent& ClientEvent); // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.HandleAllowSkip
-	// void HandleAllowSkip();                                                                                                  // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void HandleAllowSkip();                                                                                                  // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.OnEnteredCinematicState
-	// void OnEnteredCinematicState();                                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnEnteredCinematicState();                                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_EventCine.Announce_EventCine_C.ExecuteUbergraph_Announce_EventCine
-	// void ExecuteUbergraph_Announce_EventCine(int32_t EntryPoint);                                                            // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_Announce_EventCine(int32_t EntryPoint);                                                            // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/FrontEnd/HomebaseOnboarding/Announcements/Announce_Storm2018Cine.Announce_Storm2018Cine_C
@@ -144,31 +144,31 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.UserConstructionScript
-	// void UserConstructionScript();                                                                                           // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void UserConstructionScript();                                                                                           // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.Timeline_0__FinishedFunc
-	// void Timeline_0__FinishedFunc();                                                                                         // [0x18a39e4] BlueprintEvent       
+	// void Timeline_0__FinishedFunc();                                                                                         // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.Timeline_0__UpdateFunc
-	// void Timeline_0__UpdateFunc();                                                                                           // [0x18a39e4] BlueprintEvent       
+	// void Timeline_0__UpdateFunc();                                                                                           // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ChoicePack__FinishedFunc
-	// void ChoicePack__FinishedFunc();                                                                                         // [0x18a39e4] BlueprintEvent       
+	// void ChoicePack__FinishedFunc();                                                                                         // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ChoicePack__UpdateFunc
-	// void ChoicePack__UpdateFunc();                                                                                           // [0x18a39e4] BlueprintEvent       
+	// void ChoicePack__UpdateFunc();                                                                                           // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.BP_OnActivated
-	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.BP_OnDeactivated
-	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.OpeningCameraTransition
-	// void OpeningCameraTransition();                                                                                          // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void OpeningCameraTransition();                                                                                          // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ResetCamera
-	// void ResetCamera();                                                                                                      // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void ResetCamera();                                                                                                      // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.DarkenBGVisibility
-	// void DarkenBGVisibility(bool Enable);                                                                                    // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void DarkenBGVisibility(bool Enable);                                                                                    // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ChoicePackFOV-Out
-	// void ChoicePackFOV-Out();                                                                                                // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void ChoicePackFOV-Out();                                                                                                // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ChoicePackFOV-In
-	// void ChoicePackFOV-In();                                                                                                 // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void ChoicePackFOV-In();                                                                                                 // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/StoreCamera_Blueprint.StoreCamera_Blueprint_C.ExecuteUbergraph_StoreCamera_Blueprint
-	// void ExecuteUbergraph_StoreCamera_Blueprint(int32_t EntryPoint);                                                         // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_StoreCamera_Blueprint(int32_t EntryPoint);                                                         // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/FrontEnd/Store/Cards/Blueprints/StoreCardReveal_Parent.StoreCardReveal_Parent_C
@@ -185,9 +185,9 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Store/Cards/Blueprints/StoreCardReveal_Parent.StoreCardReveal_Parent_C.InitiatePinata
-	// void InitiatePinata();                                                                                                   // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void InitiatePinata();                                                                                                   // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Store/Cards/Blueprints/StoreCardReveal_Parent.StoreCardReveal_Parent_C.ExecuteUbergraph_StoreCardReveal_Parent
-	// void ExecuteUbergraph_StoreCardReveal_Parent(int32_t EntryPoint);                                                        // [0x18a39e4] Final                
+	// void ExecuteUbergraph_StoreCardReveal_Parent(int32_t EntryPoint);                                                        // [0x186becc] Final                
 };
 
 /// Class /Game/FrontEnd/FrontEndSettingsBP.FrontEndSettingsBP_C
@@ -202,22 +202,22 @@ public:
 };
 
 /// Class /Game/FrontEnd/FrontEnd_GameMode.FrontEnd_GameMode_C
-/// Size: 0x0008 (0x0007F8 - 0x000800)
+/// Size: 0x0008 (0x0007A8 - 0x0007B0)
 class AFrontEnd_GameMode_C : public AFortGameModeFrontEnd
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2048;
+	static inline constexpr uint64_t __MDKClassSize = 1968;
 
 public:
-	CMember(class USceneComponent*)                    DefaultSceneRoot                                            OFFSET(get<T>, {0x7F8, 8, 0, 0})
+	CMember(class USceneComponent*)                    DefaultSceneRoot                                            OFFSET(get<T>, {0x7A8, 8, 0, 0})
 };
 
 /// Class /Game/FrontEnd/FrontEnd_PlayerController.FrontEnd_PlayerController_C
-/// Size: 0x0000 (0x002EF0 - 0x002EF0)
+/// Size: 0x0000 (0x002F10 - 0x002F10)
 class AFrontEnd_PlayerController_C : public AFortPlayerControllerFrontEnd
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 12016;
+	static inline constexpr uint64_t __MDKClassSize = 12048;
 
 public:
 };
@@ -237,48 +237,25 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.HandleMousePress
-	// void HandleMousePress();                                                                                                 // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void HandleMousePress();                                                                                                 // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.HandleMouseRelease
-	// void HandleMouseRelease();                                                                                               // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void HandleMouseRelease();                                                                                               // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent
-	// void InpActEvt_LeftMouseButton_K2Node_InputKeyEvent(FKey Key);                                                           // [0x18a39e4] BlueprintEvent       
+	// void InpActEvt_LeftMouseButton_K2Node_InputKeyEvent(FKey Key);                                                           // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent
-	// void InpActEvt_LeftMouseButton_K2Node_InputKeyEvent(FKey Key);                                                           // [0x18a39e4] BlueprintEvent       
+	// void InpActEvt_LeftMouseButton_K2Node_InputKeyEvent(FKey Key);                                                           // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent
-	// void InpActEvt_RightMouseButton_K2Node_InputKeyEvent(FKey Key);                                                          // [0x18a39e4] BlueprintEvent       
+	// void InpActEvt_RightMouseButton_K2Node_InputKeyEvent(FKey Key);                                                          // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent
-	// void InpActEvt_RightMouseButton_K2Node_InputKeyEvent(FKey Key);                                                          // [0x18a39e4] BlueprintEvent       
+	// void InpActEvt_RightMouseButton_K2Node_InputKeyEvent(FKey Key);                                                          // [0x186becc] BlueprintEvent       
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.BP_OnActivated
-	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.BP_OnDeactivated
-	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.ReceiveTick
-	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/HeroesCamera_Blueprint.HeroesCamera_Blueprint_C.ExecuteUbergraph_HeroesCamera_Blueprint
-	// void ExecuteUbergraph_HeroesCamera_Blueprint(int32_t EntryPoint);                                                        // [0x18a39e4] Final|HasDefaults    
-};
-
-/// Class /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C
-/// Size: 0x0010 (0x000290 - 0x0002A0)
-class AStorePinataMaster_Parent_C : public AActor
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 672;
-
-public:
-	SMember(FPointerToUberGraphFrame)                  UberGraphFrame                                              OFFSET(getStruct<T>, {0x290, 8, 0, 0})
-	CMember(class USceneComponent*)                    PinataSceneRoot                                             OFFSET(get<T>, {0x298, 8, 0, 0})
-
-
-	/// Functions
-	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.InitiatePinata
-	// void InitiatePinata();                                                                                                   // [0x18a39e4] BlueprintCallable|BlueprintEvent 
-	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.CameraResetComplete
-	// void CameraResetComplete();                                                                                              // [0x18a39e4] BlueprintCallable|BlueprintEvent 
-	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.CameraTransitionComplete
-	// void CameraTransitionComplete();                                                                                         // [0x18a39e4] BlueprintCallable|BlueprintEvent 
-	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.ExecuteUbergraph_StorePinataMaster_Parent
-	// void ExecuteUbergraph_StorePinataMaster_Parent(int32_t EntryPoint);                                                      // [0x18a39e4] Final                
+	// void ExecuteUbergraph_HeroesCamera_Blueprint(int32_t EntryPoint);                                                        // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/FrontEnd/Cameras/LoginCamera_Blueprint.LoginCamera_Blueprint_C
@@ -296,9 +273,32 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Cameras/LoginCamera_Blueprint.LoginCamera_Blueprint_C.BP_OnActivated
-	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/LoginCamera_Blueprint.LoginCamera_Blueprint_C.ExecuteUbergraph_LoginCamera_Blueprint
-	// void ExecuteUbergraph_LoginCamera_Blueprint(int32_t EntryPoint);                                                         // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_LoginCamera_Blueprint(int32_t EntryPoint);                                                         // [0x186becc] Final|HasDefaults    
+};
+
+/// Class /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C
+/// Size: 0x0010 (0x000290 - 0x0002A0)
+class AStorePinataMaster_Parent_C : public AActor
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 672;
+
+public:
+	SMember(FPointerToUberGraphFrame)                  UberGraphFrame                                              OFFSET(getStruct<T>, {0x290, 8, 0, 0})
+	CMember(class USceneComponent*)                    PinataSceneRoot                                             OFFSET(get<T>, {0x298, 8, 0, 0})
+
+
+	/// Functions
+	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.InitiatePinata
+	// void InitiatePinata();                                                                                                   // [0x186becc] BlueprintCallable|BlueprintEvent 
+	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.CameraResetComplete
+	// void CameraResetComplete();                                                                                              // [0x186becc] BlueprintCallable|BlueprintEvent 
+	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.CameraTransitionComplete
+	// void CameraTransitionComplete();                                                                                         // [0x186becc] BlueprintCallable|BlueprintEvent 
+	// Function /Game/FrontEnd/Store/Pinata/Blueprints/StorePinataMaster_Parent.StorePinataMaster_Parent_C.ExecuteUbergraph_StorePinataMaster_Parent
+	// void ExecuteUbergraph_StorePinataMaster_Parent(int32_t EntryPoint);                                                      // [0x186becc] Final                
 };
 
 /// Class /Game/FrontEnd/Cameras/VaultCamera_Blueprint.VaultCamera_Blueprint_C
@@ -314,10 +314,10 @@ public:
 
 	/// Functions
 	// Function /Game/FrontEnd/Cameras/VaultCamera_Blueprint.VaultCamera_Blueprint_C.BP_OnActivated
-	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnActivated(class AFortPlayerController* PlayerController);                                                      // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/VaultCamera_Blueprint.VaultCamera_Blueprint_C.BP_OnDeactivated
-	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnDeactivated(class AFortPlayerController* PlayerController);                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/FrontEnd/Cameras/VaultCamera_Blueprint.VaultCamera_Blueprint_C.ExecuteUbergraph_VaultCamera_Blueprint
-	// void ExecuteUbergraph_VaultCamera_Blueprint(int32_t EntryPoint);                                                         // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_VaultCamera_Blueprint(int32_t EntryPoint);                                                         // [0x186becc] Final|HasDefaults    
 };
 

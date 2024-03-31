@@ -76,25 +76,25 @@ public:
 
 	/// Functions
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_TriggerBehavior
-	// void K2_TriggerBehavior(class AActor* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);    // [0x7e5d22c] Final|Native|Public|BlueprintCallable 
+	// void K2_TriggerBehavior(class AActor* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);    // [0x82b9f98] Final|Native|Public|BlueprintCallable 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnTriggeredPawn
-	// void K2_OnTriggeredPawn(class APawn* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);     // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnTriggeredPawn(class APawn* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);     // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnTriggeredCharacter
-	// void K2_OnTriggeredCharacter(class ACharacter* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner); // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnTriggeredCharacter(class ACharacter* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner); // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnTriggered
-	// void K2_OnTriggered(class AActor* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);        // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnTriggered(class AActor* Avatar, class UGameplayBehaviorConfig* Config, class AActor* SmartObjectOwner);        // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnFinishedPawn
-	// void K2_OnFinishedPawn(class APawn* Avatar, bool bWasInterrupted);                                                       // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnFinishedPawn(class APawn* Avatar, bool bWasInterrupted);                                                       // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnFinishedCharacter
-	// void K2_OnFinishedCharacter(class ACharacter* Avatar, bool bWasInterrupted);                                             // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnFinishedCharacter(class ACharacter* Avatar, bool bWasInterrupted);                                             // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_OnFinished
-	// void K2_OnFinished(class AActor* Avatar, bool bWasInterrupted);                                                          // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void K2_OnFinished(class AActor* Avatar, bool bWasInterrupted);                                                          // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_GetNextActorIndexInSequence
-	// int32_t K2_GetNextActorIndexInSequence(int32_t CurrentIndex);                                                            // [0x7e5d17c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t K2_GetNextActorIndexInSequence(int32_t CurrentIndex);                                                            // [0x82b9ea8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_EndBehavior
-	// void K2_EndBehavior(class AActor* Avatar);                                                                               // [0x7e5d0f8] Final|Native|Public|BlueprintCallable 
+	// void K2_EndBehavior(class AActor* Avatar);                                                                               // [0x82b9de4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior.K2_AbortBehavior
-	// void K2_AbortBehavior(class AActor* Avatar);                                                                             // [0x7e5d074] Final|Native|Public|BlueprintCallable 
+	// void K2_AbortBehavior(class AActor* Avatar);                                                                             // [0x82b9d20] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/GameplayBehaviorsModule.GameplayBehavior_BehaviorTree
@@ -147,15 +147,15 @@ public:
 
 	/// Functions
 	// Function /Script/GameplayBehaviorsModule.GameplayBehaviorsBlueprintFunctionLibrary.SetValueAsGameplayTagForBlackboardComp
-	// void SetValueAsGameplayTagForBlackboardComp(class UBlackboardComponent* BlackboardComp, FName& KeyName, FGameplayTagContainer GameplayTagValue); // [0x7e5d64c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetValueAsGameplayTagForBlackboardComp(class UBlackboardComponent* BlackboardComp, FName& KeyName, FGameplayTagContainer GameplayTagValue); // [0x82ba570] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehaviorsBlueprintFunctionLibrary.SetBlackboardValueAsGameplayTag
-	// void SetBlackboardValueAsGameplayTag(class UBTNode* NodeOwner, FBlackboardKeySelector& Key, FGameplayTagContainer Value); // [0x7e5d444] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetBlackboardValueAsGameplayTag(class UBTNode* NodeOwner, FBlackboardKeySelector& Key, FGameplayTagContainer Value); // [0x82ba334] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehaviorsBlueprintFunctionLibrary.GetBlackboardValueAsGameplayTagFromBlackboardComp
-	// FGameplayTagContainer GetBlackboardValueAsGameplayTagFromBlackboardComp(class UBlackboardComponent* BlackboardComp, FName& KeyName); // [0x7e5cf8c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FGameplayTagContainer GetBlackboardValueAsGameplayTagFromBlackboardComp(class UBlackboardComponent* BlackboardComp, FName& KeyName); // [0x82b9c00] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehaviorsBlueprintFunctionLibrary.GetBlackboardValueAsGameplayTag
-	// FGameplayTagContainer GetBlackboardValueAsGameplayTag(class UBTNode* NodeOwner, FBlackboardKeySelector& Key);            // [0x7e5ce70] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FGameplayTagContainer GetBlackboardValueAsGameplayTag(class UBTNode* NodeOwner, FBlackboardKeySelector& Key);            // [0x82b9aa4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayBehaviorsModule.GameplayBehaviorsBlueprintFunctionLibrary.AddGameplayTagFilterToBlackboardKeySelector
-	// void AddGameplayTagFilterToBlackboardKeySelector(FBlackboardKeySelector& InSelector, class UObject* Owner, FName PropertyName); // [0x7e5cbfc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void AddGameplayTagFilterToBlackboardKeySelector(FBlackboardKeySelector& InSelector, class UObject* Owner, FName PropertyName); // [0x82b9824] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/GameplayBehaviorsModule.GameplayBehaviorSubsystem
@@ -182,7 +182,7 @@ public:
 
 	/// Functions
 	// Function /Script/GameplayBehaviorsModule.GameplayBehavior_AnimationBased.OnMontageFinished
-	// void OnMontageFinished(class UAnimMontage* Montage, bool bInterrupted, class AActor* InAvatar);                          // [0x7e5d338] Final|Native|Protected 
+	// void OnMontageFinished(class UAnimMontage* Montage, bool bInterrupted, class AActor* InAvatar);                          // [0x82ba168] Final|Native|Protected 
 };
 
 /// Struct /Script/GameplayBehaviorsModule.AgentGameplayBehaviors

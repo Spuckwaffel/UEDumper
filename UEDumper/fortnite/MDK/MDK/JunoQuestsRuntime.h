@@ -22,6 +22,6 @@ public:
 
 	/// Functions
 	// Function /Script/JunoQuestsRuntime.JunoControllerComponent_QuestPersistence.ControllerBeginDestroy
-	// void ControllerBeginDestroy(class AFortPlayerControllerAthena* FortPCAthena);                                            // [0x6414600] Final|Native|Private 
+	// void ControllerBeginDestroy(class AFortPlayerControllerAthena* FortPCAthena);                                            // [0x63b1a60] Final|Native|Private 
 };
 

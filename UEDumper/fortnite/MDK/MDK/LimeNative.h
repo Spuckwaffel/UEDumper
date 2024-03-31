@@ -74,38 +74,29 @@ public:
 
 	/// Functions
 	// Function /Script/LimeNative.LimeOverrideManager.OnEndPlay
-	// void OnEndPlay(class AActor* Actor, TEnumAsByte<EEndPlayReason> EndPlayReason);                                          // [0x2d107d8] Final|Native|Private 
+	// void OnEndPlay(class AActor* Actor, TEnumAsByte<EEndPlayReason> EndPlayReason);                                          // [0xc38d84c] Final|Native|Private 
 };
 
 /// Class /Script/LimeNative.LimePawnComponentOverrides
-/// Size: 0x00A8 (0x0000A8 - 0x000150)
+/// Size: 0x0088 (0x0000A8 - 0x000130)
 class ULimePawnComponentOverrides : public UFortPawnComponent
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 336;
+	static inline constexpr uint64_t __MDKClassSize = 304;
 
 public:
 	CMember(TArray<FLimePawnComponentOverride>)        ObjectOverrides                                             OFFSET(get<T>, {0xA8, 16, 0, 0})
 	CMember(class UClass*)                             ClamberingMME                                               OFFSET(get<T>, {0xB8, 8, 0, 0})
-	SMember(FMulticastInlineDelegate)                  OnLevelSettingsChanged                                      OFFSET(getStruct<T>, {0xC0, 16, 0, 0})
-	CMember(TMap<FGameplayTag, UClass*>)               VehicleAnimLayerOverlayClass                                OFFSET(get<T>, {0xD0, 80, 0, 0})
-	CMember(class UClass*)                             DBNOAnimLayerClass                                          OFFSET(get<T>, {0x120, 8, 0, 0})
-	CMember(class UClass*)                             DBNOCarriedAnimLayerClass                                   OFFSET(get<T>, {0x128, 8, 0, 0})
-	CMember(class UClass*)                             SkydiveAnimLayerClass                                       OFFSET(get<T>, {0x130, 8, 0, 0})
-	CMember(class UClass*)                             CurrentAnimLayerClass                                       OFFSET(get<T>, {0x148, 8, 0, 0})
+	CMember(TMap<FGameplayTag, UClass*>)               VehicleAnimLayerOverlayClass                                OFFSET(get<T>, {0xC0, 80, 0, 0})
+	CMember(class UClass*)                             DBNOAnimLayerClass                                          OFFSET(get<T>, {0x110, 8, 0, 0})
+	CMember(class UClass*)                             DBNOCarriedAnimLayerClass                                   OFFSET(get<T>, {0x118, 8, 0, 0})
+	CMember(class UClass*)                             SkydiveAnimLayerClass                                       OFFSET(get<T>, {0x120, 8, 0, 0})
+	CMember(class UClass*)                             CurrentAnimLayerClass                                       OFFSET(get<T>, {0x128, 8, 0, 0})
 
 
 	/// Functions
-	// Function /Script/LimeNative.LimePawnComponentOverrides.OnLimeSettingsEndPlay
-	// void OnLimeSettingsEndPlay(class AActor* Actor, TEnumAsByte<EEndPlayReason> EndPlayReason);                              // [0xb39d528] Final|Native|Protected 
-	// Function /Script/LimeNative.LimePawnComponentOverrides.OnLevelSettingsChanged__DelegateSignature
-	// void OnLevelSettingsChanged__DelegateSignature();                                                                        // [0x18a39e4] MulticastDelegate|Public|Delegate 
-	// Function /Script/LimeNative.LimePawnComponentOverrides.IsOrbitCameraEnabled
-	// bool IsOrbitCameraEnabled();                                                                                             // [0x8c56988] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LimeNative.LimePawnComponentOverrides.HandleEnterVehicle
-	// void HandleEnterVehicle();                                                                                               // [0xb39d45c] Final|Native|Protected 
-	// Function /Script/LimeNative.LimePawnComponentOverrides.AreJunoControlsEnabled
-	// bool AreJunoControlsEnabled();                                                                                           // [0x90d3204] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// void HandleEnterVehicle();                                                                                               // [0xc38d740] Final|Native|Protected 
 };
 
 /// Class /Script/LimeNative.LimeSkydivingAnimInstance
@@ -147,21 +138,21 @@ public:
 };
 
 /// Class /Script/LimeNative.LimePlayerAnimInstance
-/// Size: 0x0000 (0x001B40 - 0x001B40)
+/// Size: 0x0000 (0x001B50 - 0x001B50)
 class ULimePlayerAnimInstance : public UFortPlayerAnimInstance
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 6976;
+	static inline constexpr uint64_t __MDKClassSize = 6992;
 
 public:
 };
 
 /// Class /Script/LimeNative.LimePlayerAnimInstanceProxy
-/// Size: 0x0000 (0x001620 - 0x001620)
+/// Size: 0x0000 (0x0015F0 - 0x0015F0)
 class ULimePlayerAnimInstanceProxy : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5664;
+	static inline constexpr uint64_t __MDKClassSize = 5616;
 
 public:
 };
@@ -178,25 +169,9 @@ public:
 
 	/// Functions
 	// Function /Script/LimeNative.LimeCameraMode_OrbitCam.UpdateCameraBP
-	// void UpdateCameraBP(class AActor* ViewTarget, float DeltaTime, FTViewTarget& OutVT);                                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateCameraBP(class AActor* ViewTarget, float DeltaTime, FTViewTarget& OutVT);                                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/LimeNative.LimeCameraMode_OrbitCam.OnBecomeActiveBP
-	// void OnBecomeActiveBP(class AActor* ViewTarget);                                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
-};
-
-/// Class /Script/LimeNative.LimeCameraModeOverrideComponent
-/// Size: 0x0010 (0x0000A8 - 0x0000B8)
-class ULimeCameraModeOverrideComponent : public UFortCameraModeOverrideComponent
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 184;
-
-public:
-	CMember(class ULimePawnComponentOverrides*)        LimePawnComponentOverrides                                  OFFSET(get<T>, {0xB0, 8, 0, 0})
-
-
-	/// Functions
-	// Function /Script/LimeNative.LimeCameraModeOverrideComponent.UpdateIsOrbitCameraEnabled
-	// void UpdateIsOrbitCameraEnabled();                                                                                       // [0xb39d76c] Final|Native|Private 
+	// void OnBecomeActiveBP(class AActor* ViewTarget);                                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/LimeNative.DebugObserveLimePlugin
@@ -234,9 +209,9 @@ public:
 
 	/// Functions
 	// Function /Script/LimeNative.LimePawnComponentMood.OnRep_CurrentMoodState
-	// void OnRep_CurrentMoodState();                                                                                           // [0xb39d5e8] Final|Native|Private 
+	// void OnRep_CurrentMoodState();                                                                                           // [0xc38d98c] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponentMood.GetCurrentMoodState
-	// FLimeMoodStateData GetCurrentMoodState();                                                                                // [0x87852ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FLimeMoodStateData GetCurrentMoodState();                                                                                // [0x8d49668] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/LimeNative.LimePawnComponent
@@ -272,23 +247,23 @@ public:
 
 	/// Functions
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.SetEmotionalState
-	// void SetEmotionalState(FLimeEmotionalStateData Emotion);                                                                 // [0xb39d624] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetEmotionalState(FLimeEmotionalStateData Emotion);                                                                 // [0xc38d9c8] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.SetCurrentEmotionalState
-	// void SetCurrentEmotionalState(ELimePawnEmotionalState NewEmotion);                                                       // [0xb2adba4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetCurrentEmotionalState(ELimePawnEmotionalState NewEmotion);                                                       // [0xbfe5c7c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.ResetToDefaultEmotionalState
-	// void ResetToDefaultEmotionalState();                                                                                     // [0xb39d610] Final|Native|Private 
+	// void ResetToDefaultEmotionalState();                                                                                     // [0xc38d9b4] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.OnRep_TargetEmotionalState
-	// void OnRep_TargetEmotionalState();                                                                                       // [0xb39d5fc] Final|Native|Private 
+	// void OnRep_TargetEmotionalState();                                                                                       // [0xc38d9a0] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.OnRep_CurrentEmotionalState
-	// void OnRep_CurrentEmotionalState();                                                                                      // [0xb2ad060] Final|Native|Private 
+	// void OnRep_CurrentEmotionalState();                                                                                      // [0xbfe50d8] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.OnRep_CheatEmotionIndex
-	// void OnRep_CheatEmotionIndex();                                                                                          // [0xb2ad02c] Final|Native|Private 
+	// void OnRep_CheatEmotionIndex();                                                                                          // [0xbfe50a4] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.HandleLimeAwesomeLevelChanged
-	// void HandleLimeAwesomeLevelChanged(int32_t NewAwesomeLevel);                                                             // [0xb39d470] Final|Native|Private 
+	// void HandleLimeAwesomeLevelChanged(int32_t NewAwesomeLevel);                                                             // [0xc38d754] Final|Native|Private 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.GetCurrentEmotionalStateValue
-	// float GetCurrentEmotionalStateValue();                                                                                   // [0xb2ac3b0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurrentEmotionalStateValue();                                                                                   // [0xbfe40c0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LimeNative.LimePawnComponent_EmotionalState.GetCurrentEmotionalState
-	// ELimePawnEmotionalState GetCurrentEmotionalState();                                                                      // [0xb2ac398] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ELimePawnEmotionalState GetCurrentEmotionalState();                                                                      // [0x8ffd904] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/LimeNative.LimeGlobals
@@ -313,32 +288,6 @@ public:
 	SMember(FGameplayTag)                              MoodTag                                                     OFFSET(getStruct<T>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Script/LimeNative.LimePawnComponentOverride
-/// Size: 0x0018 (0x000000 - 0x000018)
-class FLimePawnComponentOverride : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 24;
-
-public:
-	SMember(FName)                                     ObjClass                                                    OFFSET(getStruct<T>, {0x0, 4, 0, 0})
-	CMember(TArray<FLimePawnComponentOverrideProperty>) Properties                                                 OFFSET(get<T>, {0x8, 16, 0, 0})
-};
-
-/// Struct /Script/LimeNative.LimePawnComponentOverrideProperty
-/// Size: 0x0010 (0x000000 - 0x000010)
-class FLimePawnComponentOverrideProperty : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 16;
-
-public:
-	SMember(FName)                                     Name                                                        OFFSET(getStruct<T>, {0x0, 4, 0, 0})
-	CMember(class UAnimMontage*)                       Montage                                                     OFFSET(get<T>, {0x8, 8, 0, 0})
-};
-
 /// Struct /Script/LimeNative.LimeAnalyticsContext
 /// Size: 0x0078 (0x000000 - 0x000078)
 class FLimeAnalyticsContext : public MDKBase
@@ -355,6 +304,32 @@ public:
 	CMember(TArray<FName>)                             VariableNames                                               OFFSET(get<T>, {0x60, 16, 0, 0})
 	DMember(char)                                      UefnAnalyticsEvents                                         OFFSET(get<char>, {0x70, 1, 0, 0})
 	DMember(char)                                      GameplayAnalyticsEvents                                     OFFSET(get<char>, {0x71, 1, 0, 0})
+};
+
+/// Struct /Script/LimeNative.LimePawnComponentOverrideProperty
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FLimePawnComponentOverrideProperty : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	SMember(FName)                                     Name                                                        OFFSET(getStruct<T>, {0x0, 4, 0, 0})
+	CMember(class UAnimMontage*)                       Montage                                                     OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Script/LimeNative.LimePawnComponentOverride
+/// Size: 0x0018 (0x000000 - 0x000018)
+class FLimePawnComponentOverride : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 24;
+
+public:
+	SMember(FName)                                     ObjClass                                                    OFFSET(getStruct<T>, {0x0, 4, 0, 0})
+	CMember(TArray<FLimePawnComponentOverrideProperty>) Properties                                                 OFFSET(get<T>, {0x8, 16, 0, 0})
 };
 
 /// Struct /Script/LimeNative.LimeEmotionalStateData

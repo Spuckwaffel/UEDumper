@@ -22,8 +22,8 @@ public:
 
 	/// Functions
 	// Function /Script/TacOvershieldUI.TacOvershieldPlayerInfoWidget.OnPlayerStateSet
-	// void OnPlayerStateSet(class AFortPlayerStateAthena* InPlayerState);                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPlayerStateSet(class AFortPlayerStateAthena* InPlayerState);                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/TacOvershieldUI.TacOvershieldPlayerInfoWidget.OnOvershieldStateChanged
-	// void OnOvershieldStateChanged(float Overshield, float OvershieldMax);                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnOvershieldStateChanged(float Overshield, float OvershieldMax);                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 };
 

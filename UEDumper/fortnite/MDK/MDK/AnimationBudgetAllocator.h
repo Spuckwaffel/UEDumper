@@ -20,27 +20,27 @@ public:
 
 	/// Functions
 	// Function /Script/AnimationBudgetAllocator.AnimationBudgetBlueprintLibrary.SetAnimationBudgetParameters
-	// void SetAnimationBudgetParameters(class UObject* WorldContextObject, FAnimationBudgetAllocatorParameters& InParameters); // [0x715d41c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// void SetAnimationBudgetParameters(class UObject* WorldContextObject, FAnimationBudgetAllocatorParameters& InParameters); // [0x74203e4] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/AnimationBudgetAllocator.AnimationBudgetBlueprintLibrary.EnableAnimationBudget
-	// void EnableAnimationBudget(class UObject* WorldContextObject, bool bEnabled);                                            // [0x715d160] Final|Native|Static|Private|BlueprintCallable 
+	// void EnableAnimationBudget(class UObject* WorldContextObject, bool bEnabled);                                            // [0x7420258] Final|Native|Static|Private|BlueprintCallable 
 };
 
 /// Class /Script/AnimationBudgetAllocator.SkeletalMeshComponentBudgeted
-/// Size: 0x0020 (0x000F40 - 0x000F60)
+/// Size: 0x0020 (0x000F50 - 0x000F70)
 class USkeletalMeshComponentBudgeted : public USkeletalMeshComponent
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 3936;
+	static inline constexpr uint64_t __MDKClassSize = 3952;
 
 public:
-	DMember(bool)                                      bAutoRegisterWithBudgetAllocator                            OFFSET(get<bool>, {0xF58, 1, 1, 0})
-	DMember(bool)                                      bAutoCalculateSignificance                                  OFFSET(get<bool>, {0xF58, 1, 1, 1})
-	DMember(bool)                                      bShouldUseActorRenderedFlag                                 OFFSET(get<bool>, {0xF58, 1, 1, 2})
+	DMember(bool)                                      bAutoRegisterWithBudgetAllocator                            OFFSET(get<bool>, {0xF68, 1, 1, 0})
+	DMember(bool)                                      bAutoCalculateSignificance                                  OFFSET(get<bool>, {0xF68, 1, 1, 1})
+	DMember(bool)                                      bShouldUseActorRenderedFlag                                 OFFSET(get<bool>, {0xF68, 1, 1, 2})
 
 
 	/// Functions
 	// Function /Script/AnimationBudgetAllocator.SkeletalMeshComponentBudgeted.SetAutoRegisterWithBudgetAllocator
-	// void SetAutoRegisterWithBudgetAllocator(bool bInAutoRegisterWithBudgetAllocator);                                        // [0x715d6dc] Final|Native|Public|BlueprintCallable 
+	// void SetAutoRegisterWithBudgetAllocator(bool bInAutoRegisterWithBudgetAllocator);                                        // [0x7420554] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/AnimationBudgetAllocator.AnimationBudgetAllocatorParameters

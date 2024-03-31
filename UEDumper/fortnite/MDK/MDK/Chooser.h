@@ -236,23 +236,23 @@ public:
 
 	/// Functions
 	// Function /Script/Chooser.ChooserFunctionLibrary.MakeEvaluateChooser
-	// FInstancedStruct MakeEvaluateChooser(class UChooserTable* Chooser);                                                      // [0x78bc580] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FInstancedStruct MakeEvaluateChooser(class UChooserTable* Chooser);                                                      // [0x7cb1074] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Chooser.ChooserFunctionLibrary.MakeChooserEvaluationContext
-	// FChooserEvaluationContext MakeChooserEvaluationContext();                                                                // [0x78bc504] Final|Native|Static|Public|BlueprintCallable 
+	// FChooserEvaluationContext MakeChooserEvaluationContext();                                                                // [0x7cb0ff8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/Chooser.ChooserFunctionLibrary.GetChooserStructOutput
-	// void GetChooserStructOutput(FChooserEvaluationContext& Context, int32_t Index, int32_t& Value);                          // [0x78bc1a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetChooserStructOutput(FChooserEvaluationContext& Context, int32_t Index, int32_t& Value);                          // [0x7cb0c8c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/Chooser.ChooserFunctionLibrary.EvaluateObjectChooserBaseMulti
-	// TArray<UObject*> EvaluateObjectChooserBaseMulti(FChooserEvaluationContext& Context, FInstancedStruct& ObjectChooser, class UClass* ObjectClass, bool bResultIsClass); // [0x78bbe58] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// TArray<UObject*> EvaluateObjectChooserBaseMulti(FChooserEvaluationContext& Context, FInstancedStruct& ObjectChooser, class UClass* ObjectClass, bool bResultIsClass); // [0x7cb0940] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Chooser.ChooserFunctionLibrary.EvaluateObjectChooserBase
-	// class UObject* EvaluateObjectChooserBase(FChooserEvaluationContext& Context, FInstancedStruct& ObjectChooser, class UClass* ObjectClass, bool bResultIsClass); // [0x78bbb2c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class UObject* EvaluateObjectChooserBase(FChooserEvaluationContext& Context, FInstancedStruct& ObjectChooser, class UClass* ObjectClass, bool bResultIsClass); // [0x7cb0614] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Chooser.ChooserFunctionLibrary.EvaluateChooserMulti
-	// TArray<UObject*> EvaluateChooserMulti(class UObject* ContextObject, class UChooserTable* ChooserTable, class UClass* ObjectClass); // [0x78bb9f4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<UObject*> EvaluateChooserMulti(class UObject* ContextObject, class UChooserTable* ChooserTable, class UClass* ObjectClass); // [0x7cb0418] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Chooser.ChooserFunctionLibrary.EvaluateChooser
-	// class UObject* EvaluateChooser(class UObject* ContextObject, class UChooserTable* ChooserTable, class UClass* ObjectClass); // [0x78bb8e4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UObject* EvaluateChooser(class UObject* ContextObject, class UChooserTable* ChooserTable, class UClass* ObjectClass); // [0x7cb0244] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/Chooser.ChooserFunctionLibrary.AddChooserStructInput
-	// void AddChooserStructInput(FChooserEvaluationContext& Context, int32_t Value);                                           // [0x78bb67c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void AddChooserStructInput(FChooserEvaluationContext& Context, int32_t Value);                                           // [0x7caffdc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Chooser.ChooserFunctionLibrary.AddChooserObjectInput
-	// void AddChooserObjectInput(FChooserEvaluationContext& Context, class UObject* Object);                                   // [0x78bb4bc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void AddChooserObjectInput(FChooserEvaluationContext& Context, class UObject* Object);                                   // [0x7cafe20] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/Chooser.ChooserParameterBase

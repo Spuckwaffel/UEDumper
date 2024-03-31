@@ -103,9 +103,9 @@ public:
 
 	/// Functions
 	// Function /Script/FabricUI.FabricScreenWidget.SetScreenGridDimensions
-	// void SetScreenGridDimensions(FVector2D& InNewDimensions);                                                                // [0xaba83e4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetScreenGridDimensions(FVector2D& InNewDimensions);                                                                // [0xc0748d4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/FabricUI.FabricScreenWidget.AttachFabricWidget
-	// class UFabricWidget* AttachFabricWidget(class UClass*& FabricWidgetClass, FVector2D& GridPosition);                      // [0xaba8240] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// class UFabricWidget* AttachFabricWidget(class UClass*& FabricWidgetClass, FVector2D& GridPosition);                      // [0xc0746f0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/FabricUI.FabricWidget
@@ -122,7 +122,7 @@ public:
 
 	/// Functions
 	// Function /Script/FabricUI.FabricWidget.GetFabricViewModel
-	// class UFabricInteractableViewModel* GetFabricViewModel();                                                                // [0xaba8324] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// class UFabricInteractableViewModel* GetFabricViewModel();                                                                // [0xc0747d4] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/FabricUI.FabricWidgetComponent
@@ -138,9 +138,9 @@ public:
 
 	/// Functions
 	// Function /Script/FabricUI.FabricWidgetComponent.SetShouldSuscribeToSignificanceSubsystem
-	// void SetShouldSuscribeToSignificanceSubsystem(bool ShouldSuscribe);                                                      // [0xaba8478] Final|Native|Public|BlueprintCallable 
+	// void SetShouldSuscribeToSignificanceSubsystem(bool ShouldSuscribe);                                                      // [0xc074968] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FabricUI.FabricWidgetComponent.GetTickMode
-	// ETickMode GetTickMode();                                                                                                 // [0xaba834c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ETickMode GetTickMode();                                                                                                 // [0xc0747fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/FabricUI.FabricWidgetTickControlSubsystem
@@ -155,8 +155,8 @@ public:
 
 	/// Functions
 	// Function /Script/FabricUI.FabricWidgetTickControlSubsystem.UnregisterFabricWidgetComponent
-	// void UnregisterFabricWidgetComponent(class UFabricWidgetComponent* WidgetComponent);                                     // [0xaba84f8] Final|Native|Public|BlueprintCallable 
+	// void UnregisterFabricWidgetComponent(class UFabricWidgetComponent* WidgetComponent);                                     // [0xc074a28] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FabricUI.FabricWidgetTickControlSubsystem.RegisterFabricWidgetComponent
-	// void RegisterFabricWidgetComponent(class UFabricWidgetComponent* WidgetComponent);                                       // [0xaba8364] Final|Native|Public|BlueprintCallable 
+	// void RegisterFabricWidgetComponent(class UFabricWidgetComponent* WidgetComponent);                                       // [0xc074814] Final|Native|Public|BlueprintCallable 
 };
 

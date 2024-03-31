@@ -39,11 +39,11 @@ public:
 
 	/// Functions
 	// Function /Script/UnstableLiquidGunRuntime.FortLiquidGunProjectile.SetDetachmentReason
-	// void SetDetachmentReason(ELiquidRibbonDetachmentReason InDetachmentReason);                                              // [0xacea068] Final|Native|Public|BlueprintCallable 
+	// void SetDetachmentReason(ELiquidRibbonDetachmentReason InDetachmentReason);                                              // [0xc394d38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/UnstableLiquidGunRuntime.FortLiquidGunProjectile.HandleSplineHit
-	// void HandleSplineHit(FHitResult& Hit);                                                                                   // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void HandleSplineHit(FHitResult& Hit);                                                                                   // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/UnstableLiquidGunRuntime.FortLiquidGunProjectile.GetDetachmentReason
-	// ELiquidRibbonDetachmentReason GetDetachmentReason();                                                                     // [0xace9ddc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ELiquidRibbonDetachmentReason GetDetachmentReason();                                                                     // [0x9a5936c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/UnstableLiquidGunRuntime.LiquidRibbonManager
@@ -89,23 +89,23 @@ public:
 
 	/// Functions
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.SetNiagaraData
-	// void SetNiagaraData(class UNiagaraComponent* NiagaraComponent, TArray<FVector>& Positions, TArray<int32_t>& RibbonIDs, TArray<bool>& RibbonVisibilities, TArray<float>& FlashIntensities, TArray<int32_t>& RibbonSizes); // [0xacea0e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void SetNiagaraData(class UNiagaraComponent* NiagaraComponent, TArray<FVector>& Positions, TArray<int32_t>& RibbonIDs, TArray<bool>& RibbonVisibilities, TArray<float>& FlashIntensities, TArray<int32_t>& RibbonSizes); // [0xc394df8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.RunSplineCollisionTestOnProjectiles
-	// void RunSplineCollisionTestOnProjectiles();                                                                              // [0xacea00c] Final|Native|Public|BlueprintCallable 
+	// void RunSplineCollisionTestOnProjectiles();                                                                              // [0xc394cdc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.GetPointOnSegment
-	// FVector GetPointOnSegment(float T, FLiquidRibbonSplineSegment& Segment);                                                 // [0xace9ef8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetPointOnSegment(float T, FLiquidRibbonSplineSegment& Segment);                                                 // [0xc394b80] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.GetOrAddDetachment
-	// FLiquidRibbonSplineDetachment GetOrAddDetachment(int32_t RibbonID, FLiquidRibbonSplineSegment& Segment);                 // [0xace9df4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FLiquidRibbonSplineDetachment GetOrAddDetachment(int32_t RibbonID, FLiquidRibbonSplineSegment& Segment);                 // [0xc394a40] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.GetFirstVisiblePointIndex
-	// int32_t GetFirstVisiblePointIndex();                                                                                     // [0x8f9a6ac] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// int32_t GetFirstVisiblePointIndex();                                                                                     // [0x9763cf8] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.CalculateSplinePointsAndSetNiagaraData
-	// void CalculateSplinePointsAndSetNiagaraData(TArray<AFortLiquidGunProjectile*>& Projectiles, bool bAttachSplineToMuzzle, class UNiagaraComponent* NiagaraComponent, TArray<FVector>& OutAllPositions, TArray<int32_t>& OutRibbonIDs, TArray<bool>& OutRibbonVisibilities, TArray<float>& OutFlashIntensities, TArray<int32_t>& OutRibbonSizes); // [0xace9878] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void CalculateSplinePointsAndSetNiagaraData(TArray<AFortLiquidGunProjectile*>& Projectiles, bool bAttachSplineToMuzzle, class UNiagaraComponent* NiagaraComponent, TArray<FVector>& OutAllPositions, TArray<int32_t>& OutRibbonIDs, TArray<bool>& OutRibbonVisibilities, TArray<float>& OutFlashIntensities, TArray<int32_t>& OutRibbonSizes); // [0xc394024] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.CalculateSegments
-	// TArray<FLiquidRibbonSplineSegment> CalculateSegments(TArray<FVector>& Points, float Tension);                            // [0xace96d4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// TArray<FLiquidRibbonSplineSegment> CalculateSegments(TArray<FVector>& Points, float Tension);                            // [0xc393e70] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.CalculatePointSize
-	// float CalculatePointSize(int32_t SegmentIndex, int32_t PointIndex);                                                      // [0xace9618] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float CalculatePointSize(int32_t SegmentIndex, int32_t PointIndex);                                                      // [0xc393d24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/UnstableLiquidGunRuntime.LiquidRibbonManager.CalculatePointFlashIntensity
-	// float CalculatePointFlashIntensity(int32_t PointSize);                                                                   // [0xace9588] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float CalculatePointFlashIntensity(int32_t PointSize);                                                                   // [0xc393c54] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Struct /Script/UnstableLiquidGunRuntime.LiquidRibbonSplineSegment

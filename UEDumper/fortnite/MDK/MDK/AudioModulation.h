@@ -24,15 +24,15 @@ public:
 
 	/// Functions
 	// Function /Script/AudioModulation.AudioModulationStyle.GetPatchColor
-	// FColor GetPatchColor();                                                                                                  // [0x7ded054] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FColor GetPatchColor();                                                                                                  // [0x81dab90] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStyle.GetParameterColor
-	// FColor GetParameterColor();                                                                                              // [0x7ded034] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FColor GetParameterColor();                                                                                              // [0x81dab70] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStyle.GetModulationGeneratorColor
-	// FColor GetModulationGeneratorColor();                                                                                    // [0x7decf14] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FColor GetModulationGeneratorColor();                                                                                    // [0x81daa50] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStyle.GetControlBusMixColor
-	// FColor GetControlBusMixColor();                                                                                          // [0x7decef4] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FColor GetControlBusMixColor();                                                                                          // [0x81daa30] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStyle.GetControlBusColor
-	// FColor GetControlBusColor();                                                                                             // [0x7deced4] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FColor GetControlBusColor();                                                                                             // [0x81daa10] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/AudioModulation.AudioModulationDestination
@@ -48,13 +48,13 @@ public:
 
 	/// Functions
 	// Function /Script/AudioModulation.AudioModulationDestination.SetModulator
-	// bool SetModulator(class USoundModulatorBase* InModulator);                                                               // [0x7ded504] Final|Native|Public|BlueprintCallable 
+	// bool SetModulator(class USoundModulatorBase* InModulator);                                                               // [0x81db270] Final|Native|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationDestination.GetValue
-	// float GetValue();                                                                                                        // [0x7ded074] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetValue();                                                                                                        // [0x81dabb0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/AudioModulation.AudioModulationDestination.GetModulator
-	// class USoundModulatorBase* GetModulator();                                                                               // [0x78ca134] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USoundModulatorBase* GetModulator();                                                                               // [0x7cc2558] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/AudioModulation.AudioModulationDestination.ClearModulator
-	// bool ClearModulator();                                                                                                   // [0x7debc34] Final|Native|Public|BlueprintCallable 
+	// bool ClearModulator();                                                                                                   // [0x81d8fa8] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/AudioModulation.AudioModulationSettings
@@ -80,63 +80,61 @@ public:
 
 	/// Functions
 	// Function /Script/AudioModulation.AudioModulationStatics.UpdateModulator
-	// void UpdateModulator(class UObject* WorldContextObject, class USoundModulatorBase* Modulator);                           // [0x7dedc8c] Final|Native|Static|Public|BlueprintCallable 
+	// void UpdateModulator(class UObject* WorldContextObject, class USoundModulatorBase* Modulator);                           // [0x81dc1bc] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.UpdateMixFromObject
-	// void UpdateMixFromObject(class UObject* WorldContextObject, class USoundControlBusMix* Mix, float FadeTime);             // [0x7dedb6c] Final|Native|Static|Public|BlueprintCallable 
+	// void UpdateMixFromObject(class UObject* WorldContextObject, class USoundControlBusMix* Mix, float FadeTime);             // [0x81dbfdc] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.UpdateMixByFilter
-	// void UpdateMixByFilter(class UObject* WorldContextObject, class USoundControlBusMix* Mix, FString AddressFilter, class UClass* ParamClassFilter, class USoundModulationParameter* ParamFilter, float Value, float FadeTime); // [0x7ded788] Final|Native|Static|Public|BlueprintCallable 
+	// void UpdateMixByFilter(class UObject* WorldContextObject, class USoundControlBusMix* Mix, FString AddressFilter, class UClass* ParamClassFilter, class USoundModulationParameter* ParamFilter, float Value, float FadeTime); // [0x81db638] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.UpdateMix
-	// void UpdateMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix, TArray<FSoundControlBusMixStage> Stages, float FadeTime); // [0x7ded5d0] Final|Native|Static|Public|BlueprintCallable 
+	// void UpdateMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix, TArray<FSoundControlBusMixStage> Stages, float FadeTime); // [0x81db37c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.SetGlobalBusMixValue
-	// void SetGlobalBusMixValue(class UObject* WorldContextObject, class USoundControlBus* Bus, float Value, float FadeTime);  // [0x3d886b4] Final|Native|Static|Public|BlueprintCallable 
+	// void SetGlobalBusMixValue(class UObject* WorldContextObject, class USoundControlBus* Bus, float Value, float FadeTime);  // [0x20a110c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.SaveMixToProfile
-	// void SaveMixToProfile(class UObject* WorldContextObject, class USoundControlBusMix* Mix, int32_t ProfileIndex);          // [0x7ded3f4] Final|Native|Static|Public|BlueprintCallable 
+	// void SaveMixToProfile(class UObject* WorldContextObject, class USoundControlBusMix* Mix, int32_t ProfileIndex);          // [0x81db0a0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.LoadMixFromProfile
-	// TArray<FSoundControlBusMixStage> LoadMixFromProfile(class UObject* WorldContextObject, class USoundControlBusMix* Mix, bool bActivate, int32_t ProfileIndex); // [0x7ded1d0] Final|Native|Static|Public|BlueprintCallable 
+	// TArray<FSoundControlBusMixStage> LoadMixFromProfile(class UObject* WorldContextObject, class USoundControlBusMix* Mix, bool bActivate, int32_t ProfileIndex); // [0x81dad88] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.IsControlBusMixActive
-	// bool IsControlBusMixActive(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                           // [0x7ded09c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsControlBusMixActive(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                           // [0x81dabd8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/AudioModulation.AudioModulationStatics.GetModulatorValue
-	// float GetModulatorValue(class UObject* WorldContextObject, class USoundModulatorBase* Modulator);                        // [0x20d10d0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetModulatorValue(class UObject* WorldContextObject, class USoundModulatorBase* Modulator);                        // [0x20a1dc8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/AudioModulation.AudioModulationStatics.GetModulatorsFromDestination
-	// TSet<USoundModulatorBase*> GetModulatorsFromDestination(FSoundModulationDestinationSettings& Destination);               // [0x7decf34] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TSet<USoundModulatorBase*> GetModulatorsFromDestination(FSoundModulationDestinationSettings& Destination);               // [0x81daa70] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/AudioModulation.AudioModulationStatics.DeactivateGenerator
-	// void DeactivateGenerator(class UObject* WorldContextObject, class USoundModulationGenerator* Generator);                 // [0x7decdcc] Final|Native|Static|Public|BlueprintCallable 
+	// void DeactivateGenerator(class UObject* WorldContextObject, class USoundModulationGenerator* Generator);                 // [0x81da87c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.DeactivateBusMix
-	// void DeactivateBusMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                                // [0x3f500e0] Final|Native|Static|Public|BlueprintCallable 
+	// void DeactivateBusMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                                // [0x20a151c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.DeactivateBus
-	// void DeactivateBus(class UObject* WorldContextObject, class USoundControlBus* Bus);                                      // [0x7decd00] Final|Native|Static|Public|BlueprintCallable 
+	// void DeactivateBus(class UObject* WorldContextObject, class USoundControlBus* Bus);                                      // [0x81da724] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.DeactivateAllBusMixes
-	// void DeactivateAllBusMixes(class UObject* WorldContextObject);                                                           // [0x7decc54] Final|Native|Static|Public|BlueprintCallable 
-	// Function /Script/AudioModulation.AudioModulationStatics.CreateModulationWatcher
-	// class UAudioModulationDestination* CreateModulationWatcher(class UObject* WorldContextObject, FName Name, class USoundModulatorBase* Modulator); // [0x7deca00] Final|Native|Static|Public|BlueprintCallable 
+	// void DeactivateAllBusMixes(class UObject* WorldContextObject);                                                           // [0x81da638] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateModulationParameter
-	// class USoundModulationParameter* CreateModulationParameter(class UObject* WorldContextObject, FName Name, class UClass* ParamClass, float DefaultValue); // [0x7decaf8] Final|Native|Static|Public 
+	// class USoundModulationParameter* CreateModulationParameter(class UObject* WorldContextObject, FName Name, class UClass* ParamClass, float DefaultValue); // [0x81da3d8] Final|Native|Static|Public 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateModulationDestination
-	// class UAudioModulationDestination* CreateModulationDestination(class UObject* WorldContextObject, FName Name, class USoundModulatorBase* Modulator); // [0x7deca00] Final|Native|Static|Public|BlueprintCallable 
+	// class UAudioModulationDestination* CreateModulationDestination(class UObject* WorldContextObject, FName Name, class USoundModulatorBase* Modulator); // [0x81da1f4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateLFOGenerator
-	// class USoundModulationGeneratorLFO* CreateLFOGenerator(class UObject* WorldContextObject, FName Name, FSoundModulationLFOParams Params); // [0x7dec84c] Final|Native|Static|Public|BlueprintCallable 
+	// class USoundModulationGeneratorLFO* CreateLFOGenerator(class UObject* WorldContextObject, FName Name, FSoundModulationLFOParams Params); // [0x81d9fec] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateEnvelopeFollowerGenerator
-	// class USoundModulationGeneratorEnvelopeFollower* CreateEnvelopeFollowerGenerator(class UObject* WorldContextObject, FName Name, FEnvelopeFollowerGeneratorParams Params); // [0x7dec688] Final|Native|Static|Public|BlueprintCallable 
+	// class USoundModulationGeneratorEnvelopeFollower* CreateEnvelopeFollowerGenerator(class UObject* WorldContextObject, FName Name, FEnvelopeFollowerGeneratorParams Params); // [0x81d9e0c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateBusMixStage
-	// FSoundControlBusMixStage CreateBusMixStage(class UObject* WorldContextObject, class USoundControlBus* Bus, float Value, float AttackTime, float ReleaseTime); // [0x7dec4e4] Final|Native|Static|Public|BlueprintCallable 
+	// FSoundControlBusMixStage CreateBusMixStage(class UObject* WorldContextObject, class USoundControlBus* Bus, float Value, float AttackTime, float ReleaseTime); // [0x81d9b34] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateBusMixFromValue
-	// class USoundControlBusMix* CreateBusMixFromValue(class UObject* WorldContextObject, FName Name, TArray<USoundControlBus*>& Buses, float Value, float AttackTime, float ReleaseTime, bool bActivate); // [0x7dec020] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class USoundControlBusMix* CreateBusMixFromValue(class UObject* WorldContextObject, FName Name, TArray<USoundControlBus*>& Buses, float Value, float AttackTime, float ReleaseTime, bool bActivate); // [0x81d9618] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateBusMix
-	// class USoundControlBusMix* CreateBusMix(class UObject* WorldContextObject, FName Name, TArray<FSoundControlBusMixStage> Stages, bool Activate); // [0x7debea0] Final|Native|Static|Public|BlueprintCallable 
+	// class USoundControlBusMix* CreateBusMix(class UObject* WorldContextObject, FName Name, TArray<FSoundControlBusMixStage> Stages, bool Activate); // [0x81d9394] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateBus
-	// class USoundControlBus* CreateBus(class UObject* WorldContextObject, FName Name, class USoundModulationParameter* Parameter, bool Activate); // [0x7debd68] Final|Native|Static|Public|BlueprintCallable 
+	// class USoundControlBus* CreateBus(class UObject* WorldContextObject, FName Name, class USoundModulationParameter* Parameter, bool Activate); // [0x81d9160] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.CreateADEnvelopeGenerator
-	// class USoundModulationGeneratorADEnvelope* CreateADEnvelopeGenerator(class UObject* WorldContextObject, FName Name, FSoundModulationADEnvelopeParams& Params); // [0x7debc58] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class USoundModulationGeneratorADEnvelope* CreateADEnvelopeGenerator(class UObject* WorldContextObject, FName Name, FSoundModulationADEnvelopeParams& Params); // [0x81d8fcc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.ClearGlobalBusMixValue
-	// void ClearGlobalBusMixValue(class UObject* WorldContextObject, class USoundControlBus* Bus, float FadeTime);             // [0x7debb14] Final|Native|Static|Public|BlueprintCallable 
+	// void ClearGlobalBusMixValue(class UObject* WorldContextObject, class USoundControlBus* Bus, float FadeTime);             // [0x81d8dc8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.ClearAllGlobalBusMixValues
-	// void ClearAllGlobalBusMixValues(class UObject* WorldContextObject, float FadeTime);                                      // [0x7deba60] Final|Native|Static|Public|BlueprintCallable 
+	// void ClearAllGlobalBusMixValues(class UObject* WorldContextObject, float FadeTime);                                      // [0x81d8c88] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.ActivateGenerator
-	// void ActivateGenerator(class UObject* WorldContextObject, class USoundModulationGenerator* Generator);                   // [0x7deb958] Final|Native|Static|Public|BlueprintCallable 
+	// void ActivateGenerator(class UObject* WorldContextObject, class USoundModulationGenerator* Generator);                   // [0x81d8b04] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.ActivateBusMix
-	// void ActivateBusMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                                  // [0x3f501b0] Final|Native|Static|Public|BlueprintCallable 
+	// void ActivateBusMix(class UObject* WorldContextObject, class USoundControlBusMix* Mix);                                  // [0x20a13b0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/AudioModulation.AudioModulationStatics.ActivateBus
-	// void ActivateBus(class UObject* WorldContextObject, class USoundControlBus* Bus);                                        // [0x7deb88c] Final|Native|Static|Public|BlueprintCallable 
+	// void ActivateBus(class UObject* WorldContextObject, class USoundControlBus* Bus);                                        // [0x81d89ac] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/AudioModulation.SoundModulationGenerator
@@ -210,17 +208,17 @@ public:
 
 	/// Functions
 	// Function /Script/AudioModulation.SoundControlBusMix.SoloMix
-	// void SoloMix();                                                                                                          // [0x7ded594] Final|Native|Protected 
+	// void SoloMix();                                                                                                          // [0x81db340] Final|Native|Protected 
 	// Function /Script/AudioModulation.SoundControlBusMix.SaveMixToProfile
-	// void SaveMixToProfile();                                                                                                 // [0x7ded4ec] Final|Native|Protected 
+	// void SaveMixToProfile();                                                                                                 // [0x81db258] Final|Native|Protected 
 	// Function /Script/AudioModulation.SoundControlBusMix.LoadMixFromProfile
-	// void LoadMixFromProfile();                                                                                               // [0x7ded3c0] Final|Native|Protected 
+	// void LoadMixFromProfile();                                                                                               // [0x81db06c] Final|Native|Protected 
 	// Function /Script/AudioModulation.SoundControlBusMix.DeactivateMix
-	// void DeactivateMix();                                                                                                    // [0x7dece98] Final|Native|Protected 
+	// void DeactivateMix();                                                                                                    // [0x81da9d4] Final|Native|Protected 
 	// Function /Script/AudioModulation.SoundControlBusMix.DeactivateAllMixes
-	// void DeactivateAllMixes();                                                                                               // [0x7deccc4] Final|Native|Protected 
+	// void DeactivateAllMixes();                                                                                               // [0x81da6e8] Final|Native|Protected 
 	// Function /Script/AudioModulation.SoundControlBusMix.ActivateMix
-	// void ActivateMix();                                                                                                      // [0x7deba4c] Final|Native|Protected 
+	// void ActivateMix();                                                                                                      // [0x81d8c74] Final|Native|Protected 
 };
 
 /// Class /Script/AudioModulation.SoundModulationParameter

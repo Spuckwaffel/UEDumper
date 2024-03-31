@@ -20,10 +20,10 @@ public:
 
 	/// Functions
 	// Function /Game/Banners/BannerLibrary.BannerLibrary_C.UpdateBannerIconOnMaterial
-	// void UpdateBannerIconOnMaterial(class UMaterialInstanceDynamic* Material, class UTexture* Icon, class UObject* __WorldContext); // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void UpdateBannerIconOnMaterial(class UMaterialInstanceDynamic* Material, class UTexture* Icon, class UObject* __WorldContext); // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Banners/BannerLibrary.BannerLibrary_C.UpdateBannerColorOnMaterial
-	// void UpdateBannerColorOnMaterial(class UMaterialInstanceDynamic* Material, FLinearColor PrimaryBGColor, FLinearColor SecondaryBGColor, class UObject* __WorldContext); // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void UpdateBannerColorOnMaterial(class UMaterialInstanceDynamic* Material, FLinearColor PrimaryBGColor, FLinearColor SecondaryBGColor, class UObject* __WorldContext); // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/Banners/BannerLibrary.BannerLibrary_C.GenericUpdateMaterial
-	// void GenericUpdateMaterial(class UMaterialInstanceDynamic* Target, class UTexture* BannerIcon, FLinearColor BG_PrimaryColor, FLinearColor BG_SecondaryColor, class UTexture* ShapeIcon, class UObject* __WorldContext); // [0x18a39e4] Static|Public|BlueprintCallable|BlueprintEvent 
+	// void GenericUpdateMaterial(class UMaterialInstanceDynamic* Target, class UTexture* BannerIcon, FLinearColor BG_PrimaryColor, FLinearColor BG_SecondaryColor, class UTexture* ShapeIcon, class UObject* __WorldContext); // [0x186becc] Static|Public|BlueprintCallable|BlueprintEvent 
 };
 

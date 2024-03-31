@@ -79,33 +79,33 @@ public:
 };
 
 /// Class /Script/NevadaRuntime.FortPlayerAnimInstance_NevadaDriver
-/// Size: 0x0180 (0x001860 - 0x0019E0)
+/// Size: 0x0180 (0x001830 - 0x0019B0)
 class UFortPlayerAnimInstance_NevadaDriver : public UFortPlayerAnimInstance_OctopusDriver
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 6624;
+	static inline constexpr uint64_t __MDKClassSize = 6576;
 
 public:
-	CMember(class AFortNevadaVehicle*)                 NevadaVehicle                                               OFFSET(get<T>, {0x1858, 8, 0, 0})
-	DMember(float)                                     AnimLeftRight                                               OFFSET(get<float>, {0x1860, 4, 0, 0})
-	DMember(float)                                     AnimForwardBackward                                         OFFSET(get<float>, {0x1864, 4, 0, 0})
-	SMember(FVector)                                   RootAttachmentLoc                                           OFFSET(getStruct<T>, {0x1868, 24, 0, 0})
-	SMember(FRotator)                                  RootAttachmentRot                                           OFFSET(getStruct<T>, {0x1880, 24, 0, 0})
-	DMember(int32_t)                                   BoostCount                                                  OFFSET(get<int32_t>, {0x1898, 4, 0, 0})
-	DMember(int32_t)                                   PreviousBoostCount                                          OFFSET(get<int32_t>, {0x189C, 4, 0, 0})
-	DMember(bool)                                      bIsBoostingAgain                                            OFFSET(get<bool>, {0x18A0, 1, 0, 0})
-	DMember(bool)                                      bIsMoving                                                   OFFSET(get<bool>, {0x18A1, 1, 0, 0})
-	DMember(float)                                     MinVehicleVelocityToBeMoving                                OFFSET(get<float>, {0x18A4, 4, 0, 0})
-	SMember(FName)                                     DriverSocketName                                            OFFSET(getStruct<T>, {0x18A8, 4, 0, 0})
-	SMember(FName)                                     RightHandAttachmentSocketName                               OFFSET(getStruct<T>, {0x18AC, 4, 0, 0})
-	SMember(FName)                                     LeftHandAttachmentSocketName                                OFFSET(getStruct<T>, {0x18B0, 4, 0, 0})
-	SMember(FName)                                     RightFootAttachmentSocketName                               OFFSET(getStruct<T>, {0x18B4, 4, 0, 0})
-	SMember(FName)                                     LeftFootAttachementSocketName                               OFFSET(getStruct<T>, {0x18B8, 4, 0, 0})
-	SMember(FRotator)                                  RightHandRotationOffset                                     OFFSET(getStruct<T>, {0x18C0, 24, 0, 0})
-	SMember(FRotator)                                  LeftHandRotationOffset                                      OFFSET(getStruct<T>, {0x18D8, 24, 0, 0})
-	SMember(FRotator)                                  RightFootRotationOffset                                     OFFSET(getStruct<T>, {0x18F0, 24, 0, 0})
-	SMember(FRotator)                                  LeftFootRotationOffset                                      OFFSET(getStruct<T>, {0x1908, 24, 0, 0})
-	SMember(FVector)                                   RootAttachmentOffset                                        OFFSET(getStruct<T>, {0x1920, 24, 0, 0})
+	CMember(class AFortNevadaVehicle*)                 NevadaVehicle                                               OFFSET(get<T>, {0x1828, 8, 0, 0})
+	DMember(float)                                     AnimLeftRight                                               OFFSET(get<float>, {0x1830, 4, 0, 0})
+	DMember(float)                                     AnimForwardBackward                                         OFFSET(get<float>, {0x1834, 4, 0, 0})
+	SMember(FVector)                                   RootAttachmentLoc                                           OFFSET(getStruct<T>, {0x1838, 24, 0, 0})
+	SMember(FRotator)                                  RootAttachmentRot                                           OFFSET(getStruct<T>, {0x1850, 24, 0, 0})
+	DMember(int32_t)                                   BoostCount                                                  OFFSET(get<int32_t>, {0x1868, 4, 0, 0})
+	DMember(int32_t)                                   PreviousBoostCount                                          OFFSET(get<int32_t>, {0x186C, 4, 0, 0})
+	DMember(bool)                                      bIsBoostingAgain                                            OFFSET(get<bool>, {0x1870, 1, 0, 0})
+	DMember(bool)                                      bIsMoving                                                   OFFSET(get<bool>, {0x1871, 1, 0, 0})
+	DMember(float)                                     MinVehicleVelocityToBeMoving                                OFFSET(get<float>, {0x1874, 4, 0, 0})
+	SMember(FName)                                     DriverSocketName                                            OFFSET(getStruct<T>, {0x1878, 4, 0, 0})
+	SMember(FName)                                     RightHandAttachmentSocketName                               OFFSET(getStruct<T>, {0x187C, 4, 0, 0})
+	SMember(FName)                                     LeftHandAttachmentSocketName                                OFFSET(getStruct<T>, {0x1880, 4, 0, 0})
+	SMember(FName)                                     RightFootAttachmentSocketName                               OFFSET(getStruct<T>, {0x1884, 4, 0, 0})
+	SMember(FName)                                     LeftFootAttachementSocketName                               OFFSET(getStruct<T>, {0x1888, 4, 0, 0})
+	SMember(FRotator)                                  RightHandRotationOffset                                     OFFSET(getStruct<T>, {0x1890, 24, 0, 0})
+	SMember(FRotator)                                  LeftHandRotationOffset                                      OFFSET(getStruct<T>, {0x18A8, 24, 0, 0})
+	SMember(FRotator)                                  RightFootRotationOffset                                     OFFSET(getStruct<T>, {0x18C0, 24, 0, 0})
+	SMember(FRotator)                                  LeftFootRotationOffset                                      OFFSET(getStruct<T>, {0x18D8, 24, 0, 0})
+	SMember(FVector)                                   RootAttachmentOffset                                        OFFSET(getStruct<T>, {0x18F0, 24, 0, 0})
 };
 
 /// Class /Script/NevadaRuntime.FortCameraMode_Nevada
@@ -156,215 +156,215 @@ public:
 
 	/// Functions
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.Update
-	// void Update();                                                                                                           // [0xac60b58] Final|Native|Public  
+	// void Update();                                                                                                           // [0xc1509cc] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.Init
-	// void Init(class AFortNevadaVehicle* InVehicle);                                                                          // [0xac60190] Final|Native|Public  
+	// void Init(class AFortNevadaVehicle* InVehicle);                                                                          // [0xc14ff74] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.GetVehicleActor
-	// class AFortNevadaVehicle* GetVehicleActor();                                                                             // [0x9fb9070] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortNevadaVehicle* GetVehicleActor();                                                                             // [0xabfd35c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.CacheReferences
-	// void CacheReferences(class UFortLayeredAudioComponent* InLayeredAudioComponent);                                         // [0xac5fe98] Final|Native|Public|BlueprintCallable 
+	// void CacheReferences(class UFortLayeredAudioComponent* InLayeredAudioComponent);                                         // [0xc14fc38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.BP_Update
-	// void BP_Update();                                                                                                        // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_Update();                                                                                                        // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaAudioController.BP_Init
-	// void BP_Init();                                                                                                          // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_Init();                                                                                                          // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/NevadaRuntime.FortNevadaVehicle
-/// Size: 0x0600 (0x001FA0 - 0x0025A0)
+/// Size: 0x0600 (0x001FD0 - 0x0025D0)
 class AFortNevadaVehicle : public AFortAthenaSKVehicle
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 9632;
+	static inline constexpr uint64_t __MDKClassSize = 9680;
 
 public:
-	SMember(FNevadaState)                              ServerReplicatedState                                       OFFSET(getStruct<T>, {0x1FA0, 20, 0, 0})
-	CMember(class UFortNevadaVehicleConfigs*)          FortNevadaVehicleConfigs                                    OFFSET(get<T>, {0x1FB8, 8, 0, 0})
-	CMember(class UClass*)                             FortNevadaAudioControllerClass                              OFFSET(get<T>, {0x1FC0, 8, 0, 0})
-	CMember(class UChildActorComponent*)               AudioControllerActor                                        OFFSET(get<T>, {0x1FC8, 8, 0, 0})
-	CMember(class AFortNevadaAudioController*)         FortNevadaAudioController                                   OFFSET(get<T>, {0x1FD0, 8, 0, 0})
-	SMember(FVehicleGamepadLiftInputs)                 LiftInputs                                                  OFFSET(getStruct<T>, {0x1FD8, 8, 0, 0})
-	DMember(float)                                     LastBatteryRegenTickTime                                    OFFSET(get<float>, {0x1FE0, 4, 0, 0})
-	DMember(bool)                                      bBoostThrust                                                OFFSET(get<bool>, {0x1FE4, 1, 0, 0})
-	DMember(bool)                                      bBoostDrag                                                  OFFSET(get<bool>, {0x1FE5, 1, 0, 0})
-	DMember(bool)                                      bBoostInputReleased                                         OFFSET(get<bool>, {0x1FE6, 1, 0, 0})
-	DMember(bool)                                      bUseTractorBeamUprightForce                                 OFFSET(get<bool>, {0x1FE7, 1, 0, 0})
-	DMember(bool)                                      bDeadBattery                                                OFFSET(get<bool>, {0x1FE8, 1, 0, 0})
-	DMember(float)                                     TractorBeamExtraLengthForExtents                            OFFSET(get<float>, {0x1FEC, 4, 0, 0})
-	SMember(FVector)                                   CrashingDesiredUp                                           OFFSET(getStruct<T>, {0x1FF0, 24, 0, 0})
-	DMember(float)                                     BoostStartTime                                              OFFSET(get<float>, {0x2008, 4, 0, 0})
-	DMember(float)                                     BoostPitchAlpha                                             OFFSET(get<float>, {0x200C, 4, 0, 0})
-	DMember(float)                                     BoostChargeProgress                                         OFFSET(get<float>, {0x2010, 4, 0, 0})
-	DMember(int32_t)                                   BoostChargesAvailable                                       OFFSET(get<int32_t>, {0x2014, 4, 0, 0})
-	SMember(FVector)                                   CachedBoostMoveDir                                          OFFSET(getStruct<T>, {0x2018, 24, 0, 0})
-	DMember(float)                                     CurrentStateStartTime                                       OFFSET(get<float>, {0x2030, 4, 0, 0})
-	DMember(float)                                     HeightAtLandingTime                                         OFFSET(get<float>, {0x2034, 4, 0, 0})
-	DMember(float)                                     CrashingScrapingTime                                        OFFSET(get<float>, {0x2038, 4, 0, 0})
-	DMember(float)                                     CrashingNotMovingTimer                                      OFFSET(get<float>, {0x203C, 4, 0, 0})
-	DMember(float)                                     AltimeterTraceHitDistance                                   OFFSET(get<float>, {0x2040, 4, 0, 0})
-	DMember(float)                                     TractorBeamAppliedForceMagnitude                            OFFSET(get<float>, {0x2044, 4, 0, 0})
-	DMember(float)                                     AnimParamDriverSeatLeftRight                                OFFSET(get<float>, {0x2048, 4, 0, 0})
-	DMember(float)                                     AnimParamDriverSeatForwardBack                              OFFSET(get<float>, {0x204C, 4, 0, 0})
-	DMember(bool)                                      bForceNegativeLift                                          OFFSET(get<bool>, {0x2050, 1, 0, 0})
-	DMember(bool)                                      bForcePositiveLift                                          OFFSET(get<bool>, {0x2051, 1, 0, 0})
-	DMember(bool)                                      bInitialLift                                                OFFSET(get<bool>, {0x2052, 1, 0, 0})
-	CMember(ENevadaFlightStates)                       CurrentVehicleState                                         OFFSET(get<T>, {0x2053, 1, 0, 0})
-	CMember(TWeakObjectPtr<ALandscapeProxy*>)          CachedLandscapeProxy                                        OFFSET(get<T>, {0x20A0, 8, 0, 0})
-	CMember(class UClass*)                             PassengerCameraModeClass                                    OFFSET(get<T>, {0x20A8, 8, 0, 0})
-	DMember(bool)                                      bTractorBeamChargeStarted                                   OFFSET(get<bool>, {0x20B0, 1, 0, 0})
-	SMember(FTowhookParams)                            TowhookParams                                               OFFSET(getStruct<T>, {0x20B8, 208, 0, 0})
-	CMember(class UClass*)                             AttachedPawnHiddenVehicle                                   OFFSET(get<T>, {0x2188, 8, 0, 0})
-	CMember(TWeakObjectPtr<UPrimitiveComponent*>)      TractorBeamAttachedPrimitive                                OFFSET(get<T>, {0x2190, 8, 0, 0})
-	CMember(class AFortAthenaVehicle*)                 SpawnedTractorBeamVictimVehicle                             OFFSET(get<T>, {0x2198, 8, 0, 0})
-	CMember(TWeakObjectPtr<UPrimitiveComponent*>)      PreviousTractorBeamAttachedPrimitive                        OFFSET(get<T>, {0x21A0, 8, 0, 0})
-	CMember(TArray<class AActor*>)                     TractorBeamTargetedActors                                   OFFSET(get<T>, {0x21A8, 16, 0, 0})
-	CMember(TArray<class AActor*>)                     PreviouslyTargetedActors                                    OFFSET(get<T>, {0x21B8, 16, 0, 0})
-	CMember(class AActor*)                             TractorBeamAttachedActor                                    OFFSET(get<T>, {0x21C8, 8, 0, 0})
-	CMember(class AActor*)                             TractorBeamTargetedActor                                    OFFSET(get<T>, {0x21D0, 8, 0, 0})
-	SMember(FVector)                                   TractorBeamTargetPosition                                   OFFSET(getStruct<T>, {0x21D8, 24, 0, 0})
-	DMember(bool)                                      bBeamButtonReleased                                         OFFSET(get<bool>, {0x21F1, 1, 0, 0})
-	CMember(TArray<TEnumAsByte<EObjectTypeQuery>>)     TractorBeamObjectsTypes                                     OFFSET(get<T>, {0x21F8, 16, 0, 0})
-	SMember(FGameplayTagContainer)                     DisallowedBeamTags                                          OFFSET(getStruct<T>, {0x2208, 32, 0, 0})
-	SMember(FGameplayTagContainer)                     AlwaysAllowedBeamTags                                       OFFSET(getStruct<T>, {0x2228, 32, 0, 0})
-	CMember(class UNiagaraSystem*)                     TractorBeamFX_Unattached                                    OFFSET(get<T>, {0x22E0, 8, 0, 0})
-	CMember(class UNiagaraSystem*)                     TractorBeamFX_Attached                                      OFFSET(get<T>, {0x22E8, 8, 0, 0})
-	CMember(class UNiagaraComponent*)                  BeamPSC                                                     OFFSET(get<T>, {0x22F0, 8, 0, 0})
-	CMember(TEnumAsByte<ETractorBeamState>)            TractorBeamState                                            OFFSET(get<T>, {0x2348, 1, 0, 0})
-	DMember(float)                                     TractorBeamDeactivationTimestamp                            OFFSET(get<float>, {0x2370, 4, 0, 0})
-	DMember(float)                                     TractorBeamDisruptedTimestamp                               OFFSET(get<float>, {0x2374, 4, 0, 0})
-	DMember(float)                                     CockpitHealth                                               OFFSET(get<float>, {0x23F8, 4, 0, 0})
-	DMember(float)                                     Native_CockpitEnabled                                       OFFSET(get<float>, {0x23FC, 4, 0, 0})
-	DMember(float)                                     LastCockpitHealthTickTime                                   OFFSET(get<float>, {0x2400, 4, 0, 0})
-	DMember(float)                                     LastCockpitDamageTime                                       OFFSET(get<float>, {0x2404, 4, 0, 0})
-	DMember(float)                                     CockpitDissolveStartTime                                    OFFSET(get<float>, {0x2408, 4, 0, 0})
-	SMember(FScalableFloat)                            CockpitMaxHealth                                            OFFSET(getStruct<T>, {0x2410, 40, 0, 0})
-	SMember(FScalableFloat)                            CockpitHealthTickRate                                       OFFSET(getStruct<T>, {0x2438, 40, 0, 0})
-	SMember(FScalableFloat)                            CockpitHealthPerTick                                        OFFSET(getStruct<T>, {0x2460, 40, 0, 0})
-	SMember(FScalableFloat)                            CockpitRegenDelay                                           OFFSET(getStruct<T>, {0x2488, 40, 0, 0})
-	CMember(class UCurveFloat*)                        CockpitHitMaterialWobble                                    OFFSET(get<T>, {0x24B0, 8, 0, 0})
-	DMember(float)                                     LastDamageAlpha                                             OFFSET(get<float>, {0x24B8, 4, 0, 0})
-	DMember(bool)                                      bDissolvingCockpit                                          OFFSET(get<bool>, {0x24BC, 1, 0, 0})
-	DMember(bool)                                      bRestoringCockpit                                           OFFSET(get<bool>, {0x24BD, 1, 0, 0})
-	DMember(bool)                                      bCockpitWobble                                              OFFSET(get<bool>, {0x24BE, 1, 0, 0})
-	CMember(class UStaticMeshComponent*)               NativeComp_ShieldMesh                                       OFFSET(get<T>, {0x24C0, 8, 0, 0})
-	CMember(class UMaterialInstanceDynamic*)           Native_CockpitMaterial                                      OFFSET(get<T>, {0x24C8, 8, 0, 0})
-	CMember(class UMaterialInstanceDynamic*)           Native_EnergyRingMatInstance                                OFFSET(get<T>, {0x24D0, 8, 0, 0})
-	CMember(class UMaterialInstanceDynamic*)           Native_EnergyFieldMatInstance                               OFFSET(get<T>, {0x24D8, 8, 0, 0})
-	CMember(class UAudioComponent*)                    NativeComp_DamageStateLastLife                              OFFSET(get<T>, {0x24E0, 8, 0, 0})
-	CMember(class UAudioComponent*)                    NativeComp_DamageState                                      OFFSET(get<T>, {0x24E8, 8, 0, 0})
-	SMember(FVector)                                   Native_LastHitLocation                                      OFFSET(getStruct<T>, {0x24F0, 24, 0, 0})
-	SMember(FVector)                                   Native_LastHitNormal                                        OFFSET(getStruct<T>, {0x2508, 24, 0, 0})
-	CMember(class UNiagaraComponent*)                  NativeComp_DamageStateFX                                    OFFSET(get<T>, {0x2520, 8, 0, 0})
-	CMember(class UNiagaraComponent*)                  NativeComp_HologramScreen                                   OFFSET(get<T>, {0x2528, 8, 0, 0})
-	CMember(class UNiagaraComponent*)                  NativeComp_SpeedLines                                       OFFSET(get<T>, {0x2530, 8, 0, 0})
-	CMember(class UMaterialInterface*)                 Native_EnergyRingMat                                        OFFSET(get<T>, {0x2538, 8, 0, 0})
-	CMember(class UMaterialInterface*)                 Native_EnergyFieldMat                                       OFFSET(get<T>, {0x2540, 8, 0, 0})
-	CMember(class UNiagaraSystem*)                     NativeSys_DamageStateFX                                     OFFSET(get<T>, {0x2548, 8, 0, 0})
-	CMember(class UNiagaraSystem*)                     NativeSys_CockpitDestroyed                                  OFFSET(get<T>, {0x2550, 8, 0, 0})
-	CMember(class USoundBase*)                         CockpitDamagedSound                                         OFFSET(get<T>, {0x2558, 8, 0, 0})
-	CMember(class USoundBase*)                         CockpitDestroyedSound                                       OFFSET(get<T>, {0x2560, 8, 0, 0})
-	CMember(class USoundBase*)                         CockpitRespawnSound                                         OFFSET(get<T>, {0x2568, 8, 0, 0})
-	CMember(class USoundBase*)                         Native_DamageStateSound                                     OFFSET(get<T>, {0x2570, 8, 0, 0})
-	CMember(class USoundBase*)                         Native_DamageStateLastLifeSound                             OFFSET(get<T>, {0x2578, 8, 0, 0})
-	CMember(class UForceFeedbackEffect*)               CockpitDeactivatedForceFeedback                             OFFSET(get<T>, {0x2580, 8, 0, 0})
-	CMember(class UClass*)                             CockpitDestroyedCamShake                                    OFFSET(get<T>, {0x2588, 8, 0, 0})
-	CMember(TArray<class UClass*>)                     TractorBeamDisallowedClasses                                OFFSET(get<T>, {0x2590, 16, 0, 0})
+	SMember(FNevadaState)                              ServerReplicatedState                                       OFFSET(getStruct<T>, {0x1FC8, 20, 0, 0})
+	CMember(class UFortNevadaVehicleConfigs*)          FortNevadaVehicleConfigs                                    OFFSET(get<T>, {0x1FE0, 8, 0, 0})
+	CMember(class UClass*)                             FortNevadaAudioControllerClass                              OFFSET(get<T>, {0x1FE8, 8, 0, 0})
+	CMember(class UChildActorComponent*)               AudioControllerActor                                        OFFSET(get<T>, {0x1FF0, 8, 0, 0})
+	CMember(class AFortNevadaAudioController*)         FortNevadaAudioController                                   OFFSET(get<T>, {0x1FF8, 8, 0, 0})
+	SMember(FVehicleGamepadLiftInputs)                 LiftInputs                                                  OFFSET(getStruct<T>, {0x2000, 8, 0, 0})
+	DMember(float)                                     LastBatteryRegenTickTime                                    OFFSET(get<float>, {0x2008, 4, 0, 0})
+	DMember(bool)                                      bBoostThrust                                                OFFSET(get<bool>, {0x200C, 1, 0, 0})
+	DMember(bool)                                      bBoostDrag                                                  OFFSET(get<bool>, {0x200D, 1, 0, 0})
+	DMember(bool)                                      bBoostInputReleased                                         OFFSET(get<bool>, {0x200E, 1, 0, 0})
+	DMember(bool)                                      bUseTractorBeamUprightForce                                 OFFSET(get<bool>, {0x200F, 1, 0, 0})
+	DMember(bool)                                      bDeadBattery                                                OFFSET(get<bool>, {0x2010, 1, 0, 0})
+	DMember(float)                                     TractorBeamExtraLengthForExtents                            OFFSET(get<float>, {0x2014, 4, 0, 0})
+	SMember(FVector)                                   CrashingDesiredUp                                           OFFSET(getStruct<T>, {0x2018, 24, 0, 0})
+	DMember(float)                                     BoostStartTime                                              OFFSET(get<float>, {0x2030, 4, 0, 0})
+	DMember(float)                                     BoostPitchAlpha                                             OFFSET(get<float>, {0x2034, 4, 0, 0})
+	DMember(float)                                     BoostChargeProgress                                         OFFSET(get<float>, {0x2038, 4, 0, 0})
+	DMember(int32_t)                                   BoostChargesAvailable                                       OFFSET(get<int32_t>, {0x203C, 4, 0, 0})
+	SMember(FVector)                                   CachedBoostMoveDir                                          OFFSET(getStruct<T>, {0x2040, 24, 0, 0})
+	DMember(float)                                     CurrentStateStartTime                                       OFFSET(get<float>, {0x2058, 4, 0, 0})
+	DMember(float)                                     HeightAtLandingTime                                         OFFSET(get<float>, {0x205C, 4, 0, 0})
+	DMember(float)                                     CrashingScrapingTime                                        OFFSET(get<float>, {0x2060, 4, 0, 0})
+	DMember(float)                                     CrashingNotMovingTimer                                      OFFSET(get<float>, {0x2064, 4, 0, 0})
+	DMember(float)                                     AltimeterTraceHitDistance                                   OFFSET(get<float>, {0x2068, 4, 0, 0})
+	DMember(float)                                     TractorBeamAppliedForceMagnitude                            OFFSET(get<float>, {0x206C, 4, 0, 0})
+	DMember(float)                                     AnimParamDriverSeatLeftRight                                OFFSET(get<float>, {0x2070, 4, 0, 0})
+	DMember(float)                                     AnimParamDriverSeatForwardBack                              OFFSET(get<float>, {0x2074, 4, 0, 0})
+	DMember(bool)                                      bForceNegativeLift                                          OFFSET(get<bool>, {0x2078, 1, 0, 0})
+	DMember(bool)                                      bForcePositiveLift                                          OFFSET(get<bool>, {0x2079, 1, 0, 0})
+	DMember(bool)                                      bInitialLift                                                OFFSET(get<bool>, {0x207A, 1, 0, 0})
+	CMember(ENevadaFlightStates)                       CurrentVehicleState                                         OFFSET(get<T>, {0x207B, 1, 0, 0})
+	CMember(TWeakObjectPtr<ALandscapeProxy*>)          CachedLandscapeProxy                                        OFFSET(get<T>, {0x20C8, 8, 0, 0})
+	CMember(class UClass*)                             PassengerCameraModeClass                                    OFFSET(get<T>, {0x20D0, 8, 0, 0})
+	DMember(bool)                                      bTractorBeamChargeStarted                                   OFFSET(get<bool>, {0x20D8, 1, 0, 0})
+	SMember(FTowhookParams)                            TowhookParams                                               OFFSET(getStruct<T>, {0x20E0, 208, 0, 0})
+	CMember(class UClass*)                             AttachedPawnHiddenVehicle                                   OFFSET(get<T>, {0x21B0, 8, 0, 0})
+	CMember(TWeakObjectPtr<UPrimitiveComponent*>)      TractorBeamAttachedPrimitive                                OFFSET(get<T>, {0x21B8, 8, 0, 0})
+	CMember(class AFortAthenaVehicle*)                 SpawnedTractorBeamVictimVehicle                             OFFSET(get<T>, {0x21C0, 8, 0, 0})
+	CMember(TWeakObjectPtr<UPrimitiveComponent*>)      PreviousTractorBeamAttachedPrimitive                        OFFSET(get<T>, {0x21C8, 8, 0, 0})
+	CMember(TArray<class AActor*>)                     TractorBeamTargetedActors                                   OFFSET(get<T>, {0x21D0, 16, 0, 0})
+	CMember(TArray<class AActor*>)                     PreviouslyTargetedActors                                    OFFSET(get<T>, {0x21E0, 16, 0, 0})
+	CMember(class AActor*)                             TractorBeamAttachedActor                                    OFFSET(get<T>, {0x21F0, 8, 0, 0})
+	CMember(class AActor*)                             TractorBeamTargetedActor                                    OFFSET(get<T>, {0x21F8, 8, 0, 0})
+	SMember(FVector)                                   TractorBeamTargetPosition                                   OFFSET(getStruct<T>, {0x2200, 24, 0, 0})
+	DMember(bool)                                      bBeamButtonReleased                                         OFFSET(get<bool>, {0x2219, 1, 0, 0})
+	CMember(TArray<TEnumAsByte<EObjectTypeQuery>>)     TractorBeamObjectsTypes                                     OFFSET(get<T>, {0x2220, 16, 0, 0})
+	SMember(FGameplayTagContainer)                     DisallowedBeamTags                                          OFFSET(getStruct<T>, {0x2230, 32, 0, 0})
+	SMember(FGameplayTagContainer)                     AlwaysAllowedBeamTags                                       OFFSET(getStruct<T>, {0x2250, 32, 0, 0})
+	CMember(class UNiagaraSystem*)                     TractorBeamFX_Unattached                                    OFFSET(get<T>, {0x2308, 8, 0, 0})
+	CMember(class UNiagaraSystem*)                     TractorBeamFX_Attached                                      OFFSET(get<T>, {0x2310, 8, 0, 0})
+	CMember(class UNiagaraComponent*)                  BeamPSC                                                     OFFSET(get<T>, {0x2318, 8, 0, 0})
+	CMember(TEnumAsByte<ETractorBeamState>)            TractorBeamState                                            OFFSET(get<T>, {0x2370, 1, 0, 0})
+	DMember(float)                                     TractorBeamDeactivationTimestamp                            OFFSET(get<float>, {0x2398, 4, 0, 0})
+	DMember(float)                                     TractorBeamDisruptedTimestamp                               OFFSET(get<float>, {0x239C, 4, 0, 0})
+	DMember(float)                                     CockpitHealth                                               OFFSET(get<float>, {0x2420, 4, 0, 0})
+	DMember(float)                                     Native_CockpitEnabled                                       OFFSET(get<float>, {0x2424, 4, 0, 0})
+	DMember(float)                                     LastCockpitHealthTickTime                                   OFFSET(get<float>, {0x2428, 4, 0, 0})
+	DMember(float)                                     LastCockpitDamageTime                                       OFFSET(get<float>, {0x242C, 4, 0, 0})
+	DMember(float)                                     CockpitDissolveStartTime                                    OFFSET(get<float>, {0x2430, 4, 0, 0})
+	SMember(FScalableFloat)                            CockpitMaxHealth                                            OFFSET(getStruct<T>, {0x2438, 40, 0, 0})
+	SMember(FScalableFloat)                            CockpitHealthTickRate                                       OFFSET(getStruct<T>, {0x2460, 40, 0, 0})
+	SMember(FScalableFloat)                            CockpitHealthPerTick                                        OFFSET(getStruct<T>, {0x2488, 40, 0, 0})
+	SMember(FScalableFloat)                            CockpitRegenDelay                                           OFFSET(getStruct<T>, {0x24B0, 40, 0, 0})
+	CMember(class UCurveFloat*)                        CockpitHitMaterialWobble                                    OFFSET(get<T>, {0x24D8, 8, 0, 0})
+	DMember(float)                                     LastDamageAlpha                                             OFFSET(get<float>, {0x24E0, 4, 0, 0})
+	DMember(bool)                                      bDissolvingCockpit                                          OFFSET(get<bool>, {0x24E4, 1, 0, 0})
+	DMember(bool)                                      bRestoringCockpit                                           OFFSET(get<bool>, {0x24E5, 1, 0, 0})
+	DMember(bool)                                      bCockpitWobble                                              OFFSET(get<bool>, {0x24E6, 1, 0, 0})
+	CMember(class UStaticMeshComponent*)               NativeComp_ShieldMesh                                       OFFSET(get<T>, {0x24E8, 8, 0, 0})
+	CMember(class UMaterialInstanceDynamic*)           Native_CockpitMaterial                                      OFFSET(get<T>, {0x24F0, 8, 0, 0})
+	CMember(class UMaterialInstanceDynamic*)           Native_EnergyRingMatInstance                                OFFSET(get<T>, {0x24F8, 8, 0, 0})
+	CMember(class UMaterialInstanceDynamic*)           Native_EnergyFieldMatInstance                               OFFSET(get<T>, {0x2500, 8, 0, 0})
+	CMember(class UAudioComponent*)                    NativeComp_DamageStateLastLife                              OFFSET(get<T>, {0x2508, 8, 0, 0})
+	CMember(class UAudioComponent*)                    NativeComp_DamageState                                      OFFSET(get<T>, {0x2510, 8, 0, 0})
+	SMember(FVector)                                   Native_LastHitLocation                                      OFFSET(getStruct<T>, {0x2518, 24, 0, 0})
+	SMember(FVector)                                   Native_LastHitNormal                                        OFFSET(getStruct<T>, {0x2530, 24, 0, 0})
+	CMember(class UNiagaraComponent*)                  NativeComp_DamageStateFX                                    OFFSET(get<T>, {0x2548, 8, 0, 0})
+	CMember(class UNiagaraComponent*)                  NativeComp_HologramScreen                                   OFFSET(get<T>, {0x2550, 8, 0, 0})
+	CMember(class UNiagaraComponent*)                  NativeComp_SpeedLines                                       OFFSET(get<T>, {0x2558, 8, 0, 0})
+	CMember(class UMaterialInterface*)                 Native_EnergyRingMat                                        OFFSET(get<T>, {0x2560, 8, 0, 0})
+	CMember(class UMaterialInterface*)                 Native_EnergyFieldMat                                       OFFSET(get<T>, {0x2568, 8, 0, 0})
+	CMember(class UNiagaraSystem*)                     NativeSys_DamageStateFX                                     OFFSET(get<T>, {0x2570, 8, 0, 0})
+	CMember(class UNiagaraSystem*)                     NativeSys_CockpitDestroyed                                  OFFSET(get<T>, {0x2578, 8, 0, 0})
+	CMember(class USoundBase*)                         CockpitDamagedSound                                         OFFSET(get<T>, {0x2580, 8, 0, 0})
+	CMember(class USoundBase*)                         CockpitDestroyedSound                                       OFFSET(get<T>, {0x2588, 8, 0, 0})
+	CMember(class USoundBase*)                         CockpitRespawnSound                                         OFFSET(get<T>, {0x2590, 8, 0, 0})
+	CMember(class USoundBase*)                         Native_DamageStateSound                                     OFFSET(get<T>, {0x2598, 8, 0, 0})
+	CMember(class USoundBase*)                         Native_DamageStateLastLifeSound                             OFFSET(get<T>, {0x25A0, 8, 0, 0})
+	CMember(class UForceFeedbackEffect*)               CockpitDeactivatedForceFeedback                             OFFSET(get<T>, {0x25A8, 8, 0, 0})
+	CMember(class UClass*)                             CockpitDestroyedCamShake                                    OFFSET(get<T>, {0x25B0, 8, 0, 0})
+	CMember(TArray<class UClass*>)                     TractorBeamDisallowedClasses                                OFFSET(get<T>, {0x25B8, 16, 0, 0})
 
 
 	/// Functions
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.SetTractorBeamInactive
-	// void SetTractorBeamInactive();                                                                                           // [0xac60b44] Final|Native|Protected|BlueprintCallable 
+	// void SetTractorBeamInactive();                                                                                           // [0xc1509b8] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.SetTractorBeamEnabled
-	// void SetTractorBeamEnabled(bool bEnabled);                                                                               // [0x63fe5cc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetTractorBeamEnabled(bool bEnabled);                                                                               // [0x63958fc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.SetCannonEnabled
-	// void SetCannonEnabled(bool bEnabled);                                                                                    // [0x63fe5cc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetCannonEnabled(bool bEnabled);                                                                                    // [0x63958fc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.SetAttachedPawnAddedVelocity
-	// void SetAttachedPawnAddedVelocity(FVector& AddedVelocity);                                                               // [0xac60a80] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetAttachedPawnAddedVelocity(FVector& AddedVelocity);                                                               // [0xc1508f4] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTractorBeamDetached
-	// void OnTractorBeamDetached(class AActor* DetachedActor, FVector& LastBeamPosition);                                      // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnTractorBeamDetached(class AActor* DetachedActor, FVector& LastBeamPosition);                                      // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTractorBeamDeactivated
-	// void OnTractorBeamDeactivated(FVector& LastBeamPosition);                                                                // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnTractorBeamDeactivated(FVector& LastBeamPosition);                                                                // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTractorBeamChargeStarted
-	// void OnTractorBeamChargeStarted();                                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTractorBeamChargeStarted();                                                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTractorBeamAttached
-	// void OnTractorBeamAttached();                                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTractorBeamAttached();                                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTractorBeamActivated
-	// void OnTractorBeamActivated();                                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTractorBeamActivated();                                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnTargetedActorChanged
-	// void OnTargetedActorChanged(class AActor* NewTargetedActor);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTargetedActorChanged(class AActor* NewTargetedActor);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnStartDescend
-	// void OnStartDescend();                                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnStartDescend();                                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnStartAscend
-	// void OnStartAscend();                                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnStartAscend();                                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_TractorBeamState
-	// void OnRep_TractorBeamState(TEnumAsByte<ETractorBeamState> PreviousState);                                               // [0xac609f4] Final|Native|Protected 
+	// void OnRep_TractorBeamState(TEnumAsByte<ETractorBeamState> PreviousState);                                               // [0xc150828] Final|Native|Protected 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_TractorBeamChargeStarted
-	// void OnRep_TractorBeamChargeStarted();                                                                                   // [0xac60998] Final|Native|Public  
+	// void OnRep_TractorBeamChargeStarted();                                                                                   // [0xc1507cc] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_TractorBeamAttached
-	// void OnRep_TractorBeamAttached();                                                                                        // [0xac60984] Final|Native|Protected 
+	// void OnRep_TractorBeamAttached();                                                                                        // [0xc1507b8] Final|Native|Protected 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_TargetedActorChanged
-	// void OnRep_TargetedActorChanged();                                                                                       // [0xac60948] Final|Native|Public  
+	// void OnRep_TargetedActorChanged();                                                                                       // [0xc15077c] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_ReplicatedTargetedActors
-	// void OnRep_ReplicatedTargetedActors();                                                                                   // [0xac608c4] Final|Native|Public  
+	// void OnRep_ReplicatedTargetedActors();                                                                                   // [0xc1506f8] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRep_NevadaState
-	// void OnRep_NevadaState(FNevadaState& PrevState);                                                                         // [0xac60824] Final|Native|Protected|HasOutParms 
+	// void OnRep_NevadaState(FNevadaState& PrevState);                                                                         // [0xc150658] Final|Native|Protected|HasOutParms 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRebootStarted
-	// void OnRebootStarted();                                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnRebootStarted();                                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnRebootFinished
-	// void OnRebootFinished();                                                                                                 // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnRebootFinished();                                                                                                 // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnOutOfBattery
-	// void OnOutOfBattery();                                                                                                   // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnOutOfBattery();                                                                                                   // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnNewVehicleState
-	// void OnNewVehicleState(ENevadaFlightStates NewVehicleState);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnNewVehicleState(ENevadaFlightStates NewVehicleState);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnCrashingStarted
-	// void OnCrashingStarted();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnCrashingStarted();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnCrashedImpact
-	// void OnCrashedImpact();                                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnCrashedImpact();                                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnBoostStarted
-	// void OnBoostStarted();                                                                                                   // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnBoostStarted();                                                                                                   // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnBoostFinished
-	// void OnBoostFinished();                                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnBoostFinished();                                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnBoostChargeRefilled
-	// void OnBoostChargeRefilled();                                                                                            // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnBoostChargeRefilled();                                                                                            // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnBatteryRegen
-	// void OnBatteryRegen(float Newcharge);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnBatteryRegen(float Newcharge);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnAttachedActorDied
-	// void OnAttachedActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xac603c0] Final|Native|Public|HasDefaults 
+	// void OnAttachedActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xc150268] Final|Native|Public|HasDefaults 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.OnAttachedActorDestroyed
-	// void OnAttachedActorDestroyed(class AActor* DestroyedActor);                                                             // [0xac60344] Final|Native|Public  
+	// void OnAttachedActorDestroyed(class AActor* DestroyedActor);                                                             // [0xc1501ac] Final|Native|Public  
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.NativeToggleCockpit
-	// void NativeToggleCockpit(bool bEnable);                                                                                  // [0xac602c4] Final|Native|Public|BlueprintCallable 
+	// void NativeToggleCockpit(bool bEnable);                                                                                  // [0xc1500e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.IsTractorBeamDisrupted
-	// bool IsTractorBeamDisrupted();                                                                                           // [0xac60254] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsTractorBeamDisrupted();                                                                                           // [0xc150078] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.IsTractorBeamAttached
-	// bool IsTractorBeamAttached();                                                                                            // [0xac60230] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsTractorBeamAttached();                                                                                            // [0xc150054] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.IsTractorBeamActive
-	// bool IsTractorBeamActive();                                                                                              // [0xac60210] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsTractorBeamActive();                                                                                              // [0xc150034] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetTractorBeamAttachLocation
-	// FVector GetTractorBeamAttachLocation();                                                                                  // [0xac60158] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetTractorBeamAttachLocation();                                                                                  // [0xc14ff3c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetNumRebootsAvailable
-	// int32_t GetNumRebootsAvailable();                                                                                        // [0xac60140] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumRebootsAvailable();                                                                                        // [0xc14ff24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetEnergyCanonChargePercent
-	// float GetEnergyCanonChargePercent();                                                                                     // [0xac60118] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// float GetEnergyCanonChargePercent();                                                                                     // [0xc14fefc] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetDriverSeatRotationAnimParams
-	// void GetDriverSeatRotationAnimParams(float& OutLeftRight, float& OutForwardBack);                                        // [0xac6003c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetDriverSeatRotationAnimParams(float& OutLeftRight, float& OutForwardBack);                                        // [0xc14fe20] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetCurrentVehicleState
-	// ENevadaFlightStates GetCurrentVehicleState();                                                                            // [0xac60024] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ENevadaFlightStates GetCurrentVehicleState();                                                                            // [0xc14fe08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetBoostChargeTimeRemaining
-	// float GetBoostChargeTimeRemaining();                                                                                     // [0xac5ffd8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBoostChargeTimeRemaining();                                                                                     // [0xc14fdbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetBoostChargesAvailable
-	// int32_t GetBoostChargesAvailable();                                                                                      // [0xac6000c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetBoostChargesAvailable();                                                                                      // [0xc14fdf0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetBoostChargeProgress
-	// float GetBoostChargeProgress();                                                                                          // [0xac5ffb8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBoostChargeProgress();                                                                                          // [0xc14fd9c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetBatteryCharge
-	// float GetBatteryCharge();                                                                                                // [0xac5ff90] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBatteryCharge();                                                                                                // [0xc14fd74] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.GetAudioController
-	// class AFortNevadaAudioController* GetAudioController();                                                                  // [0xac5ff78] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// class AFortNevadaAudioController* GetAudioController();                                                                  // [0xc14fd5c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.EnablePilotBubbleCollisionOnServer
-	// void EnablePilotBubbleCollisionOnServer(bool bNewCollisionEnabled);                                                      // [0x63fe5cc] Final|Native|Protected|BlueprintCallable 
+	// void EnablePilotBubbleCollisionOnServer(bool bNewCollisionEnabled);                                                      // [0x63958fc] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.DisruptTractorBeam
-	// void DisruptTractorBeam();                                                                                               // [0xac5ff24] Final|Native|Protected|BlueprintCallable 
+	// void DisruptTractorBeam();                                                                                               // [0xc14fd08] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/NevadaRuntime.FortNevadaVehicle.AddPhysicsImpulseToTractorBeamAttachedActor
-	// void AddPhysicsImpulseToTractorBeamAttachedActor(FVector& Impulse, FName BoneName, bool bVelChange);                     // [0xac5fc9c] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// void AddPhysicsImpulseToTractorBeamAttachedActor(FVector& Impulse, FName BoneName, bool bVelChange);                     // [0xc14fa3c] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/NevadaRuntime.FortNevadaVehicleConfigs

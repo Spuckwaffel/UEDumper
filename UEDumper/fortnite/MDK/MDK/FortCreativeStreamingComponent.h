@@ -47,81 +47,81 @@ public:
 
 	/// Functions
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.UsePriorityMode
-	// void UsePriorityMode();                                                                                                  // [0xac814b0] Final|Native|Public|BlueprintCallable 
+	// void UsePriorityMode();                                                                                                  // [0xc183854] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.UseMirrorModeByName
-	// void UseMirrorModeByName(FString DeviceName);                                                                            // [0xac81334] Final|Native|Public|BlueprintCallable 
+	// void UseMirrorModeByName(FString DeviceName);                                                                            // [0xc1831d4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.UseMirrorMode
-	// void UseMirrorMode(class AActor* NewMirrorDevice);                                                                       // [0xac812b4] Final|Native|Public|BlueprintCallable 
+	// void UseMirrorMode(class AActor* NewMirrorDevice);                                                                       // [0xc183114] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.UseDeviceOverrideMode
-	// void UseDeviceOverrideMode();                                                                                            // [0xac812a0] Final|Native|Public|BlueprintCallable 
+	// void UseDeviceOverrideMode();                                                                                            // [0xc183100] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.UpdateStaticMesh
-	// void UpdateStaticMesh(class UStaticMeshComponent* ScreenMesh);                                                           // [0xac811d0] Final|Native|Public|BlueprintCallable 
+	// void UpdateStaticMesh(class UStaticMeshComponent* ScreenMesh);                                                           // [0xc182fec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.TearDownComponent
-	// void TearDownComponent();                                                                                                // [0xac811bc] Final|Native|Public|BlueprintCallable 
+	// void TearDownComponent();                                                                                                // [0xc182fd8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.StreamedVideoOpeningTimeout
-	// void StreamedVideoOpeningTimeout();                                                                                      // [0xac811a8] Final|Native|Private 
+	// void StreamedVideoOpeningTimeout();                                                                                      // [0xc182fc4] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.StreamedVideoOnMediaPlayerEndReached
-	// void StreamedVideoOnMediaPlayerEndReached();                                                                             // [0xac81194] Final|Native|Private 
+	// void StreamedVideoOnMediaPlayerEndReached();                                                                             // [0xc182fb0] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.StreamedVideoOnMediaPlayerClosed
-	// void StreamedVideoOnMediaPlayerClosed();                                                                                 // [0xac81180] Final|Native|Private 
+	// void StreamedVideoOnMediaPlayerClosed();                                                                                 // [0xc182f9c] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.Stop
-	// void Stop();                                                                                                             // [0xac8116c] Final|Native|Public|BlueprintCallable 
+	// void Stop();                                                                                                             // [0xc182f88] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.SetRestartStreamWhenPlaying
-	// void SetRestartStreamWhenPlaying(bool bNewRestartStreamWhenPlaying);                                                     // [0xac810ec] Final|Native|Public|BlueprintCallable 
+	// void SetRestartStreamWhenPlaying(bool bNewRestartStreamWhenPlaying);                                                     // [0xc182ec8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.SetFullScreenComponents
-	// void SetFullScreenComponents(bool bEnable);                                                                              // [0xac8106c] Final|Native|Public|BlueprintCallable 
+	// void SetFullScreenComponents(bool bEnable);                                                                              // [0xc182e04] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.Seek
-	// void Seek(FTimespan SeekTime);                                                                                           // [0xac80f3c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void Seek(FTimespan SeekTime);                                                                                           // [0xc182d44] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.Restart
-	// void Restart();                                                                                                          // [0xac80f28] Final|Native|Public|BlueprintCallable 
+	// void Restart();                                                                                                          // [0xc182d30] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.PrintVideoPlayerDebugData
-	// void PrintVideoPlayerDebugData();                                                                                        // [0x6cb2178] Net|Native|Event|NetMulticast|Public|NetClient|BlueprintCallable 
+	// void PrintVideoPlayerDebugData();                                                                                        // [0x6d61aec] Net|Native|Event|NetMulticast|Public|NetClient|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.Play
-	// void Play();                                                                                                             // [0xac80f14] Final|Native|Public|BlueprintCallable 
+	// void Play();                                                                                                             // [0xc182d1c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.OnStreamingDeviceChanged
-	// void OnStreamingDeviceChanged();                                                                                         // [0xac80f00] Final|Native|Private 
+	// void OnStreamingDeviceChanged();                                                                                         // [0xc182d08] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.OnRep_StreamingSelectionMode
-	// void OnRep_StreamingSelectionMode();                                                                                     // [0xac807ac] Final|Native|Private 
+	// void OnRep_StreamingSelectionMode();                                                                                     // [0xc181f74] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.OnMediaSoundComponentActivated
-	// void OnMediaSoundComponentActivated(class UActorComponent* Component, bool bReset);                                      // [0xac80e48] Final|Native|Private 
+	// void OnMediaSoundComponentActivated(class UActorComponent* Component, bool bReset);                                      // [0xc182bd4] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.OnAudioAnalysisSpectrumUpdated
-	// void OnAudioAnalysisSpectrumUpdated(TArray<float>& MagnitudeArray);                                                      // [0xac80d6c] Final|Native|Private|HasOutParms 
+	// void OnAudioAnalysisSpectrumUpdated(TArray<float>& MagnitudeArray);                                                      // [0xc182af8] Final|Native|Private|HasOutParms 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.IsRestartStreamWhenPlaying
-	// bool IsRestartStreamWhenPlaying();                                                                                       // [0xac80d54] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsRestartStreamWhenPlaying();                                                                                       // [0xc182ae0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.IsDevicePlaying
-	// bool IsDevicePlaying();                                                                                                  // [0xac80d30] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsDevicePlaying();                                                                                                  // [0xc182abc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.IsComponentInitialized
-	// bool IsComponentInitialized();                                                                                           // [0xac80d18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsComponentInitialized();                                                                                           // [0xc182aa4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.Init
-	// void Init(bool InUsesAudio, bool InUsesVideo, class UStaticMeshComponent* ScreenMesh);                                   // [0xac80c0c] Final|Native|Public|BlueprintCallable 
+	// void Init(bool InUsesAudio, bool InUsesVideo, class UStaticMeshComponent* ScreenMesh);                                   // [0xc1828d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.HandleVideoStreamingTerminalError
-	// void HandleVideoStreamingTerminalError(EBaseMediaTerminalErrorReason ErrorReason);                                       // [0xac80b8c] Final|Native|Private 
+	// void HandleVideoStreamingTerminalError(EBaseMediaTerminalErrorReason ErrorReason);                                       // [0xc182818] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.HandleVideoStreamingSuccess
-	// void HandleVideoStreamingSuccess();                                                                                      // [0xac80b78] Final|Native|Private 
+	// void HandleVideoStreamingSuccess();                                                                                      // [0xc182804] Final|Native|Private 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.HandleCMSEvents
-	// void HandleCMSEvents(FVideoPlayerDeviceCMSEventData EventData, bool bEnable);                                            // [0xac8090c] Final|Native|Public|BlueprintCallable 
+	// void HandleCMSEvents(FVideoPlayerDeviceCMSEventData EventData, bool bEnable);                                            // [0xc1820d4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetStreamingVideoSelectionMode
-	// EFortStreamingVideoSelectionMode GetStreamingVideoSelectionMode();                                                       // [0xac808f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EFortStreamingVideoSelectionMode GetStreamingVideoSelectionMode();                                                       // [0xc1820bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetStreamingDevice
-	// class AActor* GetStreamingDevice();                                                                                      // [0xac808d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AActor* GetStreamingDevice();                                                                                      // [0xc182098] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetStreamingController
-	// class AFortCreativeStreamingController* GetStreamingController();                                                        // [0xac808ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortCreativeStreamingController* GetStreamingController();                                                        // [0xc182074] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetStreamingComponents
-	// FVideoPlayerDeviceComponents GetStreamingComponents();                                                                   // [0xac80824] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FVideoPlayerDeviceComponents GetStreamingComponents();                                                                   // [0xc181fec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetFortBaseStreamingVideo
-	// class UFortBaseStreamingVideo* GetFortBaseStreamingVideo();                                                              // [0xac8080c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFortBaseStreamingVideo* GetFortBaseStreamingVideo();                                                              // [0xc181fd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetDeviceState
-	// EFortStreamingVideoDeviceState GetDeviceState();                                                                         // [0xac807f4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EFortStreamingVideoDeviceState GetDeviceState();                                                                         // [0xc181fbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.GetDeviceComponents
-	// FVideoPlayerDeviceComponents GetDeviceComponents();                                                                      // [0xac807c0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FVideoPlayerDeviceComponents GetDeviceComponents();                                                                      // [0xc181f88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.ForceRestart
-	// void ForceRestart();                                                                                                     // [0xac807ac] Final|Native|Public|BlueprintCallable 
+	// void ForceRestart();                                                                                                     // [0xc181f74] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.DisableScreenAndAudio
-	// void DisableScreenAndAudio(bool bDisabled);                                                                              // [0xac8072c] Final|Native|Public|BlueprintCallable 
+	// void DisableScreenAndAudio(bool bDisabled);                                                                              // [0xc181eb0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.CMSEventStarted
-	// void CMSEventStarted(class UMediaCMSEvent* Event);                                                                       // [0xac804fc] Final|Native|Public  
+	// void CMSEventStarted(class UMediaCMSEvent* Event);                                                                       // [0xc181df0] Final|Native|Public  
 	// Function /Script/FortCreativeStreamingComponent.FortCreativeStreamingComponent.CMSEventEnded
-	// void CMSEventEnded(class UMediaCMSEvent* Event);                                                                         // [0xac802fc] Final|Native|Public  
+	// void CMSEventEnded(class UMediaCMSEvent* Event);                                                                         // [0xc181d30] Final|Native|Public  
 };
 
 /// Struct /Script/FortCreativeStreamingComponent.VideoPlayerDeviceComponents

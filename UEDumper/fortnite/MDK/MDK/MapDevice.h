@@ -24,12 +24,12 @@ public:
 
 	/// Functions
 	// Function /Script/MapDevice.CRDMapCustomizationComponent.SetOverrideSceneCapture
-	// void SetOverrideSceneCapture(FVector Location, FRotator Rotation, float Width, float Zoom, bool bUseClippingPlanes, float NearClipLength, float FarClipLength); // [0xac4a6b8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetOverrideSceneCapture(FVector Location, FRotator Rotation, float Width, float Zoom, bool bUseClippingPlanes, float NearClipLength, float FarClipLength); // [0xc13a76c] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/MapDevice.CRDMapCustomizationComponent.SetOverrideMapTexture
-	// void SetOverrideMapTexture(TWeakObjectPtr<UTexture2D*> TextureOverride, FVector Location, FRotator Rotation, float Width, float Zoom); // [0xac4a1b8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetOverrideMapTexture(TWeakObjectPtr<UTexture2D*> TextureOverride, FVector Location, FRotator Rotation, float Width, float Zoom); // [0xc13a3bc] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/MapDevice.CRDMapCustomizationComponent.SetOverrideMapMaterial
-	// void SetOverrideMapMaterial(TWeakObjectPtr<UMaterialInterface*> MaterialOverride, FVector Location, FRotator Rotation, float Width, float Zoom); // [0xac49cb8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetOverrideMapMaterial(TWeakObjectPtr<UMaterialInterface*> MaterialOverride, FVector Location, FRotator Rotation, float Width, float Zoom); // [0xc13a00c] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/MapDevice.CRDMapCustomizationComponent.ClearOverrides
-	// void ClearOverrides();                                                                                                   // [0xac49c64] Final|Native|Public|BlueprintCallable 
+	// void ClearOverrides();                                                                                                   // [0xc139fb8] Final|Native|Public|BlueprintCallable 
 };
 

@@ -39,7 +39,7 @@ public:
 
 	/// Functions
 	// Function /Script/DeployableTurretGameplayRuntime.DeployableTurretAnimInstance.SetNativeVariables
-	// void SetNativeVariables(class ABuildingGameplayActor* OwningTurretBGA, FDeployableTurretBPAnimData& AnimData);           // [0xa8efc84] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// void SetNativeVariables(class ABuildingGameplayActor* OwningTurretBGA, FDeployableTurretBPAnimData& AnimData);           // [0xb721a5c] Final|Native|Protected|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/DeployableTurretGameplayRuntime.DeployableTurretLibrary
@@ -54,13 +54,13 @@ public:
 
 	/// Functions
 	// Function /Script/DeployableTurretGameplayRuntime.DeployableTurretLibrary.FireAnalyticsEvent_DeployableTurretSessionEnd
-	// void FireAnalyticsEvent_DeployableTurretSessionEnd(class UObject* WorldContextObject, FUniqueNetIdRepl& TurretOwnerAccountId, TArray<FFortAnalyticsEventAttribute>& Attributes); // [0xa8efb18] Final|BlueprintAuthorityOnly|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void FireAnalyticsEvent_DeployableTurretSessionEnd(class UObject* WorldContextObject, FUniqueNetIdRepl& TurretOwnerAccountId, TArray<FFortAnalyticsEventAttribute>& Attributes); // [0xb7218bc] Final|BlueprintAuthorityOnly|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/DeployableTurretGameplayRuntime.DeployableTurretLibrary.DeployableTurret_GetAimLocationForTargetActor
-	// FVector DeployableTurret_GetAimLocationForTargetActor(class AActor* TargetActor, TMap<FGameplayTag, FScalableFloat>& NonPlayerPawnTargetTagToZOffsetMap); // [0xa8ef708] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// FVector DeployableTurret_GetAimLocationForTargetActor(class AActor* TargetActor, TMap<FGameplayTag, FScalableFloat>& NonPlayerPawnTargetTagToZOffsetMap); // [0xb72146c] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/DeployableTurretGameplayRuntime.DeployableTurretLibrary.DeployableTurret_EnableSkeletalMeshComponentBudgeting
-	// void DeployableTurret_EnableSkeletalMeshComponentBudgeting(class USkeletalMeshComponentBudgeted* SkeletalMesh, bool bEnable); // [0xa8ef610] Final|BlueprintCosmetic|Native|Static|Public|BlueprintCallable 
+	// void DeployableTurret_EnableSkeletalMeshComponentBudgeting(class USkeletalMeshComponentBudgeted* SkeletalMesh, bool bEnable); // [0xb7212f0] Final|BlueprintCosmetic|Native|Static|Public|BlueprintCallable 
 	// Function /Script/DeployableTurretGameplayRuntime.DeployableTurretLibrary.DeployableTurret_CalculateTargetingLaserScale
-	// float DeployableTurret_CalculateTargetingLaserScale(class AActor* TurretActor, FTransform& CurrentTurretAimTransform, FVector& LaserOrigin, float MaxLaserRange, float DistMult); // [0xa8ef338] Final|BlueprintCosmetic|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// float DeployableTurret_CalculateTargetingLaserScale(class AActor* TurretActor, FTransform& CurrentTurretAimTransform, FVector& LaserOrigin, float MaxLaserRange, float DistMult); // [0xb720ff4] Final|BlueprintCosmetic|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Struct /Script/DeployableTurretGameplayRuntime.DeployableTurretBPAnimData

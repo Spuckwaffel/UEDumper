@@ -70,75 +70,75 @@ public:
 
 	/// Functions
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.TransformNames
-	// void TransformNames(FSubjectFrameHandle& SubjectFrameHandle, TArray<FName>& TransformNames);                             // [0xb7decb8] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void TransformNames(FSubjectFrameHandle& SubjectFrameHandle, TArray<FName>& TransformNames);                             // [0xc9a7094] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.TransformName
-	// void TransformName(FLiveLinkTransform& LiveLinkTransform, FName& Name);                                                  // [0xb7deb5c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void TransformName(FLiveLinkTransform& LiveLinkTransform, FName& Name);                                                  // [0xc9a6f28] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.SetLiveLinkSubjectEnabled
-	// void SetLiveLinkSubjectEnabled(FLiveLinkSubjectKey SubjectKey, bool bEnabled);                                           // [0xb7de940] Final|Native|Static|Public|BlueprintCallable 
+	// void SetLiveLinkSubjectEnabled(FLiveLinkSubjectKey SubjectKey, bool bEnabled);                                           // [0xc9a6d94] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.RemoveSource
-	// bool RemoveSource(FLiveLinkSourceHandle& SourceHandle);                                                                  // [0xb7de894] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool RemoveSource(FLiveLinkSourceHandle& SourceHandle);                                                                  // [0xc9a6ce8] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.ParentBoneSpaceTransform
-	// void ParentBoneSpaceTransform(FLiveLinkTransform& LiveLinkTransform, FTransform& Transform);                             // [0xb7de6c0] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// void ParentBoneSpaceTransform(FLiveLinkTransform& LiveLinkTransform, FTransform& Transform);                             // [0xc9a6b14] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.NumberOfTransforms
-	// int32_t NumberOfTransforms(FSubjectFrameHandle& SubjectFrameHandle);                                                     // [0xb7de608] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// int32_t NumberOfTransforms(FSubjectFrameHandle& SubjectFrameHandle);                                                     // [0xc9a6a5c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.IsSpecificLiveLinkSubjectEnabled
-	// bool IsSpecificLiveLinkSubjectEnabled(FLiveLinkSubjectKey SubjectKey, bool bForThisFrame);                               // [0xb7de3e0] Final|Native|Static|Public|BlueprintCallable 
+	// bool IsSpecificLiveLinkSubjectEnabled(FLiveLinkSubjectKey SubjectKey, bool bForThisFrame);                               // [0xc9a68c4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.IsSourceStillValid
-	// bool IsSourceStillValid(FLiveLinkSourceHandle& SourceHandle);                                                            // [0xb7de320] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool IsSourceStillValid(FLiveLinkSourceHandle& SourceHandle);                                                            // [0xc9a6804] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.IsLiveLinkSubjectEnabled
-	// bool IsLiveLinkSubjectEnabled(FLiveLinkSubjectName SubjectName);                                                         // [0xb7de1f4] Final|Native|Static|Public|BlueprintCallable 
+	// bool IsLiveLinkSubjectEnabled(FLiveLinkSubjectName SubjectName);                                                         // [0xc9a6704] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.HasParent
-	// bool HasParent(FLiveLinkTransform& LiveLinkTransform);                                                                   // [0xb7de12c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool HasParent(FLiveLinkTransform& LiveLinkTransform);                                                                   // [0xc9a663c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetTransformByName
-	// void GetTransformByName(FSubjectFrameHandle& SubjectFrameHandle, FName TransformName, FLiveLinkTransform& LiveLinkTransform); // [0xb7ddf4c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetTransformByName(FSubjectFrameHandle& SubjectFrameHandle, FName TransformName, FLiveLinkTransform& LiveLinkTransform); // [0xc9a6454] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetTransformByIndex
-	// void GetTransformByIndex(FSubjectFrameHandle& SubjectFrameHandle, int32_t TransformIndex, FLiveLinkTransform& LiveLinkTransform); // [0xb7ddd6c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetTransformByIndex(FSubjectFrameHandle& SubjectFrameHandle, int32_t TransformIndex, FLiveLinkTransform& LiveLinkTransform); // [0xc9a626c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetSpecificLiveLinkSubjectRole
-	// class UClass* GetSpecificLiveLinkSubjectRole(FLiveLinkSubjectKey SubjectKey);                                            // [0xb7dd740] Final|Native|Static|Public|BlueprintCallable 
+	// class UClass* GetSpecificLiveLinkSubjectRole(FLiveLinkSubjectKey SubjectKey);                                            // [0xc9a5b88] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetSourceTypeFromGuid
-	// FText GetSourceTypeFromGuid(FGuid SourceGuid);                                                                           // [0xb7dd5dc] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FText GetSourceTypeFromGuid(FGuid SourceGuid);                                                                           // [0xc9a5a40] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetSourceType
-	// FText GetSourceType(FLiveLinkSourceHandle& SourceHandle);                                                                // [0xb7dd4ec] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FText GetSourceType(FLiveLinkSourceHandle& SourceHandle);                                                                // [0xc9a5950] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetSourceStatus
-	// FText GetSourceStatus(FLiveLinkSourceHandle& SourceHandle);                                                              // [0xb7dd3fc] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FText GetSourceStatus(FLiveLinkSourceHandle& SourceHandle);                                                              // [0xc9a5860] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetSourceMachineName
-	// FText GetSourceMachineName(FLiveLinkSourceHandle& SourceHandle);                                                         // [0xb7dd30c] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// FText GetSourceMachineName(FLiveLinkSourceHandle& SourceHandle);                                                         // [0xc9a5770] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetRootTransform
-	// void GetRootTransform(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkTransform& LiveLinkTransform);                   // [0xb7dd188] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetRootTransform(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkTransform& LiveLinkTransform);                   // [0xc9a55ec] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetPropertyValue
-	// bool GetPropertyValue(FLiveLinkBasicBlueprintData& BasicData, FName PropertyName, float& Value);                         // [0xb7dcf48] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool GetPropertyValue(FLiveLinkBasicBlueprintData& BasicData, FName PropertyName, float& Value);                         // [0xc9a53a0] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetParent
-	// void GetParent(FLiveLinkTransform& LiveLinkTransform, FLiveLinkTransform& Parent);                                       // [0xb7dcde8] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetParent(FLiveLinkTransform& LiveLinkTransform, FLiveLinkTransform& Parent);                                       // [0xc9a5240] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetMetadata
-	// void GetMetadata(FSubjectFrameHandle& SubjectFrameHandle, FSubjectMetadata& MetaData);                                   // [0xb7dcc38] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetMetadata(FSubjectFrameHandle& SubjectFrameHandle, FSubjectMetadata& MetaData);                                   // [0xc9a5090] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetLiveLinkSubjects
-	// TArray<FLiveLinkSubjectKey> GetLiveLinkSubjects(bool bIncludeDisabledSubject, bool bIncludeVirtualSubject);              // [0xb7dcae4] Final|Native|Static|Public|BlueprintCallable 
+	// TArray<FLiveLinkSubjectKey> GetLiveLinkSubjects(bool bIncludeDisabledSubject, bool bIncludeVirtualSubject);              // [0xc9a4ebc] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetLiveLinkSubjectRole
-	// class UClass* GetLiveLinkSubjectRole(FLiveLinkSubjectName SubjectName);                                                  // [0xb7dc9a8] Final|Native|Static|Public|BlueprintCallable 
+	// class UClass* GetLiveLinkSubjectRole(FLiveLinkSubjectName SubjectName);                                                  // [0xc9a4db0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetLiveLinkEnabledSubjectNames
-	// TArray<FLiveLinkSubjectName> GetLiveLinkEnabledSubjectNames(bool bIncludeVirtualSubject);                                // [0xb7dc8f0] Final|Native|Static|Public|BlueprintCallable 
+	// TArray<FLiveLinkSubjectName> GetLiveLinkEnabledSubjectNames(bool bIncludeVirtualSubject);                                // [0xc9a4cb4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetCurves
-	// void GetCurves(FSubjectFrameHandle& SubjectFrameHandle, TMap<FName, float>& Curves);                                     // [0xb7dc768] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetCurves(FSubjectFrameHandle& SubjectFrameHandle, TMap<FName, float>& Curves);                                     // [0xc9a4b2c] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetChildren
-	// void GetChildren(FLiveLinkTransform& LiveLinkTransform, TArray<FLiveLinkTransform>& Children);                           // [0xb7dc650] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetChildren(FLiveLinkTransform& LiveLinkTransform, TArray<FLiveLinkTransform>& Children);                           // [0xc9a4a14] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetBasicData
-	// void GetBasicData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkBasicBlueprintData& BasicBlueprintData);             // [0xb7dc4e0] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetBasicData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkBasicBlueprintData& BasicBlueprintData);             // [0xc9a48a4] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetAnimationStaticData
-	// bool GetAnimationStaticData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkSkeletonStaticData& AnimationStaticData);  // [0xb7dc018] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool GetAnimationStaticData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkSkeletonStaticData& AnimationStaticData);  // [0xc9a4428] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.GetAnimationFrameData
-	// bool GetAnimationFrameData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkAnimationFrameData& AnimationFrameData);    // [0xb7dbecc] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool GetAnimationFrameData(FSubjectFrameHandle& SubjectFrameHandle, FLiveLinkAnimationFrameData& AnimationFrameData);    // [0xc9a42dc] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.EvaluateLiveLinkFrameWithSpecificRole
-	// bool EvaluateLiveLinkFrameWithSpecificRole(FLiveLinkSubjectName SubjectName, class UClass* Role, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xb7dbb5c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool EvaluateLiveLinkFrameWithSpecificRole(FLiveLinkSubjectName SubjectName, class UClass* Role, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xc9a40a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.EvaluateLiveLinkFrameAtWorldTimeOffset
-	// bool EvaluateLiveLinkFrameAtWorldTimeOffset(FLiveLinkSubjectName SubjectName, class UClass* Role, float WorldTimeOffset, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xb7db700] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool EvaluateLiveLinkFrameAtWorldTimeOffset(FLiveLinkSubjectName SubjectName, class UClass* Role, float WorldTimeOffset, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xc9a3dd8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.EvaluateLiveLinkFrameAtSceneTime
-	// bool EvaluateLiveLinkFrameAtSceneTime(FLiveLinkSubjectName SubjectName, class UClass* Role, FTimecode SceneTime, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xb7db2bc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool EvaluateLiveLinkFrameAtSceneTime(FLiveLinkSubjectName SubjectName, class UClass* Role, FTimecode SceneTime, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xc9a3b14] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.EvaluateLiveLinkFrame
-	// bool EvaluateLiveLinkFrame(FLiveLinkSubjectRepresentation SubjectRepresentation, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xb7db02c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool EvaluateLiveLinkFrame(FLiveLinkSubjectRepresentation SubjectRepresentation, FLiveLinkBaseBlueprintData& OutBlueprintData); // [0xc9a394c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.ComponentSpaceTransform
-	// void ComponentSpaceTransform(FLiveLinkTransform& LiveLinkTransform, FTransform& Transform);                              // [0xb7dacb8] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// void ComponentSpaceTransform(FLiveLinkTransform& LiveLinkTransform, FTransform& Transform);                              // [0xc9a35d8] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
 	// Function /Script/LiveLink.LiveLinkBlueprintLibrary.ChildCount
-	// int32_t ChildCount(FLiveLinkTransform& LiveLinkTransform);                                                               // [0xb7dabd0] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
+	// int32_t ChildCount(FLiveLinkTransform& LiveLinkTransform);                                                               // [0xc9a34f0] Final|Native|Static|Private|HasOutParms|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/LiveLink.LiveLinkComponent
@@ -154,13 +154,13 @@ public:
 
 	/// Functions
 	// Function /Script/LiveLink.LiveLinkComponent.GetSubjectDataAtWorldTime
-	// void GetSubjectDataAtWorldTime(FName SubjectName, float WorldTime, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle); // [0xb7ddbd8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetSubjectDataAtWorldTime(FName SubjectName, float WorldTime, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle); // [0xc9a606c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkComponent.GetSubjectDataAtSceneTime
-	// void GetSubjectDataAtSceneTime(FName SubjectName, FTimecode& SceneTime, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle); // [0xb7dd9e0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetSubjectDataAtSceneTime(FName SubjectName, FTimecode& SceneTime, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle); // [0xc9a5e2c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkComponent.GetSubjectData
-	// void GetSubjectData(FName SubjectName, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle);                         // [0xb7dd898] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetSubjectData(FName SubjectName, bool& bSuccess, FSubjectFrameHandle& SubjectFrameHandle);                         // [0xc9a5cb0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkComponent.GetAvailableSubjectNames
-	// void GetAvailableSubjectNames(TArray<FName>& SubjectNames);                                                              // [0xb7dc444] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetAvailableSubjectNames(TArray<FName>& SubjectNames);                                                              // [0xc9a47c8] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/LiveLink.LiveLinkDrivenComponent
@@ -189,11 +189,11 @@ public:
 
 	/// Functions
 	// Function /Script/LiveLink.LiveLinkMessageBusFinder.GetAvailableProviders
-	// void GetAvailableProviders(class UObject* WorldContextObject, FLatentActionInfo LatentInfo, float duration, TArray<FProviderPollResult>& AvailableProviders); // [0xb7dc178] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetAvailableProviders(class UObject* WorldContextObject, FLatentActionInfo LatentInfo, float duration, TArray<FProviderPollResult>& AvailableProviders); // [0xc9a4588] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkMessageBusFinder.ConstructMessageBusFinder
-	// class ULiveLinkMessageBusFinder* ConstructMessageBusFinder();                                                            // [0xb7db000] Final|Native|Static|Public|BlueprintCallable 
+	// class ULiveLinkMessageBusFinder* ConstructMessageBusFinder();                                                            // [0xc9a3920] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkMessageBusFinder.ConnectToProvider
-	// void ConnectToProvider(FProviderPollResult& Provider, FLiveLinkSourceHandle& SourceHandle);                              // [0xb7dae8c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void ConnectToProvider(FProviderPollResult& Provider, FLiveLinkSourceHandle& SourceHandle);                              // [0xc9a37ac] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/LiveLink.LiveLinkMessageBusSourceFactory
@@ -217,11 +217,11 @@ public:
 };
 
 /// Class /Script/LiveLink.LiveLinkPreset
-/// Size: 0x0028 (0x000028 - 0x000050)
+/// Size: 0x0030 (0x000028 - 0x000058)
 class ULiveLinkPreset : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 80;
+	static inline constexpr uint64_t __MDKClassSize = 88;
 
 public:
 	CMember(TArray<FLiveLinkSourcePreset>)             Sources                                                     OFFSET(get<T>, {0x28, 16, 0, 0})
@@ -230,13 +230,13 @@ public:
 
 	/// Functions
 	// Function /Script/LiveLink.LiveLinkPreset.BuildFromClient
-	// void BuildFromClient();                                                                                                  // [0xb7dabbc] Final|Native|Public|BlueprintCallable 
+	// void BuildFromClient();                                                                                                  // [0xc9a34dc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkPreset.ApplyToClientLatent
-	// void ApplyToClientLatent(class UObject* WorldContextObject, FLatentActionInfo LatentInfo);                               // [0xb7daa2c] Final|Native|Public|BlueprintCallable 
+	// void ApplyToClientLatent(class UObject* WorldContextObject, FLatentActionInfo LatentInfo);                               // [0xc9a337c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkPreset.ApplyToClient
-	// bool ApplyToClient();                                                                                                    // [0xb7daa08] Final|Native|Public|BlueprintCallable|Const 
+	// bool ApplyToClient();                                                                                                    // [0xc9a3358] Final|Native|Public|BlueprintCallable|Const 
 	// Function /Script/LiveLink.LiveLinkPreset.AddToClient
-	// bool AddToClient(bool bRecreatePresets);                                                                                 // [0xb7da978] Final|Native|Public|BlueprintCallable|Const 
+	// bool AddToClient(bool bRecreatePresets);                                                                                 // [0xc9a3288] Final|Native|Public|BlueprintCallable|Const 
 };
 
 /// Class /Script/LiveLink.LiveLinkUserSettings
@@ -361,13 +361,13 @@ public:
 
 	/// Functions
 	// Function /Script/LiveLink.LiveLinkBlueprintVirtualSubject.UpdateVirtualSubjectStaticData_Internal
-	// bool UpdateVirtualSubjectStaticData_Internal(FLiveLinkBaseStaticData& InStruct);                                         // [0xb7df044] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool UpdateVirtualSubjectStaticData_Internal(FLiveLinkBaseStaticData& InStruct);                                         // [0xc9a7388] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintVirtualSubject.UpdateVirtualSubjectFrameData_Internal
-	// bool UpdateVirtualSubjectFrameData_Internal(FLiveLinkBaseFrameData& InStruct, bool bInShouldStampCurrentTime);           // [0xb7deddc] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool UpdateVirtualSubjectFrameData_Internal(FLiveLinkBaseFrameData& InStruct, bool bInShouldStampCurrentTime);           // [0xc9a71f4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LiveLink.LiveLinkBlueprintVirtualSubject.OnUpdate
-	// void OnUpdate();                                                                                                         // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnUpdate();                                                                                                         // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/LiveLink.LiveLinkBlueprintVirtualSubject.OnInitialize
-	// void OnInitialize();                                                                                                     // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnInitialize();                                                                                                     // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Struct /Script/LiveLink.LiveLinkRetargetAssetReference

@@ -10,6 +10,7 @@
 /// dependency: Engine
 /// dependency: GameplayTags
 /// dependency: MassEntity
+/// dependency: MassSignals
 /// dependency: MassSpawner
 /// dependency: SmartObjectsModule
 /// dependency: ZoneGraph
@@ -53,6 +54,76 @@ class UMassSmartObjectUserFragmentDeinitializer : public UMassObserverProcessor
 { 
 	friend MDKHandler;
 	static inline constexpr uint64_t __MDKClassSize = 896;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassSmartObjectInitializerBase
+/// Size: 0x02B8 (0x0000D8 - 0x000390)
+class UMassSmartObjectInitializerBase : public UMassObserverProcessor
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassSmartObjectDeinitializerBase
+/// Size: 0x02B8 (0x0000D8 - 0x000390)
+class UMassSmartObjectDeinitializerBase : public UMassObserverProcessor
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassActiveSmartObjectInitializer
+/// Size: 0x0000 (0x000390 - 0x000390)
+class UMassActiveSmartObjectInitializer : public UMassSmartObjectInitializerBase
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassActiveSmartObjectDeinitializer
+/// Size: 0x0000 (0x000390 - 0x000390)
+class UMassActiveSmartObjectDeinitializer : public UMassSmartObjectDeinitializerBase
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassActorInstanceHandleInitializer
+/// Size: 0x0000 (0x000390 - 0x000390)
+class UMassActorInstanceHandleInitializer : public UMassSmartObjectInitializerBase
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassActorInstanceHandleDeinitializer
+/// Size: 0x0000 (0x000390 - 0x000390)
+class UMassActorInstanceHandleDeinitializer : public UMassSmartObjectDeinitializerBase
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 912;
+
+public:
+};
+
+/// Class /Script/MassSmartObjects.MassActiveSmartObjectSignalProcessor
+/// Size: 0x0540 (0x000420 - 0x000960)
+class UMassActiveSmartObjectSignalProcessor : public UMassSignalProcessorBase
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 2400;
 
 public:
 };
@@ -119,6 +190,30 @@ class FMassSmartObjectTimedBehaviorFragment : public FMassFragment
 
 public:
 	DMember(float)                                     UseTime                                                     OFFSET(get<float>, {0x0, 4, 0, 0})
+};
+
+/// Struct /Script/MassSmartObjects.MassInActiveSmartObjectsRangeTag
+/// Size: 0x0000 (0x000001 - 0x000001)
+class FMassInActiveSmartObjectsRangeTag : public FMassTag
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 1;
+
+public:
+};
+
+/// Struct /Script/MassSmartObjects.SmartObjectRegistrationFragment
+/// Size: 0x000F (0x000001 - 0x000010)
+class FSmartObjectRegistrationFragment : public FMassFragment
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	CMember(TWeakObjectPtr<USmartObjectDefinition*>)   Asset                                                       OFFSET(get<T>, {0x0, 8, 0, 0})
+	SMember(FSmartObjectHandle)                        Handle                                                      OFFSET(getStruct<T>, {0x8, 8, 0, 0})
 };
 
 /// Struct /Script/MassSmartObjects.SmartObjectCandidateSlot

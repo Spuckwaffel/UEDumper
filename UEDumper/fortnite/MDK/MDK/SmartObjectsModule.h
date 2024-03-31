@@ -88,69 +88,69 @@ public:
 
 	/// Functions
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.SmartObjectClaimHandle_Invalid
-	// FSmartObjectClaimHandle SmartObjectClaimHandle_Invalid();                                                                // [0x7756768] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FSmartObjectClaimHandle SmartObjectClaimHandle_Invalid();                                                                // [0x7b17ee4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.SetValueAsSOClaimHandle
-	// void SetValueAsSOClaimHandle(class UBlackboardComponent* BlackboardComponent, FName& KeyName, FSmartObjectClaimHandle Value); // [0x7756580] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetValueAsSOClaimHandle(class UBlackboardComponent* BlackboardComponent, FName& KeyName, FSmartObjectClaimHandle Value); // [0x7b17d24] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.SetSmartObjectEnabled
-	// bool SetSmartObjectEnabled(class AActor* SmartObjectActor, bool bEnabled);                                               // [0x7756118] Final|Native|Static|Public|BlueprintCallable 
+	// bool SetSmartObjectEnabled(class AActor* SmartObjectActor, bool bEnabled);                                               // [0x7b178c4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.SetMultipleSmartObjectsEnabled
-	// bool SetMultipleSmartObjectsEnabled(TArray<AActor*>& SmartObjectActors, bool bEnabled);                                  // [0x7755d80] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool SetMultipleSmartObjectsEnabled(TArray<AActor*>& SmartObjectActors, bool bEnabled);                                  // [0x7b175f8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.SetBlackboardValueAsSOClaimHandle
-	// void SetBlackboardValueAsSOClaimHandle(class UBTNode* NodeOwner, FBlackboardKeySelector& Key, FSmartObjectClaimHandle& Value); // [0x775566c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetBlackboardValueAsSOClaimHandle(class UBTNode* NodeOwner, FBlackboardKeySelector& Key, FSmartObjectClaimHandle& Value); // [0x7b1705c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.RemoveSmartObject
-	// bool RemoveSmartObject(class AActor* SmartObjectActor);                                                                  // [0x77551c0] Final|Native|Static|Public|BlueprintCallable 
+	// bool RemoveSmartObject(class AActor* SmartObjectActor);                                                                  // [0x7b16bf0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.RemoveMultipleSmartObjects
-	// bool RemoveMultipleSmartObjects(TArray<AActor*>& SmartObjectActors);                                                     // [0x77550e4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool RemoveMultipleSmartObjects(TArray<AActor*>& SmartObjectActors);                                                     // [0x7b16b14] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.NotEqual_SmartObjectSlotHandleSmartObjectSlotHandle
-	// bool NotEqual_SmartObjectSlotHandleSmartObjectSlotHandle(FSmartObjectSlotHandle& A, FSmartObjectSlotHandle& B);          // [0x7754f38] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_SmartObjectSlotHandleSmartObjectSlotHandle(FSmartObjectSlotHandle& A, FSmartObjectSlotHandle& B);          // [0x7b16968] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.NotEqual_SmartObjectHandleSmartObjectHandle
-	// bool NotEqual_SmartObjectHandleSmartObjectHandle(FSmartObjectHandle& A, FSmartObjectHandle& B);                          // [0x7754e4c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_SmartObjectHandleSmartObjectHandle(FSmartObjectHandle& A, FSmartObjectHandle& B);                          // [0x7b1687c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.MarkSmartObjectSlotAsOccupied
-	// class USmartObjectBehaviorDefinition* MarkSmartObjectSlotAsOccupied(class UObject* WorldContextObject, FSmartObjectClaimHandle ClaimHandle, class UClass* DefinitionClass); // [0x7754bcc] Final|Native|Static|Public|BlueprintCallable 
+	// class USmartObjectBehaviorDefinition* MarkSmartObjectSlotAsOccupied(class UObject* WorldContextObject, FSmartObjectClaimHandle ClaimHandle, class UClass* DefinitionClass); // [0x7b16658] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.MarkSmartObjectSlotAsFree
-	// bool MarkSmartObjectSlotAsFree(class UObject* WorldContextObject, FSmartObjectClaimHandle ClaimHandle);                  // [0x7754a38] Final|Native|Static|Public|BlueprintCallable 
+	// bool MarkSmartObjectSlotAsFree(class UObject* WorldContextObject, FSmartObjectClaimHandle ClaimHandle);                  // [0x7b164d4] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.MarkSmartObjectSlotAsClaimed
-	// FSmartObjectClaimHandle MarkSmartObjectSlotAsClaimed(class UObject* WorldContextObject, FSmartObjectSlotHandle SlotHandle, class AActor* UserActor, ESmartObjectClaimPriority ClaimPriority); // [0x77546f4] Final|Native|Static|Public|BlueprintCallable 
+	// FSmartObjectClaimHandle MarkSmartObjectSlotAsClaimed(class UObject* WorldContextObject, FSmartObjectSlotHandle SlotHandle, class AActor* UserActor, ESmartObjectClaimPriority ClaimPriority); // [0x7b1627c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.IsValidSmartObjectSlotHandle
-	// bool IsValidSmartObjectSlotHandle(FSmartObjectSlotHandle& Handle);                                                       // [0x7754640] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool IsValidSmartObjectSlotHandle(FSmartObjectSlotHandle& Handle);                                                       // [0x7b161c8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.IsValidSmartObjectHandle
-	// bool IsValidSmartObjectHandle(FSmartObjectHandle& Handle);                                                               // [0x77545ac] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool IsValidSmartObjectHandle(FSmartObjectHandle& Handle);                                                               // [0x7b16134] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.IsValidSmartObjectClaimHandle
-	// bool IsValidSmartObjectClaimHandle(FSmartObjectClaimHandle Handle);                                                      // [0x7754458] Final|Native|Static|Public|BlueprintCallable 
+	// bool IsValidSmartObjectClaimHandle(FSmartObjectClaimHandle Handle);                                                      // [0x7b16054] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.GetValueAsSOClaimHandle
-	// FSmartObjectClaimHandle GetValueAsSOClaimHandle(class UBlackboardComponent* BlackboardComponent, FName& KeyName);        // [0x7753df4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FSmartObjectClaimHandle GetValueAsSOClaimHandle(class UBlackboardComponent* BlackboardComponent, FName& KeyName);        // [0x7b15b20] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.GetBlackboardValueAsSOClaimHandle
-	// FSmartObjectClaimHandle GetBlackboardValueAsSOClaimHandle(class UBTNode* NodeOwner, FBlackboardKeySelector& Key);        // [0x7752cec] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FSmartObjectClaimHandle GetBlackboardValueAsSOClaimHandle(class UBTNode* NodeOwner, FBlackboardKeySelector& Key);        // [0x7b14a18] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.FindSmartObjectsInTargetingRequest
-	// bool FindSmartObjectsInTargetingRequest(class UObject* WorldContextObject, FSmartObjectRequestFilter& Filter, FTargetingRequestHandle TargetingHandle, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7752338] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool FindSmartObjectsInTargetingRequest(class UObject* WorldContextObject, FSmartObjectRequestFilter& Filter, FTargetingRequestHandle TargetingHandle, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b136e0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.FindSmartObjectsInList
-	// bool FindSmartObjectsInList(class UObject* WorldContextObject, FSmartObjectRequestFilter& Filter, TArray<AActor*>& ActorList, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7751f50] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool FindSmartObjectsInList(class UObject* WorldContextObject, FSmartObjectRequestFilter& Filter, TArray<AActor*>& ActorList, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b128e4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.FindSmartObjectsInComponent
-	// bool FindSmartObjectsInComponent(FSmartObjectRequestFilter& Filter, class USmartObjectComponent* SmartObjectComponent, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7751b9c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool FindSmartObjectsInComponent(FSmartObjectRequestFilter& Filter, class USmartObjectComponent* SmartObjectComponent, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b12068] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.FindSmartObjectsInActor
-	// bool FindSmartObjectsInActor(FSmartObjectRequestFilter& Filter, class AActor* SearchActor, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x77517e8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool FindSmartObjectsInActor(FSmartObjectRequestFilter& Filter, class AActor* SearchActor, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b117ec] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Equal_SmartObjectSlotHandleSmartObjectSlotHandle
-	// bool Equal_SmartObjectSlotHandleSmartObjectSlotHandle(FSmartObjectSlotHandle& A, FSmartObjectSlotHandle& B);             // [0x7751220] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool Equal_SmartObjectSlotHandleSmartObjectSlotHandle(FSmartObjectSlotHandle& A, FSmartObjectSlotHandle& B);             // [0x7b10d5c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Equal_SmartObjectHandleSmartObjectHandle
-	// bool Equal_SmartObjectHandleSmartObjectHandle(FSmartObjectHandle& A, FSmartObjectHandle& B);                             // [0x7751134] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool Equal_SmartObjectHandleSmartObjectHandle(FSmartObjectHandle& A, FSmartObjectHandle& B);                             // [0x7b10c70] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Conv_SmartObjectSlotHandleToString
-	// FString Conv_SmartObjectSlotHandleToString(FSmartObjectSlotHandle& Handle);                                              // [0x775107c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FString Conv_SmartObjectSlotHandleToString(FSmartObjectSlotHandle& Handle);                                              // [0x7b10bb8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Conv_SmartObjectRequestResultToString
-	// FString Conv_SmartObjectRequestResultToString(FSmartObjectRequestResult& Result);                                        // [0x7750fd0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FString Conv_SmartObjectRequestResultToString(FSmartObjectRequestResult& Result);                                        // [0x7b10b0c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Conv_SmartObjectHandleToString
-	// FString Conv_SmartObjectHandleToString(FSmartObjectHandle& Handle);                                                      // [0x7750f28] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FString Conv_SmartObjectHandleToString(FSmartObjectHandle& Handle);                                                      // [0x7b10a64] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Conv_SmartObjectDefinitionToString
-	// FString Conv_SmartObjectDefinitionToString(class USmartObjectDefinition* Definition);                                    // [0x7750e94] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString Conv_SmartObjectDefinitionToString(class USmartObjectDefinition* Definition);                                    // [0x7b10990] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.Conv_SmartObjectClaimHandleToString
-	// FString Conv_SmartObjectClaimHandleToString(FSmartObjectClaimHandle& Result);                                            // [0x7750de4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FString Conv_SmartObjectClaimHandleToString(FSmartObjectClaimHandle& Result);                                            // [0x7b108e0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.AddSmartObject
-	// bool AddSmartObject(class AActor* SmartObjectActor);                                                                     // [0x77507fc] Final|Native|Static|Public|BlueprintCallable 
+	// bool AddSmartObject(class AActor* SmartObjectActor);                                                                     // [0x7b10370] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.AddOrRemoveSmartObject
-	// bool AddOrRemoveSmartObject(class AActor* SmartObject, bool bEnabled);                                                   // [0x7750708] Final|Native|Static|Public|BlueprintCallable 
+	// bool AddOrRemoveSmartObject(class AActor* SmartObject, bool bEnabled);                                                   // [0x7b101f8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.AddOrRemoveMultipleSmartObjects
-	// bool AddOrRemoveMultipleSmartObjects(TArray<AActor*>& SmartObjectActors, bool bAdd);                                     // [0x775059c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool AddOrRemoveMultipleSmartObjects(TArray<AActor*>& SmartObjectActors, bool bAdd);                                     // [0x7b1008c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectBlueprintFunctionLibrary.AddMultipleSmartObjects
-	// bool AddMultipleSmartObjects(TArray<AActor*>& SmartObjectActors);                                                        // [0x77504c0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool AddMultipleSmartObjects(TArray<AActor*>& SmartObjectActors);                                                        // [0x7b0ffb0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/SmartObjectsModule.SmartObjectCollection
@@ -184,25 +184,25 @@ public:
 
 	/// Functions
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.SetSmartObjectEnabledForReason
-	// bool SetSmartObjectEnabledForReason(FGameplayTag ReasonTag, bool bEnabled);                                              // [0x77562a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SetSmartObjectEnabledForReason(FGameplayTag ReasonTag, bool bEnabled);                                              // [0x7b17b14] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.SetSmartObjectEnabled
-	// bool SetSmartObjectEnabled(bool bEnable);                                                                                // [0x775620c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SetSmartObjectEnabled(bool bEnable);                                                                                // [0x7b17a3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.SetDefinitionAsset
-	// void SetDefinitionAsset(class USmartObjectDefinition* Definition);                                                       // [0x77557f8] Final|Native|Protected|BlueprintCallable 
+	// void SetDefinitionAsset(class USmartObjectDefinition* Definition);                                                       // [0x7b17220] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.SetDefinition
-	// void SetDefinition(class USmartObjectDefinition* DefinitionAsset);                                                       // [0x77557f8] Final|Native|Public|BlueprintCallable 
+	// void SetDefinition(class USmartObjectDefinition* DefinitionAsset);                                                       // [0x7b17220] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.ReceiveOnEvent
-	// void ReceiveOnEvent(FSmartObjectEventData& EventData, class AActor* Interactor);                                         // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void ReceiveOnEvent(FSmartObjectEventData& EventData, class AActor* Interactor);                                         // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.IsSmartObjectEnabledForReason
-	// bool IsSmartObjectEnabledForReason(FGameplayTag ReasonTag);                                                              // [0x7754288] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSmartObjectEnabledForReason(FGameplayTag ReasonTag);                                                              // [0x7b15eb0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.IsSmartObjectEnabled
-	// bool IsSmartObjectEnabled();                                                                                             // [0x7754264] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSmartObjectEnabled();                                                                                             // [0x7b15e8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.IsBoundToSimulation
-	// bool IsBoundToSimulation();                                                                                              // [0x7753eec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsBoundToSimulation();                                                                                              // [0x7b15c50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.GetDefinitionAsset
-	// class USmartObjectDefinition* GetDefinitionAsset();                                                                      // [0x7752e74] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// class USmartObjectDefinition* GetDefinitionAsset();                                                                      // [0x7b14be0] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectComponent.GetDefinition
-	// class USmartObjectDefinition* GetDefinition();                                                                           // [0x7752e74] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USmartObjectDefinition* GetDefinition();                                                                           // [0x7b14be0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SmartObjectsModule.SmartObjectContainerRenderingComponent
@@ -260,25 +260,25 @@ public:
 
 	/// Functions
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.SetUserTagFilter
-	// void SetUserTagFilter(FGameplayTagQuery& InUserTagFilter);                                                               // [0x77564c0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetUserTagFilter(FGameplayTagQuery& InUserTagFilter);                                                               // [0x7b17c64] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.K2_GetSlots
-	// TArray<FSmartObjectSlotDefinition> K2_GetSlots();                                                                        // [0x77546d8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FSmartObjectSlotDefinition> K2_GetSlots();                                                                        // [0x7b16260] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.IsValidSlotIndex
-	// bool IsValidSlotIndex(int32_t SlotIndex);                                                                                // [0x77543c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsValidSlotIndex(int32_t SlotIndex);                                                                                // [0x7b15f7c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetUserTagsFilteringPolicy
-	// ESmartObjectTagFilteringPolicy GetUserTagsFilteringPolicy();                                                             // [0x7753ddc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ESmartObjectTagFilteringPolicy GetUserTagsFilteringPolicy();                                                             // [0x7b15b08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetUserTagFilter
-	// FGameplayTagQuery GetUserTagFilter();                                                                                    // [0x7753dc0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagQuery GetUserTagFilter();                                                                                    // [0x7b15aec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetSlotWorldTransform
-	// FTransform GetSlotWorldTransform(int32_t SlotIndex, FTransform& OwnerTransform);                                         // [0x7753938] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FTransform GetSlotWorldTransform(int32_t SlotIndex, FTransform& OwnerTransform);                                         // [0x7b155f8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetSlotActivityTags
-	// void GetSlotActivityTags(int32_t SlotIndex, FGameplayTagContainer& OutActivityTags);                                     // [0x7753078] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSlotActivityTags(int32_t SlotIndex, FGameplayTagContainer& OutActivityTags);                                     // [0x7b14db8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetMutableSlot
-	// FSmartObjectSlotDefinition GetMutableSlot(int32_t Index);                                                                // [0x7752fe0] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// FSmartObjectSlotDefinition GetMutableSlot(int32_t Index);                                                                // [0x7b14cdc] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetBounds
-	// FBox GetBounds();                                                                                                        // [0x7752e2c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FBox GetBounds();                                                                                                        // [0x7b14b98] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectDefinition.GetActivityTags
-	// FGameplayTagContainer GetActivityTags();                                                                                 // [0x775272c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagContainer GetActivityTags();                                                                                 // [0x7b14000] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SmartObjectsModule.SmartObjectSpacePartition
@@ -352,57 +352,57 @@ public:
 
 	/// Functions
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.Use
-	// class USmartObjectBehaviorDefinition* Use(FSmartObjectClaimHandle& ClaimHandle, class UClass* DefinitionClass);          // [0x7756790] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// class USmartObjectBehaviorDefinition* Use(FSmartObjectClaimHandle& ClaimHandle, class UClass* DefinitionClass);          // [0x7b17f0c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.SetSlotEnabled
-	// bool SetSlotEnabled(FSmartObjectSlotHandle SlotHandle, bool bEnabled);                                                   // [0x7755eec] Final|Native|Public|BlueprintCallable 
+	// bool SetSlotEnabled(FSmartObjectSlotHandle SlotHandle, bool bEnabled);                                                   // [0x7b17764] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.SetEnabledForReason
-	// bool SetEnabledForReason(FSmartObjectHandle Handle, FGameplayTag ReasonTag, bool bEnabled);                              // [0x7755a9c] Final|Native|Public|BlueprintCallable 
+	// bool SetEnabledForReason(FSmartObjectHandle Handle, FGameplayTag ReasonTag, bool bEnabled);                              // [0x7b17438] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.SetEnabled
-	// bool SetEnabled(FSmartObjectHandle Handle, bool bEnabled);                                                               // [0x7755878] Final|Native|Public|BlueprintCallable 
+	// bool SetEnabled(FSmartObjectHandle Handle, bool bEnabled);                                                               // [0x7b172e0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.RemoveTagFromSlot
-	// bool RemoveTagFromSlot(FSmartObjectSlotHandle SlotHandle, FGameplayTag& tag);                                            // [0x775542c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool RemoveTagFromSlot(FSmartObjectSlotHandle SlotHandle, FGameplayTag& tag);                                            // [0x7b16e84] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.RemoveTagFromInstance
-	// void RemoveTagFromInstance(FSmartObjectHandle Handle, FGameplayTag& tag);                                                // [0x7755278] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void RemoveTagFromInstance(FSmartObjectHandle Handle, FGameplayTag& tag);                                                // [0x7b16ce8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.Release
-	// bool Release(FSmartObjectClaimHandle& ClaimHandle);                                                                      // [0x7755040] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool Release(FSmartObjectClaimHandle& ClaimHandle);                                                                      // [0x7b16a70] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.IsEnabledForReason
-	// bool IsEnabledForReason(FSmartObjectHandle Handle, FGameplayTag ReasonTag);                                              // [0x7754048] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabledForReason(FSmartObjectHandle Handle, FGameplayTag ReasonTag);                                              // [0x7b15d3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.IsEnabled
-	// bool IsEnabled(FSmartObjectHandle Handle);                                                                               // [0x7753f08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabled(FSmartObjectHandle Handle);                                                                               // [0x7b15c6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSmartObjectComponentByRequestResult
-	// class USmartObjectComponent* GetSmartObjectComponentByRequestResult(FSmartObjectRequestResult& Result, ETrySpawnActorIfDehydrated TrySpawnActorIfDehydrated); // [0x7753c30] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class USmartObjectComponent* GetSmartObjectComponentByRequestResult(FSmartObjectRequestResult& Result, ETrySpawnActorIfDehydrated TrySpawnActorIfDehydrated); // [0x7b15950] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSmartObjectComponent
-	// class USmartObjectComponent* GetSmartObjectComponent(FSmartObjectClaimHandle& ClaimHandle, ETrySpawnActorIfDehydrated TrySpawnActorIfDehydrated); // [0x7753a9c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class USmartObjectComponent* GetSmartObjectComponent(FSmartObjectClaimHandle& ClaimHandle, ETrySpawnActorIfDehydrated TrySpawnActorIfDehydrated); // [0x7b157b0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSlotTransformFromRequestResult
-	// bool GetSlotTransformFromRequestResult(FSmartObjectRequestResult& RequestResult, FTransform& OutSlotTransform);          // [0x7753788] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetSlotTransformFromRequestResult(FSmartObjectRequestResult& RequestResult, FTransform& OutSlotTransform);          // [0x7b15438] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSlotTransform
-	// bool GetSlotTransform(FSmartObjectClaimHandle& ClaimHandle, FTransform& OutSlotTransform);                               // [0x77535d4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetSlotTransform(FSmartObjectClaimHandle& ClaimHandle, FTransform& OutSlotTransform);                               // [0x7b15274] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSlotTags
-	// FGameplayTagContainer GetSlotTags(FSmartObjectSlotHandle SlotHandle);                                                    // [0x775347c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagContainer GetSlotTags(FSmartObjectSlotHandle SlotHandle);                                                    // [0x7b1518c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSlotState
-	// ESmartObjectSlotState GetSlotState(FSmartObjectSlotHandle SlotHandle);                                                   // [0x7753330] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ESmartObjectSlotState GetSlotState(FSmartObjectSlotHandle SlotHandle);                                                   // [0x7b150ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetSlotLocation
-	// bool GetSlotLocation(FSmartObjectClaimHandle& ClaimHandle, FVector& OutSlotLocation);                                    // [0x7753190] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetSlotLocation(FSmartObjectClaimHandle& ClaimHandle, FVector& OutSlotLocation);                                    // [0x7b14f08] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetInstanceTags
-	// FGameplayTagContainer GetInstanceTags(FSmartObjectHandle Handle);                                                        // [0x7752e98] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagContainer GetInstanceTags(FSmartObjectHandle Handle);                                                        // [0x7b14c04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetBehaviorDefinitionByRequestResult
-	// class USmartObjectBehaviorDefinition* GetBehaviorDefinitionByRequestResult(FSmartObjectRequestResult& RequestResult, class UClass* DefinitionClass); // [0x7752b48] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// class USmartObjectBehaviorDefinition* GetBehaviorDefinitionByRequestResult(FSmartObjectRequestResult& RequestResult, class UClass* DefinitionClass); // [0x7b14864] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetBehaviorDefinition
-	// class USmartObjectBehaviorDefinition* GetBehaviorDefinition(FSmartObjectClaimHandle& ClaimHandle, class UClass* DefinitionClass); // [0x77529a0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// class USmartObjectBehaviorDefinition* GetBehaviorDefinition(FSmartObjectClaimHandle& ClaimHandle, class UClass* DefinitionClass); // [0x7b146ac] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.GetAllSlots
-	// void GetAllSlots(FSmartObjectHandle Handle, TArray<FSmartObjectSlotHandle>& OutSlots);                                   // [0x7752748] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetAllSlots(FSmartObjectHandle Handle, TArray<FSmartObjectSlotHandle>& OutSlots);                                   // [0x7b1401c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.FindSmartObjects_BP
-	// bool FindSmartObjects_BP(FSmartObjectRequest& Request, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x77514f0] Final|Native|Public|HasOutParms|BlueprintCallable|Const 
+	// bool FindSmartObjects_BP(FSmartObjectRequest& Request, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b1103c] Final|Native|Public|HasOutParms|BlueprintCallable|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.FindSmartObjects
-	// bool FindSmartObjects(FSmartObjectRequest& Request, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x77514f0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool FindSmartObjects(FSmartObjectRequest& Request, TArray<FSmartObjectRequestResult>& OutResults, class AActor* UserActor); // [0x7b1103c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.FindSmartObject
-	// FSmartObjectRequestResult FindSmartObject(FSmartObjectRequest& Request, class AActor* UserActor);                        // [0x7751328] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FSmartObjectRequestResult FindSmartObject(FSmartObjectRequest& Request, class AActor* UserActor);                        // [0x7b10e64] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.Claim
-	// FSmartObjectClaimHandle Claim(FSmartObjectRequestResult& RequestResult, class AActor* UserActor);                        // [0x7750c44] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FSmartObjectClaimHandle Claim(FSmartObjectRequestResult& RequestResult, class AActor* UserActor);                        // [0x7b10730] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.AddTagToSlot
-	// void AddTagToSlot(FSmartObjectSlotHandle SlotHandle, FGameplayTag& tag);                                                 // [0x7750a84] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void AddTagToSlot(FSmartObjectSlotHandle SlotHandle, FGameplayTag& tag);                                                 // [0x7b105cc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectSubsystem.AddTagToInstance
-	// void AddTagToInstance(FSmartObjectHandle Handle, FGameplayTag& tag);                                                     // [0x77508b4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void AddTagToInstance(FSmartObjectHandle Handle, FGameplayTag& tag);                                                     // [0x7b10468] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/SmartObjectsModule.SmartObjectSubsystemRenderingComponent
@@ -475,9 +475,9 @@ public:
 
 	/// Functions
 	// Function /Script/SmartObjectsModule.SmartObjectTestingActor.RunTests
-	// void RunTests();                                                                                                         // [0x7755658] Final|Native|Protected|BlueprintCallable 
+	// void RunTests();                                                                                                         // [0x7b17048] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/SmartObjectsModule.SmartObjectTestingActor.ResetTests
-	// void ResetTests();                                                                                                       // [0x77555fc] Final|Native|Protected|BlueprintCallable 
+	// void ResetTests();                                                                                                       // [0x7b16fec] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/SmartObjectsModule.SmartObjectSlotValidationFilter
@@ -550,6 +550,32 @@ class FSmartObjectHandle : public MDKBase
 
 public:
 	DMember(uint64_t)                                  ID                                                          OFFSET(get<uint64_t>, {0x0, 8, 0, 0})
+};
+
+/// Struct /Script/SmartObjectsModule.SmartObjectClaimHandle
+/// Size: 0x0020 (0x000000 - 0x000020)
+class FSmartObjectClaimHandle : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 32;
+
+public:
+	SMember(FSmartObjectHandle)                        SmartObjectHandle                                           OFFSET(getStruct<T>, {0x0, 8, 0, 0})
+	SMember(FSmartObjectSlotHandle)                    SlotHandle                                                  OFFSET(getStruct<T>, {0x8, 16, 0, 0})
+	SMember(FSmartObjectUserHandle)                    UserHandle                                                  OFFSET(getStruct<T>, {0x18, 4, 0, 0})
+};
+
+/// Struct /Script/SmartObjectsModule.SmartObjectUserHandle
+/// Size: 0x0004 (0x000000 - 0x000004)
+class FSmartObjectUserHandle : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 4;
+
+public:
+	DMember(uint32_t)                                  ID                                                          OFFSET(get<uint32_t>, {0x0, 4, 0, 0})
 };
 
 /// Struct /Script/SmartObjectsModule.SmartObjectSlotEntranceLocationResult
@@ -877,32 +903,6 @@ public:
 	CMember(TMap<FSmartObjectHandle, FSoftObjectPath>) RegisteredIdToObjectMap                                     OFFSET(get<T>, {0x48, 80, 0, 0})
 	CMember(TArray<class USmartObjectDefinition*>)     Definitions                                                 OFFSET(get<T>, {0x98, 16, 0, 0})
 	CMember(class UObject*)                            Owner                                                       OFFSET(get<T>, {0xA8, 8, 0, 0})
-};
-
-/// Struct /Script/SmartObjectsModule.SmartObjectClaimHandle
-/// Size: 0x0020 (0x000000 - 0x000020)
-class FSmartObjectClaimHandle : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 32;
-
-public:
-	SMember(FSmartObjectHandle)                        SmartObjectHandle                                           OFFSET(getStruct<T>, {0x0, 8, 0, 0})
-	SMember(FSmartObjectSlotHandle)                    SlotHandle                                                  OFFSET(getStruct<T>, {0x8, 16, 0, 0})
-	SMember(FSmartObjectUserHandle)                    UserHandle                                                  OFFSET(getStruct<T>, {0x18, 4, 0, 0})
-};
-
-/// Struct /Script/SmartObjectsModule.SmartObjectUserHandle
-/// Size: 0x0004 (0x000000 - 0x000004)
-class FSmartObjectUserHandle : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 4;
-
-public:
-	DMember(uint32_t)                                  ID                                                          OFFSET(get<uint32_t>, {0x0, 4, 0, 0})
 };
 
 /// Struct /Script/SmartObjectsModule.SmartObjectSlotStateData

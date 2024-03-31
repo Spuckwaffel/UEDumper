@@ -23,7 +23,7 @@ public:
 
 	/// Functions
 	// Function /Script/FabricMetasoundDataTypes.FabricMetasoundDrumPlayerSampleBankAsset.GetSampleLabels
-	// TArray<FText> GetSampleLabels();                                                                                         // [0xabb0278] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FText> GetSampleLabels();                                                                                         // [0xc07cc98] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/FabricMetasoundDataTypes.FabricMetasoundDrumPlayerDataAsset

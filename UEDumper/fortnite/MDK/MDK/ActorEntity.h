@@ -44,7 +44,7 @@ public:
 
 	/// Functions
 	// Function /Script/ActorEntity.PhysicsComponentBridgeHelper.HandleActorComponentHit
-	// void HandleActorComponentHit(class UPrimitiveComponent* PrimitiveComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, FVector NormalImpulse, FHitResult& Hit); // [0xa05fb64] Final|Native|Private|HasOutParms|HasDefaults 
+	// void HandleActorComponentHit(class UPrimitiveComponent* PrimitiveComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, FVector NormalImpulse, FHitResult& Hit); // [0xad1b2e8] Final|Native|Private|HasOutParms|HasDefaults 
 };
 
 /// Struct /Script/ActorEntity.ActorEntityMappingArrayItem
@@ -87,12 +87,12 @@ public:
 };
 
 /// Struct /Script/ActorEntity.ActorEntityInteropRules
-/// Size: 0x0050 (0x000000 - 0x000050)
+/// Size: 0x0058 (0x000000 - 0x000058)
 class FActorEntityInteropRules : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 80;
+	static inline constexpr uint64_t __MDKClassSize = 88;
 
 public:
 	CMember(TWeakObjectPtr<UClass*>)                   ActorClass                                                  OFFSET(get<T>, {0x0, 32, 0, 0})
@@ -100,6 +100,7 @@ public:
 	CMember(TArray<TWeakObjectPtr<UClass*>>)           AllowedEntityComponents                                     OFFSET(get<T>, {0x28, 16, 0, 0})
 	CMember(EConsideredForActorEntityInterop)          SubEntitiesConsidered                                       OFFSET(get<T>, {0x38, 4, 0, 0})
 	CMember(TArray<FSubEntityInteropRules>)            SubEntityRules                                              OFFSET(get<T>, {0x40, 16, 0, 0})
+	DMember(bool)                                      bEnableEntityReplication                                    OFFSET(get<bool>, {0x50, 1, 0, 0})
 };
 
 /// Enum /Script/ActorEntity.EConsideredForActorEntityInterop

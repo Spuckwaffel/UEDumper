@@ -20,18 +20,18 @@ public:
 
 	/// Functions
 	// Function /Script/StormCaller.StormCallerComponent.UpdatePoiSavedOptions
-	// void UpdatePoiSavedOptions(TArray<FString>& InOutPoiSavedOptionKeys, TArray<FText>& InOutPoiSavedOptionNames, class UPlaylistUserOptions* UserOptions, FGameplayTag& GameplayTagForPOI); // [0xac6f0cc] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void UpdatePoiSavedOptions(TArray<FString>& InOutPoiSavedOptionKeys, TArray<FText>& InOutPoiSavedOptionNames, class UPlaylistUserOptions* UserOptions, FGameplayTag& GameplayTagForPOI); // [0xc163860] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/StormCaller.StormCallerComponent.SpawnInitialSafeZone
-	// void SpawnInitialSafeZone();                                                                                             // [0x36203b0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SpawnInitialSafeZone();                                                                                             // [0x3518b8c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/StormCaller.StormCallerComponent.GetSafeZoneLocationBlockList
-	// TArray<FVector4> GetSafeZoneLocationBlockList();                                                                         // [0xac6f09c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FVector4> GetSafeZoneLocationBlockList();                                                                         // [0xc163830] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/StormCaller.StormCallerComponent.GetRandomPoiVolume
-	// class AFortPoiVolume* GetRandomPoiVolume();                                                                              // [0xac6f078] Final|Native|Public|BlueprintCallable 
+	// class AFortPoiVolume* GetRandomPoiVolume();                                                                              // [0xc16380c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/StormCaller.StormCallerComponent.GetPoiVolumeFromOptionIndex
-	// class AFortPoiVolume* GetPoiVolumeFromOptionIndex(int32_t OptionIndex);                                                  // [0xac6efac] Final|Native|Public|BlueprintCallable 
+	// class AFortPoiVolume* GetPoiVolumeFromOptionIndex(int32_t OptionIndex);                                                  // [0xc163700] Final|Native|Public|BlueprintCallable 
 	// Function /Script/StormCaller.StormCallerComponent.ApplySavedPoiOptions
-	// void ApplySavedPoiOptions(TArray<FString>& PoiSavedOptionKeys, TArray<FText>& PoiSavedOptionName, class UFortActorOptionsComponent* ToyOptionsComponent); // [0xac6edc0] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void ApplySavedPoiOptions(TArray<FString>& PoiSavedOptionKeys, TArray<FText>& PoiSavedOptionName, class UFortActorOptionsComponent* ToyOptionsComponent); // [0xc163518] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/StormCaller.StormCallerComponent.ApplyPOINamesToDataRegistry
-	// void ApplyPOINamesToDataRegistry(class UPlaylistUserOptions* UserOptions, FGameplayTag& GameplayTagForPOI, FText& MapCenterText, FText& RandomText, FText& BeaconText); // [0xac6eb84] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void ApplyPOINamesToDataRegistry(class UPlaylistUserOptions* UserOptions, FGameplayTag& GameplayTagForPOI, FText& MapCenterText, FText& RandomText, FText& BeaconText); // [0xc1632b8] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 

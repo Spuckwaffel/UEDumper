@@ -24,8 +24,8 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseMedallionsUI.SunRoseMedallionsInfoWidget.OnMedallionTagChanged
-	// void OnMedallionTagChanged(class AFortPlayerStateAthena* InPlayerState);                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnMedallionTagChanged(class AFortPlayerStateAthena* InPlayerState);                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SunRoseMedallionsUI.SunRoseMedallionsInfoWidget.HandleGameplayTagEvent
-	// void HandleGameplayTagEvent(FGameplayTag UpdatedTag, int32_t TagCount);                                                  // [0xaaf81d4] Final|Native|Protected 
+	// void HandleGameplayTagEvent(FGameplayTag UpdatedTag, int32_t TagCount);                                                  // [0xb9cca18] Final|Native|Protected 
 };
 

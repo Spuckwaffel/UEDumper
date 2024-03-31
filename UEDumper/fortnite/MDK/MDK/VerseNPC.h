@@ -91,6 +91,6 @@ public:
 
 	/// Functions
 	// Function /Script/VerseNPC.NPCPerceptionComponentBase.OnBotControllerAlertLevelChanged
-	// void OnBotControllerAlertLevelChanged(class AFortAthenaAIBotController* BotController, EAlertLevel OldAlertLevel, EAlertLevel NewAlertLevel); // [0xa2ae740] Final|Native|Protected 
+	// void OnBotControllerAlertLevelChanged(class AFortAthenaAIBotController* BotController, EAlertLevel OldAlertLevel, EAlertLevel NewAlertLevel); // [0xafd36f0] Final|Native|Protected 
 };
 

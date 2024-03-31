@@ -24,7 +24,7 @@ public:
 
 	/// Functions
 	// Function /Script/MotionTrajectory.CharacterTrajectoryComponent.OnMovementUpdated
-	// void OnMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity);                                    // [0xa97e568] Final|Native|Protected|HasDefaults 
+	// void OnMovementUpdated(float DeltaSeconds, FVector OldLocation, FVector OldVelocity);                                    // [0xb7d69c4] Final|Native|Protected|HasDefaults 
 };
 
 /// Struct /Script/MotionTrajectory.MotionTrajectorySettings

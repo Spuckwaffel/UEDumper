@@ -7,11 +7,23 @@
 
 /// dependency: CommonUI
 /// dependency: CoreUObject
+/// dependency: DynamicUI
 /// dependency: Engine
 /// dependency: FortniteGame
 /// dependency: FortniteUI
 /// dependency: ModularGameplay
+/// dependency: SparksCoreUI
 /// dependency: UMG
+
+/// Class /Script/FMJamUI.JamDynamicUIDirector
+/// Size: 0x0000 (0x0002D8 - 0x0002D8)
+class AJamDynamicUIDirector : public ASparksDynamicUIDirector
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 728;
+
+public:
+};
 
 /// Class /Script/FMJamUI.JamEmoteWheelOverlay
 /// Size: 0x0000 (0x000400 - 0x000400)
@@ -21,6 +33,22 @@ class UJamEmoteWheelOverlay : public UCommonActivatableWidget
 	static inline constexpr uint64_t __MDKClassSize = 1024;
 
 public:
+};
+
+/// Class /Script/FMJamUI.JamHUDBase
+/// Size: 0x0020 (0x000458 - 0x000478)
+class UJamHUDBase : public UFortNullHUD
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 1144;
+
+public:
+	CMember(TWeakObjectPtr<UClass*>)                   EmotePickerClass                                            OFFSET(get<T>, {0x458, 32, 0, 0})
+
+
+	/// Functions
+	// Function /Script/FMJamUI.JamHUDBase.HandlePickerOpenRequest
+	// void HandlePickerOpenRequest(EFortPickerMode Mode, int32_t InitialOption, bool bIgnoreFirstAccept);                      // [0xb29362c] Final|Native|Private 
 };
 
 /// Class /Script/FMJamUI.JamUIManagerComponent_SongIndicators
@@ -37,9 +65,9 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamUI.JamUIManagerComponent_SongIndicators.RebuildJamSongIndicatorsForPlayspace
-	// void RebuildJamSongIndicatorsForPlayspace(class AJamPlayspace* Playspace);                                               // [0xa517394] Final|Native|Public|BlueprintCallable 
+	// void RebuildJamSongIndicatorsForPlayspace(class AJamPlayspace* Playspace);                                               // [0xb2937e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamUI.JamUIManagerComponent_SongIndicators.ClearJamIndicators
-	// void ClearJamIndicators();                                                                                               // [0xa517314] Final|Native|Public|BlueprintCallable 
+	// void ClearJamIndicators();                                                                                               // [0xb2935ac] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/FMJamUI.JamSongIndicator
@@ -54,12 +82,12 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamUI.JamSongIndicator.OnScreenClampChanged
-	// void OnScreenClampChanged(bool bIsClamped);                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnScreenClampChanged(bool bIsClamped);                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FMJamUI.JamSongIndicator.OnInitInfo
-	// void OnInitInfo(class UCatalogData* Song, EFMJamLoopType Type);                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnInitInfo(class UCatalogData* Song, EFMJamLoopType Type);                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FMJamUI.JamSongIndicator.OnDistanceChanged
-	// void OnDistanceChanged(int32_t Distance);                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnDistanceChanged(int32_t Distance);                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/FMJamUI.JamSongIndicator.GetIndicatedPlayerStateAthena
-	// class AFortPlayerStateAthena* GetIndicatedPlayerStateAthena();                                                           // [0xa517328] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortPlayerStateAthena* GetIndicatedPlayerStateAthena();                                                           // [0xb2935c0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 

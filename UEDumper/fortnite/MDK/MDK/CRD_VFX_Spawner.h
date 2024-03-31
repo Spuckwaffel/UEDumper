@@ -20,6 +20,6 @@ public:
 
 	/// Functions
 	// Function /Script/CRD_VFX_Spawner.CRD_VFX_SpawnerFunctionLibrary.SpawnTransientSystemAttached
-	// class UNiagaraComponent* SpawnTransientSystemAttached(class UNiagaraSystem* SystemTemplate, class USceneComponent* AttachToComponent, FName AttachPointName, FVector Location, FRotator Rotation, TEnumAsByte<EAttachLocation> LocationType, bool bAutoDestroy, bool bAutoActivate, ENCPoolMethod PoolingMethod, bool bPreCullCheck); // [0xac75798] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// class UNiagaraComponent* SpawnTransientSystemAttached(class UNiagaraSystem* SystemTemplate, class USceneComponent* AttachToComponent, FName AttachPointName, FVector Location, FRotator Rotation, TEnumAsByte<EAttachLocation> LocationType, bool bAutoDestroy, bool bAutoActivate, ENCPoolMethod PoolingMethod, bool bPreCullCheck); // [0xc16cd44] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 };
 

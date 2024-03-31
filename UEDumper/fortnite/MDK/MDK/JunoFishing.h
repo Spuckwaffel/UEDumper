@@ -32,9 +32,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoFishing.JunoFishingBlueprintLibrary.FireEvent_EndJunoFishingSession
-	// void FireEvent_EndJunoFishingSession(class AFortPlayerPawn* PlayerPawn, class UFortWorldItemDefinition* ItemFished, bool bFromHotspot, bool bIsPlayerSpawnedHotspot, FString HotspotTierTag, FString WaterBodyName, FString CatchTypeName, class AActor* ItemUsedToFish); // [0xb4fe544] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
+	// void FireEvent_EndJunoFishingSession(class AFortPlayerPawn* PlayerPawn, class UFortWorldItemDefinition* ItemFished, bool bFromHotspot, bool bIsPlayerSpawnedHotspot, FString HotspotTierTag, FString WaterBodyName, FString CatchTypeName, class AActor* ItemUsedToFish); // [0xc6b5814] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
 	// Function /Script/JunoFishing.JunoFishingBlueprintLibrary.FireEvent_BeginJunoFishingSession
-	// void FireEvent_BeginJunoFishingSession(class AFortPlayerPawn* PlayerPawn);                                               // [0xb4fe4b0] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
+	// void FireEvent_BeginJunoFishingSession(class AFortPlayerPawn* PlayerPawn);                                               // [0xc6b573c] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoFishing.JunoPlayerControllerComponent_FishingAnalytics

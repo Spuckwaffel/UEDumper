@@ -29,21 +29,21 @@ public:
 
 	/// Functions
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteStart
-	// void VoteStart(FName VoteSessionId, FName VoteId);                                                                       // [0xb8b13bc] Final|Native|Public|BlueprintCallable 
+	// void VoteStart(FName VoteSessionId, FName VoteId);                                                                       // [0xca78294] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteSetup
-	// void VoteSetup(FName VoteSessionId, FName VoteId);                                                                       // [0xb8b12fc] Final|Native|Public|BlueprintCallable 
+	// void VoteSetup(FName VoteSessionId, FName VoteId);                                                                       // [0xca78158] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteSessionShutdown
-	// void VoteSessionShutdown(FName VoteSessionId);                                                                           // [0xb8b127c] Final|Native|Public|BlueprintCallable 
+	// void VoteSessionShutdown(FName VoteSessionId);                                                                           // [0xca78098] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteSessionSetup
-	// void VoteSessionSetup(FName VoteSessionId, FName StartingVoteId, EVoteSessionNetworkType NetworkType);                   // [0xb8b1184] Final|Native|Public|BlueprintCallable 
+	// void VoteSessionSetup(FName VoteSessionId, FName StartingVoteId, EVoteSessionNetworkType NetworkType);                   // [0xca77ee0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteSessionComplete
-	// void VoteSessionComplete(FName VoteSessionId);                                                                           // [0xb8b1104] Final|Native|Public|BlueprintCallable 
+	// void VoteSessionComplete(FName VoteSessionId);                                                                           // [0xca77e20] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.VoteEnd
-	// void VoteEnd(FName VoteSessionId, FName VoteId, FName WinningVoteSelectionId);                                           // [0xb8b1010] Final|Native|Public|BlueprintCallable 
+	// void VoteEnd(FName VoteSessionId, FName VoteId, FName WinningVoteSelectionId);                                           // [0xca77c68] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.ServerSubmitVotesAggregated
-	// void ServerSubmitVotesAggregated(FName VoteSessionId, FName VoteId, FName VoteSelectionId, int32_t VoteDelta);           // [0xb8b0ea0] Net|NetReliableNative|Event|Protected|NetServer|NetValidate 
+	// void ServerSubmitVotesAggregated(FName VoteSessionId, FName VoteId, FName VoteSelectionId, int32_t VoteDelta);           // [0xca779f0] Net|NetReliableNative|Event|Protected|NetServer|NetValidate 
 	// Function /Script/VotingFramework.VoteBroadcasterComponent.OnVoteCasted
-	// void OnVoteCasted(FUniqueNetIdRepl& UserNetId, FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& VoteSelectionId); // [0xb8afc40] Final|Native|Protected|HasOutParms 
+	// void OnVoteCasted(FUniqueNetIdRepl& UserNetId, FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& VoteSelectionId); // [0xca76920] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/VotingFramework.VoteDispatchSubsystem
@@ -91,21 +91,21 @@ public:
 
 	/// Functions
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteStart
-	// void OnVoteStart(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, EVoteState VoteState);                               // [0xb8b0a48] Native|Protected|HasOutParms 
+	// void OnVoteStart(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, EVoteState VoteState);                               // [0xca7765c] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteSetup
-	// void OnVoteSetup(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, EVoteState VoteState);                               // [0xb8b086c] Native|Protected|HasOutParms 
+	// void OnVoteSetup(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, EVoteState VoteState);                               // [0xca77480] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteSessionVoting
-	// void OnVoteSessionVoting(FGameplayTag& VoteSessionId, FGameplayTag& StartingVoteId, EVoteSessionState SessionState);     // [0xb8b0690] Native|Protected|HasOutParms 
+	// void OnVoteSessionVoting(FGameplayTag& VoteSessionId, FGameplayTag& StartingVoteId, EVoteSessionState SessionState);     // [0xca772a4] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteSessionShutdown
-	// void OnVoteSessionShutdown(FGameplayTag& VoteSessionId);                                                                 // [0x99f9d64] Native|Protected|HasOutParms 
+	// void OnVoteSessionShutdown(FGameplayTag& VoteSessionId);                                                                 // [0xa4dfb78] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteSessionSetup
-	// void OnVoteSessionSetup(FGameplayTag& VoteSessionId, FGameplayTag& StartingVoteId, EVoteSessionNetworkType NetworkType, EVoteSessionState SessionState); // [0xb8b0434] Native|Protected|HasOutParms 
+	// void OnVoteSessionSetup(FGameplayTag& VoteSessionId, FGameplayTag& StartingVoteId, EVoteSessionNetworkType NetworkType, EVoteSessionState SessionState); // [0xca77048] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteSessionComplete
-	// void OnVoteSessionComplete(FGameplayTag& VoteSessionId);                                                                 // [0xb8b0368] Native|Protected|HasOutParms 
+	// void OnVoteSessionComplete(FGameplayTag& VoteSessionId);                                                                 // [0xa4df9e0] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteEnd
-	// void OnVoteEnd(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& WinningVoteSelectionId, EVoteState VoteState); // [0xb8b0104] Native|Protected|HasOutParms 
+	// void OnVoteEnd(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& WinningVoteSelectionId, EVoteState VoteState); // [0xca76de4] Native|Protected|HasOutParms 
 	// Function /Script/VotingFramework.VoteListenerComponent.OnVoteChange
-	// void OnVoteChange(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& VoteSelectionId, int32_t ServerVoteTotal, int32_t AllServersVoteTotal); // [0xb8afe24] Native|Protected|HasOutParms 
+	// void OnVoteChange(FGameplayTag& VoteSessionId, FGameplayTag& VoteId, FGameplayTag& VoteSelectionId, int32_t ServerVoteTotal, int32_t AllServersVoteTotal); // [0xca76b04] Native|Protected|HasOutParms 
 };
 
 /// Class /Script/VotingFramework.VoteResponderComponent
@@ -125,13 +125,13 @@ public:
 
 	/// Functions
 	// Function /Script/VotingFramework.VoteResponderComponent.ServerCastVoteSelection
-	// void ServerCastVoteSelection(FUniqueNetIdRepl InUserId, FCastedVote CastedVote);                                         // [0xb8b0c24] Net|NetReliableNative|Event|Protected|NetServer|NetValidate 
+	// void ServerCastVoteSelection(FUniqueNetIdRepl InUserId, FCastedVote CastedVote);                                         // [0xca77838] Net|NetReliableNative|Event|Protected|NetServer|NetValidate 
 	// Function /Script/VotingFramework.VoteResponderComponent.CastManualVoteSelectionAtIndex
-	// void CastManualVoteSelectionAtIndex(class APlayerState* InPlayerState, int32_t SelectionIndex);                          // [0xb8afb7c] Final|Native|Public|BlueprintCallable 
+	// void CastManualVoteSelectionAtIndex(class APlayerState* InPlayerState, int32_t SelectionIndex);                          // [0xca767e4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteResponderComponent.CastManualVoteSelection
-	// void CastManualVoteSelection(class APlayerState* InPlayerState, FGameplayTag& VoteSelection);                            // [0xb8afa70] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void CastManualVoteSelection(class APlayerState* InPlayerState, FGameplayTag& VoteSelection);                            // [0xca766a0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/VotingFramework.VoteResponderComponent.CastDefaultVoteSelection
-	// void CastDefaultVoteSelection(class APlayerState* InPlayerState);                                                        // [0xb8af9ec] Final|Native|Public|BlueprintCallable 
+	// void CastDefaultVoteSelection(class APlayerState* InPlayerState);                                                        // [0xca765dc] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/VotingFramework.CastedVote

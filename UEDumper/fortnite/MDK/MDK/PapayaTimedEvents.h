@@ -28,17 +28,17 @@ public:
 
 	/// Functions
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.ShutdownTimedEvents_Native
-	// void ShutdownTimedEvents_Native();                                                                                       // [0xaa3c484] Final|Native|Public|BlueprintCallable 
+	// void ShutdownTimedEvents_Native();                                                                                       // [0xb8c2eec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.SetupTimedEvents_Native
-	// void SetupTimedEvents_Native(FString ScreenName);                                                                        // [0xaa3c324] Final|Native|Public|BlueprintCallable 
+	// void SetupTimedEvents_Native(FString ScreenName);                                                                        // [0xb8c2888] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.ResetTimedEvents_Native
-	// void ResetTimedEvents_Native();                                                                                          // [0xaa3c310] Final|Native|Public|BlueprintCallable 
+	// void ResetTimedEvents_Native();                                                                                          // [0xb8c2874] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.OnRep_TimedEventsArray
-	// void OnRep_TimedEventsArray(FMediaTimeEventArray& PreviousValue);                                                        // [0xaa3c258] Final|Native|Private|HasOutParms 
+	// void OnRep_TimedEventsArray(FMediaTimeEventArray& PreviousValue);                                                        // [0xb8c27bc] Final|Native|Private|HasOutParms 
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.OnRep_ScreenName
-	// void OnRep_ScreenName(FString PreviousValue);                                                                            // [0xaa3c100] Final|Native|Private 
+	// void OnRep_ScreenName(FString PreviousValue);                                                                            // [0xb8c215c] Final|Native|Private 
 	// Function /Script/PapayaTimedEvents.PapayaTimedEvents.AddTimedEvent_Native
-	// void AddTimedEvent_Native(FString EventName, int64_t Time, FString EventParam);                                          // [0xaa3beec] Final|Native|Public|BlueprintCallable 
+	// void AddTimedEvent_Native(FString EventName, int64_t Time, FString EventParam);                                          // [0xb8c1a04] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PapayaTimedEvents.PapayaTimedEventsResponderComponent

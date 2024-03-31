@@ -22,7 +22,7 @@ public:
 
 	/// Functions
 	// Function /Script/HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
-	// int32_t Conv_HandKeypointToInt32(EHandKeypoint Input);                                                                   // [0x62b600c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// int32_t Conv_HandKeypointToInt32(EHandKeypoint Input);                                                                   // [0x6232f80] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/HeadMountedDisplay.MotionControllerComponent
@@ -41,27 +41,27 @@ public:
 
 	/// Functions
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.SetTrackingSource
-	// void SetTrackingSource(EControllerHand NewSource);                                                                       // [0x62b6670] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetTrackingSource(EControllerHand NewSource);                                                                       // [0x623371c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.SetTrackingMotionSource
-	// void SetTrackingMotionSource(FName NewSource);                                                                           // [0x62b65c8] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetTrackingMotionSource(FName NewSource);                                                                           // [0x6233634] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.SetAssociatedPlayerIndex
-	// void SetAssociatedPlayerIndex(int32_t NewPlayer);                                                                        // [0x62b6520] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetAssociatedPlayerIndex(int32_t NewPlayer);                                                                        // [0x623354c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.OnMotionControllerUpdated
-	// void OnMotionControllerUpdated();                                                                                        // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnMotionControllerUpdated();                                                                                        // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.IsTracked
-	// bool IsTracked();                                                                                                        // [0x62b6508] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsTracked();                                                                                                        // [0x6233534] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetTrackingSource
-	// EControllerHand GetTrackingSource();                                                                                     // [0x62b64d0] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EControllerHand GetTrackingSource();                                                                                     // [0x62334fc] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetParameterValue
-	// float GetParameterValue(FName InName, bool& bValueFound);                                                                // [0x62b63d8] Final|RequiredAPI|Native|Protected|HasOutParms|BlueprintCallable 
+	// float GetParameterValue(FName InName, bool& bValueFound);                                                                // [0x62333cc] Final|RequiredAPI|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetLinearVelocity
-	// bool GetLinearVelocity(FVector& OutLinearVelocity);                                                                      // [0x62b6304] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetLinearVelocity(FVector& OutLinearVelocity);                                                                      // [0x62332f8] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetLinearAcceleration
-	// bool GetLinearAcceleration(FVector& OutLinearAcceleration);                                                              // [0x62b6230] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetLinearAcceleration(FVector& OutLinearAcceleration);                                                              // [0x6233224] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetHandJointPosition
-	// FVector GetHandJointPosition(int32_t jointIndex, bool& bValueFound);                                                     // [0x62b611c] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// FVector GetHandJointPosition(int32_t jointIndex, bool& bValueFound);                                                     // [0x62330d0] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/HeadMountedDisplay.MotionControllerComponent.GetAngularVelocity
-	// bool GetAngularVelocity(FRotator& OutAngularVelocity);                                                                   // [0x62b6088] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetAngularVelocity(FRotator& OutAngularVelocity);                                                                   // [0x623303c] Final|RequiredAPI|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Struct /Script/HeadMountedDisplay.XRHMDData

@@ -26,6 +26,16 @@ class UFortNavArea_JumpDownSmashable3_C : public UFortNavArea_SmashableJump
 public:
 };
 
+/// Class /Game/AI/NavAreas/FortNavArea_JumpDownSmashable.FortNavArea_JumpDownSmashable_C
+/// Size: 0x0000 (0x000058 - 0x000058)
+class UFortNavArea_JumpDownSmashable_C : public UFortNavArea_SmashableJump
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 88;
+
+public:
+};
+
 /// Class /Game/AI/AIBlueprintInterface/BPI_HuskDance.BPI_HuskDance_C
 /// Size: 0x0000 (0x000028 - 0x000028)
 class UBPI_HuskDance_C : public UInterface
@@ -38,24 +48,14 @@ public:
 
 	/// Functions
 	// Function /Game/AI/AIBlueprintInterface/BPI_HuskDance.BPI_HuskDance_C.OnEndDance
-	// void OnEndDance();                                                                                                       // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void OnEndDance();                                                                                                       // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/AI/AIBlueprintInterface/BPI_HuskDance.BPI_HuskDance_C.OnBeginDance
-	// void OnBeginDance();                                                                                                     // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void OnBeginDance();                                                                                                     // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Game/AI/NavAreas/FortNavArea_JumpDownSmashable2.FortNavArea_JumpDownSmashable2_C
 /// Size: 0x0000 (0x000058 - 0x000058)
 class UFortNavArea_JumpDownSmashable2_C : public UFortNavArea_SmashableJump
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 88;
-
-public:
-};
-
-/// Class /Game/AI/NavAreas/FortNavArea_JumpDownSmashable.FortNavArea_JumpDownSmashable_C
-/// Size: 0x0000 (0x000058 - 0x000058)
-class UFortNavArea_JumpDownSmashable_C : public UFortNavArea_SmashableJump
 { 
 	friend MDKHandler;
 	static inline constexpr uint64_t __MDKClassSize = 88;
@@ -85,9 +85,9 @@ public:
 
 	/// Functions
 	// Function /Irwin/AI/Interfaces/Fauna_Idle_AnimInterface.Fauna_Idle_AnimInterface_C.Fauna IdleTurn
-	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Interfaces/Fauna_Idle_AnimInterface.Fauna_Idle_AnimInterface_C.Fauna Idle
-	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C
@@ -303,21 +303,21 @@ public:
 
 	/// Functions
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.Fauna IdleTurn
-	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.Fauna Idle
-	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.EvaluateGraphExposedInputs_ExecuteUbergraph_Burt_AnimBP_AnimGraphNode_BlendSpacePlayer_2DD8FBAB4C767B0770C81BBB25A41BD3
-	// void EvaluateGraphExposedInputs_ExecuteUbergraph_Burt_AnimBP_AnimGraphNode_BlendSpacePlayer_2DD8FBAB4C767B0770C81BBB25A41BD3(); // [0x18a39e4] BlueprintEvent       
+	// void EvaluateGraphExposedInputs_ExecuteUbergraph_Burt_AnimBP_AnimGraphNode_BlendSpacePlayer_2DD8FBAB4C767B0770C81BBB25A41BD3(); // [0x186becc] BlueprintEvent       
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.AnimNotify_FallExit
-	// void AnimNotify_FallExit();                                                                                              // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_FallExit();                                                                                              // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.AnimNotify_LandAddExit
-	// void AnimNotify_LandAddExit();                                                                                           // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_LandAddExit();                                                                                           // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.AnimNotify_LandEnter
-	// void AnimNotify_LandEnter();                                                                                             // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_LandEnter();                                                                                             // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Prey/Burt/Animations/Burt_AnimBP.Burt_AnimBP_C.ExecuteUbergraph_Burt_AnimBP
-	// void ExecuteUbergraph_Burt_AnimBP(int32_t EntryPoint);                                                                   // [0x18a39e4] Final                
+	// void ExecuteUbergraph_Burt_AnimBP(int32_t EntryPoint);                                                                   // [0x186becc] Final                
 };
 
 /// Class /Irwin/AI/Interfaces/Fauna_Jump_AnimInterface.Fauna_Jump_AnimInterface_C
@@ -332,7 +332,7 @@ public:
 
 	/// Functions
 	// Function /Irwin/AI/Interfaces/Fauna_Jump_AnimInterface.Fauna_Jump_AnimInterface_C.Fauna Jump
-	// void Fauna Jump(FPoseLink& Fauna Jump);                                                                                  // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Fauna Jump(FPoseLink& Fauna Jump);                                                                                  // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C
@@ -578,21 +578,21 @@ public:
 
 	/// Functions
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.Fauna Jump
-	// void Fauna Jump(FPoseLink& Fauna Jump);                                                                                  // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void Fauna Jump(FPoseLink& Fauna Jump);                                                                                  // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.Fauna IdleTurn
-	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void Fauna IdleTurn(FPoseLink InPose IdleTurn, FPoseLink& Fauna IdleTurn);                                               // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.Fauna Idle
-	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x18a39e4] HasOutParms|BlueprintCallable 
+	// void Fauna Idle(FPoseLink InPose Idle, FPoseLink& Fauna Idle);                                                           // [0x186becc] HasOutParms|BlueprintCallable 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimGraph
-	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AnimGraph(FPoseLink& AnimGraph);                                                                                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimNotify_FallExit
-	// void AnimNotify_FallExit();                                                                                              // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_FallExit();                                                                                              // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimNotify_LandAddExit
-	// void AnimNotify_LandAddExit();                                                                                           // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_LandAddExit();                                                                                           // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimNotify_LandEnter
-	// void AnimNotify_LandEnter();                                                                                             // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void AnimNotify_LandEnter();                                                                                             // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.ExecuteUbergraph_Grandma_AnimBP
-	// void ExecuteUbergraph_Grandma_AnimBP(int32_t EntryPoint);                                                                // [0x18a39e4] Final                
+	// void ExecuteUbergraph_Grandma_AnimBP(int32_t EntryPoint);                                                                // [0x186becc] Final                
 };
 
 /// Class /Irwin/AI/Prey/Burt/Abilities/GE_RidingSprint_PawnDmg.GE_RidingSprint_PawnDmg_C
@@ -605,9 +605,9 @@ class UGE_RidingSprint_PawnDmg_C : public UGET_DirectPhysicalDamage_C
 public:
 };
 
-/// Class /Irwin/AI/Prey/Burt/Abilities/GE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown.GE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown_C
+/// Class /Irwin/AI/Prey/Burt/Abilities/GE_RidingSprint_VehicleDmg.GE_RidingSprint_VehicleDmg_C
 /// Size: 0x0000 (0x000A68 - 0x000A68)
-class UGE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown_C : public UGameplayEffect
+class UGE_RidingSprint_VehicleDmg_C : public UGET_DirectPhysicalDamage_C
 { 
 	friend MDKHandler;
 	static inline constexpr uint64_t __MDKClassSize = 2664;
@@ -615,9 +615,9 @@ class UGE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown_C : public UGameplayEffect
 public:
 };
 
-/// Class /Irwin/AI/Prey/Burt/Abilities/GE_RidingSprint_VehicleDmg.GE_RidingSprint_VehicleDmg_C
+/// Class /Irwin/AI/Prey/Burt/Abilities/GE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown.GE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown_C
 /// Size: 0x0000 (0x000A68 - 0x000A68)
-class UGE_RidingSprint_VehicleDmg_C : public UGET_DirectPhysicalDamage_C
+class UGE_NPC_Irwn_Prey_Burt_DiscoverLootCooldown_C : public UGameplayEffect
 { 
 	friend MDKHandler;
 	static inline constexpr uint64_t __MDKClassSize = 2664;
@@ -942,7 +942,7 @@ public:
 
 /// Struct /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimBlueprintGeneratedConstantData
 /// Size: 0x2CE7 (0x000001 - 0x002CE8)
-class FAnimBlueprintGeneratedConstantDatadup_126 : public FAnimBlueprintConstantData
+class FAnimBlueprintGeneratedConstantDatadup_129 : public FAnimBlueprintConstantData
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -1252,7 +1252,7 @@ public:
 
 /// Struct /Irwin/AI/Predators/Grandma/Animations/Grandma_AnimBP.Grandma_AnimBP_C.AnimBlueprintGeneratedMutableData
 /// Size: 0x0070 (0x000001 - 0x000071)
-class FAnimBlueprintGeneratedMutableDatadup_127 : public FAnimBlueprintMutableData
+class FAnimBlueprintGeneratedMutableDatadup_130 : public FAnimBlueprintMutableData
 { 
 	friend MDKHandler;
 	friend MDKBase;

@@ -21,11 +21,11 @@ public:
 
 	/// Functions
 	// Function /Script/EpicMediaUtilities.EpicMediaServerTime.ServerRequestServerTime
-	// void ServerRequestServerTime(double requestUtcTime);                                                                     // [0x7d816d8] Net|NetReliableNative|Event|Public|NetServer|BlueprintCallable 
+	// void ServerRequestServerTime(double requestUtcTime);                                                                     // [0x8163c30] Net|NetReliableNative|Event|Public|NetServer|BlueprintCallable 
 	// Function /Script/EpicMediaUtilities.EpicMediaServerTime.GetTimeUtc
-	// bool GetTimeUtc(FDateTime& OutDateTime);                                                                                 // [0x7d81640] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetTimeUtc(FDateTime& OutDateTime);                                                                                 // [0x8163b98] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/EpicMediaUtilities.EpicMediaServerTime.ClientReportServerTime
-	// void ClientReportServerTime(double requestUtcTime, double serverUtcTime);                                                // [0x7d81568] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientReportServerTime(double requestUtcTime, double serverUtcTime);                                                // [0x8163a44] Net|NetReliableNative|Event|Public|NetClient 
 };
 
 /// Struct /Script/EpicMediaUtilities.EpicMediaImageDataExt
@@ -173,12 +173,12 @@ public:
 };
 
 /// Struct /Script/EpicMediaUtilities.EpicMediaExtraMetadataExt
-/// Size: 0x0058 (0x000000 - 0x000058)
+/// Size: 0x0068 (0x000000 - 0x000068)
 class FEpicMediaExtraMetadataExt : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 88;
+	static inline constexpr uint64_t __MDKClassSize = 104;
 
 public:
 	SMember(FString)                                   AssetId                                                     OFFSET(getStruct<T>, {0x0, 16, 0, 0})
@@ -189,15 +189,16 @@ public:
 	DMember(bool)                                      bSupportsCaching                                            OFFSET(get<bool>, {0x40, 1, 0, 0})
 	DMember(bool)                                      bSharelock                                                  OFFSET(get<bool>, {0x41, 1, 0, 0})
 	SMember(FString)                                   UserContentProtection                                       OFFSET(getStruct<T>, {0x48, 16, 0, 0})
+	SMember(FString)                                   Limits                                                      OFFSET(getStruct<T>, {0x58, 16, 0, 0})
 };
 
 /// Struct /Script/EpicMediaUtilities.EpicMediaMetadataExt
-/// Size: 0x02E8 (0x000000 - 0x0002E8)
+/// Size: 0x02F8 (0x000000 - 0x0002F8)
 class FEpicMediaMetadataExt : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 744;
+	static inline constexpr uint64_t __MDKClassSize = 760;
 
 public:
 	CMember(TArray<FEpicMediaPlaylistExt>)             Playlists                                                   OFFSET(get<T>, {0x0, 16, 0, 0})
@@ -217,6 +218,6 @@ public:
 	SMember(FEpicMediaRegionLockExt)                   RegionLockData                                              OFFSET(getStruct<T>, {0xA0, 168, 0, 0})
 	SMember(FEpicMediaAudioMetadataExt)                AudioMetadata                                               OFFSET(getStruct<T>, {0x148, 304, 0, 0})
 	DMember(bool)                                      bQuicksilverEP                                              OFFSET(get<bool>, {0x278, 1, 0, 0})
-	SMember(FEpicMediaExtraMetadataExt)                ExtraMetadata                                               OFFSET(getStruct<T>, {0x280, 88, 0, 0})
+	SMember(FEpicMediaExtraMetadataExt)                ExtraMetadata                                               OFFSET(getStruct<T>, {0x280, 104, 0, 0})
 };
 

@@ -15,47 +15,47 @@
 /// dependency: ModularGameplay
 
 /// Class /Script/KatanaGameplayRuntime.FortKatanaLayerAnimInstance
-/// Size: 0x0170 (0x001630 - 0x0017A0)
+/// Size: 0x0170 (0x001600 - 0x001770)
 class UFortKatanaLayerAnimInstance : public UFortMantisLayerAnimInstance
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 6048;
+	static inline constexpr uint64_t __MDKClassSize = 6000;
 
 public:
-	DMember(bool)                                      IsDashCharge                                                OFFSET(get<bool>, {0x1630, 1, 0, 0})
-	CMember(class AFortPlayerPawn*)                    AsFortPlayerPawn                                            OFFSET(get<T>, {0x1638, 8, 0, 0})
-	DMember(bool)                                      IsBMeleeKatana                                              OFFSET(get<bool>, {0x1640, 1, 0, 0})
-	DMember(float)                                     HandIKHipAttachAlpha                                        OFFSET(get<float>, {0x1644, 4, 0, 0})
-	SMember(FVector)                                   LeftAttachedHandIKLoc                                       OFFSET(getStruct<T>, {0x1648, 24, 0, 0})
-	SMember(FRotator)                                  LeftAttachedhandIKRot                                       OFFSET(getStruct<T>, {0x1660, 24, 0, 0})
-	SMember(FVector)                                   RightWeaponLoc                                              OFFSET(getStruct<T>, {0x1678, 24, 0, 0})
-	SMember(FRotator)                                  RightWeaponRot                                              OFFSET(getStruct<T>, {0x1690, 24, 0, 0})
-	SMember(FVector)                                   LeftAttachedHandIKLocOffsetMED                              OFFSET(getStruct<T>, {0x16A8, 24, 0, 0})
-	SMember(FRotator)                                  LeftAttachedHandIKRotOffset                                 OFFSET(getStruct<T>, {0x16C0, 24, 0, 0})
-	SMember(FVector)                                   RightWeaponLocOffsetMED                                     OFFSET(getStruct<T>, {0x16D8, 24, 0, 0})
-	SMember(FRotator)                                  RightWeaponRotOffset                                        OFFSET(getStruct<T>, {0x16F0, 24, 0, 0})
-	DMember(bool)                                      IsDashAttack                                                OFFSET(get<bool>, {0x1708, 1, 0, 0})
-	DMember(bool)                                      IsDashOutro                                                 OFFSET(get<bool>, {0x1709, 1, 0, 0})
-	DMember(float)                                     PelvisAOAlpha                                               OFFSET(get<float>, {0x170C, 4, 0, 0})
-	DMember(float)                                     ClampedAimPitch                                             OFFSET(get<float>, {0x1710, 4, 0, 0})
-	DMember(bool)                                      EarlyExitFromDashOutro                                      OFFSET(get<bool>, {0x1714, 1, 0, 0})
-	DMember(bool)                                      IsTechniqueActive                                           OFFSET(get<bool>, {0x1715, 1, 0, 0})
-	DMember(bool)                                      IsPrimaryAttack                                             OFFSET(get<bool>, {0x1716, 1, 0, 0})
-	DMember(float)                                     WeaponHipAttachAlpha                                        OFFSET(get<float>, {0x1718, 4, 0, 0})
-	SMember(FVector)                                   LeftAttachedHandIKLocOffsetLRG                              OFFSET(getStruct<T>, {0x1720, 24, 0, 0})
-	SMember(FVector)                                   RightWeaponLocOffsetLRG                                     OFFSET(getStruct<T>, {0x1738, 24, 0, 0})
-	DMember(float)                                     FeetCorrectionAlpha                                         OFFSET(get<float>, {0x1750, 4, 0, 0})
-	DMember(bool)                                      IsInAirAttackLeap                                           OFFSET(get<bool>, {0x1754, 1, 0, 0})
-	DMember(bool)                                      ShouldStartDashOutro                                        OFFSET(get<bool>, {0x1755, 1, 0, 0})
-	DMember(bool)                                      StartedDashOutro                                            OFFSET(get<bool>, {0x1756, 1, 0, 0})
-	SMember(FScalableFloat)                            DashRootMotionDuration                                      OFFSET(getStruct<T>, {0x1758, 40, 0, 0})
-	DMember(bool)                                      IsPrimaryAttack2                                            OFFSET(get<bool>, {0x1780, 1, 0, 0})
-	DMember(bool)                                      IsAirAttackSlam                                             OFFSET(get<bool>, {0x1781, 1, 0, 0})
-	DMember(bool)                                      TransitionRuleToDefault                                     OFFSET(get<bool>, {0x1782, 1, 0, 0})
-	DMember(bool)                                      IsGrindRailSwing                                            OFFSET(get<bool>, {0x1783, 1, 0, 0})
-	DMember(bool)                                      CanExitDashCharge                                           OFFSET(get<bool>, {0x1784, 1, 0, 0})
-	DMember(float)                                     DashChargePlayRate                                          OFFSET(get<float>, {0x1788, 4, 0, 0})
-	DMember(float)                                     YawForKatanaDashAO                                          OFFSET(get<float>, {0x178C, 4, 0, 0})
+	DMember(bool)                                      IsDashCharge                                                OFFSET(get<bool>, {0x1600, 1, 0, 0})
+	CMember(class AFortPlayerPawn*)                    AsFortPlayerPawn                                            OFFSET(get<T>, {0x1608, 8, 0, 0})
+	DMember(bool)                                      IsBMeleeKatana                                              OFFSET(get<bool>, {0x1610, 1, 0, 0})
+	DMember(float)                                     HandIKHipAttachAlpha                                        OFFSET(get<float>, {0x1614, 4, 0, 0})
+	SMember(FVector)                                   LeftAttachedHandIKLoc                                       OFFSET(getStruct<T>, {0x1618, 24, 0, 0})
+	SMember(FRotator)                                  LeftAttachedhandIKRot                                       OFFSET(getStruct<T>, {0x1630, 24, 0, 0})
+	SMember(FVector)                                   RightWeaponLoc                                              OFFSET(getStruct<T>, {0x1648, 24, 0, 0})
+	SMember(FRotator)                                  RightWeaponRot                                              OFFSET(getStruct<T>, {0x1660, 24, 0, 0})
+	SMember(FVector)                                   LeftAttachedHandIKLocOffsetMED                              OFFSET(getStruct<T>, {0x1678, 24, 0, 0})
+	SMember(FRotator)                                  LeftAttachedHandIKRotOffset                                 OFFSET(getStruct<T>, {0x1690, 24, 0, 0})
+	SMember(FVector)                                   RightWeaponLocOffsetMED                                     OFFSET(getStruct<T>, {0x16A8, 24, 0, 0})
+	SMember(FRotator)                                  RightWeaponRotOffset                                        OFFSET(getStruct<T>, {0x16C0, 24, 0, 0})
+	DMember(bool)                                      IsDashAttack                                                OFFSET(get<bool>, {0x16D8, 1, 0, 0})
+	DMember(bool)                                      IsDashOutro                                                 OFFSET(get<bool>, {0x16D9, 1, 0, 0})
+	DMember(float)                                     PelvisAOAlpha                                               OFFSET(get<float>, {0x16DC, 4, 0, 0})
+	DMember(float)                                     ClampedAimPitch                                             OFFSET(get<float>, {0x16E0, 4, 0, 0})
+	DMember(bool)                                      EarlyExitFromDashOutro                                      OFFSET(get<bool>, {0x16E4, 1, 0, 0})
+	DMember(bool)                                      IsTechniqueActive                                           OFFSET(get<bool>, {0x16E5, 1, 0, 0})
+	DMember(bool)                                      IsPrimaryAttack                                             OFFSET(get<bool>, {0x16E6, 1, 0, 0})
+	DMember(float)                                     WeaponHipAttachAlpha                                        OFFSET(get<float>, {0x16E8, 4, 0, 0})
+	SMember(FVector)                                   LeftAttachedHandIKLocOffsetLRG                              OFFSET(getStruct<T>, {0x16F0, 24, 0, 0})
+	SMember(FVector)                                   RightWeaponLocOffsetLRG                                     OFFSET(getStruct<T>, {0x1708, 24, 0, 0})
+	DMember(float)                                     FeetCorrectionAlpha                                         OFFSET(get<float>, {0x1720, 4, 0, 0})
+	DMember(bool)                                      IsInAirAttackLeap                                           OFFSET(get<bool>, {0x1724, 1, 0, 0})
+	DMember(bool)                                      ShouldStartDashOutro                                        OFFSET(get<bool>, {0x1725, 1, 0, 0})
+	DMember(bool)                                      StartedDashOutro                                            OFFSET(get<bool>, {0x1726, 1, 0, 0})
+	SMember(FScalableFloat)                            DashRootMotionDuration                                      OFFSET(getStruct<T>, {0x1728, 40, 0, 0})
+	DMember(bool)                                      IsPrimaryAttack2                                            OFFSET(get<bool>, {0x1750, 1, 0, 0})
+	DMember(bool)                                      IsAirAttackSlam                                             OFFSET(get<bool>, {0x1751, 1, 0, 0})
+	DMember(bool)                                      TransitionRuleToDefault                                     OFFSET(get<bool>, {0x1752, 1, 0, 0})
+	DMember(bool)                                      IsGrindRailSwing                                            OFFSET(get<bool>, {0x1753, 1, 0, 0})
+	DMember(bool)                                      CanExitDashCharge                                           OFFSET(get<bool>, {0x1754, 1, 0, 0})
+	DMember(float)                                     DashChargePlayRate                                          OFFSET(get<float>, {0x1758, 4, 0, 0})
+	DMember(float)                                     YawForKatanaDashAO                                          OFFSET(get<float>, {0x175C, 4, 0, 0})
 };
 
 /// Class /Script/KatanaGameplayRuntime.FortKatanaWeaponAnimInstance
@@ -137,9 +137,9 @@ public:
 
 	/// Functions
 	// Function /Script/KatanaGameplayRuntime.KatanaTargetingComponent.PerformPrimaryAttackTargeting
-	// FVector PerformPrimaryAttackTargeting(EFortKatanaPrimaryAttackVariation AttackVariation);                                // [0xa8bb76c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FVector PerformPrimaryAttackTargeting(EFortKatanaPrimaryAttackVariation AttackVariation);                                // [0xb6de3d4] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/KatanaGameplayRuntime.KatanaTargetingComponent.PerformDashTargeting
-	// bool PerformDashTargeting(FFortKatanaDashTargetingInfo& OutDashTargetingInfo);                                           // [0xa8bb68c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool PerformDashTargeting(FFortKatanaDashTargetingInfo& OutDashTargetingInfo);                                           // [0xb6de2f4] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/KatanaGameplayRuntime.FortKatanaPrimaryAttackVariationInfo

@@ -15,14 +15,14 @@
 /// dependency: NetCore
 
 /// Class /Script/WindRuntime.FortPlayerWindTunnelAnimInstance
-/// Size: 0x0010 (0x001620 - 0x001630)
+/// Size: 0x0010 (0x0015F0 - 0x001600)
 class UFortPlayerWindTunnelAnimInstance : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5680;
+	static inline constexpr uint64_t __MDKClassSize = 5632;
 
 public:
-	DMember(bool)                                      bApplyWindSlideAdditive                                     OFFSET(get<bool>, {0x1620, 1, 1, 0})
+	DMember(bool)                                      bApplyWindSlideAdditive                                     OFFSET(get<bool>, {0x15F0, 1, 1, 0})
 };
 
 /// Class /Script/WindRuntime.WindCheatManager
@@ -41,9 +41,9 @@ public:
 
 	/// Functions
 	// Function /Script/WindRuntime.WindCheatManager.ReleaseBalloonOnSelf
-	// void ReleaseBalloonOnSelf(int32_t NumBalloons);                                                                          // [0x69e33bc] Final|BlueprintAuthorityOnly|Exec|Native|Public|Const 
+	// void ReleaseBalloonOnSelf(int32_t NumBalloons);                                                                          // [0x6a309ec] Final|BlueprintAuthorityOnly|Exec|Native|Public|Const 
 	// Function /Script/WindRuntime.WindCheatManager.InflateBalloonOnSelf
-	// void InflateBalloonOnSelf(int32_t NumBalloons);                                                                          // [0x69e33bc] Final|BlueprintAuthorityOnly|Exec|Native|Public|Const 
+	// void InflateBalloonOnSelf(int32_t NumBalloons);                                                                          // [0x6a309ec] Final|BlueprintAuthorityOnly|Exec|Native|Public|Const 
 };
 
 /// Class /Script/WindRuntime.WindField
@@ -64,19 +64,19 @@ public:
 
 	/// Functions
 	// Function /Script/WindRuntime.WindField.SetActive
-	// void SetActive(bool bInIsActive);                                                                                        // [0xab45ef4] Final|Native|Public|BlueprintCallable 
+	// void SetActive(bool bInIsActive);                                                                                        // [0xba2b0ac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/WindRuntime.WindField.RemoveIgnoredActor
-	// void RemoveIgnoredActor(class AActor* Actor);                                                                            // [0xab45df0] Final|Native|Public|BlueprintCallable 
+	// void RemoveIgnoredActor(class AActor* Actor);                                                                            // [0xba2af64] Final|Native|Public|BlueprintCallable 
 	// Function /Script/WindRuntime.WindField.RemoveCollider
-	// void RemoveCollider(class UShapeComponent* ShapeComponent);                                                              // [0xab45cac] Final|Native|Public|BlueprintCallable 
+	// void RemoveCollider(class UShapeComponent* ShapeComponent);                                                              // [0xba2addc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/WindRuntime.WindField.OnEndOverlap
-	// void OnEndOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex); // [0xab45b58] Native|Protected     
+	// void OnEndOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex); // [0xba2ab8c] Native|Protected     
 	// Function /Script/WindRuntime.WindField.OnBeginOverlap
-	// void OnBeginOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0xab45920] Native|Protected|HasOutParms 
+	// void OnBeginOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0xba2a810] Native|Protected|HasOutParms 
 	// Function /Script/WindRuntime.WindField.AddIgnoredActor
-	// void AddIgnoredActor(class AActor* Actor);                                                                               // [0xab45304] Final|Native|Public|BlueprintCallable 
+	// void AddIgnoredActor(class AActor* Actor);                                                                               // [0xba2a1b4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/WindRuntime.WindField.AddCollider
-	// void AddCollider(class UShapeComponent* ShapeComponent);                                                                 // [0xab45284] Final|Native|Public|BlueprintCallable 
+	// void AddCollider(class UShapeComponent* ShapeComponent);                                                                 // [0xba2a0f4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/WindRuntime.LinearWindField
@@ -188,19 +188,19 @@ public:
 
 	/// Functions
 	// Function /Script/WindRuntime.WindSplineComponent.OnRep_TargetData
-	// void OnRep_TargetData();                                                                                                 // [0xab45c98] Final|Native|Protected 
+	// void OnRep_TargetData();                                                                                                 // [0xba2adc8] Final|Native|Protected 
 	// Function /Script/WindRuntime.WindSplineComponent.OnRep_Blockages
-	// void OnRep_Blockages();                                                                                                  // [0xab45c98] Final|Native|Protected 
+	// void OnRep_Blockages();                                                                                                  // [0xba2adc8] Final|Native|Protected 
 	// Function /Script/WindRuntime.WindSplineComponent.GetWindDataAtLocation
-	// void GetWindDataAtLocation(FVector& InTargetLocation, FVector& OutDirection, float& OutAttenuation);                     // [0xab45778] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|Const 
+	// void GetWindDataAtLocation(FVector& InTargetLocation, FVector& OutDirection, float& OutAttenuation);                     // [0xba2a668] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|Const 
 	// Function /Script/WindRuntime.WindSplineComponent.GetTargetingRadius
-	// float GetTargetingRadius();                                                                                              // [0xab45744] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTargetingRadius();                                                                                              // [0xba2a634] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/WindRuntime.WindSplineComponent.GetClosestActiveLocations
-	// void GetClosestActiveLocations(FVector& InTargetLocation, bool& bIsClosestPointActive, FVector& ClosestPointOnSpline, TArray<FVector>& ClosestActiveLocations); // [0xab45538] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|Const 
+	// void GetClosestActiveLocations(FVector& InTargetLocation, bool& bIsClosestPointActive, FVector& ClosestPointOnSpline, TArray<FVector>& ClosestActiveLocations); // [0xba2a428] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|Const 
 	// Function /Script/WindRuntime.WindSplineComponent.Enable
-	// void Enable();                                                                                                           // [0xab454e4] Final|Native|Protected 
+	// void Enable();                                                                                                           // [0xba2a3d4] Final|Native|Protected 
 	// Function /Script/WindRuntime.WindSplineComponent.Disable
-	// void Disable();                                                                                                          // [0xab454d0] Final|Native|Protected 
+	// void Disable();                                                                                                          // [0xba2a3c0] Final|Native|Protected 
 };
 
 /// Struct /Script/WindRuntime.RootMotionSource_ConstantWindForce

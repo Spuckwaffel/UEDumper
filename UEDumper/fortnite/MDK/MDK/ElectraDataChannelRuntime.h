@@ -21,15 +21,15 @@ public:
 
 	/// Functions
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelPlayer.UseTimeFromMediaPlayer
-	// void UseTimeFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                          // [0xaba3578] Final|Native|Public|BlueprintCallable 
+	// void UseTimeFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                          // [0xc06d1ac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelPlayer.PlayFromStateStreamServer
-	// void PlayFromStateStreamServer(FString InStatePlaylistURL);                                                              // [0xaba3144] Final|Native|Public|BlueprintCallable 
+	// void PlayFromStateStreamServer(FString InStatePlaylistURL);                                                              // [0xc06be6c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelPlayer.PlayFromMediaPlayer
-	// void PlayFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                             // [0xaba30c4] Final|Native|Public|BlueprintCallable 
+	// void PlayFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                             // [0xc06bdac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelPlayer.PlayFromFile
-	// void PlayFromFile(FString InFilename);                                                                                   // [0xaba2f64] Final|Native|Public|BlueprintCallable 
+	// void PlayFromFile(FString InFilename);                                                                                   // [0xc06b748] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelPlayer.EndPlayback
-	// void EndPlayback();                                                                                                      // [0xaba2ed0] Final|Native|Public|BlueprintCallable 
+	// void EndPlayback();                                                                                                      // [0xc06b6b4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ElectraDataChannelRuntime.ElectraDataChannelRecorder
@@ -44,13 +44,13 @@ public:
 
 	/// Functions
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelRecorder.UseTimeFromMediaPlayer
-	// void UseTimeFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                          // [0xaba35f8] Final|Native|Public|BlueprintCallable 
+	// void UseTimeFromMediaPlayer(class UMediaPlayer* InMediaPlayer);                                                          // [0xc06d26c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelRecorder.StartRecording
-	// void StartRecording();                                                                                                   // [0xaba3564] Final|Native|Public|BlueprintCallable 
+	// void StartRecording();                                                                                                   // [0xc06d198] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelRecorder.RecordToFile
-	// void RecordToFile(FString InFilename);                                                                                   // [0xaba32a4] Final|Native|Public|BlueprintCallable 
+	// void RecordToFile(FString InFilename);                                                                                   // [0xc06c4d0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelRecorder.EndRecording
-	// void EndRecording();                                                                                                     // [0xaba2ee4] Final|Native|Public|BlueprintCallable 
+	// void EndRecording();                                                                                                     // [0xc06b6c8] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/ElectraDataChannelRuntime.ElectraDataChannelTarget
@@ -65,8 +65,8 @@ public:
 
 	/// Functions
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelTarget.SetTargetAlias
-	// void SetTargetAlias(FString InAlias);                                                                                    // [0xaba3404] Final|Native|Public|BlueprintCallable 
+	// void SetTargetAlias(FString InAlias);                                                                                    // [0xc06cb34] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ElectraDataChannelRuntime.ElectraDataChannelTarget.GetTargetAlias
-	// FString GetTargetAlias();                                                                                                // [0xaba2f48] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetTargetAlias();                                                                                                // [0xc06b72c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 

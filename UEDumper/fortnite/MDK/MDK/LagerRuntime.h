@@ -40,21 +40,21 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.RemoveClosestPointProvidersToPoint
-	// void RemoveClosestPointProvidersToPoint(FVector& Point, float MaximumDistance, int32_t PointsToDisable);                 // [0xa21a96c] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void RemoveClosestPointProvidersToPoint(FVector& Point, float MaximumDistance, int32_t PointsToDisable);                 // [0xaf2bdfc] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0x81ed394] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0x868ae34] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.OnCompletedEvaluation__DelegateSignature
-	// void OnCompletedEvaluation__DelegateSignature(TArray<TScriptInterface<Class>>& EnabledPointProviders);                   // [0x18a39e4] MulticastDelegate|Public|Delegate|HasOutParms 
+	// void OnCompletedEvaluation__DelegateSignature(TArray<TScriptInterface<Class>>& EnabledPointProviders);                   // [0x186becc] MulticastDelegate|Public|Delegate|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.HasCompletedEvaluation
-	// bool HasCompletedEvaluation();                                                                                           // [0xa2190ac] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasCompletedEvaluation();                                                                                           // [0xaf28cb0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.GetEnablerTags
-	// FGameplayTagContainer GetEnablerTags();                                                                                  // [0xa218e84] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagContainer GetEnablerTags();                                                                                  // [0xaf28a48] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.GetEnabledLinkedPointProviders
-	// TArray<TScriptInterface<Class>> GetEnabledLinkedPointProviders();                                                        // [0xa218e68] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<TScriptInterface<Class>> GetEnabledLinkedPointProviders();                                                        // [0xaf28a2c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.EvaluateAndEnablePointProviders
-	// void EvaluateAndEnablePointProviders();                                                                                  // [0x36203b0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void EvaluateAndEnablePointProviders();                                                                                  // [0x3518b8c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler.DoesStartEnabled
-	// bool DoesStartEnabled();                                                                                                 // [0xa218de8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesStartEnabled();                                                                                                 // [0xaf289ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldPointProvidersEnabler_MiniMapDataOverride
@@ -79,21 +79,21 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnStageCompleted
-	// void OnStageCompleted(TArray<AFortPickup*>& SpawnedRewards);                                                             // [0x861bc7c] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void OnStageCompleted(TArray<AFortPickup*>& SpawnedRewards);                                                             // [0x8b9719c] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnEncounterStart
-	// void OnEncounterStart(class UFortAthenaLivingWorldEncounterInstance* InAttackerEncounter, class UFortAthenaLivingWorldEncounterInstance* InDefenderEncounter); // [0x6cbaff4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void OnEncounterStart(class UFortAthenaLivingWorldEncounterInstance* InAttackerEncounter, class UFortAthenaLivingWorldEncounterInstance* InDefenderEncounter); // [0x6d6d7fc] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnEncounterEnd
-	// void OnEncounterEnd();                                                                                                   // [0x36203b0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void OnEncounterEnd();                                                                                                   // [0x3518b8c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnDefenderSpawned
-	// void OnDefenderSpawned(class AActor* SpawnedDefender);                                                                   // [0xa20218c] Final|Native|Private 
+	// void OnDefenderSpawned(class AActor* SpawnedDefender);                                                                   // [0xaf069c8] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnDefenderDied
-	// void OnDefenderDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa201c0c] Final|Native|Private|HasDefaults 
+	// void OnDefenderDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xaf064b4] Final|Native|Private|HasDefaults 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnDefenderDidDamage
-	// void OnDefenderDidDamage(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa201750] Final|Native|Private|HasDefaults 
+	// void OnDefenderDidDamage(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xaf06070] Final|Native|Private|HasDefaults 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnDefenderDamaged
-	// void OnDefenderDamaged(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa2012a0] Final|Native|Private|HasDefaults 
+	// void OnDefenderDamaged(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xaf05c38] Final|Native|Private|HasDefaults 
 	// Function /Script/LagerRuntime.FortAthenaLinearEncounterAnalyticComponent.OnAttackerSpawned
-	// void OnAttackerSpawned(class AActor* SpawnedAttacker);                                                                   // [0xa200f68] Final|Native|Private 
+	// void OnAttackerSpawned(class AActor* SpawnedAttacker);                                                                   // [0xaf0587c] Final|Native|Private 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldConditionSchema
@@ -213,51 +213,51 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.StartEncounterStage
-	// void StartEncounterStage(int32_t StageIndex);                                                                            // [0xa203778] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void StartEncounterStage(int32_t StageIndex);                                                                            // [0xaf08af8] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.ResumeEncounter
-	// void ResumeEncounter();                                                                                                  // [0xa203430] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void ResumeEncounter();                                                                                                  // [0xaf082d4] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.Reset
-	// void Reset();                                                                                                            // [0x36203b0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void Reset();                                                                                                            // [0x3518b8c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.RequestEventGeneration
-	// void RequestEventGeneration();                                                                                           // [0xa20320c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void RequestEventGeneration();                                                                                           // [0xaf0806c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.RemoveAllowedPointProvider
-	// void RemoveAllowedPointProvider(TScriptInterface<Class>& PointProvider);                                                 // [0xa20315c] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void RemoveAllowedPointProvider(TScriptInterface<Class>& PointProvider);                                                 // [0xaf07fbc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.PauseEncounter
-	// void PauseEncounter();                                                                                                   // [0xa202ae8] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void PauseEncounter();                                                                                                   // [0xaf073f0] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OwnsActor
-	// bool OwnsActor(class AActor* Actor);                                                                                     // [0x8685cb4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool OwnsActor(class AActor* Actor);                                                                                     // [0x8c1b990] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnLastActorDied__DelegateSignature
-	// void OnLastActorDied__DelegateSignature();                                                                               // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnLastActorDied__DelegateSignature();                                                                               // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnEventSpawned__DelegateSignature
-	// void OnEventSpawned__DelegateSignature(TArray<AActor*> SpawnedActors);                                                   // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnEventSpawned__DelegateSignature(TArray<AActor*> SpawnedActors);                                                   // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnEncounterActorDied
-	// void OnEncounterActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa202310] Final|Native|Private|HasDefaults 
+	// void OnEncounterActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xaf06b8c] Final|Native|Private|HasDefaults 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnActorSpawned__DelegateSignature
-	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnActorDied__DelegateSignature
-	// void OnActorDied__DelegateSignature(class AActor* DiedActor);                                                            // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorDied__DelegateSignature(class AActor* DiedActor);                                                            // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.OnActorDestroyed__DelegateSignature
-	// void OnActorDestroyed__DelegateSignature(class AActor* DestroyedActor);                                                  // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorDestroyed__DelegateSignature(class AActor* DestroyedActor);                                                  // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.HasReachedMaxSpawnedCount
-	// bool HasReachedMaxSpawnedCount();                                                                                        // [0x3219f08] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasReachedMaxSpawnedCount();                                                                                        // [0x2fe830c] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.HasPendingSpawnRequest
-	// bool HasPendingSpawnRequest();                                                                                           // [0x3219f08] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasPendingSpawnRequest();                                                                                           // [0x2fe830c] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.GetTotalActorCount
-	// int32_t GetTotalActorCount();                                                                                            // [0x81165c8] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetTotalActorCount();                                                                                            // [0x859ec00] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.GetAliveSpawnedActorCount
-	// int32_t GetAliveSpawnedActorCount();                                                                                     // [0xa200700] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetAliveSpawnedActorCount();                                                                                     // [0xaf04444] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.AdvanceEncounterStage
-	// void AdvanceEncounterStage();                                                                                            // [0xa200468] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AdvanceEncounterStage();                                                                                            // [0xaf040a4] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldEncounterInstance.AddAllowedPointProvider
-	// void AddAllowedPointProvider(TScriptInterface<Class>& PointProvider);                                                    // [0xa200398] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void AddAllowedPointProvider(TScriptInterface<Class>& PointProvider);                                                    // [0xaf03fd4] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldEventData
-/// Size: 0x0120 (0x000030 - 0x000150)
+/// Size: 0x0128 (0x000030 - 0x000158)
 class UFortAthenaLivingWorldEventData : public UDataAsset
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 336;
+	static inline constexpr uint64_t __MDKClassSize = 344;
 
 public:
 	DMember(int32_t)                                   TimeOfDayFilters                                            OFFSET(get<int32_t>, {0x30, 4, 0, 0})
@@ -265,14 +265,15 @@ public:
 	DMember(float)                                     WaterLevelIndexMax                                          OFFSET(get<float>, {0x38, 4, 0, 0})
 	SMember(FWorldConditionQueryDefinition)            CanSpawnCondition                                           OFFSET(getStruct<T>, {0x40, 24, 0, 0})
 	CMember(TArray<FFortAthenaLivingWorldDespawnCondition>) DespawnConditions                                      OFFSET(get<T>, {0x58, 16, 0, 0})
-	SMember(FGameplayTagQuery)                         ProviderFiltersTagQuery                                     OFFSET(getStruct<T>, {0x68, 72, 0, 0})
-	CMember(TArray<FPointProviderFilterEntry>)         ProviderFiltersEntries                                      OFFSET(get<T>, {0xB0, 16, 0, 0})
-	SMember(FInstancedStruct)                          PointProviderSelector                                       OFFSET(getStruct<T>, {0xC0, 16, 0, 0})
-	SMember(FInstancedStruct)                          SpawnerDataSelector                                         OFFSET(getStruct<T>, {0xD0, 16, 0, 0})
-	CMember(TArray<FFortAthenaLivingWorldTaggedSpawnActionClass>) SpawnActions                                     OFFSET(get<T>, {0xE0, 16, 0, 0})
-	SMember(FScalableFloat)                            MinActorCountToSpawn                                        OFFSET(getStruct<T>, {0xF0, 40, 0, 0})
-	SMember(FScalableFloat)                            MaxActorCountToSpawn                                        OFFSET(getStruct<T>, {0x118, 40, 0, 0})
-	CMember(TArray<FFortAthenaLivingWorldEventDataActorSpawnDescription>) ActorDescriptions                        OFFSET(get<T>, {0x140, 16, 0, 0})
+	DMember(bool)                                      bRequirePointProviders                                      OFFSET(get<bool>, {0x68, 1, 0, 0})
+	SMember(FGameplayTagQuery)                         ProviderFiltersTagQuery                                     OFFSET(getStruct<T>, {0x70, 72, 0, 0})
+	CMember(TArray<FPointProviderFilterEntry>)         ProviderFiltersEntries                                      OFFSET(get<T>, {0xB8, 16, 0, 0})
+	SMember(FInstancedStruct)                          PointProviderSelector                                       OFFSET(getStruct<T>, {0xC8, 16, 0, 0})
+	SMember(FInstancedStruct)                          SpawnerDataSelector                                         OFFSET(getStruct<T>, {0xD8, 16, 0, 0})
+	CMember(TArray<FFortAthenaLivingWorldTaggedSpawnActionClass>) SpawnActions                                     OFFSET(get<T>, {0xE8, 16, 0, 0})
+	SMember(FScalableFloat)                            MinActorCountToSpawn                                        OFFSET(getStruct<T>, {0xF8, 40, 0, 0})
+	SMember(FScalableFloat)                            MaxActorCountToSpawn                                        OFFSET(getStruct<T>, {0x120, 40, 0, 0})
+	CMember(TArray<FFortAthenaLivingWorldEventDataActorSpawnDescription>) ActorDescriptions                        OFFSET(get<T>, {0x148, 16, 0, 0})
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldManager
@@ -312,97 +313,97 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.UnregisterDensityReservoir
-	// void UnregisterDensityReservoir(class AActor* ActorDensityReservoir);                                                    // [0xa2040d0] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void UnregisterDensityReservoir(class AActor* ActorDensityReservoir);                                                    // [0xaf09394] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.TrySpawnEventWithPreDespawn
-	// bool TrySpawnEventWithPreDespawn(FDataTableRowHandle EventEntry, FTransform SpawnLocation, FDelegateProperty& OnRequestFinished, FGameplayTag DespawnDensityTag, float MaxAllowedDensityValue, int32_t& RequestID); // [0xa203b88] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool TrySpawnEventWithPreDespawn(FDataTableRowHandle EventEntry, FTransform SpawnLocation, FDelegateProperty& OnRequestFinished, FGameplayTag DespawnDensityTag, float MaxAllowedDensityValue, int32_t& RequestID); // [0xaf08ebc] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.TrySpawnEvent
-	// bool TrySpawnEvent(FDataTableRowHandle EventEntry, FTransform SpawnLocation, FDelegateProperty& OnRequestFinished, int32_t& RequestID); // [0xa2037f8] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool TrySpawnEvent(FDataTableRowHandle EventEntry, FTransform SpawnLocation, FDelegateProperty& OnRequestFinished, int32_t& RequestID); // [0xaf08bb8] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.StartEncounter
-	// class UFortAthenaLivingWorldEncounterInstance* StartEncounter(TWeakObjectPtr<UFortAthenaLivingWorldEncounter*> EncounterType, TArray<TScriptInterface<Class>>& EncounterPointProviders, class AActor* ActorDensityReservoir); // [0xa203448] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// class UFortAthenaLivingWorldEncounterInstance* StartEncounter(TWeakObjectPtr<UFortAthenaLivingWorldEncounter*> EncounterType, TArray<TScriptInterface<Class>>& EncounterPointProviders, class AActor* ActorDensityReservoir); // [0xaf082ec] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.ResetEncounter
-	// void ResetEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);                                   // [0xa203270] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void ResetEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);                                   // [0xaf080d0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.RequestEventGeneration
-	// void RequestEventGeneration();                                                                                           // [0xa203240] Final|Native|Public|BlueprintCallable 
+	// void RequestEventGeneration();                                                                                           // [0xaf080a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.RegisterTagDensityReservoir
-	// bool RegisterTagDensityReservoir(class AActor* ActorDensityReservoir, TArray<FFortAthenaLivingWorldEventTagDensityRegistration>& TagsDensity); // [0xa202f98] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// bool RegisterTagDensityReservoir(class AActor* ActorDensityReservoir, TArray<FFortAthenaLivingWorldEventTagDensityRegistration>& TagsDensity); // [0xaf07920] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.RegisterDensityReservoir
-	// bool RegisterDensityReservoir(class AActor* ActorDensityReservoir, float Density, float Range);                          // [0xa202e9c] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// bool RegisterDensityReservoir(class AActor* ActorDensityReservoir, float Density, float Range);                          // [0xaf07764] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.QueryEventBudget
-	// int32_t QueryEventBudget(FDataTableRowHandle EventEntry, class AActor* SpawnLocation);                                   // [0xa202c6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t QueryEventBudget(FDataTableRowHandle EventEntry, class AActor* SpawnLocation);                                   // [0xaf07600] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.QueryActorDensityBudget
-	// float QueryActorDensityBudget(class AActor* ReferenceActor, float Range);                                                // [0xa202b00] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float QueryActorDensityBudget(class AActor* ReferenceActor, float Range);                                                // [0xaf07408] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnWorldFinishedInitialization
-	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xa2029dc] Final|Native|Private|HasOutParms 
+	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xaf072e4] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnUnmanagedDensityReservoirActorDestroy
-	// void OnUnmanagedDensityReservoirActorDestroy(class AActor* DestroyedActor);                                              // [0xa20295c] Final|Native|Private 
+	// void OnUnmanagedDensityReservoirActorDestroy(class AActor* DestroyedActor);                                              // [0xaf07224] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnSpawnedActorDestroy
-	// void OnSpawnedActorDestroy(class AActor* DestroyedActor);                                                                // [0xa2028d8] Final|Native|Private 
+	// void OnSpawnedActorDestroy(class AActor* DestroyedActor);                                                                // [0xaf07160] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnRep_DebugDensityMinimapIndicator
-	// void OnRep_DebugDensityMinimapIndicator(class UFortAthenaLivingWorldDebugDensityMiniMapIndicator* OldMapIndicator);      // [0x6414600] Final|Native|Private 
+	// void OnRep_DebugDensityMinimapIndicator(class UFortAthenaLivingWorldDebugDensityMiniMapIndicator* OldMapIndicator);      // [0x63b1a60] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnRep_ActorClassToPreloadOnClient
-	// void OnRep_ActorClassToPreloadOnClient();                                                                                // [0x3ffc060] Final|Native|Private 
+	// void OnRep_ActorClassToPreloadOnClient();                                                                                // [0x3ebae48] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnPatrolPathDestroyed
-	// void OnPatrolPathDestroyed(class AActor* Actor);                                                                         // [0xa202858] Final|Native|Public  
+	// void OnPatrolPathDestroyed(class AActor* Actor);                                                                         // [0xaf070a0] Final|Native|Public  
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnPatrolPathAdded
-	// void OnPatrolPathAdded(class AFortAthenaPatrolPath* PatrolPath);                                                         // [0xa2027d8] Final|Native|Private 
+	// void OnPatrolPathAdded(class AFortAthenaPatrolPath* PatrolPath);                                                         // [0xaf06fe0] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnDebugSpawnEventSpawned
-	// void OnDebugSpawnEventSpawned(TArray<AActor*>& SpawnedActors, bool bSuccess);                                            // [0xa2010f4] Final|Native|Private|HasOutParms 
+	// void OnDebugSpawnEventSpawned(TArray<AActor*>& SpawnedActors, bool bSuccess);                                            // [0xaf05a8c] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa200fe0] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf05938] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.OnActorSpawned
-	// void OnActorSpawned(class AActor* Actor, int32_t RequestID);                                                             // [0xa200ea4] Final|Native|Private 
+	// void OnActorSpawned(class AActor* Actor, int32_t RequestID);                                                             // [0xaf05740] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LWMTAM
-	// void LWMTAM(FString Name);                                                                                               // [0xa200a74] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LWMTAM(FString Name);                                                                                               // [0xaf048ac] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LWMF
-	// void LWMF();                                                                                                             // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LWMF();                                                                                                             // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerUnregisterPointProvider
-	// void LivingWorldManagerUnregisterPointProvider(class AActor* PointProvider);                                             // [0x6414600] Final|Native|Static|Public|BlueprintCallable 
+	// void LivingWorldManagerUnregisterPointProvider(class AActor* PointProvider);                                             // [0x63b1a60] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerToggleVerboseLogging
-	// void LivingWorldManagerToggleVerboseLogging();                                                                           // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerToggleVerboseLogging();                                                                           // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerToggleGenerateEvents
-	// void LivingWorldManagerToggleGenerateEvents();                                                                           // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerToggleGenerateEvents();                                                                           // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerToggleDensityDisplay
-	// void LivingWorldManagerToggleDensityDisplay();                                                                           // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerToggleDensityDisplay();                                                                           // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerToggleActorMinimap
-	// void LivingWorldManagerToggleActorMinimap(FString Name);                                                                 // [0x92aae98] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerToggleActorMinimap(FString Name);                                                                 // [0x9bada54] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerSwitchDensityDisplay
-	// void LivingWorldManagerSwitchDensityDisplay(int32_t DensityMapIndex);                                                    // [0x69e33bc] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerSwitchDensityDisplay(int32_t DensityMapIndex);                                                    // [0x6a309ec] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerSetEventGenerationEnabled
-	// void LivingWorldManagerSetEventGenerationEnabled(bool bInGenerateEvents);                                                // [0x63fe5cc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void LivingWorldManagerSetEventGenerationEnabled(bool bInGenerateEvents);                                                // [0x63958fc] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerRegisterPointProvider
-	// void LivingWorldManagerRegisterPointProvider(class AActor* PointProvider);                                               // [0x6414600] Final|Native|Static|Public|BlueprintCallable 
+	// void LivingWorldManagerRegisterPointProvider(class AActor* PointProvider);                                               // [0x63b1a60] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerProviderDebugActor
-	// void LivingWorldManagerProviderDebugActor(int32_t ProviderIndex);                                                        // [0x69e33bc] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerProviderDebugActor(int32_t ProviderIndex);                                                        // [0x6a309ec] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerGenerateEvents
-	// void LivingWorldManagerGenerateEvents();                                                                                 // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerGenerateEvents();                                                                                 // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerFlush
-	// void LivingWorldManagerFlush();                                                                                          // [0x36203b0] Final|RequiredAPI|BlueprintAuthorityOnly|Exec|Native|Public|BlueprintCallable 
+	// void LivingWorldManagerFlush();                                                                                          // [0x3518b8c] Final|RequiredAPI|BlueprintAuthorityOnly|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerEnablePointProvider
-	// void LivingWorldManagerEnablePointProvider(class AActor* PointProvider);                                                 // [0x6414600] Final|Native|Static|Public|BlueprintCallable 
+	// void LivingWorldManagerEnablePointProvider(class AActor* PointProvider);                                                 // [0x63b1a60] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerDumpSpawnCount
-	// void LivingWorldManagerDumpSpawnCount();                                                                                 // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerDumpSpawnCount();                                                                                 // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerDumpPrefabLevelBounds
-	// void LivingWorldManagerDumpPrefabLevelBounds();                                                                          // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerDumpPrefabLevelBounds();                                                                          // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerDumpEventInstances
-	// void LivingWorldManagerDumpEventInstances();                                                                             // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerDumpEventInstances();                                                                             // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerDisablePointProvider
-	// void LivingWorldManagerDisablePointProvider(class AActor* PointProvider);                                                // [0x6414600] Final|Native|Static|Public|BlueprintCallable 
+	// void LivingWorldManagerDisablePointProvider(class AActor* PointProvider);                                                // [0x63b1a60] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.LivingWorldManagerDebugEvent
-	// void LivingWorldManagerDebugEvent(FString EventName, int32_t DebugIndex, FString RuntimeSpawnDataName, FString EncounterName); // [0xa200bf8] Final|RequiredAPI|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerDebugEvent(FString EventName, int32_t DebugIndex, FString RuntimeSpawnDataName, FString EncounterName); // [0xaf04f24] Final|RequiredAPI|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.IsEncounterCategoryActive
-	// bool IsEncounterCategoryActive(TWeakObjectPtr<UFortAthenaLivingWorldEncounter*> EncounterType);                          // [0xa200970] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEncounterCategoryActive(TWeakObjectPtr<UFortAthenaLivingWorldEncounter*> EncounterType);                          // [0xaf04774] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.HasPendingSpawnRequestForEncounter
-	// bool HasPendingSpawnRequestForEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);               // [0xa200834] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasPendingSpawnRequestForEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);               // [0xaf045f8] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.GetOwningEncounter
-	// class UFortAthenaLivingWorldEncounterInstance* GetOwningEncounter(class AActor* Actor);                                  // [0xa2007a4] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFortAthenaLivingWorldEncounterInstance* GetOwningEncounter(class AActor* Actor);                                  // [0xaf04528] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.GetLivingWorldManager
-	// class UFortAthenaLivingWorldManager* GetLivingWorldManager(class UObject* WorldContextObject);                           // [0xa200724] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UFortAthenaLivingWorldManager* GetLivingWorldManager(class UObject* WorldContextObject);                           // [0xaf04468] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.EndEncounter
-	// void EndEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);                                     // [0xa200618] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void EndEncounter(class UFortAthenaLivingWorldEncounterInstance* EncounterInstance);                                     // [0xaf0431c] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.CancelSpawnRequest
-	// void CancelSpawnRequest(int32_t RequestID);                                                                              // [0xa200588] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void CancelSpawnRequest(int32_t RequestID);                                                                              // [0xaf04248] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldManager.BuildDataRegistryResolverScope_Implementation
-	// bool BuildDataRegistryResolverScope_Implementation(TArray<FName>& InOutResolverScopes, int32_t& InOutPriority);          // [0xa200484] Native|Public|HasOutParms|Const 
+	// bool BuildDataRegistryResolverScope_Implementation(TArray<FName>& InOutResolverScopes, int32_t& InOutPriority);          // [0xaf040c0] Native|Public|HasOutParms|Const 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldNavigationInvokerComponent
@@ -425,7 +426,7 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldNavigationInvokerComponent.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0x81ed394] Final|Native|Protected|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0x868ae34] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldPrefabLevelStreaming
@@ -466,27 +467,27 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.RemoveFoliageInsideLevelBound
-	// void RemoveFoliageInsideLevelBound();                                                                                    // [0x37d1694] Final|Native|Public|BlueprintCallable 
+	// void RemoveFoliageInsideLevelBound();                                                                                    // [0x36c70e0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.OnRep_ShouldLevelBeVisible
-	// void OnRep_ShouldLevelBeVisible();                                                                                       // [0x313d8d8] Final|Native|Protected 
+	// void OnRep_ShouldLevelBeVisible();                                                                                       // [0x1ca75b8] Final|Native|Protected 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.OnBuildingInLevelBoundsDestroyed__DelegateSignature
-	// void OnBuildingInLevelBoundsDestroyed__DelegateSignature();                                                              // [0x18a39e4] Public|Delegate      
+	// void OnBuildingInLevelBoundsDestroyed__DelegateSignature();                                                              // [0x186becc] Public|Delegate      
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.OnAllActorSpawnedDelegate__DelegateSignature
-	// void OnAllActorSpawnedDelegate__DelegateSignature(TArray<AActor*>& SpawnedActors);                                       // [0x18a39e4] Public|Delegate|HasOutParms 
+	// void OnAllActorSpawnedDelegate__DelegateSignature(TArray<AActor*>& SpawnedActors);                                       // [0x186becc] Public|Delegate|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.OnAllActorSpawned__DelegateSignature
-	// void OnAllActorSpawned__DelegateSignature(TArray<AActor*>& SpawnedActors);                                               // [0x18a39e4] MulticastDelegate|Public|Delegate|HasOutParms 
+	// void OnAllActorSpawned__DelegateSignature(TArray<AActor*>& SpawnedActors);                                               // [0x186becc] MulticastDelegate|Public|Delegate|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.MakeLevelVisible
-	// void MakeLevelVisible();                                                                                                 // [0xa219ff4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void MakeLevelVisible();                                                                                                 // [0xaf2b1fc] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.GetOwningLivingWorldPrefab
-	// class AFortAthenaLivingWorldPrefab* GetOwningLivingWorldPrefab(class UObject* WorldContextObject);                       // [0xa218fa4] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class AFortAthenaLivingWorldPrefab* GetOwningLivingWorldPrefab(class UObject* WorldContextObject);                       // [0xaf28b68] Final|RequiredAPI|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.GetLevelBounds
-	// FBox GetLevelBounds();                                                                                                   // [0xa218f5c] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FBox GetLevelBounds();                                                                                                   // [0xaf28b20] Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.DestroyBuildingsInLevelBounds
-	// void DestroyBuildingsInLevelBounds(FDelegateProperty& FinishedDelegate);                                                 // [0xa218ce0] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void DestroyBuildingsInLevelBounds(FDelegateProperty& FinishedDelegate);                                                 // [0xaf288a4] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.CallWhenAllActorHaveSpawned
-	// void CallWhenAllActorHaveSpawned(FDelegateProperty& DelegateToCall);                                                     // [0xa218c3c] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void CallWhenAllActorHaveSpawned(FDelegateProperty& DelegateToCall);                                                     // [0xaf28800] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefab.AllowSpawnerToSpawn
-	// void AllowSpawnerToSpawn();                                                                                              // [0xa218ab0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void AllowSpawnerToSpawn();                                                                                              // [0xaf28674] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner
@@ -506,15 +507,15 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner.OnSnapCompleted
-	// void OnSnapCompleted(class UFortSnapOnSurfaceComponent* Component, FTransform& OldTransform, FTransform& NewTransfom);   // [0xa21a588] Final|Native|Protected|HasOutParms|HasDefaults 
+	// void OnSnapCompleted(class UFortSnapOnSurfaceComponent* Component, FTransform& OldTransform, FTransform& NewTransfom);   // [0xaf2b9d0] Final|Native|Protected|HasOutParms|HasDefaults 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner.OnActorSpawnedDelegate__DelegateSignature
-	// void OnActorSpawnedDelegate__DelegateSignature(class AActor* SpawnedActor);                                              // [0x18a39e4] Public|Delegate      
+	// void OnActorSpawnedDelegate__DelegateSignature(class AActor* SpawnedActor);                                              // [0x186becc] Public|Delegate      
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner.OnActorSpawned__DelegateSignature
-	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner.GetSpawnedActor
-	// class AActor* GetSpawnedActor();                                                                                         // [0xa219084] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AActor* GetSpawnedActor();                                                                                         // [0xaf28c88] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPrefabActorSpawner.CallWhenActorSpawned
-	// void CallWhenActorSpawned(FDelegateProperty& DelegateToCall);                                                            // [0xa218ae4] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void CallWhenActorSpawned(FDelegateProperty& DelegateToCall);                                                            // [0xaf286a8] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldRuntimePointProviderComponent
@@ -549,13 +550,13 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldSpawnActionBlueprint.K2_OnSpawnedActorFailed
-	// void K2_OnSpawnedActorFailed(TScriptInterface<Class>& SourcePointProvider);                                              // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent|Const 
+	// void K2_OnSpawnedActorFailed(TScriptInterface<Class>& SourcePointProvider);                                              // [0x186becc] Event|Public|HasOutParms|BlueprintEvent|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldSpawnActionBlueprint.K2_OnSpawnedActor
-	// void K2_OnSpawnedActor(class AActor* SpawnedActor, TScriptInterface<Class>& SourcePointProvider);                        // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent|Const 
+	// void K2_OnSpawnedActor(class AActor* SpawnedActor, TScriptInterface<Class>& SourcePointProvider);                        // [0x186becc] Event|Public|HasOutParms|BlueprintEvent|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldSpawnActionBlueprint.K2_OnAllActorSpawned
-	// void K2_OnAllActorSpawned(TArray<AActor*>& SpawnedActor, TScriptInterface<Class>& SourcePointProvider);                  // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent|Const 
+	// void K2_OnAllActorSpawned(TArray<AActor*>& SpawnedActor, TScriptInterface<Class>& SourcePointProvider);                  // [0x186becc] Event|Public|HasOutParms|BlueprintEvent|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldSpawnActionBlueprint.K2_ModifySpawnComponentList
-	// void K2_ModifySpawnComponentList(class UFortAthenaAISpawnerDataComponentList* ComponentList, class UObject* ComponentOuter); // [0x18a39e4] Event|Public|BlueprintEvent|Const 
+	// void K2_ModifySpawnComponentList(class UFortAthenaAISpawnerDataComponentList* ComponentList, class UObject* ComponentOuter); // [0x186becc] Event|Public|BlueprintEvent|Const 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldWardComponent
@@ -571,11 +572,11 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldWardComponent.SetWardRadius
-	// void SetWardRadius(float Radius);                                                                                        // [0x9813eb8] Final|Native|Public|BlueprintCallable 
+	// void SetWardRadius(float Radius);                                                                                        // [0xa2766d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldWardComponent.OnWorldFinishedInitialization
-	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xa21a8c0] Final|Native|Private|HasOutParms 
+	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xaf2bd3c] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldWardComponent.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa21a41c] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf2b720] Final|Native|Private|HasOutParms 
 };
 
 /// Class /Script/LagerRuntime.FortCheatManager_LivingWorldManager_EnhancedInputBindingInfo
@@ -608,31 +609,31 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LWMTE
-	// void LWMTE(FString EventDataName);                                                                                       // [0xa200a74] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LWMTE(FString EventDataName);                                                                                       // [0xaf048ac] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LWMSE
-	// void LWMSE(FString EventDataName, FString SpawnerDataNames);                                                             // [0xa2190c4] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LWMSE(FString EventDataName, FString SpawnerDataNames);                                                             // [0xaf28cc8] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LWMS
-	// void LWMS(FString EventDataName);                                                                                        // [0xa200a74] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LWMS(FString EventDataName);                                                                                        // [0xaf048ac] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerTriggerEvent
-	// void LivingWorldManagerTriggerEvent(FString EventDataName);                                                              // [0x92aae98] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerTriggerEvent(FString EventDataName);                                                              // [0x9bada54] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerTeleportToSpawnPosition
-	// void LivingWorldManagerTeleportToSpawnPosition(FString EventDataName);                                                   // [0x8b6e5a0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerTeleportToSpawnPosition(FString EventDataName);                                                   // [0x91f846c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerTeleportTo
-	// void LivingWorldManagerTeleportTo(FString EventDataName);                                                                // [0x8b6e5a0] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerTeleportTo(FString EventDataName);                                                                // [0x91f846c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerSpawnTrackedAtLocation
-	// void LivingWorldManagerSpawnTrackedAtLocation(FString EventDataName, FString TrackedActorName, FVector Location, FRotator Rotation); // [0xa219c40] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
+	// void LivingWorldManagerSpawnTrackedAtLocation(FString EventDataName, FString TrackedActorName, FVector Location, FRotator Rotation); // [0xaf2aa14] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerSpawnEventAtLocation
-	// void LivingWorldManagerSpawnEventAtLocation(FString EventDataName, FVector Location, FRotator Rotation, FString SpawnerDataNames); // [0xa21980c] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
+	// void LivingWorldManagerSpawnEventAtLocation(FString EventDataName, FVector Location, FRotator Rotation, FString SpawnerDataNames); // [0xaf2a22c] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerSpawnEvent
-	// void LivingWorldManagerSpawnEvent(FString EventDataName, FString SpawnerDataNames);                                      // [0xa21961c] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerSpawnEvent(FString EventDataName, FString SpawnerDataNames);                                      // [0xaf29b38] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerSpawnAtLocation
-	// void LivingWorldManagerSpawnAtLocation(FString EventDataName, FVector Location, FRotator Rotation);                      // [0xa2192f0] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
+	// void LivingWorldManagerSpawnAtLocation(FString EventDataName, FVector Location, FRotator Rotation);                      // [0xaf293f4] Final|BlueprintAuthorityOnly|Exec|Native|Public|HasDefaults 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerSpawn
-	// void LivingWorldManagerSpawn(FString EventDataName);                                                                     // [0x92aae98] Final|BlueprintAuthorityOnly|Exec|Native|Public 
+	// void LivingWorldManagerSpawn(FString EventDataName);                                                                     // [0x9bada54] Final|BlueprintAuthorityOnly|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerGDTNextDensityGrid
-	// void LivingWorldManagerGDTNextDensityGrid();                                                                             // [0x36203b0] Final|Exec|Native|Public 
+	// void LivingWorldManagerGDTNextDensityGrid();                                                                             // [0x3518b8c] Final|Exec|Native|Public 
 	// Function /Script/LagerRuntime.FortCheatManager_LivingWorldManager.LivingWorldManagerDisplaySpawnPoints
-	// void LivingWorldManagerDisplaySpawnPoints(float MaxDisplayDistance);                                                     // [0x67d85bc] Final|Exec|Native|Public 
+	// void LivingWorldManagerDisplaySpawnPoints(float MaxDisplayDistance);                                                     // [0x67dbeb4] Final|Exec|Native|Public 
 };
 
 /// Class /Script/LagerRuntime.FortGameFeatureAction_AddCategoryTableToConfig
@@ -720,11 +721,11 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldLightStaticPointProvider.OnActorSpawned__DelegateSignature
-	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldLightStaticPointProvider.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0xa218e50] Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0xaf28a14] Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldLightStaticPointProvider.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218dd0] Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28994] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface
@@ -739,15 +740,15 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface.GetPointProviderMaxRadius
-	// float GetPointProviderMaxRadius();                                                                                       // [0xa21905c] Native|Public|BlueprintCallable 
+	// float GetPointProviderMaxRadius();                                                                                       // [0xaf28c60] Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface.GetPointProviderLocation
-	// FVector GetPointProviderLocation();                                                                                      // [0xa219024] Native|Public|HasDefaults|BlueprintCallable 
+	// FVector GetPointProviderLocation();                                                                                      // [0xaf28c28] Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface.GetFiltersTags
-	// void GetFiltersTags(FGameplayTagContainer& FilterTags);                                                                  // [0xa218ea0] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetFiltersTags(FGameplayTagContainer& FilterTags);                                                                  // [0xaf28a64] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0x6a57d30] Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0x6ac02a8] Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldPointProviderInterface.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218dbc] Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28980] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldStaticPointProvider
@@ -772,13 +773,13 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldStaticPointProvider.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa21a030] Final|Native|Protected|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf2b238] Final|Native|Protected|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldStaticPointProvider.OnActorSpawned__DelegateSignature
-	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawned__DelegateSignature(class AActor* SpawnedActor);                                                      // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldStaticPointProvider.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0xa218e18] Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0xaf289dc] Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldStaticPointProvider.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218d84] Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28948] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaLivingWorldVehiclePointProvider
@@ -823,35 +824,35 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.SetSpawnRotation
-	// void SetSpawnRotation(FRotator& Rotation);                                                                               // [0xa21b0d0] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetSpawnRotation(FRotator& Rotation);                                                                               // [0xaf2c3e8] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.SetFiltersTags
-	// void SetFiltersTags(FGameplayTagContainer& TagContainer);                                                                // [0xa21af18] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetFiltersTags(FGameplayTagContainer& TagContainer);                                                                // [0xaf2c1f0] Final|BlueprintAuthorityOnly|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.SetEQSQueryConfigParam
-	// void SetEQSQueryConfigParam(FName ParameterName, float Value);                                                           // [0xa21ae54] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetEQSQueryConfigParam(FName ParameterName, float Value);                                                           // [0xaf2c0b4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.SetEQSQuery
-	// void SetEQSQuery(class UEnvQuery* Query);                                                                                // [0xa21add4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetEQSQuery(class UEnvQuery* Query);                                                                                // [0xaf2bff4] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.RunEQS
-	// void RunEQS();                                                                                                           // [0x36203b0] Final|Native|Private 
+	// void RunEQS();                                                                                                           // [0x3518b8c] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.ResetSpawnRotation
-	// void ResetSpawnRotation();                                                                                               // [0xa21adb0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void ResetSpawnRotation();                                                                                               // [0xaf2bfd0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.OnWorldFinishedInitialization
-	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xa21a75c] Final|Native|Private|HasOutParms 
+	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xaf2bbd8] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.OnPointProviderRegistered__DelegateSignature
-	// void OnPointProviderRegistered__DelegateSignature(class AFortAthenaLivingWorldVolume* PointProviderVolume);              // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnPointProviderRegistered__DelegateSignature(class AFortAthenaLivingWorldVolume* PointProviderVolume);              // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.OnNavigationFinishedGeneration
-	// void OnNavigationFinishedGeneration(class ANavigationData* NavData);                                                     // [0xa21a508] Final|Native|Private 
+	// void OnNavigationFinishedGeneration(class ANavigationData* NavData);                                                     // [0xaf2b84c] Final|Native|Private 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa21a130] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf2b378] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.OnActorSpawnedResult__DelegateSignature
-	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.IsPointProviderEnabled
-	// bool IsPointProviderEnabled();                                                                                           // [0x8e205a0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsPointProviderEnabled();                                                                                           // [0x94070dc] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0xa218e34] Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0xaf289f8] Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.DoesStartEnabled
-	// bool DoesStartEnabled();                                                                                                 // [0x945cf00] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesStartEnabled();                                                                                                 // [0x9dd5ec4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/LagerRuntime.FortAthenaLivingWorldVolume.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218da0] Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28964] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaPatrolPathPointProvider
@@ -867,6 +868,7 @@ public:
 	DMember(bool)                                      bStartEnabled                                               OFFSET(get<bool>, {0x2C0, 1, 1, 0})
 	DMember(bool)                                      bSpawnOnPatrolPath                                          OFFSET(get<bool>, {0x2C0, 1, 1, 1})
 	DMember(bool)                                      bAlignOrientationToPath                                     OFFSET(get<bool>, {0x2C0, 1, 1, 2})
+	DMember(bool)                                      bSyncStatusWithPatrolPath                                   OFFSET(get<bool>, {0x2C0, 1, 1, 3})
 	SMember(FFortAthenaLivingWorldPointProviderSpawnLimiter) SpawnLimiter                                          OFFSET(getStruct<T>, {0x2C8, 104, 0, 0})
 	SMember(FMulticastInlineDelegate)                  OnActorSpawnedResult                                        OFFSET(getStruct<T>, {0x330, 16, 0, 0})
 	CMember(TWeakObjectPtr<AFortAthenaPatrolPath*>)    RuntimePatrolPathWeakPtr                                    OFFSET(get<T>, {0x340, 8, 0, 0})
@@ -875,14 +877,18 @@ public:
 
 
 	/// Functions
+	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.RegisterToLWM
+	// void RegisterToLWM();                                                                                                    // [0xaf2bde8] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.OnPatrolPathStatusChanged
+	// void OnPatrolPathStatusChanged(bool bEnableState);                                                                       // [0xaf2b90c] Final|Native|Public  
 	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa21a224] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf2b4a8] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.OnActorSpawnedResult__DelegateSignature
-	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0xa218e18] RequiredAPI|Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0xaf289dc] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaPatrolPathPointProvider.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218d84] RequiredAPI|Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28948] RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider
@@ -906,17 +912,17 @@ public:
 
 	/// Functions
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.SetForcedPawnToUse
-	// void SetForcedPawnToUse(class APawn* InForcedPawnToUse);                                                                 // [0xa21afd0] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetForcedPawnToUse(class APawn* InForcedPawnToUse);                                                                 // [0xaf2c2a8] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.OnWorldFinishedInitialization
-	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xa21a808] Final|Native|Private|HasOutParms 
+	// void OnWorldFinishedInitialization(FGameplayTagContainer& ContextTags);                                                  // [0xaf2bc84] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.OnCurrentPlaylistLoaded
-	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xa21a320] Final|Native|Private|HasOutParms 
+	// void OnCurrentPlaylistLoaded(FName PlaylistName, FGameplayTagContainer& PlaylistContextTags);                            // [0xaf2b5e4] Final|Native|Private|HasOutParms 
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.OnActorSpawnedResult__DelegateSignature
-	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x18a39e4] MulticastDelegate|Public|Delegate 
+	// void OnActorSpawnedResult__DelegateSignature(class AActor* SpawnedActor, bool bResult);                                  // [0x186becc] MulticastDelegate|Public|Delegate 
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.EnablePointProvider
-	// void EnablePointProvider();                                                                                              // [0xa218e18] RequiredAPI|Native|Public|BlueprintCallable 
+	// void EnablePointProvider();                                                                                              // [0xaf289dc] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/LagerRuntime.FortAthenaPointAroundPlayerProvider.DisablePointProvider
-	// void DisablePointProvider();                                                                                             // [0xa218d84] Native|Public|BlueprintCallable 
+	// void DisablePointProvider();                                                                                             // [0xaf28948] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/LagerRuntime.FortAthenaWaterBodyPointProvider
@@ -1368,9 +1374,9 @@ public:
 	DMember(float)                                     DeactivationMinDelay                                        OFFSET(get<float>, {0x120, 4, 0, 0})
 	DMember(float)                                     DeactivationMaxDelay                                        OFFSET(get<float>, {0x124, 4, 0, 0})
 	CMember(TArray<FFortAthenaLivingWorldEventTagDensityCondition>) TagDensityConditions                           OFFSET(get<T>, {0x128, 16, 0, 0})
-	DMember(float)                                     MinDistanceToPlayer                                         OFFSET(get<float>, {0x138, 4, 0, 0})
-	DMember(float)                                     MaxDistanceToPlayer                                         OFFSET(get<float>, {0x13C, 4, 0, 0})
-	DMember(bool)                                      bCanSpawnWithoutMatchingPlayerDistance                      OFFSET(get<bool>, {0x140, 1, 0, 0})
+	DMember(bool)                                      bCanSpawnWithoutMatchingPlayerDistance                      OFFSET(get<bool>, {0x138, 1, 0, 0})
+	DMember(float)                                     MinDistanceToPlayer                                         OFFSET(get<float>, {0x13C, 4, 0, 0})
+	DMember(float)                                     MaxDistanceToPlayer                                         OFFSET(get<float>, {0x140, 4, 0, 0})
 	DMember(float)                                     RandomActivationChance                                      OFFSET(get<float>, {0x144, 4, 0, 0})
 	SMember(FFortAthenaLivingWorldEventDespawnCondition) DespawnCondition                                          OFFSET(getStruct<T>, {0x148, 32, 0, 0})
 	CMember(TArray<FFortAthenaLivingWorldDespawnCondition>) DespawnConditions                                      OFFSET(get<T>, {0x168, 16, 0, 0})

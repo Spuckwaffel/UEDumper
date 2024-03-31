@@ -24,12 +24,12 @@ public:
 
 	/// Functions
 	// Function /Script/CreatorRefreshMyIslandUI.FortCreativeMyIslandSideNavWidget.SetSearchInputEnabled
-	// void SetSearchInputEnabled(bool bEnabled);                                                                               // [0xaca2bb8] Final|Native|Protected|BlueprintCallable 
+	// void SetSearchInputEnabled(bool bEnabled);                                                                               // [0xc1ad8d0] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/CreatorRefreshMyIslandUI.FortCreativeMyIslandSideNavWidget.SetClearSearchInputEnabled
-	// void SetClearSearchInputEnabled(bool bEnabled);                                                                          // [0xaca2b30] Final|Native|Protected|BlueprintCallable 
+	// void SetClearSearchInputEnabled(bool bEnabled);                                                                          // [0xc1ad808] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/CreatorRefreshMyIslandUI.FortCreativeMyIslandSideNavWidget.OnSearchInput
-	// void OnSearchInput();                                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSearchInput();                                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CreatorRefreshMyIslandUI.FortCreativeMyIslandSideNavWidget.OnClearSearchInput
-	// void OnClearSearchInput();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnClearSearchInput();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 };
 

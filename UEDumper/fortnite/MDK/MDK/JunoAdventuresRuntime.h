@@ -54,7 +54,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoControllerComponent_ConversationHistory.Client_SetCachedContextualMessageResult
-	// void Client_SetCachedContextualMessageResult(FJunoContextualMessageQueryResult Result);                                  // [0xb3c6ce8] Final|Net|NetReliableNative|Event|Private|NetClient 
+	// void Client_SetCachedContextualMessageResult(FJunoContextualMessageQueryResult Result);                                  // [0xc4b5898] Final|Net|NetReliableNative|Event|Private|NetClient 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoControllerRequirement
@@ -82,9 +82,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoControllerRequirement_CampResidentsHaveTag.ValidateUniqueResidentTag
-	// bool ValidateUniqueResidentTag(FGameplayTag& OtherResidentIdentifier);                                                   // [0xb3c7ee0] Final|Native|Private|HasOutParms|Const 
+	// bool ValidateUniqueResidentTag(FGameplayTag& OtherResidentIdentifier);                                                   // [0xc4b7d90] Final|Native|Private|HasOutParms|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoControllerRequirement_CampResidentsHaveTag.ValidateRoleTag
-	// bool ValidateRoleTag(FGameplayTag& OtherResidentIdentifier, class UPlayspaceComponent_JunoAIPersistence* RootAIPersistenceComp); // [0xb3c7d78] Final|Native|Private|HasOutParms|Const 
+	// bool ValidateRoleTag(FGameplayTag& OtherResidentIdentifier, class UPlayspaceComponent_JunoAIPersistence* RootAIPersistenceComp); // [0xc4b7c28] Final|Native|Private|HasOutParms|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoControllerRequirement_HasCompletedQuestObjective
@@ -101,7 +101,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoControllerRequirement_HasCompletedQuestObjective.Editor_GetValidObjectives
-	// TArray<FName> Editor_GetValidObjectives();                                                                               // [0x7c1634c] Final|Native|Private|Const 
+	// TArray<FName> Editor_GetValidObjectives();                                                                               // [0x8069e6c] Final|Native|Private|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoControllerRequirement_HasEntryTag
@@ -337,7 +337,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoConversationTaskNode_Speech.PlayClientVoiceLine
-	// void PlayClientVoiceLine(FConversationContext& Context, FJunoContextualMessageQueryResult& MessageParams);               // [0xb3c772c] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
+	// void PlayClientVoiceLine(FConversationContext& Context, FJunoContextualMessageQueryResult& MessageParams);               // [0xc4b71f8] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoConversationTaskNode_TagCurrentConversation
@@ -380,7 +380,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoNPCConversationParticipantComponent.OnRep_ParticipantIconSmall
-	// void OnRep_ParticipantIconSmall();                                                                                       // [0xb3c76c8] Final|Native|Protected 
+	// void OnRep_ParticipantIconSmall();                                                                                       // [0xc4b7194] Final|Native|Protected 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoChangeInventoryHelper
@@ -391,11 +391,12 @@ class UJunoChangeInventoryHelper : public UObject
 	static inline constexpr uint64_t __MDKClassSize = 56;
 
 public:
+	CMember(TWeakObjectPtr<UJunoInventoryComponent*>)  InventoryComponent                                          OFFSET(get<T>, {0x28, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoChangeInventoryHelper.HandleInventoryChangedEvent
-	// void HandleInventoryChangedEvent(FJunoItemSlot& ItemSlot, EJunoItemChangeType ChangeType);                               // [0xb3c7290] Final|Native|Public|HasOutParms 
+	// void HandleInventoryChangedEvent(FJunoItemSlot& ItemSlot, EJunoItemChangeType ChangeType);                               // [0xc4b685c] Final|Native|Public|HasOutParms 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoConversationTaskNode_CompleteQuestObjective
@@ -412,7 +413,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoConversationTaskNode_CompleteQuestObjective.Editor_GetValidObjectives
-	// TArray<FName> Editor_GetValidObjectives();                                                                               // [0x7c1634c] Final|Native|Private|Const 
+	// TArray<FName> Editor_GetValidObjectives();                                                                               // [0x8069e6c] Final|Native|Private|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoConversationTaskNode_GrantQuest
@@ -484,13 +485,13 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoQuestGiverComponent.RollGrantableQuestID
-	// void RollGrantableQuestID();                                                                                             // [0xb3c79f4] Final|Native|Public|BlueprintCallable 
+	// void RollGrantableQuestID();                                                                                             // [0xc4b7964] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoAdventuresRuntime.JunoQuestGiverComponent.HandleOnJunoQuestComplete
-	// void HandleOnJunoQuestComplete(TScriptInterface<Class>& QuestInstance);                                                  // [0xb3c7460] Final|Native|Private|HasOutParms 
+	// void HandleOnJunoQuestComplete(TScriptInterface<Class>& QuestInstance);                                                  // [0xc4b6a28] Final|Native|Private|HasOutParms 
 	// Function /Script/JunoAdventuresRuntime.JunoQuestGiverComponent.GetGrantableQuestID
-	// FString GetGrantableQuestID();                                                                                           // [0xb3c6e34] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetGrantableQuestID();                                                                                           // [0xc4b5974] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoQuestGiverComponent.BindToQuestManagerDelegates
-	// void BindToQuestManagerDelegates();                                                                                      // [0xb3c6cd4] Final|Native|Private 
+	// void BindToQuestManagerDelegates();                                                                                      // [0xc4b5884] Final|Native|Private 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoQuestSpawnPointComponent
@@ -515,9 +516,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoTokenHandlerAIComponent.ReceiveToken
-	// void ReceiveToken(FGameplayTag& JunoToken);                                                                              // [0xb3c7928] Native|Public|HasOutParms|BlueprintCallable 
+	// void ReceiveToken(FGameplayTag& JunoToken);                                                                              // [0xc4b7898] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoAdventuresRuntime.JunoTokenHandlerAIComponent.GetSavedTokens
-	// FGameplayTagContainer GetSavedTokens();                                                                                  // [0xb3c7260] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTagContainer GetSavedTokens();                                                                                  // [0xc4b682c] Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoQuestPoolDataAsset
@@ -545,7 +546,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoQuestDatabaseComponent.GetJunoQuestState
-	// EJunoQuestState GetJunoQuestState(FString QuestID);                                                                      // [0xb3c6f80] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EJunoQuestState GetJunoQuestState(FString QuestID);                                                                      // [0xc4b5b40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoQuestManagerComponent
@@ -560,11 +561,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoQuestManagerComponent.SendQuestStatEvent
-	// void SendQuestStatEvent(EFortQuestObjectiveStatEvent Type, FGameplayTagContainer SourceTags, FGameplayTagContainer TargetTags, int32_t Count); // [0xb3c7a08] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SendQuestStatEvent(EFortQuestObjectiveStatEvent Type, FGameplayTagContainer SourceTags, FGameplayTagContainer TargetTags, int32_t Count); // [0xc4b7978] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/JunoAdventuresRuntime.JunoQuestManagerComponent.GetQuestGiverForQuestID
-	// class AActor* GetQuestGiverForQuestID(FString QuestID);                                                                  // [0xb3c70ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AActor* GetQuestGiverForQuestID(FString QuestID);                                                                  // [0xc4b61b0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoQuestManagerComponent.ActivateQuest
-	// void ActivateQuest(class UFortQuestItemDefinition_Athena* QuestDefinition, class AActor* QuestGiver);                    // [0xb3c6c10] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void ActivateQuest(class UFortQuestItemDefinition_Athena* QuestDefinition, class AActor* QuestGiver);                    // [0xc4b5744] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoEncounterManagerComponent
@@ -622,7 +623,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.FortQuestDefinitionComponent_Juno.Editor_GetValidObjectiveNames
-	// TArray<FName> Editor_GetValidObjectiveNames();                                                                           // [0x7c1634c] Final|Native|Private|Const 
+	// TArray<FName> Editor_GetValidObjectiveNames();                                                                           // [0x8069e6c] Final|Native|Private|Const 
 };
 
 /// Class /Script/JunoAdventuresRuntime.FortQuestDefinitionComponent_JunoEncounter
@@ -680,9 +681,9 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoAdventuresBlueprintLibrary.GetJunoQuestManager
-	// class UJunoQuestManagerComponent* GetJunoQuestManager(class UObject* WorldContextObject);                                // [0xb3c6f00] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UJunoQuestManagerComponent* GetJunoQuestManager(class UObject* WorldContextObject);                                // [0xc4b5a80] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/JunoAdventuresRuntime.JunoAdventuresBlueprintLibrary.GetJunoQuestDatabase
-	// class UJunoQuestDatabaseComponent* GetJunoQuestDatabase(class UObject* WorldContextObject);                              // [0xb3c6e80] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UJunoQuestDatabaseComponent* GetJunoQuestDatabase(class UObject* WorldContextObject);                              // [0xc4b59c0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures
@@ -697,19 +698,19 @@ public:
 
 	/// Functions
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoSpawnVisitorInClosestCamp
-	// void JunoSpawnVisitorInClosestCamp(FString PartialUniqueAIIdentifier, int32_t Count);                                    // [0x8f976ac] Final|Exec|Native|Private|Const 
+	// void JunoSpawnVisitorInClosestCamp(FString PartialUniqueAIIdentifier, int32_t Count);                                    // [0x975efcc] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoRepopulateAvailableQuestsWithTags
-	// void JunoRepopulateAvailableQuestsWithTags(FString QuestPoolTags);                                                       // [0xb3c7568] Final|BlueprintAuthorityOnly|Exec|Native|Private 
+	// void JunoRepopulateAvailableQuestsWithTags(FString QuestPoolTags);                                                       // [0xc4b6b30] Final|BlueprintAuthorityOnly|Exec|Native|Private 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoRepopulateAvailableQuests
-	// void JunoRepopulateAvailableQuests();                                                                                    // [0xb3c74f0] Final|BlueprintAuthorityOnly|Exec|Native|Private 
+	// void JunoRepopulateAvailableQuests();                                                                                    // [0xc4b6ab8] Final|BlueprintAuthorityOnly|Exec|Native|Private 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoQueueScriptRowMessagesForNpcConversation
-	// void JunoQueueScriptRowMessagesForNpcConversation(FString ScriptName, FString RowName);                                  // [0x92ab884] Final|BlueprintAuthorityOnly|Exec|Native|Private 
+	// void JunoQueueScriptRowMessagesForNpcConversation(FString ScriptName, FString RowName);                                  // [0x9baec3c] Final|BlueprintAuthorityOnly|Exec|Native|Private 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoPrintNPCsInfo
-	// void JunoPrintNPCsInfo(bool bIgnoreAIsWithNoAssignment);                                                                 // [0x63fe5cc] Final|Exec|Native|Private|Const 
+	// void JunoPrintNPCsInfo(bool bIgnoreAIsWithNoAssignment);                                                                 // [0x63958fc] Final|Exec|Native|Private|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoPrintCurrentConversationInfo
-	// void JunoPrintCurrentConversationInfo();                                                                                 // [0x36203b0] Final|Exec|Native|Private|Const 
+	// void JunoPrintCurrentConversationInfo();                                                                                 // [0x3518b8c] Final|Exec|Native|Private|Const 
 	// Function /Script/JunoAdventuresRuntime.JunoCheatManager_Adventures.JunoInjectDisplayTextForNpcConversation
-	// void JunoInjectDisplayTextForNpcConversation(FString TestString);                                                        // [0x6b8287c] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
+	// void JunoInjectDisplayTextForNpcConversation(FString TestString);                                                        // [0x6c014e8] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
 };
 
 /// Struct /Script/JunoAdventuresRuntime.JunoContextualMessageConfigTableRow

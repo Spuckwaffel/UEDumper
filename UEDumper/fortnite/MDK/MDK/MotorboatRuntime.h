@@ -58,80 +58,80 @@ public:
 };
 
 /// Class /Script/MotorboatRuntime.FortMeatballVehicle
-/// Size: 0x02F0 (0x001FA0 - 0x002290)
+/// Size: 0x02F0 (0x001FD0 - 0x0022C0)
 class AFortMeatballVehicle : public AFortAthenaSKVehicle
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 8848;
+	static inline constexpr uint64_t __MDKClassSize = 8896;
 
 public:
-	SMember(FFortRechargingActionTimer)                BoostAction                                                 OFFSET(getStruct<T>, {0x1FA0, 216, 0, 0})
-	DMember(float)                                     FxNormalizationMaxSpeedKmh                                  OFFSET(get<float>, {0x2078, 4, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineUp                                          OFFSET(get<T>, {0x2080, 8, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineDown                                        OFFSET(get<T>, {0x2088, 8, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioWakeTurn                                          OFFSET(get<T>, {0x2090, 8, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioWakeSpeed                                         OFFSET(get<T>, {0x2098, 8, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioScrape                                            OFFSET(get<T>, {0x20A0, 8, 0, 0})
-	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineOutOfFuel                                   OFFSET(get<T>, {0x20A8, 8, 0, 0})
-	CMember(class UMaterialInstanceDynamic*)           BoostMID                                                    OFFSET(get<T>, {0x20B0, 8, 0, 0})
-	CMember(class UNiagaraComponent*)                  CachedGroundFXComponent                                     OFFSET(get<T>, {0x20B8, 8, 0, 0})
-	CMember(class APlayerController*)                  DrivingPlayerController                                     OFFSET(get<T>, {0x20C0, 8, 0, 0})
-	CMember(class ULegacyCameraShake*)                 LandCameraShake                                             OFFSET(get<T>, {0x20C8, 8, 0, 0})
-	CMember(class UClass*)                             LandCameraShakeClass                                        OFFSET(get<T>, {0x20D0, 8, 0, 0})
-	CMember(class ULegacyCameraShake*)                 DriverCameraShake                                           OFFSET(get<T>, {0x20D8, 8, 0, 0})
-	CMember(class UClass*)                             DriverCameraShakeClass                                      OFFSET(get<T>, {0x20E0, 8, 0, 0})
-	DMember(float)                                     LandRumbleIntensity                                         OFFSET(get<float>, {0x20E8, 4, 0, 0})
-	DMember(uint64_t)                                  LandForceFeedbackHandle                                     OFFSET(get<uint64_t>, {0x20F0, 8, 0, 0})
-	DMember(float)                                     TurnRumbleIntensity                                         OFFSET(get<float>, {0x20F8, 4, 0, 0})
-	DMember(uint64_t)                                  TurnForceFeedbackHandle                                     OFFSET(get<uint64_t>, {0x2100, 8, 0, 0})
-	DMember(float)                                     CurrentSnowAltitude                                         OFFSET(get<float>, {0x2108, 4, 0, 0})
-	DMember(bool)                                      bHasSnow                                                    OFFSET(get<bool>, {0x210C, 1, 0, 0})
-	DMember(bool)                                      bLargeRumble                                                OFFSET(get<bool>, {0x210D, 1, 0, 0})
-	DMember(bool)                                      bTurnRumbleActive                                           OFFSET(get<bool>, {0x210E, 1, 0, 0})
-	DMember(bool)                                      bWaterDropsOnScreen                                         OFFSET(get<bool>, {0x210F, 1, 0, 0})
-	SMember(FGameplayTag)                              GCVehicleScreenDrips                                        OFFSET(getStruct<T>, {0x2110, 4, 0, 0})
-	SMember(FGameplayCueParameters)                    GCParamsEmpty                                               OFFSET(getStruct<T>, {0x2118, 208, 0, 0})
-	CMember(class UClass*)                             BoostingCamera                                              OFFSET(get<T>, {0x21E8, 8, 0, 0})
-	CMember(class UClass*)                             VehicleCameraNoWeaponOverride                               OFFSET(get<T>, {0x21F0, 8, 0, 0})
-	CMember(class UFortMeatballVehicleConfigs*)        FortMeatballVehicleConfigs                                  OFFSET(get<T>, {0x2208, 8, 0, 0})
-	DMember(int32_t)                                   WaterLineStartPontoonIndex                                  OFFSET(get<int32_t>, {0x2210, 4, 0, 0})
-	DMember(int32_t)                                   WaterLineEndPontoonIndex                                    OFFSET(get<int32_t>, {0x2214, 4, 0, 0})
-	DMember(bool)                                      bBoostFailed                                                OFFSET(get<bool>, {0x2250, 1, 0, 0})
+	SMember(FFortRechargingActionTimer)                BoostAction                                                 OFFSET(getStruct<T>, {0x1FC8, 216, 0, 0})
+	DMember(float)                                     FxNormalizationMaxSpeedKmh                                  OFFSET(get<float>, {0x20A0, 4, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineUp                                          OFFSET(get<T>, {0x20A8, 8, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineDown                                        OFFSET(get<T>, {0x20B0, 8, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioWakeTurn                                          OFFSET(get<T>, {0x20B8, 8, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioWakeSpeed                                         OFFSET(get<T>, {0x20C0, 8, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioScrape                                            OFFSET(get<T>, {0x20C8, 8, 0, 0})
+	CMember(class UFortVehicleAudioVoice*)             CacheAudioEngineOutOfFuel                                   OFFSET(get<T>, {0x20D0, 8, 0, 0})
+	CMember(class UMaterialInstanceDynamic*)           BoostMID                                                    OFFSET(get<T>, {0x20D8, 8, 0, 0})
+	CMember(class UNiagaraComponent*)                  CachedGroundFXComponent                                     OFFSET(get<T>, {0x20E0, 8, 0, 0})
+	CMember(class APlayerController*)                  DrivingPlayerController                                     OFFSET(get<T>, {0x20E8, 8, 0, 0})
+	CMember(class ULegacyCameraShake*)                 LandCameraShake                                             OFFSET(get<T>, {0x20F0, 8, 0, 0})
+	CMember(class UClass*)                             LandCameraShakeClass                                        OFFSET(get<T>, {0x20F8, 8, 0, 0})
+	CMember(class ULegacyCameraShake*)                 DriverCameraShake                                           OFFSET(get<T>, {0x2100, 8, 0, 0})
+	CMember(class UClass*)                             DriverCameraShakeClass                                      OFFSET(get<T>, {0x2108, 8, 0, 0})
+	DMember(float)                                     LandRumbleIntensity                                         OFFSET(get<float>, {0x2110, 4, 0, 0})
+	DMember(uint64_t)                                  LandForceFeedbackHandle                                     OFFSET(get<uint64_t>, {0x2118, 8, 0, 0})
+	DMember(float)                                     TurnRumbleIntensity                                         OFFSET(get<float>, {0x2120, 4, 0, 0})
+	DMember(uint64_t)                                  TurnForceFeedbackHandle                                     OFFSET(get<uint64_t>, {0x2128, 8, 0, 0})
+	DMember(float)                                     CurrentSnowAltitude                                         OFFSET(get<float>, {0x2130, 4, 0, 0})
+	DMember(bool)                                      bHasSnow                                                    OFFSET(get<bool>, {0x2134, 1, 0, 0})
+	DMember(bool)                                      bLargeRumble                                                OFFSET(get<bool>, {0x2135, 1, 0, 0})
+	DMember(bool)                                      bTurnRumbleActive                                           OFFSET(get<bool>, {0x2136, 1, 0, 0})
+	DMember(bool)                                      bWaterDropsOnScreen                                         OFFSET(get<bool>, {0x2137, 1, 0, 0})
+	SMember(FGameplayTag)                              GCVehicleScreenDrips                                        OFFSET(getStruct<T>, {0x2138, 4, 0, 0})
+	SMember(FGameplayCueParameters)                    GCParamsEmpty                                               OFFSET(getStruct<T>, {0x2140, 208, 0, 0})
+	CMember(class UClass*)                             BoostingCamera                                              OFFSET(get<T>, {0x2210, 8, 0, 0})
+	CMember(class UClass*)                             VehicleCameraNoWeaponOverride                               OFFSET(get<T>, {0x2218, 8, 0, 0})
+	CMember(class UFortMeatballVehicleConfigs*)        FortMeatballVehicleConfigs                                  OFFSET(get<T>, {0x2230, 8, 0, 0})
+	DMember(int32_t)                                   WaterLineStartPontoonIndex                                  OFFSET(get<int32_t>, {0x2238, 4, 0, 0})
+	DMember(int32_t)                                   WaterLineEndPontoonIndex                                    OFFSET(get<int32_t>, {0x223C, 4, 0, 0})
+	DMember(bool)                                      bBoostFailed                                                OFFSET(get<bool>, {0x2280, 1, 0, 0})
 
 
 	/// Functions
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.UpdateSnowAndDirtParams
-	// void UpdateSnowAndDirtParams(float NormalizedForwardSpeed);                                                              // [0xa19c8a0] Final|Native|Protected|BlueprintCallable 
+	// void UpdateSnowAndDirtParams(float NormalizedForwardSpeed);                                                              // [0xae95934] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.StopTurnRumble
-	// void StopTurnRumble();                                                                                                   // [0xa19c88c] Final|Native|Protected|BlueprintCallable 
+	// void StopTurnRumble();                                                                                                   // [0xae95920] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.StopLandRumble
-	// void StopLandRumble();                                                                                                   // [0xa19c878] Final|Native|Protected|BlueprintCallable 
+	// void StopLandRumble();                                                                                                   // [0xae9590c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.StopDriverCameraShake
-	// void StopDriverCameraShake();                                                                                            // [0xa19c864] Final|Native|Protected|BlueprintCallable 
+	// void StopDriverCameraShake();                                                                                            // [0xae958f8] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.SmashedThroughBuildingPiece
-	// void SmashedThroughBuildingPiece(FVector& ImpactPoint, FVector& ImpactNormal, class ABuildingActor* BuildingHitActor);   // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void SmashedThroughBuildingPiece(FVector& ImpactPoint, FVector& ImpactNormal, class ABuildingActor* BuildingHitActor);   // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.ShowCooldownCue
-	// void ShowCooldownCue(class AFortPlayerPawn* Pawn, float duration);                                                       // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void ShowCooldownCue(class AFortPlayerPawn* Pawn, float duration);                                                       // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.OnBoostStarted
-	// void OnBoostStarted();                                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnBoostStarted();                                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.OnBoostReady
-	// void OnBoostReady();                                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnBoostReady();                                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.OnBoostFinished
-	// void OnBoostFinished();                                                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnBoostFinished();                                                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.OnBoostFailed
-	// void OnBoostFailed();                                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnBoostFailed();                                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.LandShakeEnd
-	// void LandShakeEnd();                                                                                                     // [0xa19c850] Final|Native|Protected|BlueprintCallable 
+	// void LandShakeEnd();                                                                                                     // [0xae958e4] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.GetSeatRotation
-	// FQuat GetSeatRotation();                                                                                                 // [0xa19c828] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FQuat GetSeatRotation();                                                                                                 // [0xae958bc] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.GetSeatOffset
-	// FVector GetSeatOffset();                                                                                                 // [0xa19c800] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetSeatOffset();                                                                                                 // [0xae95894] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.GetBoostCharge
-	// float GetBoostCharge();                                                                                                  // [0xa19c7d8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetBoostCharge();                                                                                                  // [0xae9586c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.CacheGroundFXComponent
-	// void CacheGroundFXComponent(class UNiagaraComponent* InGroundFXComponent);                                               // [0xa19c74c] Final|Native|Public|BlueprintCallable 
+	// void CacheGroundFXComponent(class UNiagaraComponent* InGroundFXComponent);                                               // [0xae9579c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MotorboatRuntime.FortMeatballVehicle.CacheAudioPointers
-	// void CacheAudioPointers(class UFortVehicleAudioVoice* InAudioEngineUp, class UFortVehicleAudioVoice* InAudioEngineDown, class UFortVehicleAudioVoice* InAudioWakeTurn, class UFortVehicleAudioVoice* InAudioWakeSpeed, class UFortVehicleAudioVoice* InAudioScrape, class UFortVehicleAudioVoice* InAudioEngineOutOfFuel); // [0xa19c4d0] Final|Native|Public|BlueprintCallable 
+	// void CacheAudioPointers(class UFortVehicleAudioVoice* InAudioEngineUp, class UFortVehicleAudioVoice* InAudioEngineDown, class UFortVehicleAudioVoice* InAudioWakeTurn, class UFortVehicleAudioVoice* InAudioWakeSpeed, class UFortVehicleAudioVoice* InAudioScrape, class UFortVehicleAudioVoice* InAudioEngineOutOfFuel); // [0xae953bc] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/MotorboatRuntime.FortMeatballVehicleConfigs

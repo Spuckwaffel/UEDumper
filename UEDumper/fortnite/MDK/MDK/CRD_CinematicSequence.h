@@ -34,33 +34,35 @@ public:
 
 	/// Functions
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.Stop
-	// void Stop();                                                                                                             // [0xab821fc] Final|Native|Public|BlueprintCallable 
+	// void Stop();                                                                                                             // [0xc043190] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.SetSequence
-	// void SetSequence(class ULevelSequence* Sequence);                                                                        // [0xab8217c] Final|Native|Public|BlueprintCallable 
+	// void SetSequence(class ULevelSequence* Sequence);                                                                        // [0xc0430d0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.SetPlayRate
-	// void SetPlayRate(float PlayRate);                                                                                        // [0xab81ffc] Final|Native|Public|BlueprintCallable 
+	// void SetPlayRate(float PlayRate);                                                                                        // [0xc042e88] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.SetPlaybackTime
-	// void SetPlaybackTime(float Time);                                                                                        // [0xab820fc] Final|Native|Public|BlueprintCallable 
+	// void SetPlaybackTime(float Time);                                                                                        // [0xc04300c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.SetPlaybackFrame
-	// void SetPlaybackFrame(int32_t Frame);                                                                                    // [0xab8207c] Final|Native|Public|BlueprintCallable 
+	// void SetPlaybackFrame(int32_t Frame);                                                                                    // [0xc042f4c] Final|Native|Public|BlueprintCallable 
+	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.PlayReverse
+	// void PlayReverse();                                                                                                      // [0xc042e74] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.Play
-	// void Play();                                                                                                             // [0xab81fe8] Final|Native|Public|BlueprintCallable 
+	// void Play();                                                                                                             // [0xc042e60] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.Pause
-	// void Pause();                                                                                                            // [0xab81fd4] Final|Native|Public|BlueprintCallable 
+	// void Pause();                                                                                                            // [0xc042e4c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.OnSequenceFinished
-	// void OnSequenceFinished();                                                                                               // [0xab81fc0] Final|Native|Protected 
+	// void OnSequenceFinished();                                                                                               // [0xc042e38] Final|Native|Protected 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.HandleSequencePlayerCreated
-	// void HandleSequencePlayerCreated(class ULevelSequencePlayer* Player);                                                    // [0x8868880] Native|Event|Protected|BlueprintEvent 
+	// void HandleSequencePlayerCreated(class ULevelSequencePlayer* Player);                                                    // [0x8e4645c] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.GoToEndAndStop
-	// void GoToEndAndStop();                                                                                                   // [0xab81fac] Final|Native|Public|BlueprintCallable 
+	// void GoToEndAndStop();                                                                                                   // [0xc042e24] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.GetSequencePlayer
-	// class UMovieSceneSequencePlayer* GetSequencePlayer();                                                                    // [0xab81f8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UMovieSceneSequencePlayer* GetSequencePlayer();                                                                    // [0xc042e04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.GetPlayRate
-	// float GetPlayRate();                                                                                                     // [0xab81f18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetPlayRate();                                                                                                     // [0xc042d90] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.GetPlaybackTime
-	// float GetPlaybackTime();                                                                                                 // [0xab81f64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetPlaybackTime();                                                                                                 // [0xc042ddc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CRD_CinematicSequence.CinematicSequenceDeviceBase.GetPlaybackFrame
-	// int32_t GetPlaybackFrame();                                                                                              // [0xab81f40] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetPlaybackFrame();                                                                                              // [0xc042db8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Enum /Script/CRD_CinematicSequence.ECinematicSequenceVisibility

@@ -77,6 +77,6 @@ public:
 
 	/// Functions
 	// Function /Script/VirtualHeightfieldMesh.VirtualHeightfieldMeshComponent.GatherHideFlags
-	// void GatherHideFlags(bool& InOutHidePrimitivesInEditor, bool& InOutHidePrimitivesInGame);                                // [0xba1173c] Final|Native|Protected|HasOutParms|Const 
+	// void GatherHideFlags(bool& InOutHidePrimitivesInEditor, bool& InOutHidePrimitivesInGame);                                // [0xcba276c] Final|Native|Protected|HasOutParms|Const 
 };
 

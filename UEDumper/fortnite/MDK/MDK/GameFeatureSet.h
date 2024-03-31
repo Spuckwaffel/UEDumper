@@ -9,11 +9,11 @@
 /// dependency: Engine
 
 /// Class /Script/GameFeatureSet.GameFeatureSetSubsystem
-/// Size: 0x0118 (0x000030 - 0x000148)
+/// Size: 0x01B8 (0x000030 - 0x0001E8)
 class UGameFeatureSetSubsystem : public UEngineSubsystem
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 328;
+	static inline constexpr uint64_t __MDKClassSize = 488;
 
 public:
 };

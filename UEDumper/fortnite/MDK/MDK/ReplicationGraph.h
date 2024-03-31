@@ -184,23 +184,23 @@ public:
 
 	/// Functions
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerStopDebugging
-	// void ServerStopDebugging();                                                                                              // [0x1c2b230] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerStopDebugging();                                                                                              // [0x1d0c5cc] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerStartDebugging
-	// void ServerStartDebugging();                                                                                             // [0x792af54] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerStartDebugging();                                                                                             // [0x7d3a628] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerSetPeriodFrameForClass
-	// void ServerSetPeriodFrameForClass(class UClass* Class, int32_t PeriodFrame);                                             // [0x792ae8c] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerSetPeriodFrameForClass(class UClass* Class, int32_t PeriodFrame);                                             // [0x7d3a4e4] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerSetCullDistanceForClass
-	// void ServerSetCullDistanceForClass(class UClass* Class, float CullDistance);                                             // [0x792adc4] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerSetCullDistanceForClass(class UClass* Class, float CullDistance);                                             // [0x7d3a3a0] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerSetConditionalActorBreakpoint
-	// void ServerSetConditionalActorBreakpoint(class AActor* Actor);                                                           // [0x6ad0820] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerSetConditionalActorBreakpoint(class AActor* Actor);                                                           // [0x6b4a0f4] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerPrintCullDistances
-	// void ServerPrintCullDistances();                                                                                         // [0x21dc214] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerPrintCullDistances();                                                                                         // [0x1e9c598] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerPrintAllActorInfo
-	// void ServerPrintAllActorInfo(FString Str);                                                                               // [0x792ac60] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerPrintAllActorInfo(FString Str);                                                                               // [0x7d39d34] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ServerCellInfo
-	// void ServerCellInfo();                                                                                                   // [0x342c5dc] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerCellInfo();                                                                                                   // [0x3392774] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ReplicationGraph.ReplicationGraphDebugActor.ClientCellInfo
-	// void ClientCellInfo(FVector CellLocation, FVector CellExtent, TArray<AActor*> Actors);                                   // [0x792a930] Net|NetReliableNative|Event|Public|HasDefaults|NetClient 
+	// void ClientCellInfo(FVector CellLocation, FVector CellExtent, TArray<AActor*> Actors);                                   // [0x7d39b24] Net|NetReliableNative|Event|Public|HasDefaults|NetClient 
 };
 
 /// Struct /Script/ReplicationGraph.ConnectionAlwaysRelevantNodePair

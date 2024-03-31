@@ -52,14 +52,14 @@ public:
 
 	/// Functions
 	// Function /Script/CableComponent.CableComponent.SetAttachEndToComponent
-	// void SetAttachEndToComponent(class USceneComponent* Component, FName SocketName);                                        // [0x7e306d8] Final|Native|Public|BlueprintCallable 
+	// void SetAttachEndToComponent(class USceneComponent* Component, FName SocketName);                                        // [0x82341bc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CableComponent.CableComponent.SetAttachEndTo
-	// void SetAttachEndTo(class AActor* Actor, FName ComponentProperty, FName SocketName);                                     // [0x7e30544] Final|Native|Public|BlueprintCallable 
+	// void SetAttachEndTo(class AActor* Actor, FName ComponentProperty, FName SocketName);                                     // [0x8233f6c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CableComponent.CableComponent.GetCableParticleLocations
-	// void GetCableParticleLocations(TArray<FVector>& Locations);                                                              // [0x7e304a8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCableParticleLocations(TArray<FVector>& Locations);                                                              // [0x8233ed0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CableComponent.CableComponent.GetAttachedComponent
-	// class USceneComponent* GetAttachedComponent();                                                                           // [0x7e30448] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USceneComponent* GetAttachedComponent();                                                                           // [0x8233e70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CableComponent.CableComponent.GetAttachedActor
-	// class AActor* GetAttachedActor();                                                                                        // [0x7e30420] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AActor* GetAttachedActor();                                                                                        // [0x8233e48] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 

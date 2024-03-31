@@ -14,15 +14,15 @@
 /// dependency: TargetingSystem
 
 /// Class /Script/SunRoseZeusGameplayRuntime.SunRose_Zeus_Player_LayerAnimInstance
-/// Size: 0x0010 (0x001620 - 0x001630)
+/// Size: 0x0010 (0x0015F0 - 0x001600)
 class USunRose_Zeus_Player_LayerAnimInstance : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5680;
+	static inline constexpr uint64_t __MDKClassSize = 5632;
 
 public:
-	DMember(bool)                                      bIsThrowActive                                              OFFSET(get<bool>, {0x1620, 1, 0, 0})
-	SMember(FGameplayTag)                              LightningAbilityActiveTag                                   OFFSET(getStruct<T>, {0x1624, 4, 0, 0})
+	DMember(bool)                                      bIsThrowActive                                              OFFSET(get<bool>, {0x15F0, 1, 0, 0})
+	SMember(FGameplayTag)                              LightningAbilityActiveTag                                   OFFSET(getStruct<T>, {0x15F4, 4, 0, 0})
 };
 
 /// Class /Script/SunRoseZeusGameplayRuntime.SunRose_Zeus_Weapon_Hand_AnimInstance
@@ -51,27 +51,27 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.StrikeLightning
-	// void StrikeLightning(FVector Location);                                                                                  // [0xa2c22a0] Final|Native|Private|HasDefaults 
+	// void StrikeLightning(FVector Location);                                                                                  // [0xb021ed4] Final|Native|Private|HasDefaults 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.StartLightningStrike
-	// void StartLightningStrike(FVector& Location, float BoltHeight);                                                          // [0xa2c2150] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void StartLightningStrike(FVector& Location, float BoltHeight);                                                          // [0xb021d84] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.StartLightningFX
-	// void StartLightningFX();                                                                                                 // [0xa2c213c] Final|Native|Private 
+	// void StartLightningFX();                                                                                                 // [0xb021d70] Final|Native|Private 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.SetStrikeTargetingLocation
-	// void SetStrikeTargetingLocation(FTargetingRequestHandle& TargetingHandle, FVector& Location);                            // [0xa2c1fbc] Final|BlueprintAuthorityOnly|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetStrikeTargetingLocation(FTargetingRequestHandle& TargetingHandle, FVector& Location);                            // [0xb021be4] Final|BlueprintAuthorityOnly|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.OnTelegraphStart
-	// void OnTelegraphStart(FVector Location);                                                                                 // [0xa2c1e8c] Net|NetReliableNative|Event|NetMulticast|Protected|HasDefaults 
+	// void OnTelegraphStart(FVector Location);                                                                                 // [0xb021b24] Net|NetReliableNative|Event|NetMulticast|Protected|HasDefaults 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.OnTelegraphEnd
-	// void OnTelegraphEnd();                                                                                                   // [0x841db44] Net|NetReliableNative|Event|NetMulticast|Protected 
+	// void OnTelegraphEnd();                                                                                                   // [0x89361d4] Net|NetReliableNative|Event|NetMulticast|Protected 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.K2_OnTelegraphStart
-	// void K2_OnTelegraphStart(FVector& Location);                                                                             // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void K2_OnTelegraphStart(FVector& Location);                                                                             // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.K2_OnTelegraphEnd
-	// void K2_OnTelegraphEnd();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void K2_OnTelegraphEnd();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.K2_OnLightningStrikeFX
-	// void K2_OnLightningStrikeFX(FVector& Location, float BoltHeight);                                                        // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void K2_OnLightningStrikeFX(FVector& Location, float BoltHeight);                                                        // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.K2_OnLightningStrike
-	// void K2_OnLightningStrike(FVector& Location);                                                                            // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void K2_OnLightningStrike(FVector& Location);                                                                            // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseZeusGameplayRuntime.BuildingGameplayActorZeusThunderstorm.GetStrikeTargetingLocation
-	// FVector GetStrikeTargetingLocation(FTargetingRequestHandle& TargetingHandle);                                            // [0xa2c1de0] Final|BlueprintAuthorityOnly|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// FVector GetStrikeTargetingLocation(FTargetingRequestHandle& TargetingHandle);                                            // [0xb021a78] Final|BlueprintAuthorityOnly|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/SunRoseZeusGameplayRuntime.FortProjectileSunRoseLightning
@@ -91,9 +91,9 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseZeusGameplayRuntime.FortProjectileSunRoseLightning.OnExplosionFinished
-	// void OnExplosionFinished();                                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnExplosionFinished();                                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SunRoseZeusGameplayRuntime.FortProjectileSunRoseLightning.DoExplosionAsyncLOS
-	// void DoExplosionAsyncLOS();                                                                                              // [0xa2c1dcc] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
+	// void DoExplosionAsyncLOS();                                                                                              // [0xb021a64] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
 };
 
 /// Struct /Script/SunRoseZeusGameplayRuntime.LightningStrikeInfo

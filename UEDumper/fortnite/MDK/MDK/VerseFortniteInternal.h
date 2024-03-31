@@ -44,7 +44,7 @@ public:
 
 	/// Functions
 	// Function /Script/VerseFortniteInternal.FortControllerStateHandlerComponent.NotifyOfStateChange
-	// void NotifyOfStateChange(FString& State, bool Active);                                                                   // [0xa159418] Final|Native|Public|HasOutParms 
+	// void NotifyOfStateChange(FString& State, bool Active);                                                                   // [0xae439b4] Final|Native|Public|HasOutParms 
 };
 
 /// Class /Script/VerseFortniteInternal.FortAthenaMutator_BuildingSettings
@@ -75,7 +75,7 @@ public:
 
 	/// Functions
 	// Function /Script/VerseFortniteInternal.FortBuildingSettingsComponentBase.OnRep_Settings
-	// void OnRep_Settings();                                                                                                   // [0xa15961c] Final|Native|Private 
+	// void OnRep_Settings();                                                                                                   // [0xae440cc] Final|Native|Private 
 };
 
 /// Class /Script/VerseFortniteInternal.FortPlayspaceComponentHelper
@@ -90,9 +90,9 @@ public:
 
 	/// Functions
 	// Function /Script/VerseFortniteInternal.FortPlayspaceComponentHelper.HandlePlayerPawnPossessed
-	// void HandlePlayerPawnPossessed(class APawn* Pawn);                                                                       // [0xa159398] Final|Native|Public  
+	// void HandlePlayerPawnPossessed(class APawn* Pawn);                                                                       // [0xae438f4] Final|Native|Public  
 	// Function /Script/VerseFortniteInternal.FortPlayspaceComponentHelper.HandlePlayerDied
-	// void HandlePlayerDied(class AFortPlayerPawnAthena* FortPlayerPawnAthena);                                                // [0xa159318] Final|Native|Public  
+	// void HandlePlayerDied(class AFortPlayerPawnAthena* FortPlayerPawnAthena);                                                // [0xae43834] Final|Native|Public  
 };
 
 /// Class /Script/VerseFortniteInternal.VerseFortniteEntitySubsystem

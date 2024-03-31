@@ -11,6 +11,18 @@
 /// dependency: Landscape
 /// dependency: PhysicsCore
 
+/// Class /Script/JunoProceduralLandscape.JunoLandscapeCachedComponentData
+/// Size: 0x00C0 (0x000030 - 0x0000F0)
+class UJunoLandscapeCachedComponentData : public UPrimaryDataAsset
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 240;
+
+public:
+	SMember(FJunoLandscapeComponentPrecachSettings)    PrecacheSettings                                            OFFSET(getStruct<T>, {0x30, 32, 0, 0})
+	CMember(TMap<FJunoLandscapeCachedComponentKey, FJunoLandscapeComponentPrecachedData>) PrecachedData            OFFSET(get<T>, {0x50, 80, 0, 0})
+};
+
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeCombinedMaterial
 /// Size: 0x00B0 (0x000028 - 0x0000D8)
 class UJunoLandscapeCombinedMaterial : public UObject
@@ -40,7 +52,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeExternalMaterialsCollector.CollectExternalMaterials
-	// void CollectExternalMaterials(class UJunoLandscapeLayersData* LayerData, bool bInlcudeMobile, bool bIncludeStandard);    // [0xb3fdbb8] Native|Event|Public|BlueprintCallable|BlueprintEvent 
+	// void CollectExternalMaterials(class UJunoLandscapeLayersData* LayerData, bool bInlcudeMobile, bool bIncludeStandard);    // [0xc4ee4b0] Native|Event|Public|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeGeneratorInterface
@@ -55,11 +67,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeGeneratorInterface.Initialize
-	// void Initialize(class UJunoLandscapeRenderer* LandscapeRenderer);                                                        // [0x81fdd54] Native|Event|Public|BlueprintCallable|BlueprintEvent 
+	// void Initialize(class UJunoLandscapeRenderer* LandscapeRenderer);                                                        // [0x86a1cf0] Native|Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeGeneratorInterface.GetAffectedWeightmapLayers
-	// TArray<FName> GetAffectedWeightmapLayers();                                                                              // [0xb3fef64] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// TArray<FName> GetAffectedWeightmapLayers();                                                                              // [0xc4ef7fc] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeGeneratorInterface.GenerateLandscape
-	// class UJunoLandscapeRenderTarget* GenerateLandscape(bool bRenderHeightmap, FName WeightmapName);                         // [0xb3fee8c] Native|Event|Public|BlueprintCallable|BlueprintEvent 
+	// class UJunoLandscapeRenderTarget* GenerateLandscape(bool bRenderHeightmap, FName WeightmapName);                         // [0xc4ef6ac] Native|Event|Public|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeMaterial
@@ -77,21 +89,21 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetVectorParameterValue
-	// void SetVectorParameterValue(FName ParameterName, FLinearColor Value);                                                   // [0xb3ff87c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetVectorParameterValue(FName ParameterName, FLinearColor Value);                                                   // [0xc4f0404] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetTextureParameterValue
-	// void SetTextureParameterValue(FName ParameterName, class UTexture* Value);                                               // [0xb3ff338] Final|Native|Public|BlueprintCallable 
+	// void SetTextureParameterValue(FName ParameterName, class UTexture* Value);                                               // [0xc4efc60] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetScalarParameterValue
-	// void SetScalarParameterValue(FName ParameterName, float Value);                                                          // [0xb3ff7b8] Final|Native|Public|BlueprintCallable 
+	// void SetScalarParameterValue(FName ParameterName, float Value);                                                          // [0xc4f02c8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetRenderTargetParameterValue
-	// void SetRenderTargetParameterValue(FName ParameterName, class UJunoLandscapeRenderTarget* Value);                        // [0xb3ff6f4] Final|Native|Public|BlueprintCallable 
+	// void SetRenderTargetParameterValue(FName ParameterName, class UJunoLandscapeRenderTarget* Value);                        // [0xc4f018c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetJunoTextureParameterValue
-	// void SetJunoTextureParameterValue(FName ParameterName, class UTextureRenderTarget2D* Value);                             // [0xb3ff338] Final|Native|Public|BlueprintCallable 
+	// void SetJunoTextureParameterValue(FName ParameterName, class UTextureRenderTarget2D* Value);                             // [0xc4efc60] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.SetDoubleVectorParameterValue
-	// void SetDoubleVectorParameterValue(FName ParameterName, FVector4 Value);                                                 // [0xb3ff1a4] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetDoubleVectorParameterValue(FName ParameterName, FVector4 Value);                                                 // [0xc4efafc] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.K2_GetVectorParameterValue
-	// FLinearColor K2_GetVectorParameterValue(FName ParameterName);                                                            // [0xb3ff108] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// FLinearColor K2_GetVectorParameterValue(FName ParameterName);                                                            // [0xc4efa20] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeMaterial.K2_GetScalarParameterValue
-	// float K2_GetScalarParameterValue(FName ParameterName);                                                                   // [0xb3ff078] Final|Native|Public|BlueprintCallable 
+	// float K2_GetScalarParameterValue(FName ParameterName);                                                                   // [0xc4ef950] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeMaterialInstanceConstant
@@ -128,11 +140,11 @@ public:
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeComponent
-/// Size: 0x01E0 (0x000220 - 0x000400)
+/// Size: 0x0200 (0x000220 - 0x000420)
 class UJunoLandscapeComponent : public USceneComponent
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1024;
+	static inline constexpr uint64_t __MDKClassSize = 1056;
 
 public:
 	CMember(class UMaterialInstanceDynamic*)           RenderMaterial                                              OFFSET(get<T>, {0x220, 8, 0, 0})
@@ -142,14 +154,14 @@ public:
 	SMember(FBox)                                      CachedLocalBox                                              OFFSET(getStruct<T>, {0x248, 56, 0, 0})
 	SMember(FIntPoint)                                 ComponentKey                                                OFFSET(getStruct<T>, {0x280, 8, 0, 0})
 	SMember(FIntPoint)                                 ComponentBase                                               OFFSET(getStruct<T>, {0x288, 8, 0, 0})
-	SMember(FJunoLandscapeComponentPrecachSettings)    PrecacheSettings                                            OFFSET(getStruct<T>, {0x293, 5, 0, 0})
-	SMember(FJunoLandscapeMaterialInstanceCacheKey)    DefaultMaterialKey                                          OFFSET(getStruct<T>, {0x2D0, 24, 0, 0})
-	SMember(FJunoLandscapeComponentPrecachedData)      PrecachedData                                               OFFSET(getStruct<T>, {0x2E8, 216, 0, 0})
-	DMember(bool)                                      bIsSerializedWithDeprecatedPrecacheData                     OFFSET(get<bool>, {0x3D8, 1, 0, 0})
-	SMember(FIntPoint)                                 SubTextureOffset                                            OFFSET(getStruct<T>, {0x3DC, 8, 0, 0})
-	SMember(FIntPoint)                                 SubTextureSize                                              OFFSET(getStruct<T>, {0x3E4, 8, 0, 0})
-	DMember(int32_t)                                   ComponentQuadSize                                           OFFSET(get<int32_t>, {0x3EC, 4, 0, 0})
-	DMember(int32_t)                                   ComponentVertSize                                           OFFSET(get<int32_t>, {0x3F0, 4, 0, 0})
+	SMember(FJunoLandscapeComponentPrecachSettings)    PrecacheSettings                                            OFFSET(getStruct<T>, {0x298, 32, 0, 0})
+	SMember(FJunoLandscapeMaterialInstanceCacheKey)    DefaultMaterialKey                                          OFFSET(getStruct<T>, {0x2F0, 24, 0, 0})
+	SMember(FJunoLandscapeComponentPrecachedData)      PrecachedData                                               OFFSET(getStruct<T>, {0x308, 216, 0, 0})
+	DMember(bool)                                      bIsSerializedWithDeprecatedPrecacheData                     OFFSET(get<bool>, {0x3F8, 1, 0, 0})
+	SMember(FIntPoint)                                 SubTextureOffset                                            OFFSET(getStruct<T>, {0x3FC, 8, 0, 0})
+	SMember(FIntPoint)                                 SubTextureSize                                              OFFSET(getStruct<T>, {0x404, 8, 0, 0})
+	DMember(int32_t)                                   ComponentQuadSize                                           OFFSET(get<int32_t>, {0x40C, 4, 0, 0})
+	DMember(int32_t)                                   ComponentVertSize                                           OFFSET(get<int32_t>, {0x410, 4, 0, 0})
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeLayersData
@@ -174,7 +186,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeLayersData.UpdateExternalMaterials
-	// void UpdateExternalMaterials();                                                                                          // [0x36203b0] Final|Native|Public  
+	// void UpdateExternalMaterials();                                                                                          // [0x3518b8c] Final|Native|Public  
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeManager
@@ -376,33 +388,33 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.SetLandscapeMaterialVectorParameterValue
-	// void SetLandscapeMaterialVectorParameterValue(FName ParameterName, FLinearColor Value);                                  // [0xb3ff580] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetLandscapeMaterialVectorParameterValue(FName ParameterName, FLinearColor Value);                                  // [0xc4f0038] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.SetLandscapeMaterialTextureParameterValue
-	// void SetLandscapeMaterialTextureParameterValue(FName ParameterName, class UJunoLandscapeRenderTarget* Value);            // [0xb3ff4c0] Final|Native|Public|BlueprintCallable 
+	// void SetLandscapeMaterialTextureParameterValue(FName ParameterName, class UJunoLandscapeRenderTarget* Value);            // [0xc4efeec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.SetLandscapeMaterialScalarParameterValue
-	// void SetLandscapeMaterialScalarParameterValue(FName ParameterName, float Value);                                         // [0xb3ff3fc] Final|Native|Public|BlueprintCallable 
+	// void SetLandscapeMaterialScalarParameterValue(FName ParameterName, float Value);                                         // [0xc4efd9c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.GetUVWorldTransform
-	// FVector4 GetUVWorldTransform();                                                                                          // [0x6a429c0] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector4 GetUVWorldTransform();                                                                                          // [0x6aa9f6c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.GetOutputHeightmapRenderTarget
-	// class UJunoLandscapeRenderTarget* GetOutputHeightmapRenderTarget();                                                      // [0xb3ff02c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UJunoLandscapeRenderTarget* GetOutputHeightmapRenderTarget();                                                      // [0xc4ef904] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.FindOrCreateNamedRenderTarget
-	// class UJunoLandscapeRenderTarget* FindOrCreateNamedRenderTarget(FName Name, TEnumAsByte<ETextureRenderTargetFormat> Format); // [0xb3fedc8] Final|Native|Public|BlueprintCallable 
+	// class UJunoLandscapeRenderTarget* FindOrCreateNamedRenderTarget(FName Name, TEnumAsByte<ETextureRenderTargetFormat> Format); // [0xc4ef55c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.EndDrawCanvasToRenderTarget
-	// void EndDrawCanvasToRenderTarget(FDrawToRenderTargetContext_JunoLandscape& Context);                                     // [0x81e7278] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void EndDrawCanvasToRenderTarget(FDrawToRenderTargetContext_JunoLandscape& Context);                                     // [0x8684c7c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.DrawMaterialToRenderTargetUV
-	// void DrawMaterialToRenderTargetUV(class UJunoLandscapeRenderTarget* RenderTarget, class UJunoLandscapeMaterial* RenderMaterial, FVector2D ScreenPosition, FVector2D ScreenSize, FVector2D CoordinatePosition, FVector2D CoordinateSize, float Rotation, FVector2D PivotPoint); // [0xb3fe858] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void DrawMaterialToRenderTargetUV(class UJunoLandscapeRenderTarget* RenderTarget, class UJunoLandscapeMaterial* RenderMaterial, FVector2D ScreenPosition, FVector2D ScreenSize, FVector2D CoordinatePosition, FVector2D CoordinateSize, float Rotation, FVector2D PivotPoint); // [0xc4ef178] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.DrawMaterialToRenderTarget
-	// void DrawMaterialToRenderTarget(class UJunoLandscapeRenderTarget* TextureRenderTarget, class UJunoLandscapeMaterial* Material); // [0xb3fe584] Final|Native|Public|BlueprintCallable 
+	// void DrawMaterialToRenderTarget(class UJunoLandscapeRenderTarget* TextureRenderTarget, class UJunoLandscapeMaterial* Material); // [0xc4eee20] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.CreateRenderTarget2D
-	// class UJunoLandscapeRenderTarget* CreateRenderTarget2D(int32_t Width, int32_t Height, TEnumAsByte<ETextureRenderTargetFormat> Format, FLinearColor ClearColor, bool bAutoGenerateMipMaps); // [0xb3fdda8] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// class UJunoLandscapeRenderTarget* CreateRenderTarget2D(int32_t Width, int32_t Height, TEnumAsByte<ETextureRenderTargetFormat> Format, FLinearColor ClearColor, bool bAutoGenerateMipMaps); // [0xc4ee820] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.CreateMaterial
-	// class UJunoLandscapeMaterial* CreateMaterial(class UMaterialInterface* Parent, FName OptionalName, EMIDCreationFlags CreationFlags); // [0xb3fdcb8] Final|Native|Public|BlueprintCallable 
+	// class UJunoLandscapeMaterial* CreateMaterial(class UMaterialInterface* Parent, FName OptionalName, EMIDCreationFlags CreationFlags); // [0xc4ee674] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.ClearRenderTarget2D
-	// void ClearRenderTarget2D(class UJunoLandscapeRenderTarget* TextureRenderTarget, FLinearColor ClearColor);                // [0xb3fda08] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void ClearRenderTarget2D(class UJunoLandscapeRenderTarget* TextureRenderTarget, FLinearColor ClearColor);                // [0xc4ee324] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.CalculateRenderArea
-	// FBox2D CalculateRenderArea(FTransform Transform, FVector2D HalfExtents);                                                 // [0xb3fd734] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FBox2D CalculateRenderArea(FTransform Transform, FVector2D HalfExtents);                                                 // [0xc4ee11c] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeRenderer.BeginDrawCanvasToRenderTarget
-	// void BeginDrawCanvasToRenderTarget(class UJunoLandscapeRenderTarget* TextureRenderTarget, class UJunoLandscapeCanvas*& Canvas, FVector2D& Size, FDrawToRenderTargetContext_JunoLandscape& Context); // [0xb3fd580] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BeginDrawCanvasToRenderTarget(class UJunoLandscapeRenderTarget* TextureRenderTarget, class UJunoLandscapeCanvas*& Canvas, FVector2D& Size, FDrawToRenderTargetContext_JunoLandscape& Context); // [0xc4edf38] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/JunoProceduralLandscape.JunoLandscapeRenderTarget
@@ -431,9 +443,22 @@ public:
 
 	/// Functions
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeCanvas.GetNameReplacement
-	// FName GetNameReplacement(FName NameIn);                                                                                  // [0xb3fefa8] Final|Native|Static|Public 
+	// FName GetNameReplacement(FName NameIn);                                                                                  // [0xc4ef840] Final|Native|Static|Public 
 	// Function /Script/JunoProceduralLandscape.JunoLandscapeCanvas.DrawMaterial
-	// void DrawMaterial(class UJunoLandscapeMaterial* RenderMaterial, FVector2D ScreenPosition, FVector2D ScreenSize, FVector2D CoordinatePosition, FVector2D CoordinateSize, float Rotation, FVector2D PivotPoint); // [0xb3fe04c] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void DrawMaterial(class UJunoLandscapeMaterial* RenderMaterial, FVector2D ScreenPosition, FVector2D ScreenSize, FVector2D CoordinatePosition, FVector2D CoordinateSize, float Rotation, FVector2D PivotPoint); // [0xc4eeab8] Final|Native|Public|HasDefaults|BlueprintCallable 
+};
+
+/// Struct /Script/JunoProceduralLandscape.JunoLandscapeCachedComponentKey
+/// Size: 0x000C (0x000000 - 0x00000C)
+class FJunoLandscapeCachedComponentKey : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 12;
+
+public:
+	SMember(FName)                                     PackagePath                                                 OFFSET(getStruct<T>, {0x0, 4, 0, 0})
+	SMember(FIntPoint)                                 ComponentKey                                                OFFSET(getStruct<T>, {0x4, 8, 0, 0})
 };
 
 /// Struct /Script/JunoProceduralLandscape.JunoLandscapeLayerInfo
@@ -552,19 +577,20 @@ public:
 };
 
 /// Struct /Script/JunoProceduralLandscape.JunoLandscapeComponentPrecachSettings
-/// Size: 0x0005 (0x000000 - 0x000005)
+/// Size: 0x0020 (0x000000 - 0x000020)
 class FJunoLandscapeComponentPrecachSettings : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 5;
+	static inline constexpr uint64_t __MDKClassSize = 32;
 
 public:
 	DMember(bool)                                      bPrecacheHeights                                            OFFSET(get<bool>, {0x0, 1, 0, 0})
 	DMember(bool)                                      bPrecachePhysicalMaterials                                  OFFSET(get<bool>, {0x1, 1, 0, 0})
 	DMember(bool)                                      bPrecacheGrass                                              OFFSET(get<bool>, {0x2, 1, 0, 0})
-	DMember(bool)                                      bPrecacheWeightmaps                                         OFFSET(get<bool>, {0x3, 1, 0, 0})
-	DMember(bool)                                      bPrecacheCustomRenders                                      OFFSET(get<bool>, {0x4, 1, 0, 0})
+	DMember(bool)                                      bPrecacheAllWeightmaps                                      OFFSET(get<bool>, {0x3, 1, 0, 0})
+	CMember(TArray<FName>)                             PrecacheWeightmaps                                          OFFSET(get<T>, {0x8, 16, 0, 0})
+	DMember(bool)                                      bPrecacheCustomRenders                                      OFFSET(get<bool>, {0x18, 1, 0, 0})
 };
 
 /// Struct /Script/JunoProceduralLandscape.JunoLandscapeComponentPrecachedDataLayers

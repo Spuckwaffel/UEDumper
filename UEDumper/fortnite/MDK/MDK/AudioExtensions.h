@@ -91,31 +91,31 @@ public:
 
 	/// Functions
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetTriggerParameter
-	// void SetTriggerParameter(FName InName);                                                                                  // [0x1c71da0] Native|Public|BlueprintCallable 
+	// void SetTriggerParameter(FName InName);                                                                                  // [0x203faec] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetStringParameter
-	// void SetStringParameter(FName InName, FString InValue);                                                                  // [0x5f0a4d4] Native|Public|BlueprintCallable 
+	// void SetStringParameter(FName InName, FString InValue);                                                                  // [0x5e9fa1c] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetStringArrayParameter
-	// void SetStringArrayParameter(FName InName, TArray<FString>& InValue);                                                    // [0x5f0a3f4] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetStringArrayParameter(FName InName, TArray<FString>& InValue);                                                    // [0x5e9f8f4] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetParameters_Blueprint
-	// void SetParameters_Blueprint(TArray<FAudioParameter>& InParameters);                                                     // [0x5f0a23c] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetParameters_Blueprint(TArray<FAudioParameter>& InParameters);                                                     // [0x28eb0f0] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetObjectParameter
-	// void SetObjectParameter(FName InName, class UObject* InValue);                                                           // [0x5f0a178] Native|Public|BlueprintCallable 
+	// void SetObjectParameter(FName InName, class UObject* InValue);                                                           // [0x5e9f7b4] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetObjectArrayParameter
-	// void SetObjectArrayParameter(FName InName, TArray<UObject*>& InValue);                                                   // [0x5f0a094] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetObjectArrayParameter(FName InName, TArray<UObject*>& InValue);                                                   // [0x5e9f684] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetIntParameter
-	// void SetIntParameter(FName InName, int32_t inInt);                                                                       // [0x5f09fd0] Native|Public|BlueprintCallable 
+	// void SetIntParameter(FName InName, int32_t inInt);                                                                       // [0x5e9f544] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetIntArrayParameter
-	// void SetIntArrayParameter(FName InName, TArray<int32_t>& InValue);                                                       // [0x5f09eec] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetIntArrayParameter(FName InName, TArray<int32_t>& InValue);                                                       // [0x5e9f414] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetFloatParameter
-	// void SetFloatParameter(FName InName, float InFloat);                                                                     // [0x3081318] Native|Public|BlueprintCallable 
+	// void SetFloatParameter(FName InName, float InFloat);                                                                     // [0x2e6be68] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetFloatArrayParameter
-	// void SetFloatArrayParameter(FName InName, TArray<float>& InValue);                                                       // [0x5f09dcc] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetFloatArrayParameter(FName InName, TArray<float>& InValue);                                                       // [0x5e9f2a8] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetBoolParameter
-	// void SetBoolParameter(FName InName, bool InBool);                                                                        // [0x2f91a3c] Native|Public|BlueprintCallable 
+	// void SetBoolParameter(FName InName, bool InBool);                                                                        // [0x1e2b380] Native|Public|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.SetBoolArrayParameter
-	// void SetBoolArrayParameter(FName InName, TArray<bool>& InValue);                                                         // [0x5f09ce8] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetBoolArrayParameter(FName InName, TArray<bool>& InValue);                                                         // [0x5e9f178] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioExtensions.AudioParameterControllerInterface.ResetParameters
-	// void ResetParameters();                                                                                                  // [0x326a61c] Native|Public|BlueprintCallable 
+	// void ResetParameters();                                                                                                  // [0x3092f24] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/AudioExtensions.AudioEndpointSettingsBase

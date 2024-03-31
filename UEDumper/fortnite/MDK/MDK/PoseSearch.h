@@ -23,19 +23,19 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.SetInterruptMode
-	// void SetInterruptMode(FMotionMatchingAnimNodeReference& MotionMatchingNode, EPoseSearchInterruptMode InterruptMode);     // [0x7e3a130] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetInterruptMode(FMotionMatchingAnimNodeReference& MotionMatchingNode, EPoseSearchInterruptMode InterruptMode);     // [0x82402f0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.SetDatabaseToSearch
-	// void SetDatabaseToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, class UPoseSearchDatabase* Database, EPoseSearchInterruptMode InterruptMode); // [0x7e39d04] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetDatabaseToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, class UPoseSearchDatabase* Database, EPoseSearchInterruptMode InterruptMode); // [0x823febc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.SetDatabasesToSearch
-	// void SetDatabasesToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, TArray<UPoseSearchDatabase*>& Databases, EPoseSearchInterruptMode InterruptMode); // [0x7e39f54] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetDatabasesToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, TArray<UPoseSearchDatabase*>& Databases, EPoseSearchInterruptMode InterruptMode); // [0x8240114] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.ResetDatabasesToSearch
-	// void ResetDatabasesToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, EPoseSearchInterruptMode InterruptMode); // [0x7e39b84] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void ResetDatabasesToSearch(FMotionMatchingAnimNodeReference& MotionMatchingNode, EPoseSearchInterruptMode InterruptMode); // [0x823fd40] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.GetMotionMatchingSearchResult
-	// void GetMotionMatchingSearchResult(FMotionMatchingAnimNodeReference& MotionMatchingNode, FPoseSearchBlueprintResult& Result, bool& bIsResultValid); // [0x7e399c8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetMotionMatchingSearchResult(FMotionMatchingAnimNodeReference& MotionMatchingNode, FPoseSearchBlueprintResult& Result, bool& bIsResultValid); // [0x823fb80] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.ConvertToMotionMatchingNodePure
-	// void ConvertToMotionMatchingNodePure(FAnimNodeReference& Node, FMotionMatchingAnimNodeReference& MotionMatchingNode, bool& Result); // [0x7e397ec] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void ConvertToMotionMatchingNodePure(FAnimNodeReference& Node, FMotionMatchingAnimNodeReference& MotionMatchingNode, bool& Result); // [0x823f9a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/PoseSearch.MotionMatchingAnimNodeLibrary.ConvertToMotionMatchingNode
-	// FMotionMatchingAnimNodeReference ConvertToMotionMatchingNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x7e396c0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FMotionMatchingAnimNodeReference ConvertToMotionMatchingNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x823f878] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/PoseSearch.PoseSearchDatabase
@@ -55,7 +55,6 @@ public:
 	CMember(EPoseSearchMode)                           PoseSearchMode                                              OFFSET(get<T>, {0x68, 4, 0, 0})
 	DMember(int32_t)                                   KDTreeQueryNumNeighbors                                     OFFSET(get<int32_t>, {0x6C, 4, 0, 0})
 	DMember(int32_t)                                   KDTreeQueryNumNeighborsWithDuplicates                       OFFSET(get<int32_t>, {0x70, 4, 0, 0})
-	DMember(bool)                                      bPCAValuesPruningFromBlockTransitionPoses                   OFFSET(get<bool>, {0x74, 1, 0, 0})
 };
 
 /// Class /Script/PoseSearch.PoseSearchFeatureChannel
@@ -139,7 +138,7 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchFeatureChannel_Heading.BP_GetWorldRotation
-	// FQuat BP_GetWorldRotation(class UAnimInstance* AnimInstance);                                                            // [0x18a39e4] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// FQuat BP_GetWorldRotation(class UAnimInstance* AnimInstance);                                                            // [0x186becc] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/PoseSearch.PoseSearchFeatureChannel_Padding
@@ -216,7 +215,7 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchFeatureChannel_Position.BP_GetWorldPosition
-	// FVector BP_GetWorldPosition(class UAnimInstance* AnimInstance);                                                          // [0x18a39e4] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// FVector BP_GetWorldPosition(class UAnimInstance* AnimInstance);                                                          // [0x186becc] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/PoseSearch.PoseSearchFeatureChannel_SamplingTime
@@ -245,7 +244,7 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchFeatureChannel_TimeToEvent.BP_GetTimeToEvent
-	// float BP_GetTimeToEvent(class UAnimInstance* AnimInstance);                                                              // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// float BP_GetTimeToEvent(class UAnimInstance* AnimInstance);                                                              // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/PoseSearch.PoseSearchFeatureChannel_Trajectory
@@ -286,7 +285,7 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchFeatureChannel_Velocity.BP_GetWorldVelocity
-	// FVector BP_GetWorldVelocity(class UAnimInstance* AnimInstance);                                                          // [0x18a39e4] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// FVector BP_GetWorldVelocity(class UAnimInstance* AnimInstance);                                                          // [0x186becc] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/PoseSearch.PoseSearchHistoryCollectorAnimNodeLibrary
@@ -301,13 +300,13 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchHistoryCollectorAnimNodeLibrary.SetPoseHistoryNodeTrajectory
-	// void SetPoseHistoryNodeTrajectory(FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, FPoseSearchQueryTrajectory& Trajectory); // [0x7e3f01c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetPoseHistoryNodeTrajectory(FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, FPoseSearchQueryTrajectory& Trajectory); // [0x8245e64] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.PoseSearchHistoryCollectorAnimNodeLibrary.GetPoseHistoryNodeTrajectory
-	// void GetPoseHistoryNodeTrajectory(FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, FPoseSearchQueryTrajectory& Trajectory); // [0x7e3db94] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetPoseHistoryNodeTrajectory(FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, FPoseSearchQueryTrajectory& Trajectory); // [0x8244660] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/PoseSearch.PoseSearchHistoryCollectorAnimNodeLibrary.ConvertToPoseHistoryNodePure
-	// void ConvertToPoseHistoryNodePure(FAnimNodeReference& Node, FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, bool& Result); // [0x7e3d9b8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void ConvertToPoseHistoryNodePure(FAnimNodeReference& Node, FPoseSearchHistoryCollectorAnimNodeReference& PoseSearchHistoryCollectorNode, bool& Result); // [0x8244484] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/PoseSearch.PoseSearchHistoryCollectorAnimNodeLibrary.ConvertToPoseHistoryNode
-	// FPoseSearchHistoryCollectorAnimNodeReference ConvertToPoseHistoryNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x7e3d88c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FPoseSearchHistoryCollectorAnimNodeReference ConvertToPoseHistoryNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x8244358] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/PoseSearch.PoseSearchMultiSequence
@@ -323,7 +322,7 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchMultiSequence.GetSequence
-	// class UAnimSequenceBase* GetSequence(FName& Role);                                                                       // [0x7e3dcac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UAnimSequenceBase* GetSequence(FName& Role);                                                                       // [0x8244778] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/PoseSearch.PoseSearchNormalizationSet
@@ -368,11 +367,11 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchTrajectoryLibrary.PoseSearchGenerateTrajectory
-	// void PoseSearchGenerateTrajectory(class UAnimInstance* InAnimInstance, FPoseSearchTrajectoryData& InTrajectoryData, float InDeltaTime, FPoseSearchQueryTrajectory& InOutTrajectory, float& InOutDesiredControllerYawLastUpdate, FPoseSearchQueryTrajectory& OutTrajectory, float InHistorySamplingInterval, int32_t InTrajectoryHistoryCount, float InPredictionSamplingInterval, int32_t InTrajectoryPredictionCount, bool bAlwaysApplyGravity); // [0x7e3e838] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void PoseSearchGenerateTrajectory(class UAnimInstance* InAnimInstance, FPoseSearchTrajectoryData& InTrajectoryData, float InDeltaTime, FPoseSearchQueryTrajectory& InOutTrajectory, float& InOutDesiredControllerYawLastUpdate, FPoseSearchQueryTrajectory& OutTrajectory, float InHistorySamplingInterval, int32_t InTrajectoryHistoryCount, float InPredictionSamplingInterval, int32_t InTrajectoryPredictionCount); // [0x82456f8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PoseSearch.PoseSearchTrajectoryLibrary.HandleTrajectoryWorldCollisions
-	// void HandleTrajectoryWorldCollisions(class UObject* WorldContextObject, FPoseSearchQueryTrajectory& InTrajectory, FPoseSearchQueryTrajectory& OutTrajectory, TEnumAsByte<ETraceTypeQuery> TraceChannel, bool bTraceComplex, TArray<AActor*>& ActorsToIgnore, TEnumAsByte<EDrawDebugTrace> DrawDebugType, bool bIgnoreSelf, FLinearColor TraceColor, FLinearColor TraceHitColor, float DrawTime); // [0x7e3e050] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void HandleTrajectoryWorldCollisions(class UObject* WorldContextObject, class UAnimInstance* AnimInstance, FPoseSearchQueryTrajectory& InTrajectory, bool bApplyGravity, float FloorCollisionsOffset, FPoseSearchQueryTrajectory& OutTrajectory, FPoseSearchTrajectory_WorldCollisionResults& CollisionResult, TEnumAsByte<ETraceTypeQuery> TraceChannel, bool bTraceComplex, TArray<AActor*>& ActorsToIgnore, TEnumAsByte<EDrawDebugTrace> DrawDebugType, bool bIgnoreSelf, float MaxObstacleHeight, FLinearColor TraceColor, FLinearColor TraceHitColor, float DrawTime); // [0x8244b24] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/PoseSearch.PoseSearchTrajectoryLibrary.GetTrajectorySampleAtTime
-	// void GetTrajectorySampleAtTime(FPoseSearchQueryTrajectory& InTrajectory, float Time, FPoseSearchQueryTrajectorySample& OutTrajectorySample, bool bExtrapolate); // [0x7e3dd44] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetTrajectorySampleAtTime(FPoseSearchQueryTrajectory& InTrajectory, float Time, FPoseSearchQueryTrajectorySample& OutTrajectorySample, bool bExtrapolate); // [0x8244810] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/PoseSearch.AnimNotifyState_PoseSearchBase
@@ -470,9 +469,9 @@ public:
 
 	/// Functions
 	// Function /Script/PoseSearch.PoseSearchLibrary.MotionMatchMulti
-	// void MotionMatchMulti(TArray<ACharacter*> AnimInstances, TArray<FName> Roles, TArray<UObject*> AssetsToSearch, FName PoseHistoryName, FPoseSearchBlueprintResult& Result, int32_t DebugSessionUniqueIdentifier); // [0x7e463f0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void MotionMatchMulti(TArray<ACharacter*> AnimInstances, TArray<FName> Roles, TArray<UObject*> AssetsToSearch, FName PoseHistoryName, FPoseSearchBlueprintResult& Result, int32_t DebugSessionUniqueIdentifier); // [0x824d950] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/PoseSearch.PoseSearchLibrary.MotionMatch
-	// void MotionMatch(class UAnimInstance* AnimInstance, TArray<UObject*> AssetsToSearch, FName PoseHistoryName, FPoseSearchFutureProperties Future, FPoseSearchBlueprintResult& Result, int32_t DebugSessionUniqueIdentifier); // [0x7e46044] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void MotionMatch(class UAnimInstance* AnimInstance, TArray<UObject*> AssetsToSearch, FName PoseHistoryName, FPoseSearchFutureProperties Future, FPoseSearchBlueprintResult& Result, int32_t DebugSessionUniqueIdentifier); // [0x824d56c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 };
 
 /// Struct /Script/PoseSearch.MotionMatchingAnimNodeReference
@@ -671,6 +670,19 @@ public:
 	SMember(FRuntimeFloatCurve)                        SpeedRemappingCurve                                         OFFSET(getStruct<T>, {0x10, 136, 0, 0})
 	DMember(bool)                                      bUseAccelerationRemappingCurve                              OFFSET(get<bool>, {0x98, 1, 0, 0})
 	SMember(FRuntimeFloatCurve)                        AccelerationRemappingCurve                                  OFFSET(getStruct<T>, {0xA0, 136, 0, 0})
+};
+
+/// Struct /Script/PoseSearch.PoseSearchTrajectory_WorldCollisionResults
+/// Size: 0x0008 (0x000000 - 0x000008)
+class FPoseSearchTrajectory_WorldCollisionResults : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 8;
+
+public:
+	DMember(float)                                     TimeToLand                                                  OFFSET(get<float>, {0x0, 4, 0, 0})
+	DMember(float)                                     LandSpeed                                                   OFFSET(get<float>, {0x4, 4, 0, 0})
 };
 
 /// Struct /Script/PoseSearch.PoseSearchQueryTrajectorySample
@@ -873,13 +885,14 @@ enum class EPoseSearchTrajectoryFlags : uint8_t
 };
 
 /// Enum /Script/PoseSearch.EPoseSearchDataPreprocessor
-/// Size: 0x04
+/// Size: 0x05
 enum class EPoseSearchDataPreprocessor : uint8_t
 {
 	EPoseSearchDataPreprocessor__None                                                = 0,
 	EPoseSearchDataPreprocessor__Normalize                                           = 1,
 	EPoseSearchDataPreprocessor__NormalizeOnlyByDeviation                            = 2,
-	EPoseSearchDataPreprocessor__EPoseSearchDataPreprocessor_MAX                     = 3
+	EPoseSearchDataPreprocessor__NormalizeWithCommonSchema                           = 3,
+	EPoseSearchDataPreprocessor__EPoseSearchDataPreprocessor_MAX                     = 4
 };
 
 /// Enum /Script/PoseSearch.EPoseSearchInterruptMode

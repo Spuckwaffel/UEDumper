@@ -38,21 +38,32 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisWeakMapLibrary.Type
-	// void Type(class UClass* KeyType, class UClass* ValueType);                                                               // [0x72c6c74] Final|Native|Static|Public 
+	// void Type(class UClass* KeyType, class UClass* ValueType);                                                               // [0x75b5990] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.RefCall
-	// void RefCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                                        // [0x72c5c78] Final|Native|Static|Public|HasOutParms 
+	// void RefCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                                        // [0x75b4774] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.PersistentVarRefCall
-	// void PersistentVarRefCall(FString Path, TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);             // [0x72c541c] Final|Native|Static|Public|HasOutParms 
+	// void PersistentVarRefCall(FString Path, TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);             // [0x75b402c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.PersistentVarCall
-	// void PersistentVarCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                              // [0x72c5260] Final|Native|Static|Public|HasOutParms 
+	// void PersistentVarCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                              // [0x75b3ec8] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.FitsInPlayerMap
-	// void FitsInPlayerMap(FGenericValueType Value);                                                                           // [0x72c0a58] Final|Native|Static|Public 
+	// void FitsInPlayerMap(FGenericValueType Value);                                                                           // [0x75b019c] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.CompletelyAssignedRefCall
-	// void CompletelyAssignedRefCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                      // [0x72bf3b4] Final|Native|Static|Public|HasOutParms 
+	// void CompletelyAssignedRefCall(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                      // [0x75af278] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.CompletelyAssignedPersistentVarRefCall
-	// void CompletelyAssignedPersistentVarRefCall(FString Path, TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key); // [0x72bf1b0] Final|Native|Static|Public|HasOutParms 
+	// void CompletelyAssignedPersistentVarRefCall(FString Path, TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key); // [0x75af0d4] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisWeakMapLibrary.Call
-	// void Call(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                                           // [0x72bebb4] Final|Native|Static|Public|HasOutParms 
+	// void Call(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType Key);                                           // [0x75ae93c] Final|Native|Static|Public|HasOutParms 
+};
+
+/// Class /Script/Solaris.VerseAssetsConfig
+/// Size: 0x0010 (0x000028 - 0x000038)
+class UVerseAssetsConfig : public UObject
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 56;
+
+public:
+	CMember(TArray<FVerseAssetConfig>)                 AssetConfigs                                                OFFSET(get<T>, {0x28, 16, 0, 0})
 };
 
 /// Class /Script/Solaris.VerseDigest
@@ -95,23 +106,23 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisArrayLibrary.UnsafeCall
-	// void UnsafeCall(TArray<FGenericElementType>& Array, int64_t Index);                                                      // [0x72aca1c] Final|Native|Static|Public|HasOutParms 
+	// void UnsafeCall(TArray<FGenericElementType>& Array, int64_t Index);                                                      // [0x759ed94] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.RefCall
-	// void RefCall(TArray<FGenericElementType>& Array, int64_t Index);                                                         // [0x72ac8a4] Final|Native|Static|Public|HasOutParms 
+	// void RefCall(TArray<FGenericElementType>& Array, int64_t Index);                                                         // [0x759eb98] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Move
-	// void Move(TArray<FGenericElementType>& Target, TArray<FGenericElementType>& Source);                                     // [0x72ac750] Final|Native|Static|Public|HasOutParms 
+	// void Move(TArray<FGenericElementType>& Target, TArray<FGenericElementType>& Source);                                     // [0x759e9c0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Length
-	// int64_t Length(TArray<FGenericElementType>& Array);                                                                      // [0x72ac680] Final|Native|Static|Public|HasOutParms 
+	// int64_t Length(TArray<FGenericElementType>& Array);                                                                      // [0x759e8b0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Empty
-	// void Empty(TArray<FGenericElementType>& Array);                                                                          // [0x72ac59c] Final|Native|Static|Public|HasOutParms 
+	// void Empty(TArray<FGenericElementType>& Array);                                                                          // [0x759e7e4] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.ConcatEquals
-	// TArray<FGenericElementType> ConcatEquals(TArray<FGenericElementType>& LHS, TArray<FGenericElementType>& RHS);            // [0x72ac450] Final|Native|Static|Public|HasOutParms 
+	// TArray<FGenericElementType> ConcatEquals(TArray<FGenericElementType>& LHS, TArray<FGenericElementType>& RHS);            // [0x759e57c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Concat
-	// TArray<FGenericElementType> Concat(TArray<FGenericElementType>& LHS, TArray<FGenericElementType>& RHS);                  // [0x72ac340] Final|Native|Static|Public|HasOutParms 
+	// TArray<FGenericElementType> Concat(TArray<FGenericElementType>& LHS, TArray<FGenericElementType>& RHS);                  // [0x759e3e4] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Call
-	// void Call(TArray<FGenericElementType>& Array, int64_t Index);                                                            // [0x72ac0b8] Final|Native|Static|Public|HasOutParms 
+	// void Call(TArray<FGenericElementType>& Array, int64_t Index);                                                            // [0x759e0e4] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisArrayLibrary.Add
-	// int64_t Add(TArray<FGenericElementType>& Array, FGenericElementType& new_item);                                          // [0x72abe58] Final|Native|Static|Public|HasOutParms 
+	// int64_t Add(TArray<FGenericElementType>& Array, FGenericElementType& new_item);                                          // [0x759deac] Final|Native|Static|Public|HasOutParms 
 };
 
 /// Class /Script/Solaris.SolarisCoroutineLibrary
@@ -126,15 +137,15 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskMake
-	// class UObject* TaskMake(class UClass* Type, class UObject* Caller, int64_t CallerResumeState, int64_t CallerCancelState, class UObject* OwnerInstance); // [0x72c6aa8] Final|Native|Static|Public 
+	// class UObject* TaskMake(class UClass* Type, class UObject* Caller, int64_t CallerResumeState, int64_t CallerCancelState, class UObject* OwnerInstance); // [0x75b5690] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskGetState
-	// int64_t TaskGetState(class UObject* Task);                                                                               // [0x72c6a24] Final|Native|Static|Public 
+	// int64_t TaskGetState(class UObject* Task);                                                                               // [0x75b55cc] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskGetReturnProperty
-	// void TaskGetReturnProperty(class UObject* Task);                                                                         // [0x72c67e0] Final|Native|Static|Public 
-	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskFree
-	// void TaskFree(class UObject* Task);                                                                                      // [0x72c675c] Final|Native|Static|Public 
+	// void TaskGetReturnProperty(class UObject* Task);                                                                         // [0x75b52ec] Final|Native|Static|Public 
+	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskComplete
+	// void TaskComplete(class UObject* Task);                                                                                  // [0x75b5220] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisCoroutineLibrary.TaskCancel
-	// void TaskCancel(class UObject* Task);                                                                                    // [0x72c66ec] Final|Native|Static|Public 
+	// void TaskCancel(class UObject* Task);                                                                                    // [0x75b5170] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.GameFeature_SolarisObserver
@@ -159,21 +170,21 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMapLibrary.Move
-	// void Move(TMap<FGenericKeyType, FGenericValueType>& Dest, TMap<FGenericKeyType, FGenericValueType>& Src);                // [0x72c434c] Final|Native|Static|Public|HasOutParms 
+	// void Move(TMap<FGenericKeyType, FGenericValueType>& Dest, TMap<FGenericKeyType, FGenericValueType>& Src);                // [0x75b306c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.Length
-	// int64_t Length(TMap<FGenericKeyType, FGenericValueType>& Map);                                                           // [0x72c2b80] Final|Native|Static|Public|HasOutParms 
+	// int64_t Length(TMap<FGenericKeyType, FGenericValueType>& Map);                                                           // [0x75b2230] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.InitMap
-	// void InitMap(TMap<FGenericKeyType, FGenericValueType>& Map);                                                             // [0x72c2258] Final|Native|Static|Public|HasOutParms 
+	// void InitMap(TMap<FGenericKeyType, FGenericValueType>& Map);                                                             // [0x75b1880] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.GetValueByIndex
-	// FGenericValueType GetValueByIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t Index);                         // [0x72c19ec] Final|Native|Static|Public|HasOutParms 
+	// FGenericValueType GetValueByIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t Index);                         // [0x75b0ea0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.GetNextValidIndex
-	// int64_t GetNextValidIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t InitialIndex);                          // [0x72c15f4] Final|Native|Static|Public|HasOutParms 
+	// int64_t GetNextValidIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t InitialIndex);                          // [0x75b0bf0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.GetKeyByIndex
-	// FGenericKeyType GetKeyByIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t Index);                             // [0x72c12dc] Final|Native|Static|Public|HasOutParms 
+	// FGenericKeyType GetKeyByIndex(TMap<FGenericKeyType, FGenericValueType>& Map, int64_t Index);                             // [0x75b09c0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.Concat
-	// TMap<FGenericKeyType, FGenericValueType> Concat(TMap<FGenericKeyType, FGenericValueType>& LHS, TMap<FGenericKeyType, FGenericValueType>& RHS); // [0x72bf454] Final|Native|Static|Public|HasOutParms 
+	// TMap<FGenericKeyType, FGenericValueType> Concat(TMap<FGenericKeyType, FGenericValueType>& LHS, TMap<FGenericKeyType, FGenericValueType>& RHS); // [0x75af318] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMapLibrary.Add
-	// void Add(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType& Key, FGenericValueType& Value);                 // [0x72bd8ac] Final|Native|Static|Public|HasOutParms 
+	// void Add(TMap<FGenericKeyType, FGenericValueType>& Map, FGenericKeyType& Key, FGenericValueType& Value);                 // [0x75ad930] Final|Native|Static|Public|HasOutParms 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_Bool
@@ -188,7 +199,7 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_Bool.Query
-	// void Query();                                                                                                            // [0x72c5620] Final|Native|Static|Public 
+	// void Query();                                                                                                            // [0x75b41d0] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_Int
@@ -203,47 +214,47 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_Int.UncheckedConvertI32I64
-	// int32_t UncheckedConvertI32I64(int64_t RHS);                                                                             // [0x69ea3e4] Final|Native|Static|Public 
+	// int32_t UncheckedConvertI32I64(int64_t RHS);                                                                             // [0x6a36ea0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.SubtractEquals
-	// void SubtractEquals(int64_t& LHS, int64_t RHS);                                                                          // [0x72c6508] Final|Native|Static|Public|HasOutParms 
+	// void SubtractEquals(int64_t& LHS, int64_t RHS);                                                                          // [0x75b4f8c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Subtract
-	// void Subtract(int64_t LHS, int64_t RHS);                                                                                 // [0x72c62d4] Final|Native|Static|Public 
+	// void Subtract(int64_t LHS, int64_t RHS);                                                                                 // [0x75b4cd4] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateNotEqual
-	// bool PredicateNotEqual(int64_t LHS, int64_t RHS);                                                                        // [0x6a23b0c] Final|Native|Static|Public 
+	// bool PredicateNotEqual(int64_t LHS, int64_t RHS);                                                                        // [0x6a8144c] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateLessEqual
-	// bool PredicateLessEqual(int64_t LHS, int64_t RHS);                                                                       // [0x6a10044] Final|Native|Static|Public 
+	// bool PredicateLessEqual(int64_t LHS, int64_t RHS);                                                                       // [0x6a6bc04] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateLess
-	// bool PredicateLess(int64_t LHS, int64_t RHS);                                                                            // [0x6a10310] Final|Native|Static|Public 
+	// bool PredicateLess(int64_t LHS, int64_t RHS);                                                                            // [0x6a6c148] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateGreaterEqual
-	// bool PredicateGreaterEqual(int64_t LHS, int64_t RHS);                                                                    // [0x6a08970] Final|Native|Static|Public 
+	// bool PredicateGreaterEqual(int64_t LHS, int64_t RHS);                                                                    // [0x6a5e404] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateGreater
-	// bool PredicateGreater(int64_t LHS, int64_t RHS);                                                                         // [0x6a08f50] Final|Native|Static|Public 
+	// bool PredicateGreater(int64_t LHS, int64_t RHS);                                                                         // [0x6a5e948] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.PredicateEqual
-	// bool PredicateEqual(int64_t LHS, int64_t RHS);                                                                           // [0x69fadc0] Final|Native|Static|Public 
+	// bool PredicateEqual(int64_t LHS, int64_t RHS);                                                                           // [0x6a4b2ac] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Negate
-	// void Negate(int64_t Value);                                                                                              // [0x72c4e98] Final|Native|Static|Public 
+	// void Negate(int64_t Value);                                                                                              // [0x75b3c74] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.MultiplyEquals
-	// void MultiplyEquals(int64_t& LHS, int64_t RHS);                                                                          // [0x72c4aa4] Final|Native|Static|Public|HasOutParms 
+	// void MultiplyEquals(int64_t& LHS, int64_t RHS);                                                                          // [0x75b3740] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Multiply
-	// void Multiply(int64_t LHS, int64_t RHS);                                                                                 // [0x72c4874] Final|Native|Static|Public 
+	// void Multiply(int64_t LHS, int64_t RHS);                                                                                 // [0x75b3484] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.LessEqual
-	// void LessEqual(int64_t LHS, int64_t RHS);                                                                                // [0x72c3128] Final|Native|Static|Public 
+	// void LessEqual(int64_t LHS, int64_t RHS);                                                                                // [0x75b2874] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Less
-	// void Less(int64_t LHS, int64_t RHS);                                                                                     // [0x72c2f20] Final|Native|Static|Public 
+	// void Less(int64_t LHS, int64_t RHS);                                                                                     // [0x75b2574] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.GreaterEqual
-	// void GreaterEqual(int64_t LHS, int64_t RHS);                                                                             // [0x72c2038] Final|Native|Static|Public 
+	// void GreaterEqual(int64_t LHS, int64_t RHS);                                                                             // [0x75b156c] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Greater
-	// void Greater(int64_t LHS, int64_t RHS);                                                                                  // [0x72c1e34] Final|Native|Static|Public 
+	// void Greater(int64_t LHS, int64_t RHS);                                                                                  // [0x75b1270] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Divide
-	// void Divide(int64_t LHS, int64_t RHS);                                                                                   // [0x72c05e8] Final|Native|Static|Public 
+	// void Divide(int64_t LHS, int64_t RHS);                                                                                   // [0x75afed4] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.CheckConstrainedInt
-	// void CheckConstrainedInt(int64_t Min, int64_t Max, int64_t Value);                                                       // [0x72bf078] Final|Native|Static|Public 
+	// void CheckConstrainedInt(int64_t Min, int64_t Max, int64_t Value);                                                       // [0x75aeee0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.AddEquals
-	// void AddEquals(int64_t& LHS, int64_t RHS);                                                                               // [0x72be304] Final|Native|Static|Public|HasOutParms 
+	// void AddEquals(int64_t& LHS, int64_t RHS);                                                                               // [0x75ae28c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.Add
-	// void Add(int64_t LHS, int64_t RHS);                                                                                      // [0x72bdeb4] Final|Native|Static|Public 
+	// void Add(int64_t LHS, int64_t RHS);                                                                                      // [0x75ade78] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Int.abs
-	// void abs(int64_t Value);                                                                                                 // [0x72bd7dc] Final|Native|Static|Public 
+	// void abs(int64_t Value);                                                                                                 // [0x75ad818] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_Rational
@@ -258,9 +269,9 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_Rational.floor
-	// void floor(FVerseRational Val);                                                                                          // [0x72c0dc4] Final|Native|Static|Public 
+	// void floor(FVerseRational Val);                                                                                          // [0x75b0490] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Rational.ceil
-	// void ceil(FVerseRational Val);                                                                                           // [0x72bed58] Final|Native|Static|Public 
+	// void ceil(FVerseRational Val);                                                                                           // [0x75aeb6c] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_Float
@@ -275,39 +286,39 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_Float.SubtractEquals
-	// double SubtractEquals(double& LHS, double RHS);                                                                          // [0x72c63e4] Final|Native|Static|Public|HasOutParms 
+	// void SubtractEquals(double& LHS, double RHS);                                                                            // [0x75b4e60] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Subtract
-	// double Subtract(double LHS, double RHS);                                                                                 // [0x72c6200] Final|Native|Static|Public 
+	// double Subtract(double LHS, double RHS);                                                                                 // [0x75b4b84] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Negate
-	// double Negate(double Value);                                                                                             // [0x72c4e10] Final|Native|Static|Public 
+	// double Negate(double Value);                                                                                             // [0x75b3bac] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.MultiplyIntFloat
-	// double MultiplyIntFloat(int64_t LHS, double RHS);                                                                        // [0x72c4d44] Final|Native|Static|Public 
+	// double MultiplyIntFloat(int64_t LHS, double RHS);                                                                        // [0x75b3a68] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.MultiplyFloatInt
-	// double MultiplyFloatInt(double LHS, int64_t RHS);                                                                        // [0x72c4c78] Final|Native|Static|Public 
+	// double MultiplyFloatInt(double LHS, int64_t RHS);                                                                        // [0x75b3924] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.MultiplyEquals
-	// double MultiplyEquals(double& LHS, double RHS);                                                                          // [0x72c4980] Final|Native|Static|Public|HasOutParms 
+	// void MultiplyEquals(double& LHS, double RHS);                                                                            // [0x75b3614] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Multiply
-	// double Multiply(double LHS, double RHS);                                                                                 // [0x72c47a0] Final|Native|Static|Public 
+	// double Multiply(double LHS, double RHS);                                                                                 // [0x75b3334] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.LessEqual
-	// void LessEqual(double LHS, double RHS);                                                                                  // [0x72c3010] Final|Native|Static|Public 
+	// void LessEqual(double LHS, double RHS);                                                                                  // [0x75b26e0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Less
-	// void Less(double LHS, double RHS);                                                                                       // [0x72c2e0c] Final|Native|Static|Public 
+	// void Less(double LHS, double RHS);                                                                                       // [0x75b23e4] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.GreaterEqual
-	// void GreaterEqual(double LHS, double RHS);                                                                               // [0x72c1f24] Final|Native|Static|Public 
+	// void GreaterEqual(double LHS, double RHS);                                                                               // [0x75b13dc] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Greater
-	// void Greater(double LHS, double RHS);                                                                                    // [0x72c1d20] Final|Native|Static|Public 
+	// void Greater(double LHS, double RHS);                                                                                    // [0x75b10e0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.DivideEquals
-	// double DivideEquals(double& LHS, double RHS);                                                                            // [0x72c06fc] Final|Native|Static|Public|HasOutParms 
+	// void DivideEquals(double& LHS, double RHS);                                                                              // [0x75b0070] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Divide
-	// double Divide(double LHS, double RHS);                                                                                   // [0x72c0514] Final|Native|Static|Public 
+	// double Divide(double LHS, double RHS);                                                                                   // [0x75afd84] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.CheckConstrainedFloat
-	// void CheckConstrainedFloat(double Min, double Max, double Value);                                                        // [0x72bef34] Final|Native|Static|Public 
+	// void CheckConstrainedFloat(double Min, double Max, double Value);                                                        // [0x75aece0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.AddEquals
-	// double AddEquals(double& LHS, double RHS);                                                                               // [0x72be1e0] Final|Native|Static|Public|HasOutParms 
+	// void AddEquals(double& LHS, double RHS);                                                                                 // [0x75ae160] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.Add
-	// double Add(double LHS, double RHS);                                                                                      // [0x72bdde0] Final|Native|Static|Public 
+	// double Add(double LHS, double RHS);                                                                                      // [0x75add28] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Float.abs
-	// double abs(double Value);                                                                                                // [0x72bd754] Final|Native|Static|Public 
+	// double abs(double Value);                                                                                                // [0x75ad750] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_String
@@ -322,25 +333,25 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_String.UncheckedCall
-	// void UncheckedCall(int32_t& String, int64_t Index);                                                                      // [0x72c6e4c] Final|Native|Static|Public|HasOutParms 
+	// void UncheckedCall(int32_t& String, int64_t Index);                                                                      // [0x75b5ac0] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.RefCall
-	// void RefCall(int32_t& String, int64_t Index);                                                                            // [0x72c5a08] Final|Native|Static|Public|HasOutParms 
+	// void RefCall(int32_t& String, int64_t Index);                                                                            // [0x75b45dc] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Move
-	// void Move(int32_t& Destination, int32_t& Source);                                                                        // [0x72c459c] Final|Native|Static|Public|HasOutParms 
+	// void Move(int32_t& Destination, int32_t& Source);                                                                        // [0x75b31f8] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.MakeLiteral
-	// int32_t MakeLiteral();                                                                                                   // [0x72c36ac] Final|Native|Static|Public 
+	// int32_t MakeLiteral();                                                                                                   // [0x75b2cbc] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Make
-	// void Make();                                                                                                             // [0x72c336c] Final|Native|Static|Public 
+	// void Make();                                                                                                             // [0x75b2ac8] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Length
-	// int64_t Length(int32_t& Array);                                                                                          // [0x72c2ce4] Final|Native|Static|Public|HasOutParms 
+	// int64_t Length(int32_t& Array);                                                                                          // [0x75b2328] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.ConcatEquals
-	// int32_t ConcatEquals(int32_t& LHS, int32_t& RHS);                                                                        // [0x72bfd88] Final|Native|Static|Public|HasOutParms 
+	// int32_t ConcatEquals(int32_t& LHS, int32_t& RHS);                                                                        // [0x75afa94] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Concat
-	// int32_t Concat(int32_t& LHS, int32_t& RHS);                                                                              // [0x72bfb50] Final|Native|Static|Public|HasOutParms 
+	// int32_t Concat(int32_t& LHS, int32_t& RHS);                                                                              // [0x75af930] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Call
-	// void Call(int32_t& String, int64_t Index);                                                                               // [0x72be81c] Final|Native|Static|Public|HasOutParms 
+	// void Call(int32_t& String, int64_t Index);                                                                               // [0x75ae67c] Final|Native|Static|Public|HasOutParms 
 	// Function /Script/Solaris.SolarisMathLibrary_String.Add
-	// void Add(int32_t& String, int8_t Character);                                                                             // [0x72bdfc8] Final|Native|Static|Public|HasOutParms 
+	// void Add(int32_t& String, int8_t Character);                                                                             // [0x75ae008] Final|Native|Static|Public|HasOutParms 
 };
 
 /// Class /Script/Solaris.SolarisMathLibrary_Option
@@ -355,9 +366,9 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisMathLibrary_Option.Query
-	// void Query();                                                                                                            // [0x72c56bc] Final|Native|Static|Public 
+	// void Query();                                                                                                            // [0x75b42ac] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisMathLibrary_Option.Make
-	// void Make();                                                                                                             // [0x72c3218] Final|Native|Static|Public 
+	// void Make();                                                                                                             // [0x75b29e0] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.SolarisGameFeaturePluginObserver
@@ -394,45 +405,45 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.SolarisUtilLibrary.WriteClassVar
-	// void WriteClassVar();                                                                                                    // [0x72c705c] Final|Native|Static|Public 
+	// void WriteClassVar();                                                                                                    // [0x75b5c08] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.ReplaceOptionValue
-	// int64_t ReplaceOptionValue(int64_t ResultProperty, int64_t Option, int64_t Value);                                       // [0x72c5d80] Final|Native|Static|Public 
+	// int64_t ReplaceOptionValue(int64_t ResultProperty, int64_t Option, int64_t Value);                                       // [0x75b487c] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.ReferenceIsValid
-	// bool ReferenceIsValid(int64_t Reference);                                                                                // [0x72c5d18] Final|Native|Static|Public 
+	// bool ReferenceIsValid(int64_t Reference);                                                                                // [0x75b4814] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.ReadClassVar
-	// void ReadClassVar();                                                                                                     // [0x72c57d0] Final|Native|Static|Public 
+	// void ReadClassVar();                                                                                                     // [0x75b4358] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.ObjectHasNoFlags
-	// bool ObjectHasNoFlags(class UObject* Object, int32_t Flags);                                                             // [0x72c519c] Final|Native|Static|Public 
+	// bool ObjectHasNoFlags(class UObject* Object, int32_t Flags);                                                             // [0x75b3d88] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.MakeUnsetOption
-	// int64_t MakeUnsetOption();                                                                                               // [0x72c42a0] Final|Native|Static|Public 
+	// int64_t MakeUnsetOption();                                                                                               // [0x75b2f80] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.MakeOptionFromValue
-	// bool MakeOptionFromValue(class UObject* Property, int64_t Value);                                                        // [0x72c382c] Final|Native|Static|Public 
+	// bool MakeOptionFromValue(class UObject* Property, int64_t Value);                                                        // [0x75b2dd4] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.IsOptionSet
-	// bool IsOptionSet(int64_t Option);                                                                                        // [0x72c2a40] Final|Native|Static|Public 
+	// bool IsOptionSet(int64_t Option);                                                                                        // [0x75b2160] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.IsNonNullObject
-	// bool IsNonNullObject(class UObject* Object);                                                                             // [0x72c29cc] Final|Native|Static|Public 
+	// bool IsNonNullObject(class UObject* Object);                                                                             // [0x75b20a8] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.InstantiateObject
-	// void InstantiateObject(class UClass* Class, int64_t InstancingGraph);                                                    // [0x72c26bc] Final|Native|Static|Public 
+	// void InstantiateObject(class UClass* Class, int64_t InstancingGraph);                                                    // [0x75b1db4] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.InstanceFunction
-	// void InstanceFunction(class UObject* Object, FName MethodName);                                                          // [0x72c25ec] Final|Native|Static|Public 
+	// void InstanceFunction(class UObject* Object, FName MethodName);                                                          // [0x75b1c58] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.HasInterface
-	// bool HasInterface(class UObject* Object, class UVerseClass* InterfaceClass);                                             // [0x72c2128] Final|Native|Static|Public 
+	// bool HasInterface(class UObject* Object, class UVerseClass* InterfaceClass);                                             // [0x75b16d8] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.GetOptionValue
-	// int64_t GetOptionValue(int64_t Option);                                                                                  // [0x72c1874] Final|Native|Static|Public 
+	// int64_t GetOptionValue(int64_t Option);                                                                                  // [0x75b0da0] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.GetFunctionForInterfaceMethod
-	// void GetFunctionForInterfaceMethod(class UObject* Object, FName MethodName);                                             // [0x72c0fc0] Final|Native|Static|Public 
+	// void GetFunctionForInterfaceMethod(class UObject* Object, FName MethodName);                                             // [0x75b0624] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.GetCurrentlyInstantiatedObject
-	// class UObject* GetCurrentlyInstantiatedObject();                                                                         // [0x72c0f9c] Final|Native|Static|Public 
+	// class UObject* GetCurrentlyInstantiatedObject();                                                                         // [0x75b0600] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.Dereference
-	// int64_t Dereference(int64_t Reference);                                                                                  // [0x72c03a8] Final|Native|Static|Public 
+	// int64_t Dereference(int64_t Reference);                                                                                  // [0x75afc7c] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.CallFunction
-	// void CallFunction();                                                                                                     // [0x72bed04] Final|Native|Static|Public 
+	// void CallFunction();                                                                                                     // [0x75aeb18] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.CallFinalFunctionWithContext
-	// void CallFinalFunctionWithContext();                                                                                     // [0x72bec50] Final|Native|Static|Public 
+	// void CallFinalFunctionWithContext();                                                                                     // [0x75ae9d8] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.Addressof
-	// int64_t Addressof(int64_t Value);                                                                                        // [0x72be6f0] Final|Native|Static|Public 
+	// int64_t Addressof(int64_t Value);                                                                                        // [0x75ae5bc] Final|Native|Static|Public 
 	// Function /Script/Solaris.SolarisUtilLibrary.AddPropertyToSubobjectExclusionList
-	// void AddPropertyToSubobjectExclusionList(int64_t InstancingGraph, int64_t Property);                                     // [0x72be4ec] Final|Native|Static|Public 
+	// void AddPropertyToSubobjectExclusionList(int64_t InstancingGraph, int64_t Property);                                     // [0x75ae478] Final|Native|Static|Public 
 };
 
 /// Class /Script/Solaris.VerseClass
@@ -476,45 +487,45 @@ public:
 
 	/// Functions
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.NotEqual
-	// void NotEqual(int32_t Left, int32_t Right);                                                                              // [0x72c4f64] Final|Native|Static|Public 
+	// void NotEqual(int32_t Left, int32_t Right);                                                                              // [0x75b6ac0] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeTuple
-	// void MakeRuntimeTypeTuple(TArray<int32_t> ValueType);                                                                    // [0x72c40e4] Final|Native|Static|Public 
+	// void MakeRuntimeTypeTuple(TArray<int32_t> ValueType);                                                                    // [0x75b6970] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeStruct
-	// void MakeRuntimeTypeStruct(class UStruct* Struct);                                                                       // [0x72c4064] Final|Native|Static|Public 
+	// void MakeRuntimeTypeStruct(class UStruct* Struct);                                                                       // [0x75b68b0] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeString
-	// void MakeRuntimeTypeString();                                                                                            // [0x72c4040] Final|Native|Static|Public 
+	// void MakeRuntimeTypeString();                                                                                            // [0x75b688c] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeOption
-	// void MakeRuntimeTypeOption(int32_t ValueType);                                                                           // [0x72c3f10] Final|Native|Static|Public 
+	// void MakeRuntimeTypeOption(int32_t ValueType);                                                                           // [0x75b67cc] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeObject
-	// void MakeRuntimeTypeObject();                                                                                            // [0x72c3eec] Final|Native|Static|Public 
+	// void MakeRuntimeTypeObject();                                                                                            // [0x75b67a8] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeMap
-	// void MakeRuntimeTypeMap(int32_t KeyType, int32_t ValueType);                                                             // [0x72c3cdc] Final|Native|Static|Public 
+	// void MakeRuntimeTypeMap(int32_t KeyType, int32_t ValueType);                                                             // [0x75b6668] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeLogic
-	// void MakeRuntimeTypeLogic();                                                                                             // [0x72c3cb8] Final|Native|Static|Public 
+	// void MakeRuntimeTypeLogic();                                                                                             // [0x75b6644] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeInt64
-	// void MakeRuntimeTypeInt64();                                                                                             // [0x72c3c94] Final|Native|Static|Public 
+	// void MakeRuntimeTypeInt64();                                                                                             // [0x75b6620] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeFunction
-	// void MakeRuntimeTypeFunction();                                                                                          // [0x72c3c70] Final|Native|Static|Public 
+	// void MakeRuntimeTypeFunction();                                                                                          // [0x75b65fc] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeFloat
-	// void MakeRuntimeTypeFloat();                                                                                             // [0x72c3c4c] Final|Native|Static|Public 
+	// void MakeRuntimeTypeFloat();                                                                                             // [0x75b65d8] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeEnum
-	// void MakeRuntimeTypeEnum(FName Name);                                                                                    // [0x72c3bcc] Final|Native|Static|Public 
+	// void MakeRuntimeTypeEnum(FName Name);                                                                                    // [0x75b6518] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeDynamic
-	// void MakeRuntimeTypeDynamic();                                                                                           // [0x72c3ba8] Final|Native|Static|Public 
+	// void MakeRuntimeTypeDynamic();                                                                                           // [0x75b64f4] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeClass
-	// void MakeRuntimeTypeClass();                                                                                             // [0x72c3b84] Final|Native|Static|Public 
+	// void MakeRuntimeTypeClass();                                                                                             // [0x75b64d0] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeChar8
-	// void MakeRuntimeTypeChar8();                                                                                             // [0x72c3b60] Final|Native|Static|Public 
+	// void MakeRuntimeTypeChar8();                                                                                             // [0x75b64ac] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeChar32
-	// void MakeRuntimeTypeChar32();                                                                                            // [0x72c3b3c] Final|Native|Static|Public 
+	// void MakeRuntimeTypeChar32();                                                                                            // [0x75b6488] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.MakeRuntimeTypeArray
-	// void MakeRuntimeTypeArray(int32_t ElementType);                                                                          // [0x72c3a0c] Final|Native|Static|Public 
+	// void MakeRuntimeTypeArray(int32_t ElementType);                                                                          // [0x75b63c8] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.Equal
-	// void Equal(int32_t Left, int32_t Right);                                                                                 // [0x72c0820] Final|Native|Static|Public 
+	// void Equal(int32_t Left, int32_t Right);                                                                                 // [0x75b6190] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.ConvertToDynamicallyTypedValue
-	// void ConvertToDynamicallyTypedValue(int32_t RuntimeType, int32_t Value);                                                 // [0x72c019c] Final|Native|Static|Public 
+	// void ConvertToDynamicallyTypedValue(int32_t RuntimeType, int32_t Value);                                                 // [0x75b6044] Final|Native|Static|Public 
 	// Function /Script/Solaris.VerseDynamicallyTypedValueLibrary.ConvertFromDynamicallyTypedValue
-	// void ConvertFromDynamicallyTypedValue(int32_t RuntimeType, int32_t Value);                                               // [0x72bffec] Final|Native|Static|Public 
+	// void ConvertFromDynamicallyTypedValue(int32_t RuntimeType, int32_t Value);                                               // [0x75b5f04] Final|Native|Static|Public 
 };
 
 /// Struct /Script/Solaris.GenericKeyType
@@ -537,6 +548,19 @@ class FGenericValueType : public MDKBase
 	static inline constexpr uint64_t __MDKClassSize = 1;
 
 public:
+};
+
+/// Struct /Script/Solaris.VerseAssetConfig
+/// Size: 0x0018 (0x000000 - 0x000018)
+class FVerseAssetConfig : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 24;
+
+public:
+	SMember(FString)                                   AssetType                                                   OFFSET(getStruct<T>, {0x0, 16, 0, 0})
+	DMember(uint32_t)                                  PublicVersion                                               OFFSET(get<uint32_t>, {0x10, 4, 0, 0})
 };
 
 /// Struct /Script/Solaris.ManifestDependency

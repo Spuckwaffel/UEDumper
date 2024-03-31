@@ -44,7 +44,7 @@ public:
 
 	/// Functions
 	// Function /Script/FortniteConversationRuntime.FortConversationContextCondition.DoesContextPass
-	// bool DoesContextPass(FConversationContext& Context);                                                                     // [0xa17dcc8] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool DoesContextPass(FConversationContext& Context);                                                                     // [0xae751e4] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/FortniteConversationRuntime.FortConversationContextCondition_ParticipantHasCID
@@ -107,7 +107,7 @@ public:
 
 	/// Functions
 	// Function /Script/FortniteConversationRuntime.FortConversationContextConditionHelpers.GetMessageForContext
-	// bool GetMessageForContext(FFortConversationNodeConditionalMessages& Messages, FConversationContext& Context, FText& OutText); // [0xa17e104] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
+	// bool GetMessageForContext(FFortConversationNodeConditionalMessages& Messages, FConversationContext& Context, FText& OutText); // [0xae75f70] Final|Native|Static|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/FortniteConversationRuntime.FortConversationParamLibrary
@@ -122,7 +122,7 @@ public:
 
 	/// Functions
 	// Function /Script/FortniteConversationRuntime.FortConversationParamLibrary.ExtractConversationParameterValue
-	// bool ExtractConversationParameterValue(TArray<FConversationNodeParameterPair>& ConversationParameters, FString DesiredParameterName, FString& ParameterValueOut); // [0xa17de5c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool ExtractConversationParameterValue(TArray<FConversationNodeParameterPair>& ConversationParameters, FString DesiredParameterName, FString& ParameterValueOut); // [0xae75818] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/FortniteConversationRuntime.FortniteConversationGlobals
@@ -156,27 +156,27 @@ public:
 
 	/// Functions
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.RequestServerAbortConversationWithParticipant
-	// void RequestServerAbortConversationWithParticipant(class UFortNonPlayerConversationParticipantComponent* Participant);   // [0x9a22108] Net|NetReliableNative|Event|Public|NetServer 
+	// void RequestServerAbortConversationWithParticipant(class UFortNonPlayerConversationParticipantComponent* Participant);   // [0xae767ac] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.RequestServerAbortConversation
-	// void RequestServerAbortConversation();                                                                                   // [0x7905660] Net|NetReliableNative|Event|Public|NetServer|BlueprintCallable 
+	// void RequestServerAbortConversation();                                                                                   // [0x8fd4ae0] Net|NetReliableNative|Event|Public|NetServer|BlueprintCallable 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.HandleWeaponEquipped
-	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0x6cbaff4] Final|Native|Private 
+	// void HandleWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                  // [0x6d6d7fc] Final|Native|Private 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.HandleViewTargetChanged
-	// void HandleViewTargetChanged();                                                                                          // [0xa17e480] Final|Native|Private 
+	// void HandleViewTargetChanged();                                                                                          // [0xae76798] Final|Native|Private 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.HandleFollowedPlayerChanged
-	// void HandleFollowedPlayerChanged(class AFortPlayerControllerSpectating* SpectatingPC, class AFortPlayerState* FollowedPlayerState); // [0xa17e3bc] Final|Native|Private 
+	// void HandleFollowedPlayerChanged(class AFortPlayerControllerSpectating* SpectatingPC, class AFortPlayerState* FollowedPlayerState); // [0xae76658] Final|Native|Private 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.HandleDBNOChanged
-	// void HandleDBNOChanged(class AFortPawn* Pawn, bool bIsDBNO);                                                             // [0x81ff9b0] Final|Native|Private 
+	// void HandleDBNOChanged(class AFortPawn* Pawn, bool bIsDBNO);                                                             // [0x86a36e4] Final|Native|Private 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.ClientSpectatorOpenUI
-	// void ClientSpectatorOpenUI();                                                                                            // [0x81db0dc] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientSpectatorOpenUI();                                                                                            // [0x86776a8] Net|NetReliableNative|Event|Public|NetClient 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.ClientSpectatorLeaveConversationState
-	// void ClientSpectatorLeaveConversationState();                                                                            // [0x829f6f4] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientSpectatorLeaveConversationState();                                                                            // [0x8934268] Net|NetReliableNative|Event|Public|NetClient 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.ClientSpectatorEnterConversationState
-	// void ClientSpectatorEnterConversationState();                                                                            // [0x841c2d0] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientSpectatorEnterConversationState();                                                                            // [0x893410c] Net|NetReliableNative|Event|Public|NetClient 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.ClientSpectatorCloseUI
-	// void ClientSpectatorCloseUI();                                                                                           // [0x92ababc] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientSpectatorCloseUI();                                                                                           // [0x9baf984] Net|NetReliableNative|Event|Public|NetClient 
 	// Function /Script/FortniteConversationRuntime.FortPlayerConversationComponent.ClientReceiveConversationGiftUINotification
-	// void ClientReceiveConversationGiftUINotification(FGiftUINotificationInfo ConversationGiftUINotification);                // [0xa17db84] Net|NetReliableNative|Event|Public|NetClient 
+	// void ClientReceiveConversationGiftUINotification(FGiftUINotificationInfo ConversationGiftUINotification);                // [0xae75110] Net|NetReliableNative|Event|Public|NetClient 
 };
 
 /// Struct /Script/FortniteConversationRuntime.FortConversationEnterEvent

@@ -41,31 +41,31 @@ public:
 
 	/// Functions
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.UpdateGroundInfo
-	// void UpdateGroundInfo(bool bValidBlock, FHitResult& MovementHitResult);                                                  // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
+	// void UpdateGroundInfo(bool bValidBlock, FHitResult& MovementHitResult);                                                  // [0x186becc] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.SetGravityMultiplier
-	// void SetGravityMultiplier(float InGravityMultiplier);                                                                    // [0x67d85bc] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
+	// void SetGravityMultiplier(float InGravityMultiplier);                                                                    // [0x67dbeb4] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.SetBalloonState
-	// void SetBalloonState(ESupplyDropRadioBalloonState InBalloonState);                                                       // [0x81e7214] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
+	// void SetBalloonState(ESupplyDropRadioBalloonState InBalloonState);                                                       // [0x8684bd4] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.OpenSupplyDrop
-	// void OpenSupplyDrop();                                                                                                   // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void OpenSupplyDrop();                                                                                                   // [0x186becc] BlueprintAuthorityOnly|Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.OnRep_DistanceFromOriginalSpawnLocForBalloonOpen
-	// void OnRep_DistanceFromOriginalSpawnLocForBalloonOpen();                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRep_DistanceFromOriginalSpawnLocForBalloonOpen();                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.OnRep_BalloonState
-	// void OnRep_BalloonState();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnRep_BalloonState();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.IsMoving
-	// bool IsMoving();                                                                                                         // [0xa98ae00] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsMoving();                                                                                                         // [0xb7e4aac] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.IsGrounded
-	// bool IsGrounded();                                                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent|Const 
+	// bool IsGrounded();                                                                                                       // [0x186becc] Event|Protected|BlueprintEvent|Const 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.HandleMoveIgnoredActorEndPlay
-	// void HandleMoveIgnoredActorEndPlay(class AActor* EndPlayActor, TEnumAsByte<EEndPlayReason> Reason);                      // [0xa98ad3c] Final|Native|Protected 
+	// void HandleMoveIgnoredActorEndPlay(class AActor* EndPlayActor, TEnumAsByte<EEndPlayReason> Reason);                      // [0xb7e496c] Final|Native|Protected 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.GetRootCollisionComponent
-	// class UBoxComponent* GetRootCollisionComponent();                                                                        // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// class UBoxComponent* GetRootCollisionComponent();                                                                        // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.GetHighestAttachParent
-	// class AActor* GetHighestAttachParent(class AActor* InActor);                                                             // [0xa98aca8] Final|Native|Protected|BlueprintCallable|Const 
+	// class AActor* GetHighestAttachParent(class AActor* InActor);                                                             // [0xb7e4898] Final|Native|Protected|BlueprintCallable|Const 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.GetGravityZ
-	// float GetGravityZ();                                                                                                     // [0xa98ac80] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// float GetGravityZ();                                                                                                     // [0xb7e4870] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SupplyDropRadioRuntime.BuildingGameplayActorSupplyDropRadio.GetBalloonState
-	// ESupplyDropRadioBalloonState GetBalloonState();                                                                          // [0xa98ac68] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// ESupplyDropRadioBalloonState GetBalloonState();                                                                          // [0xb7e4858] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SupplyDropRadioRuntime.FortSupplyDropRadioAttachActorComponent
@@ -80,7 +80,7 @@ public:
 
 	/// Functions
 	// Function /Script/SupplyDropRadioRuntime.FortSupplyDropRadioAttachActorComponent.SetOwningActorNetCullDistance
-	// void SetOwningActorNetCullDistance(float DistanceSquared);                                                               // [0xa98aecc] Final|Native|Protected|BlueprintCallable|Const 
+	// void SetOwningActorNetCullDistance(float DistanceSquared);                                                               // [0xb7e4c04] Final|Native|Protected|BlueprintCallable|Const 
 };
 
 /// Class /Script/SupplyDropRadioRuntime.FortSupplyDropRadioBlueprintLibrary
@@ -95,9 +95,9 @@ public:
 
 	/// Functions
 	// Function /Script/SupplyDropRadioRuntime.FortSupplyDropRadioBlueprintLibrary.StopCurrentConversation
-	// void StopCurrentConversation(class AFortPlayerControllerGameplay* PlayerController);                                     // [0xa98af4c] Final|Native|Static|Private|BlueprintCallable 
+	// void StopCurrentConversation(class AFortPlayerControllerGameplay* PlayerController);                                     // [0xb7e4cc8] Final|Native|Static|Private|BlueprintCallable 
 	// Function /Script/SupplyDropRadioRuntime.FortSupplyDropRadioBlueprintLibrary.SetMoveShouldAbortConversation
-	// void SetMoveShouldAbortConversation(class AFortPlayerControllerGameplay* PlayerController, bool bNewMoveAbortConversation); // [0xa98ae18] Final|BlueprintCosmetic|Native|Static|Private|BlueprintCallable 
+	// void SetMoveShouldAbortConversation(class AFortPlayerControllerGameplay* PlayerController, bool bNewMoveAbortConversation); // [0xb7e4ac4] Final|BlueprintCosmetic|Native|Static|Private|BlueprintCallable 
 };
 
 /// Enum /Script/SupplyDropRadioRuntime.ESupplyDropRadioBalloonState

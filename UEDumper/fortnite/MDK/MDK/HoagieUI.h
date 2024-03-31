@@ -24,6 +24,6 @@ public:
 
 	/// Functions
 	// Function /Script/HoagieUI.FortHoagieVehicleReticle.OnSetupComplete
-	// void OnSetupComplete(bool bVehicleUsesFuelSystem);                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSetupComplete(bool bVehicleUsesFuelSystem);                                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 };
 

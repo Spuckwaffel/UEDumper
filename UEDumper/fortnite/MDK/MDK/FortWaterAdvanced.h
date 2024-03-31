@@ -10,11 +10,11 @@
 /// dependency: WaterAdvanced
 
 /// Class /Script/FortWaterAdvanced.FortShallowWaterSubsystem
-/// Size: 0x0000 (0x000128 - 0x000128)
+/// Size: 0x0000 (0x000220 - 0x000220)
 class UFortShallowWaterSubsystem : public UShallowWaterSubsystem
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 296;
+	static inline constexpr uint64_t __MDKClassSize = 544;
 
 public:
 };

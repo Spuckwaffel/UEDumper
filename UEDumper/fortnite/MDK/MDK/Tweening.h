@@ -36,7 +36,7 @@ public:
 
 	/// Functions
 	// Function /Script/Tweening.ActorTweening.BP_TransformAlongSplineTo
-	// void BP_TransformAlongSplineTo(int32_t& OutTweenId, class UObject* ContextObject, class AActor*& Target, class USplineComponent* Spline, ETweenSplineAlignmentOption Alignment, bool bIgnorePitch, bool bIgnoreYaw, bool bIgnoreRoll, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x9948848] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void BP_TransformAlongSplineTo(int32_t& OutTweenId, class UObject* ContextObject, class AActor*& Target, class USplineComponent* Spline, ETweenSplineAlignmentOption Alignment, bool bIgnorePitch, bool bIgnoreYaw, bool bIgnoreRoll, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa402518] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/Tweening.TweenMaterialParameterInfo
@@ -62,9 +62,9 @@ public:
 
 	/// Functions
 	// Function /Script/Tweening.MaterialTweening.BP_ScalarParamTo
-	// void BP_ScalarParamTo(int32_t& OutTweenId, class UObject* ContextObject, class UMaterialInstanceDynamic*& Target, FName ParameterName, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x9947d5c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void BP_ScalarParamTo(int32_t& OutTweenId, class UObject* ContextObject, class UMaterialInstanceDynamic*& Target, FName ParameterName, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa401998] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Tweening.MaterialTweening.BP_ColorParamTo
-	// void BP_ColorParamTo(int32_t& OutTweenId, class UObject* ContextObject, class UMaterialInstanceDynamic*& Target, FName ParameterName, FTweenOptionalLinearColor FromOptions, FLinearColor ToValue, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x9946440] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BP_ColorParamTo(int32_t& OutTweenId, class UObject* ContextObject, class UMaterialInstanceDynamic*& Target, FName ParameterName, FTweenOptionalLinearColor FromOptions, FLinearColor ToValue, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa40037c] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/Tweening.TweenManager
@@ -80,27 +80,27 @@ public:
 
 	/// Functions
 	// Function /Script/Tweening.TweenManager.StopTweens
-	// void StopTweens(TArray<int32_t> InTweenIds);                                                                             // [0x994d494] Final|Native|Public|BlueprintCallable 
+	// void StopTweens(TArray<int32_t> InTweenIds);                                                                             // [0xa406104] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.StopTween
-	// bool StopTween(int32_t InTweenId);                                                                                       // [0x994d408] Final|Native|Public|BlueprintCallable 
+	// bool StopTween(int32_t InTweenId);                                                                                       // [0xa406038] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.SetTweenTiming
-	// bool SetTweenTiming(int32_t InTweenId, float InDuration, float InDelayAtBeginning, float InDelayAtEnd);                  // [0x994d2b4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SetTweenTiming(int32_t InTweenId, float InDuration, float InDelayAtBeginning, float InDelayAtEnd);                  // [0xa405de8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/Tweening.TweenManager.ResetTweens
-	// void ResetTweens(TArray<int32_t> InTweenIds, ETweenResetDestination InDestination);                                      // [0x994d1a4] Final|Native|Public|BlueprintCallable 
+	// void ResetTweens(TArray<int32_t> InTweenIds, ETweenResetDestination InDestination);                                      // [0xa405c54] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.ResetTween
-	// bool ResetTween(int32_t InTweenId, ETweenResetDestination InDestination);                                                // [0x994d0e4] Final|Native|Public|BlueprintCallable 
+	// bool ResetTween(int32_t InTweenId, ETweenResetDestination InDestination);                                                // [0xa405b04] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.PlayTweenWithLooping
-	// bool PlayTweenWithLooping(int32_t InTweenId, ETweenLoopType InLoopType, int32_t InLoopCount, ETweenPlayDirection InPlayDirection); // [0x994ce98] Final|Native|Public|BlueprintCallable 
+	// bool PlayTweenWithLooping(int32_t InTweenId, ETweenLoopType InLoopType, int32_t InLoopCount, ETweenPlayDirection InPlayDirection); // [0xa405738] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.PlayTweens
-	// void PlayTweens(TArray<int32_t> InTweenIds, ETweenPlayDirection InPlayDirection);                                        // [0x994cfd4] Final|Native|Public|BlueprintCallable 
+	// void PlayTweens(TArray<int32_t> InTweenIds, ETweenPlayDirection InPlayDirection);                                        // [0xa405970] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.PlayTween
-	// bool PlayTween(int32_t InTweenId, ETweenPlayDirection InPlayDirection);                                                  // [0x994cdd8] Final|Native|Public|BlueprintCallable 
+	// bool PlayTween(int32_t InTweenId, ETweenPlayDirection InPlayDirection);                                                  // [0xa4055e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.KillTweens
-	// void KillTweens(TArray<int32_t> InTweenIds);                                                                             // [0x994cc7c] Final|Native|Public|BlueprintCallable 
+	// void KillTweens(TArray<int32_t> InTweenIds);                                                                             // [0xa40540c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.KillTween
-	// bool KillTween(int32_t InTweenId);                                                                                       // [0x994cbf0] Final|Native|Public|BlueprintCallable 
+	// bool KillTween(int32_t InTweenId);                                                                                       // [0xa405340] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenManager.HasTween
-	// bool HasTween(int32_t InTweenId);                                                                                        // [0x994cb64] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// bool HasTween(int32_t InTweenId);                                                                                        // [0xa405274] Final|Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/Tweening.TweenSequence
@@ -118,17 +118,17 @@ public:
 
 	/// Functions
 	// Function /Script/Tweening.TweenSequence.Stop
-	// void Stop();                                                                                                             // [0x994d3f4] Final|Native|Public|BlueprintCallable 
+	// void Stop();                                                                                                             // [0xa406024] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenSequence.Play
-	// void Play(ETweenPlayDirection InPlayDirection);                                                                          // [0x994cd58] Final|Native|Public|BlueprintCallable 
+	// void Play(ETweenPlayDirection InPlayDirection);                                                                          // [0xa405528] Final|Native|Public|BlueprintCallable 
 	// Function /Script/Tweening.TweenSequence.BP_JoinTween
-	// void BP_JoinTween(int32_t& TweenId, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0x99470f8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void BP_JoinTween(int32_t& TweenId, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0xa401098] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Tweening.TweenSequence.BP_JoinSequence
-	// void BP_JoinSequence(class UTweenSequence*& SequenceToAppend, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0x9946e8c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void BP_JoinSequence(class UTweenSequence*& SequenceToAppend, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0xa400e20] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Tweening.TweenSequence.BP_AppendTween
-	// void BP_AppendTween(int32_t& TweenId, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0x994629c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void BP_AppendTween(int32_t& TweenId, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0xa40019c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Tweening.TweenSequence.BP_AppendSequence
-	// void BP_AppendSequence(class UTweenSequence*& SequenceToAppend, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0x9946030] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void BP_AppendSequence(class UTweenSequence*& SequenceToAppend, float AdditionalDelayAtBeginning, float AdditionalDelayAtEnd, class UTweenSequence*& OutSequence); // [0xa3fff24] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/Tweening.WidgetTweening
@@ -143,17 +143,17 @@ public:
 
 	/// Functions
 	// Function /Script/Tweening.WidgetTweening.BP_TranslationTo
-	// void BP_TranslationTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x994c074] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BP_TranslationTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa404b28] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/Tweening.WidgetTweening.BP_TransformShearTo
-	// void BP_TransformShearTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x994b584] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BP_TransformShearTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa4043dc] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/Tweening.WidgetTweening.BP_TransformScaleTo
-	// void BP_TransformScaleTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x994aa94] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BP_TransformScaleTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa403c90] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/Tweening.WidgetTweening.BP_TransformPivotTo
-	// void BP_TransformPivotTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x9949fa4] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BP_TransformPivotTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalVector2D FromOptions, FVector2D ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa403544] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/Tweening.WidgetTweening.BP_TransformAngleTo
-	// void BP_TransformAngleTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x99494e4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void BP_TransformAngleTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa402e24] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/Tweening.WidgetTweening.BP_OpacityTo
-	// void BP_OpacityTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0x994729c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void BP_OpacityTo(int32_t& OutTweenId, class UObject* ContextObject, class UWidget* Target, FTweenOptionalFloat FromOptions, float ToValue, bool bIsRelative, float duration, FTweenDelayOptions DelayOptions, ETweenBuiltInEasing EasingFunction, class UCurveFloat* EasingCurve, FTweenLoopOptions LoopOptions, bool bAutoPlay, bool bAutoKill); // [0xa401278] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/Tweening.TweenOptionalFloat

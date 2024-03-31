@@ -25,9 +25,9 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.OverlapComponent.OnEndActorOverlap
-	// void OnEndActorOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex); // [0x776c5f0] Native|Protected     
+	// void OnEndActorOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex); // [0x7b340a0] Native|Protected     
 	// Function /Script/PlayspaceSystem.OverlapComponent.OnBeginActorOverlap
-	// void OnBeginActorOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0x776c3b8] Native|Protected|HasOutParms 
+	// void OnBeginActorOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0x7b33d24] Native|Protected|HasOutParms 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceComponent
@@ -79,13 +79,13 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.PlayspaceControllerComponent_PlayerSpawning.ServerMarkReadyForSpawning
-	// void ServerMarkReadyForSpawning();                                                                                       // [0x776cbc8] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
+	// void ServerMarkReadyForSpawning();                                                                                       // [0x7b34a00] Final|Net|NetReliableNative|Event|Private|NetServer|NetValidate 
 	// Function /Script/PlayspaceSystem.PlayspaceControllerComponent_PlayerSpawning.OnRep_ReplicatedSpawnInfo
-	// void OnRep_ReplicatedSpawnInfo();                                                                                        // [0x776cb24] Final|Native|Private 
+	// void OnRep_ReplicatedSpawnInfo();                                                                                        // [0x7b3491c] Final|Native|Private 
 	// Function /Script/PlayspaceSystem.PlayspaceControllerComponent_PlayerSpawning.GetSpawnInfo
-	// FReplicatedSpawnInfo GetSpawnInfo();                                                                                     // [0x776c254] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FReplicatedSpawnInfo GetSpawnInfo();                                                                                     // [0x7b33b70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/PlayspaceSystem.PlayspaceControllerComponent_PlayerSpawning.ClientReplicatedSpawnInfo
-	// void ClientReplicatedSpawnInfo(FReplicatedSpawnInfo InReplicatedSpawnInfo);                                              // [0x776c054] Final|Net|NetReliableNative|Event|Private|NetClient 
+	// void ClientReplicatedSpawnInfo(FReplicatedSpawnInfo InReplicatedSpawnInfo);                                              // [0x7b3399c] Final|Net|NetReliableNative|Event|Private|NetClient 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceGameStateComponent
@@ -150,15 +150,15 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.GameplayVolume.UpdateSize
-	// void UpdateSize(FVector& NewScale);                                                                                      // [0x776cc14] Native|Public|HasOutParms|HasDefaults 
+	// void UpdateSize(FVector& NewScale);                                                                                      // [0x7b34a4c] Native|Public|HasOutParms|HasDefaults 
 	// Function /Script/PlayspaceSystem.GameplayVolume.OnRep_Playspace
-	// void OnRep_Playspace();                                                                                                  // [0x776caf4] Final|Native|Protected 
+	// void OnRep_Playspace();                                                                                                  // [0x39dc90c] Final|Native|Protected 
 	// Function /Script/PlayspaceSystem.GameplayVolume.OnOverlappedPawnControllerChanged
-	// void OnOverlappedPawnControllerChanged(class APawn* Pawn, class AController* OldController, class AController* NewController); // [0x776c730] Native|Protected     
+	// void OnOverlappedPawnControllerChanged(class APawn* Pawn, class AController* OldController, class AController* NewController); // [0x7b342dc] Native|Protected     
 	// Function /Script/PlayspaceSystem.GameplayVolume.InitializeBoundsComponent
-	// void InitializeBoundsComponent(class UOverlapComponent* NewBoundsComponent);                                             // [0x776c2ac] Final|Native|Private|BlueprintCallable 
+	// void InitializeBoundsComponent(class UOverlapComponent* NewBoundsComponent);                                             // [0x7b33bc8] Final|Native|Private|BlueprintCallable 
 	// Function /Script/PlayspaceSystem.GameplayVolume.GetPlayspace
-	// class APlayspace* GetPlayspace();                                                                                        // [0x3081300] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class APlayspace* GetPlayspace();                                                                                        // [0x2d03dc4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/PlayspaceSystem.Playspace
@@ -193,15 +193,15 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.Playspace.OnRep_PlayspaceUsers
-	// void OnRep_PlayspaceUsers();                                                                                             // [0x2927f8c] Final|RequiredAPI|Native|Protected 
+	// void OnRep_PlayspaceUsers();                                                                                             // [0x3461b48] Final|RequiredAPI|Native|Protected 
 	// Function /Script/PlayspaceSystem.Playspace.OnRep_MatchStartTime
-	// void OnRep_MatchStartTime();                                                                                             // [0x3eab63c] RequiredAPI|Native|Protected 
+	// void OnRep_MatchStartTime();                                                                                             // [0x3d6de60] RequiredAPI|Native|Protected 
 	// Function /Script/PlayspaceSystem.Playspace.OnRep_BoundGameplayVolume
-	// void OnRep_BoundGameplayVolume();                                                                                        // [0x776cab4] Final|Native|Protected 
+	// void OnRep_BoundGameplayVolume();                                                                                        // [0x7b348dc] Final|Native|Protected 
 	// Function /Script/PlayspaceSystem.Playspace.OnRep_bMatchHasEnded
-	// void OnRep_bMatchHasEnded();                                                                                             // [0x3e5b89c] Final|RequiredAPI|Native|Protected 
+	// void OnRep_bMatchHasEnded();                                                                                             // [0x3d18354] Final|RequiredAPI|Native|Protected 
 	// Function /Script/PlayspaceSystem.Playspace.OnRep_bIsInitialized
-	// void OnRep_bIsInitialized();                                                                                             // [0x6b2e03c] Final|RequiredAPI|Native|Protected 
+	// void OnRep_bIsInitialized();                                                                                             // [0x6ba4568] Final|RequiredAPI|Native|Protected 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceComponent_Logic
@@ -229,7 +229,7 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.PlayspaceComponent_PlayerManager.OnPlayerPawnSet
-	// void OnPlayerPawnSet(class APlayerState* Player, class APawn* NewPawn, class APawn* OldPawn);                            // [0x776c9b4] Final|Native|Protected 
+	// void OnPlayerPawnSet(class APlayerState* Player, class APawn* NewPawn, class APawn* OldPawn);                            // [0x7b3471c] Final|Native|Protected 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceLibrary
@@ -244,9 +244,9 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.PlayspaceLibrary.GetPlayspaceForActor
-	// class APlayspace* GetPlayspaceForActor(class UObject* WorldContextObject, class AActor* InActor);                        // [0x37c9658] Final|Native|Static|Public|BlueprintCallable 
+	// class APlayspace* GetPlayspaceForActor(class UObject* WorldContextObject, class AActor* InActor);                        // [0x35eabac] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/PlayspaceSystem.PlayspaceLibrary.DestroyPlayspace
-	// void DestroyPlayspace(class APlayspace* PlayspaceToDestroy);                                                             // [0x776c1d8] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
+	// void DestroyPlayspace(class APlayspace* PlayspaceToDestroy);                                                             // [0x7b33ab4] Final|BlueprintAuthorityOnly|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceLogic
@@ -265,9 +265,9 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.PlayspaceLogic.OnRep_MatchStartTime
-	// void OnRep_MatchStartTime();                                                                                             // [0x342c5dc] Native|Protected     
+	// void OnRep_MatchStartTime();                                                                                             // [0x3392774] Native|Protected     
 	// Function /Script/PlayspaceSystem.PlayspaceLogic.OnRep_bMatchHasEnded
-	// void OnRep_bMatchHasEnded();                                                                                             // [0x21dbe0c] Final|Native|Private 
+	// void OnRep_bMatchHasEnded();                                                                                             // [0x1e9cc90] Final|Native|Private 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceManagerComponent
@@ -288,13 +288,13 @@ public:
 
 	/// Functions
 	// Function /Script/PlayspaceSystem.PlayspaceManagerComponent.ProcessOverlapEvents
-	// bool ProcessOverlapEvents(float DeltaTime);                                                                              // [0x776cb38] Final|Native|Private 
+	// bool ProcessOverlapEvents(float DeltaTime);                                                                              // [0x7b34930] Final|Native|Private 
 	// Function /Script/PlayspaceSystem.PlayspaceManagerComponent.OnRep_RootPlayspace
-	// void OnRep_RootPlayspace();                                                                                              // [0x29ffb38] Final|Native|Private 
+	// void OnRep_RootPlayspace();                                                                                              // [0x3e8631c] Final|Native|Private 
 	// Function /Script/PlayspaceSystem.PlayspaceManagerComponent.OnPlayerEndOverlapGameplayVolume
-	// void OnPlayerEndOverlapGameplayVolume(class APlayerState* PlayerState, class AGameplayVolume* Volume);                   // [0x776c8f0] Final|Native|Private 
+	// void OnPlayerEndOverlapGameplayVolume(class APlayerState* PlayerState, class AGameplayVolume* Volume);                   // [0x7b345dc] Final|Native|Private 
 	// Function /Script/PlayspaceSystem.PlayspaceManagerComponent.OnPlayerBeginOverlapGameplayVolume
-	// void OnPlayerBeginOverlapGameplayVolume(class APlayerState* PlayerState, class AGameplayVolume* Volume);                 // [0x776c82c] Final|Native|Private 
+	// void OnPlayerBeginOverlapGameplayVolume(class APlayerState* PlayerState, class AGameplayVolume* Volume);                 // [0x7b3449c] Final|Native|Private 
 };
 
 /// Class /Script/PlayspaceSystem.PlayspaceSpawnActor

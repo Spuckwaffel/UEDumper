@@ -228,31 +228,31 @@ public:
 };
 
 /// Class /Script/IrisCore.NetObjectGridFilter
-/// Size: 0x00A8 (0x000050 - 0x0000F8)
+/// Size: 0x00C0 (0x000050 - 0x000110)
 class UNetObjectGridFilter : public UNetObjectFilter
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 248;
+	static inline constexpr uint64_t __MDKClassSize = 272;
 
 public:
 };
 
 /// Class /Script/IrisCore.NetObjectGridWorldLocFilter
-/// Size: 0x0008 (0x0000F8 - 0x000100)
+/// Size: 0x0008 (0x000110 - 0x000118)
 class UNetObjectGridWorldLocFilter : public UNetObjectGridFilter
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 256;
+	static inline constexpr uint64_t __MDKClassSize = 280;
 
 public:
 };
 
 /// Class /Script/IrisCore.NetObjectGridFragmentLocFilter
-/// Size: 0x0050 (0x0000F8 - 0x000148)
+/// Size: 0x0050 (0x000110 - 0x000160)
 class UNetObjectGridFragmentLocFilter : public UNetObjectGridFilter
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 328;
+	static inline constexpr uint64_t __MDKClassSize = 352;
 
 public:
 };
@@ -937,16 +937,17 @@ public:
 };
 
 /// Struct /Script/IrisCore.ObjectReplicationBridgeFilterConfig
-/// Size: 0x0008 (0x000000 - 0x000008)
+/// Size: 0x000C (0x000000 - 0x00000C)
 class FObjectReplicationBridgeFilterConfig : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 8;
+	static inline constexpr uint64_t __MDKClassSize = 12;
 
 public:
 	SMember(FName)                                     ClassName                                                   OFFSET(getStruct<T>, {0x0, 4, 0, 0})
 	SMember(FName)                                     DynamicFilterName                                           OFFSET(getStruct<T>, {0x4, 4, 0, 0})
+	DMember(bool)                                      bForceEnableOnAllInstances                                  OFFSET(get<bool>, {0x8, 1, 0, 0})
 };
 
 /// Struct /Script/IrisCore.ObjectReplicationBridgePrioritizerConfig

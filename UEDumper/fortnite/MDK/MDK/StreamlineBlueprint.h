@@ -20,13 +20,13 @@ public:
 
 	/// Functions
 	// Function /Script/StreamlineBlueprint.StreamlineLibrary.QueryStreamlineFeatureSupport
-	// UStreamlineFeatureSupport QueryStreamlineFeatureSupport(UStreamlineFeature Feature);                                     // [0xba08824] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineFeatureSupport QueryStreamlineFeatureSupport(UStreamlineFeature Feature);                                     // [0xcb99bd4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibrary.IsStreamlineFeatureSupported
-	// bool IsStreamlineFeatureSupported(UStreamlineFeature Feature);                                                           // [0xba0875c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsStreamlineFeatureSupported(UStreamlineFeature Feature);                                                           // [0xcb99acc] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibrary.GetStreamlineFeatureInformation
-	// FStreamlineFeatureRequirements GetStreamlineFeatureInformation(UStreamlineFeature Feature);                              // [0xba08580] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FStreamlineFeatureRequirements GetStreamlineFeatureInformation(UStreamlineFeature Feature);                              // [0xcb99870] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibrary.BreakStreamlineFeatureRequirements
-	// void BreakStreamlineFeatureRequirements(UStreamlineFeatureRequirementsFlags Requirements, bool& D3D11Supported, bool& D3D12Supported, bool& VulkanSupported, bool& VSyncOffRequired, bool& HardwareSchedulingRequired); // [0xba0816c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void BreakStreamlineFeatureRequirements(UStreamlineFeatureRequirementsFlags Requirements, bool& D3D11Supported, bool& D3D12Supported, bool& VulkanSupported, bool& VSyncOffRequired, bool& HardwareSchedulingRequired); // [0xcb99404] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/StreamlineBlueprint.StreamlineLibraryDLSSG
@@ -41,21 +41,21 @@ public:
 
 	/// Functions
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.SetDLSSGMode
-	// void SetDLSSGMode(UStreamlineDLSSGMode DLSSGMode);                                                                       // [0xba088a4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// void SetDLSSGMode(UStreamlineDLSSGMode DLSSGMode);                                                                       // [0xcb99c94] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.QueryDLSSGSupport
-	// UStreamlineFeatureSupport QueryDLSSGSupport();                                                                           // [0xba087dc] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineFeatureSupport QueryDLSSGSupport();                                                                           // [0xcb99b8c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.IsDLSSGSupported
-	// bool IsDLSSGSupported();                                                                                                 // [0xba08710] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsDLSSGSupported();                                                                                                 // [0xcb99a80] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.IsDLSSGModeSupported
-	// bool IsDLSSGModeSupported(UStreamlineDLSSGMode DLSSGMode);                                                               // [0xba08690] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsDLSSGModeSupported(UStreamlineDLSSGMode DLSSGMode);                                                               // [0xcb999c0] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.GetSupportedDLSSGModes
-	// TArray<UStreamlineDLSSGMode> GetSupportedDLSSGModes();                                                                   // [0xba08624] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<UStreamlineDLSSGMode> GetSupportedDLSSGModes();                                                                   // [0xcb99954] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.GetDLSSGMode
-	// UStreamlineDLSSGMode GetDLSSGMode();                                                                                     // [0xba08474] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineDLSSGMode GetDLSSGMode();                                                                                     // [0xcb99764] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.GetDLSSGFrameTiming
-	// void GetDLSSGFrameTiming(float& FrameRateInHertz, int32_t& FramesPresented);                                             // [0xba0839c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetDLSSGFrameTiming(float& FrameRateInHertz, int32_t& FramesPresented);                                             // [0xcb99650] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryDLSSG.GetDefaultDLSSGMode
-	// UStreamlineDLSSGMode GetDefaultDLSSGMode();                                                                              // [0xba08498] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineDLSSGMode GetDefaultDLSSGMode();                                                                              // [0xcb99788] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/StreamlineBlueprint.StreamlineLibraryReflex
@@ -70,21 +70,21 @@ public:
 
 	/// Functions
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.SetReflexMode
-	// void SetReflexMode(UStreamlineReflexMode Mode);                                                                          // [0xba08914] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// void SetReflexMode(UStreamlineReflexMode Mode);                                                                          // [0xcb99d44] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.QueryReflexSupport
-	// UStreamlineFeatureSupport QueryReflexSupport();                                                                          // [0xba08800] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineFeatureSupport QueryReflexSupport();                                                                          // [0xcb99bb0] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.IsReflexSupported
-	// bool IsReflexSupported();                                                                                                // [0xba08734] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsReflexSupported();                                                                                                // [0xcb99aa4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.GetRenderLatencyInMs
-	// float GetRenderLatencyInMs();                                                                                            // [0xba08558] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetRenderLatencyInMs();                                                                                            // [0xcb99848] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.GetReflexMode
-	// UStreamlineReflexMode GetReflexMode();                                                                                   // [0xba08534] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineReflexMode GetReflexMode();                                                                                   // [0xcb99824] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.GetGameToRenderLatencyInMs
-	// float GetGameToRenderLatencyInMs();                                                                                      // [0xba0850c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetGameToRenderLatencyInMs();                                                                                      // [0xcb997fc] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.GetGameLatencyInMs
-	// float GetGameLatencyInMs();                                                                                              // [0xba084e4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetGameLatencyInMs();                                                                                              // [0xcb997d4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/StreamlineBlueprint.StreamlineLibraryReflex.GetDefaultReflexMode
-	// UStreamlineReflexMode GetDefaultReflexMode();                                                                            // [0x331049c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// UStreamlineReflexMode GetDefaultReflexMode();                                                                            // [0x32247e0] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Struct /Script/StreamlineBlueprint.StreamlineVersion

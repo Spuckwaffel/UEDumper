@@ -38,9 +38,9 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Dive.BP_OnDroneStoppedDiving
-	// void BP_OnDroneStoppedDiving();                                                                                          // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
+	// void BP_OnDroneStoppedDiving();                                                                                          // [0x186becc] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Dive.BP_OnDroneStartedDiving
-	// void BP_OnDroneStartedDiving();                                                                                          // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
+	// void BP_OnDroneStartedDiving();                                                                                          // [0x186becc] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_TargetingBase
@@ -60,11 +60,11 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_TargetingBase.StopTargeting
-	// void StopTargeting();                                                                                                    // [0xab68948] Final|Native|Protected|BlueprintCallable 
+	// void StopTargeting();                                                                                                    // [0xba54c58] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_TargetingBase.StartTargeting
-	// void StartTargeting();                                                                                                   // [0xab68920] Final|Native|Protected|BlueprintCallable 
+	// void StartTargeting();                                                                                                   // [0xba54c30] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_TargetingBase.BP_OnTargetsFound
-	// void BP_OnTargetsFound(FTargetingRequestHandle& TargetingHandle);                                                        // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnTargetsFound(FTargetingRequestHandle& TargetingHandle);                                                        // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_SpeedBoost
@@ -88,9 +88,9 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_SpeedBoost.OnDoorBashed
-	// void OnDoorBashed(FHitResult& HitResult, class UFortBuildingWallDoorComponent* BashedDoor);                              // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnDoorBashed(FHitResult& HitResult, class UFortBuildingWallDoorComponent* BashedDoor);                              // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_SpeedBoost.OnBoostedIntoActor
-	// void OnBoostedIntoActor(FHitResult& HitResult);                                                                          // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnBoostedIntoActor(FHitResult& HitResult);                                                                          // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortScoutDroneAnalyticsComponent
@@ -224,7 +224,7 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Dismiss.GetControlledDrone
-	// class AFortScoutDrone* GetControlledDrone();                                                                             // [0xab678a8] Final|Native|Protected|BlueprintCallable 
+	// class AFortScoutDrone* GetControlledDrone();                                                                             // [0xba53ad0] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_MarkPotentialTargets
@@ -241,9 +241,9 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_MarkPotentialTargets.OnStoppedHighlightingTarget
-	// void OnStoppedHighlightingTarget(class AActor* Target);                                                                  // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void OnStoppedHighlightingTarget(class AActor* Target);                                                                  // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_MarkPotentialTargets.OnStartHighlightingTarget
-	// void OnStartHighlightingTarget(class AActor* Target);                                                                    // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void OnStartHighlightingTarget(class AActor* Target);                                                                    // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.ScoutDronePassiveMarkPayload
@@ -277,11 +277,11 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_PassiveMark.OnRep_CurrentTargetStatus
-	// void OnRep_CurrentTargetStatus();                                                                                        // [0xab683e4] Final|Native|Protected 
+	// void OnRep_CurrentTargetStatus();                                                                                        // [0xba545dc] Final|Native|Protected 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_PassiveMark.OnActorIndicatorExpired
-	// void OnActorIndicatorExpired(class AActor* IndicatedActor);                                                              // [0xab67aac] Final|Native|Private 
+	// void OnActorIndicatorExpired(class AActor* IndicatedActor);                                                              // [0xba53cd4] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_PassiveMark.BP_OnTargetStatusChanged
-	// void BP_OnTargetStatusChanged(class AActor* ActiveTarget);                                                               // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
+	// void BP_OnTargetStatusChanged(class AActor* ActiveTarget);                                                               // [0x186becc] BlueprintAuthorityOnly|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.ScoutDronePickUpTargetsPayload
@@ -311,7 +311,7 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_PickUp.ServerConfirmTargets
-	// void ServerConfirmTargets();                                                                                             // [0x82b9fcc] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerConfirmTargets();                                                                                             // [0x878dc94] Final|Net|NetReliableNative|Event|Private|NetServer 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Tether
@@ -333,13 +333,13 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Tether.StopCheckingDistances
-	// void StopCheckingDistances();                                                                                            // [0xab68934] Final|Native|Protected|BlueprintCallable 
+	// void StopCheckingDistances();                                                                                            // [0xba54c44] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Tether.StartCheckingDistances
-	// void StartCheckingDistances();                                                                                           // [0xab6890c] Final|Native|Protected|BlueprintCallable 
+	// void StartCheckingDistances();                                                                                           // [0xba54c1c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Tether.OnRep_bIsInWarningRange
-	// void OnRep_bIsInWarningRange();                                                                                          // [0xab68550] Final|Native|Private 
+	// void OnRep_bIsInWarningRange();                                                                                          // [0xba54748] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortGameplayAbility_ScoutDrone_Tether.OnRep_bIsInSignalLossRange
-	// void OnRep_bIsInSignalLossRange();                                                                                       // [0xab684f8] Final|Native|Private 
+	// void OnRep_bIsInSignalLossRange();                                                                                       // [0xba546f0] Final|Native|Private 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortAthenaMutator_ScoutDrone
@@ -357,7 +357,7 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortAthenaMutator_ScoutDrone.OnViewTargetChanged
-	// void OnViewTargetChanged(class AFortPlayerController* PlayerController, class AActor* OldViewTarget, class AActor* NewViewTarget); // [0xab68564] Final|Native|Private 
+	// void OnViewTargetChanged(class AFortPlayerController* PlayerController, class AActor* OldViewTarget, class AActor* NewViewTarget); // [0xba5475c] Final|Native|Private 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortChargingSet_ScoutDroneEnergy
@@ -376,7 +376,7 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortChargingSet_ScoutDroneEnergy.OnRep_Energy
-	// void OnRep_Energy(FFortGameplayAttributeData& OldValue);                                                                 // [0xab683f8] Final|Native|Protected|HasOutParms 
+	// void OnRep_Energy(FFortGameplayAttributeData& OldValue);                                                                 // [0xba545f0] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortScoutDrone
@@ -423,27 +423,27 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.SetupGameplayAudioParameters
-	// void SetupGameplayAudioParameters();                                                                                     // [0xab688f8] Final|BlueprintCosmetic|Native|Protected|BlueprintCallable 
+	// void SetupGameplayAudioParameters();                                                                                     // [0xba54c08] Final|BlueprintCosmetic|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.SetTeamMatesIndicator
-	// void SetTeamMatesIndicator(bool bState);                                                                                 // [0xab68878] Final|Native|Protected|BlueprintCallable 
+	// void SetTeamMatesIndicator(bool bState);                                                                                 // [0xba54b44] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.SetAffiliationAudio
-	// void SetAffiliationAudio();                                                                                              // [0xab68864] Final|Native|Protected|BlueprintCallable 
+	// void SetAffiliationAudio();                                                                                              // [0xba54b30] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.OnRep_ControllingPlayerPawn
-	// void OnRep_ControllingPlayerPawn();                                                                                      // [0xab683bc] Final|Native|Private 
+	// void OnRep_ControllingPlayerPawn();                                                                                      // [0xba545b4] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.OnDeathPlayEffects
-	// void OnDeathPlayEffects(float Damage, FGameplayTagContainer& DamageTags, FVector Momentum, FHitResult& HitInfo, class AFortPawn* InstigatedBy, class AActor* DamageCauser, FGameplayEffectContextHandle EffectContext); // [0x18a39e4] BlueprintCosmetic|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnDeathPlayEffects(float Damage, FGameplayTagContainer& DamageTags, FVector Momentum, FHitResult& HitInfo, class AFortPawn* InstigatedBy, class AActor* DamageCauser, FGameplayEffectContextHandle EffectContext); // [0x186becc] BlueprintCosmetic|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.OnDamagePlayEffects
-	// void OnDamagePlayEffects(float Damage, FGameplayTagContainer& DamageTags, FVector Momentum, FHitResult& HitInfo, class AFortPawn* InstigatedBy, class AActor* DamageCauser, FGameplayEffectContextHandle EffectContext); // [0x18a39e4] BlueprintCosmetic|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnDamagePlayEffects(float Damage, FGameplayTagContainer& DamageTags, FVector Momentum, FHitResult& HitInfo, class AFortPawn* InstigatedBy, class AActor* DamageCauser, FGameplayEffectContextHandle EffectContext); // [0x186becc] BlueprintCosmetic|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.GetHealthPercentage
-	// float GetHealthPercentage();                                                                                             // [0xab67a50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetHealthPercentage();                                                                                             // [0xba53c78] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.GetForwardAndRightDotProducts_Native
-	// void GetForwardAndRightDotProducts_Native(float& OutForwardDot, float& OutRightDot);                                     // [0xab67978] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetForwardAndRightDotProducts_Native(float& OutForwardDot, float& OutRightDot);                                     // [0xba53ba0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.GetDeltaRotator
-	// FRotator GetDeltaRotator();                                                                                              // [0xab67928] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FRotator GetDeltaRotator();                                                                                              // [0xba53b50] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.GetControllingPlayerPawn
-	// class AFortPawn* GetControllingPlayerPawn();                                                                             // [0xab67910] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortPawn* GetControllingPlayerPawn();                                                                             // [0xba53b38] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDrone.GameplayCue_Damage
-	// void GameplayCue_Damage(TEnumAsByte<EGameplayCueEvent> EventType, FGameplayCueParameters Parameters);                    // [0x8784e78] Native|Protected     
+	// void GameplayCue_Damage(TEnumAsByte<EGameplayCueEvent> EventType, FGameplayCueParameters Parameters);                    // [0x8d48da0] Native|Protected     
 };
 
 /// Class /Script/ScoutDroneRuntime.FortScoutDroneCameraMode
@@ -500,31 +500,31 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.ServerRequestDroneDismissal
-	// void ServerRequestDroneDismissal();                                                                                      // [0x81db0dc] Final|Net|NetReliableNative|Event|Private|NetServer 
+	// void ServerRequestDroneDismissal();                                                                                      // [0x86776a8] Final|Net|NetReliableNative|Event|Private|NetServer 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnWeaponEquipped
-	// void OnWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                      // [0xab6865c] Final|Native|Private 
+	// void OnWeaponEquipped(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                      // [0xba54918] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnRep_CurrentDestructionData
-	// void OnRep_CurrentDestructionData();                                                                                     // [0xab683d0] Final|Native|Private 
+	// void OnRep_CurrentDestructionData();                                                                                     // [0xba545c8] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnRep_ControlledDrone
-	// void OnRep_ControlledDrone();                                                                                            // [0xab68380] Final|Native|Private 
+	// void OnRep_ControlledDrone();                                                                                            // [0xba54578] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnPlayerInterruptionTagsChanged
-	// void OnPlayerInterruptionTagsChanged(FGameplayTag tag, int32_t NewCount);                                                // [0xab680ec] Final|Native|Private 
+	// void OnPlayerInterruptionTagsChanged(FGameplayTag tag, int32_t NewCount);                                                // [0xba54398] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnOwningPlayerStartedDBNO
-	// void OnOwningPlayerStartedDBNO();                                                                                        // [0xab68010] Final|Native|Private 
+	// void OnOwningPlayerStartedDBNO();                                                                                        // [0xba54244] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.OnControlledDroneDestroyed
-	// void OnControlledDroneDestroyed(class AActor* InControlledDrone);                                                        // [0xab67f90] Final|Native|Private 
+	// void OnControlledDroneDestroyed(class AActor* InControlledDrone);                                                        // [0xba54184] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.GetControlledDrone
-	// class AFortScoutDrone* GetControlledDrone();                                                                             // [0x81fc3a4] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortScoutDrone* GetControlledDrone();                                                                             // [0x869ffa8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.BP_OnPlayerShortInteract
-	// void BP_OnPlayerShortInteract();                                                                                         // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnPlayerShortInteract();                                                                                         // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.BP_OnPlayerInteractLongUseChanged
-	// void BP_OnPlayerInteractLongUseChanged(bool bInteracting, bool bLongUseInteractionCompleted);                            // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnPlayerInteractLongUseChanged(bool bInteracting, bool bLongUseInteractionCompleted);                            // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.BP_OnDroneDestroyed
-	// void BP_OnDroneDestroyed(FGameplayTag& DismissalReason);                                                                 // [0x18a39e4] BlueprintCosmetic|Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnDroneDestroyed(FGameplayTag& DismissalReason);                                                                 // [0x186becc] BlueprintCosmetic|Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.BP_OnDismissalStarted
-	// void BP_OnDismissalStarted(bool bInstantDismissal, FGameplayTag DismissalReason);                                        // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnDismissalStarted(bool bInstantDismissal, FGameplayTag DismissalReason);                                        // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDroneControllingComponent.BP_OnDestructionStarted
-	// void BP_OnDestructionStarted(bool bInstantDestruction, FGameplayTag DismissalReason);                                    // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnDestructionStarted(bool bInstantDestruction, FGameplayTag DismissalReason);                                    // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/ScoutDroneRuntime.FortScoutDroneCooldownMagnitudeCalculation
@@ -598,23 +598,23 @@ public:
 
 	/// Functions
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.ServerUpdateItemAttachment
-	// void ServerUpdateItemAttachment(FVector CalculatedItemOffset);                                                           // [0xab68720] Final|Net|NetReliableNative|Event|Private|NetServer|HasDefaults 
+	// void ServerUpdateItemAttachment(FVector CalculatedItemOffset);                                                           // [0xba54a58] Final|Net|NetReliableNative|Event|Private|NetServer|HasDefaults 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.ServerDropAttachedActors
-	// void ServerDropAttachedActors();                                                                                         // [0x30fd094] Net|NetReliableNative|Event|Public|NetServer 
+	// void ServerDropAttachedActors();                                                                                         // [0x313dce8] Net|NetReliableNative|Event|Public|NetServer 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.OnRep_AttachedTargets
-	// void OnRep_AttachedTargets();                                                                                            // [0xab682f8] Final|Native|Private 
+	// void OnRep_AttachedTargets();                                                                                            // [0xba544f0] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.OnPawnDBNOStateChanged
-	// void OnPawnDBNOStateChanged(class AFortPawn* Pawn, bool bIsDBNO);                                                        // [0xab68024] Final|Native|Private 
+	// void OnPawnDBNOStateChanged(class AFortPawn* Pawn, bool bIsDBNO);                                                        // [0xba54258] Final|Native|Private 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.OnAttachedPawnDied
-	// void OnAttachedPawnDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xab67b2c] Final|Native|Private|HasDefaults 
+	// void OnAttachedPawnDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xba53d94] Final|Native|Private|HasDefaults 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.HasAPawnAtached
-	// bool HasAPawnAtached();                                                                                                  // [0xab67a70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasAPawnAtached();                                                                                                  // [0xba53c98] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.HasAnyAttachedActors
-	// bool HasAnyAttachedActors();                                                                                             // [0xab67a8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasAnyAttachedActors();                                                                                             // [0xba53cb4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.BP_OnActorsDetached
-	// void BP_OnActorsDetached();                                                                                              // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnActorsDetached();                                                                                              // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 	// Function /Script/ScoutDroneRuntime.FortScoutDronePickupManager.BP_OnActorsAttached
-	// void BP_OnActorsAttached();                                                                                              // [0x18a39e4] BlueprintCosmetic|Event|Protected|BlueprintEvent 
+	// void BP_OnActorsAttached();                                                                                              // [0x186becc] BlueprintCosmetic|Event|Protected|BlueprintEvent 
 };
 
 /// Struct /Script/ScoutDroneRuntime.FortScoutDroneDiveTransitionData

@@ -23,9 +23,9 @@ public:
 
 	/// Functions
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureProtocolBase.IsCapturing
-	// bool IsCapturing();                                                                                                      // [0x66be21c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsCapturing();                                                                                                      // [0x669d5a8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureProtocolBase.GetState
-	// EMovieSceneCaptureProtocolState GetState();                                                                              // [0x66be1d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMovieSceneCaptureProtocolState GetState();                                                                              // [0x669d560] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/MovieSceneCapture.MovieSceneAudioCaptureProtocolBase
@@ -190,13 +190,13 @@ public:
 
 	/// Functions
 	// Function /Script/MovieSceneCapture.MovieSceneCapture.SetImageCaptureProtocolType
-	// void SetImageCaptureProtocolType(class UClass* ProtocolType);                                                            // [0x66be434] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetImageCaptureProtocolType(class UClass* ProtocolType);                                                            // [0x669d84c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.MovieSceneCapture.SetAudioCaptureProtocolType
-	// void SetAudioCaptureProtocolType(class UClass* ProtocolType);                                                            // [0x66be3a0] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetAudioCaptureProtocolType(class UClass* ProtocolType);                                                            // [0x669d774] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.MovieSceneCapture.GetImageCaptureProtocol
-	// class UMovieSceneCaptureProtocolBase* GetImageCaptureProtocol();                                                         // [0x66be1bc] Final|Native|Public|BlueprintCallable 
+	// class UMovieSceneCaptureProtocolBase* GetImageCaptureProtocol();                                                         // [0x669d548] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.MovieSceneCapture.GetAudioCaptureProtocol
-	// class UMovieSceneCaptureProtocolBase* GetAudioCaptureProtocol();                                                         // [0x3753ed0] Final|Native|Public|BlueprintCallable 
+	// class UMovieSceneCaptureProtocolBase* GetAudioCaptureProtocol();                                                         // [0x669d4a4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/MovieSceneCapture.LevelCapture
@@ -223,15 +223,15 @@ public:
 
 	/// Functions
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureEnvironment.IsCaptureInProgress
-	// bool IsCaptureInProgress();                                                                                              // [0x66be1e8] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// bool IsCaptureInProgress();                                                                                              // [0x669d574] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureFrameNumber
-	// int32_t GetCaptureFrameNumber();                                                                                         // [0x66be158] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// int32_t GetCaptureFrameNumber();                                                                                         // [0x669d4e4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureElapsedTime
-	// float GetCaptureElapsedTime();                                                                                           // [0x66be130] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// float GetCaptureElapsedTime();                                                                                           // [0x669d4bc] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureEnvironment.FindImageCaptureProtocol
-	// class UMovieSceneImageCaptureProtocolBase* FindImageCaptureProtocol();                                                   // [0x66bde90] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// class UMovieSceneImageCaptureProtocolBase* FindImageCaptureProtocol();                                                   // [0x669d1b8] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.MovieSceneCaptureEnvironment.FindAudioCaptureProtocol
-	// class UMovieSceneAudioCaptureProtocolBase* FindAudioCaptureProtocol();                                                   // [0x66bde2c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
+	// class UMovieSceneAudioCaptureProtocolBase* FindAudioCaptureProtocol();                                                   // [0x669d154] Final|RequiredAPI|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/MovieSceneCapture.UserDefinedCaptureProtocol
@@ -247,37 +247,37 @@ public:
 
 	/// Functions
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.StopCapturingFinalPixels
-	// void StopCapturingFinalPixels();                                                                                         // [0x66be5bc] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void StopCapturingFinalPixels();                                                                                         // [0x669da18] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.StartCapturingFinalPixels
-	// void StartCapturingFinalPixels(FCapturedPixelsID& StreamID);                                                             // [0x66be4c8] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// void StartCapturingFinalPixels(FCapturedPixelsID& StreamID);                                                             // [0x669d924] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.ResolveBuffer
-	// void ResolveBuffer(class UTexture* Buffer, FCapturedPixelsID& BufferID);                                                 // [0x66be28c] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// void ResolveBuffer(class UTexture* Buffer, FCapturedPixelsID& BufferID);                                                 // [0x669d618] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnWarmUp
-	// void OnWarmUp();                                                                                                         // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnWarmUp();                                                                                                         // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnTick
-	// void OnTick();                                                                                                           // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnTick();                                                                                                           // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnStartCapture
-	// void OnStartCapture();                                                                                                   // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnStartCapture();                                                                                                   // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnSetup
-	// bool OnSetup();                                                                                                          // [0x66be264] RequiredAPI|Native|Event|Protected|BlueprintEvent 
+	// bool OnSetup();                                                                                                          // [0x669d5f0] RequiredAPI|Native|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnPreTick
-	// void OnPreTick();                                                                                                        // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnPreTick();                                                                                                        // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnPixelsReceived
-	// void OnPixelsReceived(FCapturedPixels& Pixels, FCapturedPixelsID& ID, FFrameMetrics FrameMetrics);                       // [0x18a39e4] RequiredAPI|Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnPixelsReceived(FCapturedPixels& Pixels, FCapturedPixelsID& ID, FFrameMetrics FrameMetrics);                       // [0x186becc] RequiredAPI|Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnPauseCapture
-	// void OnPauseCapture();                                                                                                   // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnPauseCapture();                                                                                                   // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnFinalize
-	// void OnFinalize();                                                                                                       // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnFinalize();                                                                                                       // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnCaptureFrame
-	// void OnCaptureFrame();                                                                                                   // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnCaptureFrame();                                                                                                   // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnCanFinalize
-	// bool OnCanFinalize();                                                                                                    // [0x66be23c] RequiredAPI|Native|Event|Protected|BlueprintEvent|Const 
+	// bool OnCanFinalize();                                                                                                    // [0x669d5c8] RequiredAPI|Native|Event|Protected|BlueprintEvent|Const 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.OnBeginFinalize
-	// void OnBeginFinalize();                                                                                                  // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void OnBeginFinalize();                                                                                                  // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.GetCurrentFrameMetrics
-	// FFrameMetrics GetCurrentFrameMetrics();                                                                                  // [0x66be1a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FFrameMetrics GetCurrentFrameMetrics();                                                                                  // [0x669d530] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MovieSceneCapture.UserDefinedCaptureProtocol.GenerateFilename
-	// FString GenerateFilename(FFrameMetrics& InFrameMetrics);                                                                 // [0x66bdef4] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FString GenerateFilename(FFrameMetrics& InFrameMetrics);                                                                 // [0x669d21c] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/MovieSceneCapture.UserDefinedImageCaptureProtocol
@@ -295,11 +295,11 @@ public:
 
 	/// Functions
 	// Function /Script/MovieSceneCapture.UserDefinedImageCaptureProtocol.WriteImageToDisk
-	// void WriteImageToDisk(FCapturedPixels& PixelData, FCapturedPixelsID& StreamID, FFrameMetrics& FrameMetrics, bool bCopyImageData); // [0x66be5d0] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// void WriteImageToDisk(FCapturedPixels& PixelData, FCapturedPixelsID& StreamID, FFrameMetrics& FrameMetrics, bool bCopyImageData); // [0x669da2c] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForCurrentFrame
-	// FString GenerateFilenameForCurrentFrame();                                                                               // [0x66be0e4] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// FString GenerateFilenameForCurrentFrame();                                                                               // [0x669d458] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForBuffer
-	// FString GenerateFilenameForBuffer(class UTexture* Buffer, FCapturedPixelsID& StreamID);                                  // [0x66bdfb4] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// FString GenerateFilenameForBuffer(class UTexture* Buffer, FCapturedPixelsID& StreamID);                                  // [0x669d2dc] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/MovieSceneCapture.VideoCaptureProtocol

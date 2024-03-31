@@ -31,11 +31,11 @@ public:
 
 	/// Functions
 	// Function /Script/MRMesh.MockDataMeshTrackerComponent.OnMockDataMeshTrackerUpdated__DelegateSignature
-	// void OnMockDataMeshTrackerUpdated__DelegateSignature(int32_t Index, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<float>& Confidence); // [0x18a39e4] MulticastDelegate|Public|Delegate|HasOutParms 
+	// void OnMockDataMeshTrackerUpdated__DelegateSignature(int32_t Index, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<float>& Confidence); // [0x186becc] MulticastDelegate|Public|Delegate|HasOutParms 
 	// Function /Script/MRMesh.MockDataMeshTrackerComponent.DisconnectMRMesh
-	// void DisconnectMRMesh(class UMRMeshComponent* InMRMeshPtr);                                                              // [0x66f6190] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void DisconnectMRMesh(class UMRMeshComponent* InMRMeshPtr);                                                              // [0x66d5f5c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MockDataMeshTrackerComponent.ConnectMRMesh
-	// void ConnectMRMesh(class UMRMeshComponent* InMRMeshPtr);                                                                 // [0x66f608c] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ConnectMRMesh(class UMRMeshComponent* InMRMeshPtr);                                                                 // [0x66d5e14] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/MRMesh.MRMeshBodyHolder
@@ -68,27 +68,27 @@ public:
 
 	/// Functions
 	// Function /Script/MRMesh.MRMeshComponent.SetWireframeMaterial
-	// void SetWireframeMaterial(class UMaterialInterface* InMaterial);                                                         // [0x66f6478] RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetWireframeMaterial(class UMaterialInterface* InMaterial);                                                         // [0x66d6308] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.SetWireframeColor
-	// void SetWireframeColor(FLinearColor& InColor);                                                                           // [0x66f63f0] Final|RequiredAPI|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetWireframeColor(FLinearColor& InColor);                                                                           // [0x66d6280] Final|RequiredAPI|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.SetUseWireframe
-	// void SetUseWireframe(bool bUseWireframe);                                                                                // [0x66f6368] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetUseWireframe(bool bUseWireframe);                                                                                // [0x66d61b8] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.SetEnableMeshOcclusion
-	// void SetEnableMeshOcclusion(bool bEnable);                                                                               // [0x66f62e8] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetEnableMeshOcclusion(bool bEnable);                                                                               // [0x66d60f4] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.RequestNavMeshUpdate
-	// void RequestNavMeshUpdate();                                                                                             // [0x66f62c4] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void RequestNavMeshUpdate();                                                                                             // [0x66d60d0] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.IsConnected
-	// bool IsConnected();                                                                                                      // [0x66f6270] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsConnected();                                                                                                      // [0x66d607c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MRMeshComponent.GetWireframeColor
-	// FLinearColor GetWireframeColor();                                                                                        // [0x66f6254] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FLinearColor GetWireframeColor();                                                                                        // [0x66d6060] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MRMeshComponent.GetUseWireframe
-	// bool GetUseWireframe();                                                                                                  // [0x66f623c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetUseWireframe();                                                                                                  // [0x66d6048] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MRMeshComponent.GetEnableMeshOcclusion
-	// bool GetEnableMeshOcclusion();                                                                                           // [0x66f6224] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetEnableMeshOcclusion();                                                                                           // [0x66d6030] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MRMeshComponent.ForceNavMeshUpdate
-	// void ForceNavMeshUpdate();                                                                                               // [0x66f6210] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ForceNavMeshUpdate();                                                                                               // [0x66d601c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MRMeshComponent.Clear
-	// void Clear();                                                                                                            // [0x66f5fec] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void Clear();                                                                                                            // [0x66d5d34] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/MRMesh.MeshReconstructorBase
@@ -103,19 +103,19 @@ public:
 
 	/// Functions
 	// Function /Script/MRMesh.MeshReconstructorBase.StopReconstruction
-	// void StopReconstruction();                                                                                               // [0x66f64fc] RequiredAPI|Native|Public|BlueprintCallable 
+	// void StopReconstruction();                                                                                               // [0x66d63cc] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MeshReconstructorBase.StartReconstruction
-	// void StartReconstruction();                                                                                              // [0x15d82c4] RequiredAPI|Native|Public|BlueprintCallable 
+	// void StartReconstruction();                                                                                              // [0x1e34ac0] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MeshReconstructorBase.PauseReconstruction
-	// void PauseReconstruction();                                                                                              // [0x1b102a0] RequiredAPI|Native|Public|BlueprintCallable 
+	// void PauseReconstruction();                                                                                              // [0x269edb4] RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/MRMesh.MeshReconstructorBase.IsReconstructionStarted
-	// bool IsReconstructionStarted();                                                                                          // [0x3727478] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsReconstructionStarted();                                                                                          // [0x3967494] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MeshReconstructorBase.IsReconstructionPaused
-	// bool IsReconstructionPaused();                                                                                           // [0x66f629c] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsReconstructionPaused();                                                                                           // [0x66d60a8] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MRMesh.MeshReconstructorBase.DisconnectMRMesh
-	// void DisconnectMRMesh();                                                                                                 // [0x17b4428] RequiredAPI|Native|Public 
+	// void DisconnectMRMesh();                                                                                                 // [0x1c53c84] RequiredAPI|Native|Public 
 	// Function /Script/MRMesh.MeshReconstructorBase.ConnectMRMesh
-	// void ConnectMRMesh(class UMRMeshComponent* Mesh);                                                                        // [0x66f6008] RequiredAPI|Native|Public 
+	// void ConnectMRMesh(class UMRMeshComponent* Mesh);                                                                        // [0x66d5d50] RequiredAPI|Native|Public 
 };
 
 /// Struct /Script/MRMesh.MRMeshConfiguration

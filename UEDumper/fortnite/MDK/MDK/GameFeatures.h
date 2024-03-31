@@ -145,7 +145,7 @@ public:
 
 	/// Functions
 	// Function /Script/GameFeatures.GameFeatureData.GetPluginName
-	// void GetPluginName(class UGameFeatureData* GFD, FString& PluginName);                                                    // [0x6fa94f4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GetPluginName(class UGameFeatureData* GFD, FString& PluginName);                                                    // [0x721afa8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/GameFeatures.GameFeatureOptionalContentInstaller

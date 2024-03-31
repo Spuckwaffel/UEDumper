@@ -24,10 +24,10 @@ public:
 
 	/// Functions
 	// Function /Script/MeltUI.MeltWidgetBase.MutatorReady
-	// void MutatorReady(class AFortAthenaMutator_Fill* MutatorActor);                                                          // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void MutatorReady(class AFortAthenaMutator_Fill* MutatorActor);                                                          // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/MeltUI.MeltWidgetBase.GetFillMutator
-	// class AFortAthenaMutator_Fill* GetFillMutator();                                                                         // [0x2fa8978] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AFortAthenaMutator_Fill* GetFillMutator();                                                                         // [0x2e06d24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MeltUI.MeltWidgetBase.CacheAndGetSeaLevel
-	// float CacheAndGetSeaLevel();                                                                                             // [0xa996eb8] Final|Native|Public|BlueprintCallable 
+	// float CacheAndGetSeaLevel();                                                                                             // [0xb7f8e04] Final|Native|Public|BlueprintCallable 
 };
 

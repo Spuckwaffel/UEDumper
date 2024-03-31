@@ -20,7 +20,7 @@ public:
 
 	/// Functions
 	// Function /Game/Accessories/FORT_Backpacks/Backpack_F_MED_Bistro_Astronaut/Scripts/VariantScript_Backpack_BistroAstronaut_Style.VariantScript_Backpack_BistroAstronaut_Style_C.DetermineVariantSelection
-	// FGameplayTag DetermineVariantSelection(FFortAthenaLoadout& Loadout);                                                     // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
+	// FGameplayTag DetermineVariantSelection(FFortAthenaLoadout& Loadout);                                                     // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
 };
 
 /// Class /Game/Accessories/FORT_Backpacks/Backpack_F_MED_Bistro_Astronaut/Scripts/VariantScript_Backpack_BistroAstronaut_Color.VariantScript_Backpack_BistroAstronaut_Color_C
@@ -35,6 +35,6 @@ public:
 
 	/// Functions
 	// Function /Game/Accessories/FORT_Backpacks/Backpack_F_MED_Bistro_Astronaut/Scripts/VariantScript_Backpack_BistroAstronaut_Color.VariantScript_Backpack_BistroAstronaut_Color_C.DetermineVariantSelection
-	// FGameplayTag DetermineVariantSelection(FFortAthenaLoadout& Loadout);                                                     // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
+	// FGameplayTag DetermineVariantSelection(FFortAthenaLoadout& Loadout);                                                     // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintEvent|Const 
 };
 

@@ -31,7 +31,7 @@ public:
 
 	/// Functions
 	// Function /Script/FortImGuiCore.ImGuiDebugMenuBase.ToggleInputLock
-	// void ToggleInputLock();                                                                                                  // [0x36203b0] Final|Native|Protected 
+	// void ToggleInputLock();                                                                                                  // [0x3518b8c] Final|Native|Protected 
 };
 
 /// Class /Script/FortImGuiCore.ObjectDebuggerMenu

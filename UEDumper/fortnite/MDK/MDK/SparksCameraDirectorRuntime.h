@@ -40,13 +40,13 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDebugWidget.SetEventRouter
-	// void SetEventRouter(class UGameplayEventRouterComponent* EventRouter);                                                   // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void SetEventRouter(class UGameplayEventRouterComponent* EventRouter);                                                   // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDebugWidget.LogToScreen
-	// void LogToScreen(FString Data, ESparksCameraLogType Type);                                                               // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void LogToScreen(FString Data, ESparksCameraLogType Type);                                                               // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDebugWidget.ClearCurrent
-	// void ClearCurrent();                                                                                                     // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void ClearCurrent();                                                                                                     // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDebugWidget.ClearAll
-	// void ClearAll();                                                                                                         // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void ClearAll();                                                                                                         // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent
@@ -88,41 +88,41 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.StartIntermissionCameras
-	// void StartIntermissionCameras(float ForceLengthMS, bool bForceReloadNewSequence, bool bForceShotChange);                 // [0xa4f3e98] Final|Native|Public  
+	// void StartIntermissionCameras(float ForceLengthMS, bool bForceReloadNewSequence, bool bForceShotChange);                 // [0xb2696a4] Final|Native|Public  
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.Reset
-	// void Reset(bool bForceShotChange);                                                                                       // [0xa4f32e0] Final|Native|Public|BlueprintCallable 
+	// void Reset(bool bForceShotChange);                                                                                       // [0xb268b8c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.ReplaceWithNonCloseupShot
-	// void ReplaceWithNonCloseupShot(FSparksCameraDirectorSequenceEntry& OldEntry);                                            // [0xa4f31d8] Final|Native|Protected|HasOutParms 
+	// void ReplaceWithNonCloseupShot(FSparksCameraDirectorSequenceEntry& OldEntry);                                            // [0xb268a84] Final|Native|Protected|HasOutParms 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.PlayShot
-	// float PlayShot(FSparksCameraDirectorSequenceEntry& Entry);                                                               // [0xa4f30b8] Final|Native|Protected|HasOutParms 
+	// float PlayShot(FSparksCameraDirectorSequenceEntry& Entry);                                                               // [0xb268964] Final|Native|Protected|HasOutParms 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.PlaySequenceEntry
-	// void PlaySequenceEntry(FSparksCameraDirectorSequenceEntry& Entry, float MsOffset, bool bIntermission, class AActor* ForceTarget); // [0xa4f2d08] Final|Native|Protected|HasOutParms 
+	// void PlaySequenceEntry(FSparksCameraDirectorSequenceEntry& Entry, float MsOffset, bool bIntermission, class AActor* ForceTarget); // [0xb2685b0] Final|Native|Protected|HasOutParms 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.PlayNextShot
-	// void PlayNextShot();                                                                                                     // [0xa4f2cf4] Final|Native|Protected 
+	// void PlayNextShot();                                                                                                     // [0xb26859c] Final|Native|Protected 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.OnShotFinished
-	// void OnShotFinished();                                                                                                   // [0xa4f2ce0] Final|Native|Protected 
+	// void OnShotFinished();                                                                                                   // [0xb268588] Final|Native|Protected 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.LogToScreen
-	// void LogToScreen(FString Data, ESparksCameraLogType Type, float TimeSeconds);                                            // [0xa4f2a4c] Final|Native|Protected 
+	// void LogToScreen(FString Data, ESparksCameraLogType Type, float TimeSeconds);                                            // [0xb267d0c] Final|Native|Protected 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.InsertSequence
-	// void InsertSequence(FSparksCameraDirectorSequence& Sequence);                                                            // [0xa4f2800] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// void InsertSequence(FSparksCameraDirectorSequence& Sequence);                                                            // [0xb267a08] Final|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.InsertPerformanceMap
-	// void InsertPerformanceMap(class USparksPerformanceMap* Map);                                                             // [0xa4f2780] Final|Native|Public|BlueprintCallable 
+	// void InsertPerformanceMap(class USparksPerformanceMap* Map);                                                             // [0xb267948] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.InitDynamicCameras
-	// void InitDynamicCameras();                                                                                               // [0xa4f276c] Final|Native|Protected 
+	// void InitDynamicCameras();                                                                                               // [0xb267934] Final|Native|Protected 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.HandleIntermissionTagsEvent
-	// void HandleIntermissionTagsEvent(FSparksCommonIntermissionCameraDirectorEvent& Payload);                                 // [0xa4f2444] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void HandleIntermissionTagsEvent(FSparksCommonIntermissionCameraDirectorEvent& Payload);                                 // [0xb267600] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.HandleForceIntermissionEvent
-	// void HandleForceIntermissionEvent(FSparksCommonForceIntermissionCameraDirectorEvent& Payload);                           // [0xa4f238c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void HandleForceIntermissionEvent(FSparksCommonForceIntermissionCameraDirectorEvent& Payload);                           // [0xb267548] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.HandleDirectorDynamicEvent
-	// void HandleDirectorDynamicEvent(FSparksCommonDynamicCameraDirectorEvent& Payload);                                       // [0xa4f22b4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void HandleDirectorDynamicEvent(FSparksCommonDynamicCameraDirectorEvent& Payload);                                       // [0xb267470] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.GetCameraActive
-	// bool GetCameraActive();                                                                                                  // [0x9c05ffc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCameraActive();                                                                                                  // [0xa734e18] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.FindCurrentShot
-	// bool FindCurrentShot(int32_t& SequenceIndex, int32_t& EntryIndex);                                                       // [0xa4f0ac4] Final|Native|Protected|HasOutParms 
+	// bool FindCurrentShot(int32_t& SequenceIndex, int32_t& EntryIndex);                                                       // [0xb265078] Final|Native|Protected|HasOutParms 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.DebugLockSpecificCameraShot
-	// void DebugLockSpecificCameraShot(FSparksCameraShot Shot, bool bLockToFirstFrame, class AActor* Target);                  // [0xa4f06d0] Net|NetReliableNative|Event|NetMulticast|Protected|BlueprintCallable 
+	// void DebugLockSpecificCameraShot(FSparksCameraShot Shot, bool bLockToFirstFrame, class AActor* Target);                  // [0xb264da0] Net|NetReliableNative|Event|NetMulticast|Protected|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorComponent.ActivateCameraControl
-	// void ActivateCameraControl(bool bActive);                                                                                // [0xa4f000c] Final|Native|Public|BlueprintCallable 
+	// void ActivateCameraControl(bool bActive);                                                                                // [0xb264664] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig
@@ -149,19 +149,19 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.ShouldUseShot
-	// bool ShouldUseShot(class ULevelSequence* Shot, float AtTimestamp);                                                       // [0xa4f36b8] Final|Native|Public|BlueprintCallable 
+	// bool ShouldUseShot(class ULevelSequence* Shot, float AtTimestamp);                                                       // [0xb268fac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.ResetCache
-	// void ResetCache();                                                                                                       // [0xa4f3360] Final|Native|Public|BlueprintCallable 
+	// void ResetCache();                                                                                                       // [0xb268c50] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.MarkShotTime
-	// void MarkShotTime(class ULevelSequence* Shot, float AtTimestamp);                                                        // [0xa4f2c1c] Final|Native|Public|BlueprintCallable 
+	// void MarkShotTime(class ULevelSequence* Shot, float AtTimestamp);                                                        // [0xb268448] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.Init
-	// void Init();                                                                                                             // [0xa4f24fc] Final|Native|Public  
+	// void Init();                                                                                                             // [0xb2676b8] Final|Native|Public  
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.GenerateSequence
-	// bool GenerateSequence(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequence& OutSequence);                // [0xa4f1434] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool GenerateSequence(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequence& OutSequence);                // [0xb265a74] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.GenerateEntry
-	// bool GenerateEntry(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutEntry);                 // [0xa4f0bc0] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool GenerateEntry(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutEntry);                 // [0xb2651e8] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorConfig.FindBestGenerator
-	// class USparksCameraDirectorSequenceGenerator* FindBestGenerator(FSparksPerformanceMapSection& Section);                  // [0xa4f0a10] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// class USparksCameraDirectorSequenceGenerator* FindBestGenerator(FSparksPerformanceMapSection& Section);                  // [0xb264fc4] Final|Native|Protected|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider
@@ -177,21 +177,21 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetValidTimestamp
-	// bool GetValidTimestamp(float DesiredTimestampMS, float& OutTimestampMSHigh, float& OutTimestampMSLow);                   // [0xa4f2190] Native|Public|HasOutParms|BlueprintCallable 
+	// bool GetValidTimestamp(float DesiredTimestampMS, float& OutTimestampMSHigh, float& OutTimestampMSLow);                   // [0xb267314] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetTargetRelevantTags
-	// bool GetTargetRelevantTags(class AActor* Target, FSparksCameraFilter& TagsOut);                                          // [0xa4f2078] Native|Public|HasOutParms|BlueprintCallable 
+	// bool GetTargetRelevantTags(class AActor* Target, FSparksCameraFilter& TagsOut);                                          // [0xb2671b4] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetTargetForCloseup
-	// class AActor* GetTargetForCloseup(float ShotTimeMS, FGameplayTagContainer& TagsOut, bool bPreferLocal);                  // [0xa4f1ee8] Native|Public|HasOutParms|BlueprintCallable 
+	// class AActor* GetTargetForCloseup(float ShotTimeMS, FGameplayTagContainer& TagsOut, bool bPreferLocal);                  // [0xb266fe4] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetStaticShotCount
-	// int32_t GetStaticShotCount();                                                                                            // [0xa4f1bf8] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetStaticShotCount();                                                                                            // [0xb266314] Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetStaticShot
-	// bool GetStaticShot(int32_t Index, FSparksCameraShot& OutShot);                                                           // [0xa4f1acc] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetStaticShot(int32_t Index, FSparksCameraShot& OutShot);                                                           // [0xb26619c] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetMatchingCameraTarget
-	// class AActor* GetMatchingCameraTarget(FGameplayTagContainer& Tags, float ShotTimeMS, bool bPreferLocal);                 // [0xa4f179c] Native|Public|HasOutParms|BlueprintCallable 
+	// class AActor* GetMatchingCameraTarget(FGameplayTagContainer& Tags, float ShotTimeMS, bool bPreferLocal);                 // [0xb265de8] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetCurrentMSTimeInCameraEvent
-	// float GetCurrentMSTimeInCameraEvent();                                                                                   // [0x688dab4] Native|Public|BlueprintCallable 
+	// float GetCurrentMSTimeInCameraEvent();                                                                                   // [0x68ad6c8] Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPluginDataProvider.GetAllTargets
-	// TArray<AActor*> GetAllTargets();                                                                                         // [0xa4f173c] Native|Public|BlueprintCallable|BlueprintPure 
+	// TArray<AActor*> GetAllTargets();                                                                                         // [0xb265d88] Native|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCameraShotSelectRuleBase
@@ -210,13 +210,13 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraShotSelectRuleBase.Reset
-	// bool Reset();                                                                                                            // [0x1aaf4c4] Native|Event|Public|BlueprintEvent 
+	// bool Reset();                                                                                                            // [0x66bfd84] Native|Event|Public|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraShotSelectRuleBase.Init
-	// bool Init(class USparksCameraShotPool* InPool);                                                                          // [0x96f6b80] Native|Event|Public|BlueprintEvent 
+	// bool Init(class USparksCameraShotPool* InPool);                                                                          // [0xa111080] Native|Event|Public|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraShotSelectRuleBase.GetShotCount
-	// int32_t GetShotCount();                                                                                                  // [0xa4f1ab4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetShotCount();                                                                                                  // [0xb266184] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraShotSelectRuleBase.ChooseShot
-	// bool ChooseShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                     // [0xa4f053c] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool ChooseShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                     // [0xb264c0c] Native|Event|Public|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase
@@ -238,19 +238,19 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.Reset
-	// bool Reset();                                                                                                            // [0x1aaf4c4] Native|Event|Public|BlueprintEvent 
+	// bool Reset();                                                                                                            // [0x66bfd84] Native|Event|Public|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.Init
-	// bool Init(FSparksCameraSectionWrapper& Section);                                                                         // [0xa4f26b4] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool Init(FSparksCameraSectionWrapper& Section);                                                                         // [0xb26787c] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.GetShotCount
-	// int32_t GetShotCount();                                                                                                  // [0xa4f1a90] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetShotCount();                                                                                                  // [0xb266160] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.GetPoolCount
-	// int32_t GetPoolCount();                                                                                                  // [0x844c560] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetPoolCount();                                                                                                  // [0x896f4d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.ChooseShot
-	// bool ChooseShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                     // [0xa4f053c] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool ChooseShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                     // [0xb264c0c] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.ChooseIntroShot
-	// bool ChooseIntroShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                // [0xa4f03a8] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool ChooseIntroShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                // [0xb264a78] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraPoolSelectRuleBase.ChooseExitShot
-	// bool ChooseExitShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                 // [0xa4f0214] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool ChooseExitShot(FSparksPerformanceMapSection& Section, FSparksCameraDirectorSequenceEntry& OutShot);                 // [0xb2648e4] Native|Event|Public|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksShotSelectRuleRandomized
@@ -329,19 +329,19 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.Reset
-	// bool Reset();                                                                                                            // [0x674bfb0] Native|Event|Public|BlueprintEvent 
+	// bool Reset();                                                                                                            // [0x673c1a8] Native|Event|Public|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.Init
-	// bool Init(FSparksCameraSectionWrapper& InPool, class USparksCameraDirectorConfig* Config);                               // [0xa4f2510] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// bool Init(FSparksCameraSectionWrapper& InPool, class USparksCameraDirectorConfig* Config);                               // [0xb2676cc] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.GetFilter
-	// FSparksCameraFilter GetFilter();                                                                                         // [0xa4f1780] Final|Native|Public|BlueprintCallable 
+	// FSparksCameraFilter GetFilter();                                                                                         // [0xb265dcc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.GenerateSequence
-	// ESparksSectionGeneratorResult GenerateSequence(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequence& OutSequence); // [0xa4f1558] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// ESparksSectionGeneratorResult GenerateSequence(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequence& OutSequence); // [0xb265b98] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.GenerateIntroEntry
-	// ESparksSectionGeneratorResult GenerateIntroEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xa4f11e8] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// ESparksSectionGeneratorResult GenerateIntroEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xb265820] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.GenerateExitEntry
-	// ESparksSectionGeneratorResult GenerateExitEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xa4f0f9c] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// ESparksSectionGeneratorResult GenerateExitEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xb2655cc] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCameraDirectorSequenceGenerator.GenerateEntry
-	// ESparksSectionGeneratorResult GenerateEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xa4f0d50] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// ESparksSectionGeneratorResult GenerateEntry(FSparksPerformanceMapSection& Section, class USparksCameraPluginDataProvider* DataProvider, FSparksCameraDirectorSequenceEntry& OutEntry); // [0xb265378] Native|Event|Public|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksCamera_BPFL
@@ -356,13 +356,13 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksCamera_BPFL.ScoreTagsAgainstFilter
-	// ESparksFilterResult ScoreTagsAgainstFilter(FSparksCameraFilter& Filter, FGameplayTagContainer& TagsToMatch, float& OutScore); // [0xa4f34b4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// ESparksFilterResult ScoreTagsAgainstFilter(FSparksCameraFilter& Filter, FGameplayTagContainer& TagsToMatch, float& OutScore); // [0xb268da4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCamera_BPFL.ScoreTagContainers
-	// float ScoreTagContainers(FGameplayTagContainer& Tags1, FGameplayTagContainer& Tags2);                                    // [0xa4f3374] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// float ScoreTagContainers(FGameplayTagContainer& Tags1, FGameplayTagContainer& Tags2);                                    // [0xb268c64] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCamera_BPFL.GetTagForMidiEventName
-	// FGameplayTag GetTagForMidiEventName(FString EventString);                                                                // [0xa4f1d84] Final|Native|Static|Public|BlueprintCallable 
+	// FGameplayTag GetTagForMidiEventName(FString EventString);                                                                // [0xb266990] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksCamera_BPFL.GetSubTagForMidiEventName
-	// FGameplayTag GetSubTagForMidiEventName(FString EventString);                                                             // [0xa4f1c20] Final|Native|Static|Public|BlueprintCallable 
+	// FGameplayTag GetSubTagForMidiEventName(FString EventString);                                                             // [0xb26633c] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksDefaultLevelSequenceInstanceData
@@ -401,7 +401,7 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksLevelSequencePlayer.SparksCreateLevelSequencePlayer
-	// class USparksLevelSequencePlayer* SparksCreateLevelSequencePlayer(class UObject* WorldContextObject, class ULevelSequence* LevelSequence, FMovieSceneSequencePlaybackSettings Settings, class ASparksLevelSequenceActor*& OutActor, class USkeletalMeshComponent* TargetActor, FSparksCameraShot& Shot); // [0xa4f377c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// class USparksLevelSequencePlayer* SparksCreateLevelSequencePlayer(class UObject* WorldContextObject, class ULevelSequence* LevelSequence, FMovieSceneSequencePlaybackSettings Settings, class ASparksLevelSequenceActor*& OutActor, class USkeletalMeshComponent* TargetActor, FSparksCameraShot& Shot); // [0xb2690fc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/SparksCameraDirectorRuntime.SparksPerformanceMap
@@ -417,15 +417,15 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCameraDirectorRuntime.SparksPerformanceMap.InsertTimeline
-	// int32_t InsertTimeline(class USparksPerformanceMap* Map, int32_t& OutFirstIndex, int32_t& OutLastIndex, bool bOverwrite); // [0xa4f28b0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// int32_t InsertTimeline(class USparksPerformanceMap* Map, int32_t& OutFirstIndex, int32_t& OutLastIndex, bool bOverwrite); // [0xb267ab8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksPerformanceMap.GetSectionIndexAtTime
-	// int32_t GetSectionIndexAtTime(float TimeMS);                                                                             // [0xa4f1a00] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSectionIndexAtTime(float TimeMS);                                                                             // [0xb266090] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksPerformanceMap.GetNextSectionIndexAtTime
-	// int32_t GetNextSectionIndexAtTime(float TimeMS);                                                                         // [0xa4f196c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNextSectionIndexAtTime(float TimeMS);                                                                         // [0xb265fb8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCameraDirectorRuntime.SparksPerformanceMap.FixupSectionTimeLengths
-	// void FixupSectionTimeLengths();                                                                                          // [0xa4f0bac] Final|Native|Public|BlueprintCallable 
+	// void FixupSectionTimeLengths();                                                                                          // [0xb2651d4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCameraDirectorRuntime.SparksPerformanceMap.AddSection
-	// void AddSection(float StartMS, FGameplayTag& PrimaryTag, FGameplayTagContainer& SecondaryTags);                          // [0xa4f008c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void AddSection(float StartMS, FGameplayTag& PrimaryTag, FGameplayTagContainer& SecondaryTags);                          // [0xb264728] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/SparksCameraDirectorRuntime.SparksCameraShot

@@ -14,20 +14,26 @@
 /// dependency: ModelViewViewModel
 
 /// Class /Script/JunoFrontendUI.JunoFrontendExperienceFlow
-/// Size: 0x00D0 (0x000028 - 0x0000F8)
+/// Size: 0x00E0 (0x000028 - 0x000108)
 class UJunoFrontendExperienceFlow : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 248;
+	static inline constexpr uint64_t __MDKClassSize = 264;
 
 public:
-	CMember(class UFortStreamMediaSource*)             VideoStream_Source                                          OFFSET(get<T>, {0x48, 8, 0, 0})
-	CMember(TWeakObjectPtr<UClass*>)                   VideoPlayerClass                                            OFFSET(get<T>, {0x50, 32, 0, 0})
-	CMember(TArray<FString>)                           FlowStepArray                                               OFFSET(get<T>, {0x70, 16, 0, 0})
-	DMember(bool)                                      bEnableTrailer                                              OFFSET(get<bool>, {0x80, 1, 0, 0})
-	SMember(FString)                                   CinematicTrailerVUID                                        OFFSET(getStruct<T>, {0x88, 16, 0, 0})
-	SMember(FName)                                     CinematicTrailerString                                      OFFSET(getStruct<T>, {0x98, 4, 0, 0})
-	CMember(TMap<FString, FString>)                    CinematicTrailerRating                                      OFFSET(get<T>, {0xA0, 80, 0, 0})
+	CMember(TWeakObjectPtr<UClass*>)                   VideoPlayerClass                                            OFFSET(get<T>, {0x60, 32, 0, 0})
+	CMember(TArray<FString>)                           FlowStepArray                                               OFFSET(get<T>, {0x80, 16, 0, 0})
+	DMember(bool)                                      bEnableTrailer                                              OFFSET(get<bool>, {0x90, 1, 0, 0})
+	SMember(FString)                                   CinematicTrailerVUID                                        OFFSET(getStruct<T>, {0x98, 16, 0, 0})
+	SMember(FName)                                     CinematicTrailerString                                      OFFSET(getStruct<T>, {0xA8, 4, 0, 0})
+	CMember(TMap<FString, FString>)                    CinematicTrailerRating                                      OFFSET(get<T>, {0xB0, 80, 0, 0})
+
+
+	/// Functions
+	// Function /Script/JunoFrontendUI.JunoFrontendExperienceFlow.HandleTrailerTerminalError
+	// void HandleTrailerTerminalError(EBaseMediaTerminalErrorReason Reason);                                                   // [0xc6bc4e4] Final|Native|Private 
+	// Function /Script/JunoFrontendUI.JunoFrontendExperienceFlow.HandleFinishTrailerStep
+	// void HandleFinishTrailerStep();                                                                                          // [0xc6bc4d0] Final|Native|Private 
 };
 
 /// Class /Script/JunoFrontendUI.JunoMatchmakingUtilityExtension
@@ -86,19 +92,19 @@ public:
 
 	/// Functions
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.StartMatchmakingInModeratorMode
-	// void StartMatchmakingInModeratorMode(FString InWorldId);                                                                 // [0xb50f3b4] Final|Native|Public|BlueprintCallable 
+	// void StartMatchmakingInModeratorMode(FString InWorldId);                                                                 // [0xc6bc6cc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.RemoveSelectedWorldFromList
-	// void RemoveSelectedWorldFromList();                                                                                      // [0xb50f3a0] Final|Native|Public|BlueprintCallable 
+	// void RemoveSelectedWorldFromList();                                                                                      // [0xc6bc6b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.InitWorldData
-	// void InitWorldData(TWeakObjectPtr<UDataTable*>& InSettingDataTable, TWeakObjectPtr<UDataTable*>& InWorldImageDataTable); // [0xb50f288] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void InitWorldData(TWeakObjectPtr<UDataTable*>& InSettingDataTable, TWeakObjectPtr<UDataTable*>& InWorldImageDataTable); // [0xc6bc5a0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.GetIsCreateFlowSelected
-	// bool GetIsCreateFlowSelected();                                                                                          // [0xb50f240] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetIsCreateFlowSelected();                                                                                          // [0xc6bc488] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.FetchWorldData
-	// void FetchWorldData();                                                                                                   // [0xb50f22c] Final|Native|Public|BlueprintCallable 
+	// void FetchWorldData();                                                                                                   // [0xc6bc474] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.EnableDataRefresh
-	// void EnableDataRefresh();                                                                                                // [0xb50f218] Final|Native|Public|BlueprintCallable 
+	// void EnableDataRefresh();                                                                                                // [0xc6bc460] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoFrontendUI.JunoWorldManagementViewModel.DisableDataRefresh
-	// void DisableDataRefresh();                                                                                               // [0xb50f204] Final|Native|Public|BlueprintCallable 
+	// void DisableDataRefresh();                                                                                               // [0xc6bc44c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Enum /Script/JunoFrontendUI.EOptionalJunoFrontendExperienceFlowSteps

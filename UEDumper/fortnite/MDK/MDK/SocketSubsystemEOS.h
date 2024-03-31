@@ -20,14 +20,14 @@ public:
 };
 
 /// Class /Script/SocketSubsystemEOS.NetDriverEOSBase
-/// Size: 0x0008 (0x0008E8 - 0x0008F0)
+/// Size: 0x0008 (0x000940 - 0x000948)
 class UNetDriverEOSBase : public UIpNetDriver
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2288;
+	static inline constexpr uint64_t __MDKClassSize = 2376;
 
 public:
-	DMember(bool)                                      bIsPassthrough                                              OFFSET(get<bool>, {0x8E8, 1, 0, 0})
-	DMember(bool)                                      bIsUsingP2PSockets                                          OFFSET(get<bool>, {0x8E9, 1, 0, 0})
+	DMember(bool)                                      bIsPassthrough                                              OFFSET(get<bool>, {0x940, 1, 0, 0})
+	DMember(bool)                                      bIsUsingP2PSockets                                          OFFSET(get<bool>, {0x941, 1, 0, 0})
 };
 

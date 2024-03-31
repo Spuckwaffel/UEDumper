@@ -11,16 +11,6 @@
 /// dependency: ModularGameplay
 /// dependency: PlayspaceSystem
 
-/// Class /Script/VerseQuery.QueryIteratorBase
-/// Size: 0x0018 (0x000028 - 0x000040)
-class UQueryIteratorBase : public UObject
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 64;
-
-public:
-};
-
 /// Class /Script/VerseQuery.EntityQueryManager
 /// Size: 0x0010 (0x000028 - 0x000038)
 class UEntityQueryManager : public UObject

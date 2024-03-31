@@ -34,11 +34,11 @@ public:
 
 	/// Functions
 	// Function /Script/MidMatchAssignedGameplayRuntime.FortGameStateComponent_AssignedObjective.StartAssignedObjectives
-	// void StartAssignedObjectives();                                                                                          // [0x36203b0] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void StartAssignedObjectives();                                                                                          // [0x3518b8c] Final|BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/MidMatchAssignedGameplayRuntime.FortGameStateComponent_AssignedObjective.OnAssignedObjectiveReady
-	// void OnAssignedObjectiveReady(FFortAssignedObjectiveData& ObjectiveData);                                                // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnAssignedObjectiveReady(FFortAssignedObjectiveData& ObjectiveData);                                                // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/MidMatchAssignedGameplayRuntime.FortGameStateComponent_AssignedObjective.CalculateSquadAvgLocation
-	// FVector CalculateSquadAvgLocation(char SquadId, class UObject* WorldContextObject);                                      // [0xa993e8c] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// FVector CalculateSquadAvgLocation(char SquadID, class UObject* WorldContextObject);                                      // [0xb7f5bc8] Final|Native|Static|Public|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/MidMatchAssignedGameplayRuntime.FortQueryContext_SpawnedObjectiveLocations
@@ -81,7 +81,7 @@ class FFortAssignedObjectiveSquadData : public MDKBase
 	static inline constexpr uint64_t __MDKClassSize = 32;
 
 public:
-	DMember(char)                                      SquadId                                                     OFFSET(get<char>, {0x0, 1, 0, 0})
+	DMember(char)                                      SquadID                                                     OFFSET(get<char>, {0x0, 1, 0, 0})
 	SMember(FVector)                                   CachedSquadAvgLocation                                      OFFSET(getStruct<T>, {0x8, 24, 0, 0})
 };
 

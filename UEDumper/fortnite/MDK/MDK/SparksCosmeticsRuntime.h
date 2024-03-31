@@ -35,46 +35,46 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.FortAnimNotifyState_SpawnSparksProp.InitNewNotify
-	// void InitNewNotify(ESparksInstrumentType InType, bool InLeftHand, bool InAuxMesh, FName InSocketName, FGameplayTagQuery InSkipActorsWithTag, int32_t InPropId, class USkeletalMesh* InDefaultMesh); // [0xa40575c] Final|Native|Public|BlueprintCallable|Const 
+	// void InitNewNotify(ESparksInstrumentType InType, bool InLeftHand, bool InAuxMesh, FName InSocketName, FGameplayTagQuery InSkipActorsWithTag, int32_t InPropId, class USkeletalMesh* InDefaultMesh); // [0xb16d0fc] Final|Native|Public|BlueprintCallable|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksAccountItemDefinition
-/// Size: 0x0010 (0x000728 - 0x000738)
+/// Size: 0x0010 (0x0005E8 - 0x0005F8)
 class USparksAccountItemDefinition : public UAthenaCosmeticItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1848;
+	static inline constexpr uint64_t __MDKClassSize = 1528;
 
 public:
-	CMember(ESparksAccountItemSubtype)                 Subtype                                                     OFFSET(get<T>, {0x730, 1, 0, 0})
-	SMember(FGameplayTag)                              Slot                                                        OFFSET(getStruct<T>, {0x734, 4, 0, 0})
+	CMember(ESparksAccountItemSubtype)                 Subtype                                                     OFFSET(get<T>, {0x5F0, 1, 0, 0})
+	SMember(FGameplayTag)                              Slot                                                        OFFSET(getStruct<T>, {0x5F4, 4, 0, 0})
 
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksAccountItemDefinition.GetVariantChannelTags
-	// void GetVariantChannelTags(TArray<FGameplayTag>& OutChannelTags);                                                        // [0xa4056c0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetVariantChannelTags(TArray<FGameplayTag>& OutChannelTags);                                                        // [0xb16d060] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksAccountItemDefinition.GetVariantChannelOptionNames
-	// void GetVariantChannelOptionNames(FGameplayTag ChannelTag, FText& OutChannelName, TArray<FString>& OutNames);            // [0xa405480] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetVariantChannelOptionNames(FGameplayTag ChannelTag, FText& OutChannelName, TArray<FString>& OutNames);            // [0xb16cee4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksAccountItemDefinition.GetItemSubtype
-	// ESparksAccountItemSubtype GetItemSubtype();                                                                              // [0x88da6dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ESparksAccountItemSubtype GetItemSubtype();                                                                              // [0x3da1338] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksAccountItemDefinition.GetInstrumentType
-	// ESparksInstrumentType GetInstrumentType();                                                                               // [0x688e0e4] Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ESparksInstrumentType GetInstrumentType();                                                                               // [0x90ddfdc] Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksAuraItemDefinition
-/// Size: 0x0078 (0x000738 - 0x0007B0)
+/// Size: 0x0078 (0x0005F8 - 0x000670)
 class USparksAuraItemDefinition : public USparksAccountItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1968;
+	static inline constexpr uint64_t __MDKClassSize = 1648;
 
 public:
-	CMember(TWeakObjectPtr<UNiagaraSystem*>)           StartSystem                                                 OFFSET(get<T>, {0x738, 32, 0, 0})
-	SMember(FName)                                     StartSystemAttachPoint                                      OFFSET(getStruct<T>, {0x758, 4, 0, 0})
-	CMember(TWeakObjectPtr<UNiagaraSystem*>)           SustainSystem                                               OFFSET(get<T>, {0x760, 32, 0, 0})
-	SMember(FName)                                     SustainSystemAttachPoint                                    OFFSET(getStruct<T>, {0x780, 4, 0, 0})
-	CMember(TWeakObjectPtr<UNiagaraSystem*>)           StopSystem                                                  OFFSET(get<T>, {0x788, 32, 0, 0})
-	SMember(FName)                                     StopSystemAttachPoint                                       OFFSET(getStruct<T>, {0x7A8, 4, 0, 0})
+	CMember(TWeakObjectPtr<UNiagaraSystem*>)           StartSystem                                                 OFFSET(get<T>, {0x5F8, 32, 0, 0})
+	SMember(FName)                                     StartSystemAttachPoint                                      OFFSET(getStruct<T>, {0x618, 4, 0, 0})
+	CMember(TWeakObjectPtr<UNiagaraSystem*>)           SustainSystem                                               OFFSET(get<T>, {0x620, 32, 0, 0})
+	SMember(FName)                                     SustainSystemAttachPoint                                    OFFSET(getStruct<T>, {0x640, 4, 0, 0})
+	CMember(TWeakObjectPtr<UNiagaraSystem*>)           StopSystem                                                  OFFSET(get<T>, {0x648, 32, 0, 0})
+	SMember(FName)                                     StopSystemAttachPoint                                       OFFSET(getStruct<T>, {0x668, 4, 0, 0})
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog
@@ -92,15 +92,15 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog.GetSparksCosmeticCatalog
-	// class USparksCosmeticCatalog* GetSparksCosmeticCatalog(class UObject* WorldContextObject);                               // [0xa405350] Final|Native|Static|Public|BlueprintCallable 
+	// class USparksCosmeticCatalog* GetSparksCosmeticCatalog(class UObject* WorldContextObject);                               // [0xb16cd34] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog.GetItemDefFromAssetID
-	// class USparksAccountItemDefinition* GetItemDefFromAssetID(FPrimaryAssetId& AssetId);                                     // [0xa404b9c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// class USparksAccountItemDefinition* GetItemDefFromAssetID(FPrimaryAssetId& AssetId);                                     // [0xb16c4bc] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog.GetItemDef
-	// class USparksAccountItemDefinition* GetItemDef(FName InItemName);                                                        // [0xa404b10] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USparksAccountItemDefinition* GetItemDef(FName InItemName);                                                        // [0xb16c3ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog.GetActiveItemDefNamesForSubtypeAndInstrument
-	// TArray<FName> GetActiveItemDefNamesForSubtypeAndInstrument(ESparksAccountItemSubtype Subtype, ESparksInstrumentType Instrument); // [0xa403de0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetActiveItemDefNamesForSubtypeAndInstrument(ESparksAccountItemSubtype Subtype, ESparksInstrumentType Instrument); // [0xb16ac74] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticCatalog.GetActiveItemDefNamesForSubtype
-	// TArray<FName> GetActiveItemDefNamesForSubtype(ESparksAccountItemSubtype Subtype);                                        // [0xa403d48] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<FName> GetActiveItemDefNamesForSubtype(ESparksAccountItemSubtype Subtype);                                        // [0xb16ab9c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksCosmeticComponent
@@ -129,59 +129,59 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetVariantChoice
-	// void SetVariantChoice(ESparksAccountItemSubtype Subtype, ESparksInstrumentType InstrumentType, FGameplayTag VariantChannel, FString Value); // [0xa4060f8] Final|Native|Public|BlueprintCallable 
+	// void SetVariantChoice(ESparksAccountItemSubtype Subtype, ESparksInstrumentType InstrumentType, FGameplayTag VariantChannel, FString Value); // [0xb16dc80] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetAuraState
-	// void SetAuraState(bool bShouldBeActive);                                                                                 // [0xa405fdc] Final|Native|Public|BlueprintCallable 
+	// void SetAuraState(bool bShouldBeActive);                                                                                 // [0xb16dae4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetActiveSpotlightAnimDef
-	// void SetActiveSpotlightAnimDef(class USparksSpotlightAnimDefinition* NewSpotlightDef);                                   // [0xa405ef4] Final|Native|Private 
+	// void SetActiveSpotlightAnimDef(class USparksSpotlightAnimDefinition* NewSpotlightDef);                                   // [0xb16d9bc] Final|Native|Private 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetActiveItemDef
-	// void SetActiveItemDef(class USparksAccountItemDefinition* NewItemDef);                                                   // [0xa405e1c] Final|Native|Public|BlueprintCallable 
+	// void SetActiveItemDef(class USparksAccountItemDefinition* NewItemDef);                                                   // [0xb16d8a4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetActiveInstrumentItemDef
-	// void SetActiveInstrumentItemDef(class USparksInstrumentItemDefBase* InstrumentItemDef);                                  // [0xa405d08] Final|Native|Private 
+	// void SetActiveInstrumentItemDef(class USparksInstrumentItemDefBase* InstrumentItemDef);                                  // [0xb16d74c] Final|Native|Private 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.SetActiveAuraItemDef
-	// void SetActiveAuraItemDef(class USparksAuraItemDefinition* NewAuraItemDef);                                              // [0xa405c6c] Final|Native|Private 
+	// void SetActiveAuraItemDef(class USparksAuraItemDefinition* NewAuraItemDef);                                              // [0xb16d658] Final|Native|Private 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.RefreshMCP
-	// void RefreshMCP();                                                                                                       // [0x36203b0] Final|Native|Protected|BlueprintCallable 
+	// void RefreshMCP();                                                                                                       // [0x3518b8c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.OnWeaponChanged
-	// void OnWeaponChanged(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                       // [0x2dc0784] Final|Native|Protected 
+	// void OnWeaponChanged(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                                       // [0x2d3b5e4] Final|Native|Protected 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.OnMaterialOverridesCleared
-	// void OnMaterialOverridesCleared(class AFortPlayerPawn* Pawn);                                                            // [0x35b089c] Final|Native|Protected 
+	// void OnMaterialOverridesCleared(class AFortPlayerPawn* Pawn);                                                            // [0x2d4a7a0] Final|Native|Protected 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetSpotlightAnim
-	// class ULevelSequence* GetSpotlightAnim(ESparksInstrumentType InstrumentType);                                            // [0xa4053d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class ULevelSequence* GetSpotlightAnim(ESparksInstrumentType InstrumentType);                                            // [0xb16cdf4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetOwnedJamTracksCount
-	// int32_t GetOwnedJamTracksCount();                                                                                        // [0xa4052f8] Final|Native|Public|BlueprintCallable|BlueprintPure 
+	// int32_t GetOwnedJamTracksCount();                                                                                        // [0xb16ccdc] Final|Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetOwnedJamSongShortnameForIndex
-	// FName GetOwnedJamSongShortnameForIndex(int32_t Index);                                                                   // [0xa405274] Final|Native|Public|BlueprintCallable 
+	// FName GetOwnedJamSongShortnameForIndex(int32_t Index);                                                                   // [0xb16cc14] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetInstrumentVFX
-	// bool GetInstrumentVFX(ESparksInstrumentType InstrumentType, class UFXSystemAsset*& OutFX, class UFXSystemAsset*& OutLHFX); // [0x4c3c5c0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetInstrumentVFX(ESparksInstrumentType InstrumentType, class UFXSystemAsset*& OutFX, class UFXSystemAsset*& OutLHFX); // [0xb16c298] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetInstrumentCosmetics
-	// bool GetInstrumentCosmetics(ESparksInstrumentType InstrumentType, class USkeletalMesh*& OutMesh, class UMaterialInstance*& OutMaterial, class USkeletalMesh*& OutLHMesh, class UMaterialInstance*& OutLHMaterial); // [0xa4048e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetInstrumentCosmetics(ESparksInstrumentType InstrumentType, class USkeletalMesh*& OutMesh, class UMaterialInstance*& OutMaterial, class USkeletalMesh*& OutLHMesh, class UMaterialInstance*& OutLHMaterial); // [0xb16c050] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetInstrumentAuxiliaryVFX
-	// bool GetInstrumentAuxiliaryVFX(ESparksInstrumentType InstrumentType, class UFXSystemAsset*& OutFX);                      // [0x4c3c470] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetInstrumentAuxiliaryVFX(ESparksInstrumentType InstrumentType, class UFXSystemAsset*& OutFX);                      // [0xb16bf34] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetInstrumentAuxiliaryCosmetics
-	// bool GetInstrumentAuxiliaryCosmetics(ESparksInstrumentType InstrumentType, class USkeletalMesh*& OutMesh, class UMaterialInstance*& OutMaterial, class UMaterialInstance*& OutMaterial2); // [0x32ed578] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetInstrumentAuxiliaryCosmetics(ESparksInstrumentType InstrumentType, class USkeletalMesh*& OutMesh, class UMaterialInstance*& OutMaterial, class UMaterialInstance*& OutMaterial2); // [0xb16bd84] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetEquippedJamTracksCount
-	// int32_t GetEquippedJamTracksCount();                                                                                     // [0xa4048cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetEquippedJamTracksCount();                                                                                     // [0xb16bd6c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetEquippedJamSongShortnameForIndex
-	// FName GetEquippedJamSongShortnameForIndex(int32_t Index);                                                                // [0xa404848] Final|Native|Public|BlueprintCallable 
+	// FName GetEquippedJamSongShortnameForIndex(int32_t Index);                                                                // [0xb16bca4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetCosmeticItems
-	// void GetCosmeticItems(TArray<USparksAccountItemDefinition*>& ItemDefs);                                                  // [0xa404638] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// void GetCosmeticItems(TArray<USparksAccountItemDefinition*>& ItemDefs);                                                  // [0xb16b5d4] Final|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetCosmeticItem
-	// class USparksAccountItemDefinition* GetCosmeticItem(ESparksAccountItemSubtype Subtype, ESparksInstrumentType Instrument); // [0xa404558] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// class USparksAccountItemDefinition* GetCosmeticItem(ESparksAccountItemSubtype Subtype, ESparksInstrumentType Instrument); // [0xb16b474] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetChoice
-	// bool GetChoice(FSparksVariantChoice& OutChoice, ESparksAccountItemSubtype Subtype, ESparksInstrumentType InstrumentType, FGameplayTag VariantChannel); // [0xa4041e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetChoice(FSparksVariantChoice& OutChoice, ESparksAccountItemSubtype Subtype, ESparksInstrumentType InstrumentType, FGameplayTag VariantChannel); // [0xb16b104] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.GetAccountItemTypeFromInstrumentType
-	// ESparksAccountItemSubtype GetAccountItemTypeFromInstrumentType(ESparksInstrumentType Instrument);                        // [0xa403cc8] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// ESparksAccountItemSubtype GetAccountItemTypeFromInstrumentType(ESparksInstrumentType Instrument);                        // [0xb16aadc] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.DoCacheValidJamTracks
-	// void DoCacheValidJamTracks();                                                                                            // [0xa403cb4] Final|Native|Private 
+	// void DoCacheValidJamTracks();                                                                                            // [0xb16aac8] Final|Native|Private 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.DebugForceAuraState
-	// void DebugForceAuraState(bool bShouldBeActive);                                                                          // [0xa403c34] Final|Native|Public|BlueprintCallable 
+	// void DebugForceAuraState(bool bShouldBeActive);                                                                          // [0xb16a9f0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.Debug_BP_ShowCosmeticPicker
-	// void Debug_BP_ShowCosmeticPicker(bool bShow);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void Debug_BP_ShowCosmeticPicker(bool bShow);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.AuraStop
-	// void AuraStop();                                                                                                         // [0xa403c20] Final|Native|Protected|BlueprintCallable 
+	// void AuraStop();                                                                                                         // [0xb16a9dc] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticComponent.AuraStart
-	// void AuraStart();                                                                                                        // [0xa403c0c] Final|Native|Protected|BlueprintCallable 
+	// void AuraStart();                                                                                                        // [0xb16a9c8] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksCosmeticsCheatManager
@@ -196,9 +196,9 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticsCheatManager.GrantSparksSongsLoadedAssets
-	// void GrantSparksSongsLoadedAssets();                                                                                     // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
+	// void GrantSparksSongsLoadedAssets(bool bIncludeSongsWithoutCatalogData);                                                 // [0x63958fc] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksCosmeticsCheatManager.GrantSparksCosmeticsLoadedAssets
-	// void GrantSparksCosmeticsLoadedAssets();                                                                                 // [0x36203b0] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
+	// void GrantSparksCosmeticsLoadedAssets();                                                                                 // [0x3518b8c] Final|BlueprintAuthorityOnly|Exec|Native|Private|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksCosmeticsSettings
@@ -246,100 +246,100 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentComponentBase.GetInstrumentType
-	// ESparksInstrumentType GetInstrumentType();                                                                               // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// ESparksInstrumentType GetInstrumentType();                                                                               // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentComponentBase.DestroySpawnedVFX
-	// void DestroySpawnedVFX();                                                                                                // [0x4c3c450] Final|Native|Public  
+	// void DestroySpawnedVFX();                                                                                                // [0xb16aab4] Final|Native|Public  
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase
-/// Size: 0x0140 (0x000738 - 0x000878)
+/// Size: 0x0140 (0x0005F8 - 0x000738)
 class USparksInstrumentItemDefBase : public USparksAccountItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
-	CMember(TWeakObjectPtr<USkeletalMesh*>)            Mesh                                                        OFFSET(get<T>, {0x738, 32, 0, 0})
-	CMember(TWeakObjectPtr<USkeletalMesh*>)            LeftHandMesh                                                OFFSET(get<T>, {0x758, 32, 0, 0})
-	CMember(TWeakObjectPtr<USkeletalMesh*>)            AuxiliaryMesh                                               OFFSET(get<T>, {0x778, 32, 0, 0})
-	CMember(TWeakObjectPtr<UMaterialInstance*>)        Material                                                    OFFSET(get<T>, {0x798, 32, 0, 0})
-	CMember(TWeakObjectPtr<UMaterialInstance*>)        LeftHandMaterial                                            OFFSET(get<T>, {0x7B8, 32, 0, 0})
-	CMember(TWeakObjectPtr<UMaterialInstance*>)        AuxiliaryMaterial                                           OFFSET(get<T>, {0x7D8, 32, 0, 0})
-	CMember(TWeakObjectPtr<UMaterialInstance*>)        AuxiliaryMaterial2                                          OFFSET(get<T>, {0x7F8, 32, 0, 0})
-	CMember(TWeakObjectPtr<UFXSystemAsset*>)           MainFXSystem                                                OFFSET(get<T>, {0x818, 32, 0, 0})
-	CMember(TWeakObjectPtr<UFXSystemAsset*>)           LHFXSystem                                                  OFFSET(get<T>, {0x838, 32, 0, 0})
-	CMember(TWeakObjectPtr<UFXSystemAsset*>)           AuxFXSystem                                                 OFFSET(get<T>, {0x858, 32, 0, 0})
+	CMember(TWeakObjectPtr<USkeletalMesh*>)            Mesh                                                        OFFSET(get<T>, {0x5F8, 32, 0, 0})
+	CMember(TWeakObjectPtr<USkeletalMesh*>)            LeftHandMesh                                                OFFSET(get<T>, {0x618, 32, 0, 0})
+	CMember(TWeakObjectPtr<USkeletalMesh*>)            AuxiliaryMesh                                               OFFSET(get<T>, {0x638, 32, 0, 0})
+	CMember(TWeakObjectPtr<UMaterialInstance*>)        Material                                                    OFFSET(get<T>, {0x658, 32, 0, 0})
+	CMember(TWeakObjectPtr<UMaterialInstance*>)        LeftHandMaterial                                            OFFSET(get<T>, {0x678, 32, 0, 0})
+	CMember(TWeakObjectPtr<UMaterialInstance*>)        AuxiliaryMaterial                                           OFFSET(get<T>, {0x698, 32, 0, 0})
+	CMember(TWeakObjectPtr<UMaterialInstance*>)        AuxiliaryMaterial2                                          OFFSET(get<T>, {0x6B8, 32, 0, 0})
+	CMember(TWeakObjectPtr<UFXSystemAsset*>)           MainFXSystem                                                OFFSET(get<T>, {0x6D8, 32, 0, 0})
+	CMember(TWeakObjectPtr<UFXSystemAsset*>)           LHFXSystem                                                  OFFSET(get<T>, {0x6F8, 32, 0, 0})
+	CMember(TWeakObjectPtr<UFXSystemAsset*>)           AuxFXSystem                                                 OFFSET(get<T>, {0x718, 32, 0, 0})
 
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetMesh
-	// class USkeletalMesh* GetMesh(FSparksVariantChoices& Choices);                                                            // [0xa4051ac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class USkeletalMesh* GetMesh(FSparksVariantChoices& Choices);                                                            // [0xb16cb4c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetMaterial
-	// class UMaterialInstance* GetMaterial(FSparksVariantChoices& Choices);                                                    // [0xa4050dc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UMaterialInstance* GetMaterial(FSparksVariantChoices& Choices);                                                    // [0xb16ca7c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetMainFXSystem
-	// class UFXSystemAsset* GetMainFXSystem(FSparksVariantChoices& Choices);                                                   // [0xa40500c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UFXSystemAsset* GetMainFXSystem(FSparksVariantChoices& Choices);                                                   // [0xb16c9ac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetLHFXSystem
-	// class UFXSystemAsset* GetLHFXSystem(FSparksVariantChoices& Choices);                                                     // [0xa404da4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UFXSystemAsset* GetLHFXSystem(FSparksVariantChoices& Choices);                                                     // [0xb16c744] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetLeftHandMesh
-	// class USkeletalMesh* GetLeftHandMesh(FSparksVariantChoices& Choices);                                                    // [0xa404f44] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class USkeletalMesh* GetLeftHandMesh(FSparksVariantChoices& Choices);                                                    // [0xb16c8e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetLeftHandMaterial
-	// class UMaterialInstance* GetLeftHandMaterial(FSparksVariantChoices& Choices);                                            // [0xa404e74] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UMaterialInstance* GetLeftHandMaterial(FSparksVariantChoices& Choices);                                            // [0xb16c814] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetAuxiliaryMesh
-	// class USkeletalMesh* GetAuxiliaryMesh(FSparksVariantChoices& Choices);                                                   // [0xa40411c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class USkeletalMesh* GetAuxiliaryMesh(FSparksVariantChoices& Choices);                                                   // [0xb16b03c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetAuxiliaryMaterial2
-	// class UMaterialInstance* GetAuxiliaryMaterial2(FSparksVariantChoices& Choices);                                          // [0xa403f7c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UMaterialInstance* GetAuxiliaryMaterial2(FSparksVariantChoices& Choices);                                          // [0xb16ae9c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetAuxiliaryMaterial
-	// class UMaterialInstance* GetAuxiliaryMaterial(FSparksVariantChoices& Choices);                                           // [0xa40404c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UMaterialInstance* GetAuxiliaryMaterial(FSparksVariantChoices& Choices);                                           // [0xb16af6c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentItemDefBase.GetAuxFXSystem
-	// class UFXSystemAsset* GetAuxFXSystem(FSparksVariantChoices& Choices);                                                    // [0xa403eac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// class UFXSystemAsset* GetAuxFXSystem(FSparksVariantChoices& Choices);                                                    // [0xb16adcc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksGuitarItemDefinition
-/// Size: 0x0000 (0x000878 - 0x000878)
+/// Size: 0x0000 (0x000738 - 0x000738)
 class USparksGuitarItemDefinition : public USparksInstrumentItemDefBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksBassItemDefinition
-/// Size: 0x0000 (0x000878 - 0x000878)
+/// Size: 0x0000 (0x000738 - 0x000738)
 class USparksBassItemDefinition : public USparksInstrumentItemDefBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksDrumItemDefinition
-/// Size: 0x0000 (0x000878 - 0x000878)
+/// Size: 0x0000 (0x000738 - 0x000738)
 class USparksDrumItemDefinition : public USparksInstrumentItemDefBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksMicItemDefinition
-/// Size: 0x0000 (0x000878 - 0x000878)
+/// Size: 0x0000 (0x000738 - 0x000738)
 class USparksMicItemDefinition : public USparksInstrumentItemDefBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksKeyboardItemDefinition
-/// Size: 0x0000 (0x000878 - 0x000878)
+/// Size: 0x0000 (0x000738 - 0x000738)
 class USparksKeyboardItemDefinition : public USparksInstrumentItemDefBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2168;
+	static inline constexpr uint64_t __MDKClassSize = 1848;
 
 public:
 };
@@ -358,7 +358,7 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksInstrumentPreviewActor.GetCurrentChoices
-	// FSparksVariantChoices GetCurrentChoices();                                                                               // [0xa4047a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FSparksVariantChoices GetCurrentChoices();                                                                               // [0xb16bc00] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksItemPreviewOffPawnActor
@@ -373,7 +373,7 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksItemPreviewOffPawnActor.GetInstrumentType
-	// ESparksInstrumentType GetInstrumentType();                                                                               // [0xa404ab8] Final|Native|Public|BlueprintCallable 
+	// ESparksInstrumentType GetInstrumentType();                                                                               // [0xb16c240] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksItemPreviewOnPawnActor
@@ -388,28 +388,28 @@ public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition
-/// Size: 0x0010 (0x000950 - 0x000960)
+/// Size: 0x0010 (0x000810 - 0x000820)
 class USparksJamEmoteItemDefinition : public UAthenaDanceItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2400;
+	static inline constexpr uint64_t __MDKClassSize = 2080;
 
 public:
-	CMember(class USparksSongItemDefinition*)          SongItemDef                                                 OFFSET(get<T>, {0x950, 8, 0, 0})
-	CMember(EFMJamLoopType)                            LoopType                                                    OFFSET(get<T>, {0x958, 1, 0, 0})
+	CMember(class USparksSongItemDefinition*)          SongItemDef                                                 OFFSET(get<T>, {0x810, 8, 0, 0})
+	CMember(EFMJamLoopType)                            LoopType                                                    OFFSET(get<T>, {0x818, 1, 0, 0})
 
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition.IsJamLoopEnabled
-	// bool IsJamLoopEnabled(class AFortPlayerController* PlayerController);                                                    // [0xa405ba0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsJamLoopEnabled(class AFortPlayerController* PlayerController);                                                    // [0xb16d54c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition.GetSongItemDef
-	// class USparksSongItemDefinition* GetSongItemDef();                                                                       // [0xa405338] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USparksSongItemDefinition* GetSongItemDef();                                                                       // [0xb16cd1c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition.GetJamSongShortName
-	// FName GetJamSongShortName(class UObject* WorldContextObject);                                                            // [0xa404ce0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetJamSongShortName(class UObject* WorldContextObject);                                                            // [0xb16c640] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition.GetJamSongMetaData
-	// class UCatalogData* GetJamSongMetaData(class UObject* WorldContextObject);                                               // [0xa404c50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UCatalogData* GetJamSongMetaData(class UObject* WorldContextObject);                                               // [0xb16c570] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCosmeticsRuntime.SparksJamEmoteItemDefinition.GetJamLoopType
-	// EFMJamLoopType GetJamLoopType();                                                                                         // [0xa404c38] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EFMJamLoopType GetJamLoopType();                                                                                         // [0xb16c558] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksPlayerStateComponent
@@ -425,23 +425,23 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksPlayerStateComponent.SetSparksInstrumentChoice
-	// void SetSparksInstrumentChoice(ESparksInstrumentType Instrument);                                                        // [0xa406074] BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
+	// void SetSparksInstrumentChoice(ESparksInstrumentType Instrument);                                                        // [0xb16dbbc] BlueprintAuthorityOnly|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCosmeticsRuntime.SparksPlayerStateComponent.GetSparksInstrumentChoice
-	// ESparksInstrumentType GetSparksInstrumentChoice();                                                                       // [0x81ea0ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ESparksInstrumentType GetSparksInstrumentChoice();                                                                       // [0x86883e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksSongItemDefinition
-/// Size: 0x0080 (0x000738 - 0x0007B8)
+/// Size: 0x0080 (0x0005F8 - 0x000678)
 class USparksSongItemDefinition : public USparksAccountItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1976;
+	static inline constexpr uint64_t __MDKClassSize = 1656;
 
 public:
-	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Vox                                           OFFSET(get<T>, {0x738, 32, 0, 0})
-	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Lead                                          OFFSET(get<T>, {0x758, 32, 0, 0})
-	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Bass                                          OFFSET(get<T>, {0x778, 32, 0, 0})
-	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Drum                                          OFFSET(get<T>, {0x798, 32, 0, 0})
+	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Vox                                           OFFSET(get<T>, {0x5F8, 32, 0, 0})
+	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Lead                                          OFFSET(get<T>, {0x618, 32, 0, 0})
+	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Bass                                          OFFSET(get<T>, {0x638, 32, 0, 0})
+	CMember(TWeakObjectPtr<USparksJamEmoteItemDefinition*>) JamEmote_Drum                                          OFFSET(get<T>, {0x658, 32, 0, 0})
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksSongPreviewActor
@@ -458,69 +458,69 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCosmeticsRuntime.SparksSongPreviewActor.StartSongPreview
-	// void StartSongPreview();                                                                                                 // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void StartSongPreview();                                                                                                 // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCosmeticsRuntime.SparksSongPreviewActor.OnSongTextureLoaded
-	// void OnSongTextureLoaded(class UTexture2D* CoverArt);                                                                    // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void OnSongTextureLoaded(class UTexture2D* CoverArt);                                                                    // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksSpotlightAnimDefinition
-/// Size: 0x0028 (0x000738 - 0x000760)
+/// Size: 0x0028 (0x0005F8 - 0x000620)
 class USparksSpotlightAnimDefinition : public USparksAccountItemDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
-	CMember(TWeakObjectPtr<ULevelSequence*>)           SpotlightSequence                                           OFFSET(get<T>, {0x738, 32, 0, 0})
-	CMember(ESparksInstrumentType)                     InstrumentType                                              OFFSET(get<T>, {0x758, 1, 0, 0})
+	CMember(TWeakObjectPtr<ULevelSequence*>)           SpotlightSequence                                           OFFSET(get<T>, {0x5F8, 32, 0, 0})
+	CMember(ESparksInstrumentType)                     InstrumentType                                              OFFSET(get<T>, {0x618, 1, 0, 0})
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksGuitarSpotlightDefinition
-/// Size: 0x0000 (0x000760 - 0x000760)
+/// Size: 0x0000 (0x000620 - 0x000620)
 class USparksGuitarSpotlightDefinition : public USparksSpotlightAnimDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksDrumSpotlightDefinition
-/// Size: 0x0000 (0x000760 - 0x000760)
+/// Size: 0x0000 (0x000620 - 0x000620)
 class USparksDrumSpotlightDefinition : public USparksSpotlightAnimDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksBassSpotlightDefinition
-/// Size: 0x0000 (0x000760 - 0x000760)
+/// Size: 0x0000 (0x000620 - 0x000620)
 class USparksBassSpotlightDefinition : public USparksSpotlightAnimDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksMicSpotlightDefinition
-/// Size: 0x0000 (0x000760 - 0x000760)
+/// Size: 0x0000 (0x000620 - 0x000620)
 class USparksMicSpotlightDefinition : public USparksSpotlightAnimDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
 };
 
 /// Class /Script/SparksCosmeticsRuntime.SparksKeyboardSpotlightDefinition
-/// Size: 0x0000 (0x000760 - 0x000760)
+/// Size: 0x0000 (0x000620 - 0x000620)
 class USparksKeyboardSpotlightDefinition : public USparksSpotlightAnimDefinition
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1888;
+	static inline constexpr uint64_t __MDKClassSize = 1568;
 
 public:
 };

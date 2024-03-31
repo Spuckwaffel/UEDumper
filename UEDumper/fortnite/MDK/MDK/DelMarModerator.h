@@ -25,8 +25,8 @@ public:
 
 	/// Functions
 	// Function /Script/DelMarModerator.DelMarModeratorModeComponent.HandleExitVehicle
-	// void HandleExitVehicle();                                                                                                // [0xb09a4dc] Final|Native|Protected 
+	// void HandleExitVehicle();                                                                                                // [0xc482070] Final|Native|Protected 
 	// Function /Script/DelMarModerator.DelMarModeratorModeComponent.HandleEnterVehicle
-	// void HandleEnterVehicle();                                                                                               // [0xb09a4c8] Final|Native|Protected 
+	// void HandleEnterVehicle();                                                                                               // [0xc48205c] Final|Native|Protected 
 };
 

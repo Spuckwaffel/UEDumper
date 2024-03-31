@@ -13,22 +13,22 @@
 /// dependency: UMG
 
 /// Class /Script/EventModeUI.FocusButton
-/// Size: 0x0010 (0x000430 - 0x000440)
+/// Size: 0x0010 (0x000428 - 0x000438)
 class UFocusButton : public UBacchusActionButton
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1088;
+	static inline constexpr uint64_t __MDKClassSize = 1080;
 
 public:
-	CMember(class UPaperSprite*)                       StartFocusingSprite                                         OFFSET(get<T>, {0x430, 8, 0, 0})
-	CMember(class UPaperSprite*)                       StopFocusingSprite                                          OFFSET(get<T>, {0x438, 8, 0, 0})
+	CMember(class UPaperSprite*)                       StartFocusingSprite                                         OFFSET(get<T>, {0x428, 8, 0, 0})
+	CMember(class UPaperSprite*)                       StopFocusingSprite                                          OFFSET(get<T>, {0x430, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/EventModeUI.FocusButton.HandleEventModeFocusingChanged
-	// void HandleEventModeFocusingChanged(bool bIsEventModeFocusing);                                                          // [0xa90d8ec] Final|Native|Private 
+	// void HandleEventModeFocusingChanged(bool bIsEventModeFocusing);                                                          // [0xb745988] Final|Native|Private 
 	// Function /Script/EventModeUI.FocusButton.HandleCanUseEventModeFocusChanged
-	// void HandleCanUseEventModeFocusChanged(bool bCanUseEventModeFocus);                                                      // [0xa90d870] Final|Native|Private 
+	// void HandleCanUseEventModeFocusChanged(bool bCanUseEventModeFocus);                                                      // [0xb7458cc] Final|Native|Private 
 };
 
 /// Class /Script/EventModeUI.FortEventModeEmotesWidget
@@ -51,9 +51,9 @@ public:
 
 	/// Functions
 	// Function /Script/EventModeUI.FortEventModeEmotesWidget.OnFocusStateChanged
-	// void OnFocusStateChanged(bool bIsFocusing);                                                                              // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnFocusStateChanged(bool bIsFocusing);                                                                              // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/EventModeUI.FortEventModeEmotesWidget.OnFocusAvailableChanged
-	// void OnFocusAvailableChanged(bool bIsFocusAvailable);                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnFocusAvailableChanged(bool bIsFocusAvailable);                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/EventModeUI.FortMobileActionButtonBehavior_Focus
@@ -69,8 +69,8 @@ public:
 
 	/// Functions
 	// Function /Script/EventModeUI.FortMobileActionButtonBehavior_Focus.HandleEventModeFocusingChanged
-	// void HandleEventModeFocusingChanged(bool bIsEventModeFocusing);                                                          // [0x9bb0f68] Final|Native|Private 
+	// void HandleEventModeFocusingChanged(bool bIsEventModeFocusing);                                                          // [0xa6c3a2c] Final|Native|Private 
 	// Function /Script/EventModeUI.FortMobileActionButtonBehavior_Focus.HandleCanUseEventModeFocusChanged
-	// void HandleCanUseEventModeFocusChanged(bool bCanUseEventModeFocus);                                                      // [0x9bb0fe8] Final|Native|Private 
+	// void HandleCanUseEventModeFocusChanged(bool bCanUseEventModeFocus);                                                      // [0xa6c3af0] Final|Native|Private 
 };
 

@@ -32,11 +32,11 @@ public:
 
 	/// Functions
 	// Function /Script/DashRuntime.FortGameplayAbility_Dash.GetMoveDistance
-	// float GetMoveDistance();                                                                                                 // [0xa93979c] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// float GetMoveDistance();                                                                                                 // [0x95ddfb4] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/DashRuntime.FortGameplayAbility_Dash.GetEndMovementVelocity
-	// FVector GetEndMovementVelocity();                                                                                        // [0xa939760] Native|Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// FVector GetEndMovementVelocity();                                                                                        // [0xaff6224] Native|Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 	// Function /Script/DashRuntime.FortGameplayAbility_Dash.GetDashTarget
-	// FVector GetDashTarget();                                                                                                 // [0xa939728] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// FVector GetDashTarget();                                                                                                 // [0xaff61ec] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/DashRuntime.FortMovementMode_ExtDash
@@ -51,9 +51,9 @@ public:
 
 	/// Functions
 	// Function /Script/DashRuntime.FortMovementMode_ExtDash.TryActivateDashMME
-	// bool TryActivateDashMME(class AFortPawn* TargetPawn, class UClass* DashMME, FFortMovementMode_DashCreationData& CreationData); // [0xa9397c8] Final|BlueprintCosmetic|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool TryActivateDashMME(class AFortPawn* TargetPawn, class UClass* DashMME, FFortMovementMode_DashCreationData& CreationData); // [0xaff6260] Final|BlueprintCosmetic|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/DashRuntime.FortMovementMode_ExtDash.BP_UpdateBeforeCharacterMovement
-	// EFortMovementModeExt_UpdateResult BP_UpdateBeforeCharacterMovement(float DeltaTime);                                     // [0x18a39e4] Event|Public|BlueprintEvent 
+	// EFortMovementModeExt_UpdateResult BP_UpdateBeforeCharacterMovement(float DeltaTime);                                     // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Struct /Script/DashRuntime.FortMovementMode_DashRuntimeData

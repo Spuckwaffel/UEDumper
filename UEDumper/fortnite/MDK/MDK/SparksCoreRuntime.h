@@ -5,29 +5,8 @@
 *                                                       *
 ********************************************************/
 
-/// dependency: AudioModulation
 /// dependency: CoreUObject
 /// dependency: Engine
-/// dependency: FortniteGame
-/// dependency: ModularGameplay
-
-/// Class /Script/SparksCoreRuntime.SparksClientSettingRecordPartition
-/// Size: 0x0008 (0x000028 - 0x000030)
-class USparksClientSettingRecordPartition : public UFortClientSettingRecordPartition
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 48;
-
-public:
-	DMember(float)                                     GameplayMusicVolume                                         OFFSET(get<float>, {0x28, 4, 0, 0})
-
-
-	/// Functions
-	// Function /Script/SparksCoreRuntime.SparksClientSettingRecordPartition.SetGameplayMusicVolume
-	// void SetGameplayMusicVolume(float NewVolume);                                                                            // [0xa3f1ecc] Final|Native|Public  
-	// Function /Script/SparksCoreRuntime.SparksClientSettingRecordPartition.GetGameplayMusicVolume
-	// float GetGameplayMusicVolume();                                                                                          // [0x3ee14d8] Final|RequiredAPI|Native|Public|Const 
-};
 
 /// Class /Script/SparksCoreRuntime.SparksCore_BPFL
 /// Size: 0x0000 (0x000028 - 0x000028)
@@ -41,111 +20,111 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.InstrumentTypeToCosmeticSubtype
-	// ESparksAccountItemSubtype InstrumentTypeToCosmeticSubtype(ESparksInstrumentType Instrument);                             // [0xa3f1e4c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// ESparksAccountItemSubtype InstrumentTypeToCosmeticSubtype(ESparksInstrumentType Instrument);                             // [0xb15036c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiTextStringsFromEnums
-	// TArray<FString> GetVocalsMidiTextStringsFromEnums(TArray<EVocalsMidiTextEvent>& MidiTextEvents);                         // [0xa3f1cc8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetVocalsMidiTextStringsFromEnums(TArray<EVocalsMidiTextEvent>& MidiTextEvents);                         // [0xb14fd3c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiTextStringFromEnum
-	// FString GetVocalsMidiTextStringFromEnum(EVocalsMidiTextEvent MidiTextEvent);                                             // [0xa3f1c2c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetVocalsMidiTextStringFromEnum(EVocalsMidiTextEvent MidiTextEvent);                                             // [0xb14fc5c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiTextEnumsFromStrings
-	// TArray<EVocalsMidiTextEvent> GetVocalsMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                   // [0xa3f1b78] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EVocalsMidiTextEvent> GetVocalsMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                   // [0xb14fba8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiTextEnumFromString
-	// EVocalsMidiTextEvent GetVocalsMidiTextEnumFromString(FString MidiTextEventString);                                       // [0xa3f1a1c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EVocalsMidiTextEvent GetVocalsMidiTextEnumFromString(FString MidiTextEventString);                                       // [0xb14f540] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiNoteIntegersFromEnums
-	// TArray<char> GetVocalsMidiNoteIntegersFromEnums(TArray<EVocalsMidiNoteEvent>& MidiNoteEvents);                           // [0xa3f1894] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetVocalsMidiNoteIntegersFromEnums(TArray<EVocalsMidiNoteEvent>& MidiNoteEvents);                           // [0xb14ef0c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiNoteIntegerFromEnum
-	// char GetVocalsMidiNoteIntegerFromEnum(EVocalsMidiNoteEvent MidiNoteEvent);                                               // [0xa3f180c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// char GetVocalsMidiNoteIntegerFromEnum(EVocalsMidiNoteEvent MidiNoteEvent);                                               // [0xb14ee44] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiNoteEnumsFromIntegers
-	// TArray<EVocalsMidiNoteEvent> GetVocalsMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                        // [0xa3f1688] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EVocalsMidiNoteEvent> GetVocalsMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                        // [0xb14e814] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetVocalsMidiNoteEnumFromInteger
-	// EVocalsMidiNoteEvent GetVocalsMidiNoteEnumFromInteger(char MidiNoteEventInt);                                            // [0xa3f1600] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EVocalsMidiNoteEvent GetVocalsMidiNoteEnumFromInteger(char MidiNoteEventInt);                                            // [0xb14e74c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetInstrumentTypeFromSwapString
-	// ESparksInstrumentType GetInstrumentTypeFromSwapString(FString InstrumentSwapString);                                     // [0xa3f1430] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// ESparksInstrumentType GetInstrumentTypeFromSwapString(FString InstrumentSwapString);                                     // [0xb14e0e4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetInstrumentSwapStringFromType
-	// FString GetInstrumentSwapStringFromType(ESparksInstrumentType InstrumentType);                                           // [0xa3f13a8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetInstrumentSwapStringFromType(ESparksInstrumentType InstrumentType);                                           // [0xb14e01c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiTextStringsFromEnums
-	// TArray<FString> GetGuitarMidiTextStringsFromEnums(TArray<EGuitarMidiTextEvent>& MidiTextEvents);                         // [0xa3f1224] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetGuitarMidiTextStringsFromEnums(TArray<EGuitarMidiTextEvent>& MidiTextEvents);                         // [0xb14d9ec] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiTextStringFromEnum
-	// FString GetGuitarMidiTextStringFromEnum(EGuitarMidiTextEvent MidiTextEvent);                                             // [0xa3f1188] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetGuitarMidiTextStringFromEnum(EGuitarMidiTextEvent MidiTextEvent);                                             // [0xb14d90c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiTextEnumsFromStrings
-	// TArray<EGuitarMidiTextEvent> GetGuitarMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                   // [0xa3f10d4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EGuitarMidiTextEvent> GetGuitarMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                   // [0xb14d858] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiTextEnumFromString
-	// EGuitarMidiTextEvent GetGuitarMidiTextEnumFromString(FString MidiTextEventString);                                       // [0xa3f0f78] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EGuitarMidiTextEvent GetGuitarMidiTextEnumFromString(FString MidiTextEventString);                                       // [0xb14d1f0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiNoteIntegersFromEnums
-	// TArray<char> GetGuitarMidiNoteIntegersFromEnums(TArray<EGuitarMidiNoteEvent>& MidiNoteEvents);                           // [0xa3f0df0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetGuitarMidiNoteIntegersFromEnums(TArray<EGuitarMidiNoteEvent>& MidiNoteEvents);                           // [0xb14cbbc] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiNoteIntegerFromEnum
-	// char GetGuitarMidiNoteIntegerFromEnum(EGuitarMidiNoteEvent MidiNoteEvent);                                               // [0xa3f0d68] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// char GetGuitarMidiNoteIntegerFromEnum(EGuitarMidiNoteEvent MidiNoteEvent);                                               // [0xb14caf4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiNoteEnumsFromIntegers
-	// TArray<EGuitarMidiNoteEvent> GetGuitarMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                        // [0xa3f0be4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EGuitarMidiNoteEvent> GetGuitarMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                        // [0xb14c4c4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetGuitarMidiNoteEnumFromInteger
-	// EGuitarMidiNoteEvent GetGuitarMidiNoteEnumFromInteger(char MidiNoteEventInt);                                            // [0xa3f0b5c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EGuitarMidiNoteEvent GetGuitarMidiNoteEnumFromInteger(char MidiNoteEventInt);                                            // [0xb14c3fc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiTextStringsFromEnums
-	// TArray<FString> GetDrumMidiTextStringsFromEnums(TArray<EDrumMidiTextEvent>& MidiTextEvents);                             // [0xa3f09d8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetDrumMidiTextStringsFromEnums(TArray<EDrumMidiTextEvent>& MidiTextEvents);                             // [0xb14bdcc] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiTextStringFromEnum
-	// FString GetDrumMidiTextStringFromEnum(EDrumMidiTextEvent MidiTextEvent);                                                 // [0xa3f093c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetDrumMidiTextStringFromEnum(EDrumMidiTextEvent MidiTextEvent);                                                 // [0xb14bcec] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiTextEnumsFromStrings
-	// TArray<EDrumMidiTextEvent> GetDrumMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                       // [0xa3f0888] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EDrumMidiTextEvent> GetDrumMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                       // [0xb14bc38] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiTextEnumFromString
-	// EDrumMidiTextEvent GetDrumMidiTextEnumFromString(FString MidiTextEventString);                                           // [0xa3f072c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EDrumMidiTextEvent GetDrumMidiTextEnumFromString(FString MidiTextEventString);                                           // [0xb14b5d0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiNoteIntegersFromEnums
-	// TArray<char> GetDrumMidiNoteIntegersFromEnums(TArray<EDrumMidiNoteEvent>& MidiNoteEvents);                               // [0xa3f05a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetDrumMidiNoteIntegersFromEnums(TArray<EDrumMidiNoteEvent>& MidiNoteEvents);                               // [0xb14af9c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiNoteIntegerFromEnum
-	// char GetDrumMidiNoteIntegerFromEnum(EDrumMidiNoteEvent MidiNoteEvent);                                                   // [0xa3f051c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// char GetDrumMidiNoteIntegerFromEnum(EDrumMidiNoteEvent MidiNoteEvent);                                                   // [0xb14aed4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiNoteEnumsFromIntegers
-	// TArray<EDrumMidiNoteEvent> GetDrumMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                            // [0xa3f0398] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EDrumMidiNoteEvent> GetDrumMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                            // [0xb14a8a4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetDrumMidiNoteEnumFromInteger
-	// EDrumMidiNoteEvent GetDrumMidiNoteEnumFromInteger(char MidiNoteEventInt);                                                // [0xa3f0310] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EDrumMidiNoteEvent GetDrumMidiNoteEnumFromInteger(char MidiNoteEventInt);                                                // [0xb14a7dc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiTextStringsFromEnums
-	// TArray<FString> GetBassMidiTextStringsFromEnums(TArray<EBassMidiTextEvent>& MidiTextEvents);                             // [0xa3f018c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetBassMidiTextStringsFromEnums(TArray<EBassMidiTextEvent>& MidiTextEvents);                             // [0xb14a1ac] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiTextStringFromEnum
-	// FString GetBassMidiTextStringFromEnum(EBassMidiTextEvent MidiTextEvent);                                                 // [0xa3f00f0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetBassMidiTextStringFromEnum(EBassMidiTextEvent MidiTextEvent);                                                 // [0xb14a0cc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiTextEnumsFromStrings
-	// TArray<EBassMidiTextEvent> GetBassMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                       // [0xa3f003c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EBassMidiTextEvent> GetBassMidiTextEnumsFromStrings(TArray<FString>& MidiTextEventStrings);                       // [0xb14a018] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiTextEnumFromString
-	// EBassMidiTextEvent GetBassMidiTextEnumFromString(FString MidiTextEventString);                                           // [0xa3efee0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EBassMidiTextEvent GetBassMidiTextEnumFromString(FString MidiTextEventString);                                           // [0xb1499b0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiNoteIntegersFromEnums
-	// TArray<char> GetBassMidiNoteIntegersFromEnums(TArray<EBassMidiNoteEvent>& MidiNoteEvents);                               // [0xa3efd58] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetBassMidiNoteIntegersFromEnums(TArray<EBassMidiNoteEvent>& MidiNoteEvents);                               // [0xb14937c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiNoteIntegerFromEnum
-	// char GetBassMidiNoteIntegerFromEnum(EBassMidiNoteEvent MidiNoteEvent);                                                   // [0xa3efcd0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// char GetBassMidiNoteIntegerFromEnum(EBassMidiNoteEvent MidiNoteEvent);                                                   // [0xb1492b4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiNoteEnumsFromIntegers
-	// TArray<EBassMidiNoteEvent> GetBassMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                            // [0xa3efb4c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// TArray<EBassMidiNoteEvent> GetBassMidiNoteEnumsFromIntegers(TArray<char>& MidiNoteEventInts);                            // [0xb148c84] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetBassMidiNoteEnumFromInteger
-	// EBassMidiNoteEvent GetBassMidiNoteEnumFromInteger(char MidiNoteEventInt);                                                // [0xa3efac4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// EBassMidiNoteEvent GetBassMidiNoteEnumFromInteger(char MidiNoteEventInt);                                                // [0xb148bbc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllVocalsMidiTextStrings
-	// TArray<FString> GetAllVocalsMidiTextStrings();                                                                           // [0xa3efa58] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetAllVocalsMidiTextStrings();                                                                           // [0xb148b50] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllVocalsMidiTextEnums
-	// TArray<EVocalsMidiTextEvent> GetAllVocalsMidiTextEnums();                                                                // [0xa3ef90c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EVocalsMidiTextEvent> GetAllVocalsMidiTextEnums();                                                                // [0xb14855c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllVocalsMidiNoteIntegers
-	// TArray<char> GetAllVocalsMidiNoteIntegers();                                                                             // [0xa3ef898] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetAllVocalsMidiNoteIntegers();                                                                             // [0xb1484e8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllVocalsMidiNoteEnums
-	// TArray<EVocalsMidiNoteEvent> GetAllVocalsMidiNoteEnums();                                                                // [0xa3ef74c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EVocalsMidiNoteEvent> GetAllVocalsMidiNoteEnums();                                                                // [0xb147ef4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllInstrumentSwapEventStrings
-	// TArray<FString> GetAllInstrumentSwapEventStrings();                                                                      // [0xa3ef720] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetAllInstrumentSwapEventStrings();                                                                      // [0xb147ec8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllGuitarMidiTextStrings
-	// TArray<FString> GetAllGuitarMidiTextStrings();                                                                           // [0xa3ef6b4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetAllGuitarMidiTextStrings();                                                                           // [0xb147e5c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllGuitarMidiTextEnums
-	// TArray<EGuitarMidiTextEvent> GetAllGuitarMidiTextEnums();                                                                // [0xa3ef568] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EGuitarMidiTextEvent> GetAllGuitarMidiTextEnums();                                                                // [0xb147868] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllGuitarMidiNoteIntegers
-	// TArray<char> GetAllGuitarMidiNoteIntegers();                                                                             // [0xa3ef4f4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetAllGuitarMidiNoteIntegers();                                                                             // [0xb1477f4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllGuitarMidiNoteEnums
-	// TArray<EGuitarMidiNoteEvent> GetAllGuitarMidiNoteEnums();                                                                // [0xa3ef3a8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EGuitarMidiNoteEvent> GetAllGuitarMidiNoteEnums();                                                                // [0xb147200] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllDrumMidiTextStrings
-	// TArray<FString> GetAllDrumMidiTextStrings();                                                                             // [0xa3ef33c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetAllDrumMidiTextStrings();                                                                             // [0xb147194] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllDrumMidiTextEnums
-	// TArray<EDrumMidiTextEvent> GetAllDrumMidiTextEnums();                                                                    // [0xa3ef1f0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EDrumMidiTextEvent> GetAllDrumMidiTextEnums();                                                                    // [0xb146ba0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllDrumMidiNoteIntegers
-	// TArray<char> GetAllDrumMidiNoteIntegers();                                                                               // [0xa3ef17c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetAllDrumMidiNoteIntegers();                                                                               // [0xb146b2c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllDrumMidiNoteEnums
-	// TArray<EDrumMidiNoteEvent> GetAllDrumMidiNoteEnums();                                                                    // [0xa3ef030] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EDrumMidiNoteEvent> GetAllDrumMidiNoteEnums();                                                                    // [0xb146538] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllBassMidiTextStrings
-	// TArray<FString> GetAllBassMidiTextStrings();                                                                             // [0xa3eefc4] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<FString> GetAllBassMidiTextStrings();                                                                             // [0xb1464cc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllBassMidiTextEnums
-	// TArray<EBassMidiTextEvent> GetAllBassMidiTextEnums();                                                                    // [0xa3eee78] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EBassMidiTextEvent> GetAllBassMidiTextEnums();                                                                    // [0xb145ed8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllBassMidiNoteIntegers
-	// TArray<char> GetAllBassMidiNoteIntegers();                                                                               // [0xa3eee04] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<char> GetAllBassMidiNoteIntegers();                                                                               // [0xb145e64] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.GetAllBassMidiNoteEnums
-	// TArray<EBassMidiNoteEvent> GetAllBassMidiNoteEnums();                                                                    // [0xa3eecb8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// TArray<EBassMidiNoteEvent> GetAllBassMidiNoteEnums();                                                                    // [0xb145870] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SparksCoreRuntime.SparksCore_BPFL.CosmeticSubtypeToInstrumentType
-	// ESparksInstrumentType CosmeticSubtypeToInstrumentType(ESparksAccountItemSubtype Subtype);                                // [0xa3eec10] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// ESparksInstrumentType CosmeticSubtypeToInstrumentType(ESparksAccountItemSubtype Subtype);                                // [0xb145788] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/SparksCoreRuntime.SparksDrumEventsInterface
@@ -160,35 +139,35 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Tom2_Hit
-	// void Bind_Tom2_Hit(FDelegateProperty& Callback);                                                                         // [0x820fbec] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Tom2_Hit(FDelegateProperty& Callback);                                                                         // [0x86b6eec] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Tom1_Hit
-	// void Bind_Tom1_Hit(FDelegateProperty& Callback);                                                                         // [0x820f6a4] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Tom1_Hit(FDelegateProperty& Callback);                                                                         // [0x86b68e8] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_SnareHit
-	// void Bind_SnareHit(FDelegateProperty& Callback);                                                                         // [0xa3eeb6c] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_SnareHit(FDelegateProperty& Callback);                                                                         // [0xb1456e4] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_RideHardHit
-	// void Bind_RideHardHit(FDelegateProperty& Callback);                                                                      // [0x820fb48] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_RideHardHit(FDelegateProperty& Callback);                                                                      // [0x86b6e48] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_KickHit
-	// void Bind_KickHit(FDelegateProperty& Callback);                                                                          // [0x99bde6c] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_KickHit(FDelegateProperty& Callback);                                                                          // [0xa49ad84] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_HiHatPedalUp
-	// void Bind_HiHatPedalUp(FDelegateProperty& Callback);                                                                     // [0xa3eeac8] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_HiHatPedalUp(FDelegateProperty& Callback);                                                                     // [0xb145640] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_HiHatHit
-	// void Bind_HiHatHit(FDelegateProperty& Callback);                                                                         // [0xa3eea24] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_HiHatHit(FDelegateProperty& Callback);                                                                         // [0xb14559c] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_FloorTomHit
-	// void Bind_FloorTomHit(FDelegateProperty& Callback);                                                                      // [0x820f748] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_FloorTomHit(FDelegateProperty& Callback);                                                                      // [0x86b698c] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash2_SoftHit
-	// void Bind_Crash2_SoftHit(FDelegateProperty& Callback);                                                                   // [0x8222abc] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash2_SoftHit(FDelegateProperty& Callback);                                                                   // [0x86d3b98] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash2_HardHit
-	// void Bind_Crash2_HardHit(FDelegateProperty& Callback);                                                                   // [0x8223314] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash2_HardHit(FDelegateProperty& Callback);                                                                   // [0x86d4a90] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash2_Choke
-	// void Bind_Crash2_Choke(FDelegateProperty& Callback);                                                                     // [0xa3ee980] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash2_Choke(FDelegateProperty& Callback);                                                                     // [0xb1454f8] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash1_SoftHit
-	// void Bind_Crash1_SoftHit(FDelegateProperty& Callback);                                                                   // [0x82231cc] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash1_SoftHit(FDelegateProperty& Callback);                                                                   // [0x86d4948] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash1_HardHit
-	// void Bind_Crash1_HardHit(FDelegateProperty& Callback);                                                                   // [0x8222a18] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash1_HardHit(FDelegateProperty& Callback);                                                                   // [0x86d3af4] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_Crash1_Choke
-	// void Bind_Crash1_Choke(FDelegateProperty& Callback);                                                                     // [0x8222974] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_Crash1_Choke(FDelegateProperty& Callback);                                                                     // [0x86d3a50] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Script/SparksCoreRuntime.SparksDrumEventsInterface.Bind_CowbellHit
-	// void Bind_CowbellHit(FDelegateProperty& Callback);                                                                       // [0x8223270] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Bind_CowbellHit(FDelegateProperty& Callback);                                                                       // [0x86d49ec] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/SparksCoreRuntime.SparksGameUserSettings
@@ -199,28 +178,6 @@ class USparksGameUserSettings : public UObject
 	static inline constexpr uint64_t __MDKClassSize = 40;
 
 public:
-};
-
-/// Class /Script/SparksCoreRuntime.SparksSettingsControllerComponent
-/// Size: 0x0018 (0x0000A0 - 0x0000B8)
-class USparksSettingsControllerComponent : public UControllerComponent
-{ 
-	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 184;
-
-public:
-	CMember(class USparksGameUserSettings*)            SparksGameUserSettings                                      OFFSET(get<T>, {0xA0, 8, 0, 0})
-	CMember(class USoundControlBusMix*)                SparksMix                                                   OFFSET(get<T>, {0xA8, 8, 0, 0})
-	CMember(class USoundControlBus*)                   SparksBus                                                   OFFSET(get<T>, {0xB0, 8, 0, 0})
-
-
-	/// Functions
-	// Function /Script/SparksCoreRuntime.SparksSettingsControllerComponent.UpdateSparksMixFromPartition
-	// void UpdateSparksMixFromPartition();                                                                                     // [0xa3f1f50] Final|Native|Public|Const 
-	// Function /Script/SparksCoreRuntime.SparksSettingsControllerComponent.GetSparksGameUserSettings
-	// class USparksGameUserSettings* GetSparksGameUserSettings();                                                              // [0xa3f15b0] Final|Native|Public  
-	// Function /Script/SparksCoreRuntime.SparksSettingsControllerComponent.GetSparksClientSettingRecordPartition
-	// class USparksClientSettingRecordPartition* GetSparksClientSettingRecordPartition();                                      // [0xa3f158c] Final|Native|Public|Const 
 };
 
 /// Enum /Script/SparksCoreRuntime.ESparksInstrumentType

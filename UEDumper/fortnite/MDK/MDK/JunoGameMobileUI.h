@@ -26,7 +26,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoGameMobileUI.FortMobileButtonBehaviorComponent_OffhandVisuals.HandleInventoryItemChanged
-	// void HandleInventoryItemChanged(FJunoItemSlot& ItemSlot, EJunoItemChangeType ChangeType);                                // [0xb56b5d0] Final|Native|Private|HasOutParms 
+	// void HandleInventoryItemChanged(FJunoItemSlot& ItemSlot, EJunoItemChangeType ChangeType);                                // [0xc6bdf9c] Final|Native|Private|HasOutParms 
 };
 
 /// Class /Script/JunoGameMobileUI.JunoMobileActionButtonBehavior_Interact
@@ -56,8 +56,8 @@ public:
 
 	/// Functions
 	// Function /Script/JunoGameMobileUI.JunoGameDynamicMobileUIDirector.UpdateHUDLayoutContexts
-	// void UpdateHUDLayoutContexts(FGameplayTagContainer ContextsToAdd, FGameplayTagContainer ContextsToRemove);               // [0xb56b7a0] Final|Native|Public|BlueprintCallable 
+	// void UpdateHUDLayoutContexts(FGameplayTagContainer ContextsToAdd, FGameplayTagContainer ContextsToRemove);               // [0xc6be168] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoGameMobileUI.JunoGameDynamicMobileUIDirector.BP_OnBuildingModeChanged
-	// void BP_OnBuildingModeChanged(FJunoEvent_BuildingModeChanged& Event);                                                    // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void BP_OnBuildingModeChanged(FJunoEvent_BuildingModeChanged& Event);                                                    // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 };
 

@@ -23,71 +23,71 @@ public:
 
 	/// Functions
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.RemoveGameplayTag
-	// bool RemoveGameplayTag(FGameplayTagContainer& TagContainer, FGameplayTag tag);                                           // [0x66ad608] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool RemoveGameplayTag(FGameplayTagContainer& TagContainer, FGameplayTag tag);                                           // [0x668970c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.NotEqual_TagTag
-	// bool NotEqual_TagTag(FGameplayTag A, FString B);                                                                         // [0x2dbf514] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_TagTag(FGameplayTag A, FString B);                                                                         // [0x21ea81c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.NotEqual_TagContainerTagContainer
-	// bool NotEqual_TagContainerTagContainer(FGameplayTagContainer A, FString B);                                              // [0x66ad3a4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_TagContainerTagContainer(FGameplayTagContainer A, FString B);                                              // [0x6689010] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.NotEqual_GameplayTagContainer
-	// bool NotEqual_GameplayTagContainer(FGameplayTagContainer& A, FGameplayTagContainer& B);                                  // [0x66ad264] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_GameplayTagContainer(FGameplayTagContainer& A, FGameplayTagContainer& B);                                  // [0x6688ed0] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.NotEqual_GameplayTag
-	// bool NotEqual_GameplayTag(FGameplayTag A, FGameplayTag B);                                                               // [0x3997784] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool NotEqual_GameplayTag(FGameplayTag A, FGameplayTag B);                                                               // [0x3929990] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MatchesTag
-	// bool MatchesTag(FGameplayTag TagOne, FGameplayTag TagTwo, bool bExactMatch);                                             // [0x2bd4208] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool MatchesTag(FGameplayTag TagOne, FGameplayTag TagTwo, bool bExactMatch);                                             // [0x2b4f7a4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MatchesAnyTags
-	// bool MatchesAnyTags(FGameplayTag TagOne, FGameplayTagContainer& OtherContainer, bool bExactMatch);                       // [0x32a1aec] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool MatchesAnyTags(FGameplayTag TagOne, FGameplayTagContainer& OtherContainer, bool bExactMatch);                       // [0x1ee2f98] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeLiteralGameplayTagContainer
-	// FGameplayTagContainer MakeLiteralGameplayTagContainer(FGameplayTagContainer Value);                                      // [0x37812e4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FGameplayTagContainer MakeLiteralGameplayTagContainer(FGameplayTagContainer Value);                                      // [0x35d1974] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeLiteralGameplayTag
-	// FGameplayTag MakeLiteralGameplayTag(FGameplayTag Value);                                                                 // [0x34c522c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FGameplayTag MakeLiteralGameplayTag(FGameplayTag Value);                                                                 // [0x3357cf0] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchNoTags
-	// FGameplayTagQuery MakeGameplayTagQuery_MatchNoTags(FGameplayTagContainer& InTags);                                       // [0x66ad184] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FGameplayTagQuery MakeGameplayTagQuery_MatchNoTags(FGameplayTagContainer& InTags);                                       // [0x6688df0] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchAnyTags
-	// FGameplayTagQuery MakeGameplayTagQuery_MatchAnyTags(FGameplayTagContainer& InTags);                                      // [0x66ad0a4] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FGameplayTagQuery MakeGameplayTagQuery_MatchAnyTags(FGameplayTagContainer& InTags);                                      // [0x6688d10] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchAllTags
-	// FGameplayTagQuery MakeGameplayTagQuery_MatchAllTags(FGameplayTagContainer& InTags);                                      // [0x66acfc4] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FGameplayTagQuery MakeGameplayTagQuery_MatchAllTags(FGameplayTagContainer& InTags);                                      // [0x6688c30] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery
-	// FGameplayTagQuery MakeGameplayTagQuery(FGameplayTagQuery TagQuery);                                                      // [0x3d60e94] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FGameplayTagQuery MakeGameplayTagQuery(FGameplayTagQuery TagQuery);                                                      // [0x6688b04] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagContainerFromTag
-	// FGameplayTagContainer MakeGameplayTagContainerFromTag(FGameplayTag SingleTag);                                           // [0x1dff7f8] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FGameplayTagContainer MakeGameplayTagContainerFromTag(FGameplayTag SingleTag);                                           // [0x26288c4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagContainerFromArray
-	// FGameplayTagContainer MakeGameplayTagContainerFromArray(TArray<FGameplayTag>& GameplayTags);                             // [0x66acf0c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FGameplayTagContainer MakeGameplayTagContainerFromArray(TArray<FGameplayTag>& GameplayTags);                             // [0x6688a4c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.IsTagQueryEmpty
-	// bool IsTagQueryEmpty(FGameplayTagQuery& TagQuery);                                                                       // [0x66ace4c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool IsTagQueryEmpty(FGameplayTagQuery& TagQuery);                                                                       // [0x668898c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.IsGameplayTagValid
-	// bool IsGameplayTagValid(FGameplayTag GameplayTag);                                                                       // [0x33a012c] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool IsGameplayTagValid(FGameplayTag GameplayTag);                                                                       // [0x30c4cf8] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.HasTag
-	// bool HasTag(FGameplayTagContainer& TagContainer, FGameplayTag tag, bool bExactMatch);                                    // [0x1ebf5b8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool HasTag(FGameplayTagContainer& TagContainer, FGameplayTag tag, bool bExactMatch);                                    // [0x1ee4e08] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.HasAnyTags
-	// bool HasAnyTags(FGameplayTagContainer& TagContainer, FGameplayTagContainer& OtherContainer, bool bExactMatch);           // [0x33f114c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool HasAnyTags(FGameplayTagContainer& TagContainer, FGameplayTagContainer& OtherContainer, bool bExactMatch);           // [0x3296cac] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.HasAllTags
-	// bool HasAllTags(FGameplayTagContainer& TagContainer, FGameplayTagContainer& OtherContainer, bool bExactMatch);           // [0x28210ec] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool HasAllTags(FGameplayTagContainer& TagContainer, FGameplayTagContainer& OtherContainer, bool bExactMatch);           // [0x35837a4] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.HasAllMatchingGameplayTags
-	// bool HasAllMatchingGameplayTags(TScriptInterface<Class> TagContainerInterface, FGameplayTagContainer& OtherContainer);   // [0x66acc74] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool HasAllMatchingGameplayTags(TScriptInterface<Class> TagContainerInterface, FGameplayTagContainer& OtherContainer);   // [0x6688824] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.GetTagName
-	// FName GetTagName(FGameplayTag& GameplayTag);                                                                             // [0x66acae8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FName GetTagName(FGameplayTag& GameplayTag);                                                                             // [0x1ee31a8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.GetNumGameplayTagsInContainer
-	// int32_t GetNumGameplayTagsInContainer(FGameplayTagContainer& TagContainer);                                              // [0x35ce494] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// int32_t GetNumGameplayTagsInContainer(FGameplayTagContainer& TagContainer);                                              // [0x338938c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.GetDebugStringFromGameplayTagContainer
-	// FString GetDebugStringFromGameplayTagContainer(FGameplayTagContainer& TagContainer);                                     // [0x66ac924] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FString GetDebugStringFromGameplayTagContainer(FGameplayTagContainer& TagContainer);                                     // [0x6687be8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.GetDebugStringFromGameplayTag
-	// FString GetDebugStringFromGameplayTag(FGameplayTag GameplayTag);                                                         // [0x66ac4f4] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FString GetDebugStringFromGameplayTag(FGameplayTag GameplayTag);                                                         // [0x6687b08] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.GetAllActorsOfClassMatchingTagQuery
-	// void GetAllActorsOfClassMatchingTagQuery(class UObject* WorldContextObject, class UClass* ActorClass, FGameplayTagQuery& GameplayTagQuery, TArray<AActor*>& OutActors); // [0x66ac2f8] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GetAllActorsOfClassMatchingTagQuery(class UObject* WorldContextObject, class UClass* ActorClass, FGameplayTagQuery& GameplayTagQuery, TArray<AActor*>& OutActors); // [0x668789c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.EqualEqual_GameplayTagContainer
-	// bool EqualEqual_GameplayTagContainer(FGameplayTagContainer& A, FGameplayTagContainer& B);                                // [0x36fb56c] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool EqualEqual_GameplayTagContainer(FGameplayTagContainer& A, FGameplayTagContainer& B);                                // [0x3491060] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.EqualEqual_GameplayTag
-	// bool EqualEqual_GameplayTag(FGameplayTag A, FGameplayTag B);                                                             // [0x3234578] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool EqualEqual_GameplayTag(FGameplayTag A, FGameplayTag B);                                                             // [0x302a000] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.DoesTagAssetInterfaceHaveTag
-	// bool DoesTagAssetInterfaceHaveTag(TScriptInterface<Class> TagContainerInterface, FGameplayTag tag);                      // [0x66ac0d8] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool DoesTagAssetInterfaceHaveTag(TScriptInterface<Class> TagContainerInterface, FGameplayTag tag);                      // [0x6687738] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.DoesContainerMatchTagQuery
-	// bool DoesContainerMatchTagQuery(FGameplayTagContainer& TagContainer, FGameplayTagQuery& TagQuery);                       // [0x66abf90] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// bool DoesContainerMatchTagQuery(FGameplayTagContainer& TagContainer, FGameplayTagQuery& TagQuery);                       // [0x66875f0] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.BreakGameplayTagContainer
-	// void BreakGameplayTagContainer(FGameplayTagContainer& GameplayTagContainer, TArray<FGameplayTag>& GameplayTags);         // [0x2183380] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void BreakGameplayTagContainer(FGameplayTagContainer& GameplayTagContainer, TArray<FGameplayTag>& GameplayTags);         // [0x286e458] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.AppendGameplayTagContainers
-	// void AppendGameplayTagContainers(FGameplayTagContainer& InOutTagContainer, FGameplayTagContainer& InTagContainer);       // [0x66abe60] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void AppendGameplayTagContainers(FGameplayTagContainer& InOutTagContainer, FGameplayTagContainer& InTagContainer);       // [0x66874c0] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GameplayTags.BlueprintGameplayTagLibrary.AddGameplayTag
-	// void AddGameplayTag(FGameplayTagContainer& TagContainer, FGameplayTag tag);                                              // [0x66abcbc] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void AddGameplayTag(FGameplayTagContainer& TagContainer, FGameplayTag tag);                                              // [0x38a92f4] Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/GameplayTags.GameplayTagAssetInterface
@@ -102,13 +102,13 @@ public:
 
 	/// Functions
 	// Function /Script/GameplayTags.GameplayTagAssetInterface.HasMatchingGameplayTag
-	// bool HasMatchingGameplayTag(FGameplayTag TagToCheck);                                                                    // [0x2b45fe0] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasMatchingGameplayTag(FGameplayTag TagToCheck);                                                                    // [0x2b40550] RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/GameplayTags.GameplayTagAssetInterface.HasAnyMatchingGameplayTags
-	// bool HasAnyMatchingGameplayTags(FGameplayTagContainer& TagContainer);                                                    // [0x1ebf4ec] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool HasAnyMatchingGameplayTags(FGameplayTagContainer& TagContainer);                                                    // [0x1ee3270] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/GameplayTags.GameplayTagAssetInterface.HasAllMatchingGameplayTags
-	// bool HasAllMatchingGameplayTags(FGameplayTagContainer& TagContainer);                                                    // [0x66acbac] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool HasAllMatchingGameplayTags(FGameplayTagContainer& TagContainer);                                                    // [0x668875c] RequiredAPI|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/GameplayTags.GameplayTagAssetInterface.GetOwnedGameplayTags
-	// void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer);                                                          // [0x2bbadd4] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer);                                                          // [0x2a92218] Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/GameplayTags.EditableGameplayTagQuery
@@ -201,15 +201,15 @@ public:
 };
 
 /// Class /Script/GameplayTags.GameplayTagsManager
-/// Size: 0x0270 (0x000028 - 0x000298)
+/// Size: 0x0278 (0x000028 - 0x0002A0)
 class UGameplayTagsManager : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 664;
+	static inline constexpr uint64_t __MDKClassSize = 672;
 
 public:
 	CMember(TMap<FName, FGameplayTagSource>)           TagSources                                                  OFFSET(get<T>, {0x188, 80, 0, 0})
-	CMember(TArray<class UDataTable*>)                 GameplayTagTables                                           OFFSET(get<T>, {0x288, 16, 0, 0})
+	CMember(TArray<class UDataTable*>)                 GameplayTagTables                                           OFFSET(get<T>, {0x290, 16, 0, 0})
 };
 
 /// Class /Script/GameplayTags.GameplayTagsList

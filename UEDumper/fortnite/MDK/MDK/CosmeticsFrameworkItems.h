@@ -22,11 +22,11 @@ public:
 
 	/// Functions
 	// Function /Script/CosmeticsFrameworkItems.CosmeticDataComponent.ResetProperties
-	// void ResetProperties();                                                                                                  // [0x72302e4] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ResetProperties();                                                                                                  // [0x750945c] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/CosmeticsFrameworkItems.CosmeticDataComponent.BP_FindProperty
-	// bool BP_FindProperty(FGameplayTag SlotTag, FGameplayTag PropertyTag, FCosmeticPropertyBase& OutProperty);                // [0x722ff9c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool BP_FindProperty(FGameplayTag SlotTag, FGameplayTag PropertyTag, FCosmeticPropertyBase& OutProperty);                // [0x750923c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/CosmeticsFrameworkItems.CosmeticDataComponent.BP_AddOrOverrideProperty
-	// bool BP_AddOrOverrideProperty(FGameplayTag SlotTag, FCosmeticPropertyBase& Property);                                    // [0x722fd48] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool BP_AddOrOverrideProperty(FGameplayTag SlotTag, FCosmeticPropertyBase& Property);                                    // [0x75090b0] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/CosmeticsFrameworkItems.CosmeticPropertyBase

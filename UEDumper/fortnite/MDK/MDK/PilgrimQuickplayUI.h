@@ -13,6 +13,7 @@
 /// dependency: FortniteGame
 /// dependency: FortniteUI
 /// dependency: PilgrimCoreRuntime
+/// dependency: SparksCoreUI
 /// dependency: UMG
 
 /// Class /Script/PilgrimQuickplayUI.FestivalPassTrackingWidget
@@ -29,24 +30,19 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.FestivalPassTrackingWidget.OnProgressUpdated
-	// void OnProgressUpdated();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnProgressUpdated();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/PilgrimQuickplayUI.FestivalPassTrackingWidget.HandleMCPInventoryChanged
-	// void HandleMCPInventoryChanged(TSet<FString>& ItemChangeFlags, int64_t ProfileRevision);                                 // [0xa812658] Final|Native|Protected|HasOutParms 
+	// void HandleMCPInventoryChanged(TSet<FString>& ItemChangeFlags, int64_t ProfileRevision);                                 // [0xb601370] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimDynamicUIDirector
-/// Size: 0x0028 (0x0002B0 - 0x0002D8)
-class APilgrimDynamicUIDirector : public ADynamicUIDirectorBase
+/// Size: 0x0000 (0x0002D8 - 0x0002D8)
+class APilgrimDynamicUIDirector : public ASparksDynamicUIDirector
 { 
 	friend MDKHandler;
 	static inline constexpr uint64_t __MDKClassSize = 728;
 
 public:
-
-
-	/// Functions
-	// Function /Script/PilgrimQuickplayUI.PilgrimDynamicUIDirector.HandleCursorModeChanging
-	// void HandleCursorModeChanging(bool bCursorModeEnabled, FName ActionName);                                                // [0xa812594] Final|Native|Protected 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimHUDBase
@@ -62,7 +58,7 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimHUDBase.HandlePickerOpenRequest
-	// void HandlePickerOpenRequest(EFortPickerMode Mode, int32_t InitialOption, bool bIgnoreFirstAccept);                      // [0xa812820] Final|Native|Private 
+	// void HandlePickerOpenRequest(EFortPickerMode Mode, int32_t InitialOption, bool bIgnoreFirstAccept);                      // [0xb601538] Final|Native|Private 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimPostGameQuestList
@@ -82,7 +78,7 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimPostGameQuestList.SetShowQuests
-	// void SetShowQuests(bool bNewShowCompleted, bool bNewShowUpdated, bool bNewShowUnchanged);                                // [0xa812c00] Final|Native|Private|BlueprintCallable 
+	// void SetShowQuests(bool bNewShowCompleted, bool bNewShowUpdated, bool bNewShowUnchanged);                                // [0xb6019ec] Final|Native|Private|BlueprintCallable 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimQuickplayInfoModal
@@ -102,7 +98,7 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplayInfoModal.BP_OnScrollCompleted
-	// void BP_OnScrollCompleted(bool bScrolledDown);                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnScrollCompleted(bool bScrolledDown);                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList
@@ -121,21 +117,21 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.UpdateSpotlightList
-	// void UpdateSpotlightList();                                                                                              // [0xa812d40] Final|Native|Public|BlueprintCallable 
+	// void UpdateSpotlightList();                                                                                              // [0xb601bec] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.SetSelectedIndex
-	// void SetSelectedIndex(int32_t NewSelectedIndex);                                                                         // [0xa812b64] Final|Native|Public|BlueprintCallable 
+	// void SetSelectedIndex(int32_t NewSelectedIndex);                                                                         // [0xb601910] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.SetMaxSpotlights
-	// void SetMaxSpotlights(int32_t NewMaxSpotlights);                                                                         // [0xa812ae0] Final|Native|Public|BlueprintCallable 
+	// void SetMaxSpotlights(int32_t NewMaxSpotlights);                                                                         // [0xb60184c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.SelectPrevIndex
-	// void SelectPrevIndex();                                                                                                  // [0xa812aa0] Final|Native|Public|BlueprintCallable 
+	// void SelectPrevIndex();                                                                                                  // [0xb60180c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.SelectNextIndex
-	// void SelectNextIndex();                                                                                                  // [0xa812a70] Final|Native|Public|BlueprintCallable 
+	// void SelectNextIndex();                                                                                                  // [0xb6017dc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.PopulateSpotlightCompetitionList
-	// void PopulateSpotlightCompetitionList();                                                                                 // [0xa812a5c] Final|Native|Public|BlueprintCallable 
+	// void PopulateSpotlightCompetitionList();                                                                                 // [0xb6017c8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.OnSpotlightListUpdated
-	// void OnSpotlightListUpdated();                                                                                           // [0x248ecf4] Native|Event|Protected|BlueprintEvent 
+	// void OnSpotlightListUpdated();                                                                                           // [0x313dce8] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightList.GetSelectedIndex
-	// int32_t GetSelectedIndex();                                                                                              // [0xa812560] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSelectedIndex();                                                                                              // [0xb60133c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimQuickplay_UIResultBase
@@ -166,7 +162,7 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuestNotificationEntry.InitializeQuestNotification
-	// void InitializeQuestNotification(TScriptInterface<Class> InQuest);                                                       // [0xa812918] Final|Native|Public|BlueprintCallable 
+	// void InitializeQuestNotification(TScriptInterface<Class> InQuest);                                                       // [0xb6016f4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightEntry
@@ -188,10 +184,10 @@ public:
 
 	/// Functions
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightEntry.SpotlightEntryUpdated
-	// void SpotlightEntryUpdated();                                                                                            // [0xa812d2c] Final|Native|Public|BlueprintCallable 
+	// void SpotlightEntryUpdated();                                                                                            // [0xb601bd8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightEntry.SetEmptySpotlight
-	// void SetEmptySpotlight();                                                                                                // [0xa812acc] Final|Native|Public|BlueprintCallable 
+	// void SetEmptySpotlight();                                                                                                // [0xb601838] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PilgrimQuickplayUI.PilgrimQuickplaySpotlightEntry.OnSpotlightInitialized
-	// void OnSpotlightInitialized();                                                                                           // [0x248ecf4] Native|Event|Public|BlueprintEvent 
+	// void OnSpotlightInitialized();                                                                                           // [0x313dce8] Native|Event|Public|BlueprintEvent 
 };
 

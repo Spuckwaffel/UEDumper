@@ -55,23 +55,24 @@ public:
 };
 
 /// Struct /Script/PBIK.PBIKSolverSettings
-/// Size: 0x003C (0x000000 - 0x00003C)
+/// Size: 0x0040 (0x000000 - 0x000040)
 class FPBIKSolverSettings : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 60;
+	static inline constexpr uint64_t __MDKClassSize = 64;
 
 public:
 	DMember(int32_t)                                   Iterations                                                  OFFSET(get<int32_t>, {0x0, 4, 0, 0})
-	DMember(float)                                     MassMultiplier                                              OFFSET(get<float>, {0x4, 4, 0, 0})
-	DMember(bool)                                      bAllowStretch                                               OFFSET(get<bool>, {0x8, 1, 0, 0})
-	CMember(EPBIKRootBehavior)                         RootBehavior                                                OFFSET(get<T>, {0x9, 1, 0, 0})
-	SMember(FRootPrePullSettings)                      PrePullRootSettings                                         OFFSET(getStruct<T>, {0xC, 32, 0, 0})
-	DMember(float)                                     GlobalPullChainAlpha                                        OFFSET(get<float>, {0x2C, 4, 0, 0})
-	DMember(float)                                     MaxAngle                                                    OFFSET(get<float>, {0x30, 4, 0, 0})
-	DMember(float)                                     OverRelaxation                                              OFFSET(get<float>, {0x34, 4, 0, 0})
-	DMember(bool)                                      bStartSolveFromInputPose                                    OFFSET(get<bool>, {0x38, 1, 0, 0})
+	DMember(int32_t)                                   SubIterations                                               OFFSET(get<int32_t>, {0x4, 4, 0, 0})
+	DMember(float)                                     MassMultiplier                                              OFFSET(get<float>, {0x8, 4, 0, 0})
+	DMember(bool)                                      bAllowStretch                                               OFFSET(get<bool>, {0xC, 1, 0, 0})
+	CMember(EPBIKRootBehavior)                         RootBehavior                                                OFFSET(get<T>, {0xD, 1, 0, 0})
+	SMember(FRootPrePullSettings)                      PrePullRootSettings                                         OFFSET(getStruct<T>, {0x10, 32, 0, 0})
+	DMember(float)                                     GlobalPullChainAlpha                                        OFFSET(get<float>, {0x30, 4, 0, 0})
+	DMember(float)                                     MaxAngle                                                    OFFSET(get<float>, {0x34, 4, 0, 0})
+	DMember(float)                                     OverRelaxation                                              OFFSET(get<float>, {0x38, 4, 0, 0})
+	DMember(bool)                                      bStartSolveFromInputPose                                    OFFSET(get<bool>, {0x3C, 1, 0, 0})
 };
 
 /// Struct /Script/PBIK.PBIKSolver
@@ -147,8 +148,8 @@ public:
 	CMember(TArray<int32_t>)                           EffectorSolverIndices                                       OFFSET(get<T>, {0x1E8, 16, 0, 0})
 	CMember(TArray<FPBIKBoneSetting>)                  BoneSettings                                                OFFSET(get<T>, {0x1F8, 16, 0, 0})
 	CMember(TArray<FName>)                             ExcludedBones                                               OFFSET(get<T>, {0x208, 16, 0, 0})
-	SMember(FPBIKSolverSettings)                       Settings                                                    OFFSET(getStruct<T>, {0x218, 60, 0, 0})
-	SMember(FPBIKDebug)                                Debug                                                       OFFSET(getStruct<T>, {0x254, 8, 0, 0})
+	SMember(FPBIKSolverSettings)                       Settings                                                    OFFSET(getStruct<T>, {0x218, 64, 0, 0})
+	SMember(FPBIKDebug)                                Debug                                                       OFFSET(getStruct<T>, {0x258, 8, 0, 0})
 	SMember(FPBIKWorkData)                             WorkData                                                    OFFSET(getStruct<T>, {0x260, 144, 0, 0})
 };
 

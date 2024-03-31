@@ -20,6 +20,6 @@ public:
 
 	/// Functions
 	// Function /Script/WarEffortRuntime.FundingManager.BroadcaseUpdatedFundsMessage
-	// void BroadcaseUpdatedFundsMessage(FItemFundingUpdatedFundingData& Payload);                                              // [0xa8b2cc0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void BroadcaseUpdatedFundsMessage(FItemFundingUpdatedFundingData& Payload);                                              // [0xb6d3f74] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 

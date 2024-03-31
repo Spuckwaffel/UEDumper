@@ -21,8 +21,8 @@ public:
 
 	/// Functions
 	// Function /Script/DelMarCore_Test.DelMarTestControllerTrackScrubber.ReceiveTrackScrubberCompletedProfiling
-	// void ReceiveTrackScrubberCompletedProfiling();                                                                           // [0xaff7df0] Final|Native|Protected 
+	// void ReceiveTrackScrubberCompletedProfiling();                                                                           // [0xc31cd9c] Final|Native|Protected 
 	// Function /Script/DelMarCore_Test.DelMarTestControllerTrackScrubber.ReceiveRaceBeginEvent
-	// void ReceiveRaceBeginEvent(FDelMarEvent_RaceActive& Event);                                                              // [0xaff7d70] Final|Native|Protected|HasOutParms 
+	// void ReceiveRaceBeginEvent(FDelMarEvent_RaceActive& Event);                                                              // [0xc31cd1c] Final|Native|Protected|HasOutParms 
 };
 

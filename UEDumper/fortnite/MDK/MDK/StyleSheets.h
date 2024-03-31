@@ -58,16 +58,28 @@ public:
 	CMember(TMap<FWidgetProperty, int32_t>)            WidgetPropertyTweens                                        OFFSET(get<T>, {0x28, 80, 0, 0})
 };
 
+/// Class /Script/StyleSheets.StyledWidgetTree
+/// Size: 0x00A8 (0x000028 - 0x0000D0)
+class UStyledWidgetTree : public UObject
+{ 
+	friend MDKHandler;
+	static inline constexpr uint64_t __MDKClassSize = 208;
+
+public:
+	CMember(TWeakObjectPtr<UStyleProvider*>)           StyleProvider                                               OFFSET(get<T>, {0x28, 8, 0, 0})
+};
+
 /// Class /Script/StyleSheets.StyleProvider
-/// Size: 0x00E8 (0x000028 - 0x000110)
+/// Size: 0x0040 (0x000028 - 0x000068)
 class UStyleProvider : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 272;
+	static inline constexpr uint64_t __MDKClassSize = 104;
 
 public:
 	CMember(TWeakObjectPtr<UStyleRuleTree*>)           StyleRuleTree                                               OFFSET(get<T>, {0x48, 8, 0, 0})
 	CMember(TWeakObjectPtr<UStyleAnimationProvider*>)  StyleAnimationProvider                                      OFFSET(get<T>, {0x50, 8, 0, 0})
+	CMember(class UStyledWidgetTree*)                  StyledWidgetTree                                            OFFSET(get<T>, {0x58, 8, 0, 0})
 };
 
 /// Class /Script/StyleSheets.StyleRule
@@ -176,7 +188,7 @@ public:
 
 	/// Functions
 	// Function /Script/StyleSheets.StylableWidget.BP_OnWidgetStyled
-	// void BP_OnWidgetStyled();                                                                                                // [0x18a39e4] RequiredAPI|Event|Protected|BlueprintEvent 
+	// void BP_OnWidgetStyled();                                                                                                // [0x186becc] RequiredAPI|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/StyleSheets.StyleSheetsSettings
@@ -262,16 +274,17 @@ public:
 };
 
 /// Struct /Script/StyleSheets.StyleRulePreviewInfo
-/// Size: 0x0018 (0x000000 - 0x000018)
+/// Size: 0x0028 (0x000000 - 0x000028)
 class FStyleRulePreviewInfo : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 24;
+	static inline constexpr uint64_t __MDKClassSize = 40;
 
 public:
-	CMember(class UClass*)                             PreviewWidgetClass                                          OFFSET(get<T>, {0x0, 8, 0, 0})
-	SMember(FInstancedPropertyBag)                     PreviewPropertyBag                                          OFFSET(getStruct<T>, {0x8, 16, 0, 0})
+	SMember(FString)                                   StyleDescription                                            OFFSET(getStruct<T>, {0x0, 16, 0, 0})
+	CMember(class UClass*)                             PreviewWidgetClass                                          OFFSET(get<T>, {0x10, 8, 0, 0})
+	SMember(FInstancedPropertyBag)                     PreviewPropertyBag                                          OFFSET(getStruct<T>, {0x18, 16, 0, 0})
 };
 
 /// Struct /Script/StyleSheets.StyleRuleEntry

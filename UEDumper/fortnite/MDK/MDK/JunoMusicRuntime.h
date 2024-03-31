@@ -34,11 +34,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.ActiveJunoMusicPlayer.OnDayNightPhaseChangeSignature
-	// void OnDayNightPhaseChangeSignature(EFortDayPhase CurrentDayPhaseIn, EFortDayPhase PreviousDayPhaseIn, bool bAtCreationIn); // [0xb4f3074] Final|Native|Public  
+	// void OnDayNightPhaseChangeSignature(EFortDayPhase CurrentDayPhaseIn, EFortDayPhase PreviousDayPhaseIn, bool bAtCreationIn); // [0xc618934] Final|Native|Public  
 	// Function /Script/JunoMusicRuntime.ActiveJunoMusicPlayer.OnActiveMusicPlayerCooldownFinished
-	// void OnActiveMusicPlayerCooldownFinished();                                                                              // [0xb4f305c] Final|Native|Public  
+	// void OnActiveMusicPlayerCooldownFinished();                                                                              // [0xc61891c] Final|Native|Public  
 	// Function /Script/JunoMusicRuntime.ActiveJunoMusicPlayer.OnActiveMusicElementControllerFinishedPlaying
-	// void OnActiveMusicElementControllerFinishedPlaying();                                                                    // [0xb4f3048] Final|Native|Public  
+	// void OnActiveMusicElementControllerFinishedPlaying();                                                                    // [0xc618908] Final|Native|Public  
 };
 
 /// Class /Script/JunoMusicRuntime.GameFeatureAction_BindJunoMusicManagerToPostWorldInit
@@ -121,7 +121,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoActiveMusicElement_Base.OnFinishedPlaying
-	// void OnFinishedPlaying();                                                                                                // [0x17b4428] Native|Public        
+	// void OnFinishedPlaying();                                                                                                // [0x1c53c84] Native|Public        
 };
 
 /// Class /Script/JunoMusicRuntime.JunoActiveMusicElement_AudioComponent
@@ -210,19 +210,19 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.RemoveMusicState
-	// void RemoveMusicState(FGameplayTag& InState);                                                                            // [0xb4f3370] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void RemoveMusicState(FGameplayTag& InState);                                                                            // [0xc618d30] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.PushMusicStates
-	// void PushMusicStates(FGameplayTagContainer& InStates);                                                                   // [0xb4f3238] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void PushMusicStates(FGameplayTagContainer& InStates);                                                                   // [0xc618bb8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.PushMusicState
-	// void PushMusicState(FGameplayTag& InState);                                                                              // [0xb4f3170] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void PushMusicState(FGameplayTag& InState);                                                                              // [0xc618af0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.GetCollectedString
-	// FString GetCollectedString(FName ParameterName, ESetParamResult& Result);                                                // [0xb4f2d40] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FString GetCollectedString(FName ParameterName, ESetParamResult& Result);                                                // [0xc618538] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.GetCollectedInt
-	// int32_t GetCollectedInt(FName ParameterName, ESetParamResult& Result);                                                   // [0xb4f2a90] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCollectedInt(FName ParameterName, ESetParamResult& Result);                                                   // [0xc6181b8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.GetCollectedFloat
-	// float GetCollectedFloat(FName ParameterName, ESetParamResult& Result);                                                   // [0xb4f27c8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// float GetCollectedFloat(FName ParameterName, ESetParamResult& Result);                                                   // [0xc617e38] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicControllerSubsystem.GetCollectedBool
-	// bool GetCollectedBool(FName ParameterName, ESetParamResult& Result);                                                     // [0xb4f2530] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCollectedBool(FName ParameterName, ESetParamResult& Result);                                                     // [0xc617ad4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicDataCollector
@@ -237,11 +237,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicDataCollector.BP_OnUpdate
-	// void BP_OnUpdate(float DeltaSeconds, class UMetasoundParameterPack* AggregatedData);                                     // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnUpdate(float DeltaSeconds, class UMetasoundParameterPack* AggregatedData);                                     // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicDataCollector.BP_OnUnregistered
-	// void BP_OnUnregistered();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnUnregistered();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicDataCollector.BP_OnRegistered
-	// void BP_OnRegistered(class UMetasoundParameterPack* AggregatedData);                                                     // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnRegistered(class UMetasoundParameterPack* AggregatedData);                                                     // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicDataAggregatorConfig
@@ -284,7 +284,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicDataCollector_Combat.SetThreatLevelMultiplier
-	// void SetThreatLevelMultiplier(float InThreatLevelMultiplier);                                                            // [0xb4f369c] Final|Native|Protected|BlueprintCallable 
+	// void SetThreatLevelMultiplier(float InThreatLevelMultiplier);                                                            // [0xc6191a8] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicElementController
@@ -313,27 +313,27 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.StopWorldMusicSystem
-	// void StopWorldMusicSystem(class UWorld* World);                                                                          // [0xb4f379c] Final|Native|Public|BlueprintCallable 
+	// void StopWorldMusicSystem(class UWorld* World);                                                                          // [0xc619328] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.StartWorldMusicSystem
-	// void StartWorldMusicSystem(class UWorld* World);                                                                         // [0xb4f371c] Final|Native|Public|BlueprintCallable 
+	// void StartWorldMusicSystem(class UWorld* World);                                                                         // [0xc619268] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.SetSuspendWorldActiveMusicPlayback
-	// void SetSuspendWorldActiveMusicPlayback(class UWorld* World, bool bSuspendPlayback, bool bStopCurrentlyPlayingMusic);    // [0xb4f3590] Final|Native|Public|BlueprintCallable 
+	// void SetSuspendWorldActiveMusicPlayback(class UWorld* World, bool bSuspendPlayback, bool bStopCurrentlyPlayingMusic);    // [0xc618fdc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.SetSuspendActiveMusicPlayback
-	// void SetSuspendActiveMusicPlayback(bool bSuspendPlayback, bool bStopCurrentlyPlayingMusic);                              // [0xb4f34cc] Final|Native|Public|BlueprintCallable 
+	// void SetSuspendActiveMusicPlayback(bool bSuspendPlayback, bool bStopCurrentlyPlayingMusic);                              // [0xc618e8c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.SetActiveJunoMusicManagerData
-	// void SetActiveJunoMusicManagerData(FActiveJunoMusicManagerData& ActiveJunoMusicManagerDataIn);                           // [0xb4f3438] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetActiveJunoMusicManagerData(FActiveJunoMusicManagerData& ActiveJunoMusicManagerDataIn);                           // [0xc618df8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.RemoveJunoMusicPlaylist
-	// void RemoveJunoMusicPlaylist(class UJunoMusicPlaylistDataAsset* JunoMusicPlaylist);                                      // [0xb4f32f0] Final|Native|Public|BlueprintCallable 
+	// void RemoveJunoMusicPlaylist(class UJunoMusicPlaylistDataAsset* JunoMusicPlaylist);                                      // [0xc618c70] Final|Native|Public|BlueprintCallable 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.GetCollectedString
-	// FString GetCollectedString(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);             // [0xb4f2e50] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// FString GetCollectedString(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);             // [0xc618694] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.GetCollectedInt
-	// int32_t GetCollectedInt(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                // [0xb4f2b78] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCollectedInt(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                // [0xc6182ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.GetCollectedFloat
-	// float GetCollectedFloat(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                // [0xb4f28bc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// float GetCollectedFloat(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                // [0xc617f68] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.GetCollectedBool
-	// bool GetCollectedBool(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                  // [0xb4f25fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCollectedBool(class UObject* WorldContextObject, FName ParameterName, ESetParamResult& Result);                  // [0xc617bec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/JunoMusicRuntime.JunoMusicManager.AddJunoMusicPlaylist
-	// void AddJunoMusicPlaylist(class UJunoMusicPlaylistDataAsset* JunoMusicPlaylist);                                         // [0xb4f2434] Final|Native|Public|BlueprintCallable 
+	// void AddJunoMusicPlaylist(class UJunoMusicPlaylistDataAsset* JunoMusicPlaylist);                                         // [0xc617958] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicPlaybackConditionsPool
@@ -359,11 +359,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicPlaybackCondition.BP_ShouldPlay
-	// bool BP_ShouldPlay();                                                                                                    // [0x3912dc4] Native|Event|Public|BlueprintEvent 
+	// bool BP_ShouldPlay();                                                                                                    // [0x33b4560] Native|Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicPlaybackCondition.BP_OnUnregistered
-	// void BP_OnUnregistered();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnUnregistered();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicPlaybackCondition.BP_OnRegistered
-	// void BP_OnRegistered();                                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnRegistered();                                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicPlaylistDataAsset
@@ -389,11 +389,11 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicPlayspaceProbe.BP_OnUpdate
-	// void BP_OnUpdate(float DeltaSeconds);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnUpdate(float DeltaSeconds);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicPlayspaceProbe.BP_OnUnregistered
-	// void BP_OnUnregistered();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnUnregistered();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/JunoMusicRuntime.JunoMusicPlayspaceProbe.BP_OnRegistered
-	// void BP_OnRegistered();                                                                                                  // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_OnRegistered();                                                                                                  // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/JunoMusicRuntime.JunoMusicPlayspaceProbeSubsystem
@@ -442,7 +442,7 @@ public:
 
 	/// Functions
 	// Function /Script/JunoMusicRuntime.JunoMusicPlayspaceProbe_Environment.CacheFortPlayerPawn
-	// void CacheFortPlayerPawn(class AFortPawn* NewPawn);                                                                      // [0xb4f24b4] Final|Native|Private 
+	// void CacheFortPlayerPawn(class AFortPawn* NewPawn);                                                                      // [0xc617a18] Final|Native|Private 
 };
 
 /// Class /Script/JunoMusicRuntime.GameFeatureAction_AddJunoMusicPlaylist

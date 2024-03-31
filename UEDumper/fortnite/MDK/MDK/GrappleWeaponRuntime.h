@@ -33,29 +33,29 @@ public:
 };
 
 /// Class /Script/GrappleWeaponRuntime.GrappleKnifeLayerAnimInstance
-/// Size: 0x0020 (0x001630 - 0x001650)
+/// Size: 0x0020 (0x001600 - 0x001620)
 class UGrappleKnifeLayerAnimInstance : public UFortMantisLayerAnimInstance
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5712;
+	static inline constexpr uint64_t __MDKClassSize = 5664;
 
 public:
-	DMember(bool)                                      bIsAttached                                                 OFFSET(get<bool>, {0x1630, 1, 0, 0})
-	DMember(bool)                                      bIsFired                                                    OFFSET(get<bool>, {0x1631, 1, 0, 0})
-	DMember(bool)                                      bAnimStartWallBounce                                        OFFSET(get<bool>, {0x1632, 1, 0, 0})
-	DMember(float)                                     PawnRotationRateYaw                                         OFFSET(get<float>, {0x1634, 4, 0, 0})
-	DMember(float)                                     AnimBounceAngle                                             OFFSET(get<float>, {0x1638, 4, 0, 0})
-	DMember(bool)                                      bIsFireOnMotorBike                                          OFFSET(get<bool>, {0x163C, 1, 0, 0})
-	DMember(bool)                                      bIsExitUnexpectedly                                         OFFSET(get<bool>, {0x163D, 1, 0, 0})
-	DMember(bool)                                      bIsCastInAir                                                OFFSET(get<bool>, {0x163E, 1, 0, 0})
-	DMember(bool)                                      bIsCastUpperbody                                            OFFSET(get<bool>, {0x163F, 1, 0, 0})
-	DMember(bool)                                      bIsCastGroundIdle                                           OFFSET(get<bool>, {0x1640, 1, 0, 0})
-	DMember(bool)                                      bIsCastGroundLoco                                           OFFSET(get<bool>, {0x1641, 1, 0, 0})
-	DMember(bool)                                      bDistanceBucketIs0                                          OFFSET(get<bool>, {0x1642, 1, 0, 0})
-	DMember(bool)                                      bDistanceBucketIs2                                          OFFSET(get<bool>, {0x1643, 1, 0, 0})
-	DMember(bool)                                      bIsExitGround                                               OFFSET(get<bool>, {0x1644, 1, 0, 0})
-	DMember(bool)                                      bIsExitWallBounce                                           OFFSET(get<bool>, {0x1645, 1, 0, 0})
-	DMember(bool)                                      bIsExitZipAirStart                                          OFFSET(get<bool>, {0x1646, 1, 0, 0})
+	DMember(bool)                                      bIsAttached                                                 OFFSET(get<bool>, {0x1600, 1, 0, 0})
+	DMember(bool)                                      bIsFired                                                    OFFSET(get<bool>, {0x1601, 1, 0, 0})
+	DMember(bool)                                      bAnimStartWallBounce                                        OFFSET(get<bool>, {0x1602, 1, 0, 0})
+	DMember(float)                                     PawnRotationRateYaw                                         OFFSET(get<float>, {0x1604, 4, 0, 0})
+	DMember(float)                                     AnimBounceAngle                                             OFFSET(get<float>, {0x1608, 4, 0, 0})
+	DMember(bool)                                      bIsFireOnMotorBike                                          OFFSET(get<bool>, {0x160C, 1, 0, 0})
+	DMember(bool)                                      bIsExitUnexpectedly                                         OFFSET(get<bool>, {0x160D, 1, 0, 0})
+	DMember(bool)                                      bIsCastInAir                                                OFFSET(get<bool>, {0x160E, 1, 0, 0})
+	DMember(bool)                                      bIsCastUpperbody                                            OFFSET(get<bool>, {0x160F, 1, 0, 0})
+	DMember(bool)                                      bIsCastGroundIdle                                           OFFSET(get<bool>, {0x1610, 1, 0, 0})
+	DMember(bool)                                      bIsCastGroundLoco                                           OFFSET(get<bool>, {0x1611, 1, 0, 0})
+	DMember(bool)                                      bDistanceBucketIs0                                          OFFSET(get<bool>, {0x1612, 1, 0, 0})
+	DMember(bool)                                      bDistanceBucketIs2                                          OFFSET(get<bool>, {0x1613, 1, 0, 0})
+	DMember(bool)                                      bIsExitGround                                               OFFSET(get<bool>, {0x1614, 1, 0, 0})
+	DMember(bool)                                      bIsExitWallBounce                                           OFFSET(get<bool>, {0x1615, 1, 0, 0})
+	DMember(bool)                                      bIsExitZipAirStart                                          OFFSET(get<bool>, {0x1616, 1, 0, 0})
 };
 
 /// Class /Script/GrappleWeaponRuntime.GrappleKnifeWeaponAnimInstance
@@ -85,7 +85,7 @@ public:
 
 	/// Functions
 	// Function /Script/GrappleWeaponRuntime.GrappleKnifeWeaponInterface.GetGrappleKnifeData
-	// void GetGrappleKnifeData(bool& bIsAttached, bool& bIsFired, int32_t& DistanceBucket, bool& bAnimStartWallBounce, float& AnimBounceAngle); // [0xa9925a8] Native|Event|Public|HasOutParms|BlueprintEvent 
+	// void GetGrappleKnifeData(bool& bIsAttached, bool& bIsFired, int32_t& DistanceBucket, bool& bAnimStartWallBounce, float& AnimBounceAngle); // [0xb7f4304] Native|Event|Public|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/GrappleWeaponRuntime.GrappleWeaponLibrary
@@ -100,13 +100,13 @@ public:
 
 	/// Functions
 	// Function /Script/GrappleWeaponRuntime.GrappleWeaponLibrary.IsTargetingLedge
-	// void IsTargetingLedge(class ACharacter* SourceCharacter, class AActor* TargetActor, FVector& TargetLocation, FVector& TargetNormal, FGrappleWeaponLedgeConfig& Config, bool& OutDidImpactWalkableSurface, bool& OutTargetingLedge, FVector& OutLedgeLocation, bool bDrawDebug); // [0xa99299c] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void IsTargetingLedge(class ACharacter* SourceCharacter, class AActor* TargetActor, FVector& TargetLocation, FVector& TargetNormal, FGrappleWeaponLedgeConfig& Config, bool& OutDidImpactWalkableSurface, bool& OutTargetingLedge, FVector& OutLedgeLocation, bool bDrawDebug); // [0xb7f4764] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/GrappleWeaponRuntime.GrappleWeaponLibrary.GetGrappleWeaponTargetInfo
-	// FGrappleWeaponTargetInfo GetGrappleWeaponTargetInfo(class AFortPlayerPawn* SourcePlayerPawn, FGrappleWeaponTargetingConfig& Config, float DrawDebugDuration); // [0xa992784] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FGrappleWeaponTargetInfo GetGrappleWeaponTargetInfo(class AFortPlayerPawn* SourcePlayerPawn, FGrappleWeaponTargetingConfig& Config, float DrawDebugDuration); // [0xb7f451c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/GrappleWeaponRuntime.GrappleWeaponLibrary.DidHitResultImpactLedge
-	// void DidHitResultImpactLedge(class ACharacter* SourceCharacter, FHitResult& HitResult, FGrappleWeaponLedgeConfig& Config, bool& OutDidImpactWalkableSurface, bool& OutTargetingLedge, FVector& OutLedgeLocation, bool bDrawDebug); // [0xa9920a0] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void DidHitResultImpactLedge(class ACharacter* SourceCharacter, FHitResult& HitResult, FGrappleWeaponLedgeConfig& Config, bool& OutDidImpactWalkableSurface, bool& OutTargetingLedge, FVector& OutLedgeLocation, bool bDrawDebug); // [0xb7f3db4] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/GrappleWeaponRuntime.GrappleWeaponLibrary.CalculateDirectionalTargetOffset
-	// FVector CalculateDirectionalTargetOffset(FVector& DirToTarget, FVector& MovementOffset, FVector& LedgeOffset);           // [0xa991e98] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FVector CalculateDirectionalTargetOffset(FVector& DirToTarget, FVector& MovementOffset, FVector& LedgeOffset);           // [0xb7f3bac] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 
 /// Struct /Script/GrappleWeaponRuntime.GrappleWeaponLedgeConfig

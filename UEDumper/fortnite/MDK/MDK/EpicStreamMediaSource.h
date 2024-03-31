@@ -12,11 +12,11 @@
 /// dependency: MediaAssets
 
 /// Class /Script/EpicStreamMediaSource.EpicStreamMediaSource
-/// Size: 0x0728 (0x000098 - 0x0007C0)
+/// Size: 0x0750 (0x000098 - 0x0007E8)
 class UEpicStreamMediaSource : public UStreamMediaSource
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 1984;
+	static inline constexpr uint64_t __MDKClassSize = 2024;
 
 public:
 	SMember(FString)                                   VideoStreamSource                                           OFFSET(getStruct<T>, {0x98, 16, 0, 0})
@@ -40,53 +40,53 @@ public:
 	DMember(int32_t)                                   SeekBitrate                                                 OFFSET(get<int32_t>, {0x14C, 4, 0, 0})
 	DMember(int32_t)                                   CacheSizeKiB                                                OFFSET(get<int32_t>, {0x150, 4, 0, 0})
 	DMember(int32_t)                                   TimeToCacheMilliseconds                                     OFFSET(get<int32_t>, {0x154, 4, 0, 0})
-	SMember(FMulticastInlineDelegate)                  OnVideoUrlSuccess                                           OFFSET(getStruct<T>, {0x4E0, 16, 0, 0})
-	SMember(FMulticastInlineDelegate)                  OnVideoUrlFailed                                            OFFSET(getStruct<T>, {0x4F0, 16, 0, 0})
-	SMember(FMulticastInlineDelegate)                  OnMetaDataFailure                                           OFFSET(getStruct<T>, {0x500, 16, 0, 0})
-	SMember(FMulticastInlineDelegate)                  OnMediaLicensedAudioTreatmentChanged                        OFFSET(getStruct<T>, {0x510, 16, 0, 0})
-	CMember(class UEpicMediaDownloadLocalizedOverlays*) EpicMediaDownloadLocalizedOverlays                         OFFSET(get<T>, {0x530, 8, 0, 0})
-	SMember(FString)                                   ProtectUserFromAVSettings                                   OFFSET(getStruct<T>, {0x538, 16, 0, 0})
-	SMember(FString)                                   StreamID                                                    OFFSET(getStruct<T>, {0x548, 16, 0, 0})
-	SMember(FString)                                   StreamID_Development                                        OFFSET(getStruct<T>, {0x558, 16, 0, 0})
-	CMember(class UMediaSource*)                       LocalFilePlaybackAsset                                      OFFSET(get<T>, {0x568, 8, 0, 0})
-	DMember(double)                                    HighestFramerate                                            OFFSET(get<double>, {0x570, 8, 0, 0})
+	SMember(FMulticastInlineDelegate)                  OnVideoUrlSuccess                                           OFFSET(getStruct<T>, {0x4F0, 16, 0, 0})
+	SMember(FMulticastInlineDelegate)                  OnVideoUrlFailed                                            OFFSET(getStruct<T>, {0x500, 16, 0, 0})
+	SMember(FMulticastInlineDelegate)                  OnMetaDataFailure                                           OFFSET(getStruct<T>, {0x510, 16, 0, 0})
+	SMember(FMulticastInlineDelegate)                  OnMediaLicensedAudioTreatmentChanged                        OFFSET(getStruct<T>, {0x520, 16, 0, 0})
+	CMember(class UEpicMediaDownloadLocalizedOverlays*) EpicMediaDownloadLocalizedOverlays                         OFFSET(get<T>, {0x540, 8, 0, 0})
+	SMember(FString)                                   ProtectUserFromAVSettings                                   OFFSET(getStruct<T>, {0x548, 16, 0, 0})
+	SMember(FString)                                   StreamID                                                    OFFSET(getStruct<T>, {0x558, 16, 0, 0})
+	SMember(FString)                                   StreamID_Development                                        OFFSET(getStruct<T>, {0x568, 16, 0, 0})
+	CMember(class UMediaSource*)                       LocalFilePlaybackAsset                                      OFFSET(get<T>, {0x578, 8, 0, 0})
+	DMember(double)                                    HighestFramerate                                            OFFSET(get<double>, {0x580, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.UpdateStreamUrlArguments
-	// void UpdateStreamUrlArguments();                                                                                         // [0x7d975b0] Final|Native|Public|BlueprintCallable 
+	// void UpdateStreamUrlArguments();                                                                                         // [0x8171404] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.UpdatePlayerOptions
-	// FMediaPlayerOptions UpdatePlayerOptions(FMediaPlayerOptions PlayerOptions);                                              // [0x7d97430] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FMediaPlayerOptions UpdatePlayerOptions(FMediaPlayerOptions PlayerOptions);                                              // [0x81712ec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.ShouldStreamBePlaying
-	// bool ShouldStreamBePlaying(class UObject* WorldContextObject, class UPrimitiveComponent* PrimitiveComponent, float CullRadius); // [0x7d9707c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool ShouldStreamBePlaying(class UObject* WorldContextObject, class UPrimitiveComponent* PrimitiveComponent, float CullRadius); // [0x8171024] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.ShouldProtectPlayerFromContent
-	// UCPTypes ShouldProtectPlayerFromContent();                                                                               // [0x66f629c] Native|Public|BlueprintCallable|BlueprintPure 
+	// UCPTypes ShouldProtectPlayerFromContent();                                                                               // [0x66d60a8] Native|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.SetUrl
-	// void SetUrl(FString& InURL);                                                                                             // [0x7d96f0c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetUrl(FString& InURL);                                                                                             // [0x81709ec] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.SetSyncTimes
-	// void SetSyncTimes(FDateTime InNowTime, FDateTime InStartTime, bool DynamicStart, float InOffset_s, float InDelay_s);     // [0x7d96a74] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetSyncTimes(FDateTime InNowTime, FDateTime InStartTime, bool DynamicStart, float InOffset_s, float InDelay_s);     // [0x8170720] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.SetPlaybackStartTime
-	// void SetPlaybackStartTime(float StartTime);                                                                              // [0x7d969f4] Final|Native|Public|BlueprintCallable 
+	// void SetPlaybackStartTime(float StartTime);                                                                              // [0x817065c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.SetLocalizedOverlaysV2
-	// void SetLocalizedOverlaysV2(class UEpicMediaDownloadLocalizedOverlays* InOverlays);                                      // [0x7d96968] Final|Native|Public|BlueprintCallable 
+	// void SetLocalizedOverlaysV2(class UEpicMediaDownloadLocalizedOverlays* InOverlays);                                      // [0x817058c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.RequestVideoUrl
-	// void RequestVideoUrl(class APlayerController* FortPC);                                                                   // [0x7d968ec] Final|Native|Public|BlueprintCallable 
+	// void RequestVideoUrl(class APlayerController* FortPC);                                                                   // [0x81704d0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.ReinstateSharing
-	// void ReinstateSharing();                                                                                                 // [0x35bd900] Native|Public|BlueprintCallable 
+	// void ReinstateSharing();                                                                                                 // [0x1bbc518] Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.MetadataResultHandler
-	// void MetadataResultHandler(FEpicMediaMetadataExt& MetaData, bool bSuccess);                                              // [0x7d9672c] Final|Native|Public|HasOutParms 
+	// void MetadataResultHandler(FEpicMediaMetadataExt& MetaData, bool bSuccess);                                              // [0x3727d04] Final|Native|Public|HasOutParms 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.IsScreenRecordingInProgress
-	// bool IsScreenRecordingInProgress();                                                                                      // [0x3219f08] Final|Native|Public|BlueprintCallable 
+	// bool IsScreenRecordingInProgress();                                                                                      // [0x2fe830c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.HasLocalFilePlayback
-	// bool HasLocalFilePlayback();                                                                                             // [0x7d966b8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasLocalFilePlayback();                                                                                             // [0x817045c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.ForceSegmentCaching
-	// void ForceSegmentCaching(bool bForce);                                                                                   // [0x7d96638] Final|Native|Public|BlueprintCallable 
+	// void ForceSegmentCaching(bool bForce);                                                                                   // [0x817039c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.DisableSharing
-	// void DisableSharing();                                                                                                   // [0x1b102a0] Native|Public|BlueprintCallable 
+	// void DisableSharing();                                                                                                   // [0x269edb4] Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.ClearSyncTimes
-	// void ClearSyncTimes();                                                                                                   // [0x7d96624] Final|Native|Public|BlueprintCallable 
+	// void ClearSyncTimes();                                                                                                   // [0x8170388] Final|Native|Public|BlueprintCallable 
 	// Function /Script/EpicStreamMediaSource.EpicStreamMediaSource.CancelVideoUrlRequest
-	// void CancelVideoUrlRequest(bool bInCancelled);                                                                           // [0x7d965a4] Final|Native|Public|BlueprintCallable 
+	// void CancelVideoUrlRequest(bool bInCancelled);                                                                           // [0x81702c4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Enum /Script/EpicStreamMediaSource.UCPTypes

@@ -68,41 +68,41 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.StopLoopForPlayer
-	// void StopLoopForPlayer(class APlayerState* PlayerState, bool bStopAutoJammers);                                          // [0xa5107f4] Final|Native|Public|BlueprintCallable 
+	// void StopLoopForPlayer(class APlayerState* PlayerState, bool bStopAutoJammers);                                          // [0xb286e18] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.StopLoopByInstanceId
-	// void StopLoopByInstanceId(int32_t LoopInstanceId);                                                                       // [0xa510774] Final|Native|Public|BlueprintCallable 
+	// void StopLoopByInstanceId(int32_t LoopInstanceId);                                                                       // [0xb286d58] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.StopAutoJammersForPlayer
-	// void StopAutoJammersForPlayer(class APlayerState* PlayerState);                                                          // [0xa5106f4] Final|Native|Public|BlueprintCallable 
+	// void StopAutoJammersForPlayer(class APlayerState* PlayerState);                                                          // [0xb286c98] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.StopAllLoopsForLoopType
-	// void StopAllLoopsForLoopType(EFMJamLoopType LoopType);                                                                   // [0xa510674] Final|Native|Public|BlueprintCallable 
+	// void StopAllLoopsForLoopType(EFMJamLoopType LoopType);                                                                   // [0xb286bd8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.PlayLoop
-	// void PlayLoop(class APlayerState* PlayerState, FName SongShortName, EFMJamLoopType LoopType, bool bForceAudioState, bool bIsAutoJammer); // [0xa510394] Final|Native|Public|BlueprintCallable 
+	// void PlayLoop(class APlayerState* PlayerState, FName SongShortName, EFMJamLoopType LoopType, bool bForceAudioState, bool bIsAutoJammer); // [0xb2866f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.IsJamFull
-	// bool IsJamFull(bool bCountAutoJammers);                                                                                  // [0xa50fa3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsJamFull(bool bCountAutoJammers);                                                                                  // [0xb285208] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetMusicSlotsSortedByLoopType
-	// TArray<UJamMusicSlot*> GetMusicSlotsSortedByLoopType();                                                                  // [0xa50f184] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlotsSortedByLoopType();                                                                  // [0xb284c5c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetMusicSlotsInUse
-	// TArray<UJamMusicSlot*> GetMusicSlotsInUse();                                                                             // [0xa50f104] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlotsInUse();                                                                             // [0xb284bdc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetMusicSlotsForLoopType
-	// TArray<UJamMusicSlot*> GetMusicSlotsForLoopType(EFMJamLoopType LoopType);                                                // [0xa50ef78] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlotsForLoopType(EFMJamLoopType LoopType);                                                // [0xb2849c4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetMusicSlots
-	// TArray<UJamMusicSlot*> GetMusicSlots();                                                                                  // [0xa50ef38] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlots();                                                                                  // [0xb284984] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetMusicSlotForPlayer
-	// class UJamMusicSlot* GetMusicSlotForPlayer(class APlayerState* PlayerState);                                             // [0x23afad8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UJamMusicSlot* GetMusicSlotForPlayer(class APlayerState* PlayerState);                                             // [0x1731e24] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetJammers
-	// TArray<APlayerState*> GetJammers();                                                                                      // [0xa50ebf0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<APlayerState*> GetJammers();                                                                                      // [0xb284450] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetJamAudioSource
-	// class UAudioComponent* GetJamAudioSource();                                                                              // [0xa50eba4] Native|Event|Public|BlueprintCallable|BlueprintEvent 
+	// class UAudioComponent* GetJamAudioSource();                                                                              // [0xb284404] Native|Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.GetAllowGlobalControlAccess
-	// void GetAllowGlobalControlAccess(bool& OutAllowGlobalControlAccess, FGameplayTagContainer& OutRestrictionReason);        // [0xa50e714] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetAllowGlobalControlAccess(bool& OutAllowGlobalControlAccess, FGameplayTagContainer& OutRestrictionReason);        // [0xb283f08] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.DoAnyOtherJammersHaveGameplayTag
-	// bool DoAnyOtherJammersHaveGameplayTag(class APlayerState* LocalPlayerState, FGameplayTag GlobalControlsTag);             // [0xa50e44c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool DoAnyOtherJammersHaveGameplayTag(class APlayerState* LocalPlayerState, FGameplayTag GlobalControlsTag);             // [0xb283c64] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.CountActiveLoops
-	// int32_t CountActiveLoops(bool bCountAutoJammers);                                                                        // [0xa50e32c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t CountActiveLoops(bool bCountAutoJammers);                                                                        // [0xb283ac4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.ConvertPlayerToAutoJammer
-	// void ConvertPlayerToAutoJammer(class APlayerState* PlayerState);                                                         // [0xa50e19c] Final|Native|Public|BlueprintCallable 
+	// void ConvertPlayerToAutoJammer(class APlayerState* PlayerState);                                                         // [0xb2838f4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspace.BeginShutdownJam
-	// void BeginShutdownJam();                                                                                                 // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BeginShutdownJam();                                                                                                 // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_LipSyncAssetManager
@@ -137,47 +137,49 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnTerminatingLinkCode
-	// void OnTerminatingLinkCode(class UJamContentResolver* Sender, FString LinkCode);                                         // [0xa5101e4] Final|Native|Protected 
+	// void OnTerminatingLinkCode(class UJamContentResolver* Sender, FString LinkCode);                                         // [0xb28602c] Final|Native|Protected 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnScanForSongsCompleted
-	// void OnScanForSongsCompleted(class UFMJamSongCatalog* Sender, TArray<UFMJamSong*> AddedSongs);                           // [0xa5100d4] Final|Native|Protected 
+	// void OnScanForSongsCompleted(class UFMJamSongCatalog* Sender, TArray<UFMJamSong*> AddedSongs);                           // [0xb285e94] Final|Native|Protected 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnRep_CurrentPlayParams
-	// void OnRep_CurrentPlayParams(FJamPlayParams& OldPlayParams);                                                             // [0x3d6274c] Final|Native|Public|HasOutParms 
+	// void OnRep_CurrentPlayParams(FJamPlayParams& OldPlayParams);                                                             // [0x1ff7780] Final|Native|Public|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnJamResolverComplete
-	// void OnJamResolverComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess, bool bWasAlreadyLoaded);  // [0xa50fcd8] Final|Native|Protected 
+	// void OnJamResolverComplete(class UJamContentResolver* Sender, FString LinkCode, bool bSuccess, bool bWasAlreadyLoaded);  // [0xb2854ec] Final|Native|Protected 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnJamLoadRequestComplete
-	// void OnJamLoadRequestComplete(FJamLoadResult LoadResult);                                                                // [0xa50fb94] Final|Native|Protected 
+	// void OnJamLoadRequestComplete(FJamLoadResult LoadResult);                                                                // [0xb285418] Final|Native|Protected 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.OnCMSCatalogRequestFinished
-	// void OnCMSCatalogRequestFinished(class UFMJamSongCatalog* Sender, bool bSuccess);                                        // [0xa50facc] Final|Native|Protected 
+	// void OnCMSCatalogRequestFinished(class UFMJamSongCatalog* Sender, bool bSuccess);                                        // [0xb2852d8] Final|Native|Protected 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.IsInUse
-	// bool IsInUse();                                                                                                          // [0xa50fa18] Final|Native|Public|Const 
+	// bool IsInUse();                                                                                                          // [0x22a1880] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetPlayParams
-	// FJamPlayParams GetPlayParams();                                                                                          // [0xa50f1e0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FJamPlayParams GetPlayParams();                                                                                          // [0xb284cb8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetParamsAsJamEvent
+	// FJamEvent_JamLoopStarted GetParamsAsJamEvent();                                                                          // [0x1730fa4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetMusicManager
-	// class UJamPlayspaceComponent_MusicManager* GetMusicManager();                                                            // [0x7c1a220] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UJamPlayspaceComponent_MusicManager* GetMusicManager();                                                            // [0x8072120] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetIsAutoJammer
-	// bool GetIsAutoJammer();                                                                                                  // [0x99c1fbc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool GetIsAutoJammer();                                                                                                  // [0xa49fa34] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentTempo
-	// int32_t GetCurrentTempo();                                                                                               // [0xa50ea9c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentTempo();                                                                                               // [0xb2842d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentSongShortName
-	// FName GetCurrentSongShortName();                                                                                         // [0x5f94ff0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetCurrentSongShortName();                                                                                         // [0x5f4254c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentSongLinkCode
-	// FString GetCurrentSongLinkCode();                                                                                        // [0xa50ea5c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FString GetCurrentSongLinkCode();                                                                                        // [0xb284290] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentSong
-	// class UFMJamSong* GetCurrentSong();                                                                                      // [0xa50ea38] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFMJamSong* GetCurrentSong();                                                                                      // [0xb28426c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentPlayerState
-	// class APlayerState* GetCurrentPlayerState();                                                                             // [0xa50ea14] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class APlayerState* GetCurrentPlayerState();                                                                             // [0xb284248] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentMode
-	// EMusicKeyMode GetCurrentMode();                                                                                          // [0xa50e9cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMusicKeyMode GetCurrentMode();                                                                                          // [0xb284200] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentLoopType
-	// EFMJamLoopType GetCurrentLoopType();                                                                                     // [0x9c060e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EFMJamLoopType GetCurrentLoopType();                                                                                     // [0xa734eac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentLoopInstanceId
-	// int32_t GetCurrentLoopInstanceId();                                                                                      // [0x96f64a0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentLoopInstanceId();                                                                                      // [0xa1106cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentLoop
-	// class UFMJamLoop* GetCurrentLoop();                                                                                      // [0xa50e95c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UFMJamLoop* GetCurrentLoop();                                                                                      // [0xb284190] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentKey
-	// EMusicKey GetCurrentKey();                                                                                               // [0xa50e914] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMusicKey GetCurrentKey();                                                                                               // [0xb284148] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamMusicSlot.GetCurrentCatalogEntry
-	// class UCatalogData* GetCurrentCatalogEntry();                                                                            // [0xa50e8f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UCatalogData* GetCurrentCatalogEntry();                                                                            // [0xb284124] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager
@@ -200,79 +202,79 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.UpdateAllMetasounds
-	// void UpdateAllMetasounds(class APlayerState* PlayerToIgnore);                                                            // [0xa51094c] Final|Native|Public|BlueprintCallable 
+	// void UpdateAllMetasounds(class APlayerState* PlayerToIgnore);                                                            // [0xb287028] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.TickToSeconds
-	// float TickToSeconds(int32_t Tick);                                                                                       // [0xa5108bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float TickToSeconds(int32_t Tick);                                                                                       // [0xb286f58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.ShouldPlayLocalSound
-	// bool ShouldPlayLocalSound(class APlayerState* PlayerToIgnore);                                                           // [0x3812670] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool ShouldPlayLocalSound(class APlayerState* PlayerToIgnore);                                                           // [0x327e1f8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.SecondsToTick
-	// int32_t SecondsToTick(float Seconds);                                                                                    // [0xa5105e4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t SecondsToTick(float Seconds);                                                                                    // [0xb286b08] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.OnRep_MusicSlots
-	// void OnRep_MusicSlots(TArray<UJamMusicSlot*>& PreviousMusicSlots);                                                       // [0x3805d5c] Final|Native|Protected|HasOutParms 
+	// void OnRep_MusicSlots(TArray<UJamMusicSlot*>& PreviousMusicSlots);                                                       // [0x2532a68] Final|Native|Protected|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.OnPlayspaceUserRemoved
-	// void OnPlayspaceUserRemoved(FPlayspaceUser& RemovedUser);                                                                // [0xa50fff4] Final|Native|Public|HasOutParms 
+	// void OnPlayspaceUserRemoved(FPlayspaceUser& RemovedUser);                                                                // [0xb285db4] Final|Native|Public|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.OnPlayspaceUserAdded
-	// void OnPlayspaceUserAdded(FPlayspaceUser& AddedUser);                                                                    // [0xa50ff14] Final|Native|Public|HasOutParms 
+	// void OnPlayspaceUserAdded(FPlayspaceUser& AddedUser);                                                                    // [0xb285cd4] Final|Native|Public|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.OnLicensedAudioTreatmentChanged
-	// void OnLicensedAudioTreatmentChanged();                                                                                  // [0xa50ff00] Final|Native|Public  
+	// void OnLicensedAudioTreatmentChanged();                                                                                  // [0xb285cc0] Final|Native|Public  
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.IsAllowedToJamInSplitscreen
-	// bool IsAllowedToJamInSplitscreen(class APlayerState* PlayerStateToCheck);                                                // [0xa50f8c0] Final|Native|Static|Private|BlueprintCallable 
+	// bool IsAllowedToJamInSplitscreen(class APlayerState* PlayerStateToCheck);                                                // [0xb285070] Final|Native|Static|Private|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.HandleTempoChangedEvent
-	// void HandleTempoChangedEvent(FSparksPlayspaceEvent_TempoChanged& Payload);                                               // [0xa50f738] Final|Native|Protected|HasOutParms 
+	// void HandleTempoChangedEvent(FSparksPlayspaceEvent_TempoChanged& Payload);                                               // [0xb284ee8] Final|Native|Protected|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.HandleOnLoopStopped
-	// void HandleOnLoopStopped(FJamPlayParams& PlayParams, bool bChangedLoop);                                                 // [0xa50f584] Final|Native|Public|HasOutParms 
+	// void HandleOnLoopStopped(FJamPlayParams& PlayParams, bool bChangedLoop);                                                 // [0x1730138] Final|Native|Public|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.HandleOnLoopStarted
-	// void HandleOnLoopStarted(FJamPlayParams& PlayParams, bool bChangedLoop);                                                 // [0xa50f3d0] Final|Native|Public|HasOutParms 
+	// void HandleOnLoopStarted(FJamPlayParams& PlayParams, bool bChangedLoop);                                                 // [0x172ff68] Final|Native|Public|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.HandleModeChangedEvent
-	// void HandleModeChangedEvent(FSparksPlayspaceEvent_KeyModeChanged& Payload);                                              // [0xa50f344] Final|Native|Protected|HasOutParms 
+	// void HandleModeChangedEvent(FSparksPlayspaceEvent_KeyModeChanged& Payload);                                              // [0xb284e5c] Final|Native|Protected|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.HandleKeyChangedEvent
-	// void HandleKeyChangedEvent(FSparksPlayspaceEvent_KeyChanged& Payload);                                                   // [0xa50f2b8] Final|Native|Protected|HasOutParms 
+	// void HandleKeyChangedEvent(FSparksPlayspaceEvent_KeyChanged& Payload);                                                   // [0xb284dd0] Final|Native|Protected|HasOutParms 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetStandardGainValue
-	// float GetStandardGainValue();                                                                                            // [0xa50f2a0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetStandardGainValue();                                                                                            // [0xb284db8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotsInUse
-	// TArray<UJamMusicSlot*> GetMusicSlotsInUse();                                                                             // [0xa50f144] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlotsInUse();                                                                             // [0xb284c1c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotsForLoopType
-	// TArray<UJamMusicSlot*> GetMusicSlotsForLoopType(EFMJamLoopType LoopType);                                                // [0xa50f060] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetMusicSlotsForLoopType(EFMJamLoopType LoopType);                                                // [0xb284af8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotIndexForPlayer
-	// int32_t GetMusicSlotIndexForPlayer(class APlayerState* PlayerState);                                                     // [0xa50ee5c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetMusicSlotIndexForPlayer(class APlayerState* PlayerState);                                                     // [0xb284868] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotIndexForLoopInstanceId
-	// int32_t GetMusicSlotIndexForLoopInstanceId(int32_t LoopInstanceId);                                                      // [0xa50edd0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetMusicSlotIndexForLoopInstanceId(int32_t LoopInstanceId);                                                      // [0xb28479c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotForPlayer
-	// class UJamMusicSlot* GetMusicSlotForPlayer(class APlayerState* PlayerState);                                             // [0xa50ed04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UJamMusicSlot* GetMusicSlotForPlayer(class APlayerState* PlayerState);                                             // [0xb28468c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotBySlotIndex
+	// class UJamMusicSlot* GetMusicSlotBySlotIndex(int32_t SlotIndex);                                                         // [0xb2845a8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMusicSlotByLoopInstanceId
-	// class UJamMusicSlot* GetMusicSlotByLoopInstanceId(int32_t LoopInstanceId);                                               // [0xa50ec78] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UJamMusicSlot* GetMusicSlotByLoopInstanceId(int32_t LoopInstanceId);                                               // [0xb2844d8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetMetasoundPlayer
-	// class UAudioComponent* GetMetasoundPlayer();                                                                             // [0xa50ec54] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UAudioComponent* GetMetasoundPlayer();                                                                             // [0xb2844b4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetLocalPlayerGainValue
-	// float GetLocalPlayerGainValue();                                                                                         // [0x9c2cbf0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetLocalPlayerGainValue();                                                                                         // [0xa760a9c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetLoadedAnimations
-	// class USparksInstrumentAnimations* GetLoadedAnimations();                                                                // [0xa50ec30] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class USparksInstrumentAnimations* GetLoadedAnimations();                                                                // [0xb284490] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetJamPlayspace
-	// class AJamPlayspace* GetJamPlayspace();                                                                                  // [0xa50ebcc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
-	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetJamInfoFromSlot
-	// FJamEvent_JamLoopStarted GetJamInfoFromSlot(int32_t SlotIndex);                                                          // [0x23ae214] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class AJamPlayspace* GetJamPlayspace();                                                                                  // [0xb28442c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetDesiredGain
-	// float GetDesiredGain(class APlayerState* PlayerState);                                                                   // [0xa50ead4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetDesiredGain(class APlayerState* PlayerState);                                                                   // [0xb284308] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetCurrentTempo
-	// int32_t GetCurrentTempo();                                                                                               // [0x3b55704] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentTempo();                                                                                               // [0x17323a4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetCurrentMode
-	// EMusicKeyMode GetCurrentMode();                                                                                          // [0xa50e9f0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMusicKeyMode GetCurrentMode();                                                                                          // [0xb284224] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetCurrentMidiTick
-	// int32_t GetCurrentMidiTick();                                                                                            // [0xa50e9a8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCurrentMidiTick();                                                                                            // [0xb2841dc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetCurrentMidiSeconds
-	// float GetCurrentMidiSeconds();                                                                                           // [0xa50e980] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetCurrentMidiSeconds();                                                                                           // [0xb2841b4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetCurrentKey
-	// EMusicKey GetCurrentKey();                                                                                               // [0xa50e938] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// EMusicKey GetCurrentKey();                                                                                               // [0xb28416c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetAutoJammersForPlayer
-	// TArray<UJamMusicSlot*> GetAutoJammersForPlayer(class APlayerState* PlayerState);                                         // [0xa50e84c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetAutoJammersForPlayer(class APlayerState* PlayerState);                                         // [0xb284040] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetAllMusicSlots
-	// TArray<UJamMusicSlot*> GetAllMusicSlots();                                                                               // [0xa50e6d4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UJamMusicSlot*> GetAllMusicSlots();                                                                               // [0x2532afc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.GetAllJammers
-	// TArray<APlayerState*> GetAllJammers();                                                                                   // [0xa50e694] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<APlayerState*> GetAllJammers();                                                                                   // [0xb283ec8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.FireGlobalControlsAnalytics
-	// void FireGlobalControlsAnalytics(class APlayerState* PlayerState);                                                       // [0xa50e5c0] Final|Native|Public|BlueprintCallable 
+	// void FireGlobalControlsAnalytics(class APlayerState* PlayerState);                                                       // [0xb283db4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_MusicManager.CountActiveSlots
-	// int32_t CountActiveSlots(bool bCountAutoJammers);                                                                        // [0xa50e3bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t CountActiveSlots(bool bCountAutoJammers);                                                                        // [0xb283b94] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX
@@ -290,17 +292,17 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.RemoveReactiveNiagaraEffect
-	// bool RemoveReactiveNiagaraEffect(int32_t LoopInstanceId, class UNiagaraComponent* NiagaraComponent);                     // [0xa510524] Final|Native|Public|BlueprintCallable 
+	// bool RemoveReactiveNiagaraEffect(int32_t LoopInstanceId, class UNiagaraComponent* NiagaraComponent);                     // [0xb2869b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.HasReactiveEffectsForLoop
-	// bool HasReactiveEffectsForLoop(int32_t LoopInstanceId);                                                                  // [0xa50f7c4] Final|Native|Public|BlueprintCallable 
+	// bool HasReactiveEffectsForLoop(int32_t LoopInstanceId);                                                                  // [0xb284f74] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.GetReactiveNiagaraEffects
-	// TArray<UNiagaraComponent*> GetReactiveNiagaraEffects(int32_t LoopInstanceId);                                            // [0xa50f1fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TArray<UNiagaraComponent*> GetReactiveNiagaraEffects(int32_t LoopInstanceId);                                            // [0xb284cd4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.ClearReactiveEffectsForLoop
-	// void ClearReactiveEffectsForLoop(int32_t LoopInstanceId, bool bStopEffectsImmediately);                                  // [0x39247bc] Final|Native|Public|BlueprintCallable 
+	// void ClearReactiveEffectsForLoop(int32_t LoopInstanceId, bool bStopEffectsImmediately);                                  // [0x2dcf690] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.ClearReactiveEffects
-	// void ClearReactiveEffects(bool bStopEffectsImmediately);                                                                 // [0x388d348] Final|Native|Public|BlueprintCallable 
+	// void ClearReactiveEffects(bool bStopEffectsImmediately);                                                                 // [0x2dcefcc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceComponent_ReactiveFX.AddReactiveNiagaraEffect
-	// void AddReactiveNiagaraEffect(int32_t LoopInstanceId, class UNiagaraComponent* NiagaraComponent);                        // [0x39246f8] Final|Native|Public|BlueprintCallable 
+	// void AddReactiveNiagaraEffect(int32_t LoopInstanceId, class UNiagaraComponent* NiagaraComponent);                        // [0x2dcf40c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/FMJamPlayspaceRuntime.JamPlayspaceVolume
@@ -315,7 +317,7 @@ public:
 
 	/// Functions
 	// Function /Script/FMJamPlayspaceRuntime.JamPlayspaceVolume.BP_UpdateReactiveFX
-	// void BP_UpdateReactiveFX(float JamAmplitude);                                                                            // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void BP_UpdateReactiveFX(float JamAmplitude);                                                                            // [0x186becc] Event|Public|BlueprintEvent 
 };
 
 /// Class /Script/FMJamPlayspaceRuntime.JamQuickplayPlayerSpawningComponent

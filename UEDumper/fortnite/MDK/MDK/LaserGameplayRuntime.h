@@ -82,29 +82,29 @@ public:
 
 	/// Functions
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.SetLaserGridEnable
-	// void SetLaserGridEnable(bool bEnable);                                                                                   // [0x63fe5cc] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
+	// void SetLaserGridEnable(bool bEnable);                                                                                   // [0x63958fc] Final|BlueprintAuthorityOnly|Native|Protected|BlueprintCallable 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.OnRep_LaserGridConnections
-	// void OnRep_LaserGridConnections();                                                                                       // [0xa97dcd8] Final|Native|Private 
+	// void OnRep_LaserGridConnections();                                                                                       // [0xb7d6134] Final|Native|Private 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.OnRep_bEnabled
-	// void OnRep_bEnabled();                                                                                                   // [0xa97dcec] Final|Native|Private 
+	// void OnRep_bEnabled();                                                                                                   // [0xb7d6148] Final|Native|Private 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.LaserGridTriggered
-	// void LaserGridTriggered(FLaserGridConnectionEntry& LaserConnectionData, class AActor* TriggeringActor);                  // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
+	// void LaserGridTriggered(FLaserGridConnectionEntry& LaserConnectionData, class AActor* TriggeringActor);                  // [0x186becc] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.LaserGridStateUpdated
-	// void LaserGridStateUpdated(bool bLaserGridEnabled);                                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void LaserGridStateUpdated(bool bLaserGridEnabled);                                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.HandlePatternTimerComplete_PreTransition
-	// void HandlePatternTimerComplete_PreTransition();                                                                         // [0x36203b0] Final|Native|Private 
+	// void HandlePatternTimerComplete_PreTransition();                                                                         // [0x3518b8c] Final|Native|Private 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.HandlePatternTimerComplete_PostTransition
-	// void HandlePatternTimerComplete_PostTransition();                                                                        // [0x36203b0] Final|Native|Private 
+	// void HandlePatternTimerComplete_PostTransition();                                                                        // [0x3518b8c] Final|Native|Private 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.HandleLaserCollisionOverlap
-	// void HandleLaserCollisionOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0x81ea384] Final|Native|Private|HasOutParms 
+	// void HandleLaserCollisionOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult); // [0x8688700] Final|Native|Private|HasOutParms 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.HandleAttachedBuildingActorDied
-	// void HandleAttachedBuildingActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* HitComponent, FName BoneName, FVector Momentum); // [0x8682e30] Final|Native|Private|HasDefaults 
+	// void HandleAttachedBuildingActorDied(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* HitComponent, FName BoneName, FVector Momentum); // [0x8c17c84] Final|Native|Private|HasDefaults 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.GetActiveLaserGridConnections
-	// void GetActiveLaserGridConnections(TArray<FLaserGridConnectionEntry>& OutActiveLaserGridConnections);                    // [0xa97db6c] Final|Native|Public|HasOutParms|BlueprintCallable|Const 
+	// void GetActiveLaserGridConnections(TArray<FLaserGridConnectionEntry>& OutActiveLaserGridConnections);                    // [0xb7d5b08] Final|Native|Public|HasOutParms|BlueprintCallable|Const 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.CosmeticDestroyOutletInstance
-	// void CosmeticDestroyOutletInstance(FLaserGridOutletEntry& OutletEntry);                                                  // [0x18a39e4] BlueprintCosmetic|Event|Protected|HasOutParms|BlueprintEvent 
+	// void CosmeticDestroyOutletInstance(FLaserGridOutletEntry& OutletEntry);                                                  // [0x186becc] BlueprintCosmetic|Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/LaserGameplayRuntime.BuildingGameplayActorLaserGrid.CanActorTriggerLaserGrid
-	// bool CanActorTriggerLaserGrid(class AActor* TriggeringActor);                                                            // [0xa97dad8] BlueprintAuthorityOnly|Native|Event|Protected|BlueprintEvent|Const 
+	// bool CanActorTriggerLaserGrid(class AActor* TriggeringActor);                                                            // [0xb7d5a30] BlueprintAuthorityOnly|Native|Event|Protected|BlueprintEvent|Const 
 };
 
 /// Struct /Script/LaserGameplayRuntime.LaserGridConnectionEntry

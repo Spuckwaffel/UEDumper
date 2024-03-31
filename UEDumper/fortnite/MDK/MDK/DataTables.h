@@ -21,18 +21,6 @@ public:
 	SMember(FLinearColor)                              Metallic_41_F57CE68E419E301DD160BEB5D0E32BFC                OFFSET(getStruct<T>, {0x20, 16, 0, 0})
 };
 
-/// Struct /VehicleCosmetics/DataTables/Struct_VEH_Skins.Struct_VEH_Skins
-/// Size: 0x0020 (0x000000 - 0x000020)
-class FStruct_VEH_Skins : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 32;
-
-public:
-	CMember(TWeakObjectPtr<UMaterialInstanceConstant*>) SkinMIC_19_9242D84D446944DD0D7D739136E38C28                OFFSET(get<T>, {0x0, 32, 0, 0})
-};
-
 /// Struct /VehicleCosmetics/DataTables/Struct_VEH_Windows.Struct_VEH_Windows
 /// Size: 0x0020 (0x000000 - 0x000020)
 class FStruct_VEH_Windows : public MDKBase
@@ -43,5 +31,17 @@ class FStruct_VEH_Windows : public MDKBase
 
 public:
 	CMember(TWeakObjectPtr<UMaterialInstanceConstant*>) Window_23_9242D84D446944DD0D7D739136E38C28                 OFFSET(get<T>, {0x0, 32, 0, 0})
+};
+
+/// Struct /VehicleCosmetics/DataTables/Struct_VEH_Skins.Struct_VEH_Skins
+/// Size: 0x0020 (0x000000 - 0x000020)
+class FStruct_VEH_Skins : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 32;
+
+public:
+	CMember(TWeakObjectPtr<UMaterialInstanceConstant*>) SkinMIC_19_9242D84D446944DD0D7D739136E38C28                OFFSET(get<T>, {0x0, 32, 0, 0})
 };
 

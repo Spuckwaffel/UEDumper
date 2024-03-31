@@ -21,7 +21,7 @@ public:
 
 	/// Functions
 	// Function /Script/FlyingCodeRuntime.FortCameraMode_Flying.BP_ProcessViewRotation
-	// void BP_ProcessViewRotation(FRotator& InViewRotation, FRotator& InDeltaRot, float DeltaTime, bool& bOutShouldOverride, FRotator& OutViewRotation, FRotator& OutDeltaRot); // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintEvent|Const 
+	// void BP_ProcessViewRotation(FRotator& InViewRotation, FRotator& InDeltaRot, float DeltaTime, bool& bOutShouldOverride, FRotator& OutViewRotation, FRotator& OutDeltaRot); // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintEvent|Const 
 };
 
 /// Class /Script/FlyingCodeRuntime.FortMovementMode_ExtLogicFlying
@@ -36,7 +36,7 @@ public:
 
 	/// Functions
 	// Function /Script/FlyingCodeRuntime.FortMovementMode_ExtLogicFlying.CanBeginFlying
-	// bool CanBeginFlying();                                                                                                   // [0x331049c] Native|Event|Public|BlueprintEvent|Const 
+	// bool CanBeginFlying();                                                                                                   // [0x32247e0] Native|Event|Public|BlueprintEvent|Const 
 };
 
 /// Struct /Script/FlyingCodeRuntime.FortMovementMode_FlyingRuntimeData

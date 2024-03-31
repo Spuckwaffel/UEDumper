@@ -24,14 +24,14 @@ public:
 
 	/// Functions
 	// Function /Script/CRD_HUDController.CustomHUDLayoutComponent.UpdateDynamicUIScene
-	// void UpdateDynamicUIScene();                                                                                             // [0xac3dcd0] Final|Native|Protected 
+	// void UpdateDynamicUIScene();                                                                                             // [0xc12bac4] Final|Native|Protected 
 	// Function /Script/CRD_HUDController.CustomHUDLayoutComponent.PlayerPreRemoved
-	// void PlayerPreRemoved(FUniqueNetIdRepl UniqueNetId, bool bIsLocalPlayer);                                                // [0xac3da68] Final|Native|Protected 
+	// void PlayerPreRemoved(FUniqueNetIdRepl UniqueNetId, bool bIsLocalPlayer);                                                // [0xc12b928] Final|Native|Protected 
 	// Function /Script/CRD_HUDController.CustomHUDLayoutComponent.HandleTeamIndexChanged
-	// void HandleTeamIndexChanged(char TeamIndex);                                                                             // [0xac3d9ec] Final|Native|Protected 
+	// void HandleTeamIndexChanged(char TeamIndex);                                                                             // [0xc12b86c] Final|Native|Protected 
 	// Function /Script/CRD_HUDController.CustomHUDLayoutComponent.HandleMinigameEnded
-	// void HandleMinigameEnded();                                                                                              // [0xac3d9d8] Final|Native|Protected 
+	// void HandleMinigameEnded();                                                                                              // [0xc12b858] Final|Native|Protected 
 	// Function /Script/CRD_HUDController.CustomHUDLayoutComponent.GetTargetWidgetClassFromTag
-	// TWeakObjectPtr<UClass*> GetTargetWidgetClassFromTag(FGameplayTag& GameplayTag);                                          // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// TWeakObjectPtr<UClass*> GetTargetWidgetClassFromTag(FGameplayTag& GameplayTag);                                          // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 

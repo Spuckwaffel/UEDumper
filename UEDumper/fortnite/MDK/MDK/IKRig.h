@@ -56,7 +56,7 @@ public:
 
 	/// Functions
 	// Function /Script/IKRig.IKGoalCreatorInterface.AddIKGoals
-	// void AddIKGoals(TMap<FName, FIKRigGoal>& OutGoals);                                                                      // [0x78a63d8] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void AddIKGoals(TMap<FName, FIKRigGoal>& OutGoals);                                                                      // [0x7c93f3c] Native|Event|Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Script/IKRig.PinBoneOp
@@ -106,26 +106,26 @@ public:
 
 	/// Functions
 	// Function /Script/IKRig.IKRigComponent.SetIKRigGoalTransform
-	// void SetIKRigGoalTransform(FName GoalName, FTransform Transform, float PositionAlpha, float RotationAlpha);              // [0x78a80a4] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetIKRigGoalTransform(FName GoalName, FTransform Transform, float PositionAlpha, float RotationAlpha);              // [0x7c95d04] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/IKRig.IKRigComponent.SetIKRigGoalPositionAndRotation
-	// void SetIKRigGoalPositionAndRotation(FName GoalName, FVector Position, FQuat Rotation, float PositionAlpha, float RotationAlpha); // [0x78a7c94] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void SetIKRigGoalPositionAndRotation(FName GoalName, FVector Position, FQuat Rotation, float PositionAlpha, float RotationAlpha); // [0x7c95a28] Final|Native|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/IKRig.IKRigComponent.SetIKRigGoal
-	// void SetIKRigGoal(FIKRigGoal& Goal);                                                                                     // [0x78a7bf8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void SetIKRigGoal(FIKRigGoal& Goal);                                                                                     // [0x7c9598c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRigComponent.ClearAllGoals
-	// void ClearAllGoals();                                                                                                    // [0x78a64a8] Final|Native|Public|BlueprintCallable 
+	// void ClearAllGoals();                                                                                                    // [0x7c9400c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/IKRig.RetargetChainSettings
-/// Size: 0x00B0 (0x000028 - 0x0000D8)
+/// Size: 0x00B8 (0x000028 - 0x0000E0)
 class URetargetChainSettings : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 216;
+	static inline constexpr uint64_t __MDKClassSize = 224;
 
 public:
 	SMember(FName)                                     SourceChain                                                 OFFSET(getStruct<T>, {0x28, 4, 0, 0})
 	SMember(FName)                                     TargetChain                                                 OFFSET(getStruct<T>, {0x2C, 4, 0, 0})
-	SMember(FTargetChainSettings)                      Settings                                                    OFFSET(getStruct<T>, {0x30, 168, 0, 0})
+	SMember(FTargetChainSettings)                      Settings                                                    OFFSET(getStruct<T>, {0x30, 176, 0, 0})
 };
 
 /// Class /Script/IKRig.RetargetRootSettings
@@ -178,35 +178,35 @@ public:
 
 	/// Functions
 	// Function /Script/IKRig.IKRetargeter.SetRootSettingsInRetargetProfile
-	// void SetRootSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetRootSettings& RootSettings);             // [0x78a8474] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetRootSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetRootSettings& RootSettings);             // [0x7c95fe4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.SetGlobalSettingsInRetargetProfile
-	// void SetGlobalSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FRetargetGlobalSettings& GlobalSettings);     // [0x78a7acc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetGlobalSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FRetargetGlobalSettings& GlobalSettings);     // [0x7c95860] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.SetChainSpeedPlantSettingsInRetargetProfile
-	// void SetChainSpeedPlantSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainSpeedPlantSettings& SpeedPlantSettings, FName TargetChainName); // [0x78a78ac] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetChainSpeedPlantSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainSpeedPlantSettings& SpeedPlantSettings, FName TargetChainName); // [0x7c95644] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.SetChainSettingsInRetargetProfile
-	// void SetChainSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainSettings& ChainSettings, FName TargetChainName); // [0x78a76a0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetChainSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainSettings& ChainSettings, FName TargetChainName); // [0x7c95438] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.SetChainIKSettingsInRetargetProfile
-	// void SetChainIKSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainIKSettings& IKSettings, FName TargetChainName); // [0x78a7494] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetChainIKSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainIKSettings& IKSettings, FName TargetChainName); // [0x7c9522c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.SetChainFKSettingsInRetargetProfile
-	// void SetChainFKSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainFKSettings& FKSettings, FName TargetChainName); // [0x78a7270] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void SetChainFKSettingsInRetargetProfile(FRetargetProfile& RetargetProfile, FTargetChainFKSettings& FKSettings, FName TargetChainName); // [0x7c95008] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/IKRig.IKRetargeter.HasTargetIKRig
-	// bool HasTargetIKRig();                                                                                                   // [0x78a724c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasTargetIKRig();                                                                                                   // [0x7c94fe4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/IKRig.IKRetargeter.HasSourceIKRig
-	// bool HasSourceIKRig();                                                                                                   // [0x78a7228] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasSourceIKRig();                                                                                                   // [0x7c94fc0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/IKRig.IKRetargeter.GetRootSettingsFromRetargetProfile
-	// FTargetRootSettings GetRootSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile);                               // [0x78a7114] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FTargetRootSettings GetRootSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile);                               // [0x7c94eac] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetRootSettingsFromRetargetAsset
-	// void GetRootSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName OptionalProfileName, FTargetRootSettings& OutSettings); // [0x78a6efc] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetRootSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName OptionalProfileName, FTargetRootSettings& OutSettings); // [0x7c94c28] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetGlobalSettingsFromRetargetProfile
-	// FRetargetGlobalSettings GetGlobalSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile);                         // [0x78a6e28] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FRetargetGlobalSettings GetGlobalSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile);                         // [0x7c94b54] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetGlobalSettingsFromRetargetAsset
-	// void GetGlobalSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName OptionalProfileName, FRetargetGlobalSettings& OutSettings); // [0x78a6cb0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void GetGlobalSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName OptionalProfileName, FRetargetGlobalSettings& OutSettings); // [0x7c9496c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetChainUsingGoalFromRetargetAsset
-	// FTargetChainSettings GetChainUsingGoalFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName IKGoalName);           // [0x78a6a54] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FTargetChainSettings GetChainUsingGoalFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName IKGoalName);           // [0x7c94694] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetChainSettingsFromRetargetProfile
-	// FTargetChainSettings GetChainSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile, FName TargetChainName);      // [0x78a67c0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// FTargetChainSettings GetChainSettingsFromRetargetProfile(FRetargetProfile& RetargetProfile, FName TargetChainName);      // [0x7c943e8] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/IKRig.IKRetargeter.GetChainSettingsFromRetargetAsset
-	// FTargetChainSettings GetChainSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName TargetChainName, FName OptionalProfileName); // [0x78a64d8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FTargetChainSettings GetChainSettingsFromRetargetAsset(class UIKRetargeter* RetargetAsset, FName TargetChainName, FName OptionalProfileName); // [0x7c9403c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 
 /// Class /Script/IKRig.IKRetargetProcessor
@@ -386,25 +386,26 @@ public:
 };
 
 /// Class /Script/IKRig.IKRigFBIKSolver
-/// Size: 0x00C8 (0x000030 - 0x0000F8)
+/// Size: 0x00D0 (0x000030 - 0x000100)
 class UIKRigFBIKSolver : public UIKRigSolver
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 248;
+	static inline constexpr uint64_t __MDKClassSize = 256;
 
 public:
 	SMember(FName)                                     RootBone                                                    OFFSET(getStruct<T>, {0x30, 4, 0, 0})
 	DMember(int32_t)                                   Iterations                                                  OFFSET(get<int32_t>, {0x34, 4, 0, 0})
-	DMember(float)                                     MassMultiplier                                              OFFSET(get<float>, {0x38, 4, 0, 0})
-	DMember(bool)                                      bAllowStretch                                               OFFSET(get<bool>, {0x3C, 1, 0, 0})
-	CMember(EPBIKRootBehavior)                         RootBehavior                                                OFFSET(get<T>, {0x3D, 1, 0, 0})
-	SMember(FRootPrePullSettings)                      PrePullRootSettings                                         OFFSET(getStruct<T>, {0x40, 32, 0, 0})
-	DMember(float)                                     PullChainAlpha                                              OFFSET(get<float>, {0x60, 4, 0, 0})
-	DMember(float)                                     MaxAngle                                                    OFFSET(get<float>, {0x64, 4, 0, 0})
-	DMember(float)                                     OverRelaxation                                              OFFSET(get<float>, {0x68, 4, 0, 0})
-	DMember(bool)                                      bStartSolveFromInputPose                                    OFFSET(get<bool>, {0x6C, 1, 0, 0})
-	CMember(TArray<class UIKRig_FBIKEffector*>)        Effectors                                                   OFFSET(get<T>, {0x70, 16, 0, 0})
-	CMember(TArray<class UIKRig_FBIKBoneSettings*>)    BoneSettings                                                OFFSET(get<T>, {0x80, 16, 0, 0})
+	DMember(int32_t)                                   SubIterations                                               OFFSET(get<int32_t>, {0x38, 4, 0, 0})
+	DMember(float)                                     MassMultiplier                                              OFFSET(get<float>, {0x3C, 4, 0, 0})
+	DMember(bool)                                      bAllowStretch                                               OFFSET(get<bool>, {0x40, 1, 0, 0})
+	CMember(EPBIKRootBehavior)                         RootBehavior                                                OFFSET(get<T>, {0x41, 1, 0, 0})
+	SMember(FRootPrePullSettings)                      PrePullRootSettings                                         OFFSET(getStruct<T>, {0x44, 32, 0, 0})
+	DMember(float)                                     PullChainAlpha                                              OFFSET(get<float>, {0x64, 4, 0, 0})
+	DMember(float)                                     MaxAngle                                                    OFFSET(get<float>, {0x68, 4, 0, 0})
+	DMember(float)                                     OverRelaxation                                              OFFSET(get<float>, {0x6C, 4, 0, 0})
+	DMember(bool)                                      bStartSolveFromInputPose                                    OFFSET(get<bool>, {0x70, 1, 0, 0})
+	CMember(TArray<class UIKRig_FBIKEffector*>)        Effectors                                                   OFFSET(get<T>, {0x78, 16, 0, 0})
+	CMember(TArray<class UIKRig_FBIKBoneSettings*>)    BoneSettings                                                OFFSET(get<T>, {0x88, 16, 0, 0})
 };
 
 /// Class /Script/IKRig.IKRig_PoleSolverEffector
@@ -537,17 +538,17 @@ public:
 };
 
 /// Struct /Script/IKRig.TargetChainSettings
-/// Size: 0x00A8 (0x000000 - 0x0000A8)
+/// Size: 0x00B0 (0x000000 - 0x0000B0)
 class FTargetChainSettings : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 168;
+	static inline constexpr uint64_t __MDKClassSize = 176;
 
 public:
-	SMember(FTargetChainFKSettings)                    FK                                                          OFFSET(getStruct<T>, {0x0, 24, 0, 0})
-	SMember(FTargetChainIKSettings)                    IK                                                          OFFSET(getStruct<T>, {0x18, 120, 0, 0})
-	SMember(FTargetChainSpeedPlantSettings)            SpeedPlanting                                               OFFSET(getStruct<T>, {0x90, 20, 0, 0})
+	SMember(FTargetChainFKSettings)                    FK                                                          OFFSET(getStruct<T>, {0x0, 28, 0, 0})
+	SMember(FTargetChainIKSettings)                    IK                                                          OFFSET(getStruct<T>, {0x20, 120, 0, 0})
+	SMember(FTargetChainSpeedPlantSettings)            SpeedPlanting                                               OFFSET(getStruct<T>, {0x98, 20, 0, 0})
 };
 
 /// Struct /Script/IKRig.TargetChainSpeedPlantSettings
@@ -587,12 +588,12 @@ public:
 };
 
 /// Struct /Script/IKRig.TargetChainFKSettings
-/// Size: 0x0018 (0x000000 - 0x000018)
+/// Size: 0x001C (0x000000 - 0x00001C)
 class FTargetChainFKSettings : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 24;
+	static inline constexpr uint64_t __MDKClassSize = 28;
 
 public:
 	DMember(bool)                                      EnableFK                                                    OFFSET(get<bool>, {0x0, 1, 0, 0})
@@ -601,7 +602,8 @@ public:
 	CMember(ERetargetTranslationMode)                  TranslationMode                                             OFFSET(get<T>, {0x8, 1, 0, 0})
 	DMember(float)                                     TranslationAlpha                                            OFFSET(get<float>, {0xC, 4, 0, 0})
 	DMember(float)                                     PoleVectorMatching                                          OFFSET(get<float>, {0x10, 4, 0, 0})
-	DMember(float)                                     PoleVectorOffset                                            OFFSET(get<float>, {0x14, 4, 0, 0})
+	DMember(bool)                                      PoleVectorMaintainOffset                                    OFFSET(get<bool>, {0x14, 1, 0, 0})
+	DMember(float)                                     PoleVectorOffset                                            OFFSET(get<float>, {0x18, 4, 0, 0})
 };
 
 /// Struct /Script/IKRig.PinBoneData
@@ -903,12 +905,13 @@ enum class EBasicAxis : uint32_t
 };
 
 /// Enum /Script/IKRig.EWarpingDirectionSource
-/// Size: 0x03
+/// Size: 0x04
 enum class EWarpingDirectionSource : uint32_t
 {
 	EWarpingDirectionSource__Goals                                                   = 0,
 	EWarpingDirectionSource__Chain                                                   = 1,
-	EWarpingDirectionSource__EWarpingDirectionSource_MAX                             = 2
+	EWarpingDirectionSource__RootBone                                                = 2,
+	EWarpingDirectionSource__EWarpingDirectionSource_MAX                             = 3
 };
 
 /// Enum /Script/IKRig.EIKRigGoalSpace

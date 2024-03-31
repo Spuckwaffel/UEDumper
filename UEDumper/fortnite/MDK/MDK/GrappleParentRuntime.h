@@ -48,9 +48,9 @@ public:
 
 	/// Functions
 	// Function /Script/GrappleParentRuntime.FortCameraModifier_Swinging.RemoveSelfFromCameraManager
-	// void RemoveSelfFromCameraManager();                                                                                      // [0xa304e60] Final|Native|Protected 
+	// void RemoveSelfFromCameraManager();                                                                                      // [0xb04bb24] Final|Native|Protected 
 	// Function /Script/GrappleParentRuntime.FortCameraModifier_Swinging.CalculateDynamicMultipliers
-	// void CalculateDynamicMultipliers(float& OutFOVBoundsMultiplier, float& OutBoostOffsetMultiplier);                        // [0xa304b74] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
+	// void CalculateDynamicMultipliers(float& OutFOVBoundsMultiplier, float& OutBoostOffsetMultiplier);                        // [0xb04b838] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
 };
 
 /// Class /Script/GrappleParentRuntime.FortSwingingLayerAnimInstance
@@ -112,9 +112,9 @@ public:
 
 	/// Functions
 	// Function /Script/GrappleParentRuntime.FortSwingingLayerAnimInstance.GetPlayerAnglesFromAttachPoint
-	// void GetPlayerAnglesFromAttachPoint(float& pitch, float& Roll, float& Yaw);                                              // [0xa304d38] Final|Native|Public|HasOutParms 
+	// void GetPlayerAnglesFromAttachPoint(float& pitch, float& Roll, float& Yaw);                                              // [0xb04b9fc] Final|Native|Public|HasOutParms 
 	// Function /Script/GrappleParentRuntime.FortSwingingLayerAnimInstance.GetAttachVectorInPlayerSpace
-	// FVector GetAttachVectorInPlayerSpace(FVector& InPlayerToAttachPoint);                                                    // [0xa304c54] Final|Native|Public|HasOutParms|HasDefaults 
+	// FVector GetAttachVectorInPlayerSpace(FVector& InPlayerToAttachPoint);                                                    // [0xb04b918] Final|Native|Public|HasOutParms|HasDefaults 
 };
 
 /// Struct /Script/GrappleParentRuntime.SpeedScaledAxisOffsetData

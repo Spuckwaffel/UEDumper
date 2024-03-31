@@ -20,19 +20,19 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.SetCustomFrameRate
-	// bool SetCustomFrameRate(float& AttributeValue);                                                                          // [0xbaf4a7c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFrameRate(float& AttributeValue);                                                                          // [0xcce2698] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.RemoveCustomAnimationTrackUid
-	// bool RemoveCustomAnimationTrackUid(FString AnimationTrackUid);                                                           // [0xbaf3b04] Final|Native|Public|BlueprintCallable 
+	// bool RemoveCustomAnimationTrackUid(FString AnimationTrackUid);                                                           // [0xccdfd80] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.GetCustomFrameRate
-	// bool GetCustomFrameRate(float& AttributeValue);                                                                          // [0xbaf2eac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFrameRate(float& AttributeValue);                                                                          // [0xccde6f4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.GetCustomAnimationTrackUids
-	// void GetCustomAnimationTrackUids(TArray<FString>& OutAnimationTrackUids);                                                // [0xbaf2950] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomAnimationTrackUids(TArray<FString>& OutAnimationTrackUids);                                                // [0xccde0e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.GetCustomAnimationTrackUidCount
-	// int32_t GetCustomAnimationTrackUidCount();                                                                               // [0xbaf2928] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCustomAnimationTrackUidCount();                                                                               // [0xccde0bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.GetCustomAnimationTrackUid
-	// void GetCustomAnimationTrackUid(int32_t Index, FString& OutAnimationTrackUid);                                           // [0xbaf2774] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomAnimationTrackUid(int32_t Index, FString& OutAnimationTrackUid);                                           // [0xccdda2c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetNode.AddCustomAnimationTrackUid
-	// bool AddCustomAnimationTrackUid(FString AnimationTrackUid);                                                              // [0xbaf2214] Final|Native|Public|BlueprintCallable 
+	// bool AddCustomAnimationTrackUid(FString AnimationTrackUid);                                                              // [0xccdcb0c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeAnimationTrackBaseNode
@@ -47,9 +47,9 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackBaseNode.SetCustomCompletionMode
-	// bool SetCustomCompletionMode(int32_t& AttributeValue);                                                                   // [0xbaf4654] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomCompletionMode(int32_t& AttributeValue);                                                                   // [0xcce21bc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackBaseNode.GetCustomCompletionMode
-	// bool GetCustomCompletionMode(int32_t& AttributeValue);                                                                   // [0xbaf2a84] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomCompletionMode(int32_t& AttributeValue);                                                                   // [0xccde218] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode
@@ -64,21 +64,21 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.SetCustomTrackSetDependencyUid
-	// bool SetCustomTrackSetDependencyUid(FString AttributeValue);                                                             // [0xbaf5140] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomTrackSetDependencyUid(FString AttributeValue);                                                             // [0xcce32d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.SetCustomTimeScale
-	// bool SetCustomTimeScale(float& AttributeValue);                                                                          // [0xbaf50a8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomTimeScale(float& AttributeValue);                                                                          // [0xcce3240] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.SetCustomStartFrame
-	// bool SetCustomStartFrame(int32_t& AttributeValue);                                                                       // [0xbaf4f78] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomStartFrame(int32_t& AttributeValue);                                                                       // [0xcce3098] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.SetCustomDuration
-	// bool SetCustomDuration(int32_t& AttributeValue);                                                                         // [0xbaf46ec] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomDuration(int32_t& AttributeValue);                                                                         // [0xcce2290] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.GetCustomTrackSetDependencyUid
-	// bool GetCustomTrackSetDependencyUid(FString& AttributeValue);                                                            // [0xbaf357c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTrackSetDependencyUid(FString& AttributeValue);                                                            // [0xccdf2fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.GetCustomTimeScale
-	// bool GetCustomTimeScale(float& AttributeValue);                                                                          // [0xbaf34e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTimeScale(float& AttributeValue);                                                                          // [0xccdf264] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.GetCustomStartFrame
-	// bool GetCustomStartFrame(int32_t& AttributeValue);                                                                       // [0xbaf33b4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomStartFrame(int32_t& AttributeValue);                                                                       // [0xccdf0bc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackSetInstanceNode.GetCustomDuration
-	// bool GetCustomDuration(int32_t& AttributeValue);                                                                         // [0xbaf2b1c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomDuration(int32_t& AttributeValue);                                                                         // [0xccde2ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeAnimationTrackNode
@@ -93,25 +93,25 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.SetCustomTargetedProperty
-	// bool SetCustomTargetedProperty(int32_t& TargetedProperty);                                                               // [0xbaf5010] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomTargetedProperty(int32_t& TargetedProperty);                                                               // [0xcce316c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.SetCustomPropertyTrack
-	// bool SetCustomPropertyTrack(FName& PropertyTrack);                                                                       // [0xbaf4c44] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomPropertyTrack(FName& PropertyTrack);                                                                       // [0xcce2860] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.SetCustomFrameCount
-	// bool SetCustomFrameCount(int32_t& AttributeValue);                                                                       // [0xbaf49e4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFrameCount(int32_t& AttributeValue);                                                                       // [0xcce25c4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.SetCustomAnimationPayloadKey
-	// bool SetCustomAnimationPayloadKey(FString InUniqueId, EInterchangeAnimationPayLoadType& InType);                         // [0xbaf4224] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomAnimationPayloadKey(FString InUniqueId, EInterchangeAnimationPayLoadType& InType);                         // [0xcce18b4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.SetCustomActorDependencyUid
-	// bool SetCustomActorDependencyUid(FString DependencyUid);                                                                 // [0xbaf40b8] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomActorDependencyUid(FString DependencyUid);                                                                 // [0xcce1244] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.GetCustomTargetedProperty
-	// bool GetCustomTargetedProperty(int32_t& TargetedProperty);                                                               // [0xbaf344c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTargetedProperty(int32_t& TargetedProperty);                                                               // [0xccdf190] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.GetCustomPropertyTrack
-	// bool GetCustomPropertyTrack(FName& PropertyTrack);                                                                       // [0xbaf3074] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomPropertyTrack(FName& PropertyTrack);                                                                       // [0xccde8bc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.GetCustomFrameCount
-	// bool GetCustomFrameCount(int32_t& AttributeValue);                                                                       // [0xbaf2e14] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFrameCount(int32_t& AttributeValue);                                                                       // [0xccde620] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.GetCustomAnimationPayloadKey
-	// bool GetCustomAnimationPayloadKey(FInterchangeAnimationPayLoadKey& AnimationPayLoadKey);                                 // [0xbaf24f8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAnimationPayloadKey(FInterchangeAnimationPayLoadKey& AnimationPayLoadKey);                                 // [0xccdd7b0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeAnimationTrackNode.GetCustomActorDependencyUid
-	// bool GetCustomActorDependencyUid(FString& DependencyUid);                                                                // [0xbaf2380] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomActorDependencyUid(FString& DependencyUid);                                                                // [0xccdd178] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeTransformAnimationTrackNode
@@ -126,9 +126,9 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeTransformAnimationTrackNode.SetCustomUsedChannels
-	// bool SetCustomUsedChannels(int32_t& AttributeValue);                                                                     // [0xbaf52ac] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomUsedChannels(int32_t& AttributeValue);                                                                     // [0xcce3948] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTransformAnimationTrackNode.GetCustomUsedChannels
-	// bool GetCustomUsedChannels(int32_t& AttributeValue);                                                                     // [0xbaf36f4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomUsedChannels(int32_t& AttributeValue);                                                                     // [0xccdf934] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode
@@ -143,29 +143,29 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetCustomSkeletonNodeUid
-	// bool SetCustomSkeletonNodeUid(FString AttributeValue);                                                                   // [0xbaf4e0c] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomSkeletonNodeUid(FString AttributeValue);                                                                   // [0xcce2a28] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetCustomAnimationStopTime
-	// bool SetCustomAnimationStopTime(double& StopTime);                                                                       // [0xbaf4520] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomAnimationStopTime(double& StopTime);                                                                       // [0xcce2088] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetCustomAnimationStartTime
-	// bool SetCustomAnimationStartTime(double& StartTime);                                                                     // [0xbaf4484] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomAnimationStartTime(double& StartTime);                                                                     // [0xcce1fec] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetCustomAnimationSampleRate
-	// bool SetCustomAnimationSampleRate(double& SampleRate);                                                                   // [0xbaf43e8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomAnimationSampleRate(double& SampleRate);                                                                   // [0xcce1f50] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetAnimationPayloadKeyForSceneNodeUid
-	// bool SetAnimationPayloadKeyForSceneNodeUid(FString SceneNodeUid, FString InUniqueId, EInterchangeAnimationPayLoadType& InType); // [0xbaf3e94] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetAnimationPayloadKeyForSceneNodeUid(FString SceneNodeUid, FString InUniqueId, EInterchangeAnimationPayLoadType& InType); // [0xcce0b18] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.SetAnimationPayloadKeyForMorphTargetNodeUid
-	// bool SetAnimationPayloadKeyForMorphTargetNodeUid(FString MorphTargetNodeUid, FString InUniqueId, EInterchangeAnimationPayLoadType& InType); // [0xbaf3c70] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetAnimationPayloadKeyForMorphTargetNodeUid(FString MorphTargetNodeUid, FString InUniqueId, EInterchangeAnimationPayLoadType& InType); // [0xcce03ec] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetSceneNodeAnimationPayloadKeys
-	// void GetSceneNodeAnimationPayloadKeys(TMap<FString, FString>& OutSceneNodeAnimationPayloadKeyUids, TMap<FString, char>& OutSceneNodeAnimationPayloadKeyTypes); // [0xbaf3994] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSceneNodeAnimationPayloadKeys(TMap<FString, FString>& OutSceneNodeAnimationPayloadKeyUids, TMap<FString, char>& OutSceneNodeAnimationPayloadKeyTypes); // [0xccdfc10] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetMorphTargetNodeAnimationPayloadKeys
-	// void GetMorphTargetNodeAnimationPayloadKeys(TMap<FString, FString>& OutMorphTargetNodeAnimationPayloadKeyUids, TMap<FString, char>& OutMorphTargetNodeAnimationPayloadKeyTypes); // [0xbaf3824] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetMorphTargetNodeAnimationPayloadKeys(TMap<FString, FString>& OutMorphTargetNodeAnimationPayloadKeyUids, TMap<FString, char>& OutMorphTargetNodeAnimationPayloadKeyTypes); // [0xccdfaa0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetCustomSkeletonNodeUid
-	// bool GetCustomSkeletonNodeUid(FString& AttributeValue);                                                                  // [0xbaf323c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSkeletonNodeUid(FString& AttributeValue);                                                                  // [0xccdea84] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetCustomAnimationStopTime
-	// bool GetCustomAnimationStopTime(double& StopTime);                                                                       // [0xbaf26d8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAnimationStopTime(double& StopTime);                                                                       // [0xccdd990] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetCustomAnimationStartTime
-	// bool GetCustomAnimationStartTime(double& StartTime);                                                                     // [0xbaf263c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAnimationStartTime(double& StartTime);                                                                     // [0xccdd8f4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSkeletalAnimationTrackNode.GetCustomAnimationSampleRate
-	// bool GetCustomAnimationSampleRate(double& SampleRate);                                                                   // [0xbaf25a0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAnimationSampleRate(double& SampleRate);                                                                   // [0xccdd858] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangePhysicalCameraNode
@@ -180,21 +180,21 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.SetCustomSensorWidth
-	// bool SetCustomSensorWidth(float& AttributeValue);                                                                        // [0xbaf4d74] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomSensorWidth(float& AttributeValue);                                                                        // [0xcce2990] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.SetCustomSensorHeight
-	// bool SetCustomSensorHeight(float& AttributeValue);                                                                       // [0xbaf4cdc] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomSensorHeight(float& AttributeValue);                                                                       // [0xcce28f8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.SetCustomFocalLength
-	// bool SetCustomFocalLength(float& AttributeValue);                                                                        // [0xbaf494c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFocalLength(float& AttributeValue);                                                                        // [0xcce252c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.SetCustomEnableDepthOfField
-	// bool SetCustomEnableDepthOfField(bool& AttributeValue);                                                                  // [0xbaf4784] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomEnableDepthOfField(bool& AttributeValue);                                                                  // [0xcce2364] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.GetCustomSensorWidth
-	// bool GetCustomSensorWidth(float& AttributeValue);                                                                        // [0xbaf31a4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSensorWidth(float& AttributeValue);                                                                        // [0xccde9ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.GetCustomSensorHeight
-	// bool GetCustomSensorHeight(float& AttributeValue);                                                                       // [0xbaf310c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSensorHeight(float& AttributeValue);                                                                       // [0xccde954] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.GetCustomFocalLength
-	// bool GetCustomFocalLength(float& AttributeValue);                                                                        // [0xbaf2d7c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFocalLength(float& AttributeValue);                                                                        // [0xccde588] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangePhysicalCameraNode.GetCustomEnableDepthOfField
-	// bool GetCustomEnableDepthOfField(bool& AttributeValue);                                                                  // [0xbaf2bb4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomEnableDepthOfField(bool& AttributeValue);                                                                  // [0xccde3c0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeStandardCameraNode
@@ -209,29 +209,29 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomWidth
-	// bool SetCustomWidth(float& AttributeValue);                                                                              // [0xbaf5344] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomWidth(float& AttributeValue);                                                                              // [0xcce3a1c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomProjectionMode
-	// bool SetCustomProjectionMode(EInterchangeCameraProjectionType& AttributeValue);                                          // [0xbaf4bac] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomProjectionMode(EInterchangeCameraProjectionType& AttributeValue);                                          // [0xcce27c8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomNearClipPlane
-	// bool SetCustomNearClipPlane(float& AttributeValue);                                                                      // [0xbaf4b14] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomNearClipPlane(float& AttributeValue);                                                                      // [0xcce2730] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomFieldOfView
-	// bool SetCustomFieldOfView(float& AttributeValue);                                                                        // [0xbaf48b4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFieldOfView(float& AttributeValue);                                                                        // [0xcce2494] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomFarClipPlane
-	// bool SetCustomFarClipPlane(float& AttributeValue);                                                                       // [0xbaf481c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFarClipPlane(float& AttributeValue);                                                                       // [0xcce23fc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.SetCustomAspectRatio
-	// bool SetCustomAspectRatio(float& AttributeValue);                                                                        // [0xbaf45bc] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomAspectRatio(float& AttributeValue);                                                                        // [0xcce2124] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomWidth
-	// bool GetCustomWidth(float& AttributeValue);                                                                              // [0xbaf378c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomWidth(float& AttributeValue);                                                                              // [0xccdfa08] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomProjectionMode
-	// bool GetCustomProjectionMode(EInterchangeCameraProjectionType& AttributeValue);                                          // [0xbaf2fdc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomProjectionMode(EInterchangeCameraProjectionType& AttributeValue);                                          // [0xccde824] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomNearClipPlane
-	// bool GetCustomNearClipPlane(float& AttributeValue);                                                                      // [0xbaf2f44] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomNearClipPlane(float& AttributeValue);                                                                      // [0xccde78c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomFieldOfView
-	// bool GetCustomFieldOfView(float& AttributeValue);                                                                        // [0xbaf2ce4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFieldOfView(float& AttributeValue);                                                                        // [0xccde4f0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomFarClipPlane
-	// bool GetCustomFarClipPlane(float& AttributeValue);                                                                       // [0xbaf2c4c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFarClipPlane(float& AttributeValue);                                                                       // [0xccde458] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeStandardCameraNode.GetCustomAspectRatio
-	// bool GetCustomAspectRatio(float& AttributeValue);                                                                        // [0xbaf29ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAspectRatio(float& AttributeValue);                                                                        // [0xccde180] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeShaderNode
@@ -246,15 +246,15 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeShaderNode.SetCustomShaderType
-	// bool SetCustomShaderType(FString AttributeValue);                                                                        // [0xbb18c10] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomShaderType(FString AttributeValue);                                                                        // [0xcd1d510] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderNode.GetCustomShaderType
-	// bool GetCustomShaderType(FString& AttributeValue);                                                                       // [0xbb1616c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomShaderType(FString& AttributeValue);                                                                       // [0xcd159ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderNode.AddStringInput
-	// bool AddStringInput(FString InputName, FString AttributeValue, bool bIsAParameter);                                      // [0xbb14878] Final|Native|Public|BlueprintCallable 
+	// bool AddStringInput(FString InputName, FString AttributeValue, bool bIsAParameter);                                      // [0xcd11cd4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderNode.AddLinearColorInput
-	// bool AddLinearColorInput(FString InputName, FLinearColor& AttributeValue, bool bIsAParameter);                           // [0xbb144c4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool AddLinearColorInput(FString InputName, FLinearColor& AttributeValue, bool bIsAParameter);                           // [0xcd10f44] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderNode.AddFloatInput
-	// bool AddFloatInput(FString InputName, float& AttributeValue, bool bIsAParameter);                                        // [0xbb1428c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool AddFloatInput(FString InputName, float& AttributeValue, bool bIsAParameter);                                        // [0xcd10824] Final|Native|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeDecalMaterialNode
@@ -279,17 +279,17 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.SetCustomSortOrder
-	// bool SetCustomSortOrder(int32_t& AttributeValue);                                                                        // [0xbb09208] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomSortOrder(int32_t& AttributeValue);                                                                        // [0xcd00d44] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.SetCustomDecalSize
-	// bool SetCustomDecalSize(FVector& AttributeValue);                                                                        // [0xbb08298] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomDecalSize(FVector& AttributeValue);                                                                        // [0xccfed8c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.SetCustomDecalMaterialPathName
-	// bool SetCustomDecalMaterialPathName(FString AttributeValue);                                                             // [0xbb0812c] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomDecalMaterialPathName(FString AttributeValue);                                                             // [0xccfe71c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.GetCustomSortOrder
-	// bool GetCustomSortOrder(int32_t& AttributeValue);                                                                        // [0xbb05dd4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSortOrder(int32_t& AttributeValue);                                                                        // [0xccf79ac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.GetCustomDecalSize
-	// bool GetCustomDecalSize(FVector& AttributeValue);                                                                        // [0xbb04ca8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomDecalSize(FVector& AttributeValue);                                                                        // [0xccf5524] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeDecalNode.GetCustomDecalMaterialPathName
-	// bool GetCustomDecalMaterialPathName(FString& AttributeValue);                                                            // [0xbb04b30] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomDecalMaterialPathName(FString& AttributeValue);                                                            // [0xccf4eec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeBaseLightNode
@@ -304,21 +304,21 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.SetCustomUseTemperature
-	// bool SetCustomUseTemperature(bool AttributeValue);                                                                       // [0xbb09690] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomUseTemperature(bool AttributeValue);                                                                       // [0xcd01344] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.SetCustomTemperature
-	// bool SetCustomTemperature(float AttributeValue);                                                                         // [0xbb093c0] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomTemperature(float AttributeValue);                                                                         // [0xcd00fb8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.SetCustomLightColor
-	// bool SetCustomLightColor(FLinearColor& AttributeValue);                                                                  // [0xbb08ca4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomLightColor(FLinearColor& AttributeValue);                                                                  // [0xcd00220] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.SetCustomIntensity
-	// bool SetCustomIntensity(float AttributeValue);                                                                           // [0xbb08b7c] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomIntensity(float AttributeValue);                                                                           // [0xcd000b8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.GetCustomUseTemperature
-	// bool GetCustomUseTemperature(bool& AttributeValue);                                                                      // [0xbb061fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomUseTemperature(bool& AttributeValue);                                                                      // [0xccf7e4c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.GetCustomTemperature
-	// bool GetCustomTemperature(float& AttributeValue);                                                                        // [0xbb05f9c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTemperature(float& AttributeValue);                                                                        // [0xccf7bb0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.GetCustomLightColor
-	// bool GetCustomLightColor(FLinearColor& AttributeValue);                                                                  // [0xbb058d4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomLightColor(FLinearColor& AttributeValue);                                                                  // [0xccf6fb0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeBaseLightNode.GetCustomIntensity
-	// bool GetCustomIntensity(float& AttributeValue);                                                                          // [0xbb057a4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomIntensity(float& AttributeValue);                                                                          // [0xccf6e80] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeLightNode
@@ -333,29 +333,29 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomUseIESBrightness
-	// bool SetCustomUseIESBrightness(bool& AttributeValue, bool bAddApplyDelegate);                                            // [0xbb094e8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomUseIESBrightness(bool& AttributeValue, bool bAddApplyDelegate);                                            // [0xcd0115c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomRotation
-	// bool SetCustomRotation(FRotator& AttributeValue, bool bAddApplyDelegate);                                                // [0xbb0905c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomRotation(FRotator& AttributeValue, bool bAddApplyDelegate);                                                // [0xcd00b98] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomIntensityUnits
-	// bool SetCustomIntensityUnits(EInterchangeLightUnits& AttributeValue);                                                    // [0xbb08c0c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomIntensityUnits(EInterchangeLightUnits& AttributeValue);                                                    // [0xcd00188] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomIESTexture
-	// bool SetCustomIESTexture(FString AttributeValue);                                                                        // [0xbb08980] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomIESTexture(FString AttributeValue);                                                                        // [0xccff978] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomIESBrightnessScale
-	// bool SetCustomIESBrightnessScale(float& AttributeValue, bool bAddApplyDelegate);                                         // [0xbb08868] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomIESBrightnessScale(float& AttributeValue, bool bAddApplyDelegate);                                         // [0xccff860] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.SetCustomAttenuationRadius
-	// bool SetCustomAttenuationRadius(float AttributeValue);                                                                   // [0xbb08000] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomAttenuationRadius(float AttributeValue);                                                                   // [0xccfe5b0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomUseIESBrightness
-	// bool GetCustomUseIESBrightness(bool& AttributeValue);                                                                    // [0xbb060cc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomUseIESBrightness(bool& AttributeValue);                                                                    // [0xccf7d1c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomRotation
-	// bool GetCustomRotation(FRotator& AttributeValue);                                                                        // [0xbb05ca8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomRotation(FRotator& AttributeValue);                                                                        // [0xccf7880] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomIntensityUnits
-	// bool GetCustomIntensityUnits(EInterchangeLightUnits& AttributeValue);                                                    // [0xbb0583c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomIntensityUnits(EInterchangeLightUnits& AttributeValue);                                                    // [0xccf6f18] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomIESTexture
-	// bool GetCustomIESTexture(FString& AttributeValue);                                                                       // [0xbb05594] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomIESTexture(FString& AttributeValue);                                                                       // [0xccf67b0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomIESBrightnessScale
-	// bool GetCustomIESBrightnessScale(float& AttributeValue);                                                                 // [0xbb054fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomIESBrightnessScale(float& AttributeValue);                                                                 // [0xccf6718] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeLightNode.GetCustomAttenuationRadius
-	// bool GetCustomAttenuationRadius(float& AttributeValue);                                                                  // [0xbb049fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAttenuationRadius(float& AttributeValue);                                                                  // [0xccf4db8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangePointLightNode
@@ -370,13 +370,13 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangePointLightNode.SetCustomUseInverseSquaredFalloff
-	// bool SetCustomUseInverseSquaredFalloff(bool AttributeValue);                                                             // [0xbb09600] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomUseInverseSquaredFalloff(bool AttributeValue);                                                             // [0xcd01274] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePointLightNode.SetCustomLightFalloffExponent
-	// bool SetCustomLightFalloffExponent(float AttributeValue);                                                                // [0xbb08d38] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomLightFalloffExponent(float AttributeValue);                                                                // [0xcd002b4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangePointLightNode.GetCustomUseInverseSquaredFalloff
-	// bool GetCustomUseInverseSquaredFalloff(bool& AttributeValue);                                                            // [0xbb06164] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomUseInverseSquaredFalloff(bool& AttributeValue);                                                            // [0xccf7db4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangePointLightNode.GetCustomLightFalloffExponent
-	// bool GetCustomLightFalloffExponent(float& AttributeValue);                                                               // [0xbb05968] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomLightFalloffExponent(float& AttributeValue);                                                               // [0xccf7044] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeSpotLightNode
@@ -391,13 +391,13 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeSpotLightNode.SetCustomOuterConeAngle
-	// bool SetCustomOuterConeAngle(float AttributeValue);                                                                      // [0xbb08dc8] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomOuterConeAngle(float AttributeValue);                                                                      // [0xcd00384] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSpotLightNode.SetCustomInnerConeAngle
-	// bool SetCustomInnerConeAngle(float AttributeValue);                                                                      // [0xbb08aec] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomInnerConeAngle(float AttributeValue);                                                                      // [0xccfffe8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSpotLightNode.GetCustomOuterConeAngle
-	// bool GetCustomOuterConeAngle(float& AttributeValue);                                                                     // [0xbb05a00] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomOuterConeAngle(float& AttributeValue);                                                                     // [0xccf70dc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSpotLightNode.GetCustomInnerConeAngle
-	// bool GetCustomInnerConeAngle(float& AttributeValue);                                                                     // [0xbb0570c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomInnerConeAngle(float& AttributeValue);                                                                     // [0xccf6de8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeRectLightNode
@@ -412,13 +412,13 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeRectLightNode.SetCustomSourceWidth
-	// bool SetCustomSourceWidth(float AttributeValue);                                                                         // [0xbb09330] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomSourceWidth(float AttributeValue);                                                                         // [0xcd00ee8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeRectLightNode.SetCustomSourceHeight
-	// bool SetCustomSourceHeight(float AttributeValue);                                                                        // [0xbb092a0] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomSourceHeight(float AttributeValue);                                                                        // [0xcd00e18] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeRectLightNode.GetCustomSourceWidth
-	// bool GetCustomSourceWidth(float& AttributeValue);                                                                        // [0xbb05f04] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSourceWidth(float& AttributeValue);                                                                        // [0xccf7b18] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeRectLightNode.GetCustomSourceHeight
-	// bool GetCustomSourceHeight(float& AttributeValue);                                                                       // [0xbb05e6c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSourceHeight(float& AttributeValue);                                                                       // [0xccf7a80] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeDirectionalLightNode
@@ -443,19 +443,19 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.SetPayLoadKey
-	// void SetPayLoadKey(FString PayloadKey);                                                                                  // [0xbb09ed8] Native|Public|BlueprintCallable 
+	// void SetPayLoadKey(FString PayloadKey);                                                                                  // [0xcd03034] Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.SetCustomSRGB
-	// bool SetCustomSRGB(bool& AttributeValue);                                                                                // [0xbb09170] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomSRGB(bool& AttributeValue);                                                                                // [0xcd00cac] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.SetCustomFilter
-	// bool SetCustomFilter(EInterchangeTextureFilterMode& AttributeValue);                                                     // [0xbb084d8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomFilter(EInterchangeTextureFilterMode& AttributeValue);                                                     // [0xccff4d0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.SetCustombFlipGreenChannel
-	// bool SetCustombFlipGreenChannel(bool& AttributeValue);                                                                   // [0xbb09924] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustombFlipGreenChannel(bool& AttributeValue);                                                                   // [0xcd01b58] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.GetCustomSRGB
-	// bool GetCustomSRGB(bool& AttributeValue);                                                                                // [0xbb05d3c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomSRGB(bool& AttributeValue);                                                                                // [0xccf7914] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.GetCustomFilter
-	// bool GetCustomFilter(EInterchangeTextureFilterMode& AttributeValue);                                                     // [0xbb0516c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomFilter(EInterchangeTextureFilterMode& AttributeValue);                                                     // [0xccf6388] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeTextureNode.GetCustombFlipGreenChannel
-	// bool GetCustombFlipGreenChannel(bool& AttributeValue);                                                                   // [0xbb064a4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustombFlipGreenChannel(bool& AttributeValue);                                                                   // [0xccf85f0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeTexture2DArrayNode
@@ -510,23 +510,23 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.SetCustomVariantsPayloadKey
-	// bool SetCustomVariantsPayloadKey(FString PayloadKey);                                                                    // [0xbb09720] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomVariantsPayloadKey(FString PayloadKey);                                                                    // [0xcd01414] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.SetCustomDisplayText
-	// bool SetCustomDisplayText(FString AttributeValue);                                                                       // [0xbb0836c] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomDisplayText(FString AttributeValue);                                                                       // [0xccfee60] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.RemoveCustomDependencyUid
-	// bool RemoveCustomDependencyUid(FString DependencyUid);                                                                   // [0xbb078d0] Final|Native|Public|BlueprintCallable 
+	// bool RemoveCustomDependencyUid(FString DependencyUid);                                                                   // [0xccfc580] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.GetCustomVariantsPayloadKey
-	// bool GetCustomVariantsPayloadKey(FString& PayloadKey);                                                                   // [0xbb06294] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomVariantsPayloadKey(FString& PayloadKey);                                                                   // [0xccf7ee4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.GetCustomDisplayText
-	// bool GetCustomDisplayText(FString& AttributeValue);                                                                      // [0xbb04ff4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomDisplayText(FString& AttributeValue);                                                                      // [0xccf5d50] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.GetCustomDependencyUids
-	// void GetCustomDependencyUids(TArray<FString>& OutDependencyUids);                                                        // [0xbb04f58] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomDependencyUids(TArray<FString>& OutDependencyUids);                                                        // [0xccf5cb4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.GetCustomDependencyUidCount
-	// int32_t GetCustomDependencyUidCount();                                                                                   // [0xbb04f30] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCustomDependencyUidCount();                                                                                   // [0xccf5c8c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.GetCustomDependencyUid
-	// void GetCustomDependencyUid(int32_t Index, FString& OutDependencyUid);                                                   // [0xbb04d7c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomDependencyUid(int32_t Index, FString& OutDependencyUid);                                                   // [0xccf55f8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeVariantSetNode.AddCustomDependencyUid
-	// bool AddCustomDependencyUid(FString DependencyUid);                                                                      // [0xbb04124] Final|Native|Public|BlueprintCallable 
+	// bool AddCustomDependencyUid(FString DependencyUid);                                                                      // [0xccf2bb8] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeSceneVariantSetsNode
@@ -541,15 +541,15 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeSceneVariantSetsNode.RemoveCustomVariantSetUid
-	// bool RemoveCustomVariantSetUid(FString VariantUID);                                                                      // [0xbad4d94] Final|Native|Public|BlueprintCallable 
+	// bool RemoveCustomVariantSetUid(FString VariantUID);                                                                      // [0xccb4068] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneVariantSetsNode.GetCustomVariantSetUids
-	// void GetCustomVariantSetUids(TArray<FString>& OutVariantUids);                                                           // [0xbad2060] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomVariantSetUids(TArray<FString>& OutVariantUids);                                                           // [0xccaa4d4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneVariantSetsNode.GetCustomVariantSetUidCount
-	// int32_t GetCustomVariantSetUidCount();                                                                                   // [0xbad20fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCustomVariantSetUidCount();                                                                                   // [0xccaa570] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneVariantSetsNode.GetCustomVariantSetUid
-	// void GetCustomVariantSetUid(int32_t Index, FString& OutVariantUid);                                                      // [0xbad2124] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetCustomVariantSetUid(int32_t Index, FString& OutVariantUid);                                                      // [0xccaa598] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneVariantSetsNode.AddCustomVariantSetUid
-	// bool AddCustomVariantSetUid(FString VariantUID);                                                                         // [0xbacf420] Final|Native|Public|BlueprintCallable 
+	// bool AddCustomVariantSetUid(FString VariantUID);                                                                         // [0xcca21c0] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeVolumeTextureNode
@@ -574,25 +574,25 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.SetCustomParent
-	// bool SetCustomParent(FString AttributeValue);                                                                            // [0xbb08e58] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool SetCustomParent(FString AttributeValue);                                                                            // [0xcd00454] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.GetVectorParameterValue
-	// bool GetVectorParameterValue(FString ParameterName, FLinearColor& AttributeValue);                                       // [0xbb076a8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetVectorParameterValue(FString ParameterName, FLinearColor& AttributeValue);                                       // [0xccfbe78] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.GetTextureParameterValue
-	// bool GetTextureParameterValue(FString ParameterName, FString& AttributeValue);                                           // [0xbb07494] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetTextureParameterValue(FString ParameterName, FString& AttributeValue);                                           // [0xccfb7a8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.GetStaticSwitchParameterValue
-	// bool GetStaticSwitchParameterValue(FString ParameterName, bool& AttributeValue);                                         // [0xbb072b8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetStaticSwitchParameterValue(FString ParameterName, bool& AttributeValue);                                         // [0xccfb0ec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.GetScalarParameterValue
-	// bool GetScalarParameterValue(FString ParameterName, float& AttributeValue);                                              // [0xbb06928] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetScalarParameterValue(FString ParameterName, float& AttributeValue);                                              // [0xccf9414] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.GetCustomParent
-	// bool GetCustomParent(FString& AttributeValue);                                                                           // [0xbb05a98] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomParent(FString& AttributeValue);                                                                           // [0xccf7174] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.AddVectorParameterValue
-	// bool AddVectorParameterValue(FString ParameterName, FLinearColor& AttributeValue);                                       // [0xbb0481c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool AddVectorParameterValue(FString ParameterName, FLinearColor& AttributeValue);                                       // [0xccf46f8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.AddTextureParameterValue
-	// bool AddTextureParameterValue(FString ParameterName, FString AttributeValue);                                            // [0xbb04618] Final|Native|Public|BlueprintCallable 
+	// bool AddTextureParameterValue(FString ParameterName, FString AttributeValue);                                            // [0xccf3ff4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.AddStaticSwitchParameterValue
-	// bool AddStaticSwitchParameterValue(FString ParameterName, bool AttributeValue);                                          // [0xbb04444] Final|Native|Public|BlueprintCallable 
+	// bool AddStaticSwitchParameterValue(FString ParameterName, bool AttributeValue);                                          // [0xccf38fc] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMaterialInstanceNode.AddScalarParameterValue
-	// bool AddScalarParameterValue(FString ParameterName, float AttributeValue);                                               // [0xbb04294] Final|Native|Public|BlueprintCallable 
+	// bool AddScalarParameterValue(FString ParameterName, float AttributeValue);                                               // [0xccf3228] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeMeshNode
@@ -607,93 +607,93 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetSlotMaterialDependencyUid
-	// bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);                                      // [0xbb0a3ac] Final|Native|Public|BlueprintCallable 
+	// bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);                                      // [0xcd04450] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetSkinnedMesh
-	// bool SetSkinnedMesh(bool bIsSkinnedMesh);                                                                                // [0xbb0a31c] Final|Native|Public|BlueprintCallable 
+	// bool SetSkinnedMesh(bool bIsSkinnedMesh);                                                                                // [0xcd04380] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetSkeletonDependencyUid
-	// bool SetSkeletonDependencyUid(FString DependencyUid);                                                                    // [0xbb0a1ac] Final|Native|Public|BlueprintCallable 
+	// bool SetSkeletonDependencyUid(FString DependencyUid);                                                                    // [0xcd03d10] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetSceneInstanceUid
-	// bool SetSceneInstanceUid(FString DependencyUid);                                                                         // [0xbb0a03c] Final|Native|Public|BlueprintCallable 
+	// bool SetSceneInstanceUid(FString DependencyUid);                                                                         // [0xcd036a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetPayLoadKey
-	// void SetPayLoadKey(FString PayloadKey, EInterchangeMeshPayLoadType& PayloadType);                                        // [0xbb09d28] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetPayLoadKey(FString PayloadKey, EInterchangeMeshPayLoadType& PayloadType);                                        // [0xcd029a0] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetMorphTargetName
-	// bool SetMorphTargetName(FString MorphTargetName);                                                                        // [0xbb09bbc] Final|Native|Public|BlueprintCallable 
+	// bool SetMorphTargetName(FString MorphTargetName);                                                                        // [0xcd02330] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetMorphTargetDependencyUid
-	// bool SetMorphTargetDependencyUid(FString DependencyUid);                                                                 // [0xbb09a4c] Final|Native|Public|BlueprintCallable 
+	// bool SetMorphTargetDependencyUid(FString DependencyUid);                                                                 // [0xcd01cc0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetMorphTarget
-	// bool SetMorphTarget(bool bIsMorphTarget);                                                                                // [0xbb099bc] Final|Native|Public|BlueprintCallable 
+	// bool SetMorphTarget(bool bIsMorphTarget);                                                                                // [0xcd01bf0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomVertexCount
-	// bool SetCustomVertexCount(int32_t& AttributeValue);                                                                      // [0xbb0988c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomVertexCount(int32_t& AttributeValue);                                                                      // [0xcd01a84] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomUVCount
-	// bool SetCustomUVCount(int32_t& AttributeValue);                                                                          // [0xbb09450] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomUVCount(int32_t& AttributeValue);                                                                          // [0xcd01088] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomPolygonCount
-	// bool SetCustomPolygonCount(int32_t& AttributeValue);                                                                     // [0xbb08fc4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomPolygonCount(int32_t& AttributeValue);                                                                     // [0xcd00ac4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomHasVertexTangent
-	// bool SetCustomHasVertexTangent(bool& AttributeValue);                                                                    // [0xbb087d0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomHasVertexTangent(bool& AttributeValue);                                                                    // [0xccff7c8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomHasVertexNormal
-	// bool SetCustomHasVertexNormal(bool& AttributeValue);                                                                     // [0xbb08738] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomHasVertexNormal(bool& AttributeValue);                                                                     // [0xccff730] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomHasVertexColor
-	// bool SetCustomHasVertexColor(bool& AttributeValue);                                                                      // [0xbb086a0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomHasVertexColor(bool& AttributeValue);                                                                      // [0xccff698] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomHasVertexBinormal
-	// bool SetCustomHasVertexBinormal(bool& AttributeValue);                                                                   // [0xbb08608] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomHasVertexBinormal(bool& AttributeValue);                                                                   // [0xccff600] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomHasSmoothGroup
-	// bool SetCustomHasSmoothGroup(bool& AttributeValue);                                                                      // [0xbb08570] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomHasSmoothGroup(bool& AttributeValue);                                                                      // [0xccff568] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.SetCustomBoundingBox
-	// bool SetCustomBoundingBox(FBox& AttributeValue);                                                                         // [0xbb08090] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomBoundingBox(FBox& AttributeValue);                                                                         // [0xccfe680] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.RemoveSlotMaterialDependencyUid
-	// bool RemoveSlotMaterialDependencyUid(FString SlotName);                                                                  // [0xbb07e90] Final|Native|Public|BlueprintCallable 
+	// bool RemoveSlotMaterialDependencyUid(FString SlotName);                                                                  // [0xccfdf40] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.RemoveSkeletonDependencyUid
-	// bool RemoveSkeletonDependencyUid(FString DependencyUid);                                                                 // [0xbb07d20] Final|Native|Public|BlueprintCallable 
+	// bool RemoveSkeletonDependencyUid(FString DependencyUid);                                                                 // [0xccfd8d0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.RemoveSceneInstanceUid
-	// bool RemoveSceneInstanceUid(FString DependencyUid);                                                                      // [0xbb07bb0] Final|Native|Public|BlueprintCallable 
+	// bool RemoveSceneInstanceUid(FString DependencyUid);                                                                      // [0xccfd260] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.RemoveMorphTargetDependencyUid
-	// bool RemoveMorphTargetDependencyUid(FString DependencyUid);                                                              // [0xbb07a40] Final|Native|Public|BlueprintCallable 
+	// bool RemoveMorphTargetDependencyUid(FString DependencyUid);                                                              // [0xccfcbf0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.IsSkinnedMesh
-	// bool IsSkinnedMesh();                                                                                                    // [0xbb078ac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSkinnedMesh();                                                                                                    // [0xccfc55c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.IsMorphTarget
-	// bool IsMorphTarget();                                                                                                    // [0xbb07888] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsMorphTarget();                                                                                                    // [0xccfc538] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSlotMaterialDependencyUid
-	// bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency);                                     // [0xbb070c0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency);                                     // [0xccfaa44] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSlotMaterialDependencies
-	// void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies);                                       // [0xbb06fdc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies);                                       // [0xccfa960] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSkeletonDependency
-	// void GetSkeletonDependency(int32_t Index, FString& OutDependency);                                                       // [0xbb06e28] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSkeletonDependency(int32_t Index, FString& OutDependency);                                                       // [0xccfa2cc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSkeletonDependencies
-	// void GetSkeletonDependencies(TArray<FString>& OutDependencies);                                                          // [0xbb06d8c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSkeletonDependencies(TArray<FString>& OutDependencies);                                                          // [0xccfa230] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSkeletonDependeciesCount
-	// int32_t GetSkeletonDependeciesCount();                                                                                   // [0xbb06d68] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSkeletonDependeciesCount();                                                                                   // [0xccfa20c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSceneInstanceUidsCount
-	// int32_t GetSceneInstanceUidsCount();                                                                                     // [0xbb06d3c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSceneInstanceUidsCount();                                                                                     // [0xccfa1e0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSceneInstanceUids
-	// void GetSceneInstanceUids(TArray<FString>& OutDependencies);                                                             // [0xbb06ca0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSceneInstanceUids(TArray<FString>& OutDependencies);                                                             // [0xccfa144] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetSceneInstanceUid
-	// void GetSceneInstanceUid(int32_t Index, FString& OutDependency);                                                         // [0xbb06aec] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSceneInstanceUid(int32_t Index, FString& OutDependency);                                                         // [0xccf9ab0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetMorphTargetName
-	// bool GetMorphTargetName(FString& OutMorphTargetName);                                                                    // [0xbb067b0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetMorphTargetName(FString& OutMorphTargetName);                                                                    // [0xccf8ddc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetMorphTargetDependency
-	// void GetMorphTargetDependency(int32_t Index, FString& OutDependency);                                                    // [0xbb065fc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetMorphTargetDependency(int32_t Index, FString& OutDependency);                                                    // [0xccf8748] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetMorphTargetDependencies
-	// void GetMorphTargetDependencies(TArray<FString>& OutDependencies);                                                       // [0xbb06560] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetMorphTargetDependencies(TArray<FString>& OutDependencies);                                                       // [0xccf86ac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetMorphTargetDependeciesCount
-	// int32_t GetMorphTargetDependeciesCount();                                                                                // [0xbb0653c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetMorphTargetDependeciesCount();                                                                                // [0xccf8688] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomVertexCount
-	// bool GetCustomVertexCount(int32_t& AttributeValue);                                                                      // [0xbb0640c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomVertexCount(int32_t& AttributeValue);                                                                      // [0xccf851c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomUVCount
-	// bool GetCustomUVCount(int32_t& AttributeValue);                                                                          // [0xbb06034] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomUVCount(int32_t& AttributeValue);                                                                          // [0xccf7c48] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomPolygonCount
-	// bool GetCustomPolygonCount(int32_t& AttributeValue);                                                                     // [0xbb05c10] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomPolygonCount(int32_t& AttributeValue);                                                                     // [0xccf77ac] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomHasVertexTangent
-	// bool GetCustomHasVertexTangent(bool& AttributeValue);                                                                    // [0xbb05464] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomHasVertexTangent(bool& AttributeValue);                                                                    // [0xccf6680] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomHasVertexNormal
-	// bool GetCustomHasVertexNormal(bool& AttributeValue);                                                                     // [0xbb053cc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomHasVertexNormal(bool& AttributeValue);                                                                     // [0xccf65e8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomHasVertexColor
-	// bool GetCustomHasVertexColor(bool& AttributeValue);                                                                      // [0xbb05334] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomHasVertexColor(bool& AttributeValue);                                                                      // [0xccf6550] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomHasVertexBinormal
-	// bool GetCustomHasVertexBinormal(bool& AttributeValue);                                                                   // [0xbb0529c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomHasVertexBinormal(bool& AttributeValue);                                                                   // [0xccf64b8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomHasSmoothGroup
-	// bool GetCustomHasSmoothGroup(bool& AttributeValue);                                                                      // [0xbb05204] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomHasSmoothGroup(bool& AttributeValue);                                                                      // [0xccf6420] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeMeshNode.GetCustomBoundingBox
-	// bool GetCustomBoundingBox(FBox& AttributeValue);                                                                         // [0xbb04a94] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomBoundingBox(FBox& AttributeValue);                                                                         // [0xccf4e50] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeSceneNode
@@ -708,59 +708,59 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetSlotMaterialDependencyUid
-	// bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);                                      // [0xbb193cc] Final|Native|Public|BlueprintCallable 
+	// bool SetSlotMaterialDependencyUid(FString SlotName, FString MaterialDependencyUid);                                      // [0xcd1e6f0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetMorphTargetCurveWeight
-	// bool SetMorphTargetCurveWeight(FString MorphTargetName, float& Weight);                                                  // [0xbb191a0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetMorphTargetCurveWeight(FString MorphTargetName, float& Weight);                                                  // [0xcd1dfd4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomTimeZeroLocalTransform
-	// bool SetCustomTimeZeroLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xbb18d7c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomTimeZeroLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xcd1db80] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomLocalTransform
-	// bool SetCustomLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xbb18730] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xcd1cafc] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomGeometricTransform
-	// bool SetCustomGeometricTransform(FTransform& AttributeValue);                                                            // [0xbb18594] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomGeometricTransform(FTransform& AttributeValue);                                                            // [0xcd1c960] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomBindPoseLocalTransform
-	// bool SetCustomBindPoseLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xbb18344] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// bool SetCustomBindPoseLocalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& AttributeValue, bool bResetCache); // [0xcd1c6a0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomAssetInstanceUid
-	// bool SetCustomAssetInstanceUid(FString AttributeValue);                                                                  // [0xbb181d8] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomAssetInstanceUid(FString AttributeValue);                                                                  // [0xcd1c030] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.SetCustomAnimationAssetUidToPlay
-	// bool SetCustomAnimationAssetUidToPlay(FString AttributeValue);                                                           // [0xbb1806c] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomAnimationAssetUidToPlay(FString AttributeValue);                                                           // [0xcd1b9c0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.RemoveSpecializedType
-	// bool RemoveSpecializedType(FString SpecializedType);                                                                     // [0xbb17efc] Final|Native|Public|BlueprintCallable 
+	// bool RemoveSpecializedType(FString SpecializedType);                                                                     // [0xcd1b350] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.RemoveSlotMaterialDependencyUid
-	// bool RemoveSlotMaterialDependencyUid(FString SlotName);                                                                  // [0xbb17d8c] Final|Native|Public|BlueprintCallable 
+	// bool RemoveSlotMaterialDependencyUid(FString SlotName);                                                                  // [0xcd1ace0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.IsSpecializedTypeContains
-	// bool IsSpecializedTypeContains(FString SpecializedType);                                                                 // [0xbb17630] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsSpecializedTypeContains(FString SpecializedType);                                                                 // [0xcd18cd0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetSpecializedTypes
-	// void GetSpecializedTypes(TArray<FString>& OutSpecializedTypes);                                                          // [0xbb1713c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSpecializedTypes(TArray<FString>& OutSpecializedTypes);                                                          // [0xcd17d4c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetSpecializedTypeCount
-	// int32_t GetSpecializedTypeCount();                                                                                       // [0xbb17118] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetSpecializedTypeCount();                                                                                       // [0xcd17d28] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetSpecializedType
-	// void GetSpecializedType(int32_t Index, FString& OutSpecializedType);                                                     // [0xbb16f64] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSpecializedType(int32_t Index, FString& OutSpecializedType);                                                     // [0xcd17694] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetSlotMaterialDependencyUid
-	// bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency);                                     // [0xbb16d04] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetSlotMaterialDependencyUid(FString SlotName, FString& OutMaterialDependency);                                     // [0xcd16f70] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetSlotMaterialDependencies
-	// void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies);                                       // [0xbb16c20] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetSlotMaterialDependencies(TMap<FString, FString>& OutMaterialDependencies);                                       // [0xcd16e8c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetMorphTargetCurveWeights
-	// void GetMorphTargetCurveWeights(TMap<FString, float>& OutMorphTargetCurveWeights);                                       // [0xbb16b3c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void GetMorphTargetCurveWeights(TMap<FString, float>& OutMorphTargetCurveWeights);                                       // [0xcd16da8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomTimeZeroLocalTransform
-	// bool GetCustomTimeZeroLocalTransform(FTransform& AttributeValue);                                                        // [0xbb16548] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTimeZeroLocalTransform(FTransform& AttributeValue);                                                        // [0xcd162c4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomTimeZeroGlobalTransform
-	// bool GetCustomTimeZeroGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xbb162e4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTimeZeroGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xcd16024] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomLocalTransform
-	// bool GetCustomLocalTransform(FTransform& AttributeValue);                                                                // [0xbb15dc0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomLocalTransform(FTransform& AttributeValue);                                                                // [0xcd15180] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomGlobalTransform
-	// bool GetCustomGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xbb15ac4] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xcd14e48] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomGeometricTransform
-	// bool GetCustomGeometricTransform(FTransform& AttributeValue);                                                            // [0xbb159c0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomGeometricTransform(FTransform& AttributeValue);                                                            // [0xcd14d44] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomBindPoseLocalTransform
-	// bool GetCustomBindPoseLocalTransform(FTransform& AttributeValue);                                                        // [0xbb15824] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomBindPoseLocalTransform(FTransform& AttributeValue);                                                        // [0xcd14b6c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomBindPoseGlobalTransform
-	// bool GetCustomBindPoseGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xbb155c0] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomBindPoseGlobalTransform(class UInterchangeBaseNodeContainer* BaseNodeContainer, FTransform& GlobalOffsetTransform, FTransform& AttributeValue, bool bForceRecache); // [0xcd148cc] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomAssetInstanceUid
-	// bool GetCustomAssetInstanceUid(FString& AttributeValue);                                                                 // [0xbb15448] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAssetInstanceUid(FString& AttributeValue);                                                                 // [0xcd14294] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.GetCustomAnimationAssetUidToPlay
-	// bool GetCustomAnimationAssetUidToPlay(FString& AttributeValue);                                                          // [0xbb152d0] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomAnimationAssetUidToPlay(FString& AttributeValue);                                                          // [0xcd13c5c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeSceneNode.AddSpecializedType
-	// bool AddSpecializedType(FString SpecializedType);                                                                        // [0xbb14708] Final|Native|Public|BlueprintCallable 
+	// bool AddSpecializedType(FString SpecializedType);                                                                        // [0xcd11664] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeShaderPortsAPI
@@ -775,31 +775,31 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.MakeInputValueKey
-	// FString MakeInputValueKey(FString InputName);                                                                            // [0xbb17c10] Final|Native|Static|Public|BlueprintCallable 
+	// FString MakeInputValueKey(FString InputName);                                                                            // [0xcd1a678] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.MakeInputParameterKey
-	// FString MakeInputParameterKey(FString InputName);                                                                        // [0xbb17a94] Final|Native|Static|Public|BlueprintCallable 
+	// FString MakeInputParameterKey(FString InputName);                                                                        // [0xcd1a010] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.MakeInputName
-	// FString MakeInputName(FString InputKey);                                                                                 // [0xbb17918] Final|Native|Static|Public|BlueprintCallable 
+	// FString MakeInputName(FString InputKey);                                                                                 // [0xcd199a8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.MakeInputConnectionKey
-	// FString MakeInputConnectionKey(FString InputName);                                                                       // [0xbb1779c] Final|Native|Static|Public|BlueprintCallable 
+	// FString MakeInputConnectionKey(FString InputName);                                                                       // [0xcd19340] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.IsAParameter
-	// bool IsAParameter(FString AttributeKey);                                                                                 // [0xbb17378] Final|Native|Static|Public|BlueprintCallable 
+	// bool IsAParameter(FString AttributeKey);                                                                                 // [0xcd18000] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.IsAnInput
-	// bool IsAnInput(FString AttributeKey);                                                                                    // [0xbb174d4] Final|Native|Static|Public|BlueprintCallable 
+	// bool IsAnInput(FString AttributeKey);                                                                                    // [0xcd18668] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.HasParameter
-	// bool HasParameter(class UInterchangeBaseNode* InterchangeNode, FName& InInputName);                                      // [0xbb172a8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool HasParameter(class UInterchangeBaseNode* InterchangeNode, FName& InInputName);                                      // [0xcd17ef4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.HasInput
-	// bool HasInput(class UInterchangeBaseNode* InterchangeNode, FName& InInputName);                                          // [0xbb171d8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool HasInput(class UInterchangeBaseNode* InterchangeNode, FName& InInputName);                                          // [0xcd17de8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.GetInputConnection
-	// bool GetInputConnection(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString& OutExpressionUid, FString& OutputName); // [0xbb168ac] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// bool GetInputConnection(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString& OutExpressionUid, FString& OutputName); // [0xcd16628] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.GatherInputs
-	// void GatherInputs(class UInterchangeBaseNode* InterchangeNode, TArray<FString>& OutInputNames);                          // [0xbb15200] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GatherInputs(class UInterchangeBaseNode* InterchangeNode, TArray<FString>& OutInputNames);                          // [0xcd13b44] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.ConnectOuputToInputByName
-	// bool ConnectOuputToInputByName(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, FString OutputName); // [0xbb14ee0] Final|Native|Static|Public|BlueprintCallable 
+	// bool ConnectOuputToInputByName(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, FString OutputName); // [0xcd13360] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.ConnectOuputToInputByIndex
-	// bool ConnectOuputToInputByIndex(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, int32_t OutputIndex); // [0xbb14ca8] Final|Native|Static|Public|BlueprintCallable 
+	// bool ConnectOuputToInputByIndex(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid, int32_t OutputIndex); // [0xcd12b90] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderPortsAPI.ConnectDefaultOuputToInput
-	// bool ConnectDefaultOuputToInput(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid);  // [0xbb14a94] Final|Native|Static|Public|BlueprintCallable 
+	// bool ConnectDefaultOuputToInput(class UInterchangeBaseNode* InterchangeNode, FString InputName, FString ExpressionUid);  // [0xcd12438] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeFunctionCallShaderNode
@@ -814,9 +814,9 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeFunctionCallShaderNode.SetCustomMaterialFunction
-	// bool SetCustomMaterialFunction(FString AttributeValue);                                                                  // [0xbb188f4] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomMaterialFunction(FString AttributeValue);                                                                  // [0xcd1ccf0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeFunctionCallShaderNode.GetCustomMaterialFunction
-	// bool GetCustomMaterialFunction(FString& AttributeValue);                                                                 // [0xbb15ec4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomMaterialFunction(FString& AttributeValue);                                                                 // [0xcd15284] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeShaderGraphNode
@@ -831,29 +831,29 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomTwoSidedTransmission
-	// bool SetCustomTwoSidedTransmission(bool& AttributeValue);                                                                // [0xbb18fd8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomTwoSidedTransmission(bool& AttributeValue);                                                                // [0xcd1de0c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomTwoSided
-	// bool SetCustomTwoSided(bool& AttributeValue);                                                                            // [0xbb18f40] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomTwoSided(bool& AttributeValue);                                                                            // [0xcd1dd74] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomScreenSpaceReflections
-	// bool SetCustomScreenSpaceReflections(bool& AttributeValue);                                                              // [0xbb18b78] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomScreenSpaceReflections(bool& AttributeValue);                                                              // [0xcd1d478] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomOpacityMaskClipValue
-	// bool SetCustomOpacityMaskClipValue(float& AttributeValue, bool bAddApplyDelegate);                                       // [0xbb18a60] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomOpacityMaskClipValue(float& AttributeValue, bool bAddApplyDelegate);                                       // [0xcd1d360] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomIsAShaderFunction
-	// bool SetCustomIsAShaderFunction(bool& AttributeValue);                                                                   // [0xbb18698] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomIsAShaderFunction(bool& AttributeValue);                                                                   // [0xcd1ca64] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.SetCustomBlendMode
-	// bool SetCustomBlendMode(int32_t AttributeValue);                                                                         // [0xbb18508] Final|Native|Public|BlueprintCallable 
+	// bool SetCustomBlendMode(int32_t AttributeValue);                                                                         // [0xcd1c894] Final|Native|Public|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomTwoSidedTransmission
-	// bool GetCustomTwoSidedTransmission(bool& AttributeValue);                                                                // [0xbb166e4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTwoSidedTransmission(bool& AttributeValue);                                                                // [0xcd16460] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomTwoSided
-	// bool GetCustomTwoSided(bool& AttributeValue);                                                                            // [0xbb1664c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomTwoSided(bool& AttributeValue);                                                                            // [0xcd163c8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomScreenSpaceReflections
-	// bool GetCustomScreenSpaceReflections(bool& AttributeValue);                                                              // [0xbb160d4] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomScreenSpaceReflections(bool& AttributeValue);                                                              // [0xcd15954] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomOpacityMaskClipValue
-	// bool GetCustomOpacityMaskClipValue(float& AttributeValue);                                                               // [0xbb1603c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomOpacityMaskClipValue(float& AttributeValue);                                                               // [0xcd158bc] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomIsAShaderFunction
-	// bool GetCustomIsAShaderFunction(bool& AttributeValue);                                                                   // [0xbb15d28] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomIsAShaderFunction(bool& AttributeValue);                                                                   // [0xcd150e8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeShaderGraphNode.GetCustomBlendMode
-	// bool GetCustomBlendMode(int32_t& AttributeValue);                                                                        // [0xbb15928] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomBlendMode(int32_t& AttributeValue);                                                                        // [0xcd14c70] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeTexture2DNode
@@ -868,15 +868,15 @@ public:
 
 	/// Functions
 	// Function /Script/InterchangeNodes.InterchangeTexture2DNode.SetCustomWrapV
-	// bool SetCustomWrapV(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xbb19108] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomWrapV(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xcd1df3c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTexture2DNode.SetCustomWrapU
-	// bool SetCustomWrapU(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xbb19070] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetCustomWrapU(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xcd1dea4] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/InterchangeNodes.InterchangeTexture2DNode.GetSourceBlocks
-	// TMap<int32_t, FString> GetSourceBlocks();                                                                                // [0xbb16efc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// TMap<int32_t, FString> GetSourceBlocks();                                                                                // [0xcd17618] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeTexture2DNode.GetCustomWrapV
-	// bool GetCustomWrapV(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xbb16814] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomWrapV(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xcd16590] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/InterchangeNodes.InterchangeTexture2DNode.GetCustomWrapU
-	// bool GetCustomWrapU(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xbb1677c] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// bool GetCustomWrapU(EInterchangeTextureWrapMode& AttributeValue);                                                        // [0xcd164f8] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/InterchangeNodes.InterchangeTextureBlurNode

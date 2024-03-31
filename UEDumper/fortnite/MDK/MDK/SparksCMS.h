@@ -28,19 +28,19 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCMS.CatalogData.IsFromHotfix
-	// bool IsFromHotfix();                                                                                                     // [0x3eacdc8] Final|Native|Public|BlueprintCallable 
+	// bool IsFromHotfix();                                                                                                     // [0x3da0654] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.CatalogData.IsEnabledForPilgrim
-	// bool IsEnabledForPilgrim();                                                                                              // [0xa3fa98c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabledForPilgrim();                                                                                              // [0xb15f548] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCMS.CatalogData.IsEnabledForJam
-	// bool IsEnabledForJam();                                                                                                  // [0xa3fa968] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabledForJam();                                                                                                  // [0xb15f524] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCMS.CatalogData.IsEnabled
-	// bool IsEnabled();                                                                                                        // [0xa3fa944] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabled();                                                                                                        // [0xb15f500] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCMS.CatalogData.GetTagForAgeRating
-	// FGameplayTag GetTagForAgeRating();                                                                                       // [0xa3fa91c] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FGameplayTag GetTagForAgeRating();                                                                                       // [0xb15f4d8] Final|RequiredAPI|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SparksCMS.CatalogData.ConsolidateData
-	// void ConsolidateData();                                                                                                  // [0xa3fa25c] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ConsolidateData();                                                                                                  // [0xb15d9ec] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.CatalogData.ClearConsolidatedData
-	// void ClearConsolidatedData();                                                                                            // [0xa3fa248] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void ClearConsolidatedData();                                                                                            // [0xb15d9d8] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/SparksCMS.SparksSongCatalog
@@ -59,19 +59,19 @@ public:
 
 	/// Functions
 	// Function /Script/SparksCMS.SparksSongCatalog.SetCMSSuffix
-	// void SetCMSSuffix(FString InCMSSuffix);                                                                                  // [0xa3fa9c4] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void SetCMSSuffix(FString InCMSSuffix);                                                                                  // [0xb15f618] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.SparksSongCatalog.RequestSongCatalog
-	// void RequestSongCatalog();                                                                                               // [0xa3fa9b0] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void RequestSongCatalog();                                                                                               // [0xb15f604] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.SparksSongCatalog.OnCalendarActiveEventsChanged
-	// void OnCalendarActiveEventsChanged(TArray<FString>& ActiveEventFlags);                                                   // [0x399c9c4] Final|Native|Protected|HasOutParms 
+	// void OnCalendarActiveEventsChanged(TArray<FString>& ActiveEventFlags);                                                   // [0xb15f56c] Final|Native|Protected|HasOutParms 
 	// Function /Script/SparksCMS.SparksSongCatalog.GetSongList
-	// void GetSongList(ESongSortMethod SortMethod, ESongSortDirection SortDirection, FGameplayTagQuery& TagQuery, TArray<UCatalogData*>& OutResults); // [0xa3fa6b4] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetSongList(ESongSortMethod SortMethod, ESongSortDirection SortDirection, FGameplayTagQuery& TagQuery, TArray<UCatalogData*>& OutResults); // [0xb15ed50] Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SparksCMS.SparksSongCatalog.GetSongByUID
-	// class UCatalogData* GetSongByUID(FString InUID);                                                                         // [0xa3fa548] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// class UCatalogData* GetSongByUID(FString InUID);                                                                         // [0xb15e6e0] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.SparksSongCatalog.GetSongByTemplateID
-	// class UCatalogData* GetSongByTemplateID(FString InTemplateId);                                                           // [0xa3fa3dc] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// class UCatalogData* GetSongByTemplateID(FString InTemplateId);                                                           // [0xb15e070] Final|RequiredAPI|Native|Public|BlueprintCallable 
 	// Function /Script/SparksCMS.SparksSongCatalog.GetSongByShortName
-	// class UCatalogData* GetSongByShortName(FString InShortName);                                                             // [0xa3fa270] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// class UCatalogData* GetSongByShortName(FString InShortName);                                                             // [0xb15da00] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/SparksCMS.SparksSongQuicksilverTrack

@@ -39,7 +39,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewScreenContentBlockingInterface.BlockScreenContent
-	// void BlockScreenContent(bool bBlockScreen, FText& ContentBlockedText);                                                   // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BlockScreenContent(bool bBlockScreen, FText& ContentBlockedText);                                                   // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveContentInterface
@@ -66,7 +66,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsComponent.OnAthenaProfileInitialized
-	// void OnAthenaProfileInitialized();                                                                                       // [0x22fb814] Final|Native|Private 
+	// void OnAthenaProfileInitialized();                                                                                       // [0x3d6dec0] Final|Native|Private 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsManager
@@ -81,7 +81,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsManager.OnTemporaryItemsStateChanged
-	// void OnTemporaryItemsStateChanged();                                                                                     // [0xa8ec4a0] Final|Native|Private 
+	// void OnTemporaryItemsStateChanged();                                                                                     // [0xb71db28] Final|Native|Private 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsRewardGroupVM
@@ -120,9 +120,9 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsRow.SetTileView
-	// void SetTileView(class UTileView* InTileView);                                                                           // [0x99c7ad8] Final|Native|Protected|BlueprintCallable 
+	// void SetTileView(class UTileView* InTileView);                                                                           // [0xa4a734c] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/CrewUI.FortTemporaryItemsRow.GetCategoryText
-	// FText GetCategoryText(EAthenaCustomizationCategory InCategory);                                                          // [0xa8ec258] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FText GetCategoryText(EAthenaCustomizationCategory InCategory);                                                          // [0xb71d860] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsScreenItemInfo
@@ -140,9 +140,9 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsScreenItemInfo.SetData
-	// void SetData(class UFortSubscriptionVM* SubscriptionVM, class UFortTemporaryItemsRewardVM* RewardVM);                    // [0xa8ec5e0] Final|Native|Public|BlueprintCallable 
+	// void SetData(class UFortSubscriptionVM* SubscriptionVM, class UFortTemporaryItemsRewardVM* RewardVM);                    // [0xb71dca8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CrewUI.FortTemporaryItemsScreenItemInfo.OnDataSet
-	// void OnDataSet(bool bValidItem, bool bIsSubscribed, bool IsOwned);                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnDataSet(bool bValidItem, bool bIsSubscribed, bool IsOwned);                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsTileButton
@@ -158,7 +158,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsTileButton.SetupRewardItem
-	// void SetupRewardItem(class UFortAccountItemDefinition* ItemDef);                                                         // [0xa8ec6a4] Final|Native|Public|BlueprintCallable 
+	// void SetupRewardItem(class UFortAccountItemDefinition* ItemDef);                                                         // [0xb71dde8] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsVM
@@ -191,7 +191,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.BattlePassCrewPurchaseButton.OnCurrencyUpdated
-	// void OnCurrencyUpdated();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnCurrencyUpdated();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.BattlePassCrewPurchaseContainer
@@ -213,9 +213,9 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.BattlePassCrewPurchaseContainer.OnTriggerIntroAnimation
-	// void OnTriggerIntroAnimation(bool bCanClaimRewards);                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTriggerIntroAnimation(bool bCanClaimRewards);                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.BattlePassCrewPurchaseContainer.OnContentStateUpdated
-	// void OnContentStateUpdated(EBattlePassCrewContentState InState, bool bInScreenOpened);                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnContentStateUpdated(EBattlePassCrewContentState InState, bool bInScreenOpened);                                   // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.BattlePassSeasonHeading
@@ -254,17 +254,17 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.RefreshFocus
-	// void RefreshFocus();                                                                                                     // [0x23767a4] Final|Native|Protected|BlueprintCallable 
+	// void RefreshFocus();                                                                                                     // [0x3d6f348] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.OnShowNavButtonNotification
-	// void OnShowNavButtonNotification(bool bShowNotification);                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnShowNavButtonNotification(bool bShowNotification);                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.OnSetScreenInteractable
-	// void OnSetScreenInteractable(bool bInteractable);                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSetScreenInteractable(bool bInteractable);                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.OnSetNavButtonNotificationText
-	// void OnSetNavButtonNotificationText(FText& NotificationText);                                                            // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetNavButtonNotificationText(FText& NotificationText);                                                            // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.OnPurchaseStateChanged
-	// void OnPurchaseStateChanged(EBattlePassPurchaseState InCurrentState);                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPurchaseStateChanged(EBattlePassPurchaseState InCurrentState);                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.BattlePassPurchaseScreen.OnPurchaseConfirmed
-	// void OnPurchaseConfirmed();                                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPurchaseConfirmed();                                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.CrewMultiSubscriptionAlertModal
@@ -289,7 +289,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewMultiSubscriptionAlertModal.OnSetHowToCancelURL
-	// void OnSetHowToCancelURL(FString MoreInfoUrl);                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSetHowToCancelURL(FString MoreInfoUrl);                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.CrewPriceChangeAcknowledgeModal
@@ -309,25 +309,25 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeTitle
-	// void OnSetPriceChangeAcknowledgeTitle(FText& Title);                                                                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeTitle(FText& Title);                                                                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeMoreInfoUrl
-	// void OnSetPriceChangeAcknowledgeMoreInfoUrl(FText& MoreInfoUrl);                                                         // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeMoreInfoUrl(FText& MoreInfoUrl);                                                         // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeMoreInfoText
-	// void OnSetPriceChangeAcknowledgeMoreInfoText(FText& ConfirmButtonText);                                                  // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeMoreInfoText(FText& ConfirmButtonText);                                                  // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeConfirmButtonText
-	// void OnSetPriceChangeAcknowledgeConfirmButtonText(FText& ConfirmButtonText);                                             // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeConfirmButtonText(FText& ConfirmButtonText);                                             // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeCheckboxText
-	// void OnSetPriceChangeAcknowledgeCheckboxText(FText& CheckboxText);                                                       // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeCheckboxText(FText& CheckboxText);                                                       // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeCancelSubscriptionButtonText
-	// void OnSetPriceChangeAcknowledgeCancelSubscriptionButtonText(FText& CancelSubscriptionButtonText);                       // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeCancelSubscriptionButtonText(FText& CancelSubscriptionButtonText);                       // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeBodyText
-	// void OnSetPriceChangeAcknowledgeBodyText(FText& BodyText);                                                               // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeBodyText(FText& BodyText);                                                               // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnSetPriceChangeAcknowledgeBodyTable
-	// void OnSetPriceChangeAcknowledgeBodyTable(TArray<FCrewTableRow>& PriceChangeByRegionRows);                               // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPriceChangeAcknowledgeBodyTable(TArray<FCrewTableRow>& PriceChangeByRegionRows);                               // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.OnModalBackout
-	// void OnModalBackout();                                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnModalBackout();                                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPriceChangeAcknowledgeModal.ExitModal
-	// void ExitModal();                                                                                                        // [0x3ee1514] Final|Native|Protected|BlueprintCallable 
+	// void ExitModal();                                                                                                        // [0x755bd9c] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/CrewUI.CrewPurchaseScreen
@@ -367,23 +367,23 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnUserInformationTextsUpdated
-	// void OnUserInformationTextsUpdated(FText& UserInformationText1, FText& UserInformationText2, EMcpSubscriptionState SubscriptionState); // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnUserInformationTextsUpdated(FText& UserInformationText1, FText& UserInformationText2, EMcpSubscriptionState SubscriptionState); // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnUpdateVBuckRefundVisibility
-	// void OnUpdateVBuckRefundVisibility(bool bVisible);                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateVBuckRefundVisibility(bool bVisible);                                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnUpdatePurchaseButtonState
-	// void OnUpdatePurchaseButtonState(ECrewPurchaseButtonState ButtonState);                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdatePurchaseButtonState(ECrewPurchaseButtonState ButtonState);                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnShowNavButtonNotification
-	// void OnShowNavButtonNotification(bool bShowNotification);                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnShowNavButtonNotification(bool bShowNotification);                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnSetPaymentLegalText
-	// void OnSetPaymentLegalText(FText& LegalText);                                                                            // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetPaymentLegalText(FText& LegalText);                                                                            // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnSetNavButtonNotificationText
-	// void OnSetNavButtonNotificationText(FText& NotificationText);                                                            // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetNavButtonNotificationText(FText& NotificationText);                                                            // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.OnContainerTabVisibilityUpdated
-	// void OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.EndProgress
-	// void EndProgress();                                                                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void EndProgress();                                                                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewPurchaseScreen.BeginProgress
-	// void BeginProgress(FText& ProgressLabel);                                                                                // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BeginProgress(FText& ProgressLabel);                                                                                // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.CrewRewardTile
@@ -401,13 +401,13 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewRewardTile.OnUpdateOwnedState
-	// void OnUpdateOwnedState(bool bOwned);                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateOwnedState(bool bOwned);                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewRewardTile.OnStartingDownloadTileImage
-	// void OnStartingDownloadTileImage();                                                                                      // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnStartingDownloadTileImage();                                                                                      // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewRewardTile.OnDownloadTileImageComplete
-	// void OnDownloadTileImageComplete(class UTexture2D* Texture);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnDownloadTileImageComplete(class UTexture2D* Texture);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.CrewRewardTile.IsMonthlyBenefit
-	// bool IsMonthlyBenefit();                                                                                                 // [0xa8ec474] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsMonthlyBenefit();                                                                                                 // [0xb71dafc] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/CrewUI.CrewSeasonLaunchScreen
@@ -459,7 +459,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewSubscriptionContentContainer.OnTabSelected
-	// void OnTabSelected(int32_t TabIndex);                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTabSelected(int32_t TabIndex);                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.CrewSubscriptionErrorModal
@@ -501,7 +501,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.CrewTileDetailsTag.OnTagSetup
-	// void OnTagSetup(ECrewDetailsTag RewardTag, bool bIsOwnedTag);                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTagSetup(ECrewDetailsTag RewardTag, bool bIsOwnedTag);                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.CrewUIGameFeatureAction
@@ -564,7 +564,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveScreenBase.BP_OnContainerTabVisibilityUpdated
-	// void BP_OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                              // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveItemScreen
@@ -594,11 +594,11 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveItemScreen.OnUpdateSubscriptionState
-	// void OnUpdateSubscriptionState(bool bSubscribed);                                                                        // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateSubscriptionState(bool bSubscribed);                                                                        // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemScreen.OnItemSelected
-	// void OnItemSelected();                                                                                                   // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnItemSelected();                                                                                                   // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemScreen.OnErrorStateTextUpdated
-	// void OnErrorStateTextUpdated(FText& ErrorStateText);                                                                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnErrorStateTextUpdated(FText& ErrorStateText);                                                                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveItemStateTitleWidget
@@ -613,7 +613,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveItemStateTitleWidget.BP_OnSetHeaderInfo
-	// void BP_OnSetHeaderInfo(FText& Subheading, bool bSubscribed, int32_t UnlockedStages, int32_t MaxStages);                 // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnSetHeaderInfo(FText& Subheading, bool bSubscribed, int32_t UnlockedStages, int32_t MaxStages);                 // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveItemWidget
@@ -630,15 +630,15 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveItemWidget.OnUnhighlighted
-	// void OnUnhighlighted();                                                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUnhighlighted();                                                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemWidget.OnTileMaterialLoaded
-	// void OnTileMaterialLoaded(bool bSubscribed);                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTileMaterialLoaded(bool bSubscribed);                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemWidget.OnStageItemChanged
-	// void OnStageItemChanged(FProgressiveStageItemInfo& InStageItemInfo);                                                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnStageItemChanged(FProgressiveStageItemInfo& InStageItemInfo);                                                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemWidget.OnPeekStateChanged
-	// void OnPeekStateChanged(bool bIsInPeekState);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPeekStateChanged(bool bIsInPeekState);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveItemWidget.OnHighlighted
-	// void OnHighlighted();                                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnHighlighted();                                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveSetDetailsWidget
@@ -654,7 +654,7 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveSetDetailsWidget.BP_OnUpdateSetDetails
-	// void BP_OnUpdateSetDetails(FText& SetName, FText& ExpiringText, bool bCompleted);                                        // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnUpdateSetDetails(FText& SetName, FText& ExpiringText, bool bCompleted);                                        // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveSetList
@@ -674,9 +674,9 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveSetList.ClearSetTiles
-	// void ClearSetTiles();                                                                                                    // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ClearSetTiles();                                                                                                    // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveSetList.AddSetTile
-	// class UFortProgressiveSetTile* AddSetTile();                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// class UFortProgressiveSetTile* AddSetTile();                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveSetTile
@@ -691,9 +691,9 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveSetTile.BP_OnTileMaterialLoaded
-	// void BP_OnTileMaterialLoaded(bool bSubscribed);                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnTileMaterialLoaded(bool bSubscribed);                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveSetTile.BP_OnInitializeSetInfo
-	// void BP_OnInitializeSetInfo(FProgressiveSetInfo& InSetInfo, FText& BottomText, FText& BottomSubtext, bool bSubscribed);  // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnInitializeSetInfo(FProgressiveSetInfo& InSetInfo, FText& BottomText, FText& BottomSubtext, bool bSubscribed);  // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveStageList
@@ -712,11 +712,11 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveStageList.SelectStageInDirection
-	// void SelectStageInDirection(int32_t Direction);                                                                          // [0xa8ec4b4] Final|Native|Public|BlueprintCallable 
+	// void SelectStageInDirection(int32_t Direction);                                                                          // [0xb71db3c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CrewUI.FortProgressiveStageList.ClearStageWidgets
-	// void ClearStageWidgets();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ClearStageWidgets();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveStageList.AddStageWidget
-	// class UFortProgressiveStageWidget* AddStageWidget();                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// class UFortProgressiveStageWidget* AddStageWidget();                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveStageWidget
@@ -732,15 +732,15 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveStageWidget.OnSetTooltipVisible
-	// void OnSetTooltipVisible(bool bVisible);                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSetTooltipVisible(bool bVisible);                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveStageWidget.OnSetTooltipText
-	// void OnSetTooltipText(FText& InToolTipText);                                                                             // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnSetTooltipText(FText& InToolTipText);                                                                             // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveStageWidget.OnPeekStateChanged
-	// void OnPeekStateChanged(bool bIsInPeekState);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPeekStateChanged(bool bIsInPeekState);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveStageWidget.ClearStageItemWidgets
-	// void ClearStageItemWidgets();                                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ClearStageItemWidgets();                                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveStageWidget.AddStageItemWidget
-	// class UFortProgressiveItemWidget* AddStageItemWidget();                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// class UFortProgressiveItemWidget* AddStageItemWidget();                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortProgressiveTableOfContentsScreen
@@ -767,15 +767,15 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortProgressiveTableOfContentsScreen.BP_OnUpdateSubscriptionState
-	// void BP_OnUpdateSubscriptionState(bool bSubscribed);                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnUpdateSubscriptionState(bool bSubscribed);                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveTableOfContentsScreen.BP_OnUpdateNumTilesAvailable
-	// void BP_OnUpdateNumTilesAvailable(int32_t NumTiles);                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnUpdateNumTilesAvailable(int32_t NumTiles);                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveTableOfContentsScreen.BP_OnUpdateErrorStateText
-	// void BP_OnUpdateErrorStateText(FText& ErrorStateText);                                                                   // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnUpdateErrorStateText(FText& ErrorStateText);                                                                   // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveTableOfContentsScreen.BP_OnUpdateBanner
-	// void BP_OnUpdateBanner(FText& BannerText, bool bAllSetsCompleted, bool bSubscribed);                                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnUpdateBanner(FText& BannerText, bool bAllSetsCompleted, bool bSubscribed);                                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/CrewUI.FortProgressiveTableOfContentsScreen.BP_OnSetDescriptionText
-	// void BP_OnSetDescriptionText(FText& ProductDescription);                                                                 // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_OnSetDescriptionText(FText& ProductDescription);                                                                 // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/CrewUI.FortTemporaryItemsScreen
@@ -796,13 +796,13 @@ public:
 
 	/// Functions
 	// Function /Script/CrewUI.FortTemporaryItemsScreen.SetupRowEntry
-	// void SetupRowEntry(class UFortTemporaryItemsRow* RewardRow);                                                             // [0xa8ec73c] Final|Native|Protected|BlueprintCallable 
+	// void SetupRowEntry(class UFortTemporaryItemsRow* RewardRow);                                                             // [0xb71dec4] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/CrewUI.FortTemporaryItemsScreen.GetSubscriptionVM
-	// class UFortSubscriptionVM* GetSubscriptionVM();                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// class UFortSubscriptionVM* GetSubscriptionVM();                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/CrewUI.FortTemporaryItemsScreen.GetRemainingDaysLabel
-	// FText GetRemainingDaysLabel(class UFortTemporaryItemsVM* TemporaryItemsVM);                                              // [0xa8ec308] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// FText GetRemainingDaysLabel(class UFortTemporaryItemsVM* TemporaryItemsVM);                                              // [0xb71d950] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CrewUI.FortTemporaryItemsScreen.BP_OnContainerTabVisibilityUpdated
-	// void BP_OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnContainerTabVisibilityUpdated(bool bTabsVisible, float SpacingAdjustmentForTabs);                              // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Struct /Script/CrewUI.CrewSubscriptionContentTabData

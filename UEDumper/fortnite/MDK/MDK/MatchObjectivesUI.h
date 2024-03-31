@@ -27,24 +27,24 @@ public:
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.FortMobileButtonBehaviorComponent_MatchObjectivePicker.HandleSkydiveModeChanged
-	// void HandleSkydiveModeChanged(ESkydiveFeedbackPhase Phase);                                                              // [0xa996910] Final|Native|Protected 
+	// void HandleSkydiveModeChanged(ESkydiveFeedbackPhase Phase);                                                              // [0xb7f879c] Final|Native|Protected 
 };
 
 /// Class /Script/MatchObjectivesUI.FortMobileHUDElement_ObjectiveSelectorWrapper
-/// Size: 0x0018 (0x000350 - 0x000368)
+/// Size: 0x0018 (0x000358 - 0x000370)
 class UFortMobileHUDElement_ObjectiveSelectorWrapper : public UFortMobileHUDElement
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 872;
+	static inline constexpr uint64_t __MDKClassSize = 880;
 
 public:
-	CMember(class UFortPlayerStateComponent_MatchQuests*) MatchQuestsComponent                                     OFFSET(get<T>, {0x350, 8, 0, 0})
-	CMember(class UOverlay*)                           Overlay_WrapperContents                                     OFFSET(get<T>, {0x358, 8, 0, 0})
+	CMember(class UFortPlayerStateComponent_MatchQuests*) MatchQuestsComponent                                     OFFSET(get<T>, {0x358, 8, 0, 0})
+	CMember(class UOverlay*)                           Overlay_WrapperContents                                     OFFSET(get<T>, {0x360, 8, 0, 0})
 
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.FortMobileHUDElement_ObjectiveSelectorWrapper.HandleSkydiveFromBusAndLandingCompleted
-	// void HandleSkydiveFromBusAndLandingCompleted(bool bSkydivedFromBusAndLanded);                                            // [0xa996810] Final|Native|Public  
+	// void HandleSkydiveFromBusAndLandingCompleted(bool bSkydivedFromBusAndLanded);                                            // [0xb7f8618] Final|Native|Public  
 };
 
 /// Class /Script/MatchObjectivesUI.MatchObjectivesOptionEntryWidget
@@ -62,13 +62,13 @@ public:
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.MatchObjectivesOptionEntryWidget.OnTeammateSelectionUpdated
-	// void OnTeammateSelectionUpdated(TArray<AFortPlayerState*>& PlayersThatHaveSelectedThis);                                 // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void OnTeammateSelectionUpdated(TArray<AFortPlayerState*>& PlayersThatHaveSelectedThis);                                 // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesOptionEntryWidget.OnOptionSelectedStateChanged
-	// void OnOptionSelectedStateChanged(bool bIsSelected);                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnOptionSelectedStateChanged(bool bIsSelected);                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesOptionEntryWidget.OnOptionFocusedStateChanged
-	// void OnOptionFocusedStateChanged(bool bIsFocused);                                                                       // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnOptionFocusedStateChanged(bool bIsFocused);                                                                       // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesOptionEntryWidget.OnMatchObjectiveEntrySetup
-	// void OnMatchObjectiveEntrySetup(FUrgentQuestData& UrgentQuestData, FFortItemQuantityPair& VisibleReward, int32_t ObjectiveCount); // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnMatchObjectiveEntrySetup(FUrgentQuestData& UrgentQuestData, FFortItemQuantityPair& VisibleReward, int32_t ObjectiveCount); // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/MatchObjectivesUI.MatchObjectivesSocialAvatar
@@ -84,9 +84,9 @@ public:
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSocialAvatar.SetSocialAvatarTexture
-	// void SetSocialAvatarTexture(TWeakObjectPtr<UTexture2D*>& AvatarTexture);                                                 // [0xa996b7c] Final|Native|Protected|HasOutParms|BlueprintCallable 
+	// void SetSocialAvatarTexture(TWeakObjectPtr<UTexture2D*>& AvatarTexture);                                                 // [0xb7f8ac8] Final|Native|Protected|HasOutParms|BlueprintCallable 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSocialAvatar.SetSocialAvatar
-	// void SetSocialAvatar(class AFortPlayerState* PlayerState);                                                               // [0xa996af4] Final|Native|Protected|BlueprintCallable 
+	// void SetSocialAvatar(class AFortPlayerState* PlayerState);                                                               // [0xb7f8a00] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/MatchObjectivesUI.MatchObjectivesUIDirectorBase
@@ -101,13 +101,13 @@ public:
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.MatchObjectivesUIDirectorBase.OnQuestOfferingAvailable
-	// void OnQuestOfferingAvailable();                                                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnQuestOfferingAvailable();                                                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesUIDirectorBase.OnFinishSkydiving
-	// void OnFinishSkydiving();                                                                                                // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnFinishSkydiving();                                                                                                // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesUIDirectorBase.HandleSkydiveModeChanged
-	// void HandleSkydiveModeChanged(ESkydiveFeedbackPhase Phase);                                                              // [0xa996890] Final|Native|Public  
+	// void HandleSkydiveModeChanged(ESkydiveFeedbackPhase Phase);                                                              // [0xb7f86dc] Final|Native|Public  
 	// Function /Script/MatchObjectivesUI.MatchObjectivesUIDirectorBase.CheckQuestOffering
-	// void CheckQuestOffering();                                                                                               // [0xa9967c8] Final|Native|Protected|BlueprintCallable 
+	// void CheckQuestOffering();                                                                                               // [0xb7f85d0] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Class /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget
@@ -126,19 +126,19 @@ public:
 
 	/// Functions
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.UpdateKeybindings
-	// void UpdateKeybindings();                                                                                                // [0xa996c1c] Final|Native|Protected 
+	// void UpdateKeybindings();                                                                                                // [0xb7f8b68] Final|Native|Protected 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.SetSelectorState
-	// void SetSelectorState(EMatchQuestsSelectorState State);                                                                  // [0xa996a74] Final|Native|Protected|BlueprintCallable 
+	// void SetSelectorState(EMatchQuestsSelectorState State);                                                                  // [0xb7f8940] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.PopulateChallengeEntries
-	// void PopulateChallengeEntries(TArray<TScriptInterface<Class>>& QuestOffering);                                           // [0xa9969d8] Final|Native|Private|HasOutParms 
+	// void PopulateChallengeEntries(TArray<TScriptInterface<Class>>& QuestOffering);                                           // [0xb7f88a4] Final|Native|Private|HasOutParms 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.OnSelectorOpenStateChanged
-	// void OnSelectorOpenStateChanged();                                                                                       // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void OnSelectorOpenStateChanged();                                                                                       // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.OnQuestEntrySelected
-	// void OnQuestEntrySelected(class UUserWidget* SelectedEntry);                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnQuestEntrySelected(class UUserWidget* SelectedEntry);                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.IsOpenByDefault
-	// bool IsOpenByDefault();                                                                                                  // [0xa996990] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
+	// bool IsOpenByDefault();                                                                                                  // [0xb7f885c] Final|Native|Protected|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MatchObjectivesUI.MatchObjectivesSelectorWidget.GetDailyChallengesFromMCP
-	// void GetDailyChallengesFromMCP();                                                                                        // [0xa9967fc] Final|Native|Protected|BlueprintCallable 
+	// void GetDailyChallengesFromMCP();                                                                                        // [0xb7f8604] Final|Native|Protected|BlueprintCallable 
 };
 
 /// Enum /Script/MatchObjectivesUI.EMatchQuestsSelectorState

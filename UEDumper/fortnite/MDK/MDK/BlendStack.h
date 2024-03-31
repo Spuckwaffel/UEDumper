@@ -22,17 +22,17 @@ public:
 
 	/// Functions
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.GetCurrentBlendStackAnimAssetTime
-	// float GetCurrentBlendStackAnimAssetTime(FAnimNodeReference& Node);                                                       // [0x78b6fac] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// float GetCurrentBlendStackAnimAssetTime(FAnimNodeReference& Node);                                                       // [0x7cab380] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.GetCurrentBlendStackAnimAsset
-	// class UAnimationAsset* GetCurrentBlendStackAnimAsset(FAnimNodeReference& Node);                                          // [0x78b6ec0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// class UAnimationAsset* GetCurrentBlendStackAnimAsset(FAnimNodeReference& Node);                                          // [0x7cab294] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.ForceBlendNextUpdate
-	// void ForceBlendNextUpdate(FBlendStackAnimNodeReference& BlendStackNode);                                                 // [0x78b6e1c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void ForceBlendNextUpdate(FBlendStackAnimNodeReference& BlendStackNode);                                                 // [0x7cab1f0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.ConvertToBlendStackNodePure
-	// void ConvertToBlendStackNodePure(FAnimNodeReference& Node, FBlendStackAnimNodeReference& BlendStackNode, bool& Result);  // [0x78b6c40] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void ConvertToBlendStackNodePure(FAnimNodeReference& Node, FBlendStackAnimNodeReference& BlendStackNode, bool& Result);  // [0x7cab014] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.ConvertToBlendStackNode
-	// FBlendStackAnimNodeReference ConvertToBlendStackNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x78b6b14] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FBlendStackAnimNodeReference ConvertToBlendStackNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x7caaee8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/BlendStack.BlendStackAnimNodeLibrary.BlendTo
-	// void BlendTo(FAnimUpdateContext& Context, FBlendStackAnimNodeReference& BlendStackNode, class UAnimationAsset* AnimationAsset, float AnimationTime, bool bLoop, bool bMirrored, float BlendTime, FVector BlendParameters, float WantedPlayRate, float ActivationDelay); // [0x78b5f74] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void BlendTo(FAnimUpdateContext& Context, FBlendStackAnimNodeReference& BlendStackNode, class UAnimationAsset* AnimationAsset, float AnimationTime, bool bLoop, bool bMirrored, float BlendTime, FVector BlendParameters, float WantedPlayRate, float ActivationDelay); // [0x7caa340] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/BlendStack.BlendStackInputAnimNodeLibrary
@@ -47,11 +47,11 @@ public:
 
 	/// Functions
 	// Function /Script/BlendStack.BlendStackInputAnimNodeLibrary.GetProperties
-	// void GetProperties(FBlendStackInputAnimNodeReference& BlendStackInputNode, class UAnimationAsset*& AnimationAsset, float& AccumulatedTime); // [0x78b7078] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GetProperties(FBlendStackInputAnimNodeReference& BlendStackInputNode, class UAnimationAsset*& AnimationAsset, float& AccumulatedTime); // [0x7cab44c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/BlendStack.BlendStackInputAnimNodeLibrary.ConvertToBlendStackInputNodePure
-	// void ConvertToBlendStackInputNodePure(FAnimNodeReference& Node, FBlendStackInputAnimNodeReference& BlendStackInputNode, bool& Result); // [0x78b6938] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void ConvertToBlendStackInputNodePure(FAnimNodeReference& Node, FBlendStackInputAnimNodeReference& BlendStackInputNode, bool& Result); // [0x7caad0c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/BlendStack.BlendStackInputAnimNodeLibrary.ConvertToBlendStackInputNode
-	// FBlendStackInputAnimNodeReference ConvertToBlendStackInputNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x78b680c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FBlendStackInputAnimNodeReference ConvertToBlendStackInputNode(FAnimNodeReference& Node, EAnimNodeReferenceConversionResult& Result); // [0x7caabe0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Struct /Script/BlendStack.BlendStackAnimNodeReference

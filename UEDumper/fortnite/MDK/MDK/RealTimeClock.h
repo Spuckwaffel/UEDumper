@@ -20,6 +20,6 @@ public:
 
 	/// Functions
 	// Function /Script/RealTimeClock.RealTimeClockBlueprintLibrary.AddTimeToDate
-	// FDateTime AddTimeToDate(FDateTime& DateTime, FTimespan& Timespan);                                                       // [0xac6c91c] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
+	// FDateTime AddTimeToDate(FDateTime& DateTime, FTimespan& Timespan);                                                       // [0xc15fb30] Final|Native|Static|Private|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure 
 };
 

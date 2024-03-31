@@ -34,21 +34,21 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.Logout
-	// void Logout();                                                                                                           // [0x1c791ec] Native|Public|BlueprintCallable 
+	// void Logout();                                                                                                           // [0x25e21a0] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.IsLoggedIn
-	// bool IsLoggedIn();                                                                                                       // [0x3912dc4] Native|Public|BlueprintCallable 
+	// bool IsLoggedIn();                                                                                                       // [0x33b4560] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.GetQRCodeTexture
-	// class UTexture2DDynamic* GetQRCodeTexture();                                                                             // [0x2bbd154] Final|Native|Public|BlueprintCallable 
+	// class UTexture2DDynamic* GetQRCodeTexture();                                                                             // [0x2a7655c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.GetLoginState
-	// TEnumAsByte<PictureInPictureAuthState> GetLoginState();                                                                  // [0x81ea0ec] Final|Native|Public|BlueprintCallable 
+	// TEnumAsByte<PictureInPictureAuthState> GetLoginState();                                                                  // [0x86883e4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.GetAvatarImage
-	// class UEpicCMSImage* GetAvatarImage();                                                                                   // [0x83e5090] Final|Native|Public|BlueprintCallable 
+	// class UEpicCMSImage* GetAvatarImage();                                                                                   // [0x88ec960] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.EndLogin
-	// void EndLogin(class UObject* InWorldContext);                                                                            // [0x722e308] Native|Public|BlueprintCallable 
+	// void EndLogin(class UObject* InWorldContext);                                                                            // [0x741dc24] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.CheckLogin
-	// void CheckLogin(class UObject* InWorldContext);                                                                          // [0x99c840c] Native|Public|BlueprintCallable 
+	// void CheckLogin(class UObject* InWorldContext);                                                                          // [0xa4a7de0] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureClient.BeginLogin
-	// void BeginLogin(class UObject* InWorldContext);                                                                          // [0x78aa6cc] Native|Public|BlueprintCallable 
+	// void BeginLogin(class UObject* InWorldContext);                                                                          // [0x7c98688] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PictureInPictureCore.PictureInPictureCheatManager
@@ -63,17 +63,17 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.SuspendPiP
-	// void SuspendPiP();                                                                                                       // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void SuspendPiP();                                                                                                       // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.ResumePiP
-	// void ResumePiP();                                                                                                        // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void ResumePiP();                                                                                                        // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.PrintPiPRegionInfo
-	// void PrintPiPRegionInfo();                                                                                               // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void PrintPiPRegionInfo();                                                                                               // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.EnablePiP
-	// void EnablePiP();                                                                                                        // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void EnablePiP();                                                                                                        // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.DisablePiP
-	// void DisablePiP();                                                                                                       // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void DisablePiP();                                                                                                       // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureCheatManager.CanEnablePartnerPIP
-	// void CanEnablePartnerPIP();                                                                                              // [0x36203b0] Final|Exec|Native|Public|BlueprintCallable 
+	// void CanEnablePartnerPIP();                                                                                              // [0x3518b8c] Final|Exec|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PictureInPictureCore.PictureInPictureCoreEnableDisableAction
@@ -120,55 +120,55 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.ToggleFullScreen
-	// void ToggleFullScreen();                                                                                                 // [0xaa4c51c] Final|Native|Public  
+	// void ToggleFullScreen();                                                                                                 // [0xb8e02e0] Final|Native|Public  
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.Stop
-	// void Stop();                                                                                                             // [0x35bd900] Native|Public|BlueprintCallable 
+	// void Stop();                                                                                                             // [0x1bbc518] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.SetEnabled
-	// void SetEnabled(bool bIsEnabled, bool bIsFromUser);                                                                      // [0xaa4bd8c] Native|Public|BlueprintCallable 
+	// void SetEnabled(bool bIsEnabled, bool bIsFromUser);                                                                      // [0xb8de698] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.SetCurrentSource
-	// void SetCurrentSource(FPiPPartnerSource& SelectedSource);                                                                // [0xaa4bcc4] Native|Public|HasOutParms|BlueprintCallable 
+	// void SetCurrentSource(FPiPPartnerSource& SelectedSource);                                                                // [0xb8de5d0] Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.Play
-	// void Play(bool bForcePlay);                                                                                              // [0xaa4bc2c] Native|Public|BlueprintCallable 
+	// void Play(bool bForcePlay);                                                                                              // [0xb8de4f4] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.Pause
-	// void Pause();                                                                                                            // [0x1b102a0] Native|Public|BlueprintCallable 
+	// void Pause();                                                                                                            // [0x269edb4] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnPrevThumbnailReceived
-	// void OnPrevThumbnailReceived(class UTexture2DDynamic* InTexture);                                                        // [0xaa4bbac] Final|Native|Private 
+	// void OnPrevThumbnailReceived(class UTexture2DDynamic* InTexture);                                                        // [0xb8de434] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnNextThumbnailReceived
-	// void OnNextThumbnailReceived(class UTexture2DDynamic* InTexture);                                                        // [0xaa4bb2c] Final|Native|Private 
+	// void OnNextThumbnailReceived(class UTexture2DDynamic* InTexture);                                                        // [0xb8de374] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnMediaStartedAnalytics
-	// void OnMediaStartedAnalytics();                                                                                          // [0xaa4bb18] Final|Native|Private 
+	// void OnMediaStartedAnalytics();                                                                                          // [0xb8de360] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnMediaResumedAnalytics
-	// void OnMediaResumedAnalytics();                                                                                          // [0xaa4baf0] Final|Native|Private 
+	// void OnMediaResumedAnalytics();                                                                                          // [0xb8de338] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnMediaPausedAnalytics
-	// void OnMediaPausedAnalytics();                                                                                           // [0xaa4bb04] Final|Native|Private 
+	// void OnMediaPausedAnalytics();                                                                                           // [0xb8de34c] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.OnMediaClosedAnalytics
-	// void OnMediaClosedAnalytics();                                                                                           // [0xaa4baf0] Final|Native|Private 
+	// void OnMediaClosedAnalytics();                                                                                           // [0xb8de338] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.IsPlaying
-	// bool IsPlaying();                                                                                                        // [0xaa4b988] Final|Native|Public|BlueprintCallable 
+	// bool IsPlaying();                                                                                                        // [0xb8de0d0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.IsPaused
-	// bool IsPaused();                                                                                                         // [0xaa4b964] Final|Native|Public|BlueprintCallable 
+	// bool IsPaused();                                                                                                         // [0xb8de0ac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.IsMultiSourceSupported
-	// bool IsMultiSourceSupported();                                                                                           // [0x66be23c] Native|Public|BlueprintCallable 
+	// bool IsMultiSourceSupported();                                                                                           // [0x669d5c8] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.IsEnabled
-	// bool IsEnabled();                                                                                                        // [0xaa4b94c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsEnabled();                                                                                                        // [0xb8de094] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.HandleSourceSelectedEvent
-	// void HandleSourceSelectedEvent(FString SelectedSource);                                                                  // [0xaa4b750] Native|Protected     
+	// void HandleSourceSelectedEvent(FString SelectedSource);                                                                  // [0xb8dd950] Native|Protected     
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetValidSources
-	// TArray<FPiPPartnerSource> GetValidSources();                                                                             // [0xaa4b68c] Native|Public|BlueprintCallable 
+	// TArray<FPiPPartnerSource> GetValidSources();                                                                             // [0xb8dd848] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetSources
-	// TArray<FPiPPartnerSource> GetSources();                                                                                  // [0xaa4b65c] Native|Public|BlueprintCallable 
+	// TArray<FPiPPartnerSource> GetSources();                                                                                  // [0xb8dd818] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetPlayerAssetConfig
-	// FPIPVideoPlayerAssetConfig GetPlayerAssetConfig();                                                                       // [0xaa4b640] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FPIPVideoPlayerAssetConfig GetPlayerAssetConfig();                                                                       // [0xb8dd7fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetMediaPlayerWidget
-	// class UPictureInPicturePlayer* GetMediaPlayerWidget();                                                                   // [0xa76f8c8] Final|Native|Public|Const 
+	// class UPictureInPicturePlayer* GetMediaPlayerWidget();                                                                   // [0xb540360] Final|Native|Public|Const 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetDefaultPlayerAssetConfig
-	// FPIPVideoPlayerAssetConfig GetDefaultPlayerAssetConfig();                                                                // [0xaa4aea0] Final|Native|Public|Const 
+	// FPIPVideoPlayerAssetConfig GetDefaultPlayerAssetConfig();                                                                // [0xb8db158] Final|Native|Public|Const 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetCurrentSource
-	// FPiPPartnerSource GetCurrentSource();                                                                                    // [0xaa4ae70] Native|Public|BlueprintCallable 
+	// FPiPPartnerSource GetCurrentSource();                                                                                    // [0xb8db128] Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.GetActions
-	// TArray<UPictureInPictureActionData*> GetActions();                                                                       // [0xaa4ad2c] Final|Native|Public|BlueprintCallable 
+	// TArray<UPictureInPictureActionData*> GetActions();                                                                       // [0xb8dafe4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureMediaController.Exit
-	// void Exit(bool bStop);                                                                                                   // [0x6a57af8] Native|Public|BlueprintCallable 
+	// void Exit(bool bStop);                                                                                                   // [0x6abffac] Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PictureInPictureCore.PictureInPictureMediaPlayerCtrl
@@ -197,19 +197,19 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.UpdateStreamingPlayerSize
-	// void UpdateStreamingPlayerSize(FVector2D& InVector);                                                                     // [0xaa4c60c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void UpdateStreamingPlayerSize(FVector2D& InVector);                                                                     // [0xb8e0448] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.StreamedVideoOnUrlSuccess
-	// void StreamedVideoOnUrlSuccess(FString URL);                                                                             // [0xaa4c39c] Final|Native|Private 
+	// void StreamedVideoOnUrlSuccess(FString URL);                                                                             // [0xb8dfc70] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.StreamedVideoOnUrlFailure
-	// void StreamedVideoOnUrlFailure(FString URL);                                                                             // [0xaa4c230] Final|Native|Private 
+	// void StreamedVideoOnUrlFailure(FString URL);                                                                             // [0xb8df614] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.SetPlayerAssetConfig
-	// bool SetPlayerAssetConfig(FPIPVideoPlayerAssetConfig& InAssetConfig);                                                    // [0xaa4be54] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetPlayerAssetConfig(FPIPVideoPlayerAssetConfig& InAssetConfig);                                                    // [0xb8de7ec] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.IsAssetConfigSet
-	// bool IsAssetConfigSet();                                                                                                 // [0xaa4b934] Final|Native|Public|BlueprintCallable 
+	// bool IsAssetConfigSet();                                                                                                 // [0xb8de07c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.HandleUCPAudioChanged
-	// void HandleUCPAudioChanged(class UFortClientSettingsRecord* Settings);                                                   // [0xaa4b8b4] Final|Native|Private 
+	// void HandleUCPAudioChanged(class UFortClientSettingsRecord* Settings);                                                   // [0xb8ddfbc] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPicturePlayer.FlushPlayerAssetConfig
-	// void FlushPlayerAssetConfig();                                                                                           // [0xaa4ad18] Final|Native|Public|BlueprintCallable 
+	// void FlushPlayerAssetConfig();                                                                                           // [0xb8dafd0] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/PictureInPictureCore.PictureInPicturePartnerControls
@@ -250,59 +250,59 @@ public:
 
 	/// Functions
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.UpdatePartnerItemList
-	// void UpdatePartnerItemList(class UObject* InWorldContext, bool bForce);                                                  // [0xaa4c544] Final|Native|Public|BlueprintCallable 
+	// void UpdatePartnerItemList(class UObject* InWorldContext, bool bForce);                                                  // [0xb8e0308] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.ToggleFullScreenPiP
-	// void ToggleFullScreenPiP();                                                                                              // [0xaa4c530] Final|Native|Public  
+	// void ToggleFullScreenPiP();                                                                                              // [0xb8e02f4] Final|Native|Public  
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.SuspendCurrentMediaController
-	// void SuspendCurrentMediaController();                                                                                    // [0xaa4c508] Final|Native|Public  
+	// void SuspendCurrentMediaController();                                                                                    // [0xb8e02cc] Final|Native|Public  
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.StoreLastUsedSource
-	// void StoreLastUsedSource(FString InPartnerSourceName);                                                                   // [0xaa4c0d8] Final|Native|Public|BlueprintCallable 
+	// void StoreLastUsedSource(FString InPartnerSourceName);                                                                   // [0xb8defb8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.StoreLastUsedPartner
-	// void StoreLastUsedPartner(FString InPartnerName);                                                                        // [0xaa4bf80] Final|Native|Public|BlueprintCallable 
+	// void StoreLastUsedPartner(FString InPartnerName);                                                                        // [0xb8de95c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.StoreAutoEnableSetting
-	// void StoreAutoEnableSetting(bool InUserEnabled);                                                                         // [0xaa4bf10] Final|Native|Public|BlueprintCallable 
+	// void StoreAutoEnableSetting(bool InUserEnabled);                                                                         // [0xb8de8a8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.ShutdownAllPartners
-	// void ShutdownAllPartners();                                                                                              // [0xaa4befc] Final|Native|Public|BlueprintCallable 
+	// void ShutdownAllPartners();                                                                                              // [0xb8de894] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.ResumeCurrentMediaController
-	// void ResumeCurrentMediaController();                                                                                     // [0xaa4bcb0] Final|Native|Public  
+	// void ResumeCurrentMediaController();                                                                                     // [0xb8de5bc] Final|Native|Public  
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.OnCurrentPartnerSourceSelected
-	// void OnCurrentPartnerSourceSelected(FPiPPartnerSource& SelectedSource);                                                  // [0xaa4ba2c] Final|Native|Private|HasOutParms 
+	// void OnCurrentPartnerSourceSelected(FPiPPartnerSource& SelectedSource);                                                  // [0xb8de274] Final|Native|Private|HasOutParms 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.OnCMSEventValid
-	// void OnCMSEventValid(class UMediaCMSEvent* ValidEvent);                                                                  // [0x269d728] Final|Native|Private 
+	// void OnCMSEventValid(class UMediaCMSEvent* ValidEvent);                                                                  // [0xb8de1b4] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.OnCMSEventInvalid
-	// void OnCMSEventInvalid(class UMediaCMSEvent* InvalidEvent);                                                              // [0xaa4b9ac] Final|Native|Private 
+	// void OnCMSEventInvalid(class UMediaCMSEvent* InvalidEvent);                                                              // [0xb8de0f4] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.IsPartnerListUpdated
-	// bool IsPartnerListUpdated();                                                                                             // [0x675d21c] Final|Native|Public|BlueprintCallable 
+	// bool IsPartnerListUpdated();                                                                                             // [0x6768304] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.HandleMediaSourceRequest
-	// void HandleMediaSourceRequest();                                                                                         // [0xaa4b73c] Final|Native|Private 
+	// void HandleMediaSourceRequest();                                                                                         // [0xb8dd93c] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.HandleFNEventsSetCurrentMediaControllerEnabled
-	// void HandleFNEventsSetCurrentMediaControllerEnabled(bool InEnabled);                                                     // [0xaa4b6bc] Final|Native|Private 
+	// void HandleFNEventsSetCurrentMediaControllerEnabled(bool InEnabled);                                                     // [0xb8dd878] Final|Native|Private 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetPartnerItemList
-	// TArray<UPictureInPicturePartnerDataAsset*> GetPartnerItemList();                                                         // [0xaa4b5c8] Final|Native|Public|BlueprintCallable 
+	// TArray<UPictureInPicturePartnerDataAsset*> GetPartnerItemList();                                                         // [0xb8dd784] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetPartnerItem
-	// class UPictureInPicturePartnerDataAsset* GetPartnerItem(FString PartnerName);                                            // [0xaa4b45c] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPicturePartnerDataAsset* GetPartnerItem(FString PartnerName);                                            // [0xb8dd114] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetPartnerControls
-	// class UPictureInPicturePartnerControls* GetPartnerControls(FString PartnerName);                                         // [0x269ced4] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPicturePartnerControls* GetPartnerControls(FString PartnerName);                                         // [0xb8dcaa4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetPartnerController
-	// class UPictureInPictureMediaController* GetPartnerController(FString PartnerName);                                       // [0xaa4b2f0] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPictureMediaController* GetPartnerController(FString PartnerName);                                       // [0xb8dc434] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetPartnerClient
-	// class UPictureInPictureClient* GetPartnerClient(FString PartnerName);                                                    // [0xaa4b184] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPictureClient* GetPartnerClient(FString PartnerName);                                                    // [0xb8dbdc4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetLastUsedSource
-	// void GetLastUsedSource(FString& OutPartnerSourceName);                                                                   // [0xaa4b020] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetLastUsedSource(FString& OutPartnerSourceName);                                                                   // [0xb8db79c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetLastUsedPartner
-	// void GetLastUsedPartner(FString& OutPartnerName);                                                                        // [0xaa4aebc] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void GetLastUsedPartner(FString& OutPartnerName);                                                                        // [0xb8db174] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetCurrentPartnerItem
-	// class UPictureInPicturePartnerDataAsset* GetCurrentPartnerItem();                                                        // [0xaa4ae4c] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPicturePartnerDataAsset* GetCurrentPartnerItem();                                                        // [0xb8db104] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetCurrentPartnerControls
-	// class UPictureInPicturePartnerControls* GetCurrentPartnerControls();                                                     // [0xaa4ae20] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPicturePartnerControls* GetCurrentPartnerControls();                                                     // [0xb8db0d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetCurrentPartnerController
-	// class UPictureInPictureMediaController* GetCurrentPartnerController();                                                   // [0xaa4adf4] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPictureMediaController* GetCurrentPartnerController();                                                   // [0xb8db0ac] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetCurrentPartnerClient
-	// class UPictureInPictureClient* GetCurrentPartnerClient();                                                                // [0xaa4adc8] Final|Native|Public|BlueprintCallable 
+	// class UPictureInPictureClient* GetCurrentPartnerClient();                                                                // [0xb8db080] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.GetAutoEnableSetting
-	// bool GetAutoEnableSetting();                                                                                             // [0xaa4ada4] Final|Native|Public|BlueprintCallable 
+	// bool GetAutoEnableSetting();                                                                                             // [0xb8db05c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/PictureInPictureCore.PictureInPictureSubsystem.EnableFullScreenPiPOption
-	// void EnableFullScreenPiPOption(bool bEnable);                                                                            // [0xaa4ac98] Final|Native|Public  
+	// void EnableFullScreenPiPOption(bool bEnable);                                                                            // [0xb8daf0c] Final|Native|Public  
 };
 
 /// Struct /Script/PictureInPictureCore.PiPSuspendInfo

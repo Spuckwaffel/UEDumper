@@ -23,9 +23,9 @@ public:
 
 	/// Functions
 	// Function /Script/VerseAIBase.AIPerceptionComponentBase.NotifyTargetPerceptionUpdated
-	// void NotifyTargetPerceptionUpdated(class AActor* Actor, FAIStimulus Stimulus);                                           // [0xa29f1a8] Final|Native|Protected 
+	// void NotifyTargetPerceptionUpdated(class AActor* Actor, FAIStimulus Stimulus);                                           // [0xafc5e7c] Final|Native|Protected 
 	// Function /Script/VerseAIBase.AIPerceptionComponentBase.NotifyTargetPerceptionForgotten
-	// void NotifyTargetPerceptionForgotten(class AActor* Actor);                                                               // [0xa29f00c] Final|Native|Protected 
+	// void NotifyTargetPerceptionForgotten(class AActor* Actor);                                                               // [0xafc5dbc] Final|Native|Protected 
 };
 
 /// Class /Script/VerseAIBase.NPCBehaviorScriptComponent
@@ -41,6 +41,6 @@ public:
 
 	/// Functions
 	// Function /Script/VerseAIBase.NPCBehaviorScriptComponent.GetBehaviorScript
-	// class UNPCBehaviorScript* GetBehaviorScript();                                                                           // [0x9b62620] Final|Native|Public|BlueprintCallable 
+	// class UNPCBehaviorScript* GetBehaviorScript();                                                                           // [0xa671cc8] Final|Native|Public|BlueprintCallable 
 };
 

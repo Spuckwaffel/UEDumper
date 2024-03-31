@@ -21,25 +21,25 @@ public:
 
 	/// Functions
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.SliceProceduralMesh
-	// void SliceProceduralMesh(class UProceduralMeshComponent* InProcMesh, FVector PlanePosition, FVector PlaneNormal, bool bCreateOtherHalf, class UProceduralMeshComponent*& OutOtherHalfProcMesh, EProcMeshSliceCapOption CapOption, class UMaterialInterface* CapMaterial); // [0xb8bfe14] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SliceProceduralMesh(class UProceduralMeshComponent* InProcMesh, FVector PlanePosition, FVector PlaneNormal, bool bCreateOtherHalf, class UProceduralMeshComponent*& OutOtherHalfProcMesh, EProcMeshSliceCapOption CapOption, class UMaterialInterface* CapMaterial); // [0xca88f98] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.GetSectionFromStaticMesh
-	// void GetSectionFromStaticMesh(class UStaticMesh* InMesh, int32_t LODIndex, int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xb8bf8a8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GetSectionFromStaticMesh(class UStaticMesh* InMesh, int32_t LODIndex, int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xca87f4c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.GetSectionFromProceduralMesh
-	// void GetSectionFromProceduralMesh(class UProceduralMeshComponent* InProcMesh, int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xb8bf3b4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void GetSectionFromProceduralMesh(class UProceduralMeshComponent* InProcMesh, int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xca875b0] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.GenerateBoxMesh
-	// void GenerateBoxMesh(FVector BoxRadius, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xb8bef5c] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void GenerateBoxMesh(FVector BoxRadius, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UVs, TArray<FProcMeshTangent>& Tangents); // [0xca86874] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.CreateGridMeshWelded
-	// void CreateGridMeshWelded(int32_t NumX, int32_t NumY, TArray<int32_t>& Triangles, TArray<FVector>& Vertices, TArray<FVector2D>& UVs, float GridSpacing); // [0xb8be000] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void CreateGridMeshWelded(int32_t NumX, int32_t NumY, TArray<int32_t>& Triangles, TArray<FVector>& Vertices, TArray<FVector2D>& UVs, float GridSpacing); // [0xca85030] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.CreateGridMeshTriangles
-	// void CreateGridMeshTriangles(int32_t NumX, int32_t NumY, bool bWinding, TArray<int32_t>& Triangles);                     // [0xb8bde2c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void CreateGridMeshTriangles(int32_t NumX, int32_t NumY, bool bWinding, TArray<int32_t>& Triangles);                     // [0xca84d9c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.CreateGridMeshSplit
-	// void CreateGridMeshSplit(int32_t NumX, int32_t NumY, TArray<int32_t>& Triangles, TArray<FVector>& Vertices, TArray<FVector2D>& UVs, TArray<FVector2D>& UV1s, float GridSpacing); // [0xb8bdb1c] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void CreateGridMeshSplit(int32_t NumX, int32_t NumY, TArray<int32_t>& Triangles, TArray<FVector>& Vertices, TArray<FVector2D>& UVs, TArray<FVector2D>& UV1s, float GridSpacing); // [0xca84a00] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.CopyProceduralMeshFromStaticMeshComponent
-	// void CopyProceduralMeshFromStaticMeshComponent(class UStaticMeshComponent* StaticMeshComponent, int32_t LODIndex, class UProceduralMeshComponent* ProcMeshComponent, bool bCreateCollision); // [0xb8bd668] Final|Native|Static|Public|BlueprintCallable 
+	// void CopyProceduralMeshFromStaticMeshComponent(class UStaticMeshComponent* StaticMeshComponent, int32_t LODIndex, class UProceduralMeshComponent* ProcMeshComponent, bool bCreateCollision); // [0xca847d0] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.ConvertQuadToTriangles
-	// void ConvertQuadToTriangles(TArray<int32_t>& Triangles, int32_t Vert0, int32_t Vert1, int32_t Vert2, int32_t Vert3);     // [0xb8bd260] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void ConvertQuadToTriangles(TArray<int32_t>& Triangles, int32_t Vert0, int32_t Vert1, int32_t Vert2, int32_t Vert3);     // [0xca843c4] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.KismetProceduralMeshLibrary.CalculateTangentsForMesh
-	// void CalculateTangentsForMesh(TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector2D>& UVs, TArray<FVector>& Normals, TArray<FProcMeshTangent>& Tangents); // [0xb8bcde8] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// void CalculateTangentsForMesh(TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector2D>& UVs, TArray<FVector>& Normals, TArray<FProcMeshTangent>& Tangents); // [0xca835bc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/ProceduralMeshComponent.ProceduralMeshComponent
@@ -61,27 +61,27 @@ public:
 
 	/// Functions
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.UpdateMeshSection_LinearColor
-	// void UpdateMeshSection_LinearColor(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FVector2D>& UV1, TArray<FVector2D>& UV2, TArray<FVector2D>& UV3, TArray<FLinearColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bSRGBConversion); // [0xb8c070c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void UpdateMeshSection_LinearColor(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FVector2D>& UV1, TArray<FVector2D>& UV2, TArray<FVector2D>& UV3, TArray<FLinearColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bSRGBConversion); // [0xca8a150] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.UpdateMeshSection
-	// void UpdateMeshSection(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FColor>& VertexColors, TArray<FProcMeshTangent>& Tangents); // [0xb8c0350] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void UpdateMeshSection(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FColor>& VertexColors, TArray<FProcMeshTangent>& Tangents); // [0xca893fc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.SetMeshSectionVisible
-	// void SetMeshSectionVisible(int32_t SectionIndex, bool bNewVisibility);                                                   // [0xb8bfd50] Final|Native|Public|BlueprintCallable 
+	// void SetMeshSectionVisible(int32_t SectionIndex, bool bNewVisibility);                                                   // [0xca88e58] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.IsMeshSectionVisible
-	// bool IsMeshSectionVisible(int32_t SectionIndex);                                                                         // [0xb8bfca8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsMeshSectionVisible(int32_t SectionIndex);                                                                         // [0xca88d70] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.GetNumSections
-	// int32_t GetNumSections();                                                                                                // [0x3ead2cc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetNumSections();                                                                                                // [0x3da0cd8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.CreateMeshSection_LinearColor
-	// void CreateMeshSection_LinearColor(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FVector2D>& UV1, TArray<FVector2D>& UV2, TArray<FVector2D>& UV3, TArray<FLinearColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bCreateCollision, bool bSRGBConversion); // [0xb8be7b8] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void CreateMeshSection_LinearColor(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FVector2D>& UV1, TArray<FVector2D>& UV2, TArray<FVector2D>& UV3, TArray<FLinearColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bCreateCollision, bool bSRGBConversion); // [0xca85ccc] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.CreateMeshSection
-	// void CreateMeshSection(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bCreateCollision); // [0xb8be2b0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void CreateMeshSection(int32_t SectionIndex, TArray<FVector>& Vertices, TArray<int32_t>& Triangles, TArray<FVector>& Normals, TArray<FVector2D>& UV0, TArray<FColor>& VertexColors, TArray<FProcMeshTangent>& Tangents, bool bCreateCollision); // [0xca85368] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.ClearMeshSection
-	// void ClearMeshSection(int32_t SectionIndex);                                                                             // [0xb8bd1e0] Final|Native|Public|BlueprintCallable 
+	// void ClearMeshSection(int32_t SectionIndex);                                                                             // [0xca84304] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.ClearCollisionConvexMeshes
-	// void ClearCollisionConvexMeshes();                                                                                       // [0xb8bd1cc] Final|Native|Public|BlueprintCallable 
+	// void ClearCollisionConvexMeshes();                                                                                       // [0xca842f0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.ClearAllMeshSections
-	// void ClearAllMeshSections();                                                                                             // [0xb8bd148] Final|Native|Public|BlueprintCallable 
+	// void ClearAllMeshSections();                                                                                             // [0xca8426c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/ProceduralMeshComponent.ProceduralMeshComponent.AddCollisionConvexMesh
-	// void AddCollisionConvexMesh(TArray<FVector> ConvexVerts);                                                                // [0xb8bcd0c] Final|Native|Public|BlueprintCallable 
+	// void AddCollisionConvexMesh(TArray<FVector> ConvexVerts);                                                                // [0xca834a0] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/ProceduralMeshComponent.ProcMeshTangent

@@ -12,11 +12,11 @@
 /// dependency: ModelViewViewModel
 
 /// Class /Script/SparksCosmeticsUI.SparksItemLockerCategoryConfig
-/// Size: 0x0000 (0x000180 - 0x000180)
+/// Size: 0x0000 (0x0001A0 - 0x0001A0)
 class USparksItemLockerCategoryConfig : public UAthenaLockerCategoryConfig
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 384;
+	static inline constexpr uint64_t __MDKClassSize = 416;
 
 public:
 };

@@ -113,19 +113,19 @@ public:
 
 	/// Functions
 	// Function /Script/MassSpawner.MassSpawner.UnloadConfig
-	// void UnloadConfig();                                                                                                     // [0xa0f08d4] Final|Native|Public|BlueprintCallable 
+	// void UnloadConfig();                                                                                                     // [0xadcfdf4] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MassSpawner.MassSpawner.ScaleSpawningCount
-	// void ScaleSpawningCount(float Scale);                                                                                    // [0xa0f0854] Final|Native|Public|BlueprintCallable 
+	// void ScaleSpawningCount(float Scale);                                                                                    // [0xadcfd30] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MassSpawner.MassSpawner.GetSpawningCountScale
-	// float GetSpawningCountScale();                                                                                           // [0x9b869d0] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetSpawningCountScale();                                                                                           // [0xa694f94] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MassSpawner.MassSpawner.GetCount
-	// int32_t GetCount();                                                                                                      // [0x85b0444] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// int32_t GetCount();                                                                                                      // [0x8b13cc8] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/MassSpawner.MassSpawner.DoSpawning
-	// void DoSpawning();                                                                                                       // [0xa0f0840] Final|Native|Public|BlueprintCallable 
+	// void DoSpawning();                                                                                                       // [0xadcfd1c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MassSpawner.MassSpawner.DoDespawning
-	// void DoDespawning();                                                                                                     // [0xa0f082c] Final|Native|Public|BlueprintCallable 
+	// void DoDespawning();                                                                                                     // [0xadcfd08] Final|Native|Public|BlueprintCallable 
 	// Function /Script/MassSpawner.MassSpawner.ClearTemplates
-	// void ClearTemplates();                                                                                                   // [0xa0f0818] Final|Native|Public|BlueprintCallable 
+	// void ClearTemplates();                                                                                                   // [0xadcfcf4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/MassSpawner.MassSpawnerSubsystem

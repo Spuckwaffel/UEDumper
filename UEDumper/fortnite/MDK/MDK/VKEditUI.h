@@ -48,9 +48,9 @@ public:
 
 	/// Functions
 	// Function /Script/VKEditUI.VKConnectionIndicator.OnMinigameStateChanged
-	// void OnMinigameStateChanged(EFortMinigameState MinigameState, EFortMinigameState PreviousMinigameState);                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnMinigameStateChanged(EFortMinigameState MinigameState, EFortMinigameState PreviousMinigameState);                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/VKEditUI.VKConnectionIndicator.HandleMemorySamplerProgressUpdated
-	// void HandleMemorySamplerProgressUpdated(float Progress);                                                                 // [0xad035b4] Final|Native|Private 
+	// void HandleMemorySamplerProgressUpdated(float Progress);                                                                 // [0xc46a878] Final|Native|Private 
 };
 
 /// Class /Script/VKEditUI.VKDebugMessagesBase
@@ -65,9 +65,9 @@ public:
 
 	/// Functions
 	// Function /Script/VKEditUI.VKDebugMessagesBase.HandleGameStateInitialized
-	// void HandleGameStateInitialized(class AFortGameState* GameState);                                                        // [0xad03534] Final|Native|Protected 
+	// void HandleGameStateInitialized(class AFortGameState* GameState);                                                        // [0xc46a7b8] Final|Native|Protected 
 	// Function /Script/VKEditUI.VKDebugMessagesBase.BP_OnGameStateInitialized
-	// void BP_OnGameStateInitialized(class AFortGameState* GameState);                                                         // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnGameStateInitialized(class AFortGameState* GameState);                                                         // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/VKEditUI.VkEditDynamicUIDirector

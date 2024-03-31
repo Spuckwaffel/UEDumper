@@ -24,9 +24,9 @@ public:
 
 	/// Functions
 	// Function /Script/ServerRollQuestsRuntime.FortGameStateComponent_ServerRollQuests.PopulateMap
-	// void PopulateMap(class UDataRegistry* ServerRollQuestsRegistry, FGameplayTagContainer& PlaylistContextTags);             // [0xa33e710] Final|Native|Private|HasOutParms 
+	// void PopulateMap(class UDataRegistry* ServerRollQuestsRegistry, FGameplayTagContainer& PlaylistContextTags);             // [0xb08edf0] Final|Native|Private|HasOutParms 
 	// Function /Script/ServerRollQuestsRuntime.FortGameStateComponent_ServerRollQuests.HandlePlaylistDataReady
-	// void HandlePlaylistDataReady(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& GameplayTags); // [0x86cce88] Final|Native|Private|HasOutParms 
+	// void HandlePlaylistDataReady(class AFortGameStateAthena* GameState, class UFortPlaylist* Playlist, FGameplayTagContainer& GameplayTags); // [0x8c6f594] Final|Native|Private|HasOutParms 
 };
 
 /// Struct /Script/ServerRollQuestsRuntime.ServerRollQuestTableRow

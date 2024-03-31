@@ -39,13 +39,13 @@ public:
 
 	/// Functions
 	// Function /Script/MusterCoreWeaponsRuntime.FortMusterExplosiveARProjectile.SetHitRotation
-	// void SetHitRotation(FRotator& NewHitRotation);                                                                           // [0xa2e90d8] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetHitRotation(FRotator& NewHitRotation);                                                                           // [0xb02b95c] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/MusterCoreWeaponsRuntime.FortMusterExplosiveARProjectile.SetHitPlayer
-	// void SetHitPlayer(bool bWasHit);                                                                                         // [0xa2e9050] Final|Native|Protected|BlueprintCallable 
+	// void SetHitPlayer(bool bWasHit);                                                                                         // [0xb02b894] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MusterCoreWeaponsRuntime.FortMusterExplosiveARProjectile.SetHitLocation
-	// void SetHitLocation(FVector& NewHitLocation);                                                                            // [0xa2e8f50] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetHitLocation(FVector& NewHitLocation);                                                                            // [0xb02b794] Final|Native|Protected|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/MusterCoreWeaponsRuntime.FortMusterExplosiveARProjectile.OnRep_HitLocation
-	// void OnRep_HitLocation();                                                                                                // [0xa2e8ea0] Final|Native|Protected 
+	// void OnRep_HitLocation();                                                                                                // [0xb02b6e4] Final|Native|Protected 
 };
 
 /// Class /Script/MusterCoreWeaponsRuntime.MusterCoreWeaponsAnimInstance
@@ -91,26 +91,26 @@ public:
 
 	/// Functions
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.UnblockPawnCollision
-	// void UnblockPawnCollision();                                                                                             // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void UnblockPawnCollision();                                                                                             // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.TriggerExplosion
-	// void TriggerExplosion();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void TriggerExplosion();                                                                                                 // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.SetupSwordRevealEffects
-	// void SetupSwordRevealEffects(class UStaticMeshComponent* ProjectileMesh, float SwordRevealAlpha, float ColorChangeAlpha, float HDRMultiplierAlpha); // [0xa2e919c] Final|Native|Protected|BlueprintCallable 
+	// void SetupSwordRevealEffects(class UStaticMeshComponent* ProjectileMesh, float SwordRevealAlpha, float ColorChangeAlpha, float HDRMultiplierAlpha); // [0xb02ba20] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.SetupProjectileHitAudio
-	// void SetupProjectileHitAudio(FVector& ProjectileImpactLocation, class AActor* HitActor);                                 // [0x18a39e4] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void SetupProjectileHitAudio(FVector& ProjectileImpactLocation, class AActor* HitActor);                                 // [0x186becc] Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.SetFuseColorBasedOnTeam
-	// void SetFuseColorBasedOnTeam();                                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void SetFuseColorBasedOnTeam();                                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.RestartSimulating
-	// void RestartSimulating();                                                                                                // [0xa2e8f3c] Final|Native|Protected|BlueprintCallable 
+	// void RestartSimulating();                                                                                                // [0xb02b780] Final|Native|Protected|BlueprintCallable 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.PlayPreExplosionEfffects
-	// void PlayPreExplosionEfffects();                                                                                         // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void PlayPreExplosionEfffects();                                                                                         // [0x186becc] Event|Protected|BlueprintCallable|BlueprintEvent 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.OnRep_bSimulationRunning
-	// void OnRep_bSimulationRunning();                                                                                         // [0xa2e8eb4] Final|Native|Protected 
+	// void OnRep_bSimulationRunning();                                                                                         // [0xb02b6f8] Final|Native|Protected 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.OnAttachedBuildingDestroyed
-	// void OnAttachedBuildingDestroyed(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xa2e8a04] Final|Native|Protected|HasDefaults 
+	// void OnAttachedBuildingDestroyed(class AActor* DamagedActor, float Damage, class AController* InstigatedBy, class AActor* DamageCauser, FVector HitLocation, class UPrimitiveComponent* FHitComponent, FName BoneName, FVector Momentum); // [0xb02b2c4] Final|Native|Protected|HasDefaults 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.OnAttachedActorDestroyed
-	// void OnAttachedActorDestroyed(class AActor* DestroyedActor);                                                             // [0xa2e8960] Final|Native|Protected 
+	// void OnAttachedActorDestroyed(class AActor* DestroyedActor);                                                             // [0xb02b1dc] Final|Native|Protected 
 	// Function /Script/MusterCoreWeaponsRuntime.FortExCaliberProjectile.BP_OnProjectileStopped
-	// void BP_OnProjectileStopped();                                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void BP_OnProjectileStopped();                                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 };
 

@@ -26,7 +26,7 @@ public:
 enum class EOptimusDefaultDeformerMode : uint8_t
 {
 	EOptimusDefaultDeformerMode__Never                                               = 0,
-	EOptimusDefaultDeformerMode__SkinCacheOnly                                       = 1,
+	EOptimusDefaultDeformerMode__OptIn                                               = 1,
 	EOptimusDefaultDeformerMode__Always                                              = 2,
 	EOptimusDefaultDeformerMode__EOptimusDefaultDeformerMode_MAX                     = 3
 };

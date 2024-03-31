@@ -12,11 +12,11 @@
 /// dependency: SocketSubsystemEOS
 
 /// Class /Script/OnlineSubsystemEOS.NetDriverEOS
-/// Size: 0x0000 (0x0008F0 - 0x0008F0)
+/// Size: 0x0000 (0x000948 - 0x000948)
 class UNetDriverEOS : public UNetDriverEOSBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 2288;
+	static inline constexpr uint64_t __MDKClassSize = 2376;
 
 public:
 };
@@ -32,11 +32,11 @@ public:
 };
 
 /// Class /Script/OnlineSubsystemEOS.EOSSettings
-/// Size: 0x0078 (0x000038 - 0x0000B0)
+/// Size: 0x0088 (0x000038 - 0x0000C0)
 class UEOSSettings : public URuntimeOptionsBase
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 176;
+	static inline constexpr uint64_t __MDKClassSize = 192;
 
 public:
 	SMember(FString)                                   CacheDir                                                    OFFSET(getStruct<T>, {0x38, 16, 0, 0})
@@ -57,6 +57,7 @@ public:
 	DMember(bool)                                      bMirrorAchievementsToEOS                                    OFFSET(get<bool>, {0xAB, 1, 0, 0})
 	DMember(bool)                                      bUseEOSSessions                                             OFFSET(get<bool>, {0xAC, 1, 0, 0})
 	DMember(bool)                                      bMirrorPresenceToEAS                                        OFFSET(get<bool>, {0xAD, 1, 0, 0})
+	SMember(FString)                                   SteamTokenType                                              OFFSET(getStruct<T>, {0xB0, 16, 0, 0})
 };
 
 /// Struct /Script/OnlineSubsystemEOS.ArtifactSettings

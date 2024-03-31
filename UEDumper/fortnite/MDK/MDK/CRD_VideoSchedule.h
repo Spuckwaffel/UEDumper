@@ -31,13 +31,13 @@ public:
 
 	/// Functions
 	// Function /Script/CRD_VideoSchedule.VideoScheduleDeviceBase.TestControlVideoPlayer
-	// void TestControlVideoPlayer(FString VUID, FDateTime StartTime, TArray<AController*>& Players);                           // [0xac851d8] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void TestControlVideoPlayer(FString VUID, FDateTime StartTime, TArray<AController*>& Players);                           // [0xc189430] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/CRD_VideoSchedule.VideoScheduleDeviceBase.StopSchedule
-	// void StopSchedule(class AController* InPlayer);                                                                          // [0xac84ff8] Final|Native|Public|BlueprintCallable 
+	// void StopSchedule(class AController* InPlayer);                                                                          // [0xc189370] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_VideoSchedule.VideoScheduleDeviceBase.StartSchedule
-	// void StartSchedule(class AController* InPlayer);                                                                         // [0xac84f28] Final|Native|Public|BlueprintCallable 
+	// void StartSchedule(class AController* InPlayer);                                                                         // [0xc18925c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CRD_VideoSchedule.VideoScheduleDeviceBase.OnControlVideoPlayer
-	// void OnControlVideoPlayer(FString VUID, FDateTime StartTime, TArray<AController*>& Players, class ULevelSequence* Sequence); // [0x18a39e4] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnControlVideoPlayer(FString VUID, FDateTime StartTime, TArray<AController*>& Players, class ULevelSequence* Sequence); // [0x186becc] Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 };
 
 /// Struct /Script/CRD_VideoSchedule.VideoScheduleDeviceEntryHourly

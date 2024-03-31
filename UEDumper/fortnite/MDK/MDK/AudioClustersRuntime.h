@@ -43,17 +43,17 @@ public:
 
 	/// Functions
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnStop
-	// void OnStop();                                                                                                           // [0x66f64fc] Native|Event|Protected|BlueprintEvent 
+	// void OnStop();                                                                                                           // [0x66d63cc] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnStart
-	// void OnStart();                                                                                                          // [0x15d82c4] Native|Event|Protected|BlueprintEvent 
+	// void OnStart();                                                                                                          // [0x1e34ac0] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnSizeUpdated
-	// void OnSizeUpdated(int32_t Size);                                                                                        // [0xa927750] Native|Event|Protected|BlueprintEvent 
+	// void OnSizeUpdated(int32_t Size);                                                                                        // [0x2caa76c] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnPositionUpdated
-	// void OnPositionUpdated(FVector& Position);                                                                               // [0xa927688] Native|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
+	// void OnPositionUpdated(FVector& Position);                                                                               // [0xb764264] Native|Event|Protected|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnActorRemoved
-	// void OnActorRemoved(class AActor* Actor);                                                                                // [0x722e308] Native|Event|Protected|BlueprintEvent 
+	// void OnActorRemoved(class AActor* Actor);                                                                                // [0x741dc24] Native|Event|Protected|BlueprintEvent 
 	// Function /Script/AudioClustersRuntime.AudioClusterBehavior.OnActorAdded
-	// void OnActorAdded(class AActor* Actor);                                                                                  // [0x78aa6cc] Native|Event|Protected|BlueprintEvent 
+	// void OnActorAdded(class AActor* Actor);                                                                                  // [0x7c98688] Native|Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/AudioClustersRuntime.AudioClustersSubsystem
@@ -68,21 +68,21 @@ public:
 
 	/// Functions
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.UpdateClusters
-	// void UpdateClusters(float DeltaTimeSeconds);                                                                             // [0xa927d40] Final|Native|Public|BlueprintCallable 
+	// void UpdateClusters(float DeltaTimeSeconds);                                                                             // [0xb7648d8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.Unregister
-	// bool Unregister(FAudioClusterActorInfo& ActorInfo);                                                                      // [0xa927ca4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool Unregister(FAudioClusterActorInfo& ActorInfo);                                                                      // [0xb76483c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.SetParam
-	// bool SetParam(FGameplayTag& tag, double Value);                                                                          // [0xa927b48] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool SetParam(FGameplayTag& tag, double Value);                                                                          // [0xb7646e0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.SetListenerPosition
-	// void SetListenerPosition(FVector& InListenerPosition);                                                                   // [0xa927a84] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void SetListenerPosition(FVector& InListenerPosition);                                                                   // [0xb76461c] Final|Native|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.RemoveConfigMap
-	// bool RemoveConfigMap(class UAudioClusterConfigMap* Map);                                                                 // [0xa927928] Final|Native|Public|BlueprintCallable 
+	// bool RemoveConfigMap(class UAudioClusterConfigMap* Map);                                                                 // [0xb764480] Final|Native|Public|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.RegisterOneShot
-	// bool RegisterOneShot(FAudioClusterOneShotInfo& OneShotInfo);                                                             // [0xa927870] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool RegisterOneShot(FAudioClusterOneShotInfo& OneShotInfo);                                                             // [0xb7643c8] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.Register
-	// bool Register(FAudioClusterActorInfo& ActorInfo);                                                                        // [0xa9277d4] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// bool Register(FAudioClusterActorInfo& ActorInfo);                                                                        // [0xb76432c] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/AudioClustersRuntime.AudioClustersSubsystem.AddConfigMap
-	// bool AddConfigMap(class UAudioClusterConfigMap* Map);                                                                    // [0xa9275f8] Final|Native|Public|BlueprintCallable 
+	// bool AddConfigMap(class UAudioClusterConfigMap* Map);                                                                    // [0xb764194] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/AudioClustersRuntime.AudioClusterActorInfo

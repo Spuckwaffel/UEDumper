@@ -20,7 +20,7 @@ public:
 
 	/// Functions
 	// Function /Script/MannequinRuntime.MannequinAnalyticsComponent.FireMannequinAnalytics_Interact
-	// void FireMannequinAnalytics_Interact(class AFortPlayerController* Controller, ECreativeMannequinAnalyticsInteractType InteractType, class UFortItemDefinition* Character, class UFortItemDefinition* BackBling); // [0xab73fc0] Native|Public|BlueprintCallable|Const 
+	// void FireMannequinAnalytics_Interact(class AFortPlayerController* Controller, ECreativeMannequinAnalyticsInteractType InteractType, class UFortItemDefinition* Character, class UFortItemDefinition* BackBling); // [0xc02d90c] Native|Public|BlueprintCallable|Const 
 };
 
 /// Enum /Script/MannequinRuntime.ECreativeMannequinAnalyticsInteractType

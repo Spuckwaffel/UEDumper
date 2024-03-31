@@ -191,11 +191,11 @@ public:
 
 	/// Functions
 	// Function /Script/Foliage.FoliageStatistics.FoliageOverlappingSphereCount
-	// int32_t FoliageOverlappingSphereCount(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FVector CenterPosition, float Radius); // [0x63ef4d8] Final|RequiredAPI|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// int32_t FoliageOverlappingSphereCount(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FVector CenterPosition, float Radius); // [0x6386320] Final|RequiredAPI|Native|Static|Public|HasDefaults|BlueprintCallable 
 	// Function /Script/Foliage.FoliageStatistics.FoliageOverlappingBoxTransforms
-	// void FoliageOverlappingBoxTransforms(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FBox Box, TArray<FTransform>& OutTransforms); // [0x63ef2a4] Final|RequiredAPI|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void FoliageOverlappingBoxTransforms(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FBox Box, TArray<FTransform>& OutTransforms); // [0x63860e4] Final|RequiredAPI|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/Foliage.FoliageStatistics.FoliageOverlappingBoxCount
-	// int32_t FoliageOverlappingBoxCount(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FBox Box);          // [0x63ef0d8] Final|RequiredAPI|Native|Static|Public|HasDefaults|BlueprintCallable 
+	// int32_t FoliageOverlappingBoxCount(class UObject* WorldContextObject, class UStaticMesh* StaticMesh, FBox Box);          // [0x6385efc] Final|RequiredAPI|Native|Static|Public|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/Foliage.GrassInstancedStaticMeshComponent
@@ -234,7 +234,7 @@ public:
 
 	/// Functions
 	// Function /Script/Foliage.InteractiveFoliageActor.CapsuleTouched
-	// void CapsuleTouched(class UPrimitiveComponent* OverlappedComp, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& OverlapInfo); // [0x63eed74] Final|Native|Protected|HasOutParms 
+	// void CapsuleTouched(class UPrimitiveComponent* OverlappedComp, class AActor* Other, class UPrimitiveComponent* OtherComp, int32_t OtherBodyIndex, bool bFromSweep, FHitResult& OverlapInfo); // [0x6385a60] Final|Native|Protected|HasOutParms 
 };
 
 /// Class /Script/Foliage.ProceduralFoliageBlockingVolume
@@ -282,7 +282,7 @@ public:
 
 	/// Functions
 	// Function /Script/Foliage.ProceduralFoliageSpawner.Simulate
-	// void Simulate(int32_t NumSteps);                                                                                         // [0x63ef754] Final|RequiredAPI|Native|Public|BlueprintCallable 
+	// void Simulate(int32_t NumSteps);                                                                                         // [0x6386564] Final|RequiredAPI|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/Foliage.ProceduralFoliageTile

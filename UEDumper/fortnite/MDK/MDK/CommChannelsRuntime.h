@@ -18,35 +18,13 @@ class UCommChannelsDebugDrawSubsystem : public UTickableWorldSubsystem
 public:
 };
 
-/// Struct /Script/CommChannelsRuntime.CommChannel
-/// Size: 0x0020 (0x000000 - 0x000020)
-class FCommChannel : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 32;
-
-public:
-};
-
-/// Struct /Script/CommChannelsRuntime.CommChannelSubscriber
-/// Size: 0x0028 (0x000000 - 0x000028)
-class FCommChannelSubscriber : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 40;
-
-public:
-};
-
 /// Struct /Script/CommChannelsRuntime.CommChannelNode
-/// Size: 0x0020 (0x000000 - 0x000020)
+/// Size: 0x0068 (0x000000 - 0x000068)
 class FCommChannelNode : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 32;
+	static inline constexpr uint64_t __MDKClassSize = 104;
 
 public:
 };

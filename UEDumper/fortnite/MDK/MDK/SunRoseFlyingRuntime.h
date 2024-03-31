@@ -38,7 +38,7 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.AFortGameplayCueNotifyLoop_SunroseFlying.SetFlappingParameters
-	// void SetFlappingParameters(class UFXSystemComponent* FlyingTrailFX, TArray<UAudioComponent*>& AudioComponents, class AFortPlayerPawn* PlayerPawn, float FlappingAlpha, float RollCombined, float RollingAlpha, float PitchAlpha, bool bIsBoosting, bool bIsAscending, bool bAllowWingFlap, bool bIsSkimming, float Speed, bool bIsDiving, float CurrentHeight); // [0x2d7c370] Final|Native|Private|HasOutParms|BlueprintCallable 
+	// void SetFlappingParameters(class UFXSystemComponent* FlyingTrailFX, TArray<UAudioComponent*>& AudioComponents, class AFortPlayerPawn* PlayerPawn, float FlappingAlpha, float RollCombined, float RollingAlpha, float PitchAlpha, bool bIsBoosting, bool bIsAscending, bool bAllowWingFlap, bool bIsSkimming, float Speed, bool bIsDiving, float CurrentHeight); // [0x1c366a4] Final|Native|Private|HasOutParms|BlueprintCallable 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortGameplayCueNotifyLoop_WingsSkimming
@@ -57,7 +57,7 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortGameplayCueNotifyLoop_WingsSkimming.ShowWingFX
-	// void ShowWingFX(FVector SkimLocationLeft, FVector SkimNormalLeft, float SkimDistanceLeft, FVector SkimLocationRight, FVector SkimNormalRight, float SkimDistanceRight); // [0x4c34d10] Final|Native|Public|HasDefaults|BlueprintCallable 
+	// void ShowWingFX(FVector SkimLocationLeft, FVector SkimNormalLeft, float SkimDistanceLeft, FVector SkimLocationRight, FVector SkimNormalRight, float SkimDistanceRight); // [0x2570f50] Final|Native|Public|HasDefaults|BlueprintCallable 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortCameraModifier_SunroseWingsFlying
@@ -145,7 +145,7 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortCameraModifier_SunroseWingsFlying.UseNativeCalculation
-	// bool UseNativeCalculation();                                                                                             // [0x355f34c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool UseNativeCalculation();                                                                                             // [0x2dfc36c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortContextualTutorialDefinition_WingedFlying
@@ -290,110 +290,119 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.UpdateForRotation
-	// void UpdateForRotation(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FRotator& OutNewMoveOrientation); // [0x27baeec] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void UpdateForRotation(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FRotator& OutNewMoveOrientation); // [0x260aac0] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.UpdateForMovement
-	// void UpdateForMovement(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FVector& InVelocity, FVector& InAcceleration, FVector& OutNewVelocity, FVector& OutNewAcceleration, FFortMovementMode_WingedFlyingRuntimeData& OutNewMoveStatus); // [0x27bb834] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void UpdateForMovement(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FVector& InVelocity, FVector& InAcceleration, FVector& OutNewVelocity, FVector& OutNewAcceleration, FFortMovementMode_WingedFlyingRuntimeData& OutNewMoveStatus); // [0xb0f4e04] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.UpdateForHitResponse
-	// void UpdateForHitResponse(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FVector& InVelocity, FVector& OldPosition, FVector& Adjustment, FHitResult& Hit, EFortMovementModeExt_PhysUpdateResult& OutHitResult, bool& bOutWantToSlide); // [0xa3ac7d4] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
+	// void UpdateForHitResponse(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, float DeltaTime, FVector& InVelocity, FVector& OldPosition, FVector& Adjustment, FHitResult& Hit, EFortMovementModeExt_PhysUpdateResult& OutHitResult, bool& bOutWantToSlide); // [0xb0f47a0] Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.IsClientReplaying
-	// bool IsClientReplaying();                                                                                                // [0xa3ac780] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsClientReplaying();                                                                                                // [0x37e7f94] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.HandleFlyingStatusChanged
-	// void HandleFlyingStatusChanged(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus NewStatus, bool bIsActive, FGameplayTag& FailureTag); // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void HandleFlyingStatusChanged(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus NewStatus, bool bIsActive, FGameplayTag& FailureTag); // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.HandleFlyingStatusActivationFailed
-	// void HandleFlyingStatusActivationFailed(EWingedFlyingStatus FailedStatus, FGameplayTag& FailureTag);                     // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void HandleFlyingStatusActivationFailed(EWingedFlyingStatus FailedStatus, FGameplayTag& FailureTag);                     // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.CanStartFlyingStatus
-	// void CanStartFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToStart, bool& bOutCanStart, FGameplayTag& OutFailureTag); // [0xa3ac4dc] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
+	// void CanStartFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToStart, bool& bOutCanStart, FGameplayTag& OutFailureTag); // [0xb0f44f8] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.CanEndFlyingStatus
-	// bool CanEndFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToEnd, float ElapsedDuration); // [0xa3ac258] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
+	// bool CanEndFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToEnd, float ElapsedDuration); // [0xb0f4270] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
 	// Function /Script/SunRoseFlyingRuntime.FortMovementMode_ExtLogicFlyingWinged.CanContinueFlyingStatus
-	// void CanContinueFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToContinue, float ElapsedDuration, bool& bOutCanContinue, FGameplayTag& OutFailureTag); // [0xa3abedc] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
+	// void CanContinueFlyingStatus(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus, EWingedFlyingStatus StatusToContinue, float ElapsedDuration, bool& bOutCanContinue, FGameplayTag& OutFailureTag); // [0xb0f3ee0] Native|Event|Protected|HasOutParms|BlueprintEvent|Const 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying
-/// Size: 0x0170 (0x0000A8 - 0x000218)
+/// Size: 0x0178 (0x0000A8 - 0x000220)
 class UFortPawnComponent_WingedFlying : public UFortPawnComponent
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 536;
+	static inline constexpr uint64_t __MDKClassSize = 544;
 
 public:
-	CMember(EWingedFlyingStatus)                       FlyingStatus                                                OFFSET(get<T>, {0xA8, 1, 0, 0})
-	DMember(float)                                     ForwardSpeed                                                OFFSET(get<float>, {0xAC, 4, 0, 0})
-	DMember(float)                                     AddedDownZVelocity                                          OFFSET(get<float>, {0xB0, 4, 0, 0})
-	DMember(float)                                     NativeCurrentHeightAboveWorld                               OFFSET(get<float>, {0xB4, 4, 0, 0})
-	SMember(FVector2D)                                 FlyingMoveActionValue                                       OFFSET(getStruct<T>, {0xB8, 16, 0, 0})
-	DMember(bool)                                      bIntendsToBoost                                             OFFSET(get<bool>, {0xC8, 1, 0, 0})
-	DMember(bool)                                      bIntendsToAscend                                            OFFSET(get<bool>, {0xC9, 1, 0, 0})
-	DMember(bool)                                      bIntendsToCrash                                             OFFSET(get<bool>, {0xCA, 1, 0, 0})
-	DMember(bool)                                      bIntendsToRollLeft                                          OFFSET(get<bool>, {0xCB, 1, 0, 0})
-	DMember(bool)                                      bIntendsToRollRight                                         OFFSET(get<bool>, {0xCC, 1, 0, 0})
-	CMember(class UClass*)                             FlyingMovementModeExtension                                 OFFSET(get<T>, {0xD0, 8, 0, 0})
-	SMember(FGameplayTagContainer)                     TagsToEnableSkimmingCheck                                   OFFSET(getStruct<T>, {0xD8, 32, 0, 0})
-	CMember(TEnumAsByte<ECollisionChannel>)            SkimCheckTraceChannel                                       OFFSET(get<T>, {0xF8, 1, 0, 0})
-	SMember(FName)                                     SkimCheckLeftStartSocket                                    OFFSET(getStruct<T>, {0xFC, 4, 0, 0})
-	SMember(FName)                                     SkimCheckLeftEndSocket                                      OFFSET(getStruct<T>, {0x100, 4, 0, 0})
-	SMember(FName)                                     SkimCheckRightStartSocket                                   OFFSET(getStruct<T>, {0x104, 4, 0, 0})
-	SMember(FName)                                     SkimCheckRightEndSocket                                     OFFSET(getStruct<T>, {0x108, 4, 0, 0})
-	SMember(FGameplayTag)                              TagToEnableHeightCheck                                      OFFSET(getStruct<T>, {0x10C, 4, 0, 0})
-	SMember(FScalableFloat)                            HeightCheckInterval                                         OFFSET(getStruct<T>, {0x110, 40, 0, 0})
-	SMember(FScalableFloat)                            HeightCheckTraceLength                                      OFFSET(getStruct<T>, {0x138, 40, 0, 0})
+	SMember(FVector2D)                                 FlyingMoveActionValue                                       OFFSET(getStruct<T>, {0xA8, 16, 0, 0})
+	CMember(EWingedFlyingStatus)                       FlyingStatus                                                OFFSET(get<T>, {0xB8, 1, 0, 0})
+	DMember(float)                                     ForwardSpeed                                                OFFSET(get<float>, {0xBC, 4, 0, 0})
+	DMember(float)                                     AddedDownZVelocity                                          OFFSET(get<float>, {0xC0, 4, 0, 0})
+	DMember(float)                                     NativeCurrentHeightAboveWorld                               OFFSET(get<float>, {0xC4, 4, 0, 0})
+	DMember(float)                                     CurrentFlyingEnergy                                         OFFSET(get<float>, {0xC8, 4, 0, 0})
+	DMember(bool)                                      bIntendsToBoost                                             OFFSET(get<bool>, {0xCC, 1, 0, 0})
+	DMember(bool)                                      bIntendsToAscend                                            OFFSET(get<bool>, {0xCD, 1, 0, 0})
+	DMember(bool)                                      bIntendsToCrash                                             OFFSET(get<bool>, {0xCE, 1, 0, 0})
+	DMember(bool)                                      bIntendsToRollLeft                                          OFFSET(get<bool>, {0xCF, 1, 0, 0})
+	DMember(bool)                                      bIntendsToRollRight                                         OFFSET(get<bool>, {0xD0, 1, 0, 0})
+	CMember(class UClass*)                             FlyingMovementModeExtension                                 OFFSET(get<T>, {0xD8, 8, 0, 0})
+	SMember(FGameplayTagContainer)                     TagsToEnableSkimmingCheck                                   OFFSET(getStruct<T>, {0xE0, 32, 0, 0})
+	CMember(TEnumAsByte<ECollisionChannel>)            SkimCheckTraceChannel                                       OFFSET(get<T>, {0x100, 1, 0, 0})
+	SMember(FName)                                     SkimCheckLeftStartSocket                                    OFFSET(getStruct<T>, {0x104, 4, 0, 0})
+	SMember(FName)                                     SkimCheckLeftEndSocket                                      OFFSET(getStruct<T>, {0x108, 4, 0, 0})
+	SMember(FName)                                     SkimCheckRightStartSocket                                   OFFSET(getStruct<T>, {0x10C, 4, 0, 0})
+	SMember(FName)                                     SkimCheckRightEndSocket                                     OFFSET(getStruct<T>, {0x110, 4, 0, 0})
+	SMember(FGameplayTag)                              TagToEnableHeightCheck                                      OFFSET(getStruct<T>, {0x114, 4, 0, 0})
+	SMember(FScalableFloat)                            HeightCheckInterval                                         OFFSET(getStruct<T>, {0x118, 40, 0, 0})
+	SMember(FScalableFloat)                            HeightCheckTraceLength                                      OFFSET(getStruct<T>, {0x140, 40, 0, 0})
 
 
 	/// Functions
+	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.UpdateCurrentFlyingEnergy
+	// void UpdateCurrentFlyingEnergy(float NewFlyingEnergy, bool bForceUpdateFX);                                              // [0x211b4a0] Final|BlueprintCosmetic|Native|Public|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.StartFlying
-	// void StartFlying(FFortMovementMode_WingedFlyingCreationData& CreationData);                                              // [0xa3b059c] BlueprintCosmetic|Native|Public|HasOutParms|BlueprintCallable 
-	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleSkimmingTagsChange
-	// void HandleSkimmingTagsChange(FGameplayTag tag, int32_t NewCount);                                                       // [0xa3b0194] Final|Native|Protected 
+	// void StartFlying(FFortMovementMode_WingedFlyingCreationData& CreationData);                                              // [0xb0fd8a8] BlueprintCosmetic|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleRightSkimCheckComplete
-	// void HandleRightSkimCheckComplete(FHitResult& HitResult);                                                                // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void HandleRightSkimCheckComplete(FHitResult& HitResult);                                                                // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleOwnerASCInitialized
-	// void HandleOwnerASCInitialized(class UFortAbilitySystemComponent* AbilitySystemComponent, class AFortPlayerPawn* AffectedPawn); // [0x2a2ece4] Final|Native|Protected 
+	// void HandleOwnerASCInitialized(class UFortAbilitySystemComponent* AbilitySystemComponent, class AFortPlayerPawn* AffectedPawn); // [0x1c73990] Final|Native|Protected 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleLeftSkimCheckComplete
-	// void HandleLeftSkimCheckComplete(FHitResult& HitResult);                                                                 // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
-	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleHeightCheckTagChange
-	// void HandleHeightCheckTagChange(FGameplayTag tag, int32_t NewCount);                                                     // [0xa3aff88] Final|Native|Protected 
+	// void HandleLeftSkimCheckComplete(FHitResult& HitResult);                                                                 // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleForwardSpeedUpdated
-	// void HandleForwardSpeedUpdated(float NewForwardSpeed);                                                                   // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void HandleForwardSpeedUpdated(float NewForwardSpeed);                                                                   // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleFlyingMoveStatusUpdated
-	// void HandleFlyingMoveStatusUpdated(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                               // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
-	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleCurrentHeightUpdated
-	// void HandleCurrentHeightUpdated(float NewCurrentHeight);                                                                 // [0x18a39e4] Event|Protected|BlueprintCallable|BlueprintEvent 
+	// void HandleFlyingMoveStatusUpdated(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                               // [0x260b600] Native|Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.HandleAddedDownZVelocityUpdated
-	// void HandleAddedDownZVelocityUpdated(float NewAddedDownZVelocity);                                                       // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void HandleAddedDownZVelocityUpdated(float NewAddedDownZVelocity);                                                       // [0x186becc] Event|Public|BlueprintEvent 
+	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.GetLocalFlyingMoveActionValue
+	// FVector2D GetLocalFlyingMoveActionValue();                                                                               // [0xb0fd538] Final|Native|Public|HasDefaults|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/SunRoseFlyingRuntime.FortPawnComponent_WingedFlying.EndFlying
-	// void EndFlying();                                                                                                        // [0xa3afa4c] Final|BlueprintCosmetic|Native|Public|BlueprintCallable 
+	// void EndFlying();                                                                                                        // [0xb0fcd18] Final|BlueprintCosmetic|Native|Public|BlueprintCallable 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortWeaponWings
-/// Size: 0x0100 (0x001550 - 0x001650)
+/// Size: 0x0130 (0x001550 - 0x001680)
 class AFortWeaponWings : public AFortWeapon
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5712;
+	static inline constexpr uint64_t __MDKClassSize = 5760;
 
 public:
-	SMember(FGameplayTagContainer)                     OwnedGameplayTags                                           OFFSET(getStruct<T>, {0x1570, 32, 0, 0})
-	CMember(class UFortAbilitySystemComponent*)        AbilitySystemComponent                                      OFFSET(get<T>, {0x1590, 8, 0, 0})
-	CMember(class UFortHealthSet*)                     HealthSet                                                   OFFSET(get<T>, {0x1598, 8, 0, 0})
-	CMember(TEnumAsByte<EPhysicalSurface>)             PrimarySurfaceType                                          OFFSET(get<T>, {0x15A0, 1, 0, 0})
-	CMember(TEnumAsByte<EFortBaseWeaponDamage>)        WeaponResponseType                                          OFFSET(get<T>, {0x15A1, 1, 0, 0})
-	CMember(class UClass*)                             DamageGameplayEffectClass                                   OFFSET(get<T>, {0x15A8, 8, 0, 0})
-	SMember(FGameplayTag)                              SetByCallerDamageTag                                        OFFSET(getStruct<T>, {0x15B0, 4, 0, 0})
-	SMember(FGameplayTagContainer)                     TagsToPreventReload                                         OFFSET(getStruct<T>, {0x15B8, 32, 0, 0})
-	SMember(FScalableFloat)                            ServerMeshRelativeRotationRoll                              OFFSET(getStruct<T>, {0x15D8, 40, 0, 0})
-	SMember(FScalableFloat)                            ServerMeshRelativeLocationY                                 OFFSET(getStruct<T>, {0x1600, 40, 0, 0})
-	SMember(FScalableFloat)                            ServerMeshRelativeLocationZ                                 OFFSET(getStruct<T>, {0x1628, 40, 0, 0})
+	CMember(class UMaterialInstanceDynamic*)           WingsMaterialInstance                                       OFFSET(get<T>, {0x1580, 8, 0, 0})
+	SMember(FGameplayTag)                              IsFlyingGameplayTag                                         OFFSET(getStruct<T>, {0x1588, 4, 0, 0})
+	SMember(FName)                                     IsFallingAudioParamName                                     OFFSET(getStruct<T>, {0x158C, 4, 0, 0})
+	SMember(FName)                                     FeatherDissolveName                                         OFFSET(getStruct<T>, {0x1590, 4, 0, 0})
+	SMember(FName)                                     ReplenishAnimationName                                      OFFSET(getStruct<T>, {0x1594, 4, 0, 0})
+	CMember(class USoundBase*)                         OutOfEnergy2DSound                                          OFFSET(get<T>, {0x1598, 8, 0, 0})
+	SMember(FGameplayTagContainer)                     OwnedGameplayTags                                           OFFSET(getStruct<T>, {0x15A0, 32, 0, 0})
+	CMember(class UFortAbilitySystemComponent*)        AbilitySystemComponent                                      OFFSET(get<T>, {0x15C0, 8, 0, 0})
+	CMember(class UFortHealthSet*)                     HealthSet                                                   OFFSET(get<T>, {0x15C8, 8, 0, 0})
+	CMember(TEnumAsByte<EPhysicalSurface>)             PrimarySurfaceType                                          OFFSET(get<T>, {0x15D0, 1, 0, 0})
+	CMember(TEnumAsByte<EFortBaseWeaponDamage>)        WeaponResponseType                                          OFFSET(get<T>, {0x15D1, 1, 0, 0})
+	CMember(class UClass*)                             DamageGameplayEffectClass                                   OFFSET(get<T>, {0x15D8, 8, 0, 0})
+	SMember(FGameplayTag)                              SetByCallerDamageTag                                        OFFSET(getStruct<T>, {0x15E0, 4, 0, 0})
+	SMember(FGameplayTagContainer)                     TagsToPreventReload                                         OFFSET(getStruct<T>, {0x15E8, 32, 0, 0})
+	SMember(FScalableFloat)                            ServerMeshRelativeRotationRoll                              OFFSET(getStruct<T>, {0x1608, 40, 0, 0})
+	SMember(FScalableFloat)                            ServerMeshRelativeLocationY                                 OFFSET(getStruct<T>, {0x1630, 40, 0, 0})
+	SMember(FScalableFloat)                            ServerMeshRelativeLocationZ                                 OFFSET(getStruct<T>, {0x1658, 40, 0, 0})
 
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.TryResetADSInput
-	// void TryResetADSInput(class AFortWeapon* Weapon);                                                                        // [0x4c37340] Final|Native|Protected 
+	// void TryResetADSInput(class AFortWeapon* Weapon);                                                                        // [0xb0fdc30] Final|Native|Protected 
+	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.NativeUpdateEnergyFX
+	// void NativeUpdateEnergyFX(bool bForceUpdate);                                                                            // [0xb0fd568] Final|BlueprintCosmetic|Native|Public|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.HandleWeaponAttachmentChanged
-	// void HandleWeaponAttachmentChanged(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                         // [0x4c37250] Final|Native|Protected 
+	// void HandleWeaponAttachmentChanged(class AFortWeapon* NewWeapon, class AFortWeapon* PrevWeapon);                         // [0x2f07924] Final|Native|Protected 
 	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.HandleSecondaryFirePressed
-	// void HandleSecondaryFirePressed(class AFortWeapon* Weapon);                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void HandleSecondaryFirePressed(class AFortWeapon* Weapon);                                                              // [0x186becc] Event|Protected|BlueprintEvent 
+	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.HandleDBNOStateChanged
+	// void HandleDBNOStateChanged(class AFortPawn* FortPawn, bool bInIsDBNO);                                                  // [0x2f0782c] Final|Native|Protected 
 	// Function /Script/SunRoseFlyingRuntime.FortWeaponWings.BP_ModifyIncomingDamage
-	// void BP_ModifyIncomingDamage(float Damage, FGameplayTagContainer& DamageTags, FHitResult& DamageHit, class AController* EventInstigator, class AActor* DamageCauser, float& OutNewDamage); // [0x18a39e4] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
+	// void BP_ModifyIncomingDamage(float Damage, FGameplayTagContainer& DamageTags, FHitResult& DamageHit, class AController* EventInstigator, class AActor* DamageCauser, float& OutNewDamage); // [0x186becc] BlueprintAuthorityOnly|Event|Protected|HasOutParms|BlueprintEvent 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary
@@ -408,81 +417,81 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.TraceForWorldAndWater
-	// void TraceForWorldAndWater(class AActor* PlayerPawn, FVector& TraceStart, FVector& TraceEnd, bool& bIsBlockingHit, FHitResult& ClosestHit); // [0x3749778] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
+	// void TraceForWorldAndWater(class AActor* PlayerPawn, FVector& TraceStart, FVector& TraceEnd, bool& bIsBlockingHit, FHitResult& ClosestHit); // [0xb0fd968] Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.SetInputActionDisplayContext
-	// void SetInputActionDisplayContext(class AFortPawn* PlayerPawn, class UFortInputMappingContext* InputMappingContext);     // [0xa3b03a0] Final|Native|Static|Public|BlueprintCallable 
+	// void SetInputActionDisplayContext(class AFortPawn* PlayerPawn, class UFortInputMappingContext* InputMappingContext);     // [0xb0fd62c] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.GetFlyingStatusElapsedTime
-	// float GetFlyingStatusElapsedTime(EWingedFlyingStatus FlyingStatus, FFortMovementMode_WingedFlyingRuntimeData& MoveStatus); // [0xa3afe98] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// float GetFlyingStatusElapsedTime(EWingedFlyingStatus FlyingStatus, FFortMovementMode_WingedFlyingRuntimeData& MoveStatus); // [0xb0fd400] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.GetFlyingDuration
-	// float GetFlyingDuration(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                                          // [0xa3afdf4] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// float GetFlyingDuration(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                                          // [0xb0fd35c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.GetDodgeElapsedTime
-	// float GetDodgeElapsedTime(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                                        // [0xa3afd38] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// float GetDodgeElapsedTime(FFortMovementMode_WingedFlyingRuntimeData& MoveStatus);                                        // [0xb0fd2a0] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.FlyingStatusRemoveFlags
-	// void FlyingStatusRemoveFlags(EWingedFlyingStatus Status, int32_t FlagsToRemove, EWingedFlyingStatus& NewStatus);         // [0xa3afc38] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void FlyingStatusRemoveFlags(EWingedFlyingStatus Status, int32_t FlagsToRemove, EWingedFlyingStatus& NewStatus);         // [0xb0fd12c] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.FlyingStatusHasAnyFlags
-	// bool FlyingStatusHasAnyFlags(EWingedFlyingStatus Status, int32_t Flags);                                                 // [0x191445c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool FlyingStatusHasAnyFlags(EWingedFlyingStatus Status, int32_t Flags);                                                 // [0xb0fcff0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.FlyingStatusHasAllFlags
-	// bool FlyingStatusHasAllFlags(EWingedFlyingStatus Status, int32_t Flags);                                                 // [0xa3afb74] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool FlyingStatusHasAllFlags(EWingedFlyingStatus Status, int32_t Flags);                                                 // [0xb0fceb0] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.FlyingStatusAddFlags
-	// void FlyingStatusAddFlags(EWingedFlyingStatus Status, int32_t FlagsToAdd, EWingedFlyingStatus& NewStatus);               // [0xa3afa74] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
+	// void FlyingStatusAddFlags(EWingedFlyingStatus Status, int32_t FlagsToAdd, EWingedFlyingStatus& NewStatus);               // [0xb0fcd40] Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure 
 	// Function /Script/SunRoseFlyingRuntime.FortWingedFlyingBlueprintLibrary.ClearInputActionDisplayContext
-	// void ClearInputActionDisplayContext(class AFortPawn* PlayerPawn, class UFortInputMappingContext* InputMappingContext);   // [0xa3af8b0] Final|Native|Static|Public|BlueprintCallable 
+	// void ClearInputActionDisplayContext(class AFortPawn* PlayerPawn, class UFortInputMappingContext* InputMappingContext);   // [0xb0fcaf8] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/SunRoseFlyingRuntime.SunRoseFlying_PlayerAnimInstance
-/// Size: 0x0080 (0x001620 - 0x0016A0)
+/// Size: 0x0080 (0x0015F0 - 0x001670)
 class USunRoseFlying_PlayerAnimInstance : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 5792;
+	static inline constexpr uint64_t __MDKClassSize = 5744;
 
 public:
-	SMember(FGameplayTag)                              AscenderTag                                                 OFFSET(getStruct<T>, {0x1620, 4, 0, 0})
-	SMember(FGameplayTag)                              GrindRailsTag                                               OFFSET(getStruct<T>, {0x1624, 4, 0, 0})
-	SMember(FGameplayTag)                              WingedFlightTag                                             OFFSET(getStruct<T>, {0x1628, 4, 0, 0})
-	SMember(FGameplayTag)                              WingsForceCrashTag                                          OFFSET(getStruct<T>, {0x162C, 4, 0, 0})
-	SMember(FGameplayTag)                              WingsLeapingTag                                             OFFSET(getStruct<T>, {0x1630, 4, 0, 0})
-	DMember(float)                                     CurrentHeightAboveWorld                                     OFFSET(get<float>, {0x1634, 4, 0, 0})
-	DMember(float)                                     Fuel                                                        OFFSET(get<float>, {0x1638, 4, 0, 0})
-	DMember(float)                                     GlidePitch                                                  OFFSET(get<float>, {0x163C, 4, 0, 0})
-	DMember(float)                                     GlidePitchAlpha                                             OFFSET(get<float>, {0x1640, 4, 0, 0})
-	DMember(float)                                     GlidePitchInterp                                            OFFSET(get<float>, {0x1644, 4, 0, 0})
-	DMember(float)                                     GlidePitchTarget                                            OFFSET(get<float>, {0x1648, 4, 0, 0})
-	DMember(float)                                     GlideRoll                                                   OFFSET(get<float>, {0x164C, 4, 0, 0})
-	DMember(float)                                     GlideRollCombined                                           OFFSET(get<float>, {0x1650, 4, 0, 0})
-	DMember(float)                                     GlideRollCombinedTarget                                     OFFSET(get<float>, {0x1654, 4, 0, 0})
-	DMember(float)                                     GlideRollInterp                                             OFFSET(get<float>, {0x1658, 4, 0, 0})
-	DMember(float)                                     GroundBlendTime                                             OFFSET(get<float>, {0x165C, 4, 0, 0})
-	DMember(float)                                     pelvis                                                      OFFSET(get<float>, {0x1660, 4, 0, 0})
-	DMember(float)                                     PitchAlpha                                                  OFFSET(get<float>, {0x1664, 4, 0, 0})
-	DMember(float)                                     RollAlpha                                                   OFFSET(get<float>, {0x1668, 4, 0, 0})
-	DMember(float)                                     SlowDownOrLandAlpha                                         OFFSET(get<float>, {0x166C, 4, 0, 0})
-	DMember(float)                                     SlowDownOrLandTarget                                        OFFSET(get<float>, {0x1670, 4, 0, 0})
-	DMember(float)                                     SlowSpeedAlpha                                              OFFSET(get<float>, {0x1674, 4, 0, 0})
-	DMember(float)                                     YawAlpha                                                    OFFSET(get<float>, {0x1678, 4, 0, 0})
-	DMember(float)                                     YawBlend                                                    OFFSET(get<float>, {0x167C, 4, 0, 0})
-	DMember(int32_t)                                   RandomInteger                                               OFFSET(get<int32_t>, {0x1680, 4, 0, 0})
-	DMember(bool)                                      bIsAllowWingFlap                                            OFFSET(get<bool>, {0x1684, 1, 1, 0})
-	DMember(bool)                                      bIsAscending                                                OFFSET(get<bool>, {0x1684, 1, 1, 1})
-	DMember(bool)                                      bIsBoostStartEnd                                            OFFSET(get<bool>, {0x1684, 1, 1, 2})
-	DMember(bool)                                      bIsDodgeLeft                                                OFFSET(get<bool>, {0x1684, 1, 1, 3})
-	DMember(bool)                                      bIsDodgeRight                                               OFFSET(get<bool>, {0x1684, 1, 1, 4})
-	DMember(bool)                                      bIsExtBoostEarly                                            OFFSET(get<bool>, {0x1684, 1, 1, 5})
-	DMember(bool)                                      bIsFlyingStart                                              OFFSET(get<bool>, {0x1684, 1, 1, 6})
-	DMember(bool)                                      bIsForceDive                                                OFFSET(get<bool>, {0x1684, 1, 1, 7})
-	DMember(bool)                                      bIsLeapInterruptible                                        OFFSET(get<bool>, {0x1685, 1, 1, 0})
-	DMember(bool)                                      bIsHighWithNoFuel                                           OFFSET(get<bool>, {0x1685, 1, 1, 1})
-	DMember(bool)                                      bIsOnAscender                                               OFFSET(get<bool>, {0x1685, 1, 1, 2})
-	DMember(bool)                                      bIsOnGrindRail                                              OFFSET(get<bool>, {0x1685, 1, 1, 3})
-	DMember(bool)                                      bIsPlayDiveHitToIdle                                        OFFSET(get<bool>, {0x1685, 1, 1, 4})
-	DMember(bool)                                      bIsPlayLandAdditive                                         OFFSET(get<bool>, {0x1685, 1, 1, 5})
-	DMember(bool)                                      bIsWingLeaping                                              OFFSET(get<bool>, {0x1685, 1, 1, 6})
-	DMember(bool)                                      bIsWingReplenish                                            OFFSET(get<bool>, {0x1685, 1, 1, 7})
-	DMember(bool)                                      bIsWingsBoosting                                            OFFSET(get<bool>, {0x1686, 1, 1, 0})
-	DMember(bool)                                      bIsWingsCrashing                                            OFFSET(get<bool>, {0x1686, 1, 1, 1})
-	DMember(bool)                                      bIsWingsFlying                                              OFFSET(get<bool>, {0x1686, 1, 1, 2})
-	DMember(bool)                                      bIsDiveStart                                                OFFSET(get<bool>, {0x1686, 1, 1, 3})
-	DMember(bool)                                      bToBoosting                                                 OFFSET(get<bool>, {0x1686, 1, 1, 4})
+	SMember(FGameplayTag)                              AscenderTag                                                 OFFSET(getStruct<T>, {0x15F0, 4, 0, 0})
+	SMember(FGameplayTag)                              GrindRailsTag                                               OFFSET(getStruct<T>, {0x15F4, 4, 0, 0})
+	SMember(FGameplayTag)                              WingedFlightTag                                             OFFSET(getStruct<T>, {0x15F8, 4, 0, 0})
+	SMember(FGameplayTag)                              WingsForceCrashTag                                          OFFSET(getStruct<T>, {0x15FC, 4, 0, 0})
+	SMember(FGameplayTag)                              WingsLeapingTag                                             OFFSET(getStruct<T>, {0x1600, 4, 0, 0})
+	DMember(float)                                     CurrentHeightAboveWorld                                     OFFSET(get<float>, {0x1604, 4, 0, 0})
+	DMember(float)                                     Fuel                                                        OFFSET(get<float>, {0x1608, 4, 0, 0})
+	DMember(float)                                     GlidePitch                                                  OFFSET(get<float>, {0x160C, 4, 0, 0})
+	DMember(float)                                     GlidePitchAlpha                                             OFFSET(get<float>, {0x1610, 4, 0, 0})
+	DMember(float)                                     GlidePitchInterp                                            OFFSET(get<float>, {0x1614, 4, 0, 0})
+	DMember(float)                                     GlidePitchTarget                                            OFFSET(get<float>, {0x1618, 4, 0, 0})
+	DMember(float)                                     GlideRoll                                                   OFFSET(get<float>, {0x161C, 4, 0, 0})
+	DMember(float)                                     GlideRollCombined                                           OFFSET(get<float>, {0x1620, 4, 0, 0})
+	DMember(float)                                     GlideRollCombinedTarget                                     OFFSET(get<float>, {0x1624, 4, 0, 0})
+	DMember(float)                                     GlideRollInterp                                             OFFSET(get<float>, {0x1628, 4, 0, 0})
+	DMember(float)                                     GroundBlendTime                                             OFFSET(get<float>, {0x162C, 4, 0, 0})
+	DMember(float)                                     pelvis                                                      OFFSET(get<float>, {0x1630, 4, 0, 0})
+	DMember(float)                                     PitchAlpha                                                  OFFSET(get<float>, {0x1634, 4, 0, 0})
+	DMember(float)                                     RollAlpha                                                   OFFSET(get<float>, {0x1638, 4, 0, 0})
+	DMember(float)                                     SlowDownOrLandAlpha                                         OFFSET(get<float>, {0x163C, 4, 0, 0})
+	DMember(float)                                     SlowDownOrLandTarget                                        OFFSET(get<float>, {0x1640, 4, 0, 0})
+	DMember(float)                                     SlowSpeedAlpha                                              OFFSET(get<float>, {0x1644, 4, 0, 0})
+	DMember(float)                                     YawAlpha                                                    OFFSET(get<float>, {0x1648, 4, 0, 0})
+	DMember(float)                                     YawBlend                                                    OFFSET(get<float>, {0x164C, 4, 0, 0})
+	DMember(int32_t)                                   RandomInteger                                               OFFSET(get<int32_t>, {0x1650, 4, 0, 0})
+	DMember(bool)                                      bIsAllowWingFlap                                            OFFSET(get<bool>, {0x1654, 1, 1, 0})
+	DMember(bool)                                      bIsAscending                                                OFFSET(get<bool>, {0x1654, 1, 1, 1})
+	DMember(bool)                                      bIsBoostStartEnd                                            OFFSET(get<bool>, {0x1654, 1, 1, 2})
+	DMember(bool)                                      bIsDodgeLeft                                                OFFSET(get<bool>, {0x1654, 1, 1, 3})
+	DMember(bool)                                      bIsDodgeRight                                               OFFSET(get<bool>, {0x1654, 1, 1, 4})
+	DMember(bool)                                      bIsExtBoostEarly                                            OFFSET(get<bool>, {0x1654, 1, 1, 5})
+	DMember(bool)                                      bIsFlyingStart                                              OFFSET(get<bool>, {0x1654, 1, 1, 6})
+	DMember(bool)                                      bIsForceDive                                                OFFSET(get<bool>, {0x1654, 1, 1, 7})
+	DMember(bool)                                      bIsLeapInterruptible                                        OFFSET(get<bool>, {0x1655, 1, 1, 0})
+	DMember(bool)                                      bIsHighWithNoFuel                                           OFFSET(get<bool>, {0x1655, 1, 1, 1})
+	DMember(bool)                                      bIsOnAscender                                               OFFSET(get<bool>, {0x1655, 1, 1, 2})
+	DMember(bool)                                      bIsOnGrindRail                                              OFFSET(get<bool>, {0x1655, 1, 1, 3})
+	DMember(bool)                                      bIsPlayDiveHitToIdle                                        OFFSET(get<bool>, {0x1655, 1, 1, 4})
+	DMember(bool)                                      bIsPlayLandAdditive                                         OFFSET(get<bool>, {0x1655, 1, 1, 5})
+	DMember(bool)                                      bIsWingLeaping                                              OFFSET(get<bool>, {0x1655, 1, 1, 6})
+	DMember(bool)                                      bIsWingReplenish                                            OFFSET(get<bool>, {0x1655, 1, 1, 7})
+	DMember(bool)                                      bIsWingsBoosting                                            OFFSET(get<bool>, {0x1656, 1, 1, 0})
+	DMember(bool)                                      bIsWingsCrashing                                            OFFSET(get<bool>, {0x1656, 1, 1, 1})
+	DMember(bool)                                      bIsWingsFlying                                              OFFSET(get<bool>, {0x1656, 1, 1, 2})
+	DMember(bool)                                      bIsDiveStart                                                OFFSET(get<bool>, {0x1656, 1, 1, 3})
+	DMember(bool)                                      bToBoosting                                                 OFFSET(get<bool>, {0x1656, 1, 1, 4})
 };
 
 /// Class /Script/SunRoseFlyingRuntime.SunRoseFlying_WingsAnimInstance
@@ -525,34 +534,35 @@ public:
 	DMember(bool)                                      bIsToBoostEnd                                               OFFSET(get<bool>, {0x741, 1, 1, 6})
 	DMember(bool)                                      bIsToBoostStart                                             OFFSET(get<bool>, {0x741, 1, 1, 7})
 	DMember(bool)                                      bIsToSliding                                                OFFSET(get<bool>, {0x742, 1, 1, 0})
-	DMember(bool)                                      bPlayerIsAccelerating2D                                     OFFSET(get<bool>, {0x742, 1, 1, 1})
-	DMember(bool)                                      bPlayerIsAllowWingFlap                                      OFFSET(get<bool>, {0x742, 1, 1, 2})
-	DMember(bool)                                      bPlayerIsAscending                                          OFFSET(get<bool>, {0x742, 1, 1, 3})
-	DMember(bool)                                      bPlayerIsBoostStartEnd                                      OFFSET(get<bool>, {0x742, 1, 1, 4})
-	DMember(bool)                                      bPlayerIsCrouching                                          OFFSET(get<bool>, {0x742, 1, 1, 5})
-	DMember(bool)                                      bPlayerIsCrouchMoving                                       OFFSET(get<bool>, {0x742, 1, 1, 6})
-	DMember(bool)                                      bPlayerIsDodgeLeft                                          OFFSET(get<bool>, {0x742, 1, 1, 7})
-	DMember(bool)                                      bPlayerIsDodgeRight                                         OFFSET(get<bool>, {0x743, 1, 1, 0})
-	DMember(bool)                                      bPlayerIsFalling                                            OFFSET(get<bool>, {0x743, 1, 1, 1})
-	DMember(bool)                                      bPlayerIsJumping                                            OFFSET(get<bool>, {0x743, 1, 1, 2})
-	DMember(bool)                                      bPlayerIsForceDive                                          OFFSET(get<bool>, {0x743, 1, 1, 3})
-	DMember(bool)                                      bPlayerIsOnAscender                                         OFFSET(get<bool>, {0x743, 1, 1, 4})
-	DMember(bool)                                      bPlayerIsOnGrindRail                                        OFFSET(get<bool>, {0x743, 1, 1, 5})
-	DMember(bool)                                      bPlayerIsLeapInterruptible                                  OFFSET(get<bool>, {0x743, 1, 1, 6})
-	DMember(bool)                                      bPlayerIsPlayDiveHitToIdle                                  OFFSET(get<bool>, {0x743, 1, 1, 7})
-	DMember(bool)                                      bPlayerIsPlayLandAdditive                                   OFFSET(get<bool>, {0x744, 1, 1, 0})
-	DMember(bool)                                      bPlayerIsSliding                                            OFFSET(get<bool>, {0x744, 1, 1, 1})
-	DMember(bool)                                      bPlayerIsSurfaceSwimming                                    OFFSET(get<bool>, {0x744, 1, 1, 2})
-	DMember(bool)                                      bPlayerIsTacticalJump                                       OFFSET(get<bool>, {0x744, 1, 1, 3})
-	DMember(bool)                                      bPlayerIsTacticalSprint                                     OFFSET(get<bool>, {0x744, 1, 1, 4})
-	DMember(bool)                                      bPlayerIsWingReplenish                                      OFFSET(get<bool>, {0x744, 1, 1, 5})
-	DMember(bool)                                      bPlayerIsWingLeaping                                        OFFSET(get<bool>, {0x744, 1, 1, 6})
-	DMember(bool)                                      bPlayerIsWingsBoosting                                      OFFSET(get<bool>, {0x744, 1, 1, 7})
-	DMember(bool)                                      bPlayerIsWingsCrashing                                      OFFSET(get<bool>, {0x745, 1, 1, 0})
-	DMember(bool)                                      bPlayerIsWingsFlying                                        OFFSET(get<bool>, {0x745, 1, 1, 1})
-	DMember(bool)                                      bPlayerIsZiplining                                          OFFSET(get<bool>, {0x745, 1, 1, 2})
-	DMember(bool)                                      bTacticalJumpLoopToTacticalLand                             OFFSET(get<bool>, {0x745, 1, 1, 3})
-	DMember(bool)                                      bToJumpStart                                                OFFSET(get<bool>, {0x745, 1, 1, 4})
+	DMember(bool)                                      bLOD2Fix                                                    OFFSET(get<bool>, {0x742, 1, 1, 1})
+	DMember(bool)                                      bPlayerIsAccelerating2D                                     OFFSET(get<bool>, {0x742, 1, 1, 2})
+	DMember(bool)                                      bPlayerIsAllowWingFlap                                      OFFSET(get<bool>, {0x742, 1, 1, 3})
+	DMember(bool)                                      bPlayerIsAscending                                          OFFSET(get<bool>, {0x742, 1, 1, 4})
+	DMember(bool)                                      bPlayerIsBoostStartEnd                                      OFFSET(get<bool>, {0x742, 1, 1, 5})
+	DMember(bool)                                      bPlayerIsCrouching                                          OFFSET(get<bool>, {0x742, 1, 1, 6})
+	DMember(bool)                                      bPlayerIsCrouchMoving                                       OFFSET(get<bool>, {0x742, 1, 1, 7})
+	DMember(bool)                                      bPlayerIsDodgeLeft                                          OFFSET(get<bool>, {0x743, 1, 1, 0})
+	DMember(bool)                                      bPlayerIsDodgeRight                                         OFFSET(get<bool>, {0x743, 1, 1, 1})
+	DMember(bool)                                      bPlayerIsFalling                                            OFFSET(get<bool>, {0x743, 1, 1, 2})
+	DMember(bool)                                      bPlayerIsJumping                                            OFFSET(get<bool>, {0x743, 1, 1, 3})
+	DMember(bool)                                      bPlayerIsForceDive                                          OFFSET(get<bool>, {0x743, 1, 1, 4})
+	DMember(bool)                                      bPlayerIsOnAscender                                         OFFSET(get<bool>, {0x743, 1, 1, 5})
+	DMember(bool)                                      bPlayerIsOnGrindRail                                        OFFSET(get<bool>, {0x743, 1, 1, 6})
+	DMember(bool)                                      bPlayerIsLeapInterruptible                                  OFFSET(get<bool>, {0x743, 1, 1, 7})
+	DMember(bool)                                      bPlayerIsPlayDiveHitToIdle                                  OFFSET(get<bool>, {0x744, 1, 1, 0})
+	DMember(bool)                                      bPlayerIsPlayLandAdditive                                   OFFSET(get<bool>, {0x744, 1, 1, 1})
+	DMember(bool)                                      bPlayerIsSliding                                            OFFSET(get<bool>, {0x744, 1, 1, 2})
+	DMember(bool)                                      bPlayerIsSurfaceSwimming                                    OFFSET(get<bool>, {0x744, 1, 1, 3})
+	DMember(bool)                                      bPlayerIsTacticalJump                                       OFFSET(get<bool>, {0x744, 1, 1, 4})
+	DMember(bool)                                      bPlayerIsTacticalSprint                                     OFFSET(get<bool>, {0x744, 1, 1, 5})
+	DMember(bool)                                      bPlayerIsWingReplenish                                      OFFSET(get<bool>, {0x744, 1, 1, 6})
+	DMember(bool)                                      bPlayerIsWingLeaping                                        OFFSET(get<bool>, {0x744, 1, 1, 7})
+	DMember(bool)                                      bPlayerIsWingsBoosting                                      OFFSET(get<bool>, {0x745, 1, 1, 0})
+	DMember(bool)                                      bPlayerIsWingsCrashing                                      OFFSET(get<bool>, {0x745, 1, 1, 1})
+	DMember(bool)                                      bPlayerIsWingsFlying                                        OFFSET(get<bool>, {0x745, 1, 1, 2})
+	DMember(bool)                                      bPlayerIsZiplining                                          OFFSET(get<bool>, {0x745, 1, 1, 3})
+	DMember(bool)                                      bTacticalJumpLoopToTacticalLand                             OFFSET(get<bool>, {0x745, 1, 1, 4})
+	DMember(bool)                                      bToJumpStart                                                OFFSET(get<bool>, {0x745, 1, 1, 5})
 };
 
 /// Class /Script/SunRoseFlyingRuntime.FortGameplayAbility_SunroseWingsCrashBase
@@ -579,11 +589,11 @@ public:
 
 	/// Functions
 	// Function /Script/SunRoseFlyingRuntime.FortGameplayAbility_SunroseWingsCrashBase.UpdateTelegraph
-	// void UpdateTelegraph();                                                                                                  // [0xa3b065c] Final|Native|Public|BlueprintCallable 
+	// void UpdateTelegraph();                                                                                                  // [0xb0fdcf0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortGameplayAbility_SunroseWingsCrashBase.EndTelegraph
-	// void EndTelegraph();                                                                                                     // [0xa3afa60] Final|Native|Public|BlueprintCallable 
+	// void EndTelegraph();                                                                                                     // [0xb0fcd2c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/SunRoseFlyingRuntime.FortGameplayAbility_SunroseWingsCrashBase.BeginTelegraph
-	// void BeginTelegraph();                                                                                                   // [0xa3af89c] Final|Native|Public|BlueprintCallable 
+	// void BeginTelegraph();                                                                                                   // [0xb0fcae4] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/SunRoseFlyingRuntime.FlyingStatusConfig

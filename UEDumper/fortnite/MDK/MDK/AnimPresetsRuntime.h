@@ -21,9 +21,9 @@ public:
 
 	/// Functions
 	// Function /Script/AnimPresetsRuntime.AnimPreset.HandleAnimInstance
-	// void HandleAnimInstance(class UAnimInstance* Instance);                                                                  // [0x78aa6cc] Native|Event|Public|BlueprintCallable|BlueprintEvent|Const 
+	// void HandleAnimInstance(class UAnimInstance* Instance);                                                                  // [0x7c98688] Native|Event|Public|BlueprintCallable|BlueprintEvent|Const 
 	// Function /Script/AnimPresetsRuntime.AnimPreset.GetPresetClass
-	// TWeakObjectPtr<UClass*> GetPresetClass();                                                                                // [0x78aa684] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
+	// TWeakObjectPtr<UClass*> GetPresetClass();                                                                                // [0x7c98640] Native|Event|Public|BlueprintCallable|BlueprintEvent|BlueprintPure|Const 
 };
 
 /// Class /Script/AnimPresetsRuntime.AnimPresetComponent

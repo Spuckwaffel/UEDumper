@@ -91,7 +91,7 @@ public:
 
 	/// Functions
 	// Function /Script/CommonInput.CommonInputBaseControllerData.GetRegisteredGamepads
-	// TArray<FName> GetRegisteredGamepads();                                                                                   // [0x725826c] Final|Native|Static|Public 
+	// TArray<FName> GetRegisteredGamepads();                                                                                   // [0x753be2c] Final|Native|Static|Public 
 };
 
 /// Class /Script/CommonInput.CommonInputPlatformSettings
@@ -138,7 +138,7 @@ public:
 
 	/// Functions
 	// Function /Script/CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled
-	// bool IsEnhancedInputSupportEnabled();                                                                                    // [0x7258298] Final|Native|Static|Public 
+	// bool IsEnhancedInputSupportEnabled();                                                                                    // [0x753be58] Final|Native|Static|Public 
 };
 
 /// Class /Script/CommonInput.CommonInputSubsystem
@@ -163,23 +163,23 @@ public:
 
 	/// Functions
 	// Function /Script/CommonInput.CommonInputSubsystem.ShouldShowInputKeys
-	// bool ShouldShowInputKeys();                                                                                              // [0x725847c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool ShouldShowInputKeys();                                                                                              // [0x753c0fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.SetGamepadInputType
-	// void SetGamepadInputType(FName InGamepadInputType);                                                                      // [0x72583fc] Final|Native|Public|BlueprintCallable 
+	// void SetGamepadInputType(FName InGamepadInputType);                                                                      // [0x753c03c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CommonInput.CommonInputSubsystem.SetCurrentInputType
-	// void SetCurrentInputType(ECommonInputType NewInputType);                                                                 // [0x725837c] Final|Native|Public|BlueprintCallable 
+	// void SetCurrentInputType(ECommonInputType NewInputType);                                                                 // [0x753bf7c] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CommonInput.CommonInputSubsystem.IsUsingPointerInput
-	// bool IsUsingPointerInput();                                                                                              // [0x725834c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsUsingPointerInput();                                                                                              // [0x753bf4c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.IsInputMethodActive
-	// bool IsInputMethodActive(ECommonInputType InputMethod);                                                                  // [0x72582bc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool IsInputMethodActive(ECommonInputType InputMethod);                                                                  // [0x753be7c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.GetDefaultInputType
-	// ECommonInputType GetDefaultInputType();                                                                                  // [0x7258244] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ECommonInputType GetDefaultInputType();                                                                                  // [0x753be04] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.GetCurrentInputType
-	// ECommonInputType GetCurrentInputType();                                                                                  // [0x30acc50] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// ECommonInputType GetCurrentInputType();                                                                                  // [0x30fb5fc] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.GetCurrentGamepadName
-	// FName GetCurrentGamepadName();                                                                                           // [0x3ed1390] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// FName GetCurrentGamepadName();                                                                                           // [0x753bdec] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CommonInput.CommonInputSubsystem.BroadcastInputMethodChanged
-	// void BroadcastInputMethodChanged();                                                                                      // [0x7258230] Final|Native|Protected 
+	// void BroadcastInputMethodChanged();                                                                                      // [0x753bdd8] Final|Native|Protected 
 };
 
 /// Struct /Script/CommonInput.CommonInputKeyBrushConfiguration

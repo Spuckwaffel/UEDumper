@@ -25,29 +25,29 @@ public:
 
 	/// Functions
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.UpdateRigidBodyWithControlNodeParametersFromAsset
-	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParametersFromAsset(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl, class UFortCharacterDynamicsParameters* Parameters); // [0xa3ab2bc] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParametersFromAsset(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl, class UFortCharacterDynamicsParameters* Parameters); // [0xb0f27a0] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.UpdateRigidBodyWithControlNodeParametersForLayer
-	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParametersForLayer(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl, FName StateLogicLayerName, class UFortCharacterDynamicsParameters* Parameters); // [0xa3aaf98] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParametersForLayer(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl, FName StateLogicLayerName, class UFortCharacterDynamicsParameters* Parameters); // [0x33d10cc] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.UpdateRigidBodyWithControlNodeParameters
-	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParameters(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl); // [0xa3aae20] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
+	// FRigidBodyWithControlReference UpdateRigidBodyWithControlNodeParameters(FAnimUpdateContext& UpdateContext, FRigidBodyWithControlReference& RigidBodyWithControl); // [0xb0f2628] Final|Native|Static|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.SetProperty
-	// void SetProperty(class UFortAnimInstance* InAnimInstance, FName InPropertyName, bool InValue);                           // [0x316dc68] Final|Native|Static|Public|BlueprintCallable 
+	// void SetProperty(class UFortAnimInstance* InAnimInstance, FName InPropertyName, bool InValue);                           // [0xb0f2330] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.RequestFullBodyPBALayer
-	// void RequestFullBodyPBALayer(class UFortAnimInstance* InAnimInstance, FName ReasonForRequest);                           // [0x33ef36c] Final|Native|Static|Public|BlueprintCallable 
+	// void RequestFullBodyPBALayer(class UFortAnimInstance* InAnimInstance, FName ReasonForRequest);                           // [0xb0f21f8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.RemoveCharacterDynamicsControlLogicLayer
-	// void RemoveCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName);                 // [0xa3aac18] Final|Native|Static|Public|BlueprintCallable 
+	// void RemoveCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName);                 // [0xb0f1fe8] Final|Native|Static|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.HasCharacterDynamicsControlLogicLayer
-	// bool HasCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName);                    // [0xa3aa9bc] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool HasCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName);                    // [0xb0f1c7c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.GetPropertyForLayer
-	// bool GetPropertyForLayer(class UFortAnimInstance* InAnimInstance, FName InStateLogicLayerName, FName InPropertyName);    // [0xa3aa73c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool GetPropertyForLayer(class UFortAnimInstance* InAnimInstance, FName InStateLogicLayerName, FName InPropertyName);    // [0xb0f186c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.GetProperty
-	// bool GetProperty(class UFortAnimInstance* InAnimInstance, FName InPropertyName);                                         // [0xa3aa5d8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// bool GetProperty(class UFortAnimInstance* InAnimInstance, FName InPropertyName);                                         // [0xb0f164c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.GetCharacterStateForLayer
-	// FName GetCharacterStateForLayer(class UFortAnimInstance* InAnimInstance, FName StateLogicLayerName);                     // [0x3457b7c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FName GetCharacterStateForLayer(class UFortAnimInstance* InAnimInstance, FName StateLogicLayerName);                     // [0x22eb68c] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.GetCharacterState
-	// FName GetCharacterState(class UFortAnimInstance* InAnimInstance);                                                        // [0x36e58b8] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// FName GetCharacterState(class UFortAnimInstance* InAnimInstance);                                                        // [0x22ec500] Final|Native|Static|Public|BlueprintCallable|BlueprintPure 
 	// Function /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlBPLibrary.AddCharacterDynamicsControlLogicLayer
-	// void AddCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName, class UFortCharacterDynamicsStateLogic* LayerStateLogic); // [0x38d6bb4] Final|Native|Static|Public|BlueprintCallable 
+	// void AddCharacterDynamicsControlLogicLayer(class UFortAnimInstance* InAnimInstance, FName LayerName, class UFortCharacterDynamicsStateLogic* LayerStateLogic); // [0x22ec648] Final|Native|Static|Public|BlueprintCallable 
 };
 
 /// Class /Script/CharacterDynamicsControlRuntime.CharacterDynamicsControlGameFeatureData
@@ -111,29 +111,29 @@ public:
 
 	/// Functions
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.SetProperty
-	// void SetProperty(FName PropertyName, bool PropertyValue);                                                                // [0xa3aad5c] Final|Native|Public|BlueprintCallable 
+	// void SetProperty(FName PropertyName, bool PropertyValue);                                                                // [0xb0f24e8] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.RemoveLayer
-	// void RemoveLayer(FName LayerName);                                                                                       // [0xa3aacd8] Final|Native|Public|BlueprintCallable 
+	// void RemoveLayer(FName LayerName);                                                                                       // [0xb0f2134] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.PreviousStateNameForLayer
-	// FName PreviousStateNameForLayer(FName LayerName);                                                                        // [0xa3aab94] Final|Native|Public|BlueprintCallable 
+	// FName PreviousStateNameForLayer(FName LayerName);                                                                        // [0xb0f1f20] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.PreviousStateName
-	// FName PreviousStateName();                                                                                               // [0xa3aab64] Final|Native|Public|BlueprintCallable 
+	// FName PreviousStateName();                                                                                               // [0xb0f1ef0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.HasLayer
-	// bool HasLayer(FName LayerName);                                                                                          // [0xa3aaab4] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// bool HasLayer(FName LayerName);                                                                                          // [0xb0f1e00] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.GetTimeInCurrentStateSecondsForLayer
-	// float GetTimeInCurrentStateSecondsForLayer(FName LayerName);                                                             // [0xa3aa92c] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTimeInCurrentStateSecondsForLayer(FName LayerName);                                                             // [0xb0f1bac] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.GetTimeInCurrentStateSeconds
-	// float GetTimeInCurrentStateSeconds();                                                                                    // [0xa3aa904] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// float GetTimeInCurrentStateSeconds();                                                                                    // [0xb0f1b84] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.GetPropertyForLayer
-	// bool GetPropertyForLayer(FName LayerName, FName PropertyName);                                                           // [0xa3aa844] Final|Native|Public|BlueprintCallable 
+	// bool GetPropertyForLayer(FName LayerName, FName PropertyName);                                                           // [0xb0f1a38] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.GetProperty
-	// bool GetProperty(FName PropertyName);                                                                                    // [0xa3aa6b0] Final|Native|Public|BlueprintCallable 
+	// bool GetProperty(FName PropertyName);                                                                                    // [0xb0f17a0] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.CurrentStateNameForLayer
-	// FName CurrentStateNameForLayer(FName LayerName);                                                                         // [0xa3aa554] Final|Native|Public|BlueprintCallable 
+	// FName CurrentStateNameForLayer(FName LayerName);                                                                         // [0xb0f1584] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.CurrentStateName
-	// FName CurrentStateName();                                                                                                // [0xa3aa528] Final|Native|Public|BlueprintCallable 
+	// FName CurrentStateName();                                                                                                // [0xb0f1558] Final|Native|Public|BlueprintCallable 
 	// Function /Script/CharacterDynamicsControlRuntime.FortCharacterDynamicsComponent.AddLayer
-	// void AddLayer(FName LayerName, class UFortCharacterDynamicsStateLogic* LayerStateLogic);                                 // [0xa3aa464] Final|Native|Public|BlueprintCallable 
+	// void AddLayer(FName LayerName, class UFortCharacterDynamicsStateLogic* LayerStateLogic);                                 // [0xb0f141c] Final|Native|Public|BlueprintCallable 
 };
 
 /// Struct /Script/CharacterDynamicsControlRuntime.BinaryDecisionTreeElement

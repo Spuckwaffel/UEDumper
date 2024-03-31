@@ -35,89 +35,92 @@ public:
 
 	/// Functions
 	// Function /Script/LocomotionInitiativeRuntime.FortLocomotionLayerMaskDataAsset.ApplyTo
-	// void ApplyTo(FFortLocomotionLayerMaskDataSet& DataAsset);                                                                // [0xa97eb54] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
+	// void ApplyTo(FFortLocomotionLayerMaskDataSet& DataAsset);                                                                // [0xb7d6f30] Final|Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/LocomotionInitiativeRuntime.FortPlayerMotionMatchingLocomotionAnimInstance
-/// Size: 0x0460 (0x001620 - 0x001A80)
+/// Size: 0x0460 (0x0015F0 - 0x001A50)
 class UFortPlayerMotionMatchingLocomotionAnimInstance : public UFortPlayerAnimInstanceProxy
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 6784;
+	static inline constexpr uint64_t __MDKClassSize = 6736;
 
 public:
-	SMember(FCachedAnimStateArray)                     IdleStatesData                                              OFFSET(getStruct<T>, {0x1620, 24, 0, 0})
-	SMember(FVector)                                   FutureRootMotionVelocity                                    OFFSET(getStruct<T>, {0x1638, 24, 0, 0})
-	SMember(FMotionMatchingLODConfig)                  HighEndConfig                                               OFFSET(getStruct<T>, {0x1650, 56, 0, 0})
-	SMember(FMotionMatchingLODConfig)                  LowEndConfig                                                OFFSET(getStruct<T>, {0x1688, 56, 0, 0})
-	SMember(FMotionMatchingLODConfig)                  CurrentLODConfig                                            OFFSET(getStruct<T>, {0x16C0, 56, 0, 0})
-	CMember(class UAnimSequence*)                      SelectedIdleBreak                                           OFFSET(get<T>, {0x16F8, 8, 0, 0})
-	CMember(class UProxyAsset*)                        MotionMatchingLODProxyAsset                                 OFFSET(get<T>, {0x1700, 8, 0, 0})
-	DMember(int32_t)                                   MotionMatchingLOD                                           OFFSET(get<int32_t>, {0x1708, 4, 0, 0})
-	SMember(FMotionMatchingBlendInfo)                  MotionMatchingBlendInfo                                     OFFSET(getStruct<T>, {0x170C, 8, 0, 0})
-	CMember(class UClass*)                             StopBranchOutWindowNotifyClass                              OFFSET(get<T>, {0x1718, 8, 0, 0})
-	CMember(EFortMotionMatchingLocomotionState)        LocomotionState                                             OFFSET(get<T>, {0x1720, 1, 0, 0})
-	DMember(float)                                     StartToLoopSearchDelaySeconds                               OFFSET(get<float>, {0x1724, 4, 0, 0})
-	DMember(float)                                     PivotToLoopSearchDelaySeconds                               OFFSET(get<float>, {0x1728, 4, 0, 0})
-	DMember(float)                                     PivotSpeedThreshold                                         OFFSET(get<float>, {0x172C, 4, 0, 0})
-	DMember(float)                                     PivotDotProductThresholdRun                                 OFFSET(get<float>, {0x1730, 4, 0, 0})
-	DMember(float)                                     DiagonalDetectionThreshold                                  OFFSET(get<float>, {0x1734, 4, 0, 0})
-	DMember(float)                                     PivotDotProductThresholdWalk                                OFFSET(get<float>, {0x1738, 4, 0, 0})
-	DMember(float)                                     LocomotionStateTime                                         OFFSET(get<float>, {0x173C, 4, 0, 0})
-	DMember(float)                                     VelocityDirection                                           OFFSET(get<float>, {0x1740, 4, 0, 0})
-	DMember(float)                                     MotionMatchingWeight                                        OFFSET(get<float>, {0x1744, 4, 0, 0})
-	CMember(EPoseSearchInterruptMode)                  DatabaseSearchInterruptMode                                 OFFSET(get<T>, {0x1748, 1, 0, 0})
-	DMember(bool)                                      bUseOrientationWarping                                      OFFSET(get<bool>, {0x1749, 1, 0, 0})
-	DMember(bool)                                      bUseFutureForOrientationWarping                             OFFSET(get<bool>, {0x174A, 1, 0, 0})
-	DMember(bool)                                      bIsLowEnd                                                   OFFSET(get<bool>, {0x174B, 1, 0, 0})
-	DMember(bool)                                      bUseLocomotionBlendspace                                    OFFSET(get<bool>, {0x174C, 1, 0, 0})
-	DMember(bool)                                      bShouldPlayIdle                                             OFFSET(get<bool>, {0x174D, 1, 0, 0})
-	DMember(bool)                                      bShouldPlayIdleBreak                                        OFFSET(get<bool>, {0x174E, 1, 0, 0})
-	DMember(bool)                                      bShouldExitIdleBreak                                        OFFSET(get<bool>, {0x174F, 1, 0, 0})
-	DMember(bool)                                      bShouldExitIdleBreakSlow                                    OFFSET(get<bool>, {0x1750, 1, 0, 0})
-	DMember(float)                                     IdleTransitionTimer                                         OFFSET(get<float>, {0x1754, 4, 0, 0})
-	DMember(float)                                     IdleBreakTimer                                              OFFSET(get<float>, {0x1758, 4, 0, 0})
-	DMember(bool)                                      bBothHandsIKInHandSpace                                     OFFSET(get<bool>, {0x175C, 1, 0, 0})
-	DMember(bool)                                      bIsCrouchedTransition                                       OFFSET(get<bool>, {0x175D, 1, 0, 0})
-	DMember(bool)                                      bWasCrouching                                               OFFSET(get<bool>, {0x175E, 1, 0, 0})
-	DMember(bool)                                      bShouldPlayStandToCrouchTransition                          OFFSET(get<bool>, {0x175F, 1, 0, 0})
-	DMember(bool)                                      bShouldPlayCrouchToStandTransition                          OFFSET(get<bool>, {0x1760, 1, 0, 0})
-	DMember(bool)                                      bShouldExitCrouchTransition                                 OFFSET(get<bool>, {0x1761, 1, 0, 0})
-	DMember(bool)                                      bIsLocallyControlled                                        OFFSET(get<bool>, {0x1762, 1, 0, 0})
-	DMember(float)                                     CameraSpamYawThreshold                                      OFFSET(get<float>, {0x1764, 4, 0, 0})
-	DMember(float)                                     CameraSpamCoolDownSeconds                                   OFFSET(get<float>, {0x1768, 4, 0, 0})
-	DMember(float)                                     CameraSpamSearchThrottleTime                                OFFSET(get<float>, {0x176C, 4, 0, 0})
-	DMember(float)                                     DefaultSearchThrottleTime                                   OFFSET(get<float>, {0x1770, 4, 0, 0})
-	DMember(float)                                     SearchThrottleTime                                          OFFSET(get<float>, {0x1774, 4, 0, 0})
-	DMember(float)                                     AdditiveLeanAlpha                                           OFFSET(get<float>, {0x1778, 4, 0, 0})
-	DMember(bool)                                      bEnableAdditiveLeans                                        OFFSET(get<bool>, {0x177C, 1, 0, 0})
-	DMember(bool)                                      bEnableAdditiveRunLeans                                     OFFSET(get<bool>, {0x177D, 1, 0, 0})
-	DMember(bool)                                      bDisableArcs                                                OFFSET(get<bool>, {0x177E, 1, 0, 0})
-	DMember(bool)                                      bDisableDiamonds                                            OFFSET(get<bool>, {0x177F, 1, 0, 0})
-	DMember(bool)                                      bIdleToMotionMatchingNoInertialization                      OFFSET(get<bool>, {0x1780, 1, 0, 0})
-	DMember(bool)                                      bRelaxedStateChanged                                        OFFSET(get<bool>, {0x1781, 1, 0, 0})
-	DMember(bool)                                      bIsMelee                                                    OFFSET(get<bool>, {0x1782, 1, 0, 0})
-	DMember(bool)                                      bUseRelaxedMotionMatchingData                               OFFSET(get<bool>, {0x1783, 1, 0, 0})
-	SMember(FPoseSearchQueryTrajectory)                Trajectory                                                  OFFSET(getStruct<T>, {0x1788, 16, 0, 0})
-	SMember(FTrajectorySamplingData)                   TrajectorySamplingData                                      OFFSET(getStruct<T>, {0x1798, 32, 0, 0})
-	SMember(FCharacterTrajectoryData)                  CharacterTrajectoryData                                     OFFSET(getStruct<T>, {0x17C0, 480, 0, 0})
-	DMember(float)                                     TrajectorySpeedMultiplier                                   OFFSET(get<float>, {0x19A0, 4, 0, 0})
-	DMember(float)                                     LowFrictionCustomMaxSpeed                                   OFFSET(get<float>, {0x19A4, 4, 0, 0})
-	DMember(float)                                     LowFrictionCustomBrakingDeceleration                        OFFSET(get<float>, {0x19A8, 4, 0, 0})
-	DMember(float)                                     LowFrictionCustomFriction                                   OFFSET(get<float>, {0x19AC, 4, 0, 0})
-	SMember(FFortMotionMatchingAngleSpamTracker)       AccelerationSpamTracker                                     OFFSET(getStruct<T>, {0x19B0, 72, 0, 0})
-	DMember(bool)                                      bIsPlayingInterruptibleStop                                 OFFSET(get<bool>, {0x1A78, 1, 0, 0})
-	DMember(bool)                                      bIsPlayingIdleDatabase                                      OFFSET(get<bool>, {0x1A79, 1, 0, 0})
-	DMember(bool)                                      bHasReachedIdle                                             OFFSET(get<bool>, {0x1A7A, 1, 0, 0})
+	SMember(FCachedAnimStateArray)                     IdleStatesData                                              OFFSET(getStruct<T>, {0x15F0, 24, 0, 0})
+	SMember(FVector)                                   FutureRootMotionVelocity                                    OFFSET(getStruct<T>, {0x1608, 24, 0, 0})
+	SMember(FMotionMatchingLODConfig)                  HighEndConfig                                               OFFSET(getStruct<T>, {0x1620, 56, 0, 0})
+	SMember(FMotionMatchingLODConfig)                  LowEndConfig                                                OFFSET(getStruct<T>, {0x1658, 56, 0, 0})
+	SMember(FMotionMatchingLODConfig)                  CurrentLODConfig                                            OFFSET(getStruct<T>, {0x1690, 56, 0, 0})
+	CMember(class UAnimSequence*)                      SelectedIdleBreak                                           OFFSET(get<T>, {0x16C8, 8, 0, 0})
+	CMember(class UProxyAsset*)                        MotionMatchingLODProxyAsset                                 OFFSET(get<T>, {0x16D0, 8, 0, 0})
+	DMember(int32_t)                                   MotionMatchingLOD                                           OFFSET(get<int32_t>, {0x16D8, 4, 0, 0})
+	SMember(FMotionMatchingBlendInfo)                  MotionMatchingBlendInfo                                     OFFSET(getStruct<T>, {0x16DC, 8, 0, 0})
+	CMember(class UClass*)                             StopBranchOutWindowNotifyClass                              OFFSET(get<T>, {0x16E8, 8, 0, 0})
+	CMember(EFortMotionMatchingLocomotionState)        LocomotionState                                             OFFSET(get<T>, {0x16F0, 1, 0, 0})
+	DMember(float)                                     StartToLoopSearchDelaySeconds                               OFFSET(get<float>, {0x16F4, 4, 0, 0})
+	DMember(float)                                     PivotToLoopSearchDelaySeconds                               OFFSET(get<float>, {0x16F8, 4, 0, 0})
+	DMember(float)                                     PivotSpeedThreshold                                         OFFSET(get<float>, {0x16FC, 4, 0, 0})
+	DMember(float)                                     PivotDotProductThresholdRun                                 OFFSET(get<float>, {0x1700, 4, 0, 0})
+	DMember(float)                                     DiagonalDetectionThreshold                                  OFFSET(get<float>, {0x1704, 4, 0, 0})
+	DMember(float)                                     PivotDotProductThresholdWalk                                OFFSET(get<float>, {0x1708, 4, 0, 0})
+	DMember(float)                                     LocomotionStateTime                                         OFFSET(get<float>, {0x170C, 4, 0, 0})
+	DMember(float)                                     VelocityDirection                                           OFFSET(get<float>, {0x1710, 4, 0, 0})
+	DMember(float)                                     MotionMatchingWeight                                        OFFSET(get<float>, {0x1714, 4, 0, 0})
+	CMember(EPoseSearchInterruptMode)                  DatabaseSearchInterruptMode                                 OFFSET(get<T>, {0x1718, 1, 0, 0})
+	DMember(bool)                                      bUseOrientationWarping                                      OFFSET(get<bool>, {0x1719, 1, 0, 0})
+	DMember(bool)                                      bUseFutureForOrientationWarping                             OFFSET(get<bool>, {0x171A, 1, 0, 0})
+	DMember(bool)                                      bIsLowEnd                                                   OFFSET(get<bool>, {0x171B, 1, 0, 0})
+	DMember(bool)                                      bUseLocomotionBlendspace                                    OFFSET(get<bool>, {0x171C, 1, 0, 0})
+	DMember(bool)                                      bShouldPlayIdle                                             OFFSET(get<bool>, {0x171D, 1, 0, 0})
+	DMember(bool)                                      bShouldPlayIdleBreak                                        OFFSET(get<bool>, {0x171E, 1, 0, 0})
+	DMember(bool)                                      bShouldExitIdleBreak                                        OFFSET(get<bool>, {0x171F, 1, 0, 0})
+	DMember(bool)                                      bShouldExitIdleBreakSlow                                    OFFSET(get<bool>, {0x1720, 1, 0, 0})
+	DMember(float)                                     IdleTransitionTimer                                         OFFSET(get<float>, {0x1724, 4, 0, 0})
+	DMember(float)                                     IdleBreakTimer                                              OFFSET(get<float>, {0x1728, 4, 0, 0})
+	DMember(bool)                                      bBothHandsIKInHandSpace                                     OFFSET(get<bool>, {0x172C, 1, 0, 0})
+	DMember(bool)                                      bIsCrouchedTransition                                       OFFSET(get<bool>, {0x172D, 1, 0, 0})
+	DMember(bool)                                      bWasCrouching                                               OFFSET(get<bool>, {0x172E, 1, 0, 0})
+	DMember(bool)                                      bShouldPlayStandToCrouchTransition                          OFFSET(get<bool>, {0x172F, 1, 0, 0})
+	DMember(bool)                                      bShouldPlayCrouchToStandTransition                          OFFSET(get<bool>, {0x1730, 1, 0, 0})
+	DMember(bool)                                      bShouldExitCrouchTransition                                 OFFSET(get<bool>, {0x1731, 1, 0, 0})
+	DMember(bool)                                      bIsLocallyControlled                                        OFFSET(get<bool>, {0x1732, 1, 0, 0})
+	DMember(float)                                     CameraSpamYawThreshold                                      OFFSET(get<float>, {0x1734, 4, 0, 0})
+	DMember(float)                                     CameraSpamCoolDownSeconds                                   OFFSET(get<float>, {0x1738, 4, 0, 0})
+	DMember(float)                                     CameraSpamSearchThrottleTime                                OFFSET(get<float>, {0x173C, 4, 0, 0})
+	DMember(float)                                     DefaultSearchThrottleTime                                   OFFSET(get<float>, {0x1740, 4, 0, 0})
+	DMember(float)                                     SearchThrottleTime                                          OFFSET(get<float>, {0x1744, 4, 0, 0})
+	DMember(float)                                     AdditiveLeanAlpha                                           OFFSET(get<float>, {0x1748, 4, 0, 0})
+	DMember(bool)                                      bEnableAdditiveLeans                                        OFFSET(get<bool>, {0x174C, 1, 0, 0})
+	DMember(bool)                                      bEnableAdditiveRunLeans                                     OFFSET(get<bool>, {0x174D, 1, 0, 0})
+	DMember(bool)                                      bDisableArcs                                                OFFSET(get<bool>, {0x174E, 1, 0, 0})
+	DMember(bool)                                      bDisableDiamonds                                            OFFSET(get<bool>, {0x174F, 1, 0, 0})
+	DMember(bool)                                      bIdleToMotionMatchingNoInertialization                      OFFSET(get<bool>, {0x1750, 1, 0, 0})
+	DMember(bool)                                      bRelaxedStateChanged                                        OFFSET(get<bool>, {0x1751, 1, 0, 0})
+	DMember(bool)                                      bIsMelee                                                    OFFSET(get<bool>, {0x1752, 1, 0, 0})
+	DMember(bool)                                      bUseRelaxedMotionMatchingData                               OFFSET(get<bool>, {0x1753, 1, 0, 0})
+	SMember(FPoseSearchQueryTrajectory)                Trajectory                                                  OFFSET(getStruct<T>, {0x1758, 16, 0, 0})
+	SMember(FTrajectorySamplingData)                   TrajectorySamplingData                                      OFFSET(getStruct<T>, {0x1768, 32, 0, 0})
+	SMember(FCharacterTrajectoryData)                  CharacterTrajectoryData                                     OFFSET(getStruct<T>, {0x1790, 480, 0, 0})
+	DMember(float)                                     TrajectorySpeedMultiplier                                   OFFSET(get<float>, {0x1970, 4, 0, 0})
+	DMember(float)                                     LowFrictionCustomMaxSpeed                                   OFFSET(get<float>, {0x1974, 4, 0, 0})
+	DMember(float)                                     LowFrictionCustomBrakingDeceleration                        OFFSET(get<float>, {0x1978, 4, 0, 0})
+	DMember(float)                                     LowFrictionCustomFriction                                   OFFSET(get<float>, {0x197C, 4, 0, 0})
+	SMember(FFortMotionMatchingAngleSpamTracker)       AccelerationSpamTracker                                     OFFSET(getStruct<T>, {0x1980, 72, 0, 0})
+	DMember(bool)                                      bIsPlayingIdleBreak                                         OFFSET(get<bool>, {0x1A3B, 1, 0, 0})
+	DMember(bool)                                      bIsPlayingInterruptibleStop                                 OFFSET(get<bool>, {0x1A48, 1, 0, 0})
+	DMember(bool)                                      bIsPlayingIdleDatabase                                      OFFSET(get<bool>, {0x1A49, 1, 0, 0})
+	DMember(bool)                                      bHasReachedIdle                                             OFFSET(get<bool>, {0x1A4A, 1, 0, 0})
 
 
 	/// Functions
 	// Function /Script/LocomotionInitiativeRuntime.FortPlayerMotionMatchingLocomotionAnimInstance.OnUpdateMotionMatchingState
-	// void OnUpdateMotionMatchingState(FAnimUpdateContext& Context, FAnimNodeReference& Node);                                 // [0x1c8b160] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void OnUpdateMotionMatchingState(FAnimUpdateContext& Context, FAnimNodeReference& Node);                                 // [0x143c468] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LocomotionInitiativeRuntime.FortPlayerMotionMatchingLocomotionAnimInstance.OnUpdateMotionMatching
-	// void OnUpdateMotionMatching(FAnimUpdateContext& Context, FAnimNodeReference& Node);                                      // [0x1c8afa0] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// void OnUpdateMotionMatching(FAnimUpdateContext& Context, FAnimNodeReference& Node);                                      // [0x143b91c] Final|Native|Public|HasOutParms|BlueprintCallable 
+	// Function /Script/LocomotionInitiativeRuntime.FortPlayerMotionMatchingLocomotionAnimInstance.OnUpdateIdleBreaks
+	// void OnUpdateIdleBreaks(FAnimUpdateContext& Context, FAnimNodeReference& Node);                                          // [0x2dcab18] Final|Native|Public|HasOutParms|BlueprintCallable 
 	// Function /Script/LocomotionInitiativeRuntime.FortPlayerMotionMatchingLocomotionAnimInstance.GetMotionMatchingBlendProfile
-	// class UBlendProfile* GetMotionMatchingBlendProfile();                                                                    // [0x2bbd850] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
+	// class UBlendProfile* GetMotionMatchingBlendProfile();                                                                    // [0x29fc490] Final|Native|Public|BlueprintCallable|BlueprintPure|Const 
 };
 
 /// Class /Script/LocomotionInitiativeRuntime.LocomotionInitiativeComponent

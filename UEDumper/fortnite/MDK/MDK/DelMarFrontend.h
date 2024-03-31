@@ -28,29 +28,35 @@ public:
 
 	/// Functions
 	// Function /Script/DelMarFrontend.DelMarFrontendCheatManager.DelMarResetNux
-	// void DelMarResetNux();                                                                                                   // [0x36203b0] Final|Exec|Native|Protected 
+	// void DelMarResetNux();                                                                                                   // [0x3518b8c] Final|Exec|Native|Protected 
 	// Function /Script/DelMarFrontend.DelMarFrontendCheatManager.DelMarMarkTutorialPlayed
-	// void DelMarMarkTutorialPlayed();                                                                                         // [0x36203b0] Final|Exec|Native|Protected 
+	// void DelMarMarkTutorialPlayed();                                                                                         // [0x3518b8c] Final|Exec|Native|Protected 
 };
 
 /// Class /Script/DelMarFrontend.DelMarFrontendExperienceFlow
-/// Size: 0x0128 (0x000028 - 0x000150)
+/// Size: 0x0140 (0x000028 - 0x000168)
 class UDelMarFrontendExperienceFlow : public UObject
 { 
 	friend MDKHandler;
-	static inline constexpr uint64_t __MDKClassSize = 336;
+	static inline constexpr uint64_t __MDKClassSize = 360;
 
 public:
 	CMember(class AFortPlayerController*)              CachedPlayerController                                      OFFSET(get<T>, {0x30, 8, 0, 0})
-	CMember(class UFortStreamMediaSource*)             VideoStream_Source                                          OFFSET(get<T>, {0x38, 8, 0, 0})
-	CMember(TWeakObjectPtr<UClass*>)                   VideoPlayerClass                                            OFFSET(get<T>, {0x40, 32, 0, 0})
-	CMember(class UClass*)                             ConfirmationWindowClass                                     OFFSET(get<T>, {0x60, 8, 0, 0})
-	SMember(FText)                                     TutorialPromptTitle                                         OFFSET(getStruct<T>, {0x68, 24, 0, 0})
-	SMember(FText)                                     TutorialPromptDescription                                   OFFSET(getStruct<T>, {0x80, 24, 0, 0})
-	SMember(FText)                                     TutorialPromptConfirmButtonText                             OFFSET(getStruct<T>, {0x98, 24, 0, 0})
-	SMember(FText)                                     TutorialPromptDeclineButtonText                             OFFSET(getStruct<T>, {0xB0, 24, 0, 0})
-	CMember(class UDelMarGameUserSettings*)            DelMarUserSettings                                          OFFSET(get<T>, {0xC8, 8, 0, 0})
-	CMember(TMap<FString, FString>)                    NUXTrailerRating                                            OFFSET(get<T>, {0xD8, 80, 0, 0})
+	CMember(TWeakObjectPtr<UClass*>)                   VideoPlayerClass                                            OFFSET(get<T>, {0x38, 32, 0, 0})
+	CMember(class UClass*)                             ConfirmationWindowClass                                     OFFSET(get<T>, {0x58, 8, 0, 0})
+	SMember(FText)                                     TutorialPromptTitle                                         OFFSET(getStruct<T>, {0x60, 24, 0, 0})
+	SMember(FText)                                     TutorialPromptDescription                                   OFFSET(getStruct<T>, {0x78, 24, 0, 0})
+	SMember(FText)                                     TutorialPromptConfirmButtonText                             OFFSET(getStruct<T>, {0x90, 24, 0, 0})
+	SMember(FText)                                     TutorialPromptDeclineButtonText                             OFFSET(getStruct<T>, {0xA8, 24, 0, 0})
+	CMember(class UDelMarGameUserSettings*)            DelMarUserSettings                                          OFFSET(get<T>, {0xC0, 8, 0, 0})
+	CMember(TMap<FString, FString>)                    NUXTrailerRating                                            OFFSET(get<T>, {0xD0, 80, 0, 0})
+
+
+	/// Functions
+	// Function /Script/DelMarFrontend.DelMarFrontendExperienceFlow.HandleVideoTerminalError
+	// void HandleVideoTerminalError(EBaseMediaTerminalErrorReason Reason);                                                     // [0xc481920] Final|Native|Protected 
+	// Function /Script/DelMarFrontend.DelMarFrontendExperienceFlow.FinishTrailerStep
+	// void FinishTrailerStep();                                                                                                // [0xc4818dc] Final|Native|Protected 
 };
 
 /// Class /Script/DelMarFrontend.DelMarFrontendSubsystem
@@ -115,13 +121,14 @@ public:
 	SMember(FString)                                   FrontendNuxVideoKey                                         OFFSET(getStruct<T>, {0x38, 16, 0, 0})
 	SMember(FName)                                     FrontendNuxVideoName                                        OFFSET(getStruct<T>, {0x48, 4, 0, 0})
 	SMember(FString)                                   FrontendNuxVideoId                                          OFFSET(getStruct<T>, {0x50, 16, 0, 0})
-	DMember(bool)                                      bDisableFrontendNuxFlow                                     OFFSET(get<bool>, {0x60, 1, 0, 0})
+	DMember(bool)                                      bAlwaysShowNuxVideo                                         OFFSET(get<bool>, {0x60, 1, 0, 0})
+	DMember(bool)                                      bDisableFrontendNuxFlow                                     OFFSET(get<bool>, {0x61, 1, 0, 0})
 	SMember(FString)                                   DelMarTutorialLinkCode                                      OFFSET(getStruct<T>, {0x68, 16, 0, 0})
 	SMember(FString)                                   DelMarDefaultLinkCode                                       OFFSET(getStruct<T>, {0x78, 16, 0, 0})
 
 
 	/// Functions
 	// Function /Script/DelMarFrontend.DelMarFrontendRuntimeOptions.GetDelMarFrontendRuntimeOptions
-	// class UDelMarFrontendRuntimeOptions* GetDelMarFrontendRuntimeOptions();                                                  // [0xb099e18] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
+	// class UDelMarFrontendRuntimeOptions* GetDelMarFrontendRuntimeOptions();                                                  // [0xc4818f0] Final|RequiredAPI|Native|Static|Public|BlueprintCallable|BlueprintPure 
 };
 

@@ -30,9 +30,9 @@ public:
 	DMember(int32_t)                                   Type                                                        OFFSET(get<int32_t>, {0x40, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_8d03f831c8150625
+/// Struct /Engine/Transient.PropertyBag_3309118d87a6f0ec
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_8d03f831c8150625 : public MDKBase
+class FPropertyBag_3309118d87a6f0ec : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -42,9 +42,9 @@ public:
 	DMember(float)                                     LineHeightPercentage                                        OFFSET(get<float>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_b17db09bfee2daa4
+/// Struct /Engine/Transient.PropertyBag_f84662b1ee2a5432
 /// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_b17db09bfee2daa4 : public MDKBase
+class FPropertyBag_f84662b1ee2a5432 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -54,9 +54,9 @@ public:
 	SMember(FMargin)                                   Margin                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_a9de03c6e49c1e0b
+/// Struct /Engine/Transient.PropertyBag_6afc3d4718ec0081
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_a9de03c6e49c1e0b : public MDKBase
+class FPropertyBag_6afc3d4718ec0081 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -67,9 +67,9 @@ public:
 	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0x4, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_f297e0a7e15e0082
+/// Struct /Engine/Transient.PropertyBag_f0b740913ff94591
 /// Size: 0x0014 (0x000000 - 0x000014)
-class FPropertyBag_f297e0a7e15e0082 : public MDKBase
+class FPropertyBag_f0b740913ff94591 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -80,9 +80,9 @@ public:
 	DMember(float)                                     LineHeightPercentage                                        OFFSET(get<float>, {0x10, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_a65401dffd4afbb
+/// Struct /Engine/Transient.PropertyBag_c3d8a27e503ed845
 /// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_a65401dffd4afbb : public MDKBase
+class FPropertyBag_c3d8a27e503ed845 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -92,9 +92,104 @@ public:
 	SMember(FMargin)                                   Margin                                                      OFFSET(getStruct<T>, {0x0, 16, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_d506ab25012ad73c
+/// Struct /Engine/Transient.PropertyBag_46af665fc368c8e6
+/// Size: 0x0168 (0x000000 - 0x000168)
+class FPropertyBag_46af665fc368c8e6 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 360;
+
+public:
+	DMember(float)                                     WidgetStyle_BarThickness                                    OFFSET(get<float>, {0x0, 4, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetStyle_TopShadowBrush_DrawAs                           OFFSET(get<T>, {0x4, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetStyle_BottomShadowBrush_DrawAs                        OFFSET(get<T>, {0x5, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetStyle_LeftShadowBrush_DrawAs                          OFFSET(get<T>, {0x6, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetStyle_RightShadowBrush_DrawAs                         OFFSET(get<T>, {0x7, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_HorizontalBackgroundImage_DrawAs             OFFSET(get<T>, {0x8, 1, 0, 0})
+	CMember(class UObject*)                            WidgetBarStyle_VerticalBackgroundImage_ResourceObject       OFFSET(get<T>, {0x10, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   WidgetBarStyle_VerticalBackgroundImage_ImageSize            OFFSET(getStruct<T>, {0x18, 8, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_VerticalBackgroundImage_DrawAs               OFFSET(get<T>, {0x20, 1, 0, 0})
+	SMember(FMargin)                                   WidgetBarStyle_VerticalBackgroundImage_Margin               OFFSET(getStruct<T>, {0x24, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_VerticalTopSlotImage_DrawAs                  OFFSET(get<T>, {0x34, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_HorizontalTopSlotImage_DrawAs                OFFSET(get<T>, {0x35, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_VerticalBottomSlotImage_DrawAs               OFFSET(get<T>, {0x36, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_HorizontalBottomSlotImage_DrawAs             OFFSET(get<T>, {0x37, 1, 0, 0})
+	CMember(class UObject*)                            WidgetBarStyle_NormalThumbImage_ResourceObject              OFFSET(get<T>, {0x38, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   WidgetBarStyle_NormalThumbImage_ImageSize                   OFFSET(getStruct<T>, {0x40, 8, 0, 0})
+	SMember(FSlateColor)                               WidgetBarStyle_NormalThumbImage_TintColor                   OFFSET(getStruct<T>, {0x48, 20, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_NormalThumbImage_DrawAs                      OFFSET(get<T>, {0x5C, 1, 0, 0})
+	SMember(FVector4)                                  WidgetBarStyle_NormalThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0x60, 32, 0, 0})
+	DMember(float)                                     WidgetBarStyle_NormalThumbImage_OutlineSettings_Width       OFFSET(get<float>, {0x80, 4, 0, 0})
+	SMember(FLinearColor)                              WidgetBarStyle_NormalThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0x84, 16, 0, 0})
+	CMember(ESlateBrushRoundingType)                   WidgetBarStyle_NormalThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0x94, 1, 0, 0})
+	CMember(class UObject*)                            WidgetBarStyle_HoveredThumbImage_ResourceObject             OFFSET(get<T>, {0x98, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   WidgetBarStyle_HoveredThumbImage_ImageSize                  OFFSET(getStruct<T>, {0xA0, 8, 0, 0})
+	SMember(FSlateColor)                               WidgetBarStyle_HoveredThumbImage_TintColor                  OFFSET(getStruct<T>, {0xA8, 20, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_HoveredThumbImage_DrawAs                     OFFSET(get<T>, {0xBC, 1, 0, 0})
+	SMember(FVector4)                                  WidgetBarStyle_HoveredThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0xC0, 32, 0, 0})
+	SMember(FLinearColor)                              WidgetBarStyle_HoveredThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0xE0, 16, 0, 0})
+	DMember(float)                                     WidgetBarStyle_HoveredThumbImage_OutlineSettings_Width      OFFSET(get<float>, {0xF0, 4, 0, 0})
+	CMember(ESlateBrushRoundingType)                   WidgetBarStyle_HoveredThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0xF4, 1, 0, 0})
+	CMember(class UObject*)                            WidgetBarStyle_DraggedThumbImage_ResourceObject             OFFSET(get<T>, {0xF8, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   WidgetBarStyle_DraggedThumbImage_ImageSize                  OFFSET(getStruct<T>, {0x100, 8, 0, 0})
+	SMember(FLinearColor)                              WidgetBarStyle_DraggedThumbImage_TintColor_SpecifiedColor   OFFSET(getStruct<T>, {0x108, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       WidgetBarStyle_DraggedThumbImage_DrawAs                     OFFSET(get<T>, {0x118, 1, 0, 0})
+	SMember(FVector4)                                  WidgetBarStyle_DraggedThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0x120, 32, 0, 0})
+	SMember(FLinearColor)                              WidgetBarStyle_DraggedThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0x140, 16, 0, 0})
+	DMember(float)                                     WidgetBarStyle_DraggedThumbImage_OutlineSettings_Width      OFFSET(get<float>, {0x150, 4, 0, 0})
+	CMember(ESlateBrushRoundingType)                   WidgetBarStyle_DraggedThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0x154, 1, 0, 0})
+	SMember(FVector2D)                                 ScrollbarThickness                                          OFFSET(getStruct<T>, {0x158, 16, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_6172c7863c3dd210
+/// Size: 0x015C (0x000000 - 0x00015C)
+class FPropertyBag_6172c7863c3dd210 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 348;
+
+public:
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_HorizontalBackgroundImage_DrawAs             OFFSET(get<T>, {0x0, 1, 0, 0})
+	CMember(class UObject*)                            ScrollBarStyle_VerticalBackgroundImage_ResourceObject       OFFSET(get<T>, {0x8, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   ScrollBarStyle_VerticalBackgroundImage_ImageSize            OFFSET(getStruct<T>, {0x10, 8, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_VerticalBackgroundImage_DrawAs               OFFSET(get<T>, {0x18, 1, 0, 0})
+	SMember(FMargin)                                   ScrollBarStyle_VerticalBackgroundImage_Margin               OFFSET(getStruct<T>, {0x1C, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_VerticalTopSlotImage_DrawAs                  OFFSET(get<T>, {0x2C, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_HorizontalTopSlotImage_DrawAs                OFFSET(get<T>, {0x2D, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_VerticalBottomSlotImage_DrawAs               OFFSET(get<T>, {0x2E, 1, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_HorizontalBottomSlotImage_DrawAs             OFFSET(get<T>, {0x2F, 1, 0, 0})
+	CMember(class UObject*)                            ScrollBarStyle_NormalThumbImage_ResourceObject              OFFSET(get<T>, {0x30, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   ScrollBarStyle_NormalThumbImage_ImageSize                   OFFSET(getStruct<T>, {0x38, 8, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_NormalThumbImage_TintColor_SpecifiedColor    OFFSET(getStruct<T>, {0x40, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_NormalThumbImage_DrawAs                      OFFSET(get<T>, {0x50, 1, 0, 0})
+	SMember(FVector4)                                  ScrollBarStyle_NormalThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0x60, 32, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_NormalThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0x80, 16, 0, 0})
+	DMember(float)                                     ScrollBarStyle_NormalThumbImage_OutlineSettings_Width       OFFSET(get<float>, {0x90, 4, 0, 0})
+	CMember(ESlateBrushRoundingType)                   ScrollBarStyle_NormalThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0x94, 1, 0, 0})
+	CMember(class UObject*)                            ScrollBarStyle_HoveredThumbImage_ResourceObject             OFFSET(get<T>, {0x98, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   ScrollBarStyle_HoveredThumbImage_ImageSize                  OFFSET(getStruct<T>, {0xA0, 8, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_HoveredThumbImage_TintColor_SpecifiedColor   OFFSET(getStruct<T>, {0xA8, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_HoveredThumbImage_DrawAs                     OFFSET(get<T>, {0xB8, 1, 0, 0})
+	SMember(FVector4)                                  ScrollBarStyle_HoveredThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0xC0, 32, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_HoveredThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0xE0, 16, 0, 0})
+	DMember(float)                                     ScrollBarStyle_HoveredThumbImage_OutlineSettings_Width      OFFSET(get<float>, {0xF0, 4, 0, 0})
+	CMember(ESlateBrushRoundingType)                   ScrollBarStyle_HoveredThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0xF4, 1, 0, 0})
+	CMember(class UObject*)                            ScrollBarStyle_DraggedThumbImage_ResourceObject             OFFSET(get<T>, {0xF8, 8, 0, 0})
+	SMember(FDeprecateSlateVector2D)                   ScrollBarStyle_DraggedThumbImage_ImageSize                  OFFSET(getStruct<T>, {0x100, 8, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_DraggedThumbImage_TintColor_SpecifiedColor   OFFSET(getStruct<T>, {0x108, 16, 0, 0})
+	CMember(ESlateBrushDrawType)                       ScrollBarStyle_DraggedThumbImage_DrawAs                     OFFSET(get<T>, {0x118, 1, 0, 0})
+	SMember(FVector4)                                  ScrollBarStyle_DraggedThumbImage_OutlineSettings_CornerRadii OFFSET(getStruct<T>, {0x120, 32, 0, 0})
+	SMember(FLinearColor)                              ScrollBarStyle_DraggedThumbImage_OutlineSettings_Color_SpecifiedColor OFFSET(getStruct<T>, {0x140, 16, 0, 0})
+	DMember(float)                                     ScrollBarStyle_DraggedThumbImage_OutlineSettings_Width      OFFSET(get<float>, {0x150, 4, 0, 0})
+	CMember(ESlateBrushRoundingType)                   ScrollBarStyle_DraggedThumbImage_OutlineSettings_RoundingType OFFSET(get<T>, {0x154, 1, 0, 0})
+	DMember(float)                                     ScrollBarStyle_Thickness                                    OFFSET(get<float>, {0x158, 4, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_28377a4527d09c29
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_d506ab25012ad73c : public MDKBase
+class FPropertyBag_28377a4527d09c29 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -104,9 +199,9 @@ public:
 	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_22dae022b6f7a9ed
+/// Struct /Engine/Transient.PropertyBag_eb21255768d8685e
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_22dae022b6f7a9ed : public MDKBase
+class FPropertyBag_eb21255768d8685e : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -116,9 +211,9 @@ public:
 	SMember(FName)                                     Font_TypefaceFontName                                       OFFSET(getStruct<T>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_6f6f22aa481c3441
+/// Struct /Engine/Transient.PropertyBag_4112c2ed4a89020
 /// Size: 0x001C (0x000000 - 0x00001C)
-class FPropertyBag_6f6f22aa481c3441 : public MDKBase
+class FPropertyBag_4112c2ed4a89020 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -133,9 +228,9 @@ public:
 	DMember(float)                                     Font_SkewAmount                                             OFFSET(get<float>, {0x18, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_cb8a0993adb14e1c
+/// Struct /Engine/Transient.PropertyBag_3542a7481c99704e
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_cb8a0993adb14e1c : public MDKBase
+class FPropertyBag_3542a7481c99704e : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -146,9 +241,9 @@ public:
 	DMember(int32_t)                                   Font_LetterSpacing                                          OFFSET(get<int32_t>, {0x4, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_6be0b158512782d8
+/// Struct /Engine/Transient.PropertyBag_d9e19fc50be6ba34
 /// Size: 0x000C (0x000000 - 0x00000C)
-class FPropertyBag_6be0b158512782d8 : public MDKBase
+class FPropertyBag_d9e19fc50be6ba34 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -160,9 +255,9 @@ public:
 	DMember(int32_t)                                   Font_LetterSpacing                                          OFFSET(get<int32_t>, {0x8, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_628bee2b2e5ef9c9
+/// Struct /Engine/Transient.PropertyBag_6447039cd77243a8
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_628bee2b2e5ef9c9 : public MDKBase
+class FPropertyBag_6447039cd77243a8 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -173,9 +268,9 @@ public:
 	DMember(int32_t)                                   Font_LetterSpacing                                          OFFSET(get<int32_t>, {0x4, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_70feafebe0d70ca8
+/// Struct /Engine/Transient.PropertyBag_d751825b3d37502b
 /// Size: 0x0009 (0x000000 - 0x000009)
-class FPropertyBag_70feafebe0d70ca8 : public MDKBase
+class FPropertyBag_d751825b3d37502b : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -187,9 +282,9 @@ public:
 	CMember(ETextTransformPolicy)                      TextTransformPolicy                                         OFFSET(get<T>, {0x8, 1, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_55d4f75a2e4abcf7
+/// Struct /Engine/Transient.PropertyBag_f5d02365169c15ce
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_55d4f75a2e4abcf7 : public MDKBase
+class FPropertyBag_f5d02365169c15ce : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -199,9 +294,9 @@ public:
 	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_2d329f0f1d87fc48
+/// Struct /Engine/Transient.PropertyBag_c0ab73a50044884d
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_2d329f0f1d87fc48 : public MDKBase
+class FPropertyBag_c0ab73a50044884d : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -211,9 +306,9 @@ public:
 	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_d30199ed93342094
+/// Struct /Engine/Transient.PropertyBag_eb425be269619abb
 /// Size: 0x0014 (0x000000 - 0x000014)
-class FPropertyBag_d30199ed93342094 : public MDKBase
+class FPropertyBag_eb425be269619abb : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -226,9 +321,9 @@ public:
 	DMember(float)                                     Font_SkewAmount                                             OFFSET(get<float>, {0x10, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_bcc79700371574ac
+/// Struct /Engine/Transient.PropertyBag_341393f92b541299
 /// Size: 0x0004 (0x000000 - 0x000004)
-class FPropertyBag_bcc79700371574ac : public MDKBase
+class FPropertyBag_341393f92b541299 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -238,9 +333,9 @@ public:
 	SMember(FName)                                     Font_TypefaceFontName                                       OFFSET(getStruct<T>, {0x0, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_34a4a38e215c73c6
+/// Struct /Engine/Transient.PropertyBag_320266dfb085b69a
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_34a4a38e215c73c6 : public MDKBase
+class FPropertyBag_320266dfb085b69a : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -250,9 +345,9 @@ public:
 	CMember(class UObject*)                            Font_FontMaterial                                           OFFSET(get<T>, {0x0, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_a0abadac782ed67d
+/// Struct /Engine/Transient.PropertyBag_937aaa2f5960df19
 /// Size: 0x0064 (0x000000 - 0x000064)
-class FPropertyBag_a0abadac782ed67d : public MDKBase
+class FPropertyBag_937aaa2f5960df19 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -266,9 +361,9 @@ public:
 	SMember(FSlateColor)                               Color_Disabled                                              OFFSET(getStruct<T>, {0x50, 20, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_5a6de1d1ee4e96c9
+/// Struct /Engine/Transient.PropertyBag_7a790f6d03d34f98
 /// Size: 0x0058 (0x000000 - 0x000058)
-class FPropertyBag_5a6de1d1ee4e96c9 : public MDKBase
+class FPropertyBag_7a790f6d03d34f98 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -278,9 +373,112 @@ public:
 	SMember(FSlateFontInfo)                            Font                                                        OFFSET(getStruct<T>, {0x0, 88, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_1f786dc64334588b
+/// Struct /Engine/Transient.PropertyBag_94c42db38d4b0318
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_1f786dc64334588b : public MDKBase
+class FPropertyBag_94c42db38d4b0318 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 8;
+
+public:
+	CMember(class USoundBase*)                         MatchMakingSucceededSound                                   OFFSET(get<T>, {0x0, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_bed29ee889c204f4
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FPropertyBag_bed29ee889c204f4 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	DMember(float)                                     SecondsPriorToTransSound                                    OFFSET(get<float>, {0x0, 4, 0, 0})
+	CMember(class USoundBase*)                         TransitionSound                                             OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_ac47ee378e95988d
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FPropertyBag_ac47ee378e95988d : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	CMember(class USoundBase*)                         MTXOfferTileIntroWhoosh                                     OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class USoundBase*)                         ShopRowWhooshIn                                             OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_2424e8de0968c95
+/// Size: 0x0008 (0x000000 - 0x000008)
+class FPropertyBag_2424e8de0968c95 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 8;
+
+public:
+	CMember(class USoundBase*)                         ShopRowWhooshIn                                             OFFSET(get<T>, {0x0, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_1e146e342ff67b97
+/// Size: 0x0008 (0x000000 - 0x000008)
+class FPropertyBag_1e146e342ff67b97 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 8;
+
+public:
+	CMember(class USoundBase*)                         LockerCategoryWhooshSound                                   OFFSET(get<T>, {0x0, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_a2b8a94c0fdff921
+/// Size: 0x0020 (0x000000 - 0x000020)
+class FPropertyBag_a2b8a94c0fdff921 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 32;
+
+public:
+	CMember(class USoundBase*)                         BannerAppearSound                                           OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class USoundBase*)                         BannerAwaySound                                             OFFSET(get<T>, {0x8, 8, 0, 0})
+	CMember(class USoundBase*)                         IntroSound                                                  OFFSET(get<T>, {0x10, 8, 0, 0})
+	CMember(class USoundBase*)                         OutroSound                                                  OFFSET(get<T>, {0x18, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_3123f4e9fec1b2eb
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FPropertyBag_3123f4e9fec1b2eb : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	CMember(class USoundBase*)                         ShopIntroWhooshSound                                        OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class USoundBase*)                         ContentWhoosh_RetractSound                                  OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_3622fcb16891cabc
+/// Size: 0x0010 (0x000000 - 0x000010)
+class FPropertyBag_3622fcb16891cabc : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 16;
+
+public:
+	CMember(class USoundBase*)                         ErrorWindowAppearSound                                      OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class USoundBase*)                         ErrorWindowAwaySound                                        OFFSET(get<T>, {0x8, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_5330c7d10ed80ede
+/// Size: 0x0008 (0x000000 - 0x000008)
+class FPropertyBag_5330c7d10ed80ede : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -290,9 +488,9 @@ public:
 	CMember(class USoundBase*)                         PressedSound                                                OFFSET(get<T>, {0x0, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_20c4d2eb2c917fe0
+/// Struct /Engine/Transient.PropertyBag_ffc90ed638c9bc18
 /// Size: 0x0028 (0x000000 - 0x000028)
-class FPropertyBag_20c4d2eb2c917fe0 : public MDKBase
+class FPropertyBag_ffc90ed638c9bc18 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -306,9 +504,9 @@ public:
 	CMember(class USoundBase*)                         HoldCompletedSound                                          OFFSET(get<T>, {0x20, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_1a83f30efa536af6
+/// Struct /Engine/Transient.PropertyBag_6e4e44cb262a9b98
 /// Size: 0x0030 (0x000000 - 0x000030)
-class FPropertyBag_1a83f30efa536af6 : public MDKBase
+class FPropertyBag_6e4e44cb262a9b98 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -319,9 +517,9 @@ public:
 	SMember(FSlateSound)                               HoveredSlateSoundOverride                                   OFFSET(getStruct<T>, {0x18, 24, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_45cc8c371db0e839
+/// Struct /Engine/Transient.PropertyBag_409a564b4f7d8e42
 /// Size: 0x0020 (0x000000 - 0x000020)
-class FPropertyBag_45cc8c371db0e839 : public MDKBase
+class FPropertyBag_409a564b4f7d8e42 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -334,9 +532,9 @@ public:
 	CMember(class USoundBase*)                         HoldCompletedSound                                          OFFSET(get<T>, {0x18, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_220a50ce7a9d729c
+/// Struct /Engine/Transient.PropertyBag_56bcd875cc0a377b
 /// Size: 0x0018 (0x000000 - 0x000018)
-class FPropertyBag_220a50ce7a9d729c : public MDKBase
+class FPropertyBag_56bcd875cc0a377b : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -348,9 +546,9 @@ public:
 	CMember(class USoundBase*)                         BlockOutlineHoverSound                                      OFFSET(get<T>, {0x10, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_d03e10ac31236a71
+/// Struct /Engine/Transient.PropertyBag_873bc3ab982ff91f
 /// Size: 0x0048 (0x000000 - 0x000048)
-class FPropertyBag_d03e10ac31236a71 : public MDKBase
+class FPropertyBag_873bc3ab982ff91f : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -364,9 +562,9 @@ public:
 	CMember(class USoundBase*)                         ActivityBrowserTileHoverSound                               OFFSET(get<T>, {0x40, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_b73a1a0f2dcad9d1
+/// Struct /Engine/Transient.PropertyBag_1c38904a3a5e043f
 /// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_b73a1a0f2dcad9d1 : public MDKBase
+class FPropertyBag_1c38904a3a5e043f : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -377,9 +575,9 @@ public:
 	CMember(class USoundBase*)                         HoveredSound                                                OFFSET(get<T>, {0x8, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_c497730dfb64f80b
+/// Struct /Engine/Transient.PropertyBag_4115530af2ce0c8a
 /// Size: 0x0030 (0x000000 - 0x000030)
-class FPropertyBag_c497730dfb64f80b : public MDKBase
+class FPropertyBag_4115530af2ce0c8a : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -394,9 +592,9 @@ public:
 	CMember(class USoundBase*)                         HoldCompletedSound                                          OFFSET(get<T>, {0x28, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_98b9bd7f905d0fff
+/// Struct /Engine/Transient.PropertyBag_52a6567b502737f1
 /// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_98b9bd7f905d0fff : public MDKBase
+class FPropertyBag_52a6567b502737f1 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -406,9 +604,9 @@ public:
 	CMember(class USoundBase*)                         ListEntryHoveredSound                                       OFFSET(get<T>, {0x0, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_e51634010aa438b7
+/// Struct /Engine/Transient.PropertyBag_f53d87f16aafb287
 /// Size: 0x0030 (0x000000 - 0x000030)
-class FPropertyBag_e51634010aa438b7 : public MDKBase
+class FPropertyBag_f53d87f16aafb287 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -419,9 +617,9 @@ public:
 	SMember(FSlateSound)                               HoveredSlateSoundOverride                                   OFFSET(getStruct<T>, {0x18, 24, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_1708fa3970bd9e64
+/// Struct /Engine/Transient.PropertyBag_2b808b1a17b40622
 /// Size: 0x0020 (0x000000 - 0x000020)
-class FPropertyBag_1708fa3970bd9e64 : public MDKBase
+class FPropertyBag_2b808b1a17b40622 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -434,112 +632,9 @@ public:
 	CMember(class USoundBase*)                         CompleteSound                                               OFFSET(get<T>, {0x18, 8, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_78458b8cd0b08bb1
-/// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_78458b8cd0b08bb1 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 8;
-
-public:
-	CMember(class USoundBase*)                         MatchMakingSucceededSound                                   OFFSET(get<T>, {0x0, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_dae5475d5412c8b0
-/// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_dae5475d5412c8b0 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 16;
-
-public:
-	DMember(float)                                     SecondsPriorToTransSound                                    OFFSET(get<float>, {0x0, 4, 0, 0})
-	CMember(class USoundBase*)                         TransitionSound                                             OFFSET(get<T>, {0x8, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_277325d0f6b6f71b
-/// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_277325d0f6b6f71b : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 16;
-
-public:
-	CMember(class USoundBase*)                         MTXOfferTileIntroWhoosh                                     OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class USoundBase*)                         ShopRowWhooshIn                                             OFFSET(get<T>, {0x8, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_b6174542b5fe0eda
-/// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_b6174542b5fe0eda : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 8;
-
-public:
-	CMember(class USoundBase*)                         ShopRowWhooshIn                                             OFFSET(get<T>, {0x0, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_db4a2bbd29f43907
-/// Size: 0x0008 (0x000000 - 0x000008)
-class FPropertyBag_db4a2bbd29f43907 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 8;
-
-public:
-	CMember(class USoundBase*)                         LockerCategoryWhooshSound                                   OFFSET(get<T>, {0x0, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_454811af9268b32e
-/// Size: 0x0020 (0x000000 - 0x000020)
-class FPropertyBag_454811af9268b32e : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 32;
-
-public:
-	CMember(class USoundBase*)                         BannerAppearSound                                           OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class USoundBase*)                         BannerAwaySound                                             OFFSET(get<T>, {0x8, 8, 0, 0})
-	CMember(class USoundBase*)                         IntroSound                                                  OFFSET(get<T>, {0x10, 8, 0, 0})
-	CMember(class USoundBase*)                         OutroSound                                                  OFFSET(get<T>, {0x18, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_fce4dcaa5fe68a75
-/// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_fce4dcaa5fe68a75 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 16;
-
-public:
-	CMember(class USoundBase*)                         ShopIntroWhooshSound                                        OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class USoundBase*)                         ContentWhoosh_RetractSound                                  OFFSET(get<T>, {0x8, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_c625ab53a94ce1ed
-/// Size: 0x0010 (0x000000 - 0x000010)
-class FPropertyBag_c625ab53a94ce1ed : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 16;
-
-public:
-	CMember(class USoundBase*)                         ErrorWindowAppearSound                                      OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class USoundBase*)                         ErrorWindowAwaySound                                        OFFSET(get<T>, {0x8, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_a73aff4f29ea7c3f
+/// Struct /Engine/Transient.PropertyBag_8df24bc9b9bccd62
 /// Size: 0x021C (0x000000 - 0x00021C)
-class FPropertyBag_a73aff4f29ea7c3f : public MDKBase
+class FPropertyBag_8df24bc9b9bccd62 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -557,9 +652,21 @@ public:
 	DMember(int32_t)                                   SmallHeight                                                 OFFSET(get<int32_t>, {0x218, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_ac947643f42d076a
+/// Struct /Engine/Transient.PropertyBag_c7587567e1f669b8
+/// Size: 0x0004 (0x000000 - 0x000004)
+class FPropertyBag_c7587567e1f669b8 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 4;
+
+public:
+	DMember(float)                                     LargePrimaryFont_Size                                       OFFSET(get<float>, {0x0, 4, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_ca1d1b08e0dc3d7f
 /// Size: 0x0058 (0x000000 - 0x000058)
-class FPropertyBag_ac947643f42d076a : public MDKBase
+class FPropertyBag_ca1d1b08e0dc3d7f : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -569,120 +676,9 @@ public:
 	SMember(FSlateFontInfo)                            GamepadPromptFont                                           OFFSET(getStruct<T>, {0x0, 88, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_8f8993a80e2e7cbf
-/// Size: 0x0040 (0x000000 - 0x000040)
-class FPropertyBag_8f8993a80e2e7cbf : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 64;
-
-public:
-	CMember(class UObject*)                            LargePrimaryFont_FontMaterial                               OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class UObject*)                            LargeSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x8, 8, 0, 0})
-	CMember(class UObject*)                            MediumPrimaryFont_FontMaterial                              OFFSET(get<T>, {0x10, 8, 0, 0})
-	CMember(class UObject*)                            MeduimSecondaryFont_FontMaterial                            OFFSET(get<T>, {0x18, 8, 0, 0})
-	CMember(class UObject*)                            SmallPrimaryFont_FontMaterial                               OFFSET(get<T>, {0x20, 8, 0, 0})
-	CMember(class UObject*)                            SmallSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x28, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  BackgroundMaterial                                          OFFSET(get<T>, {0x30, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  BorderMaterial                                              OFFSET(get<T>, {0x38, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_809d1057048d5cbe
-/// Size: 0x0040 (0x000000 - 0x000040)
-class FPropertyBag_809d1057048d5cbe : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 64;
-
-public:
-	CMember(class UMaterialInstance*)                  RegularFontMaterial                                         OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  RegularSecondaryFontMaterial                                OFFSET(get<T>, {0x8, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  RegularBackgroundMaterial                                   OFFSET(get<T>, {0x10, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  RegularOutlineMaterial                                      OFFSET(get<T>, {0x18, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  QuietFontMaterial                                           OFFSET(get<T>, {0x20, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  QuietSecondaryFontMaterial                                  OFFSET(get<T>, {0x28, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  QuietBackgroundMaterial                                     OFFSET(get<T>, {0x30, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  QuietOutlineMaterial                                        OFFSET(get<T>, {0x38, 8, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_6c2e12509819cad5
-/// Size: 0x0078 (0x000000 - 0x000078)
-class FPropertyBag_6c2e12509819cad5 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 120;
-
-public:
-	CMember(class UObject*)                            SmallPrimaryFont_FontMaterial                               OFFSET(get<T>, {0x0, 8, 0, 0})
-	CMember(class UObject*)                            SmallSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x8, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  BackgroundMaterial                                          OFFSET(get<T>, {0x10, 8, 0, 0})
-	CMember(class UMaterialInstance*)                  BorderMaterial                                              OFFSET(get<T>, {0x18, 8, 0, 0})
-	SMember(FSlateFontInfo)                            GamepadPromptFont                                           OFFSET(getStruct<T>, {0x20, 88, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_edd612634593f9cd
-/// Size: 0x0090 (0x000000 - 0x000090)
-class FPropertyBag_edd612634593f9cd : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 144;
-
-public:
-	CMember(class UObject*)                            LargePrimaryFont_FontObject                                 OFFSET(get<T>, {0x0, 8, 0, 0})
-	SMember(FName)                                     LargePrimaryFont_TypefaceFontName                           OFFSET(getStruct<T>, {0x8, 4, 0, 0})
-	DMember(float)                                     LargePrimaryFont_Size                                       OFFSET(get<float>, {0xC, 4, 0, 0})
-	DMember(int32_t)                                   LargePrimaryFont_LetterSpacing                              OFFSET(get<int32_t>, {0x10, 4, 0, 0})
-	DMember(float)                                     LargePrimaryFont_SkewAmount                                 OFFSET(get<float>, {0x14, 4, 0, 0})
-	CMember(class UObject*)                            MediumPrimaryFont_FontObject                                OFFSET(get<T>, {0x18, 8, 0, 0})
-	SMember(FName)                                     MediumPrimaryFont_TypefaceFontName                          OFFSET(getStruct<T>, {0x20, 4, 0, 0})
-	DMember(float)                                     MediumPrimaryFont_Size                                      OFFSET(get<float>, {0x24, 4, 0, 0})
-	DMember(int32_t)                                   MediumPrimaryFont_LetterSpacing                             OFFSET(get<int32_t>, {0x28, 4, 0, 0})
-	DMember(float)                                     MediumPrimaryFont_SkewAmount                                OFFSET(get<float>, {0x2C, 4, 0, 0})
-	CMember(class UObject*)                            SmallPrimaryFont_FontObject                                 OFFSET(get<T>, {0x30, 8, 0, 0})
-	SMember(FName)                                     SmallPrimaryFont_TypefaceFontName                           OFFSET(getStruct<T>, {0x38, 4, 0, 0})
-	DMember(float)                                     SmallPrimaryFont_Size                                       OFFSET(get<float>, {0x3C, 4, 0, 0})
-	DMember(int32_t)                                   SmallPrimaryFont_LetterSpacing                              OFFSET(get<int32_t>, {0x40, 4, 0, 0})
-	DMember(float)                                     SmallPrimaryFont_SkewAmount                                 OFFSET(get<float>, {0x44, 4, 0, 0})
-	CMember(class UObject*)                            LargeSecondaryFont_FontObject                               OFFSET(get<T>, {0x48, 8, 0, 0})
-	SMember(FName)                                     LargeSecondaryFont_TypefaceFontName                         OFFSET(getStruct<T>, {0x50, 4, 0, 0})
-	DMember(float)                                     LargeSecondaryFont_Size                                     OFFSET(get<float>, {0x54, 4, 0, 0})
-	DMember(int32_t)                                   LargeSecondaryFont_LetterSpacing                            OFFSET(get<int32_t>, {0x58, 4, 0, 0})
-	DMember(float)                                     LargeSecondaryFont_SkewAmount                               OFFSET(get<float>, {0x5C, 4, 0, 0})
-	CMember(class UObject*)                            MeduimSecondaryFont_FontObject                              OFFSET(get<T>, {0x60, 8, 0, 0})
-	SMember(FName)                                     MeduimSecondaryFont_TypefaceFontName                        OFFSET(getStruct<T>, {0x68, 4, 0, 0})
-	DMember(float)                                     MeduimSecondaryFont_Size                                    OFFSET(get<float>, {0x6C, 4, 0, 0})
-	DMember(int32_t)                                   MeduimSecondaryFont_LetterSpacing                           OFFSET(get<int32_t>, {0x70, 4, 0, 0})
-	DMember(float)                                     MeduimSecondaryFont_SkewAmount                              OFFSET(get<float>, {0x74, 4, 0, 0})
-	CMember(class UObject*)                            SmallSecondaryFont_FontObject                               OFFSET(get<T>, {0x78, 8, 0, 0})
-	SMember(FName)                                     SmallSecondaryFont_TypefaceFontName                         OFFSET(getStruct<T>, {0x80, 4, 0, 0})
-	DMember(float)                                     SmallSecondaryFont_Size                                     OFFSET(get<float>, {0x84, 4, 0, 0})
-	DMember(int32_t)                                   SmallSecondaryFont_LetterSpacing                            OFFSET(get<int32_t>, {0x88, 4, 0, 0})
-	DMember(float)                                     SmallSecondaryFont_SkewAmount                               OFFSET(get<float>, {0x8C, 4, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_2c3d4f1c2efad9b4
-/// Size: 0x0018 (0x000000 - 0x000018)
-class FPropertyBag_2c3d4f1c2efad9b4 : public MDKBase
-{ 
-	friend MDKHandler;
-	friend MDKBase;
-	static inline constexpr uint64_t __MDKClassSize = 24;
-
-public:
-	CMember(class UObject*)                            Font_FontObject                                             OFFSET(get<T>, {0x0, 8, 0, 0})
-	SMember(FName)                                     Font_TypefaceFontName                                       OFFSET(getStruct<T>, {0x8, 4, 0, 0})
-	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0xC, 4, 0, 0})
-	DMember(int32_t)                                   Font_LetterSpacing                                          OFFSET(get<int32_t>, {0x10, 4, 0, 0})
-	DMember(float)                                     Font_SkewAmount                                             OFFSET(get<float>, {0x14, 4, 0, 0})
-};
-
-/// Struct /Engine/Transient.PropertyBag_b679bfb07d6f82c1
+/// Struct /Engine/Transient.PropertyBag_ecb097eb3ab41385
 /// Size: 0x0030 (0x000000 - 0x000030)
-class FPropertyBag_b679bfb07d6f82c1 : public MDKBase
+class FPropertyBag_ecb097eb3ab41385 : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
@@ -701,19 +697,73 @@ public:
 	DMember(float)                                     TabFont_SkewAmount                                          OFFSET(get<float>, {0x2C, 4, 0, 0})
 };
 
-/// Struct /Engine/Transient.PropertyBag_5479f08d3e9050db
+/// Struct /Engine/Transient.PropertyBag_95f64d267364aeec
 /// Size: 0x0018 (0x000000 - 0x000018)
-class FPropertyBag_5479f08d3e9050db : public MDKBase
+class FPropertyBag_95f64d267364aeec : public MDKBase
 { 
 	friend MDKHandler;
 	friend MDKBase;
 	static inline constexpr uint64_t __MDKClassSize = 24;
 
 public:
-	CMember(class UObject*)                            SmallPrimaryFont_FontObject                                 OFFSET(get<T>, {0x0, 8, 0, 0})
-	SMember(FName)                                     SmallPrimaryFont_TypefaceFontName                           OFFSET(getStruct<T>, {0x8, 4, 0, 0})
-	DMember(float)                                     SmallPrimaryFont_Size                                       OFFSET(get<float>, {0xC, 4, 0, 0})
-	DMember(int32_t)                                   SmallPrimaryFont_LetterSpacing                              OFFSET(get<int32_t>, {0x10, 4, 0, 0})
-	DMember(float)                                     SmallPrimaryFont_SkewAmount                                 OFFSET(get<float>, {0x14, 4, 0, 0})
+	CMember(class UObject*)                            Font_FontObject                                             OFFSET(get<T>, {0x0, 8, 0, 0})
+	SMember(FName)                                     Font_TypefaceFontName                                       OFFSET(getStruct<T>, {0x8, 4, 0, 0})
+	DMember(float)                                     Font_Size                                                   OFFSET(get<float>, {0xC, 4, 0, 0})
+	DMember(int32_t)                                   Font_LetterSpacing                                          OFFSET(get<int32_t>, {0x10, 4, 0, 0})
+	DMember(float)                                     Font_SkewAmount                                             OFFSET(get<float>, {0x14, 4, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_7c26a5880486864b
+/// Size: 0x0040 (0x000000 - 0x000040)
+class FPropertyBag_7c26a5880486864b : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 64;
+
+public:
+	CMember(class UObject*)                            LargePrimaryFont_FontMaterial                               OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class UObject*)                            LargeSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x8, 8, 0, 0})
+	CMember(class UObject*)                            MediumPrimaryFont_FontMaterial                              OFFSET(get<T>, {0x10, 8, 0, 0})
+	CMember(class UObject*)                            MeduimSecondaryFont_FontMaterial                            OFFSET(get<T>, {0x18, 8, 0, 0})
+	CMember(class UObject*)                            SmallPrimaryFont_FontMaterial                               OFFSET(get<T>, {0x20, 8, 0, 0})
+	CMember(class UObject*)                            SmallSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x28, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  BackgroundMaterial                                          OFFSET(get<T>, {0x30, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  BorderMaterial                                              OFFSET(get<T>, {0x38, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_3152df0eae58ce28
+/// Size: 0x0040 (0x000000 - 0x000040)
+class FPropertyBag_3152df0eae58ce28 : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 64;
+
+public:
+	CMember(class UMaterialInstance*)                  RegularFontMaterial                                         OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  RegularSecondaryFontMaterial                                OFFSET(get<T>, {0x8, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  RegularBackgroundMaterial                                   OFFSET(get<T>, {0x10, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  RegularOutlineMaterial                                      OFFSET(get<T>, {0x18, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  QuietFontMaterial                                           OFFSET(get<T>, {0x20, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  QuietSecondaryFontMaterial                                  OFFSET(get<T>, {0x28, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  QuietBackgroundMaterial                                     OFFSET(get<T>, {0x30, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  QuietOutlineMaterial                                        OFFSET(get<T>, {0x38, 8, 0, 0})
+};
+
+/// Struct /Engine/Transient.PropertyBag_1bdcde19191b1cdd
+/// Size: 0x0078 (0x000000 - 0x000078)
+class FPropertyBag_1bdcde19191b1cdd : public MDKBase
+{ 
+	friend MDKHandler;
+	friend MDKBase;
+	static inline constexpr uint64_t __MDKClassSize = 120;
+
+public:
+	CMember(class UObject*)                            SmallPrimaryFont_FontMaterial                               OFFSET(get<T>, {0x0, 8, 0, 0})
+	CMember(class UObject*)                            SmallSecondaryFont_FontMaterial                             OFFSET(get<T>, {0x8, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  BackgroundMaterial                                          OFFSET(get<T>, {0x10, 8, 0, 0})
+	CMember(class UMaterialInstance*)                  BorderMaterial                                              OFFSET(get<T>, {0x18, 8, 0, 0})
+	SMember(FSlateFontInfo)                            GamepadPromptFont                                           OFFSET(getStruct<T>, {0x20, 88, 0, 0})
 };
 

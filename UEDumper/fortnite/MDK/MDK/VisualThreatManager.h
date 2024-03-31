@@ -46,43 +46,43 @@ public:
 
 	/// Functions
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Find Matching Wind Mesh Index And Write Bool
-	// void Find Matching Wind Mesh Index And Write Bool(FVector Wind location, bool& Storm Cyl Mesh Match, int32_t& Wind Cyl Mesh Array Match Index); // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Find Matching Wind Mesh Index And Write Bool(FVector Wind location, bool& Storm Cyl Mesh Match, int32_t& Wind Cyl Mesh Array Match Index); // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.SetWindMatVariables
-	// void SetWindMatVariables(class UMaterialInstanceDynamic* Mid, bool Set AnimatedCylinderCenter, FVector AnimatedCylinderCenter, bool Set Animating Wind Magnitude, double Animating Wind Magnitude, bool Set Static Wind Magnitude, double Static Wind Magnitude, bool Set CylinderCenter, FVector CylinderCenter, bool Set WindVector, FVector WindVector, bool Set WindCrossVector, FVector WindCrossVector, bool Set OverallOuterRadius, double OverallOuterRadius, bool Set OverallInnerRadius, double OverallInnerRadius, bool Set Wind Still 0 or Animating 1, double Wind Still 0 or Animating 1, bool Set Circular Shader?, double Circular Shader?, bool& NewParam); // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void SetWindMatVariables(class UMaterialInstanceDynamic* Mid, bool Set AnimatedCylinderCenter, FVector AnimatedCylinderCenter, bool Set Animating Wind Magnitude, double Animating Wind Magnitude, bool Set Static Wind Magnitude, double Static Wind Magnitude, bool Set CylinderCenter, FVector CylinderCenter, bool Set WindVector, FVector WindVector, bool Set WindCrossVector, FVector WindCrossVector, bool Set OverallOuterRadius, double OverallOuterRadius, bool Set OverallInnerRadius, double OverallInnerRadius, bool Set Wind Still 0 or Animating 1, double Wind Still 0 or Animating 1, bool Set Circular Shader?, double Circular Shader?, bool& NewParam); // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.UpdateWindDeltaCyl
-	// void UpdateWindDeltaCyl(double Static Cylinder Outer Radius, double duration, class UMaterialInstanceDynamic* Mid, bool Is Wind Circular?); // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void UpdateWindDeltaCyl(double Static Cylinder Outer Radius, double duration, class UMaterialInstanceDynamic* Mid, bool Is Wind Circular?); // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.RemoveWindCylinder
-	// void RemoveWindCylinder(FFortWindImpulseCylinder& WindImpulseCylinder);                                                  // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void RemoveWindCylinder(FFortWindImpulseCylinder& WindImpulseCylinder);                                                  // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.UpdateStormWindCylinder
-	// void UpdateStormWindCylinder(FFortWindImpulseCylinder Wind Impulse, FFortWindImpulseCylinderDelta Wind Delta);           // [0x18a39e4] Public|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void UpdateStormWindCylinder(FFortWindImpulseCylinder Wind Impulse, FFortWindImpulseCylinderDelta Wind Delta);           // [0x186becc] Public|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Calculate Camera Position
-	// FVector Calculate Camera Position(double Scale, class USceneCaptureComponent2D* Scene Capture);                          // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// FVector Calculate Camera Position(double Scale, class USceneCaptureComponent2D* Scene Capture);                          // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.UserConstructionScript
-	// void UserConstructionScript();                                                                                           // [0x18a39e4] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent 
+	// void UserConstructionScript();                                                                                           // [0x186becc] Event|Public|HasDefaults|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.OnWindImpulseCylinderDeath
-	// void OnWindImpulseCylinderDeath(FFortWindImpulseCylinder& WindImpulseCylinder);                                          // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void OnWindImpulseCylinderDeath(FFortWindImpulseCylinder& WindImpulseCylinder);                                          // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.OnWindImpulseCylinderDeltaComplete
-	// void OnWindImpulseCylinderDeltaComplete(FFortWindImpulseCylinder& WindImpulseCylinder);                                  // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void OnWindImpulseCylinderDeltaComplete(FFortWindImpulseCylinder& WindImpulseCylinder);                                  // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.OnWindImpulseCylinderCreation
-	// void OnWindImpulseCylinderCreation(FFortWindImpulseCylinder& WindImpulseCylinder, FFortWindImpulseCylinderDelta& WindImpulseCylinderDelta); // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void OnWindImpulseCylinderCreation(FFortWindImpulseCylinder& WindImpulseCylinder, FFortWindImpulseCylinderDelta& WindImpulseCylinderDelta); // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.SpawnTestWind
-	// void SpawnTestWind(double Radius, double ImpulseMagnitude);                                                              // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void SpawnTestWind(double Radius, double ImpulseMagnitude);                                                              // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Play Water Splash Particle System At Location
-	// void Play Water Splash Particle System At Location(FTransform Particle Transform);                                       // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void Play Water Splash Particle System At Location(FTransform Particle Transform);                                       // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.AddWindParticleSystemComponent
-	// void AddWindParticleSystemComponent(class UParticleSystemComponent* ParticleSystemComponent);                            // [0x18a39e4] Event|Public|BlueprintCallable|BlueprintEvent 
+	// void AddWindParticleSystemComponent(class UParticleSystemComponent* ParticleSystemComponent);                            // [0x186becc] Event|Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Register player for render to texture purposes
-	// void Register player for render to texture purposes(class UPrimitiveComponent* Effect Water Interaction FX, class UPrimitiveComponent* Gameplay Wind INteraction Effects); // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void Register player for render to texture purposes(class UPrimitiveComponent* Effect Water Interaction FX, class UPrimitiveComponent* Gameplay Wind INteraction Effects); // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Add Wind Component
-	// void Add Wind Component(class UPrimitiveComponent* InComponent);                                                         // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void Add Wind Component(class UPrimitiveComponent* InComponent);                                                         // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.ReceiveBeginPlay
-	// void ReceiveBeginPlay();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ReceiveBeginPlay();                                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Update Test
-	// void Update Test(double NewMagnitude);                                                                                   // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void Update Test(double NewMagnitude);                                                                                   // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.Add Render To Texture Particle
-	// void Add Render To Texture Particle(class UParticleSystem* EmitterTemplate, FTransform& InTransform);                    // [0x18a39e4] HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void Add Render To Texture Particle(class UParticleSystem* EmitterTemplate, FTransform& InTransform);                    // [0x186becc] HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/WindManager.WindManager_C.ExecuteUbergraph_WindManager
-	// void ExecuteUbergraph_WindManager(int32_t EntryPoint);                                                                   // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_WindManager(int32_t EntryPoint);                                                                   // [0x186becc] Final|HasDefaults    
 };
 
 /// Class /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C
@@ -142,33 +142,33 @@ public:
 
 	/// Functions
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.SetForceOff
-	// void SetForceOff(bool bForceOff);                                                                                        // [0x18a39e4] Public|BlueprintCallable|BlueprintEvent 
+	// void SetForceOff(bool bForceOff);                                                                                        // [0x186becc] Public|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.CalculatePlayerPositionNearBox
-	// void CalculatePlayerPositionNearBox(FVector BoxMin, FVector BoxMax, double& VolumePlayerCoveragePercentage);             // [0x18a39e4] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
+	// void CalculatePlayerPositionNearBox(FVector BoxMin, FVector BoxMax, double& VolumePlayerCoveragePercentage);             // [0x186becc] Public|HasOutParms|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.Ramp Up down values on death__FinishedFunc
-	// void Ramp Up down values on death__FinishedFunc();                                                                       // [0x18a39e4] BlueprintEvent       
+	// void Ramp Up down values on death__FinishedFunc();                                                                       // [0x186becc] BlueprintEvent       
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.Ramp Up down values on death__UpdateFunc
-	// void Ramp Up down values on death__UpdateFunc();                                                                         // [0x18a39e4] BlueprintEvent       
+	// void Ramp Up down values on death__UpdateFunc();                                                                         // [0x186becc] BlueprintEvent       
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.ReceiveTick
-	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void ReceiveTick(float DeltaSeconds);                                                                                    // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.OnThreatCloudsChanged
-	// void OnThreatCloudsChanged(TArray<FThreatLocationInfo>& ThreatLocationInfo);                                             // [0x18a39e4] Event|Public|HasOutParms|BlueprintEvent 
+	// void OnThreatCloudsChanged(TArray<FThreatLocationInfo>& ThreatLocationInfo);                                             // [0x186becc] Event|Public|HasOutParms|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.OnWorldReady
-	// void OnWorldReady();                                                                                                     // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnWorldReady();                                                                                                     // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.VFX_RainTracePeriodic
-	// void VFX_RainTracePeriodic();                                                                                            // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void VFX_RainTracePeriodic();                                                                                            // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.StartTraceTimer
-	// void StartTraceTimer();                                                                                                  // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void StartTraceTimer();                                                                                                  // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.ForceUpdateLensEffect
-	// void ForceUpdateLensEffect();                                                                                            // [0x18a39e4] BlueprintCallable|BlueprintEvent 
+	// void ForceUpdateLensEffect();                                                                                            // [0x186becc] BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.OnThreatOverrideChanged
-	// void OnThreatOverrideChanged(bool bForceThreatOn);                                                                       // [0x18a39e4] Event|Public|BlueprintEvent 
+	// void OnThreatOverrideChanged(bool bForceThreatOn);                                                                       // [0x186becc] Event|Public|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.ExecuteUbergraph_ThreatPostProcessManagerAndParticleBlueprint
-	// void ExecuteUbergraph_ThreatPostProcessManagerAndParticleBlueprint(int32_t EntryPoint);                                  // [0x18a39e4] Final|HasDefaults    
+	// void ExecuteUbergraph_ThreatPostProcessManagerAndParticleBlueprint(int32_t EntryPoint);                                  // [0x186becc] Final|HasDefaults    
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.NewEventDispatcher0__DelegateSignature
-	// void NewEventDispatcher0__DelegateSignature();                                                                           // [0x18a39e4] Public|Delegate|BlueprintCallable|BlueprintEvent 
+	// void NewEventDispatcher0__DelegateSignature();                                                                           // [0x186becc] Public|Delegate|BlueprintCallable|BlueprintEvent 
 	// Function /Game/VisualThreatManager/StormVisuals/Blueprints/ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.NewEventDispatcher__DelegateSignature
-	// void NewEventDispatcher__DelegateSignature();                                                                            // [0x18a39e4] Public|Delegate|BlueprintCallable|BlueprintEvent 
+	// void NewEventDispatcher__DelegateSignature();                                                                            // [0x186becc] Public|Delegate|BlueprintCallable|BlueprintEvent 
 };
 
 /// Class /Game/VisualThreatManager/StormVisuals/Blueprints/Threat_RainAttachedToPlayer.Threat_RainAttachedToPlayer_C
@@ -199,13 +199,13 @@ public:
 
 	/// Functions
 	// Function /Game/VisualThreatManager/Rifts/Blueprints/B_CameraRainDrops_01.B_CameraRainDrops_01_C.Alpha__FinishedFunc
-	// void Alpha__FinishedFunc();                                                                                              // [0x18a39e4] BlueprintEvent       
+	// void Alpha__FinishedFunc();                                                                                              // [0x186becc] BlueprintEvent       
 	// Function /Game/VisualThreatManager/Rifts/Blueprints/B_CameraRainDrops_01.B_CameraRainDrops_01_C.Alpha__UpdateFunc
-	// void Alpha__UpdateFunc();                                                                                                // [0x18a39e4] BlueprintEvent       
+	// void Alpha__UpdateFunc();                                                                                                // [0x186becc] BlueprintEvent       
 	// Function /Game/VisualThreatManager/Rifts/Blueprints/B_CameraRainDrops_01.B_CameraRainDrops_01_C.ReceiveBeginPlay
-	// void ReceiveBeginPlay();                                                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void ReceiveBeginPlay();                                                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Game/VisualThreatManager/Rifts/Blueprints/B_CameraRainDrops_01.B_CameraRainDrops_01_C.ExecuteUbergraph_B_CameraRainDrops_01
-	// void ExecuteUbergraph_B_CameraRainDrops_01(int32_t EntryPoint);                                                          // [0x18a39e4] Final                
+	// void ExecuteUbergraph_B_CameraRainDrops_01(int32_t EntryPoint);                                                          // [0x186becc] Final                
 };
 
 /// Class /Game/VisualThreatManager/StormVisuals/Debug/Delete.Delete_C

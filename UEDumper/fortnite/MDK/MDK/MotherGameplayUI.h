@@ -34,13 +34,13 @@ public:
 
 	/// Functions
 	// Function /Script/MotherGameplayUI.AvocadoEaterHealthBarWidget.OnTargetDamaged
-	// void OnTargetDamaged();                                                                                                  // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnTargetDamaged();                                                                                                  // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.AvocadoEaterHealthBarWidget.OnSetMarkerPosition
-	// void OnSetMarkerPosition(float MarkerPosition);                                                                          // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnSetMarkerPosition(float MarkerPosition);                                                                          // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.AvocadoEaterHealthBarWidget.OnParasiteDetached
-	// void OnParasiteDetached();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnParasiteDetached();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.AvocadoEaterHealthBarWidget.OnParasiteAttached
-	// void OnParasiteAttached();                                                                                               // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnParasiteAttached();                                                                                               // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/MotherGameplayUI.FortGravyGoblinReticleExtensionWidget
@@ -55,9 +55,9 @@ public:
 
 	/// Functions
 	// Function /Script/MotherGameplayUI.FortGravyGoblinReticleExtensionWidget.OnItemInactivatable
-	// void OnItemInactivatable();                                                                                              // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnItemInactivatable();                                                                                              // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.FortGravyGoblinReticleExtensionWidget.OnItemActivatable
-	// void OnItemActivatable();                                                                                                // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnItemActivatable();                                                                                                // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/MotherGameplayUI.FortLlamaRoasterReticleExtensionWidget
@@ -85,9 +85,9 @@ public:
 
 	/// Functions
 	// Function /Script/MotherGameplayUI.FortPaddleGingerReticleExtensionWidget.OnPropIndexChanged
-	// void OnPropIndexChanged(FText& CategoryText, int32_t PropIndex, int32_t MaxPropCount, int32_t CategoryIndex, int32_t MaxCategoryCount); // [0x18a39e4] Event|Protected|HasOutParms|BlueprintEvent 
+	// void OnPropIndexChanged(FText& CategoryText, int32_t PropIndex, int32_t MaxPropCount, int32_t CategoryIndex, int32_t MaxCategoryCount); // [0x186becc] Event|Protected|HasOutParms|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.FortPaddleGingerReticleExtensionWidget.OnPropActivationChanged
-	// void OnPropActivationChanged(bool Activated);                                                                            // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnPropActivationChanged(bool Activated);                                                                            // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/MotherGameplayUI.FortReactorGradeReticleExtensionWidget
@@ -102,11 +102,11 @@ public:
 
 	/// Functions
 	// Function /Script/MotherGameplayUI.FortReactorGradeReticleExtensionWidget.OnUpdateChargeToMin
-	// void OnUpdateChargeToMin(float ChargePercent);                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateChargeToMin(float ChargePercent);                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.FortReactorGradeReticleExtensionWidget.OnUpdateChargeToAutoDischarge
-	// void OnUpdateChargeToAutoDischarge(float ChargePercent);                                                                 // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnUpdateChargeToAutoDischarge(float ChargePercent);                                                                 // [0x186becc] Event|Protected|BlueprintEvent 
 	// Function /Script/MotherGameplayUI.FortReactorGradeReticleExtensionWidget.OnMinimumChargeReached
-	// void OnMinimumChargeReached();                                                                                           // [0x18a39e4] Event|Protected|BlueprintEvent 
+	// void OnMinimumChargeReached();                                                                                           // [0x186becc] Event|Protected|BlueprintEvent 
 };
 
 /// Class /Script/MotherGameplayUI.FortMobileActionBBE_GravyGoblinRotate
