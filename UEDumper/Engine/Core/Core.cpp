@@ -1227,7 +1227,14 @@ void EngineCore::finishPackages()
 				{
 					const auto info = getInfoOfObject(type.name);
 					if (info && info->valid)
+					{
 						type.info = info;
+
+						//casting is fine even if its a enum as owningpackage is the first package
+						const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
+						if (targetStruc->owningPackage->index != package.index)
+							package.dependencyPackages.insert(targetStruc->owningPackage);
+					}
 				}
 			};
 			addInfoPtr(ret);

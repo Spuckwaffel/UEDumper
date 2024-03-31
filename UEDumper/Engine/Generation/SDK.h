@@ -22,7 +22,7 @@ public:
 
 	static void printCredits(std::ofstream& stream);
 
-	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package);
+	static void generatePackage(std::ofstream& stream, const EngineStructs::Package& package, int featureFlags, std::unordered_map<std::string, std::string> &originalPackageToMerged);
 
-	static void Generate(int& progressDone, int& totalProgress);
+	static void Generate(int& progressDone, int& totalProgress, int featureFlags);
 };
