@@ -64,7 +64,7 @@ std::string EngineCore::FNameToString(FName fname)
 
 	enum { NAME_SIZE = 1024 };
 
-	char name[NAME_SIZE] = { 0 };
+	char name[NAME_SIZE + 1] = { 0 };
 
 #if WITH_CASE_PRESERVING_NAME
 	const int32_t Index = fname.DisplayIndex;
@@ -90,27 +90,18 @@ std::string EngineCore::FNameToString(FName fname)
 	const uint64_t AnsiName = FNameEntryPtr + 0x10;
 #endif
 
-	if (nameLength > NAME_SIZE)
-	{
-		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG!");
-		printf("Memory corruption avoided! This is a BUG!\n");
-		//DebugBreak();
-	}
 
-	int nameLength = NAME_SIZE - 1;
 	Memory::read(
 		reinterpret_cast<void*>(AnsiName),
 		name,
-		// safeguard against overflow and memory corruption
-		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+		NAME_SIZE
 	);
 
 #else // >= 4_23
 
 	enum { NAME_SIZE = 1024 };
 
-	char name[NAME_SIZE] = { 0 };
+	char name[NAME_SIZE + 1] = { 0 };
 
 	//>4.23 name chunks exist
 	const unsigned int chunkOffset = fname.ComparisonIndex >> 16; //HIWORD
@@ -128,8 +119,8 @@ std::string EngineCore::FNameToString(FName fname)
 	if (nameLength > NAME_SIZE)
 	{
 		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG! Maybe try with WITH_CASE_PRESERVING_NAME=FALSE");
-		printf("Memory corruption avoided! This is a BUG!\n");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		puts("Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
 		//DebugBreak();
 	}
 
@@ -137,7 +128,7 @@ std::string EngineCore::FNameToString(FName fname)
 		reinterpret_cast<void*>(namePoolChunk + 6), 
 		name, 
 		// safeguard against overflow and memory corruption
-		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+		nameLength < NAME_SIZE ? nameLength : NAME_SIZE
 	);
 #else
 	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
@@ -147,8 +138,8 @@ std::string EngineCore::FNameToString(FName fname)
 	if (nameLength > NAME_SIZE)
 	{
 		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! This is a BUG! Maybe try with WITH_CASE_PRESERVING_NAME=TRUE");
-		printf("Memory corruption avoided! This is a BUG!\n");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		puts("Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
 		//DebugBreak();
 	}
 
@@ -156,7 +147,7 @@ std::string EngineCore::FNameToString(FName fname)
 		reinterpret_cast<void*>(namePoolChunk + 2),
 		name,
 		// safeguard against overflow and memory corruption
-		nameLength <= NAME_SIZE ? nameLength : NAME_SIZE
+		nameLength < NAME_SIZE ? nameLength : NAME_SIZE
 	);
 #endif
 
@@ -301,7 +292,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 		for (auto child = object->getChildren(); child; child = child->getNext())
 		{
-			if (!ObjectsManager::operationSuccess())
+			if (ObjectsManager::CRITICAL_STOP_CALLED())
 				return false;
 
 			if (!child || !child->IsA<UProperty>())
