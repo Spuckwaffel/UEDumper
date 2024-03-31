@@ -339,7 +339,6 @@ namespace EngineStructs
 		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
 		int minAlignment = 0; //minimal alignment defined by ue
 		int size = 0; //true size of the struct
-		int maxSize = 0; // max size of the struct
 		int inheretedSize = 0; //size of the inherited structs
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
