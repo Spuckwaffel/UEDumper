@@ -371,6 +371,7 @@ namespace EngineStructs
 			j["spn"] = superNames;
 			j["in"] = inherited;
 			j["sz"] = size;
+			j["msz"] = maxSize;
 			j["is"] = inheretedSize;
 			j["uc"] = unknownCount;
 			nlohmann::json jMembers;
@@ -394,6 +395,7 @@ namespace EngineStructs
 			s.superNames = json["spn"];
 			s.inherited = json["in"];
 			s.size = json["sz"];
+			s.maxSize = json["msz"];
 			s.inheretedSize = json["is"];
 			s.unknownCount = json["uc"];
 			for (const nlohmann::json& member : json["m"])
