@@ -265,7 +265,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				eStruct.superNames.push_back(obj->getCName());
 			}
 			eStruct.inherited = true;
-			eStruct.inheretedSize = super->PropertiesSize;
 		}
 
 	}
@@ -502,9 +501,9 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 	//basic 0(1) checks before iterating
 
 	//below class base offset? 
-	if (newMember.offset < eStruct.inheretedSize)
+	if (newMember.offset < eStruct.getInheritedSize())
 	{
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.getInheritedSize());
 		return false;
 	}
 	//above class?
@@ -521,9 +520,9 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 	}
 
 	//larger than class size? Thats weird and will only happen if offset is negative otherwise handled by above
-	if (newMember.size > eStruct.size - eStruct.inheretedSize)
+	if (newMember.size > eStruct.size - eStruct.getInheritedSize())
 	{
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.getInheritedSize());
 		return false;
 	}
 
@@ -665,7 +664,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		}
 	};
 
-	if (eStruct.size - eStruct.inheretedSize == 0)
+	if (eStruct.size - eStruct.getInheritedSize() == 0)
 		return;
 
 	if (eStruct.definedMembers.size() == 0)
@@ -1180,6 +1179,10 @@ void EngineCore::finishPackages()
 					{
 						superStruc->maxSize = firstMember.offset;
 					}
+				}
+				else
+				{
+					struc->maxSize = superStruc->maxSize;
 				}
 			}
 

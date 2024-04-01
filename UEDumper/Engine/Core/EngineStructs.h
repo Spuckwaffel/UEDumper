@@ -338,14 +338,20 @@ namespace EngineStructs
 		bool inherited = false; //if the struct is inherited
 		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
 		int minAlignment = 0; //minimal alignment defined by ue
-		int size = 0; //true size of the struct
-		int inheretedSize = 0; //size of the inherited structs
+		int size = 0; //propertiesSize, possibly wrong, use maxSize
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
 		std::vector<Member> undefinedMembers{}; //list of all members that are all valid and known
 		//listing: isDefined, vecIndex;
 		std::vector<std::pair<bool, int>> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
 		std::vector<Function> functions{}; //array of all functions of the struct
+
+		int getInheritedSize() const
+		{
+			if (supers.empty()) return 0;
+
+			return supers[0]->maxSize;
+		}
 
 		Member* getMemberForIndex(int i)
 		{
@@ -372,7 +378,6 @@ namespace EngineStructs
 			j["in"] = inherited;
 			j["sz"] = size;
 			j["msz"] = maxSize;
-			j["is"] = inheretedSize;
 			j["uc"] = unknownCount;
 			nlohmann::json jMembers;
 			for (const auto& member : definedMembers)
@@ -396,7 +401,6 @@ namespace EngineStructs
 			s.inherited = json["in"];
 			s.size = json["sz"];
 			s.maxSize = json["msz"];
-			s.inheretedSize = json["is"];
 			s.unknownCount = json["uc"];
 			for (const nlohmann::json& member : json["m"])
 				s.definedMembers.push_back(Member::fromJson(member));

@@ -243,7 +243,7 @@ void SDKGeneration::generatePackage(
             else
                 stream << "/// Struct " << struc->fullName << std::endl;
             char buf[100] = { 0 };
-            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->inheretedSize, struc->inheretedSize, struc->size);
+            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->getInheritedSize(), struc->getInheritedSize(), struc->size);
             stream << "/// " << buf << std::endl;
 
             bool needsHelp = false;
