@@ -344,7 +344,8 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		for (auto child = object->getChildProperties(); child; child = child->getNext())
 		{
 			EngineStructs::Member member;
-			member.size = child->ElementSize;// *child->ArrayDim;
+			member.size = child->ElementSize * child->ArrayDim;
+			member.arrayDim = child->ArrayDim;
 			member.name = generateValidVarName(child->getName());
 
 			if (member.size == 0)
@@ -1194,10 +1195,6 @@ void EngineCore::finishPackages()
 					{
 						superStruc->maxSize = firstMember.offset;
 					}
-				}
-				else
-				{
-					struc->maxSize = superStruc->maxSize;
 				}
 			}
 

@@ -237,6 +237,7 @@ namespace EngineStructs
 		std::string name; //name of the member
 		int offset = 0; //offset of the member (real offset)
 		int size = 0; //size of the member
+		int arrayDim = 0; // the number of elements if it's an array (e.g. int16_t foobar[123])
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
 		int bitOffset = 0; //the offset of the bit (0 if not bit)
@@ -253,6 +254,7 @@ namespace EngineStructs
 			j["n"] = name;
 			j["o"] = offset;
 			j["s"] = size;
+			j["d"] = arrayDim;
 			j["m"] = missed;
 			j["i"] = isBit;
 			j["b"] = bitOffset;
@@ -267,6 +269,7 @@ namespace EngineStructs
 			m.name = json["n"];
 			m.offset = json["o"];
 			m.size = json["s"];
+			m.arrayDim = json["d"];
 			m.missed = json["m"];
 			m.isBit = json["i"];
 			m.bitOffset = json["b"];

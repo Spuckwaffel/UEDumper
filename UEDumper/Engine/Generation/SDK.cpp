@@ -328,7 +328,9 @@ void SDKGeneration::generatePackage(
                     }
                 }
 
-
+                if (member->arrayDim > 1) {
+                    name += "[" + std::to_string(member->arrayDim) + "]";
+                }
 
                 if (member->isBit)
                     name += " : 1";
