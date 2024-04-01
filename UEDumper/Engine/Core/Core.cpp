@@ -697,6 +697,10 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
 		}
 	}
+	else if(!eStruct.definedMembers.empty())
+	{
+		genUnknownMember(0, eStruct.definedMembers[0].offset, 7);
+	}
 
 
 
