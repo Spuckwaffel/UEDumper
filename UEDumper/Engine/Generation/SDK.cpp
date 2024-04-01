@@ -318,17 +318,18 @@ void SDKGeneration::generatePackage(
                 usedNames.push_back(name);
 
                 std::string memberType = member->type.stringify().c_str();
+                auto hasUndef = areAnyMembersUndefined(member);
 
                 if (member->type.clickable)
                 {
-                    if (areAnyMembersUndefined(member))
+                    if (hasUndef)
                     {
                         memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
                         name = "__um(" + member->name + ")";
                     }
                 }
 
-                if (member->arrayDim > 1) {
+                if (!hasUndef && member->arrayDim > 1) {
                     name += "[" + std::to_string(member->arrayDim) + "]";
                 }
 
