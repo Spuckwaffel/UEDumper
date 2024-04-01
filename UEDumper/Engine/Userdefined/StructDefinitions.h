@@ -162,12 +162,105 @@ inline void addStructs()
 	Tarray.inherited = false;
 	int TarrayOffset = 0;
 	Tarray.definedMembers = std::vector<EngineStructs::Member>{
-		{{false,		PropertyType::ObjectProperty,	"uint64_t"},			"Data",		TarrayOffset, 8},
-		{{false,		PropertyType::IntProperty,		"int"},		"Count",		TarrayOffset += 8, 4},
-		{{false,		PropertyType::IntProperty,		"int"},		"Max",			TarrayOffset += 4, 4},
+		{{false,		PropertyType::ObjectProperty,	"T"},			"Data",		TarrayOffset, 8},
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"Count",	TarrayOffset += 8, 4},
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"Max",		TarrayOffset += 4, 4},
 	};
 	//add it
 	EngineCore::createStruct(Tarray);
+
+
+	EngineStructs::Struct Fstring;
+	Fstring.fullName = "/Custom/FString";
+	Fstring.cppName = "FString";
+	Fstring.isClass = false;
+	Fstring.size = sizeof(FString);
+	Fstring.maxSize = Fstring.size;
+	Fstring.inherited = true;
+	Fstring.superNames = { "TArray" };
+	Fstring.definedMembers = std::vector<EngineStructs::Member>{
+	};
+	//add it
+	EngineCore::createStruct(Fstring);
+
+	EngineStructs::Struct TenumAsByte;
+	TenumAsByte.fullName = "/Custom/TEnumAsByte";
+	TenumAsByte.cppName = "TEnumAsByte";
+	TenumAsByte.isClass = true;
+	TenumAsByte.size = sizeof(TEnumAsByte<PropertyType>);
+	TenumAsByte.maxSize = TenumAsByte.size;
+	TenumAsByte.definedMembers = std::vector<EngineStructs::Member>{
+		{{false,		PropertyType::Int8Property,		TYPE_UI8},		"value",	0, 1},
+	};
+	//add it
+	EngineCore::createStruct(TenumAsByte);
+
+	EngineStructs::Struct FtextData;
+	FtextData.fullName = "/Custom/FTextData";
+	FtextData.cppName = "FTextData";
+	FtextData.isClass = false;
+	FtextData.size = sizeof(FTextData);
+	FtextData.maxSize = FtextData.size;
+	FtextData.definedMembers = std::vector<EngineStructs::Member>{
+		{{false,		PropertyType::Unknown,		"wchar_t*"},		"Name",		0x28, 8},
+		{{false,		PropertyType::IntProperty,	TYPE_I32},			"Length",	0x30, 4},
+	};
+	//add it
+	EngineCore::createStruct(FtextData);
+
+	EngineStructs::Struct Ftext;
+	Ftext.fullName = "/Custom/FText";
+	Ftext.cppName = "FText";
+	Ftext.isClass = false;
+	Ftext.size = sizeof(FText);
+	Ftext.maxSize = Ftext.size;
+	Ftext.definedMembers = std::vector<EngineStructs::Member>{
+		{{true,		PropertyType::ObjectProperty,		"FTextData"},		"Data",	0, 8},
+	};
+	//add it
+	EngineCore::createStruct(Ftext);
+}
+
+inline void addEnums()
+{
+	EngineStructs::Enum EobjectFlags;
+	EobjectFlags.fullName = "/Custom/EObjectFlags";
+	EobjectFlags.cppName = "EObjectFlags";
+	EobjectFlags.size = sizeof(EObjectFlags);
+	EobjectFlags.type = TYPE_UI32;
+	EobjectFlags.members = std::vector<std::pair<std::string, int>>{
+		{"RF_NoFlags", RF_NoFlags},
+		{"RF_Public", RF_Public},
+		{"RF_Standalone", RF_Standalone},
+		{"RF_MarkAsNative", RF_MarkAsNative},
+		{"RF_Transactional", RF_Transactional},
+		{"RF_ClassDefaultObject", RF_ClassDefaultObject},
+		{"RF_ArchetypeObject", RF_ArchetypeObject},
+		{"RF_Transient", RF_Transient},
+		{"RF_MarkAsRootSet", RF_MarkAsRootSet},
+		{"RF_TagGarbageTemp", RF_TagGarbageTemp},
+		{"RF_NeedInitialization", RF_NeedInitialization},
+		{"RF_NeedLoad", RF_NeedLoad},
+		{"RF_KeepForCooker", RF_KeepForCooker},
+		{"RF_NeedPostLoad", RF_NeedPostLoad},
+		{"RF_NeedPostLoadSubobjects", RF_NeedPostLoadSubobjects},
+		{"RF_NewerVersionExists", RF_NewerVersionExists},
+		{"RF_BeginDestroyed", RF_BeginDestroyed},
+		{"RF_FinishDestroyed", RF_FinishDestroyed},
+		{"RF_BeingRegenerated", RF_BeingRegenerated},
+		{"RF_DefaultSubObject", RF_DefaultSubObject},
+		{"RF_WasLoaded", RF_WasLoaded},
+		{"RF_TextExportTransient", RF_TextExportTransient},
+		{"RF_LoadCompleted", RF_LoadCompleted},
+		{"RF_InheritableComponentTemplate", RF_InheritableComponentTemplate},
+		{"RF_DuplicateTransient", RF_DuplicateTransient},
+		{"RF_StrongRefOnFrame", RF_StrongRefOnFrame},
+		{"RF_NonPIEDuplicateTransient", RF_NonPIEDuplicateTransient},
+		{"RF_Dynamic", RF_Dynamic},
+		{"RF_WillBeLoaded", RF_WillBeLoaded},
+	};
+
+	EngineCore::createEnum(EobjectFlags);
 }
 
 // - use this funtion to override unknown members in existing structs or classes.

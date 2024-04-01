@@ -473,60 +473,59 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 	//indenting for the entire rest of the core.cpp file just because some #define shit
 	//this made me so mad i couldnt care less the code misses now a indent
 
-	//in every version we have to go through the children to 
-	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
-	{
-		if (ObjectsManager::CRITICAL_STOP_CALLED())
-			return false;
+	//in every version we have to go through the children to
+for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
+{
+	if (ObjectsManager::CRITICAL_STOP_CALLED())
+		return false;
 
-		if (!fieldChild || !fieldChild->IsA<UFunction>())
-			continue;
+	if (!fieldChild || !fieldChild->IsA<UFunction>())
+		continue;
 
 
-		const auto fn = fieldChild->castTo<UFunction>();
+	const auto fn = fieldChild->castTo<UFunction>();
 
-		EngineStructs::Function eFunction;
-		eFunction.fullName = fn->getFullName();
-		eFunction.cppName = fn->getName();
-		eFunction.memoryAddress = fn->objectptr;
-		eFunction.functionFlags = fn->getFunctionFlagsString();
-		eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
+	EngineStructs::Function eFunction;
+	eFunction.fullName = fn->getFullName();
+	eFunction.cppName = fn->getName();
+	eFunction.memoryAddress = fn->objectptr;
+	eFunction.functionFlags = fn->getFunctionFlagsString();
+	eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
 
 #if UE_VERSION < UE_4_25
 
-		//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
-		for (auto child = fn->getChildren(); child; child = child->getNext())
-		{
-			const auto propChild = child->castTo<UProperty>();
+	//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
+	for (auto child = fn->getChildren(); child; child = child->getNext())
+	{
+		const auto propChild = child->castTo<UProperty>();
 #else
 
-		//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
-		for (auto child = fn->getChildProperties(); child; child = child->getNext())
-		{
-			const auto propChild = child;
+	//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
+	for (auto child = fn->getChildProperties(); child; child = child->getNext())
+	{
+		const auto propChild = child;
 
 #endif
 
-			//rest of the code is identical, nothing changed here
-			const auto propertyFlags = propChild->PropertyFlags;
+		//rest of the code is identical, nothing changed here
+		const auto propertyFlags = propChild->PropertyFlags;
 
-			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
-				eFunction.returnType = propChild->getType();
-			else if (propertyFlags & EPropertyFlags::CPF_Parm)
-			{
-				eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
-			}
+		if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
+			eFunction.returnType = propChild->getType();
+		else if (propertyFlags & EPropertyFlags::CPF_Parm)
+		{
+			eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
 		}
-
-		// no defined return type => void
-		if (!eFunction.returnType)
-			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-		data.push_back(eFunction);
-		}
-	return true;
-
 	}
+
+	// no defined return type => void
+	if (!eFunction.returnType)
+		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+	data.push_back(eFunction);
+}
+	return true;
+}
 
 bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, const EngineStructs::Member & newMember)
 {
@@ -917,6 +916,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	overrideStructs();
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding custom structs....");
 	addStructs();
+	addEnums();
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overriding unknown members....");
 	overrideUnknownMembers();
 
@@ -972,6 +972,9 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
 	}
+	for (auto& struc : customEnums)
+		basicType.enums.push_back(struc);
+
 	packages.push_back(basicType);
 
 	//package 0 is reserved for our special defined structs
@@ -1117,6 +1120,14 @@ void EngineCore::createStruct(const EngineStructs::Struct & eStruct)
 		return;
 
 	customStructs.push_back(eStruct);
+}
+
+void EngineCore::createEnum(const EngineStructs::Enum& eEnum)
+{
+	if (std::ranges::find(customEnums, eEnum) != customEnums.end())
+		return;
+
+	customEnums.push_back(eEnum);
 }
 
 void EngineCore::overrideStructMembers(const EngineStructs::Struct & eStruct)

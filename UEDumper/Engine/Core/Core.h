@@ -77,6 +77,9 @@ private:
 	//user created structs that were not defined by the engine
 	inline static std::vector<EngineStructs::Struct> customStructs{};
 
+	//user created structs that were not defined by the engine
+	inline static std::vector<EngineStructs::Enum> customEnums{};
+
 	//gets the overridden unknown members for the given full name
 	inline static std::unordered_map<std::string, EngineStructs::Struct> overridingStructMembers{};
 
@@ -183,6 +186,13 @@ public:
 	 * \param eStruct the struct that gets created
 	 */
 	static void createStruct(const EngineStructs::Struct& eStruct);
+
+	/**
+	* \brief USE ONLY BEFORE PACKAGE GENERATION! Creates a new enum that gets added to the BasicTypes package.
+	* Use this to create enums the game has but arent present in the SDK.
+	* \param eEnum the enum that gets created
+	*/
+	static void createEnum(const EngineStructs::Enum& eEnum);
 
 	/**
 	 * \brief USE ONLY BEFORE PACKAGE GENERATION! Overrides (only!) unknown member blocks or bits with user defined members.

@@ -424,7 +424,7 @@ namespace EngineStructs
 		std::string cppName;
 		std::string type;
 		int size;
-		std::vector<std::pair<std::string, int>>members;
+		std::vector<std::pair<std::string, int>> members;
 
 		nlohmann::json toJson() const
 		{
@@ -459,6 +459,11 @@ namespace EngineStructs
 				e.members.push_back(std::pair(member["f"], member["s"]));
 
 			return e;
+		}
+
+		bool operator==(const Enum& en) const
+		{
+			return en.fullName == fullName;
 		}
 	};
 

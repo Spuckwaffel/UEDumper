@@ -193,58 +193,6 @@ struct FName
 
     definedStructs.push_back(dStruct);
 
-    dStruct.name = "FName";
-    dStruct.definition =
-        R"(
-struct FString : public TArray<wchar_t>
-{
-    inline FString() {};
-
-    FString(const wchar_t* other)
-    {
-        Max = Count = *other ? static_cast<int32_t>(std::wcslen(other)) + 1 : 0;
-
-        if (Count)
-        {
-            Data = const_cast<wchar_t*>(other);
-        }
-    };
-
-    inline bool IsValid() const
-    {
-        return Data != nullptr;
-    }
-
-    inline const wchar_t* c_str() const
-    {
-        return Data;
-    }
-
-    std::string ToString() const
-    {
-        const auto length = std::wcslen(Data);
-
-        std::string str(length, '\0');
-
-        std::use_facet<std::ctype<wchar_t>>(std::locale()).narrow(Data, Data + length, '?', &str[0]);
-
-        return str;
-    }
-};
-)";
-
-    dStruct.name = "TMap";
-    dStruct.definition =
-        R"(
-template<typename Key, typename Value>
-class TMap
-{
-public:
-    char UnknownData[0x50];
-};
-)";
-
-    definedStructs.push_back(dStruct);
 
     dStruct.name = "FScriptInterface";
     dStruct.definition =
@@ -350,35 +298,9 @@ private:
 template <typename KeyType, typename ValueType>
 class TPair
 {
-private:
-    KeyType First;
+public:
+	KeyType First;
     ValueType Second;
-
-public:
-    TPair(KeyType Key, ValueType Value)
-        : First(Key)
-        , Second(Value)
-    {
-    }
-    TPair(){};
-
-public:
-    __forceinline KeyType& Key()
-    {
-        return First;
-    }
-    __forceinline const KeyType& Key() const
-    {
-        return First;
-    }
-    __forceinline ValueType& Value()
-    {
-        return Second;
-    }
-    __forceinline const ValueType& Value() const
-    {
-        return Second;
-    }
 };
 )";
 
@@ -390,44 +312,8 @@ public:
 template <typename PtrType>
 class TUniquePtr
 {
-private:
-    PtrType* Ptr = nullptr;
-
 public:
-    bool IsValid() const
-    {
-        return Ptr != nullptr;
-    }
-
-    __forceinline explicit operator bool() const
-    {
-        return IsValid();
-    }
-
-    __forceinline bool operator!() const
-    {
-        return !IsValid();
-    }
-
-    __forceinline PtrType* operator->() const
-    {
-        return Ptr;
-    }
-
-    __forceinline PtrType& operator*() const
-    {
-        return *Ptr;
-    }
-
-    __forceinline const PtrType*& Get() const
-    {
-        return Ptr;
-    }
-
-    __forceinline PtrType*& Get()
-    {
-        return Ptr;
-    }
+	PtrType* Ptr = nullptr;
 };
 )";
 
@@ -470,6 +356,45 @@ struct FText
 )";
 
     definedStructs.push_back(dStruct);
+
+    dStruct.name = "TSetElement";
+    dStruct.definition =
+        R"(
+template<typename ElementType>
+class TSetElement
+{
+public:
+    ElementType                                                Value;                                                   // 0x0000(0x0000)
+    int32_t                                                    HashNextId;                                              // 0x0000(0x0000)
+    int32_t                                                    HashIndex;                                               // 0x0000(0x0000)
+};
+)";
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TMap";
+    dStruct.definition =
+        R"(
+template<typename Key, typename Value>
+class TMap
+{
+public:
+	TArray<TSetElement<TPair<Key, Value>>>                     Data;                                                    // 0x0000(0x0000)
+private:
+	uint8_t                                                    UnknownData01[0x04];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData02[0x04];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData03[0x08];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData04[0x08];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData_MayBeSize[0x04];                             // 0x0000(0x0000)
+	uint8_t                                                    UnknownData_MayBeFlag[0x04];                             // 0x0000(0x0000)
+	uint8_t                                                    UnknownData05[0x08];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData06[0x08];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData07[0x08];                                     // 0x0000(0x0000)
+	uint8_t                                                    UnknownData_MayBeSize02[0x04];                           // 0x0000(0x0000)
+	uint8_t                                                    UnknownData08[0x04];                                     // 0x0000(0x0000)
+};
+)";
+    definedStructs.push_back(dStruct);
+
 
     dStruct.name = "EObjectFlags";
     // Taken from UnrealClasses.h - copy/update that as the source of truth
