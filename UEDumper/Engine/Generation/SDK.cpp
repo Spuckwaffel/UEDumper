@@ -230,7 +230,7 @@ void SDKGeneration::generatePackage(
         return anyUndef;
     };
 
-    auto generateStaticAsserts = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+    auto generateStaticAssertsForObjectSizes = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
         for (const auto& struc : DataStruc)
         {
@@ -239,6 +239,41 @@ void SDKGeneration::generatePackage(
             stream << buf << std::endl;
         }
     };
+
+    auto generateStaticAssertsForMembers = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+        {
+            for (const auto& struc : DataStruc)
+            {
+                const auto klass = generateValidVarName(struc->cppName);
+                std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+
+                int j = 0;
+                for (int i = 0; i < struc->cookedMembers.size(); i++)
+                {
+                    const auto member = struc->getMemberForIndex(i);
+                    std::string name = member->name;
+
+                    if (std::isdigit(name[0]))
+                        name = "_" + name;
+
+                    if (name.empty())
+                        name = "noname";
+
+                    if (std::ranges::find(usedNames, name) != usedNames.end())
+                        name += std::to_string(j++);
+
+                    name = generateValidVarName(name);
+
+                    usedNames.push_back(name);
+
+                    if (areAnyMembersUndefined(member)) continue;
+
+                    char buf[1024] = { 0 };
+                    sprintf_s(buf, "static_assert(offsetof(%s, %s) == 0x%04X);", klass.c_str(), name.c_str(), member->offset);
+                    stream << buf << std::endl;
+                }
+            }
+        };
 
     auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
@@ -518,8 +553,11 @@ void SDKGeneration::generatePackage(
     }
 
     // add static asserts for objects
-    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS)
-        generateStaticAsserts(package.combinedStructsAndClasses);
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS_OBJECT_SIZE)
+        generateStaticAssertsForObjectSizes(package.combinedStructsAndClasses);
+    // add static asserts for members
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS_MEMBERS)
+        generateStaticAssertsForMembers(package.combinedStructsAndClasses);
 
 }
 
