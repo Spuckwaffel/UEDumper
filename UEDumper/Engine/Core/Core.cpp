@@ -249,6 +249,13 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	eStruct.memoryAddress = object->objectptr;
 	eStruct.size = object->PropertiesSize;
 	eStruct.minAlignment = object->MinAlignment;
+	/*
+	* The purpose of maxSize is to calculate the true 'max' size of a class.
+	* Since size = object->PropertiesSize, this is what UE reports as the size of the object
+	* *including padding*!
+	* Therefore maxSize is the 'real' max size without the padding based on our calculations
+	* of subclasses having members at offsets less than the reported size of the super.
+	*/
 	//set this as the current max size, but it will get overridden
 	eStruct.maxSize = eStruct.size;
 	eStruct.fullName = object->getFullName();
@@ -338,7 +345,9 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		{
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
+			member.arrayDim = child->ArrayDim;
 			member.name = generateValidVarName(child->getName());
+
 			if (member.size == 0)
 			{
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "member %s size is 0! ", member.name.c_str());
@@ -711,6 +720,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	{
 		const auto& currentMember = eStruct.definedMembers[i];
 		const auto& nextMember = eStruct.definedMembers[i + 1];
+
 		//bit shit
 		if (currentMember.isBit)
 		{
@@ -752,7 +762,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 			//0x8 (handled by next iter)
 			if (nextMember.offset - currentMember.offset > 1)
 			{
-				genUnknownMember(currentMember.offset + 1, nextMember.offset, 4);
+				genUnknownMember(currentMember.offset + 1, nextMember.offset, 5);
 			}
 			continue;
 		}
@@ -765,7 +775,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x7 [0x2]
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
 		{
-			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 5);
+			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 6);
 		}
 
 		//fixup any bits
@@ -778,7 +788,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
 	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
 	if (last->offset + last->size < eStruct.maxSize)
-		genUnknownMember(last->offset + last->size, eStruct.maxSize, 6);
+		genUnknownMember(last->offset + last->size, eStruct.maxSize, 7);
 }
 
 
@@ -1022,7 +1032,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	finishPackages();
 
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Done generating packets!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Done generating packages!");
 }
 
 std::vector<EngineStructs::Package>& EngineCore::getPackages()
@@ -1185,10 +1195,6 @@ void EngineCore::finishPackages()
 					{
 						superStruc->maxSize = firstMember.offset;
 					}
-				}
-				else
-				{
-					struc->maxSize = superStruc->maxSize;
 				}
 			}
 

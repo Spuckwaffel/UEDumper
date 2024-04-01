@@ -232,6 +232,16 @@ void SDKGeneration::generatePackage(
         return anyUndef;
     };
 
+    auto generateStaticAsserts = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+    {
+        for (const auto& struc : DataStruc)
+        {
+            char buf[1024] = { 0 };
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), struc->maxSize, struc->maxSize, struc->getInheritedSize(), struc->maxSize);
+            stream << buf << std::endl;
+        }
+    };
+
     auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
         for (const auto& struc : DataStruc)
@@ -240,24 +250,32 @@ void SDKGeneration::generatePackage(
                 continue;
             allnames.push_back(generateValidVarName(struc->cppName));
 
+            bool needsHelp = false;
+            if (struc->cookedMembers.size() > 0)
+            {
+                if (struc->minAlignment > 0 && (struc->maxSize % struc->minAlignment) > 0)
+                {
+                    needsHelp = true;
+                }
+            }
+
             if (struc->isClass)
                 stream << "/// Class " << struc->fullName << std::endl;
             else
                 stream << "/// Struct " << struc->fullName << std::endl;
-            char buf[100] = { 0 };
-            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->getInheritedSize(), struc->getInheritedSize(), struc->size);
+            char buf[256] = { 0 };
+            sprintf_s(
+                buf, 
+                "Size: 0x%04X (0x%06X - 0x%06X) align %s pad: 0x%04X", 
+                struc->size - struc->getInheritedSize(), 
+                struc->getInheritedSize(), 
+                struc->size, 
+                (struc->minAlignment > 0 ? std::to_string(struc->minAlignment) : "n/a").c_str(),
+                needsHelp ? struc->maxSize % struc->minAlignment : 0
+            );
             stream << "/// " << buf << std::endl;
 
-            bool needsHelp = false;
-
-            if (struc->cookedMembers.size() > 0)
-            {
-                if (struc->maxSize != struc->size)
-                {
-                    needsHelp = true;
-                    stream << "#pragma pack(push, 0x1)" << std::endl;
-                }
-            }
+            if (needsHelp) stream << "#pragma pack(push, 0x1)" << std::endl;
 
             if (struc->isClass)
                 stream << "class ";
@@ -311,16 +329,13 @@ void SDKGeneration::generatePackage(
 
                 std::string memberType = member->type.stringify().c_str();
 
-                if (member->type.clickable)
+                if (member->type.clickable && areAnyMembersUndefined(member))
                 {
-                    if (areAnyMembersUndefined(member))
-                    {
-                        memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
-                        name = "__um(" + member->name + ")";
-                    }
+                    memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
+                    name = "__um(" + member->name + ")";
+                } else if (member->arrayDim > 1) {
+                    name += "[" + std::to_string(member->arrayDim) + "]";
                 }
-
-
 
                 if (member->isBit)
                     name += " : 1";
@@ -493,6 +508,10 @@ void SDKGeneration::generatePackage(
     {
         generateStruct(package.combinedStructsAndClasses);
     }
+
+    // add static asserts for objects
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS)
+        generateStaticAsserts(package.combinedStructsAndClasses);
 
 }
 
