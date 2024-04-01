@@ -248,24 +248,32 @@ void SDKGeneration::generatePackage(
                 continue;
             allnames.push_back(generateValidVarName(struc->cppName));
 
-            if (struc->isClass)
-                stream << "/// Class " << struc->fullName << std::endl;
-            else
-                stream << "/// Struct " << struc->fullName << std::endl;
-            char buf[100] = { 0 };
-            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->getInheritedSize(), struc->getInheritedSize(), struc->size);
-            stream << "/// " << buf << std::endl;
-
             bool needsHelp = false;
-
             if (struc->cookedMembers.size() > 0)
             {
                 if (struc->minAlignment > 0 && (struc->maxSize % struc->minAlignment) > 0)
                 {
                     needsHelp = true;
-                    stream << "#pragma pack(push, 0x1)" << std::endl;
                 }
             }
+
+            if (struc->isClass)
+                stream << "/// Class " << struc->fullName << std::endl;
+            else
+                stream << "/// Struct " << struc->fullName << std::endl;
+            char buf[256] = { 0 };
+            sprintf_s(
+                buf, 
+                "Size: 0x%04X (0x%06X - 0x%06X) align %s pad: 0x%04X", 
+                struc->size - struc->getInheritedSize(), 
+                struc->getInheritedSize(), 
+                struc->size, 
+                (struc->minAlignment > 0 ? std::to_string(struc->minAlignment) : "n/a").c_str(),
+                needsHelp ? struc->maxSize % struc->minAlignment : 0
+            );
+            stream << "/// " << buf << std::endl;
+
+            if (needsHelp) stream << "#pragma pack(push, 0x1)" << std::endl;
 
             if (struc->isClass)
                 stream << "class ";
