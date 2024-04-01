@@ -423,6 +423,7 @@ namespace EngineStructs
 		std::string fullName;
 		std::string cppName;
 		std::string type;
+		int size;
 		std::vector<std::pair<std::string, int>>members;
 
 		nlohmann::json toJson() const
@@ -432,6 +433,7 @@ namespace EngineStructs
 			j["f"] = fullName;
 			j["c"] = cppName;
 			j["t"] = type;
+			j["sz"] = size;
 			nlohmann::json jMembers;
 			for (const auto& member : members)
 			{
@@ -451,6 +453,7 @@ namespace EngineStructs
 			e.fullName = json["f"];
 			e.cppName = json["c"];
 			e.type = json["t"];
+			e.size = json["sz"];
 			const nlohmann::json jMembers = json["m"];
 			for (const nlohmann::json& member : jMembers)
 				e.members.push_back(std::pair(member["f"], member["s"]));

@@ -260,12 +260,21 @@ void SDKGeneration::generatePackage(
             if (struc->isClass)
                 stream << "/// Class " << struc->fullName << std::endl;
             else
+            {
                 stream << "/// Struct " << struc->fullName << std::endl;
+                if (struc->maxSize == 0)
+                {
+                    // it's an empty struct, but by default will take up 1 byte
+                    struc->size = 0x1;
+                    struc->maxSize = 0x1;
+                }
+            }
             char buf[256] = { 0 };
             sprintf_s(
                 buf, 
-                "Size: 0x%04X (0x%06X - 0x%06X) align %s pad: 0x%04X", 
-                struc->size - struc->getInheritedSize(), 
+                "Size: 0x%04X (%d bytes) (0x%06X - 0x%06X) align %s pad: 0x%04X",
+                struc->size - struc->getInheritedSize(),
+                struc->size - struc->getInheritedSize(),
                 struc->getInheritedSize(), 
                 struc->size, 
                 (struc->minAlignment > 0 ? std::to_string(struc->minAlignment) : "n/a").c_str(),
@@ -280,12 +289,13 @@ void SDKGeneration::generatePackage(
             else
                 stream << "struct ";
 
-            if (needsHelp)
+
+            /*if (needsHelp)
             {
                 char buf1[100] = { 0 };
                 sprintf_s(buf1, "alignas(0x%X) ", struc->minAlignment);
                 stream << buf1;
-            }
+            }*/
 
             stream << generateValidVarName(struc->cppName);
 
@@ -459,7 +469,7 @@ void SDKGeneration::generatePackage(
     {
         stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
-        sprintf_s(buf, "Size: 0x%02d", enu.members.size());
+        sprintf_s(buf, "Size: 0x%02d (%d bytes)", enu.size, enu.size);
         stream << "/// " << buf << std::endl;
         stream << "enum class " << enu.cppName << " : " << enu.type << std::endl;
         stream << "{" << std::endl;
