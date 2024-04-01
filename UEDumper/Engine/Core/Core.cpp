@@ -411,24 +411,42 @@ int getEnumSizeFromType(const std::string type)
 	return 0;
 }
 
+std::string setEnumSizeForValue(uint64_t EnumValue)
+{
+	if (EnumValue > GetMaxOfType<uint32_t>())
+		return TYPE_UI64;
+	if (EnumValue > GetMaxOfType<uint16_t>())
+		return TYPE_UI32;
+	if (EnumValue > GetMaxOfType<uint8_t>())
+		return TYPE_UI16;
+	return TYPE_UI8;
+}
+
 bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::Enum>& data)
 {
 	EngineStructs::Enum eEnum;
 	eEnum.fullName = object->getFullName();
 	eEnum.memoryAddress = object->objectptr;
 
+	int64_t maxNum = 0;
+
 	const auto names = object->getNames();
+
+	if (!names.size())
+		return false;
 
 	for (int i = 0; i < names.size(); i++)
 	{
 		auto& name = names[i];
+		if (name.Value() > maxNum && i != names.size() - 1) maxNum = name.Value();
 
 		auto fname = FNameToString(name.Key());
 		std::ranges::replace(fname, ':', '_');
 		eEnum.members.push_back(std::pair(fname, name.Value()));
 	}
-	eEnum.type = getEnumTypeFromSize(eEnum.size);
+	eEnum.type = setEnumSizeForValue(maxNum);
 	eEnum.size = getEnumSizeFromType(eEnum.type);
+
 	eEnum.cppName = object->getName();
 
 	data.push_back(eEnum);
