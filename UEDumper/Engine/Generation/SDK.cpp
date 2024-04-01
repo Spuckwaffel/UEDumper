@@ -260,7 +260,7 @@ void SDKGeneration::generatePackage(
 
             if (struc->cookedMembers.size() > 0)
             {
-                if (struc->maxSize != struc->size)
+                if (struc->minAlignment > 0 && (struc->maxSize % struc->minAlignment) > 0)
                 {
                     needsHelp = true;
                     stream << "#pragma pack(push, 0x1)" << std::endl;
@@ -318,9 +318,8 @@ void SDKGeneration::generatePackage(
                 usedNames.push_back(name);
 
                 std::string memberType = member->type.stringify().c_str();
-                auto hasUndef = areAnyMembersUndefined(member);
 
-                if (member->type.clickable && hasUndef)
+                if (member->type.clickable && areAnyMembersUndefined(member))
                 {
                     memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
                     name = "__um(" + member->name + ")";
