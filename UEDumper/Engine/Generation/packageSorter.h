@@ -241,7 +241,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 						//add it before, this ensures it will be defined before
 						//fix the iterator
 
-						printf("%d - %s: agded %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
+						printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
 
 						orderedStructsAndClasses.insert(currentIt, neededStruct);
 						currentIt = std::ranges::find(

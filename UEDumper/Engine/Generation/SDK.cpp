@@ -230,6 +230,16 @@ void SDKGeneration::generatePackage(
         return anyUndef;
     };
 
+    auto generateStaticAsserts = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+    {
+        for (const auto& struc : DataStruc)
+        {
+            char buf[1024] = { 0 };
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), struc->maxSize, struc->maxSize, struc->getInheritedSize(), struc->maxSize);
+            stream << buf << std::endl;
+        }
+    };
+
     auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
         for (const auto& struc : DataStruc)
@@ -491,6 +501,10 @@ void SDKGeneration::generatePackage(
     {
         generateStruct(package.combinedStructsAndClasses);
     }
+
+    // add static asserts for objects
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS)
+        generateStaticAsserts(package.combinedStructsAndClasses);
 
 }
 
