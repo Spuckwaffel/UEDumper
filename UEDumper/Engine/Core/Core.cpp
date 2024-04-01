@@ -18,6 +18,8 @@
 //flag some invalid characters in a name
 std::string generateValidVarName(const std::string& str)
 {
+	const static std::unordered_set<std::string> reservedNames{"float", "int", "bool", "double", "long", "char", "TRUE", "FALSE"};
+
 	std::string result = "";
 	for (const char c : str)
 	{
@@ -27,6 +29,10 @@ std::string generateValidVarName(const std::string& str)
 			result += c;
 
 	}
+	if (std::isdigit(result[0])) result = "m" + result;
+
+	if (reservedNames.contains(result)) result += "0";
+
 	return result;
 };
 
