@@ -15,6 +15,22 @@
 //https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L251
 
 
+//flag some invalid characters in a name
+std::string generateValidVarName(const std::string& str)
+{
+	std::string result = "";
+	for (const char c : str)
+	{
+		if (static_cast<int>(c) < 0 || !std::isalnum(c))
+			result += '_';
+		else
+			result += c;
+
+	}
+	return result;
+};
+
+
 //we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
@@ -276,22 +292,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 	}
 
-
-	//flag some invalid characters in a name
-	auto generateValidVarName = [](const std::string& str)
-	{
-		std::string result = "";
-		for (const char c : str)
-		{
-			if (static_cast<int>(c) < 0 || !std::isalnum(c))
-				result += '_';
-			else
-				result += c;
-
-		}
-		return result;
-	};
-
 #if UE_VERSION < UE_4_25
 	if (object->Children)
 	{
@@ -307,6 +307,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			auto prop = child->castTo<UProperty>();
 			EngineStructs::Member member;
 			member.size = prop->ElementSize * prop->ArrayDim;
+			member.arrayDim = prop->ArrayDim;
 			member.name = generateValidVarName(prop->getName());
 			//should not happen
 			if (member.size == 0)
@@ -391,6 +392,25 @@ constexpr uint64_t GetMaxOfType()
 	return (1ull << (sizeof(T) * 0x8ull)) - 1;
 }
 
+std::string getEnumTypeFromSize(const int size)
+{
+	if (size > sizeof(int32_t)) return TYPE_UI64;
+	if (size > sizeof(int16_t)) return TYPE_UI32;
+	if (size > sizeof(int8_t)) return TYPE_UI16;
+
+	return TYPE_UI8;
+}
+
+int getEnumSizeFromType(const std::string type)
+{
+	if (type == TYPE_UI64) return sizeof(uint64_t);
+	if (type == TYPE_UI32) return sizeof(uint32_t);
+	if (type == TYPE_UI16) return sizeof(uint16_t);
+	if (type == TYPE_UI8) return sizeof(uint8_t);
+
+	return 0;
+}
+
 std::string setEnumSizeForValue(uint64_t EnumValue)
 {
 	if (EnumValue > GetMaxOfType<uint32_t>())
@@ -422,9 +442,12 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 
 		auto fname = FNameToString(name.Key());
 		std::ranges::replace(fname, ':', '_');
-		eEnum.members.push_back(std::pair(fname, name.Value()));
+
+		if (!fname.ends_with("_MAX"))
+			eEnum.members.push_back(std::pair(fname, name.Value()));
 	}
 	eEnum.type = setEnumSizeForValue(maxNum);
+	eEnum.size = getEnumSizeFromType(eEnum.type);
 
 	eEnum.cppName = object->getName();
 
@@ -1106,6 +1129,7 @@ void EngineCore::overrideStructMembers(const EngineStructs::Struct & eStruct)
 
 void EngineCore::finishPackages()
 {
+	std::unordered_map<std::string, EngineStructs::Enum*> enumLookupTable;
 	std::unordered_map<std::string, int> enumMap = {};
 	int duplicatedNames = 0;
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
@@ -1141,15 +1165,6 @@ void EngineCore::finishPackages()
 					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
 
 				}
-
-				for (const auto& var : struc.definedMembers)
-				{
-					if (var.type.propertyType == PropertyType::EnumProperty)
-					{
-						if (!enumMap.contains(var.type.name))
-							enumMap[var.type.name] = var.size;
-					}
-				}
 			}
 		};
 
@@ -1172,6 +1187,14 @@ void EngineCore::finishPackages()
 
 		for (const auto& struc : package.combinedStructsAndClasses)
 		{
+			for (const auto& var : struc->definedMembers)
+			{
+				if (var.type.propertyType == PropertyType::EnumProperty && !enumMap.contains(var.type.name))
+				{
+					enumMap.insert(std::pair<std::string, int>(var.type.name, var.arrayDim > 0 ? var.size / var.arrayDim : var.size));
+				}
+			}
+
 			for (auto& name : struc->superNames)
 			{
 				const auto info = getInfoOfObject(name);
@@ -1263,23 +1286,22 @@ void EngineCore::finishPackages()
 
 		for (int j = 0; j < package.enums.size(); j++)
 		{
-			auto& enu = package.enums[j];
-			if (enumMap.contains(enu.cppName))
-			{
-				const auto eSize = enumMap[enu.cppName];
-
-				std::string nam = TYPE_UI8;
-				if (eSize == 2)
-					nam = TYPE_UI16;
-				else if (eSize == 4)
-					nam = TYPE_UI32;
-				else if (eSize == 8)
-					nam = TYPE_UI64;
-
-				enu.type = nam;
-			}
+			enumLookupTable.insert(std::pair<std::string, EngineStructs::Enum*>(generateValidVarName(package.enums[j].cppName), &package.enums[j]));
 		}
 
+	}
+
+	// Correct Enum types based on actual member data (they were previously guessed based on max value).
+	// We iterate over the enum map to assert we cover all enums that have overrides
+	for (auto iter = enumMap.begin(); iter != enumMap.end(); iter++)
+	{
+		if (!enumLookupTable.contains(iter->first) && !overridingStructs.contains(iter->first))
+		{
+			// predefined Enums like EOjbectFlags will hit this condition
+			continue;
+		}
+		enumLookupTable[iter->first]->type = getEnumTypeFromSize(iter->second);
+		enumLookupTable[iter->first]->size = iter->second;
 	}
 
 	for (auto& package : packages)

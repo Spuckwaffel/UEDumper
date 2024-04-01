@@ -523,10 +523,10 @@ void MDKGeneration::generate(int& progressDone, int& totalProgress)
 
 	do
 	{
+		progressDone++;
 		didReordering = false;
 		for (auto& p : newPackages)
 		{
-			progressDone++;
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
 			auto currentPackageIt = std::ranges::find(
 				orderedPackages, &p);
