@@ -434,7 +434,7 @@ struct FText
     // Taken from UnrealClasses.h - copy/update that as the source of truth
     dStruct.definition =
         R"(
-enum EObjectFlags : uint32_t
+enum class EObjectFlags : uint32_t
 {
 	// Do not add new flags unless they truly belong here. There are alternatives.
 	// if you change any the bit of any of the RF_Load flags, then you will need legacy serialization
