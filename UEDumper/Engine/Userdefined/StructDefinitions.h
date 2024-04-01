@@ -73,7 +73,6 @@ inline void overrideStructs()
 	uField.maxSize = uField.size;
 	uField.isClass = true;
 	uField.inherited = true; //Ufield is inherited
-	uField.inheretedSize = sizeof(UObject); //you can use the size from our UnrealClasses
 
 	//a vector full of the inherited classes. In case you have multiple, make sure the last one is always the base class
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};
@@ -101,7 +100,6 @@ inline void overrideStructs()
 	uStruct.maxSize = uStruct.size;
 	uStruct.isClass = true;
 	uStruct.inherited = true; //Ufield is inherited
-	uStruct.inheretedSize = sizeof(UField); //you can use the size from our UnrealClasses
 
 	//a vector full of the inherited classes. In case you have multiple, make sure the last one is always the base class
 	//e.g if you would define UClass, the vector would look like this: std::vector<std::string>{ "UStruct", "UField", "UObject"};

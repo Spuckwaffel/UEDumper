@@ -84,7 +84,7 @@ void windows::PackageViewerWindow::renderClassOrStruct(PackageTab* tab, EngineSt
         ImGui::Text("Class index: %d", struc.owningVectorIndex);
     else
         ImGui::Text("Struct index: %d", struc.owningVectorIndex);
-    ImGui::Text("Size: 0x%04X (0x%06X - 0x%06X (0x%06X))", struc.size - struc.inheretedSize, struc.inheretedSize, struc.size, struc.maxSize);
+    ImGui::Text("Size: 0x%04X (0x%06X - 0x%06X (0x%06X))", struc.size - struc.getInheritedSize(), struc.getInheritedSize(), struc.size, struc.maxSize);
     ImGui::Text("Name: %s", struc.fullName.c_str());
     ImGui::PopStyleColor();
     //if the name is hovered show a tooptip because sometimes the full name is ver large
