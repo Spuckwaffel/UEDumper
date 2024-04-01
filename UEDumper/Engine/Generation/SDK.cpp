@@ -36,6 +36,8 @@ void SDKGeneration::generateBasicType()
             noDefs.erase(it);
 
     BasicType << "#pragma once" << std::endl;
+    BasicType << "#include <cstdint>" << std::endl;
+    BasicType << "#include <locale>" << std::endl;
 
     printCredits(BasicType);
     BasicType << "/// This file contains all definitions of structs that werent defined automatically.\n\n";
