@@ -442,7 +442,9 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 
 		auto fname = FNameToString(name.Key());
 		std::ranges::replace(fname, ':', '_');
-		eEnum.members.push_back(std::pair(fname, name.Value()));
+
+		if (!fname.ends_with("_MAX"))
+			eEnum.members.push_back(std::pair(fname, name.Value()));
 	}
 	eEnum.type = setEnumSizeForValue(maxNum);
 	eEnum.size = getEnumSizeFromType(eEnum.type);
