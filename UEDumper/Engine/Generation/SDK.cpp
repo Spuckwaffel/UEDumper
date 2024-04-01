@@ -359,11 +359,13 @@ void SDKGeneration::generatePackage(
                 char nameBuf[500];
                 std::string name = member->name;
 
-                if (std::isdigit(name[0]))
-                    name = "_" + name;
+                
 
                 if (name.empty())
                     name = "noname";
+
+                else if (std::isdigit(name[0]))
+                    name = "_" + name;
 
                 if (std::ranges::find(usedNames, name) != usedNames.end())
                     name += std::to_string(j++);
