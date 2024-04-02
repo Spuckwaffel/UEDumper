@@ -105,6 +105,12 @@ void SDKGeneration::generatePackage(
                 result += c;
 
         }
+
+        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+
+        if (std::isdigit(result[0])) result = "_" + result;
+        if (reservedNames.contains(result)) result += "0";
+
         //guaranteed 0 termination
         return result;
     };
