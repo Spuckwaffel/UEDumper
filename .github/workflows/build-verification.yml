@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          submodules: 'true'
 
       - name: Configure build for x64
         uses: ilammy/msvc-dev-cmd@v1
