@@ -147,7 +147,7 @@ bool windows::HelloWindow::render()
 			ImGui::Text("Base Address: 0x%p", Memory::getBaseAddress());
 
 		}
-		if (Memory::getStatus() == Memory::MemoryStatus::loaded && createdDir)
+		if (Memory::getStatus() == Memory::MemoryStatus::loaded && createdDir && !bIsDisabled)
 		{
 			ImGui::SetCursorPosX(40);
 			ImGui::SetCursorPosY(220);
@@ -167,7 +167,6 @@ bool windows::HelloWindow::render()
 		EngineSettings::drawEngineSettings(childSize, &showEngineInfos);
 	}
 
-
 	return false;
 }
 
@@ -183,4 +182,9 @@ void windows::HelloWindow::setCompleted()
 
 void windows::HelloWindow::renderProjectPopup()
 {
+}
+
+void windows::HelloWindow::disable()
+{
+	bIsDisabled = true;
 }

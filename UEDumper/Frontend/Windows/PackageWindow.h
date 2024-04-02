@@ -47,5 +47,8 @@ namespace windows
 		 * there's something that has to be rendered topmost. Use carefully!
 		 */
 		static void topmostCallback();
+
+	private:
+		static void loadProject(const std::string projectFile, bool &done);
 	};
 }

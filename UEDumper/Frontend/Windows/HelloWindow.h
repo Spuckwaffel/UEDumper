@@ -7,6 +7,7 @@ namespace windows
 	class HelloWindow
 	{
 		static inline bool alreadyCompleted = false;
+		static inline bool bIsDisabled = false;
 
 	public:
 		HelloWindow();
@@ -15,10 +16,10 @@ namespace windows
 
 		static bool isCompleted();
 
-
 		static void setCompleted();
 
 		static void renderProjectPopup();
 
+		static void disable();
 	};
 }
