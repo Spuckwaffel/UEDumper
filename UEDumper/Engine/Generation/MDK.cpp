@@ -230,7 +230,7 @@ void MDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 		char buf[100] = { 0 };
 		sprintf_s(buf, "Size: 0x%02d", enu.members.size());
 		stream << "/// " << buf << std::endl;
-		stream << "enum class " << enu.cppName << " : " << enu.type << std::endl;
+		stream << "enum class " << generateValidVarName(enu.cppName) << " : " << enu.type << std::endl;
 		stream << "{" << std::endl;
 
 		int j = 0;
