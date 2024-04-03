@@ -48,6 +48,43 @@ public:
 		return false;
 	}
 
+	bool removeNode(Node nodeToRemove)
+	{
+		for (auto node = vNodes.begin(); node != vNodes.end(); node++)
+		{
+			if (*node == nodeToRemove)
+			{
+				vNodes.erase(node);
+
+				std::vector<NodeAndMember> edgesToRemove;
+				for (auto edge = mEdges.begin(); edge != mEdges.end(); edge++)
+				{
+					if (edge->first.first == nodeToRemove)
+					{
+						edgesToRemove.push_back(edge->first);
+					}
+					else
+					{
+						auto destinations = edge->second;
+						for (auto destinationNode = destinations.begin(); destinationNode != destinations.end(); destinationNode++)
+						{
+							if (*destinationNode == nodeToRemove) {
+								edgesToRemove.push_back(edge->first);
+							}
+						}
+					}
+				}
+				for (auto edge : edgesToRemove)
+				{
+					mEdges.erase(edge);
+				}
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	bool containsNode(Node searchNode) const
 	{
 		bool bExists = false;
@@ -131,13 +168,13 @@ public:
 			else
 			{
 				if (mEdges.contains(node)) {
+					bool cycleDetected = false;
 					for (auto neighbour : mEdges[node])
 					{
 						for (auto neighbourMember : neighbour->definedMembers)
 						{
 							auto nextNode = NodeAndMember(neighbour, neighbourMember.name);
 
-							bool cycleDetected = false;
 							for (auto previousNode : path) {
 								if (previousNode == nextNode) {
 									cycleDetected = true;
@@ -150,6 +187,7 @@ public:
 							newPath.push_back(nextNode);
 							queue.push_back({ nextNode, newPath });
 						}
+						if (cycleDetected) continue;
 					}
 				}
 			}

@@ -926,7 +926,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		if (isSearchedForMember(struc, member.name))
 		{
 			offsetColor = IGHelper::Colors::green;
-			ImGui::SetScrollHereY();
+			//ImGui::SetScrollHereY();
 		}
 
 		if (member.isBit)
@@ -1440,6 +1440,11 @@ void windows::LiveEditor::renderSearchPanel()
 		{
 			nodesToExpand.clear();
 
+			// sort the paths in order of length
+			std::sort(paths.begin(), paths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
+				return a.size() < b.size();
+			});
+
 			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE", "Possible path(s) to %s%s are:", searchResult->cppName.c_str(), (searchResultMember == "" ? "" : "::" + searchResultMember).c_str());
 			for (auto& path : paths)
 			{
@@ -1451,6 +1456,10 @@ void windows::LiveEditor::renderSearchPanel()
 				}
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
 			}
+		}
+		else
+		{
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "Failed to find any paths... this is a bug!");
 		}
 	};
 
@@ -1547,10 +1556,11 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct *struc)
 void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, EngineStructs::Struct* strucParent)
 {
 	auto graph = StrucGraph::getInstance();
-	std::deque<std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string, std::unordered_set<EngineStructs::Struct*>>> queue{ {struc, strucParent, "", {}} };
+	std::deque<std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>> queue{ {struc, strucParent, ""}};
+	std::unordered_set<EngineStructs::Struct*> visited;
 
 	bool dfs = true; // false to use bfs, true to use dfs
-	std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string, std::unordered_set<EngineStructs::Struct*>> stackEntry;
+	std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string> stackEntry;
 
 	while (queue.size() > 0)
 	{
@@ -1565,9 +1575,13 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 			queue.pop_front();
 		}
 
-		auto [node, parent, memberName, visited] = stackEntry;
+		const auto [node, parent, memberName] = stackEntry;
 
-		if (visited.contains(node)) continue;
+		if (visited.contains(node)) {
+			// we've discovered an alternate path to a node we previously visited, stop searching further
+			graph->addEdge({ parent, memberName }, node);
+			continue;
+		}
 		visited.insert(node);
 
 		if (parent != nullptr)
@@ -1594,7 +1608,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 					EngineStructs::Struct* childStruc;
 					if (isValidStructName(address, member.type.name, childStruc))
 					{
-						queue.push_back({ childStruc, node, member.name, visited });
+						queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
 					}
 					break;
 				case PropertyType::ArrayProperty:
@@ -1612,7 +1626,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 
 						if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, childStruc))
 						{
-							queue.push_back({ childStruc, node, member.name, visited });
+							queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
 						}
 						break;
 					}

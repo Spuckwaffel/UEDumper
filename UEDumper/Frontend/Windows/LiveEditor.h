@@ -17,7 +17,9 @@ namespace windows
 {
 	class LiveEditor
 	{
-		static const auto MAX_AUTO_OPEN_SEARCH_RESULT_NODES = 3;
+		// used to break infinite recursions due to UE having crazy back referencing in place
+		// putting this too high will lead to a stack overflow
+		static const auto MAX_AUTO_OPEN_SEARCH_RESULT_NODES = 5;
 
 		static inline bool liveEditorStarted = false;
 
