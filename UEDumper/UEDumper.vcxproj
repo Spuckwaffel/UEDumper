@@ -222,6 +222,7 @@
     <ClInclude Include="Resources\Json\json.hpp" />
     <ClInclude Include="Settings\EngineSettings.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StrucGraph.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UEDumper.rc" />

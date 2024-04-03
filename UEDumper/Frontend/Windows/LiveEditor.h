@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Engine/Core/EngineStructs.h"
 #include "Engine/Live/LiveMemory.h"
+#include "StrucGraph.h"
+
 /****************************************
 *										*
 *	+++ UEDumper live editor +++		*
@@ -15,6 +17,8 @@ namespace windows
 {
 	class LiveEditor
 	{
+		static const auto MAX_AUTO_OPEN_SEARCH_RESULT_NODES = 3;
+
 		static inline bool liveEditorStarted = false;
 
 		enum EditorTabType
@@ -41,9 +45,50 @@ namespace windows
 
 		static inline bool bRenderAddInspector = false;
 
+		static inline bool bShowRenderSearchView = false; // whether to render the tab, or search view
 		static inline int tabPicked = 0;
 
 		static inline std::vector<EditorTab> tabs{};
+
+		static inline char searchText[255] = { 0 };
+		static inline std::string previousSearchText;
+		static inline int searchResultPicked = 0;
+		// avoid infinite recursion dispalying results when cycles occur, resulting in a stack overflow
+		static inline std::map<NodeAndMember, int> visitedNodeCounters;
+		static inline std::string searchResultMember;
+		static inline std::vector<Node> searchResults;
+		static inline std::set<NodeAndMember> nodesToExpand;
+		static inline bool shouldExpandNode(const EngineStructs::Struct* struc)
+		{
+			for (auto &member : struc->definedMembers) {
+				if (shouldExpandNode(struc, member.name))
+					return true;
+			};
+			return false;
+		}
+		static inline bool shouldExpandNode(const EngineStructs::Struct* struc, std::string memberName)
+		{
+			if (!visitedNodeCounters.contains(NodeAndMember(const_cast<EngineStructs::Struct*>(struc), memberName)))
+				visitedNodeCounters.insert({NodeAndMember(const_cast<EngineStructs::Struct*>(struc), memberName), 0});
+			else if (visitedNodeCounters[NodeAndMember(const_cast<EngineStructs::Struct*>(struc), memberName)] >= MAX_AUTO_OPEN_SEARCH_RESULT_NODES)
+				return false;
+
+			if (nodesToExpand.contains(NodeAndMember(const_cast<EngineStructs::Struct*>(struc), memberName)))
+			{
+				visitedNodeCounters[NodeAndMember(const_cast<EngineStructs::Struct*>(struc), memberName)] += 1;
+
+				return true;
+			}
+
+			return false;
+		}
+		static inline bool isSearchedForMember(const EngineStructs::Struct* struc, std::string memberName)
+		{
+			return struc == searchResults[searchResultPicked] && searchResultMember == memberName;
+		}
+
+		static void populateStrucGraph(EngineStructs::Struct *struc);
+		static void populateStrucGraph(EngineStructs::Struct *struc, EngineStructs::Struct* parent);
 
 		static void renderAddAddress();
 
@@ -77,7 +122,7 @@ namespace windows
 		 * \param secret secret
 		 * \param innerOffset inner offset
 		 */
-		static void drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawMemberArrayProperty(const EngineStructs::Struct* struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 
 		/**
 		 * \brief displays the given struct for a memory block
@@ -97,7 +142,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param simple simple displaying or extended
 		 */
-		static void drawNonclickableMember(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, int innerOffset, const std::string& secret, bool simple = false);
+		static void drawNonclickableMember(const EngineStructs::Struct* struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, int innerOffset, const std::string& secret, bool simple = false);
 
 		/**
 		 * \brief displays a ObjectProperty which is a pointer
@@ -106,7 +151,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
 		 */
-		static void drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawMemberObjectProperty(const EngineStructs::Struct* struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 
 		/**
 		 * \brief displays a TEnumAsByte
@@ -116,7 +161,7 @@ namespace windows
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
 		 */
-		static void drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawTEnumAsByteProperty(const EngineStructs::Struct* struc, const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
 		
 
 		/**
@@ -159,6 +204,11 @@ namespace windows
 		 * \return if the enum and returning data is valid
 		 */
 		static bool isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu);
+
+		static void renderSearchPanel();
+
+		static void performSearch();
+		static void performSearch(const std::string searchString);
 		
 
 	public:
@@ -179,5 +229,13 @@ namespace windows
 		 * there's something that has to be rendered topmost. Use carefully!
 		 */
 		static void topmostCallback();
+
+		static std::string convertToLowercase(const std::string& str)
+		{
+			std::string result = "";
+			for (char ch : str) result += tolower(ch);
+
+			return result;
+		}
 	};
 }
