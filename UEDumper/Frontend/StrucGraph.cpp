@@ -151,6 +151,10 @@ std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, Nod
 		{
 			allPaths.push_back(path);
 		}
+		else if (node.first == destination.first && destination.second == "")
+		{
+			allPaths.push_back(path);
+		}
 		else
 		{
 			if (mEdges.contains(node)) {
