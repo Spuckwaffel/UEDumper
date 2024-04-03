@@ -14,8 +14,7 @@
 #include "Frontend/Fonts/fontAwesomeHelper.h"
 #include <Engine/Core/ObjectsManager.h>
 
-#define AUTO_EXPAND(struc, defaultFlags) ImGuiTreeNodeFlags flags = defaultFlags; if (shouldExpandNode(struc)) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
-#define AUTO_EXPAND_MEMBER(struc, memberName, defaultFlags) ImGuiTreeNodeFlags flags = defaultFlags; if (shouldExpandNode(struc, memberName)) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
+#define AUTO_EXPAND(memoryAddress, defaultFlags) ImGuiTreeNodeFlags flags = defaultFlags; if (offsetsToExpand.contains(memoryAddress)) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
 
 void windows::LiveEditor::renderAddAddress()
 {
@@ -472,13 +471,13 @@ void windows::LiveEditor::drawReadWriteableField(LiveMemory::MemoryBlock* block,
 	ImGui::PopItemWidth();
 }
 
-void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Struct *struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
 {
 	if (!block)
 		return;
 
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-	AUTO_EXPAND_MEMBER(struc, member.name, ImGuiTreeNodeFlags_None)
+	AUTO_EXPAND(innerOffset + member.offset, ImGuiTreeNodeFlags_None)
 	if (ImGui::TreeNodeEx(std::string(member.type.name + "##" + secret + std::to_string(member.offset + innerOffset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -580,7 +579,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Struct *s
 				sprintf_s(addressBuf, "0x%llX", objPtr);
 
 				//create a tree node for it
-				AUTO_EXPAND_MEMBER(struc, member.name, ImGuiTreeNodeFlags_None)
+				AUTO_EXPAND(innerOffset + member.offset, ImGuiTreeNodeFlags_None)
 				if (ImGui::TreeNodeEx(std::string(std::to_string(i) + " " + member.type.subTypes[0].name + "##" + secret + std::to_string(objPtr)).c_str(), flags))
 				{
 					ImGui::PopStyleColor();
@@ -673,7 +672,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 		for (const auto& subMember : struc->definedMembers)
 		{
 			//simple drawing otherwise its too long
-			drawNonclickableMember(struc, subMember, block, offset, secret, true);
+			drawNonclickableMember(subMember, block, offset, secret, true);
 			ImGui::SameLineEx(10, -3);
 		}
 		ImGui::TextColored(IGHelper::Colors::grayedOut, ")");
@@ -702,7 +701,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 	}
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 	//the average struct
-	AUTO_EXPAND(struc, ImGuiTreeNodeFlags_None)
+	AUTO_EXPAND(struc->memoryAddress, ImGuiTreeNodeFlags_None)
 	if (ImGui::TreeNodeEx(std::string(struc->cppName + "##" + secret + std::to_string(offset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -721,7 +720,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 				{
 					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 
-					AUTO_EXPAND(struc, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+					AUTO_EXPAND(struc->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
 					if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + secret + std::to_string(offset)).c_str(), flags)) //secret: 0x7FF + UObject
 					{
 						ImGui::PopStyleColor();
@@ -749,7 +748,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 	}
 }
 
-void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Struct* struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, int innerOffset, const std::string& secret, bool simple)
+void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, int innerOffset, const std::string& secret, bool simple)
 {
 	//invalid block?
 	if (!block)
@@ -778,12 +777,12 @@ void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Struct* st
 
 }
 
-void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Struct* struc, const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
 {
 	//get the ptr so we can display it fancy
 	const auto memberPtr = block->read<uint64_t>(member.offset + innerOffset);
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-	AUTO_EXPAND_MEMBER(struc, member.name, ImGuiTreeNodeFlags_None)
+	AUTO_EXPAND(innerOffset + member.offset, ImGuiTreeNodeFlags_None)
 	if (ImGui::TreeNodeEx(std::string(member.type.name + "##" + secret + std::to_string(member.offset + innerOffset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -829,7 +828,7 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Struct* 
 		ImGui::TextColored(IGHelper::colToVec(255, 255, 255, 150), "0x%llX", memberPtr);
 }
 
-void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Struct* struc, const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block,
+void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& member, const EngineStructs::Enum* subEnum, LiveMemory::MemoryBlock* block,
 	const std::string& secret, int innerOffset)
 {
 	std::vector<std::string> items;
@@ -923,7 +922,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		//also draw the bit if it is one
 
 		auto offsetColor = IGHelper::Colors::red;
-		if (isSearchedForMember(struc, member.name))
+		if (struc == searchResults[searchResultPicked] && searchResultMember == member.name)
 		{
 			offsetColor = IGHelper::Colors::green;
 			//ImGui::SetScrollHereY();
@@ -948,11 +947,11 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 				//draw classes that have a pointer
 			case PropertyType::ObjectProperty:
 			case PropertyType::ClassProperty:
-				drawMemberObjectProperty(struc, member, block, secret, innerOffset);
+				drawMemberObjectProperty(member, block, secret, innerOffset);
 				break;
 				//support for TArray<AActor*> actors
 			case PropertyType::ArrayProperty:
-				drawMemberArrayProperty(struc, member, block, secret, innerOffset);
+				drawMemberArrayProperty(member, block, secret, innerOffset);
 				break;
 
 				//for structs inside a struct that are directly in it
@@ -990,7 +989,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 				//we have to use the first subtype which is the enum name
 				if (member.type.subTypes.size() == 1 && isValidEnumName(member.type.subTypes[0].name, subEnum))
 				{
-					drawTEnumAsByteProperty(struc, member, subEnum, block, secret, innerOffset);
+					drawTEnumAsByteProperty(member, subEnum, block, secret, innerOffset);
 				}
 				break;
 			}
@@ -1015,7 +1014,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		//non clickable types can be (mostly) directly modified like ints floats etc
 		//all props that are directly displayed need a 10 indent
 		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
-		drawNonclickableMember(struc, member, block, innerOffset, secret);
+		drawNonclickableMember(member, block, innerOffset, secret);
 	}
 
 }
@@ -1071,7 +1070,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 
 			//show a treenode, but so it has no indent we use treenodeEx with ImGuiTreeNodeFlags_NoTreePushOnOpen
-			AUTO_EXPAND(superStruct, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+			AUTO_EXPAND(superStruct->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
 			if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + appendSecret(secret, superStruct->cppName, struc->getInheritedSize())).c_str(), flags)) //secret: 0x7FF + UObject
 			{
 				ImGui::PopStyleColor();
@@ -1095,7 +1094,7 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 		ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 		//create a non indent treenode
 
-		AUTO_EXPAND(struc, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+		AUTO_EXPAND(struc->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
 		if (ImGui::TreeNodeEx(std::string(struc->cppName + "##" + appendSecret(secret, struc->cppName, struc->getInheritedSize())).c_str(), flags))
 		{
 			ImGui::PopStyleColor();
@@ -1438,7 +1437,7 @@ void windows::LiveEditor::renderSearchPanel()
 		auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
 		if (paths.size() > 0)
 		{
-			nodesToExpand.clear();
+			offsetsToExpand.clear();
 
 			// sort the paths in order of length
 			std::sort(paths.begin(), paths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
@@ -1452,7 +1451,7 @@ void windows::LiveEditor::renderSearchPanel()
 				for (auto node : path) {
 					buf += " -> " + node.second;
 					if (popLast && node == path[path.size() - 1]) break;
-					nodesToExpand.insert(node);
+					offsetsToExpand.insert(node.first->memoryAddress);
 				}
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
 			}
