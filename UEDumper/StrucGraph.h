@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <deque>
 #include "Engine/Core/EngineStructs.h"
 
 typedef EngineStructs::Struct* Node;
@@ -100,21 +101,28 @@ public:
 		std::vector<NodeAndMember> path;
 		std::unordered_set<Node> visited;
 
-		std::vector<std::pair<NodeAndMember, std::vector<NodeAndMember>>> stack;
+		std::deque<std::pair<NodeAndMember, std::vector<NodeAndMember>>> queue;
 		for (auto member : start->definedMembers)
-			stack.push_back(std::pair<NodeAndMember, std::vector<NodeAndMember>>(
+			queue.push_back(std::pair<NodeAndMember, std::vector<NodeAndMember>>(
 				NodeAndMember(start, member.name),
 				{ NodeAndMember(start, member.name) }
 			));
 
-		//if (destination->cppName == "ULevel") DebugBreak();
-
-		while (stack.size() > 0)
+		bool dfs = false; // false to use bfs, true to use dfs
+		std::tuple<NodeAndMember, std::vector<NodeAndMember>> stackEntry;
+		while (queue.size() > 0)
 		{
-			auto [node, path] = stack[stack.size() - 1];
-			stack.pop_back();
-
-			if (visited.contains(node.first)) continue;
+			if (dfs)
+			{
+				stackEntry = queue[queue.size() - 1];
+				queue.pop_back();
+			}
+			else
+			{
+				stackEntry = queue[0];
+				queue.pop_front();
+			}
+			auto [node, path] = stackEntry;
 
 			if (node.first == destination.first && node.second == destination.second)
 			{
@@ -122,24 +130,29 @@ public:
 			}
 			else
 			{
-				if (visited.find(node.first) == visited.end()) {
-					visited.insert(node.first);
-
-					if (mEdges.contains(node)) {
-						for (auto neighbour : mEdges[node])
+				if (mEdges.contains(node)) {
+					for (auto neighbour : mEdges[node])
+					{
+						for (auto neighbourMember : neighbour->definedMembers)
 						{
-							for (auto neighbourMember : neighbour->definedMembers)
-							{
-								std::vector<NodeAndMember> newPath = path;
-								newPath.push_back(NodeAndMember(neighbour, neighbourMember.name));
-								stack.push_back({ NodeAndMember(neighbour, neighbourMember.name), newPath });
+							auto nextNode = NodeAndMember(neighbour, neighbourMember.name);
+
+							bool cycleDetected = false;
+							for (auto previousNode : path) {
+								if (previousNode == nextNode) {
+									cycleDetected = true;
+									break;
+								}
 							}
+							if (cycleDetected) continue;
+
+							std::vector<NodeAndMember> newPath = path;
+							newPath.push_back(nextNode);
+							queue.push_back({ nextNode, newPath });
 						}
 					}
 				}
 			}
-
-			visited.erase(node.first);
 		}
 
 		return allPaths;

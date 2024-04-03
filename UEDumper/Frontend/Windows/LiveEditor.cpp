@@ -1431,7 +1431,7 @@ void windows::LiveEditor::renderSearchPanel()
 	auto searchTextString = convertToLowercase(std::string(searchText));
 	performSearch(searchTextString);
 
-	auto findPaths = [&]() {
+	auto findPaths = [&](bool popLast) {
 		auto& searchResult = searchResults[searchResultPicked];
 		auto& root = tabs[tabPicked].struc;
 
@@ -1446,6 +1446,7 @@ void windows::LiveEditor::renderSearchPanel()
 				std::string buf = tabs[tabPicked].struc->cppName;
 				for (auto node : path) {
 					buf += " -> " + node.second;
+					if (popLast && node == path[path.size() - 1]) break;
 					nodesToExpand.insert(node);
 				}
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
@@ -1464,8 +1465,12 @@ void windows::LiveEditor::renderSearchPanel()
 				searchResultPicked = i;
 				searchResultMember = "";
 				bShowRenderSearchView = true;
+				if (searchResults[i]->definedMembers.size() > 0)
+				{
+					searchResultMember = searchResults[i]->definedMembers[0].name;
+				}
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d", searchResultPicked);
-				findPaths();
+				findPaths(true);
 			}
 			ImGui::PopStyleColor();
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
@@ -1479,7 +1484,7 @@ void windows::LiveEditor::renderSearchPanel()
 						searchResultMember = member.name;
 						bShowRenderSearchView = true;
 						LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d with member %s", searchResultPicked, searchResultMember.c_str());
-						findPaths();
+						findPaths(false);
 					}
 				}
 			}
@@ -1542,11 +1547,10 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct *struc)
 void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, EngineStructs::Struct* strucParent)
 {
 	auto graph = StrucGraph::getInstance();
-	std::deque<std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>> queue{ {struc, strucParent, ""}};
-	std::unordered_set<EngineStructs::Struct*> visited;
+	std::deque<std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string, std::unordered_set<EngineStructs::Struct*>>> queue{ {struc, strucParent, "", {}} };
 
-	bool dfs = false; // false to use bfs, true to use dfs
-	std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string> stackEntry;
+	bool dfs = true; // false to use bfs, true to use dfs
+	std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string, std::unordered_set<EngineStructs::Struct*>> stackEntry;
 
 	while (queue.size() > 0)
 	{
@@ -1561,7 +1565,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 			queue.pop_front();
 		}
 
-		const auto [node, parent, memberName] = stackEntry;
+		auto [node, parent, memberName, visited] = stackEntry;
 
 		if (visited.contains(node)) continue;
 		visited.insert(node);
@@ -1590,7 +1594,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 					EngineStructs::Struct* childStruc;
 					if (isValidStructName(address, member.type.name, childStruc))
 					{
-						queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
+						queue.push_back({ childStruc, node, member.name, visited });
 					}
 					break;
 				case PropertyType::ArrayProperty:
@@ -1608,7 +1612,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 
 						if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, childStruc))
 						{
-							queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
+							queue.push_back({ childStruc, node, member.name, visited });
 						}
 						break;
 					}
