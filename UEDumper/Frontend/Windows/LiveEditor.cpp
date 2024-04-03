@@ -1474,10 +1474,6 @@ void windows::LiveEditor::renderSearchPanel()
 				searchResultPicked = i;
 				searchResultMember = "";
 				bShowRenderSearchView = true;
-				if (searchResults[i]->definedMembers.size() > 0)
-				{
-					searchResultMember = searchResults[i]->definedMembers[0].name;
-				}
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d", searchResultPicked);
 				findPaths(true);
 			}
