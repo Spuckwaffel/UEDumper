@@ -17,196 +17,28 @@ class StrucGraph
 	std::vector<Node> vNodes;
 	std::map<NodeAndMember, std::vector<DestinationNode>> mEdges;
 
-	void addNodeNoCheck(Node newNode)
-	{
-		vNodes.push_back(newNode);
-	}
+	void addNodeNoCheck(Node newNode);
 
 public:
 	StrucGraph(const StrucGraph& obj) = delete;
-	static StrucGraph* getInstance()
-	{
-		if (instancePtr == nullptr) instancePtr = new StrucGraph();
+	static StrucGraph* getInstance();
 
-		return instancePtr;
-	}
+	void clear();
 
-	void clear()
-	{
-		vNodes.clear();
-		mEdges.clear();
-	}
+	bool addNode(Node newNode);
 
-	bool addNode(Node newNode)
-	{
-		if (!containsNode(newNode))
-		{
-			addNodeNoCheck(newNode);
-			return true;
-		}
+	bool removeNode(Node nodeToRemove);
 
-		return false;
-	}
+	bool containsNode(Node searchNode) const;
 
-	bool removeNode(Node nodeToRemove)
-	{
-		for (auto node = vNodes.begin(); node != vNodes.end(); node++)
-		{
-			if (*node == nodeToRemove)
-			{
-				vNodes.erase(node);
+	bool addEdge(NodeAndMember from, DestinationNode to);
 
-				std::vector<NodeAndMember> edgesToRemove;
-				for (auto edge = mEdges.begin(); edge != mEdges.end(); edge++)
-				{
-					if (edge->first.first == nodeToRemove)
-					{
-						edgesToRemove.push_back(edge->first);
-					}
-					else
-					{
-						auto destinations = edge->second;
-						for (auto destinationNode = destinations.begin(); destinationNode != destinations.end(); destinationNode++)
-						{
-							if (*destinationNode == nodeToRemove) {
-								edgesToRemove.push_back(edge->first);
-							}
-						}
-					}
-				}
-				for (auto edge : edgesToRemove)
-				{
-					mEdges.erase(edge);
-				}
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	bool containsNode(Node searchNode) const
-	{
-		bool bExists = false;
-		for (auto& node : vNodes)
-		{
-			if (node == searchNode) {
-				bExists = true;
-				break;
-			}
-		}
-
-		return bExists;
-	}
-
-	bool addEdge(NodeAndMember from, DestinationNode to)
-	{
-		if (!containsNode(from.first)) addNodeNoCheck(from.first);
-		if (!containsNode(to)) addNodeNoCheck(to);
-
-		if (containsEdge(from, to)) return false;
-
-		if (!mEdges.contains(from))
-		{
-			std::vector<DestinationNode> newVec;
-			mEdges.insert(std::pair<NodeAndMember, std::vector<DestinationNode>>(from, newVec));
-		}
-
-		mEdges[from].push_back(to);
-
-		return true;
-	}
-
-	bool containsEdge(NodeAndMember from, DestinationNode to) const
-	{
-		auto nodes = mEdges.find(from);
-		if (nodes == mEdges.end()) return false;
-
-		for (auto node : nodes->second)
-		{
-			if (node == to) {
-				return true;
-			}
-		}
-
-		return false;
-	}
+	bool containsEdge(NodeAndMember from, DestinationNode to) const;
 
 	// Function to find all paths from node A to node B in a DAG
-	std::vector<std::vector<NodeAndMember>> findAllPaths(Node start, NodeAndMember destination) {
-		std::vector<std::vector<NodeAndMember>> allPaths;
-		std::vector<NodeAndMember> path;
-		std::unordered_set<Node> visited;
+	std::vector<std::vector<NodeAndMember>> findAllPaths(Node start, NodeAndMember destination);
 
-		std::deque<std::pair<NodeAndMember, std::vector<NodeAndMember>>> queue;
-		for (auto member : start->definedMembers)
-			queue.push_back(std::pair<NodeAndMember, std::vector<NodeAndMember>>(
-				NodeAndMember(start, member.name),
-				{ NodeAndMember(start, member.name) }
-			));
+	std::vector<Node>* nodes();
 
-		bool dfs = false; // false to use bfs, true to use dfs
-		std::tuple<NodeAndMember, std::vector<NodeAndMember>> stackEntry;
-		while (queue.size() > 0)
-		{
-			if (dfs)
-			{
-				stackEntry = queue[queue.size() - 1];
-				queue.pop_back();
-			}
-			else
-			{
-				stackEntry = queue[0];
-				queue.pop_front();
-			}
-			auto [node, path] = stackEntry;
-
-			if (node.first == destination.first && node.second == destination.second)
-			{
-				allPaths.push_back(path);
-			}
-			else if (node.first == destination.first && destination.second == "")
-			{
-				allPaths.push_back(path);
-			}
-			else
-			{
-				if (mEdges.contains(node)) {
-					bool cycleDetected = false;
-					for (auto neighbour : mEdges[node])
-					{
-						for (auto neighbourMember : neighbour->definedMembers)
-						{
-							auto nextNode = NodeAndMember(neighbour, neighbourMember.name);
-
-							for (auto previousNode : path) {
-								if (previousNode == nextNode) {
-									cycleDetected = true;
-									break;
-								}
-							}
-							if (cycleDetected) continue;
-
-							std::vector<NodeAndMember> newPath = path;
-							newPath.push_back(nextNode);
-							queue.push_back({ nextNode, newPath });
-						}
-						if (cycleDetected) continue;
-					}
-				}
-			}
-		}
-
-		return allPaths;
-	}
-
-	std::vector<Node>* nodes()
-	{
-		return &vNodes;
-	}
-
-	std::map<NodeAndMember, std::vector<DestinationNode>>* edges()
-	{
-		return &mEdges;
-	}
+	std::map<NodeAndMember, std::vector<DestinationNode>>* edges();
 };
