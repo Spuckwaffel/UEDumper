@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include "stdafx.h"
 #include <deque>
 #include "Engine/Core/EngineStructs.h"
 

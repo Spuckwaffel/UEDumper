@@ -3,7 +3,6 @@
 #include "Engine/Core/EngineStructs.h"
 #include "Engine/Live/LiveMemory.h"
 #include "Frontend/StrucGraph.h"
-#include <string>
 
 /****************************************
 *										*

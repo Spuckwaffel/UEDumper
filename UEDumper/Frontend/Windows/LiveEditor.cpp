@@ -1,7 +1,4 @@
 #include "LiveEditor.h"
-#include <vector>
-#include <deque>
-#include <tuple>
 
 #include "LogWindow.h"
 #include "Engine/Core/Core.h"

@@ -1,8 +1,5 @@
 #pragma once
 
-#include <vector>
-#include <deque>
-#include "Engine/Core/EngineStructs.h"
 #include "Frontend/StrucGraph.h"
 
 StrucGraph* StrucGraph::getInstance()
