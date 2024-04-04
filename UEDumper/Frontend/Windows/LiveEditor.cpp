@@ -1408,7 +1408,7 @@ void windows::LiveEditor::renderSearchBox()
 {
 	if (!bRenderSearchBox) return;
 
-	static ImVec2 smallWindow = ImVec2(750, 730);
+	static ImVec2 smallWindow = ImVec2(860, 730);
 	static ImVec2 closeButtonPos = ImVec2(smallWindow.x, 0);
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
@@ -1440,13 +1440,13 @@ void windows::LiveEditor::renderSearchBox()
 			subType = "<" + member.type.subTypes[0].name + ">";
 		}
 		isPointer = typeInfo.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty;
-		if (typeInfo.propertyType == PropertyType::BoolProperty) typeColor = IGHelper::Colors::enumBlue;
-		if (typeInfo.propertyType == PropertyType::EnumProperty) typeColor = IGHelper::Colors::enumBlue;
+		if (typeInfo.propertyType == PropertyType::BoolProperty) typeColor = IGHelper::Colors::varTypeBlue;
+		if (typeInfo.propertyType == PropertyType::EnumProperty) typeColor = IGHelper::Colors::varTypeBlue;
 
 		char addressBuf[30];
 		sprintf_s(addressBuf, "0x%llX", node.first->memoryAddress + member.offset);
 
-		ImGui::Text(isLastEntry ? ICON_FA_ARROW_RIGHT : ICON_FA_ARROW_DOWN);
+		ImGui::Text(isLastEntry ? ICON_FA_ANGLES_RIGHT : ICON_FA_CARET_DOWN);
 		ImGui::SameLine();
 		ImGui::TextColored(typeColor, (member.type.name + subType + (isPointer ? "* " : " ")).c_str());
 		ImGui::SameLine();
@@ -1495,21 +1495,20 @@ void windows::LiveEditor::renderSearchBox()
 			auto root = tabs[tabPicked].struc;
 			for (auto& path : discoveredPaths)
 			{
-				auto getUniqueKeyForPath = [&](const std::vector<NodeAndMember>& path)
-					{
-						std::string key = std::to_string(path.size());
-						for (const auto& node : path) {
-							key += ":" + node.first->cppName + ":" + node.second;
-						}
-						return key;
-					};
-
 				pathNum++;
 				if (pathNum == 1) ImGui::SetNextItemOpen(true, ImGuiCond_Always);
 
 				auto nextMemberName = path.size() > 1 ? path[1].second : "<target>";
-				if (ImGui::TreeNode((prefix + std::to_string(pathNum) + " via " + path[0].second + "->" + nextMemberName + +" (levels: " + std::to_string(path.size()) + ")").c_str()))
+				auto text = " via " + path[0].second + "->" + nextMemberName + +" (levels: " + std::to_string(path.size()) + ")";
+				if (ImGui::TreeNode(("##Path" + std::to_string(pathNum)).c_str()))
 				{
+					ImGui::SameLine();
+					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
+					ImGui::Button((prefix + std::to_string(pathNum)).c_str());
+					ImGui::PopStyleColor();
+					ImGui::SameLine();
+					ImGui::TextColored(IGHelper::Colors::white, text.c_str());
+
 					int subPathIndex = 0;
 					for (auto &node : path) {
 						for (auto &member : node.first->definedMembers)
@@ -1522,6 +1521,14 @@ void windows::LiveEditor::renderSearchBox()
 					}
 
 					ImGui::TreePop();
+				}
+				else {
+					ImGui::SameLine();
+					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::green);
+					ImGui::Button((prefix + std::to_string(pathNum)).c_str());
+					ImGui::PopStyleColor();
+					ImGui::SameLine();
+					ImGui::TextColored(IGHelper::Colors::white, text.c_str());
 				}
 			}
 		}
