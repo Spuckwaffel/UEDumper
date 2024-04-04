@@ -57,7 +57,7 @@ namespace windows
 		static inline std::vector<EditorTab> tabs{};
 
 		static inline char searchText[512] = { 0 };
-		static inline std::string previousSearchText;
+		static inline std::string previousSearchText = "0xDEADBEEF";
 		static inline int searchResultPicked = 0; // which search result they picked
 		static inline std::string searchResultMember; // what member they clicked on
 		static inline std::vector<Node> searchResults; // actual search results

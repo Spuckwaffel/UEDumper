@@ -1622,7 +1622,7 @@ void windows::LiveEditor::performSearch(const std::string searchString)
 {
 	auto lowercasedSearchString = convertToLowercase(searchString);
 
-	if (previousSearchText != "" && lowercasedSearchString == previousSearchText) return;
+	if (lowercasedSearchString == previousSearchText) return;
 	previousSearchText = lowercasedSearchString;
 
 	bDisplayPaths = false;
