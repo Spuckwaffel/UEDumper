@@ -118,8 +118,17 @@ bool StrucGraph::containsEdge(NodeAndMember from, DestinationNode to) const
 // Function to find all paths from node A to node B in a DAG
 std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, NodeAndMember destination) {
 	std::vector<std::vector<NodeAndMember>> allPaths;
+	std::unordered_set<std::string> visitedPaths;
 	std::vector<NodeAndMember> path = {};
-	std::unordered_set<Node> visited = {};
+
+	auto getUniqueKeyForPath = [&](const std::vector<NodeAndMember>& path)
+		{
+			std::string key = std::to_string(path.size());
+			for (const auto& node : path) {
+				key += ":" + node.first->cppName + ":" + node.second;
+			}
+			return key;
+		};
 
 	std::deque<std::pair<NodeAndMember, std::vector<NodeAndMember>>> queue;
 	for (auto& member : start->definedMembers)
@@ -148,11 +157,17 @@ std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, Nod
 
 		if (node.first == destination.first && node.second == destination.second)
 		{
+			if (visitedPaths.contains(getUniqueKeyForPath(path))) continue;
+
 			allPaths.push_back(path);
+			visitedPaths.insert(getUniqueKeyForPath(path));
 		}
 		else if (node.first == destination.first && destination.second == "")
 		{
+			if (visitedPaths.contains(getUniqueKeyForPath(path))) continue;
+
 			allPaths.push_back(path);
+			visitedPaths.insert(getUniqueKeyForPath(path));
 		}
 		else
 		{

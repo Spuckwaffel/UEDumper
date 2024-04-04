@@ -1,4 +1,4 @@
-#include "LiveEditor.h"
+﻿#include "LiveEditor.h"
 
 #include "LogWindow.h"
 #include "Engine/Core/Core.h"
@@ -1408,7 +1408,7 @@ void windows::LiveEditor::renderSearchBox()
 {
 	if (!bRenderSearchBox) return;
 
-	static ImVec2 smallWindow = ImVec2(750, 520);
+	static ImVec2 smallWindow = ImVec2(750, IGHelper::getWindowSize().y - 200);
 	static ImVec2 closeButtonPos = ImVec2(smallWindow.x, 0);
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
@@ -1430,34 +1430,31 @@ void windows::LiveEditor::renderSearchBox()
 		}
 	};
 
-	auto renderResult = [&](const NodeAndMember &node, const EngineStructs::Member &member) {
+	auto renderResult = [&](const NodeAndMember &node, const EngineStructs::Member &member, bool isLastEntry) {
 		auto isPointer = false;
+		auto typeColor = IGHelper::Colors::classGreen;
+		auto typeInfo = member.type;
+		std::string subType = "";
 		if (member.type.subTypes.size() > 0) {
-			isPointer = member.type.subTypes[0].propertyType == PropertyType::ObjectProperty || member.type.subTypes[0].propertyType == PropertyType::ClassProperty;
+			typeInfo = member.type.subTypes[0];
+			subType = "<" + member.type.subTypes[0].name + ">";
 		}
-		else
-		{
-			isPointer = member.type.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty;
-		}
+		isPointer = typeInfo.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty;
+		if (typeInfo.propertyType == PropertyType::BoolProperty) typeColor = IGHelper::Colors::enumBlue;
+		if (typeInfo.propertyType == PropertyType::EnumProperty) typeColor = IGHelper::Colors::enumBlue;
 
 		char addressBuf[30];
 		sprintf_s(addressBuf, "0x%llX", node.first->memoryAddress + member.offset);
 
-		if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(node.first->memoryAddress + member.offset) + ":" + std::to_string(member.offset)).c_str()))
-		{
-			IGHelper::copyToClipBoard(std::string(addressBuf));
-			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
-		}
+		ImGui::Text(isLastEntry ? ICON_FA_ARROW_RIGHT : ICON_FA_ARROW_DOWN);
 		ImGui::SameLine();
-		ImGui::TextColored(IGHelper::Colors::classGreen, (member.type.name + (isPointer ? "* " : " ")).c_str());
+		ImGui::TextColored(typeColor, (member.type.name + subType + (isPointer ? "* " : " ")).c_str());
 		ImGui::SameLine();
 		ImGui::TextColored(IGHelper::Colors::varPink, node.second.c_str());
-		ImGui::SameLine();
-		ImGui::TextColored(IGHelper::Colors::grayedOut, addressBuf);
 		if (isPointer)
 		{
 			ImGui::SameLine();
-			if (ImGui::Button(("Add inspector##" + std::to_string(node.first->memoryAddress) + ":" + std::to_string(member.offset)).c_str()))
+			if (ImGui::Button(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, ("##" + std::to_string(node.first->memoryAddress) + ":" + std::to_string(member.offset)).c_str())))
 			{
 				bRenderAddInspector = true;
 				bRenderSearchBox = false;
@@ -1498,17 +1495,27 @@ void windows::LiveEditor::renderSearchBox()
 			auto root = tabs[tabPicked].struc;
 			for (auto& path : discoveredPaths)
 			{
+				auto getUniqueKeyForPath = [&](const std::vector<NodeAndMember>& path)
+					{
+						std::string key = std::to_string(path.size());
+						for (const auto& node : path) {
+							key += ":" + node.first->cppName + ":" + node.second;
+						}
+						return key;
+					};
+
 				pathNum++;
 				if (pathNum == 1) ImGui::SetNextItemOpen(true, ImGuiCond_Always);
 
 				auto nextMemberName = path.size() > 1 ? path[1].second : "<target>";
 				if (ImGui::TreeNode((prefix + std::to_string(pathNum) + " via " + path[0].second + "->" + nextMemberName + +" (levels: " + std::to_string(path.size()) + ")").c_str()))
 				{
+					int subPathIndex = 0;
 					for (auto &node : path) {
 						for (auto &member : node.first->definedMembers)
 						{
 							if (member.name == node.second) {
-								renderResult(node, member);
+								renderResult(node, member, ++subPathIndex >= path.size());
 								break;
 							}
 						}
@@ -1552,6 +1559,14 @@ void windows::LiveEditor::renderSearchResults()
 			auto& root = tabs[tabPicked].struc;
 
 			discoveredPaths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
+			if (searchResultMember == "")
+			{
+				// we need to pop the last path to get to the class - we piggy backed on a member to find it
+				for (auto& path : discoveredPaths)
+				{
+					path.pop_back();
+				}
+			}
 			
 			bFindingPaths = false;
 			bDisplayPaths = true;
