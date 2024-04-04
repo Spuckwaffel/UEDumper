@@ -29,12 +29,10 @@ void windows::LiveEditor::renderAddAddress()
 
 	ImGui::TextWrapped("Give your new inspector a name. The memory address has to be a UObject, otherwise the editor will not work");
 
-	static char caddress[20] = { 0 };
-	static char name[40] = { 0 };
 	static char errorText[100] = { 0 };
 	ImGui::PushItemWidth(200);
-	ImGui::InputTextWithHint("Hex address##renderAddAddress", "0xSomeAddress", caddress, sizeof(caddress) - 1);
-	ImGui::InputTextWithHint("Name##renderAddAddress", "World", name, sizeof(name) - 1);
+	ImGui::InputTextWithHint("Hex address##renderAddAddress", "0xSomeAddress", addAddressAddressValue, sizeof(addAddressAddressValue) - 1);
+	ImGui::InputTextWithHint("Name##renderAddAddress", "World", addAddressNameValue, sizeof(addAddressNameValue) - 1);
 	ImGui::PopItemWidth();
 	ImGui::TextColored(IGHelper::Colors::classOrange, errorText);
 	ImGui::Dummy(ImVec2(100, 0));
@@ -42,16 +40,16 @@ void windows::LiveEditor::renderAddAddress()
 	if (ImGui::Button("Cancel##renderAddAddress", ImVec2(120, 30)))
 	{
 		memset(errorText, 0, sizeof(errorText));
-		memset(name, 0, sizeof(name));
-		memset(caddress, 0, sizeof(caddress));
+		memset(addAddressNameValue, 0, sizeof(addAddressNameValue));
+		memset(addAddressAddressValue, 0, sizeof(addAddressAddressValue));
 		bRenderAddInspector = false;
 	}
 	ImGui::SameLine();
 
-	ImGui::BeginDisabled(strlen(caddress) < 4 || strlen(name) < 4 ? true : false);
+	ImGui::BeginDisabled(strlen(addAddressAddressValue) < 4 || strlen(addAddressNameValue) < 4 ? true : false);
 	if (ImGui::Button("Add##renderAddAddress", ImVec2(120, 30)))
 	{
-		std::string st = std::string(caddress);
+		std::string st = std::string(addAddressAddressValue);
 		if (st.find_first_of("x") == 1)
 		{
 			st = st.substr(2);
@@ -60,7 +58,7 @@ void windows::LiveEditor::renderAddAddress()
 		{
 			EditorTab tab;
 			tab.type = TabTypeAddress;
-			tab.name = std::string(name);
+			tab.name = std::string(addAddressNameValue);
 			tab.address = std::stoull(st, nullptr, 16);
 
 			const std::string structName = Memory::read<UObject>(tab.address).getClass()->getCName();
@@ -93,8 +91,8 @@ void windows::LiveEditor::renderAddAddress()
 			bRenderAddInspector = false;
 			ImGui::EndDisabled();
 			memset(errorText, 0, sizeof(errorText));
-			memset(name, 0, sizeof(name));
-			memset(caddress, 0, sizeof(caddress));
+			memset(addAddressNameValue, 0, sizeof(addAddressNameValue));
+			memset(addAddressAddressValue, 0, sizeof(addAddressAddressValue));
 			return;
 
 		}
@@ -275,7 +273,8 @@ void windows::LiveEditor::renderAddInspector()
 	IGHelper::placeInCenter(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, " Add New Inspector"));
 	if (ImGui::BeginTabBar("TabBar"))
 	{
-		if (ImGui::BeginTabItem("Add Address"))
+		auto isAddingAddressFromSearchBox = addAddressAddressValue != "";
+		if (ImGui::BeginTabItem("Add Address", &isAddingAddressFromSearchBox))
 		{
 			smallWindow = ImVec2(500, 270);
 			renderAddAddress();
@@ -923,20 +922,10 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		const auto posX = ImGui::GetCursorPosX();
 		//also draw the bit if it is one
 
-		auto offsetColor = IGHelper::Colors::red;
-		if ((struc == searchResults[searchResultPicked] && searchResultMember == member.name) || offsetsToExpand.contains({ struc->memoryAddress + member.offset , depth }))
-		{
-			offsetColor = IGHelper::Colors::green;
-			if (autoscrollToMember) {
-				ImGui::SetScrollHereY();
-				autoscrollToMember = false;
-			}
-		}
-
 		if (member.isBit)
-			ImGui::TextColored(offsetColor, "+%04X:%d", member.offset + innerOffset, member.bitOffset);
+			ImGui::TextColored(IGHelper::Colors::red, "+%04X:%d", member.offset + innerOffset, member.bitOffset);
 		else
-			ImGui::TextColored(offsetColor, "+%04X", member.offset + innerOffset);
+			ImGui::TextColored(IGHelper::Colors::red, "+%04X", member.offset + innerOffset);
 
 		ImGui::SameLine();
 		//just for better ui look so everything is in one straight line we use a fixed 75 offset
@@ -1274,6 +1263,9 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::BeginChild("LiveTabChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	if (ImGui::Button("Add Inspector"))
 		bRenderAddInspector = true;
+	if (tabs.size() > 0)
+		if (ImGui::Button("Search for class/member"))
+			bRenderSearchBox = true;
 
 	if (ImGui::BeginListBox("##liveInspectorList", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
@@ -1337,22 +1329,10 @@ void windows::LiveEditor::renderLiveEditor()
 		}
 		};
 
-	if (renderSearchBox()) bRenderSearchResults = true;
-
 	ImGui::BeginChild("LiveViewerChildInspector", ImVec2(ImGui::GetWindowSize().x, ImGui::GetWindowSize().y), true, ImGuiWindowFlags_HorizontalScrollbar);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 
-	if (bRenderSearchResults)
-	{
-		renderSearchResults();
-	}
-	else if (bFindingPaths)
-	{
-		ImGui::TextColored(IGHelper::Colors::classOrange, "Loading...");
-		ImGui::SameLine();
-		ImGui::Spinner();
-	}
-	else if (tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
+	if (tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector && !bRenderSearchBox)
 	{
 		const auto& tab = tabs[tabPicked];
 
@@ -1370,6 +1350,7 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::EndChild();
 
 	renderAddInspector();
+	renderSearchBox();
 }
 
 bool windows::LiveEditor::LiveEditorStarted()
@@ -1423,11 +1404,19 @@ void windows::LiveEditor::topmostCallback()
 {
 }
 
-bool windows::LiveEditor::renderSearchBox()
+void windows::LiveEditor::renderSearchBox()
 {
-	ImGui::BeginChild("LiveViewerChildSearchBox", ImVec2(ImGui::GetWindowSize().x, 50), true, ImGuiWindowFlags_NoScrollbar);
-	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
+	if (!bRenderSearchBox) return;
 
+	static ImVec2 smallWindow = ImVec2(750, 520);
+	static ImVec2 closeButtonPos = ImVec2(smallWindow.x, 0);
+	const ImVec2 bigWindow = IGHelper::getWindowSize();
+
+	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
+
+	ImGui::BeginChild("Search for classes/members", smallWindow, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
+	IGHelper::placeInCenter(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, " Search for classes/members"));
+	
 	auto trim = [](char* str) {
 		// Trim leading whitespace
 		while (std::isspace(*str)) {
@@ -1439,78 +1428,135 @@ bool windows::LiveEditor::renderSearchBox()
 		while (end > str && std::isspace(*end)) {
 			*end-- = '\0';
 		}
-		};
+	};
+
+	auto renderResult = [&](const NodeAndMember &node, const EngineStructs::Member &member) {
+		auto isPointer = false;
+		if (member.type.subTypes.size() > 0) {
+			isPointer = member.type.subTypes[0].propertyType == PropertyType::ObjectProperty || member.type.subTypes[0].propertyType == PropertyType::ClassProperty;
+		}
+		else
+		{
+			isPointer = member.type.propertyType == PropertyType::ObjectProperty || member.type.propertyType == PropertyType::ClassProperty;
+		}
+
+		char addressBuf[30];
+		sprintf_s(addressBuf, "0x%llX", node.first->memoryAddress + member.offset);
+
+		if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(node.first->memoryAddress + member.offset) + ":" + std::to_string(member.offset)).c_str()))
+		{
+			IGHelper::copyToClipBoard(std::string(addressBuf));
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEVIEWER", "Copied address to clipboard!");
+		}
+		ImGui::SameLine();
+		ImGui::TextColored(IGHelper::Colors::classGreen, (member.type.name + (isPointer ? "* " : " ")).c_str());
+		ImGui::SameLine();
+		ImGui::TextColored(IGHelper::Colors::varPink, node.second.c_str());
+		ImGui::SameLine();
+		ImGui::TextColored(IGHelper::Colors::grayedOut, addressBuf);
+		if (isPointer)
+		{
+			ImGui::SameLine();
+			if (ImGui::Button(("Add inspector##" + std::to_string(node.first->memoryAddress) + ":" + std::to_string(member.offset)).c_str()))
+			{
+				bRenderAddInspector = true;
+				bRenderSearchBox = false;
+				memcpy(addAddressNameValue, node.second.c_str(), sizeof(addAddressNameValue));
+				sprintf_s(addAddressAddressValue, "%s", addressBuf);
+			}
+		}
+	};
 
 	trim(searchText);
 
-	bool isTrue = false;
-	if (ImGui::InputTextWithHint("##liveInspectorSearchInput", "Search for classes and members", searchText, sizeof(searchText), ImGuiInputTextFlags_EnterReturnsTrue))
-		isTrue = true;
-
+	ImGui::InputTextWithHint("##liveInspectorSearchInput", "Search for classes and members", searchText, sizeof(searchText));
 	ImGui::SameLine();
 	if (ImGui::Button(ICON_FA_MAGNIFYING_GLASS))
-		isTrue = true;
+		previousSearchText = ""; // force a new search
+	performSearch();
+
+	ImGui::BeginChild("LiveViewerSubView", ImVec2(0, ImGui::GetWindowSize().y - 120), true, ImGuiWindowFlags_NoScrollbar);
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
+
+	if (bFindingPaths)
+	{
+		ImGui::TextColored(IGHelper::Colors::classOrange, "Searching...");
+		ImGui::SameLine();
+		ImGui::Spinner();
+	}
+	else if (bDisplayPaths)
+	{
+		if (discoveredPaths.size() > 0)
+		{
+			// sort the paths in order of length
+			std::sort(discoveredPaths.begin(), discoveredPaths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
+				return a.size() < b.size();
+				});
+
+			int pathNum = 0;
+			auto prefix = std::string("Path ");
+			auto root = tabs[tabPicked].struc;
+			for (auto& path : discoveredPaths)
+			{
+				pathNum++;
+				if (pathNum == 1) ImGui::SetNextItemOpen(true, ImGuiCond_Always);
+
+				auto nextMemberName = path.size() > 1 ? path[1].second : "<target>";
+				if (ImGui::TreeNode((prefix + std::to_string(pathNum) + " via " + path[0].second + "->" + nextMemberName + +" (levels: " + std::to_string(path.size()) + ")").c_str()))
+				{
+					for (auto &node : path) {
+						for (auto &member : node.first->definedMembers)
+						{
+							if (member.name == node.second) {
+								renderResult(node, member);
+								break;
+							}
+						}
+					}
+
+					ImGui::TreePop();
+				}
+			}
+		}
+		else
+		{
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "Failed to find any paths... this is a bug!");
+		}
+	}
+	else
+	{
+		renderSearchResults();
+	}
 
 	ImGui::PopStyleVar();
 	ImGui::EndChild();
 
-	return isTrue;
+	if (ImGui::Button("Close", closeButtonPos))
+		bRenderSearchBox = false;
+
+	ImGui::EndChild();
 }
 
 void windows::LiveEditor::renderSearchResults()
 {
-	ImGui::BeginChild("LiveViewerChildSearch", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 60), true);
+	ImGui::BeginChild("LiveViewerChildSearch", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y + 20), true);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 
 	auto searchTextString = convertToLowercase(std::string(searchText));
 	performSearch(searchTextString);
 
-	auto findPaths = [&](bool popLast) {
+	auto findPaths = [&]() {
 		bFindingPaths = true;
-		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [popLast] {
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			auto& searchResult = searchResults[searchResultPicked];
 			auto& root = tabs[tabPicked].struc;
 
-			auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
-			if (paths.size() > 0)
-			{
-				offsetsToExpand.clear();
-
-				// sort the paths in order of length
-				std::sort(paths.begin(), paths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
-					return a.size() < b.size();
-					});
-
-				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE", "Possible path(s) to %s%s are:", searchResult->cppName.c_str(), (searchResultMember == "" ? "" : "::" + searchResultMember).c_str());
-				for (auto& path : paths)
-				{
-					std::string buf = tabs[tabPicked].struc->cppName;
-					int depth = 0;
-#ifdef _DEBUG
-					assert(path[0].first == root);
-#endif
-					for (auto node : path) {
-						buf += " -> " + node.second;
-						if (popLast && node == path[path.size() - 1]) break;
-
-						offsetsToExpand.insert({ node.first->memoryAddress, depth });
-						for (auto member : node.first->definedMembers)
-						{
-							if (member.name == node.second) offsetsToExpand.insert({ node.first->memoryAddress + member.offset, depth });
-						}
-
-						depth++;
-					}
-					LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
-				}
-			}
-			else
-			{
-				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "Failed to find any paths... this is a bug!");
-			}
+			discoveredPaths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
+			
 			bFindingPaths = false;
-			})));
-		};
+			bDisplayPaths = true;
+		})));
+	};
 
 	if (ImGui::BeginListBox("##liveInspectorSearchResults", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
@@ -1531,9 +1577,7 @@ void windows::LiveEditor::renderSearchResults()
 					searchResultPicked = i;
 					searchResultMember = "";
 					bRenderSearchResults = false;
-					autoscrollToMember = true;
-					LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d", searchResultPicked);
-					findPaths(true);
+					findPaths();
 				}
 
 				ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
@@ -1552,9 +1596,7 @@ void windows::LiveEditor::renderSearchResults()
 							searchResultPicked = i;
 							searchResultMember = member.name;
 							bRenderSearchResults = false;
-							autoscrollToMember = true;
-							LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d with member %s", searchResultPicked, searchResultMember.c_str());
-							findPaths(false);
+							findPaths();
 						}
 					}
 				}
@@ -1582,6 +1624,8 @@ void windows::LiveEditor::performSearch(const std::string searchString)
 
 	if (previousSearchText != "" && lowercasedSearchString == previousSearchText) return;
 	previousSearchText = lowercasedSearchString;
+
+	bDisplayPaths = false;
 
 	auto strucGraph = StrucGraph::getInstance();
 

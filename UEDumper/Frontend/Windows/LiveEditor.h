@@ -46,20 +46,24 @@ namespace windows
 		static inline std::unordered_map<uint64_t, std::string> realSuperClassCache{};
 
 		static inline bool bRenderAddInspector = false;
-		static inline bool bRenderSearchResults = false;
-		static inline bool autoscrollToMember = false;
+		static inline bool bRenderSearchBox = false; // whether to display the modal
+		static inline bool bRenderSearchResults = false; // whether to show search results
 
 		static inline int tabPicked = 0;
+
+		static inline char addAddressAddressValue[20] = { 0 };
+		static inline char addAddressNameValue[40] = { 0 };
 
 		static inline std::vector<EditorTab> tabs{};
 
 		static inline char searchText[512] = { 0 };
 		static inline std::string previousSearchText;
-		static inline int searchResultPicked = 0;
-		static inline std::string searchResultMember;
-		static inline std::vector<Node> searchResults;
-		static inline std::set<std::pair<uint64_t, int>> offsetsToExpand;
-		static inline bool bFindingPaths; // whether or not a search is in progress
+		static inline int searchResultPicked = 0; // which search result they picked
+		static inline std::string searchResultMember; // what member they clicked on
+		static inline std::vector<Node> searchResults; // actual search results
+		static inline bool bFindingPaths = false; // whether or not a search is in progress
+		static inline bool bDisplayPaths = false; // whether to display the discovered paths in the modal
+		static inline std::vector<std::vector<NodeAndMember>> discoveredPaths; // paths to the user's chosen class/member
 
 		static void populateStrucGraph(EngineStructs::Struct *struc);
 		static void populateStrucGraph(EngineStructs::Struct *struc, EngineStructs::Struct* parent);
@@ -183,7 +187,7 @@ namespace windows
 		 */
 		static bool isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu);
 
-		static bool renderSearchBox();
+		static void renderSearchBox();
 		static void renderSearchResults();
 
 		static void performSearch();

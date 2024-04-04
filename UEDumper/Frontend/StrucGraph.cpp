@@ -118,15 +118,17 @@ bool StrucGraph::containsEdge(NodeAndMember from, DestinationNode to) const
 // Function to find all paths from node A to node B in a DAG
 std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, NodeAndMember destination) {
 	std::vector<std::vector<NodeAndMember>> allPaths;
-	std::vector<NodeAndMember> path;
-	std::unordered_set<Node> visited;
+	std::vector<NodeAndMember> path = {};
+	std::unordered_set<Node> visited = {};
 
 	std::deque<std::pair<NodeAndMember, std::vector<NodeAndMember>>> queue;
-	for (auto member : start->definedMembers)
+	for (auto& member : start->definedMembers)
+	{
+		auto queuedNode = NodeAndMember(start, member.name);
 		queue.push_back(std::pair<NodeAndMember, std::vector<NodeAndMember>>(
-			NodeAndMember(start, member.name),
-			{ NodeAndMember(start, member.name) }
+			queuedNode, { queuedNode }
 		));
+	}
 
 	bool dfs = false; // false to use bfs, true to use dfs
 	std::tuple<NodeAndMember, std::vector<NodeAndMember>> stackEntry;
@@ -142,7 +144,7 @@ std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, Nod
 			stackEntry = queue[0];
 			queue.pop_front();
 		}
-		auto [node, path] = stackEntry;
+		auto& [node, path] = stackEntry;
 
 		if (node.first == destination.first && node.second == destination.second)
 		{
@@ -158,11 +160,11 @@ std::vector<std::vector<NodeAndMember>> StrucGraph::findAllPaths(Node start, Nod
 				bool cycleDetected = false;
 				for (auto neighbour : mEdges[node])
 				{
-					for (auto neighbourMember : neighbour->definedMembers)
+					for (auto& neighbourMember : neighbour->definedMembers)
 					{
 						auto nextNode = NodeAndMember(neighbour, neighbourMember.name);
 
-						for (auto previousNode : path) {
+						for (auto& previousNode : path) {
 							if (previousNode == nextNode) {
 								cycleDetected = true;
 								break;
