@@ -14,8 +14,8 @@
 #include "Frontend/Fonts/fontAwesomeHelper.h"
 #include <Engine/Core/ObjectsManager.h>
 
-#define AUTO_EXPAND_WITH_FLAG(memoryAddress, defaultFlags) ImGuiTreeNodeFlags flags = defaultFlags; if (offsetsToExpand.contains(memoryAddress)) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
-#define AUTO_EXPAND(memoryAddress) ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_None; if (offsetsToExpand.contains(memoryAddress)) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
+#define AUTO_EXPAND_WITH_FLAG(memoryAddress, defaultFlags, depth) ImGuiTreeNodeFlags flags = defaultFlags; if (offsetsToExpand.contains({memoryAddress, depth})) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
+#define AUTO_EXPAND(memoryAddress, depth) ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_None; if (offsetsToExpand.contains({memoryAddress, depth})) { flags |= ImGuiTreeNodeFlags_DefaultOpen; }
 
 void windows::LiveEditor::renderAddAddress()
 {
@@ -476,13 +476,13 @@ void windows::LiveEditor::drawReadWriteableField(LiveMemory::MemoryBlock* block,
 	ImGui::PopItemWidth();
 }
 
-void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset, uint64_t parentAddr, int depth)
 {
 	if (!block)
 		return;
 
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-	AUTO_EXPAND(innerOffset + member.offset)
+	AUTO_EXPAND(parentAddr + member.offset, depth) // unfortunately we need to get passed parentAddr as block, innerOffset, offset, etc.. don't give us the real address to look at
 	if (ImGui::TreeNodeEx(std::string(member.type.name + "##" + secret + std::to_string(member.offset + innerOffset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -584,7 +584,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 				sprintf_s(addressBuf, "0x%llX", objPtr);
 
 				//create a tree node for it
-				AUTO_EXPAND(innerOffset + member.offset)
+				AUTO_EXPAND(st->memoryAddress, depth)
 				if (ImGui::TreeNodeEx(std::string(std::to_string(i) + " " + member.type.subTypes[0].name + "##" + secret + std::to_string(objPtr)).c_str(), flags))
 				{
 					ImGui::PopStyleColor();
@@ -597,7 +597,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 					//add a memory block for the index struct
 					LiveMemory::addNewBlock(objPtr, st->size);
 					//and render it
-					renderStruct(st, objPtr, member.name, appendSecret(secret, member.type.name + std::to_string(objPtr), member.offset + innerOffset));
+					renderStruct(st, objPtr, member.name, appendSecret(secret, member.type.name + std::to_string(objPtr), member.offset + innerOffset), "", depth + 1);
 					ImGui::TreePop();
 					continue;
 				}
@@ -625,7 +625,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 			//then draw every index
 			for (int i = 0; i < arr.Count; i++)
 				drawStructProperty(st, member.name + "_" + std::to_string(i), subBlock,
-					appendSecret(secret, member.type.name + std::to_string(reinterpret_cast<uint64_t>(arr.Data)), i), st->size * i + innerOffset);
+					appendSecret(secret, member.type.name + std::to_string(reinterpret_cast<uint64_t>(arr.Data)), i), st->size * i + innerOffset, depth + 1);
 		}
 		ImGui::TreePop();
 		return;
@@ -659,7 +659,7 @@ void windows::LiveEditor::drawMemberArrayProperty(const EngineStructs::Member& m
 	}
 }
 
-void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset)
+void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset, int depth)
 {
 	if (!block)
 		return;
@@ -706,7 +706,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 	}
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 	//the average struct
-	AUTO_EXPAND(struc->memoryAddress)
+	AUTO_EXPAND(struc->memoryAddress, depth)
 	if (ImGui::TreeNodeEx(std::string(struc->cppName + "##" + secret + std::to_string(offset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -725,11 +725,11 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 				{
 					ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 
-					AUTO_EXPAND_WITH_FLAG(struc->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+					AUTO_EXPAND_WITH_FLAG(superStruct->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen, depth)
 					if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + secret + std::to_string(offset)).c_str(), flags)) //secret: 0x7FF + UObject
 					{
 						ImGui::PopStyleColor();
-						drawMembers(superStruct, block->gameAddress, secret, offset);
+						drawMembers(superStruct, block->gameAddress, secret, offset, depth);
 					}
 					else
 						ImGui::PopStyleColor();
@@ -739,7 +739,7 @@ void windows::LiveEditor::drawStructProperty(const EngineStructs::Struct* struc,
 		//no supers? draw then without treenodes
 		else
 		{
-			drawMembers(subStruct, block->gameAddress, secret, offset);
+			drawMembers(subStruct, block->gameAddress, secret, offset, depth);
 		}
 		ImGui::TreePop();
 
@@ -782,12 +782,12 @@ void windows::LiveEditor::drawNonclickableMember(const EngineStructs::Member& me
 
 }
 
-void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset, uint64_t parentAddr, int depth)
 {
 	//get the ptr so we can display it fancy
 	const auto memberPtr = block->read<uint64_t>(member.offset + innerOffset);
 	ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-	AUTO_EXPAND(innerOffset + member.offset)
+	AUTO_EXPAND(parentAddr + member.offset, depth) // unfortunately we need to get passed parentAddr as block, innerOffset, offset, etc.. don't give us the real address to look at
 	if (ImGui::TreeNodeEx(std::string(member.type.name + "##" + secret + std::to_string(member.offset + innerOffset)).c_str(), flags))
 	{
 		ImGui::PopStyleColor();
@@ -813,7 +813,7 @@ void windows::LiveEditor::drawMemberObjectProperty(const EngineStructs::Member& 
 			}
 			//and render it
 			else
-				renderStruct(newStruct, memberPtr, member.name, appendSecret(secret, member.type.name, member.offset + innerOffset)); //secret is 0x7FF+UOject+namePrivate
+				renderStruct(newStruct, memberPtr, member.name, appendSecret(secret, member.type.name, member.offset + innerOffset), "", depth + 1); //secret is 0x7FF+UOject+namePrivate
 		}
 
 		ImGui::TreePop();
@@ -845,7 +845,7 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 		});
 
 	ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 10);
-
+	
 	ImGui::TextColored(IGHelper::Colors::classGreen, member.type.name.c_str());
 	ImGui::SameLine();
 	//i think this is not really needed
@@ -898,8 +898,15 @@ void windows::LiveEditor::drawTEnumAsByteProperty(const EngineStructs::Member& m
 }
 
 
-void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset)
+void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset, int depth)
 {
+	if (depth >= MAX_RECURSION_DEPTH_SAFEGUARD)
+	{
+		// we've hit our safeguard to avoid stack overflows from happening
+		ImGui::TextColored(IGHelper::Colors::red, "Max recursion depth reached");
+		return;
+	}
+
 	//finally we get the values!
 	//get the memory block which should be allocated by the functions before
 	const auto block = LiveMemory::getMemoryBlock(address);
@@ -927,10 +934,13 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 		//also draw the bit if it is one
 
 		auto offsetColor = IGHelper::Colors::red;
-		if (struc == searchResults[searchResultPicked] && searchResultMember == member.name)
+		if ((struc == searchResults[searchResultPicked] && searchResultMember == member.name) || offsetsToExpand.contains({ struc->memoryAddress + member.offset , depth}))
 		{
 			offsetColor = IGHelper::Colors::green;
-			//ImGui::SetScrollHereY();
+			if (autoscrollToMember) {
+				ImGui::SetScrollHereY();
+				autoscrollToMember = false;
+			}
 		}
 
 		if (member.isBit)
@@ -952,11 +962,11 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 				//draw classes that have a pointer
 			case PropertyType::ObjectProperty:
 			case PropertyType::ClassProperty:
-				drawMemberObjectProperty(member, block, secret, innerOffset);
+				drawMemberObjectProperty(member, block, secret, innerOffset, struc->memoryAddress, depth + 1);
 				break;
 				//support for TArray<AActor*> actors
 			case PropertyType::ArrayProperty:
-				drawMemberArrayProperty(member, block, secret, innerOffset);
+				drawMemberArrayProperty(member, block, secret, innerOffset, struc->memoryAddress, depth + 1);
 				break;
 
 				//for structs inside a struct that are directly in it
@@ -970,7 +980,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 				{
 					//draw the substruct
 					//also inneroffset (thats always needed) plus member offset because the struct is within the current struct
-					drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset);
+					drawStructProperty(subStruct, member.name, block, secret, innerOffset + member.offset, depth + 1);
 				}
 				break;
 			}
@@ -1025,7 +1035,7 @@ void windows::LiveEditor::drawMembers(const EngineStructs::Struct* struc, uint64
 }
 
 
-void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin)
+void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin, int depth)
 {
 	//copy the address to clipboard
 	if (ImGui::Button(std::string(std::string(ICON_FA_CLIPBOARD) + "##" + std::to_string(address) + secret).c_str()))
@@ -1075,12 +1085,12 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 
 			//show a treenode, but so it has no indent we use treenodeEx with ImGuiTreeNodeFlags_NoTreePushOnOpen
-			AUTO_EXPAND_WITH_FLAG(superStruct->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+			AUTO_EXPAND_WITH_FLAG(superStruct->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen, depth)
 			if (ImGui::TreeNodeEx(std::string(superStruct->cppName + "##" + appendSecret(secret, superStruct->cppName, struc->getInheritedSize())).c_str(), flags)) //secret: 0x7FF + UObject
 			{
 				ImGui::PopStyleColor();
 				//draw the members of the struct
-				drawMembers(superStruct, address, secret);
+				drawMembers(superStruct, address, secret, 0, depth);
 				//some fancy seperator to indicate the end of the struct
 				ImGui::Separator();
 
@@ -1098,13 +1108,12 @@ void windows::LiveEditor::renderStruct(const EngineStructs::Struct* struc, uint6
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
 		//create a non indent treenode
-
-		AUTO_EXPAND_WITH_FLAG(struc->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen)
+		AUTO_EXPAND_WITH_FLAG(struc->memoryAddress, ImGuiTreeNodeFlags_NoTreePushOnOpen, depth)
 		if (ImGui::TreeNodeEx(std::string(struc->cppName + "##" + appendSecret(secret, struc->cppName, struc->getInheritedSize())).c_str(), flags))
 		{
 			ImGui::PopStyleColor();
 			//draw our struct
-			drawMembers(struc, address, secret);
+			drawMembers(struc, address, secret, 0, depth);
 
 		}
 		else
@@ -1277,6 +1286,7 @@ void windows::LiveEditor::renderLiveEditor()
 	ImGui::BeginChild("LiveTabChild", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	if (ImGui::Button("Add Inspector"))
 		bRenderAddInspector = true;
+
 	if (ImGui::BeginListBox("##liveInspectorList", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 
@@ -1286,7 +1296,7 @@ void windows::LiveEditor::renderLiveEditor()
 			if (ImGui::Selectable(tabs[i].name.c_str(), is_selected))
 			{
 				tabPicked = i;
-				bShowRenderSearchView = false;
+				bRenderSearchResults = false;
 
 				StrucGraph::getInstance()->clear();
 				populateStrucGraph(tabs[i].struc);
@@ -1301,13 +1311,7 @@ void windows::LiveEditor::renderLiveEditor()
 
 	ImGui::SameLine();
 
-	if (tabs.size() > 0)
-	{
-		renderSearchPanel();
-		ImGui::SameLine();
-	}
-
-	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_HorizontalScrollbar);
+	ImGui::BeginChild("LiveViewerChild", ImVec2(ImGui::GetWindowSize().x - 350, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 
 	auto renderTab = [&](EditorTab tab) {
@@ -1333,7 +1337,7 @@ void windows::LiveEditor::renderLiveEditor()
 				sprintf_s(addressBuf, "0x%llX", address);
 
 				//render it!
-				renderStruct(tab.struc, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
+				renderStruct(tab.struc, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf), 0); //secret is a Address, so 0x3cFFFF
 			}
 			//we have to wait for the blocks initialization
 			else
@@ -1345,24 +1349,34 @@ void windows::LiveEditor::renderLiveEditor()
 		}
 	};
 
-	//looks like we have to render a struct
-	if (!bShowRenderSearchView && tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
+	if (renderSearchBox()) bRenderSearchResults = true;
+
+	ImGui::BeginChild("LiveViewerChildInspector", ImVec2(ImGui::GetWindowSize().x, ImGui::GetWindowSize().y), true, ImGuiWindowFlags_HorizontalScrollbar);
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
+
+	if (bRenderSearchResults)
+	{
+		renderSearchResults();
+	}
+	else if (bFindingPaths)
+	{
+		ImGui::TextColored(IGHelper::Colors::classOrange, "Loading...");
+		ImGui::SameLine();
+		ImGui::Spinner();
+	}
+	else if (tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
 	{
 		const auto& tab = tabs[tabPicked];
 
-		renderTab(tab);
-	}
-	else if (bShowRenderSearchView && searchResults.size() > 0 && searchResultPicked < searchResults.size() && !bRenderAddInspector)
-	{
-		EditorTab tab = tabPicked >= 0 && tabPicked < tabs.size() ? tabs[tabPicked] : tabs[0];
-
-		visitedNodeCounters.clear();
 		renderTab(tab);
 	}
 	else
 	{
 		ImGui::TextColored(IGHelper::Colors::classOrange, "Please select an item from the inspector on the left, or add something to inspect");
 	}
+
+	ImGui::PopStyleVar();
+	ImGui::EndChild();
 
 	ImGui::PopStyleVar();
 	ImGui::EndChild();
@@ -1421,77 +1435,144 @@ void windows::LiveEditor::topmostCallback()
 {
 }
 
-void windows::LiveEditor::renderSearchPanel()
+bool windows::LiveEditor::renderSearchBox()
 {
-	ImGui::BeginChild("LiveViewerChildSearch", ImVec2(330, ImGui::GetWindowSize().y - LogWindow::getLogWindowYSize() - 40), true, ImGuiWindowFlags_NoScrollbar);
+	ImGui::BeginChild("LiveViewerChildSearchBox", ImVec2(ImGui::GetWindowSize().x, 50), true, ImGuiWindowFlags_NoScrollbar);
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 
-	ImGui::InputTextWithHint("##liveInspectorSearchInput", "GravityScale", searchText, sizeof(searchText));
+	auto trim = [](char* str) {
+		// Trim leading whitespace
+		while (std::isspace(*str)) {
+			str++;
+		}
+
+		// Trim trailing whitespace
+		char* end = str + std::strlen(str) - 1;
+		while (end > str && std::isspace(*end)) {
+			*end-- = '\0';
+		}
+	};
+
+	trim(searchText);
+
+	bool isTrue = false;
+	if (ImGui::InputTextWithHint("##liveInspectorSearchInput", "Search for classes and members", searchText, sizeof(searchText), ImGuiInputTextFlags_EnterReturnsTrue))
+		isTrue = true;
+		
+	ImGui::SameLine();
+	if (ImGui::Button(ICON_FA_MAGNIFYING_GLASS))
+		isTrue = true;
+
+	ImGui::PopStyleVar();
+	ImGui::EndChild();
+
+	return isTrue;
+}
+
+void windows::LiveEditor::renderSearchResults()
+{
+	ImGui::BeginChild("LiveViewerChildSearch", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 60), true);
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
 
 	auto searchTextString = convertToLowercase(std::string(searchText));
 	performSearch(searchTextString);
 
 	auto findPaths = [&](bool popLast) {
-		auto& searchResult = searchResults[searchResultPicked];
-		auto& root = tabs[tabPicked].struc;
+		bFindingPaths = true;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [popLast] {
+			auto& searchResult = searchResults[searchResultPicked];
+			auto& root = tabs[tabPicked].struc;
 
-		auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
-		if (paths.size() > 0)
-		{
-			offsetsToExpand.clear();
-
-			// sort the paths in order of length
-			std::sort(paths.begin(), paths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
-				return a.size() < b.size();
-			});
-
-			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE", "Possible path(s) to %s%s are:", searchResult->cppName.c_str(), (searchResultMember == "" ? "" : "::" + searchResultMember).c_str());
-			for (auto& path : paths)
+			auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
+			if (paths.size() > 0)
 			{
-				std::string buf = tabs[tabPicked].struc->cppName;
-				for (auto node : path) {
-					buf += " -> " + node.second;
-					if (popLast && node == path[path.size() - 1]) break;
-					offsetsToExpand.insert(node.first->memoryAddress);
+				offsetsToExpand.clear();
+
+				// sort the paths in order of length
+				std::sort(paths.begin(), paths.end(), [](std::vector<NodeAndMember> a, std::vector<NodeAndMember> b) {
+					return a.size() < b.size();
+					});
+
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_WARNING, "LIVE", "Possible path(s) to %s%s are:", searchResult->cppName.c_str(), (searchResultMember == "" ? "" : "::" + searchResultMember).c_str());
+				for (auto& path : paths)
+				{
+					std::string buf = tabs[tabPicked].struc->cppName;
+					int depth = 0;
+#ifdef _DEBUG
+					assert(path[0].first == root);
+#endif
+					for (auto node : path) {
+						buf += " -> " + node.second;
+						if (popLast && node == path[path.size() - 1]) break;
+
+						offsetsToExpand.insert({ node.first->memoryAddress, depth });
+						for (auto member : node.first->definedMembers)
+						{
+							if (member.name == node.second) offsetsToExpand.insert({ node.first->memoryAddress + member.offset, depth });
+						}
+
+						depth++;
+					}
+					LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
 				}
-				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "%s", buf.c_str());
 			}
-		}
-		else
-		{
-			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "Failed to find any paths... this is a bug!");
-		}
+			else
+			{
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "LIVE", "Failed to find any paths... this is a bug!");
+			}
+			bFindingPaths = false;
+		})));
 	};
 
 	if (ImGui::BeginListBox("##liveInspectorSearchResults", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 		for (int i = 0; i < searchResults.size(); i++)
 		{
+			ImGui::TextColored(IGHelper::Colors::red, "+%04X",searchResults[i]->memoryAddress);
+			ImGui::SameLine();
+
 			const bool is_selected = (searchResultPicked == i);
 			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::classGreen);
-			if (ImGui::Selectable(searchResults[i]->cppName.c_str(), is_selected))
+			if (ImGui::TreeNodeEx(
+				std::string(searchResults[i]->cppName + "##" + std::to_string(searchResults[i]->memoryAddress)).c_str(),
+				ImGuiTreeNodeFlags_DefaultOpen
+			))
 			{
-				searchResultPicked = i;
-				searchResultMember = "";
-				bShowRenderSearchView = true;
-				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d", searchResultPicked);
-				findPaths(true);
-			}
-			ImGui::PopStyleColor();
-			ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
-			for (auto& member : searchResults[i]->definedMembers)
-			{
-				if (convertToLowercase(member.name).find(searchTextString) != std::string::npos)
+				if (ImGui::Selectable(((searchResults[i]->isClass ? "Class " : "Struct ") + searchResults[i]->cppName).c_str(), is_selected))
 				{
-					if (ImGui::Selectable(("  " + member.name).c_str(), is_selected))
+					searchResultPicked = i;
+					searchResultMember = "";
+					bRenderSearchResults = false;
+					autoscrollToMember = true;
+					LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d", searchResultPicked);
+					findPaths(true);
+				}
+
+				ImGui::PushStyleColor(ImGuiCol_Text, IGHelper::Colors::varPink);
+				for (auto& member : searchResults[i]->definedMembers)
+				{
+					if (convertToLowercase(member.name).find(searchTextString) != std::string::npos)
 					{
-						searchResultPicked = i;
-						searchResultMember = member.name;
-						bShowRenderSearchView = true;
-						LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d with member %s", searchResultPicked, searchResultMember.c_str());
-						findPaths(false);
+						if (member.isBit)
+							ImGui::TextColored(IGHelper::Colors::red, "+%04X:%d", member.offset, member.bitOffset);
+						else
+							ImGui::TextColored(IGHelper::Colors::red, "+%04X  ", member.offset);
+						ImGui::SameLine();
+
+						if (ImGui::Selectable(member.name.c_str(), is_selected))
+						{
+							searchResultPicked = i;
+							searchResultMember = member.name;
+							bRenderSearchResults = false;
+							autoscrollToMember = true;
+							LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "LIVE", "opened search result %d with member %s", searchResultPicked, searchResultMember.c_str());
+							findPaths(false);
+						}
 					}
 				}
+				ImGui::PopStyleColor();
+
+				ImGui::TreePop();
 			}
 			ImGui::PopStyleColor();
 		}
@@ -1632,4 +1713,12 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 			}
 		}
 	}
+}
+
+static std::string windows::LiveEditor::convertToLowercase(const std::string& str)
+{
+	std::string result = "";
+	for (char ch : str) result += tolower(ch);
+
+	return result;
 }
