@@ -1408,11 +1408,11 @@ void windows::LiveEditor::renderSearchBox()
 {
 	if (!bRenderSearchBox) return;
 
-	static ImVec2 smallWindow = ImVec2(750, IGHelper::getWindowSize().y - 200);
+	static ImVec2 smallWindow = ImVec2(750, 730);
 	static ImVec2 closeButtonPos = ImVec2(smallWindow.x, 0);
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
-	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, bigWindow.y / 2 - smallWindow.y / 2));
+	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, (bigWindow.y / 2 - smallWindow.y / 2) - 100));
 
 	ImGui::BeginChild("Search for classes/members", smallWindow, true, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove);
 	IGHelper::placeInCenter(merge(ICON_FA_MAGNIFYING_GLASS_PLUS, " Search for classes/members"));
