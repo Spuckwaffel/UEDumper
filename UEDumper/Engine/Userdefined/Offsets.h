@@ -47,7 +47,7 @@ struct Offset
 {
 	int flag = -1; //flag of the Offset struct
 	std::string name = ""; //name of the Offset struct
-	int offset = 0; //if using flag OFFSET_ADDRESS, set the address here (dont write base +..., just write the offset)
+	uint64_t offset = 0; //if using flag OFFSET_ADDRESS, set the address here (dont write base +..., just write the offset)
 	//leave the rest empty if not using a sig
 	const char* sig = ""; //sig bytes in format \xAB\xCD\xEF\x00\x...
 	std::string mask = ""; //xxxxxxx??xxx??x? where x compares the byte and ? is a wildcard.
@@ -104,9 +104,9 @@ inline std::vector<Offset> setOffsets()
 {
 	std::vector<Offset> offsets;
 
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0x562D340 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x545C6E0 });
-	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x581A7E0 });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0xDEADBEEF });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0xDEADBEEF });
+	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0xDEADBEEF });
 
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
 	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
@@ -139,3 +139,7 @@ inline std::vector<Offset> setOffsets()
 
 	return offsets;
 }
+
+// No need to change this. If you're reading this file and changed your offsets, you're good.
+// This is part of a check for those who can't read README.md files =)
+#define SHOW_README_IF_OFFSETS_ARE_VALUE 0xDEADBEEF

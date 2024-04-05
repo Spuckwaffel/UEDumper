@@ -5,6 +5,8 @@
 #include <Settings/EngineSettings.h>
 #include <Frontend/Fonts/fontAwesomeHelper.h>
 #include <Memory/Memory.h>
+#include <Engine/Core/Core.h>
+#include <Engine/Userdefined/Offsets.h>
 
 
 windows::HelloWindow::HelloWindow()
@@ -14,6 +16,14 @@ windows::HelloWindow::HelloWindow()
 bool windows::HelloWindow::render()
 {
 	if (alreadyCompleted) return true;
+
+	bool bUserKnowsWhatTheyAreDoing = true;
+	for (auto& offset : setOffsets()) {
+		if (offset.offset == SHOW_README_IF_OFFSETS_ARE_VALUE) {
+			bUserKnowsWhatTheyAreDoing = false;
+			break;
+		}
+	}
 
 	static char processName[100] = { 0 };
 	static char projectName[50] = { 0 };
@@ -48,6 +58,19 @@ bool windows::HelloWindow::render()
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "%22s", EngineSettings::getDumperVersion().c_str());
 		ImGui::SetCursorPos({ posX, 35 });
 		ImGui::BeginChild("NewProjectChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
+
+		if (!bUserKnowsWhatTheyAreDoing)
+		{
+			ImGui::SetCursorPosY(70);
+			ImGui::TextColored(IGHelper::Colors::white, "Hi there! Looks like you're new to this.");
+			ImGui::TextColored(IGHelper::Colors::red, "The tool DOES NOT WORK OUT OF THE BOX!");
+			ImGui::TextColored(IGHelper::Colors::white, "Please read the included README.md file to proceed.");
+			ImGui::EndChild();
+			ImGui::EndChild();
+			return false;
+		}
+
+
 		ImGui::PushItemWidth(373);
 		ImGui::Dummy(ImVec2(0, 20));
 		ImGui::Text("Enter a project name (at least 5 characters)");
