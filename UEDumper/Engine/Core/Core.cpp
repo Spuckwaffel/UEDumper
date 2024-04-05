@@ -983,14 +983,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 	auto checkForDuplicateNames = [&usedNames](EngineStructs::Package package) {
 		for (auto& enu : package.enums) {
 			if (usedNames.contains(enu.cppName)) {
-				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
 				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
 			}
 			usedNames.insert({ enu.cppName, package.packageName });
 		}
 		for (auto& struc : package.combinedStructsAndClasses) {
 			if (usedNames.contains(struc->cppName)) {
-				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "%s redefinition in package %s! %s has already been defined in package %s", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "%s redefinition in package %s! %s has already been defined in package %s", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
 				printf("%s redefinition in package %s! %s has already been defined in package %s\n", struc->isClass ? "Class" : "Struct", package.packageName.c_str(), struc->cppName.c_str(), usedNames[struc->cppName].c_str());
 			}
 			usedNames.insert({ struc->cppName, package.packageName });
