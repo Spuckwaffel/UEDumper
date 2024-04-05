@@ -984,12 +984,14 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for (auto& enu : package.enums) {
 			if (usedNames.contains(enu.cppName)) {
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Enum redefinition! %s has already been defined in package %s", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str()");
 			}
 			usedNames.insert({ enu.cppName, package.packageName });
 		}
 		for (auto& struc : package.combinedStructsAndClasses) {
 			if (usedNames.contains(struc->cppName)) {
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "%s redefinition! %s has already been defined in package %s", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+				printf("%s redefinition! %s has already been defined in package %s\n", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
 			}
 			usedNames.insert({ struc->cppName, package.packageName });
 		}
