@@ -382,8 +382,8 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 #endif
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
-
 	data.push_back(eStruct);
+
 	return true;
 }
 
@@ -1072,7 +1072,6 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		packages.push_back(ePackage);
 		finishedPackages++;
 	}
-
 
 
 	std::ranges::sort(packages, EngineStructs::Package::packageCompare);
