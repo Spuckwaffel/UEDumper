@@ -894,7 +894,7 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Cached all FNames!");
 }
 
-void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPackages, CopyStatus & status)
+void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPackages, CopyStatus& status)
 {
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packages...");
 	status = CS_busy;
@@ -978,6 +978,25 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 
 	packages.push_back(basicType);
 
+	std::unordered_map<std::string, std::string> usedNames;
+
+	auto checkForDuplicateNames = [&usedNames](EngineStructs::Package package) {
+		for (auto& enu : package.enums) {
+			if (usedNames.contains(enu.cppName)) {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+			}
+			usedNames.insert({ enu.cppName, package.packageName });
+		}
+		for (auto& struc : package.combinedStructsAndClasses) {
+			if (usedNames.contains(struc->cppName)) {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "%s redefinition in package %s! %s has already been defined in package %s", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+				printf("%s redefinition in package %s! %s has already been defined in package %s\n", struc->isClass ? "Class" : "Struct", package.packageName.c_str(), struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+			}
+			usedNames.insert({ struc->cppName, package.packageName });
+		}
+	};
+
 	//package 0 is reserved for our special defined structs
 	for (auto& package : upackages)
 	{
@@ -1047,6 +1066,9 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 					continue;
 			}
 		}
+
+		checkForDuplicateNames(ePackage);
+
 		packages.push_back(ePackage);
 		finishedPackages++;
 	}
