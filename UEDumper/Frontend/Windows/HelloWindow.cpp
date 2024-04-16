@@ -18,7 +18,7 @@ bool windows::HelloWindow::render()
 	if (alreadyCompleted) return true;
 
 	bool bUserKnowsWhatTheyAreDoing = true;
-	for (auto& offset : setOffsets()) {
+	for (const auto& offset : setOffsets()) {
 		if (offset.offset == SHOW_README_IF_OFFSETS_ARE_VALUE) {
 			bUserKnowsWhatTheyAreDoing = false;
 			break;
@@ -62,7 +62,7 @@ bool windows::HelloWindow::render()
 		if (!bUserKnowsWhatTheyAreDoing)
 		{
 			ImGui::SetCursorPosY(70);
-			ImGui::TextColored(IGHelper::Colors::white, "Hi there! Looks like you're new to this.");
+			ImGui::TextColored(IGHelper::Colors::white, "Hi there! Looks like you're new to this tool.");
 			ImGui::TextColored(IGHelper::Colors::red, "The tool DOES NOT WORK OUT OF THE BOX!");
 			ImGui::TextColored(IGHelper::Colors::white, "Please read the included README.md file to proceed.");
 			ImGui::EndChild();
