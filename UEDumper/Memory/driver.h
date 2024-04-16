@@ -4,6 +4,7 @@
 //add any other includes here your driver might use
 #include <Windows.h>
 #include <tlhelp32.h>
+#include <vmmdll.h>
 
 /*
 ██████╗░██╗░░░░░███████╗░█████╗░░██████╗███████╗  ██████╗░███████╗░█████╗░██████╗░██╗
@@ -23,18 +24,50 @@
 
 //global variables here
 HANDLE procHandle = nullptr;
+VMM_HANDLE hVMM = nullptr;
+DWORD pid = 0;
 
 //in case you need to initialize anything BEFORE your com works, you can do this in here.
 //this function IS NOT DESIGNED to already take the process name as input or anything related to the target process
 //use the function "load" below which will contain data about the process name
 inline void init()
 {
-    //...
+    char arg1[] = "-printf";
+    char arg2[] = "-v";
+    char arg3[] = "-device";
+    char arg4[] = "fpga";
+    char arg5[] = "-memmap";
+    char arg6[] = "mmap.txt";
+    LPSTR argv[] = { arg1, arg2, arg3, arg4, arg5, arg6 };
+    DWORD argc = sizeof(argv) / sizeof(LPSTR);
+
+    hVMM = VMMDLL_Initialize(argc, argv); // Removed local VMM_HANDLE declaration to set the global hVMM
+    if (hVMM == NULL)
+    {
+        printf("Failed to initialize VMM\n");
+        return;
+    }
 }
 
 uint64_t _getBaseAddress(const wchar_t* processName, int& pid);
 
 void attachToProcess(const int& pid);
+
+inline int getPID(const wchar_t* processName) {
+    DWORD dwPID;
+
+    // Convert the wide string to a standard string because VMMDLL_PidGetFromName expects LPSTR.
+    std::wstring ws(processName);
+    const std::string str(ws.begin(), ws.end());
+
+    if (VMMDLL_PidGetFromName(hVMM, const_cast<char*>(str.c_str()), &dwPID)) {
+        return dwPID; // Return PID if the process is found.
+    }
+    else {
+        // Log error: "Failed to get PID for process: <processName>"
+        return 0; // Return 0 if the process is not found.
+    }
+}
 
 /**
  * \brief use this function to initialize the target process
@@ -44,11 +77,17 @@ void attachToProcess(const int& pid);
  */
 inline void loadData(std::string& processName, uint64_t& baseAddress, int& processID)
 {
-    const auto name = std::wstring(processName.begin(), processName.end());
+    // Convert the standard string to a wide string because getPID and getBaseAddress expect const wchar_t*
+    std::wstring wProcessName(processName.begin(), processName.end());
 
-    baseAddress = _getBaseAddress(name.c_str(), processID);
+    processID = getPID(wProcessName.c_str());  // Now passing const wchar_t*
+    if (processID == 0) {
+        // Log an error message here saying "Failed to get PID for process: <processName>"
+        return;
+    }
 
-    attachToProcess(processID);
+    attachToProcess(processID);  // Now, pid is set correctly.
+    baseAddress = _getBaseAddress(wProcessName.c_str(), processID);  // Now passing const wchar_t*
 }
 
 /**
@@ -59,15 +98,19 @@ inline void loadData(std::string& processName, uint64_t& baseAddress, int& proce
  */
 inline void _read(const void* address, void* buffer, const DWORD64 size)
 {
-    size_t bytes_read = 0;
-    BOOL b = ReadProcessMemory(procHandle, address, buffer, size, &bytes_read);
-    //if failed, try with lower byte amount
+    BOOL b = VMMDLL_MemRead(hVMM, pid, (ULONG64)address, (PBYTE)buffer, (DWORD)size);
     if (!b)
     {
-        //always read 10 bytes lower
-        for (int i = 1; i < size && !b; i += 10)
+        //if failed, try with lower byte amount
+        for (DWORD i = 1; i < size && !b; i += 10)
         {
-            b = ReadProcessMemory(procHandle, address, buffer, size - i, nullptr);
+            b = VMMDLL_MemRead(hVMM, pid, (ULONG64)address, (PBYTE)buffer, (DWORD)(size - i));
+        }
+
+        // Handle read failure, if all attempts failed.
+        if (!b)
+        {
+            // You might want to log the error or perform some cleanup actions here.
         }
     }
 }
@@ -81,7 +124,12 @@ inline void _read(const void* address, void* buffer, const DWORD64 size)
  */
 inline void _write(void* address, const void* buffer, const DWORD64 size)
 {
-    WriteProcessMemory(procHandle, address, buffer, size, nullptr);
+    BOOL b = VMMDLL_MemWrite(hVMM, pid, (ULONG64)address, (PBYTE)buffer, (DWORD)size);
+    if (!b)
+    {
+        // Handle write failure.
+        // You might want to log the error or perform some cleanup actions here.
+    }
 }
 
 
@@ -93,46 +141,13 @@ inline void _write(void* address, const void* buffer, const DWORD64 size)
  */
 uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
 {
-    uint64_t baseAddress = 0;
-
-    if (!pid)
+    // Assume pid is already set correctly.
+    // processName is considered as the module name here.
+    const ULONG64 baseAddress = VMMDLL_ProcessGetModuleBaseW(hVMM, pid, const_cast<LPWSTR>(processName));
+    if (baseAddress == 0)
     {
-        // Get a handle to the process
-        const HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-        if (hProcess == INVALID_HANDLE_VALUE) {
-            return false;
-        }
-
-        // Iterate through the list of processes to find the one with the given filename
-        PROCESSENTRY32 pe32 = { sizeof(PROCESSENTRY32) };
-        if (!Process32First(hProcess, &pe32)) {
-            CloseHandle(hProcess);
-            return false;
-        }
-        while (Process32Next(hProcess, &pe32)) {
-            if (wcscmp(pe32.szExeFile, processName) == 0) {
-                pid = pe32.th32ProcessID;
-                break;
-            }
-        }
-
-        CloseHandle(hProcess);
+        // Handle error. Maybe log an error message or perform some cleanup actions here.
     }
-
-    // Get the base address of the process in memory
-    if (pid != 0) {
-        const HANDLE hModule = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, pid);
-        if (hModule != INVALID_HANDLE_VALUE) {
-            MODULEENTRY32 me32 = { sizeof(MODULEENTRY32) };
-            if (Module32First(hModule, &me32)) {
-                baseAddress = reinterpret_cast<DWORD64>(me32.modBaseAddr);
-            }
-            CloseHandle(hModule);
-        }
-    }
-
-    // Clean up and return
-
     return baseAddress;
 }
 
@@ -140,7 +155,9 @@ uint64_t _getBaseAddress(const wchar_t* processName, int& pid)
  * \brief this function might not be needed for your driver, this just attaches to the process
  * \param pid process id of the target process
  */
-void attachToProcess(const int& pid)
+void attachToProcess(const int& _pid)
 {
-    procHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pid);
+    // Instead of OpenProcess, perform any setup or initialization needed for MemProcFS
+    // For example, you might set global variables or configure internal state.
+    pid = _pid;
 }

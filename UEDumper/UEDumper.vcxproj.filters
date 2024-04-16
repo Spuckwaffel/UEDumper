@@ -73,6 +73,9 @@
     <Filter Include="Resources\Dumpspace">
       <UniqueIdentifier>{991396f2-49ea-442e-8771-fc95017f0410}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\DMA">
+      <UniqueIdentifier>{e56734f9-328d-417b-87a7-ac36437ca40d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UEDumper.cpp">
@@ -286,6 +289,12 @@
     </ClInclude>
     <ClInclude Include="Frontend\StrucGraph.h">
       <Filter>Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\DMA\leechcore.h">
+      <Filter>Resources\DMA</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\DMA\vmmdll.h">
+      <Filter>Resources\DMA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

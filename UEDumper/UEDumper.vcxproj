@@ -78,8 +78,8 @@
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpspace/;../UEDumper/;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <IncludePath>Frontend/ImGui/;Resources/AES/;Resources/Json/;Resources/Dumpspace/;../UEDumper/;Resources/DMA/;$(IncludePath)</IncludePath>
+    <LibraryPath>Resources/DMA/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,7 +146,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D3D11.lib;windowscodecs.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D3D11.lib;windowscodecs.lib;kernel32.lib;vmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -220,6 +220,8 @@
     <ClInclude Include="Memory\Memory.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources\AES\AES.h" />
+    <ClInclude Include="Resources\DMA\leechcore.h" />
+    <ClInclude Include="Resources\DMA\vmmdll.h" />
     <ClInclude Include="Resources\Dumpspace\dumpspace.h" />
     <ClInclude Include="Resources\Json\json.hpp" />
     <ClInclude Include="Settings\EngineSettings.h" />
