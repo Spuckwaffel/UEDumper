@@ -9,7 +9,7 @@
 #include "Settings/EngineSettings.h"
 #include "BasicType.h"
 #include "packageSorter.h"
-#include "FeatureFlags.h"
+#include "Engine/Userdefined/FeatureFlags.h"
 
 #include <algorithm>
 
