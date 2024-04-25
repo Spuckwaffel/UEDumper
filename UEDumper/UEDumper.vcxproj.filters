@@ -159,6 +159,9 @@
     <ClCompile Include="Resources\Dumpspace\dumpspace.cpp">
       <Filter>Resources\Dumpspace</Filter>
     </ClCompile>
+    <ClCompile Include="Frontend\StrucGraph.cpp">
+      <Filter>Frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -280,6 +283,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Generation\packageSorter.h">
       <Filter>Engine\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="Frontend\StrucGraph.h">
+      <Filter>Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Userdefined\FeatureFlags.h">
+      <Filter>Engine\User Defined</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

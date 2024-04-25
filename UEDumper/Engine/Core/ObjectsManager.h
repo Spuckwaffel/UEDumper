@@ -157,6 +157,7 @@ private:
 
 	/**
 	* \brief USE ONLY AFTER UBIGOBJECT GENERATION! Makes sure the required size is also copied
+	* OPERATION CHECK NEEDED
 	* \param bigObjectPtr ptr to the char buffer in the dumper (which is in linkedUObjectPtrs)
 	* \param requiredSize the required size for the UObject
 	*/
@@ -170,13 +171,14 @@ private:
 	 * \return Game pointer
 	 */
 	static uint64_t getUObjectPtrByIndex(int index);
+	
 
-	//default false but true after init
-	static inline bool bOperationSuccess = false;
+	//The ObjectsMNanager can call this function to terminate its current job. The program either needs to terminate or fallback
+	static void STOP_OPERATION();
+
 	static inline std::string errorReason = "";
 
-	//loops should call this for a shutdown
-	static void STOP_OPERATION();
+	static inline bool _STOP_OPERATION = false;
 
 public:
 
@@ -185,10 +187,16 @@ public:
 	//basic constructor and default initializer
 	ObjectsManager();
 
-	static bool operationSuccess();
-	
-	static bool operationSuccess(std::string& errorString);
+	/**
+	 * \brief Checks whether this or previous operations were not success. Only true when critical memory errors happen, however they have to be handled accordingly
+	 * \return critical stop called
+	 */
+	static bool CRITICAL_STOP_CALLED();
 
+	/**
+	 * \brief Only call this function if you are able to recover from a critical stop!
+	 */
+	static void resolvedStop();
 	
 	static std::string getErrorMessage();
 
@@ -225,6 +233,7 @@ public:
 				"HARD ERROR: getUObjectByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 			errorReason = windows::LogWindow::getLastLogMessage();
 			STOP_OPERATION();
+			return nullptr;
 		}
 		//this should not fail as UBigObjectArray should have the memory for all SDK index objects
 		UObjectManager::UBigObject* object = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + index * sizeof(UObjectManager::UBigObject));
@@ -235,9 +244,11 @@ public:
 				"WARN: Requested index %d in getUObjectByIndex is marked invalid!", index);
 			return nullptr;
 		}
-			
 
 		verifyUBigObjectSize(object, sizeof(T));
+
+		if (CRITICAL_STOP_CALLED())
+			return nullptr;
 
 		return reinterpret_cast<T*>(object->object);
 	}
@@ -247,6 +258,7 @@ public:
 	 *	If you try to get a invalid uobject at SDK generation it will fail.
 	 *	If you try to get a invalid (not yet indexed) uobject at runtime it will index it
 	 *	Consider using in this case Memory::read (but in a optimized way)
+	 *	OPERATION CHECK NEEDED
 	 * \tparam T UObject inherited class
 	 * \param gamePtr game pointer to the UObject
 	 * \return the cached Object
@@ -254,7 +266,12 @@ public:
 	template <typename T>
 	static T* getUObject(uint64_t gamePtr)
 	{
-		
+#ifdef _DEBUG
+		if (gamePtr < 0x100) {
+			// if your pointer is less than 0x100, it's likely invalid and there's a bug. Check your structs
+			DebugBreak();
+		}
+#endif
 		if(!gUObjectManager.linkedUObjectPtrs.contains(gamePtr))
 		{
 			if(cacheState == CacheState::CS_SDKGEN)
@@ -277,7 +294,6 @@ public:
 					return nullptr;
 				}
 				//read the memory of the object, override the vtable and set the readsize
-				//TODO: bring back
 				Memory::read(reinterpret_cast<void*>(gamePtr), bigObject->object, sizeof(T));
 				*reinterpret_cast<uint64_t*>(bigObject->object) = gamePtr;
 				bigObject->readSize = sizeof(T);
@@ -291,6 +307,9 @@ public:
 		}
 		UObjectManager::UBigObject* bigObject = gUObjectManager.linkedUObjectPtrs[gamePtr];
 		verifyUBigObjectSize(bigObject, sizeof(T));
+
+		if (CRITICAL_STOP_CALLED())
+			return nullptr;
 
 		return reinterpret_cast<T*>(bigObject->object);
 	}
@@ -313,6 +332,7 @@ public:
 
 	/**
 	 * \brief USE ONLY AFTER UBIGOBJECT GENERATION! Gets the UObject of the full name
+	 * OPERATION CHECK NEEDED
 	 * \tparam T UObject inherited class
 	 * \param name Full name of the UObject
 	 * \param raiseHardError whether the program should raise a hard error or not upon unsuccessful find
@@ -321,6 +341,9 @@ public:
 	template <typename T>
 	static T* findObject(std::string name, bool raiseHardError = false)
 	{
+		if (CRITICAL_STOP_CALLED())
+			return nullptr;
+
 		//check if the object is in out cache
 		if (EngineCore::fullStringCache.contains(name))
 		{
@@ -333,11 +356,19 @@ public:
 			//get the uobject for i
 			auto obj = getUObjectByIndex<T>(i);
 
+			if (CRITICAL_STOP_CALLED())
+				return nullptr;
+
+			if (!obj)
+				continue;
+
 			//get the fn ptr
 			auto ptr = getUObjectPtrByIndex(i);
 
-			std::string cname = obj->getFullName();
+			if (CRITICAL_STOP_CALLED())
+				return nullptr;
 
+			std::string cname = obj->getFullName();
 
 			if (cname == name)
 			{
@@ -345,13 +376,13 @@ public:
 				//just insert here, we make a findobject only on specific objects 
 				EngineCore::fullStringCache.insert(std::pair(cname, ptr));
 				return obj;
-
 			}
 
 		}
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
-		if(!raiseHardError)
+		printf("ERROR? Could not find name %s in FindObject!!\n", name.c_str());
+		if(raiseHardError)
 		{
 			errorReason = windows::LogWindow::getLastLogMessage();
 			STOP_OPERATION();
@@ -410,4 +441,12 @@ public:
 
 	static void setSDKGenerationDone();
 
+	inline static uint64_t decryptPointer(uint64_t ptr)
+	{
+#if GOBJECTS_XOR_ECRYPTION_KEY
+		return ptr ^ GOBJECTS_XOR_ECRYPTION_KEY;
+#else
+		return ptr;
+#endif
+	}
 };

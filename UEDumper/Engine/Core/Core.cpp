@@ -15,6 +15,23 @@
 //https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Runtime/Core/Private/UObject/UnrealNames.cpp#L251
 
 
+//flag some invalid characters in a name
+std::string generateValidVarName(const std::string& str)
+{
+	//flag some invalid characters in a name
+	std::string result = "";
+	for (const char c : str)
+	{
+		if (static_cast<int>(c) < 0 || !std::isalnum(c))
+			result += '_';
+		else
+			result += c;
+
+	}
+
+	return result;
+};
+
 //we always compare this function to FName::ToString(FString& Out) in the source code
 std::string EngineCore::FNameToString(FName fname)
 {
@@ -64,7 +81,7 @@ std::string EngineCore::FNameToString(FName fname)
 
 	enum { NAME_SIZE = 1024 };
 
-	char name[NAME_SIZE] = { 0 };
+	char name[NAME_SIZE + 1] = { 0 };
 
 #if WITH_CASE_PRESERVING_NAME
 	const int32_t Index = fname.DisplayIndex;
@@ -90,18 +107,22 @@ std::string EngineCore::FNameToString(FName fname)
 	const uint64_t AnsiName = FNameEntryPtr + 0x10;
 #endif
 
-	int nameLength = NAME_SIZE - 1;
-	Memory::read(reinterpret_cast<void*>(AnsiName), name, nameLength);
+
+	Memory::read(
+		reinterpret_cast<void*>(AnsiName),
+		name,
+		NAME_SIZE
+	);
 
 #else // >= 4_23
 
 	enum { NAME_SIZE = 1024 };
 
-	char name[NAME_SIZE] = { 0 };
+	char name[NAME_SIZE + 1] = { 0 };
 
 	//>4.23 name chunks exist
-	const unsigned int chunkOffset = fname.ComparisonIndex >> 16;
-	const unsigned short nameOffset = fname.ComparisonIndex;
+	const unsigned int chunkOffset = fname.ComparisonIndex >> 16; //HIWORD
+	const unsigned short nameOffset = fname.ComparisonIndex; //unsigned __int16
 
 
 	//average function since 4.25
@@ -112,13 +133,39 @@ std::string EngineCore::FNameToString(FName fname)
 
 	const auto nameLength = Memory::read<uint16_t>(namePoolChunk + 4) >> 1;
 
-	Memory::read(reinterpret_cast<void*>(namePoolChunk + 6), name, nameLength);
+	if (nameLength > NAME_SIZE)
+	{
+		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		puts("Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		//DebugBreak();
+	}
+
+	Memory::read(
+		reinterpret_cast<void*>(namePoolChunk + 6), 
+		name, 
+		// safeguard against overflow and memory corruption
+		nameLength < NAME_SIZE ? nameLength : NAME_SIZE
+	);
 #else
 	int64_t namePoolChunk = Memory::read<uint64_t>(gNames + 8 * (chunkOffset + 2)) + 2 * nameOffset;
 
 	const auto nameLength = Memory::read<uint16_t>(namePoolChunk) >> 6;
 
-	Memory::read(reinterpret_cast<void*>(namePoolChunk + 2), name, nameLength);
+	if (nameLength > NAME_SIZE)
+	{
+		// we're about to corrupt our memory in the next call to Memory::read if we don't clamp the value!
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "CORE", "Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		puts("Memory corruption avoided! FName nameLength > NAME_SIZE! Setting WITH_CASE_PRESERVING_NAME=TRUE might resolve this issue");
+		//DebugBreak();
+	}
+
+	Memory::read(
+		reinterpret_cast<void*>(namePoolChunk + 2),
+		name,
+		// safeguard against overflow and memory corruption
+		nameLength < NAME_SIZE ? nameLength : NAME_SIZE
+	);
 #endif
 
 #endif
@@ -134,7 +181,6 @@ std::string EngineCore::FNameToString(FName fname)
 	if (finalName.empty())
 		finalName = "null";
 	//throw std::runtime_error("empty name is trying to get cached");
-
 
 	FNameCache.insert(std::pair(fname.ComparisonIndex, std::string(name)));
 
@@ -220,6 +266,13 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	eStruct.memoryAddress = object->objectptr;
 	eStruct.size = object->PropertiesSize;
 	eStruct.minAlignment = object->MinAlignment;
+	/*
+	* The purpose of maxSize is to calculate the true 'max' size of a class.
+	* Since size = object->PropertiesSize, this is what UE reports as the size of the object
+	* *including padding*!
+	* Therefore maxSize is the 'real' max size without the padding based on our calculations
+	* of subclasses having members at offsets less than the reported size of the super.
+	*/
 	//set this as the current max size, but it will get overridden
 	eStruct.maxSize = eStruct.size;
 	eStruct.fullName = object->getFullName();
@@ -236,26 +289,9 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				eStruct.superNames.push_back(obj->getCName());
 			}
 			eStruct.inherited = true;
-			eStruct.inheretedSize = super->PropertiesSize;
 		}
 
 	}
-
-
-	//flag some invalid characters in a name
-	auto generateValidVarName = [](const std::string& str)
-	{
-		std::string result = "";
-		for (const char c : str)
-		{
-			if (static_cast<int>(c) < 0 || !std::isalnum(c))
-				result += '_';
-			else
-				result += c;
-
-		}
-		return result;
-	};
 
 #if UE_VERSION < UE_4_25
 	if (object->Children)
@@ -263,7 +299,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 
 		for (auto child = object->getChildren(); child; child = child->getNext())
 		{
-			if (!ObjectsManager::operationSuccess())
+			if (ObjectsManager::CRITICAL_STOP_CALLED())
 				return false;
 
 			if (!child || !child->IsA<UProperty>())
@@ -272,6 +308,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			auto prop = child->castTo<UProperty>();
 			EngineStructs::Member member;
 			member.size = prop->ElementSize * prop->ArrayDim;
+			member.arrayDim = prop->ArrayDim;
 			member.name = generateValidVarName(prop->getName());
 			//should not happen
 			if (member.size == 0)
@@ -310,7 +347,9 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 		{
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
+			member.arrayDim = child->ArrayDim;
 			member.name = generateValidVarName(child->getName());
+
 			if (member.size == 0)
 			{
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "member %s size is 0! ", member.name.c_str());
@@ -343,8 +382,8 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 #endif
 	// get struct functions
 	generateFunctions(object, eStruct.functions);
-
 	data.push_back(eStruct);
+
 	return true;
 }
 
@@ -352,6 +391,25 @@ template<typename T>
 constexpr uint64_t GetMaxOfType()
 {
 	return (1ull << (sizeof(T) * 0x8ull)) - 1;
+}
+
+std::string getEnumTypeFromSize(const int size)
+{
+	if (size > sizeof(int32_t)) return TYPE_UI64;
+	if (size > sizeof(int16_t)) return TYPE_UI32;
+	if (size > sizeof(int8_t)) return TYPE_UI16;
+
+	return TYPE_UI8;
+}
+
+int getEnumSizeFromType(const std::string type)
+{
+	if (type == TYPE_UI64) return sizeof(uint64_t);
+	if (type == TYPE_UI32) return sizeof(uint32_t);
+	if (type == TYPE_UI16) return sizeof(uint16_t);
+	if (type == TYPE_UI8) return sizeof(uint8_t);
+
+	return 0;
 }
 
 std::string setEnumSizeForValue(uint64_t EnumValue)
@@ -385,9 +443,12 @@ bool EngineCore::generateEnum(const UEnum* object, std::vector<EngineStructs::En
 
 		auto fname = FNameToString(name.Key());
 		std::ranges::replace(fname, ':', '_');
-		eEnum.members.push_back(std::pair(fname, name.Value()));
+
+		if (!fname.ends_with("_MAX"))
+			eEnum.members.push_back(std::pair(fname, name.Value()));
 	}
 	eEnum.type = setEnumSizeForValue(maxNum);
+	eEnum.size = getEnumSizeFromType(eEnum.type);
 
 	eEnum.cppName = object->getName();
 
@@ -413,66 +474,68 @@ bool EngineCore::generateFunctions(const UStruct* object, std::vector<EngineStru
 	//indenting for the entire rest of the core.cpp file just because some #define shit
 	//this made me so mad i couldnt care less the code misses now a indent
 
-	//in every version we have to go through the children to 
-	for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
-	{
-		if (!fieldChild || !fieldChild->IsA<UFunction>())
-			continue;
+	//in every version we have to go through the children to
+for (auto fieldChild = object->getChildren(); fieldChild; fieldChild = fieldChild->getNext())
+{
+	if (ObjectsManager::CRITICAL_STOP_CALLED())
+		return false;
+
+	if (!fieldChild || !fieldChild->IsA<UFunction>())
+		continue;
 
 
-		const auto fn = fieldChild->castTo<UFunction>();
+	const auto fn = fieldChild->castTo<UFunction>();
 
-		EngineStructs::Function eFunction;
-		eFunction.fullName = fn->getFullName();
-		eFunction.cppName = fn->getName();
-		eFunction.memoryAddress = fn->objectptr;
-		eFunction.functionFlags = fn->getFunctionFlagsString();
-		eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
+	EngineStructs::Function eFunction;
+	eFunction.fullName = fn->getFullName();
+	eFunction.cppName = fn->getName();
+	eFunction.memoryAddress = fn->objectptr;
+	eFunction.functionFlags = fn->getFunctionFlagsString();
+	eFunction.binaryOffset = fn->Func - Memory::getBaseAddress();
 
 #if UE_VERSION < UE_4_25
 
-		//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
-		for (auto child = fn->getChildren(); child; child = child->getNext())
-		{
-			const auto propChild = child->castTo<UProperty>();
+	//ue < 4.25 uses the children but we have to cast them to a UProperty to use the flags
+	for (auto child = fn->getChildren(); child; child = child->getNext())
+	{
+		const auto propChild = child->castTo<UProperty>();
 #else
 
-		//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
-		for (auto child = fn->getChildProperties(); child; child = child->getNext())
-		{
-			const auto propChild = child;
+	//ue >= 4.25 we go through the childproperties and we dont have to cast as they are already FProperties
+	for (auto child = fn->getChildProperties(); child; child = child->getNext())
+	{
+		const auto propChild = child;
 
 #endif
 
-			//rest of the code is identical, nothing changed here
-			const auto propertyFlags = propChild->PropertyFlags;
+		//rest of the code is identical, nothing changed here
+		const auto propertyFlags = propChild->PropertyFlags;
 
-			if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
-				eFunction.returnType = propChild->getType();
-			else if (propertyFlags & EPropertyFlags::CPF_Parm)
-			{
-				eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
-			}
+		if (propertyFlags & EPropertyFlags::CPF_ReturnParm && !eFunction.returnType)
+			eFunction.returnType = propChild->getType();
+		else if (propertyFlags & EPropertyFlags::CPF_Parm)
+		{
+			eFunction.params.push_back(std::tuple(propChild->getType(), propChild->getName(), propertyFlags, propChild->ArrayDim));
 		}
-
-		// no defined return type => void
-		if (!eFunction.returnType)
-			eFunction.returnType = { false, PropertyType::StructProperty, "void" };
-
-		data.push_back(eFunction);
-		}
-	return true;
-
 	}
+
+	// no defined return type => void
+	if (!eFunction.returnType)
+		eFunction.returnType = { false, PropertyType::StructProperty, "void" };
+
+	data.push_back(eFunction);
+}
+	return true;
+}
 
 bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, const EngineStructs::Member & newMember)
 {
 	//basic 0(1) checks before iterating
 
 	//below class base offset? 
-	if (newMember.offset < eStruct.inheretedSize)
+	if (newMember.offset < eStruct.getInheritedSize())
 	{
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: offset 0x%X is below base class offset 0x%X!", newMember.offset, eStruct.getInheritedSize());
 		return false;
 	}
 	//above class?
@@ -489,9 +552,9 @@ bool EngineCore::RUNAddMemberToMemberArray(EngineStructs::Struct & eStruct, cons
 	}
 
 	//larger than class size? Thats weird and will only happen if offset is negative otherwise handled by above
-	if (newMember.size > eStruct.size - eStruct.inheretedSize)
+	if (newMember.size > eStruct.size - eStruct.getInheritedSize())
 	{
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.inheretedSize);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Add member failed: member is too large for class (%d / %d)", newMember.size, eStruct.size - eStruct.getInheritedSize());
 		return false;
 	}
 
@@ -633,7 +696,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		}
 	};
 
-	if (eStruct.size - eStruct.inheretedSize == 0)
+	if (eStruct.size - eStruct.getInheritedSize() == 0)
 		return;
 
 	if (eStruct.definedMembers.size() == 0)
@@ -658,9 +721,19 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		const auto& inherStruct = eStruct.supers[0];
 		if (inherStruct->maxSize < eStruct.definedMembers[0].offset)
 		{
+			// If this happens for CoreUObject, then we are about to introduce excessive padding of an unknown member and not take in to account the parent's members, resulting in members being offset from reality
+			if (inherStruct->maxSize == 0 && inherStruct->fullName == "/Script/CoreUObject.Object") {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "%s maxSize is zero! SDK for %s may not work correctly!", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
+				printf("%s maxSize is zero! SDK for %s may not work correctly!\n", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
+			}
 			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
 		}
-
+	}
+	else if(!eStruct.definedMembers.empty())
+	{
+		const auto& firstMember = eStruct.definedMembers[0];
+		if(firstMember.offset != 0)
+			genUnknownMember(0, eStruct.definedMembers[0].offset, 7);
 	}
 
 
@@ -670,6 +743,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	{
 		const auto& currentMember = eStruct.definedMembers[i];
 		const auto& nextMember = eStruct.definedMembers[i + 1];
+
 		//bit shit
 		if (currentMember.isBit)
 		{
@@ -711,7 +785,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 			//0x8 (handled by next iter)
 			if (nextMember.offset - currentMember.offset > 1)
 			{
-				genUnknownMember(currentMember.offset + 1, nextMember.offset, 4);
+				genUnknownMember(currentMember.offset + 1, nextMember.offset, 5);
 			}
 			continue;
 		}
@@ -724,7 +798,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x7 [0x2]
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
 		{
-			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 5);
+			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 6);
 		}
 
 		//fixup any bits
@@ -737,7 +811,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
 	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
 	if (last->offset + last->size < eStruct.maxSize)
-		genUnknownMember(last->offset + last->size, eStruct.maxSize, 6);
+		genUnknownMember(last->offset + last->size, eStruct.maxSize, 7);
 }
 
 
@@ -754,6 +828,7 @@ EngineCore::EngineCore()
 
 
 		gNames = getOffsetAddress(getOffsetForName("OFFSET_GNAMES"));
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset not found!");
@@ -764,7 +839,7 @@ EngineCore::EngineCore()
 
 		//in < 4.25 we have to get the heap pointer
 		gNames = Memory::read<uint64_t>(gNames);
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames -> 0x%p", gNames);
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "GNames -> 0x%p", gNames);
 		if (!gNames)
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "GNames offset seems zero!");
@@ -792,6 +867,8 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 	status = CS_busy;
 	totalNames = ObjectsManager::gUObjectManager.UObjectArray.NumElements;
 	finishedNames = 0;
+	bool bIsFirstValidObject = true;
+
 	for (; finishedNames < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedNames++)
 	{
 		const auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedNames);
@@ -802,13 +879,14 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 		auto res = object->getName();
 
 #if BREAK_IF_INVALID_NAME
-		if (finishedNames == 0 && res != "/Script/CoreUObject")
+		if (bIsFirstValidObject && res != "/Script/CoreUObject")
 		{
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE",
-				"ERROR: The first object name should be always /Script/CoreUObject! This is most likely the result of a invalid FName offset or no decryption!");
+				"ERROR: The first object name should be always /Script/CoreUObject! Instead got \"%s\".This is most likely the result of a invalid FName offset or no decryption!", res.c_str());
 			status = CS_error;
 			return;
 		}
+		bIsFirstValidObject = false;
 
 #endif
 	}
@@ -816,9 +894,9 @@ void EngineCore::cacheFNames(int64_t & finishedNames, int64_t & totalNames, Copy
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Cached all FNames!");
 }
 
-void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPackages, CopyStatus & status)
+void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPackages, CopyStatus& status)
 {
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packets...");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Caching all Packages...");
 	status = CS_busy;
 
 	//we already done?
@@ -827,7 +905,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		status = CS_success;
 		totalPackages = packages.size();
 		finishedPackages = packages.size();
-		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Packets already got cached!");
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Packages already got cached!");
 		return;
 	}
 	std::unordered_map<std::string, std::vector<UObject*>> upackages;
@@ -839,25 +917,45 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	overrideStructs();
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding custom structs....");
 	addStructs();
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overrigind unknown members....");
+	addEnums();
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "adding overriding unknown members....");
 	overrideUnknownMembers();
 
+	int numUStructsFound = 0;
+	int numEnumsFound = 0;
 	for (; finishedPackages < ObjectsManager::gUObjectManager.UObjectArray.NumElements; finishedPackages++)
 	{
 		auto object = ObjectsManager::getUObjectByIndex<UObject>(finishedPackages);
 
 		//instantly go if any operation was not successful!
-		if (!ObjectsManager::operationSuccess())
+		if (ObjectsManager::CRITICAL_STOP_CALLED())
 			return;
 
 		//is it even valid? Some indexes arent
 		if (!object)
 			continue;
 
-		if (!object->IsA<UStruct>() && !object->IsA<UEnum>())
+		bool isUStruct = false, isEnum = false;
+		if (object->IsA<UStruct>()) {
+			numUStructsFound++;
+			isUStruct = true;
+		}
+
+		if (object->IsA<UEnum>()) {
+			numEnumsFound++;
+			isEnum = true;
+		}
+
+		if (!isUStruct && !isEnum)
 			continue;
 
 		upackages[object->getSecondPackageName()].push_back(object);
+	}
+	if (numUStructsFound == 0) {
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "WARN: No UStruct objects found");
+	}
+	if (numEnumsFound == 0) {
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "WARN: No Enum objects found");
 	}
 
 	//reset the counter to 0 as we are using it again but this time really for packages
@@ -875,7 +973,29 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		auto& dataVector = struc.isClass ? basicType.classes : basicType.structs;
 		dataVector.push_back(struc);
 	}
+	for (auto& struc : customEnums)
+		basicType.enums.push_back(struc);
+
 	packages.push_back(basicType);
+
+	std::unordered_map<std::string, std::string> usedNames;
+
+	auto checkForDuplicateNames = [&usedNames](EngineStructs::Package package) {
+		for (auto& enu : package.enums) {
+			if (usedNames.contains(enu.cppName)) {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+			}
+			usedNames.insert({ enu.cppName, package.packageName });
+		}
+		for (auto& struc : package.combinedStructsAndClasses) {
+			if (usedNames.contains(struc->cppName)) {
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "%s redefinition in package %s! %s has already been defined in package %s", struc->isClass ? "Class" : "Struct", struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+				printf("%s redefinition in package %s! %s has already been defined in package %s\n", struc->isClass ? "Class" : "Struct", package.packageName.c_str(), struc->cppName.c_str(), usedNames[struc->cppName].c_str());
+			}
+			usedNames.insert({ struc->cppName, package.packageName });
+		}
+	};
 
 	//package 0 is reserved for our special defined structs
 	for (auto& package : upackages)
@@ -887,7 +1007,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 		for (const auto& object : package.second)
 		{
 			const bool isClass = object->IsA<UClass>();
-			if (!ObjectsManager::operationSuccess())
+			if (ObjectsManager::CRITICAL_STOP_CALLED())
 				return;
 			if (isClass || object->IsA<UScriptStruct>())
 			{
@@ -919,11 +1039,12 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 					}
 				}
 
-				if (!ObjectsManager::operationSuccess())
+				if (ObjectsManager::CRITICAL_STOP_CALLED())
 					return;
 
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				printf("Generating %s %s::%s\n", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 
 
 				const auto sObject = object->castTo<UStruct>();
@@ -945,10 +1066,12 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 					continue;
 			}
 		}
+
+		checkForDuplicateNames(ePackage);
+
 		packages.push_back(ePackage);
 		finishedPackages++;
 	}
-
 
 
 	std::ranges::sort(packages, EngineStructs::Package::packageCompare);
@@ -957,7 +1080,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 	finishPackages();
 
 	status = CS_success;
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Done generating packets!");
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Done generating packages!");
 }
 
 std::vector<EngineStructs::Package>& EngineCore::getPackages()
@@ -1021,6 +1144,14 @@ void EngineCore::createStruct(const EngineStructs::Struct & eStruct)
 	customStructs.push_back(eStruct);
 }
 
+void EngineCore::createEnum(const EngineStructs::Enum& eEnum)
+{
+	if (std::ranges::find(customEnums, eEnum) != customEnums.end())
+		return;
+
+	customEnums.push_back(eEnum);
+}
+
 void EngineCore::overrideStructMembers(const EngineStructs::Struct & eStruct)
 {
 	if (overridingStructMembers.contains(eStruct.fullName))
@@ -1031,6 +1162,7 @@ void EngineCore::overrideStructMembers(const EngineStructs::Struct & eStruct)
 
 void EngineCore::finishPackages()
 {
+	std::unordered_map<std::string, EngineStructs::Enum*> enumLookupTable;
 	std::unordered_map<std::string, int> enumMap = {};
 	int duplicatedNames = 0;
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
@@ -1066,15 +1198,6 @@ void EngineCore::finishPackages()
 					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
 
 				}
-
-				for (const auto& var : struc.definedMembers)
-				{
-					if (var.type.propertyType == PropertyType::EnumProperty)
-					{
-						if (!enumMap.contains(var.type.name))
-							enumMap[var.type.name] = var.size;
-					}
-				}
 			}
 		};
 
@@ -1097,6 +1220,14 @@ void EngineCore::finishPackages()
 
 		for (const auto& struc : package.combinedStructsAndClasses)
 		{
+			for (const auto& var : struc->definedMembers)
+			{
+				if (var.type.propertyType == PropertyType::EnumProperty && !enumMap.contains(var.type.name))
+				{
+					enumMap.insert(std::pair<std::string, int>(var.type.name, var.arrayDim > 0 ? var.size / var.arrayDim : var.size));
+				}
+			}
+
 			for (auto& name : struc->superNames)
 			{
 				const auto info = getInfoOfObject(name);
@@ -1167,7 +1298,14 @@ void EngineCore::finishPackages()
 				{
 					const auto info = getInfoOfObject(type.name);
 					if (info && info->valid)
+					{
 						type.info = info;
+
+						//casting is fine even if its a enum as owningpackage is the first package
+						const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
+						if (targetStruc->owningPackage->index != package.index)
+							package.dependencyPackages.insert(targetStruc->owningPackage);
+					}
 				}
 			};
 			addInfoPtr(ret);
@@ -1181,23 +1319,22 @@ void EngineCore::finishPackages()
 
 		for (int j = 0; j < package.enums.size(); j++)
 		{
-			auto& enu = package.enums[j];
-			if (enumMap.contains(enu.cppName))
-			{
-				const auto eSize = enumMap[enu.cppName];
-
-				std::string nam = TYPE_UI8;
-				if (eSize == 2)
-					nam = TYPE_UI16;
-				else if (eSize == 4)
-					nam = TYPE_UI32;
-				else if (eSize == 8)
-					nam = TYPE_UI64;
-
-				enu.type = nam;
-			}
+			enumLookupTable.insert(std::pair<std::string, EngineStructs::Enum*>(generateValidVarName(package.enums[j].cppName), &package.enums[j]));
 		}
 
+	}
+
+	// Correct Enum types based on actual member data (they were previously guessed based on max value).
+	// We iterate over the enum map to assert we cover all enums that have overrides
+	for (auto iter = enumMap.begin(); iter != enumMap.end(); iter++)
+	{
+		if (!enumLookupTable.contains(iter->first) && !overridingStructs.contains(iter->first))
+		{
+			// predefined Enums like EOjbectFlags will hit this condition
+			continue;
+		}
+		enumLookupTable[iter->first]->type = getEnumTypeFromSize(iter->second);
+		enumLookupTable[iter->first]->size = iter->second;
 	}
 
 	for (auto& package : packages)

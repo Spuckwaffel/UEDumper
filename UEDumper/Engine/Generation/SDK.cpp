@@ -9,6 +9,9 @@
 #include "Settings/EngineSettings.h"
 #include "BasicType.h"
 #include "packageSorter.h"
+#include "Engine/Userdefined/FeatureFlags.h"
+
+#include <algorithm>
 
 void SDKGeneration::printCredits(std::ofstream& stream)
 {
@@ -31,6 +34,10 @@ void SDKGeneration::generateBasicType()
     for (const auto& [name, definition] : defs)
         if (auto it = std::ranges::find(noDefs, name); it != noDefs.end())
             noDefs.erase(it);
+
+    BasicType << "#pragma once" << std::endl;
+    BasicType << "#include <cstdint>" << std::endl;
+    BasicType << "#include <locale>" << std::endl;
 
     printCredits(BasicType);
     BasicType << "/// This file contains all definitions of structs that werent defined automatically.\n\n";
@@ -77,8 +84,12 @@ void SDKGeneration::generateBasicType()
 }
 
 
-void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::Package& package)
-{
+void SDKGeneration::generatePackage(
+    std::ofstream& stream,
+    const EngineStructs::Package& package,
+    int featureFlags,
+    std::unordered_map<std::string, std::string> &originalPackageToMerged
+) {
     stream << "#pragma once\n";
     //flag some invalid characters in a name
     auto generateValidVarName = [](const std::string& str)
@@ -86,22 +97,191 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
         std::string result = "";
         for (const char c : str)
         {
-            if (static_cast<int>(c) < 0 || !std::isalnum(c))
+            if (c == ' ')
+                continue;
+            else if (static_cast<int>(c) < 0 || !std::isalnum(c))
                 result += '_';
             else
                 result += c;
 
         }
+
+        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+
+        if (std::isdigit(result[0])) result = "_" + result;
+        if (reservedNames.contains(result)) result += "0";
+
         //guaranteed 0 termination
         return result;
     };
 
-    for (auto& dependencies : package.dependencyPackages)
+    if (featureFlags & FeatureFlags::SDK::ADD_INCLUDES)
     {
-        stream << "/// dependency: " << dependencies->packageName << std::endl;
+        for (auto& dependencies : package.dependencyPackages)
+        {
+            auto packageName = dependencies->packageName;
+            if (originalPackageToMerged.contains(packageName))
+                packageName = originalPackageToMerged[packageName];
+
+            stream << "#include \"" << packageName << ".h\"" << std::endl;
+        }
+    }
+    else
+    {
+        for (auto& dependencies : package.dependencyPackages)
+        {
+            stream << "/// dependency: " << dependencies->packageName << std::endl;
+        }
     }
 
     stream << "\n";
+
+    auto generateForwardDecls = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+    {
+        std::set<std::string> forwardDeclTypes; // ordered in case SDK is in VCS
+        for (const auto& struc : DataStruc)
+        {
+            if (!struc->isClass) continue;
+
+            forwardDeclTypes.insert("class " + generateValidVarName(struc->cppName));
+        }
+
+        for (auto decl = forwardDeclTypes.begin(); decl != forwardDeclTypes.end(); decl++)
+        {
+            stream << *decl << ";" << std::endl;
+        }
+    };
+
+    auto areAnyMembersUndefined = [&](EngineStructs::Member* member)
+    {
+        bool anyUndef = !member->type.info || !member->type.info->valid;
+        if (!anyUndef && member->type.subTypes.size() > 0)
+        {
+            auto checkAllSubs = [&](const fieldType& type, auto& self) -> void
+                {
+                    for (auto& sub : type.subTypes)
+                    {
+                        if (sub.clickable && (!sub.info || !sub.info->valid))
+                        {
+                            anyUndef = true;
+                            break;
+                        }
+                        if (sub.propertyType == PropertyType::Unknown)
+                        {
+                            anyUndef = true;
+                            break;
+                        }
+                        if (sub.subTypes.size() > 0)
+                            self(sub, self);
+                    }
+                };
+            checkAllSubs(member->type, checkAllSubs);
+        }
+
+        return anyUndef;
+    };
+
+    auto areAnyParamsUndefined = [&](EngineStructs::Function func)
+    {
+        std::unordered_set<std::string> noDefs;
+        for (auto type : EngineCore::getAllUnknownTypes()) noDefs.insert(type);
+
+        bool anyUndef = false;
+
+        auto checkAllSubs = [&](const fieldType& type, auto& self) -> void
+        {
+            for (auto& sub : type.subTypes)
+            {
+                if (noDefs.contains(sub.name)) {
+                    anyUndef = true;
+                    break;
+                }
+                if (sub.clickable && (!sub.info || !sub.info->valid))
+                {
+                    anyUndef = true;
+                    break;
+                }
+                if (sub.propertyType == PropertyType::Unknown)
+                {
+                    anyUndef = true;
+                    break;
+                }
+                if (sub.subTypes.size() > 0)
+                    self(sub, self);
+            }
+        };
+
+        if (func.returnType.propertyType == PropertyType::Unknown) anyUndef = true;
+        else if (noDefs.contains(func.returnType.name)) anyUndef = true;
+        else
+        {
+            for (auto param : func.params)
+            {
+                if (
+                    std::get<0>(param).propertyType == PropertyType::Unknown ||
+                    noDefs.contains(std::get<0>(param).name)
+                ) {
+                    anyUndef = true;
+                    break;
+                }
+                else
+                {
+                    checkAllSubs(std::get<0>(param), checkAllSubs);
+                }
+            }
+        }
+        if (!anyUndef && func.returnType.subTypes.size() > 0)
+        {
+            checkAllSubs(func.returnType, checkAllSubs);            
+        }
+
+        return anyUndef;
+    };
+
+    auto generateStaticAssertsForObjectSizes = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+    {
+        for (const auto& struc : DataStruc)
+        {
+            char buf[1024] = { 0 };
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), struc->maxSize, struc->maxSize, struc->getInheritedSize(), struc->maxSize);
+            stream << buf << std::endl;
+        }
+    };
+
+    auto generateStaticAssertsForMembers = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
+        {
+            for (const auto& struc : DataStruc)
+            {
+                const auto klass = generateValidVarName(struc->cppName);
+                std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+
+                int j = 0;
+                for (int i = 0; i < struc->cookedMembers.size(); i++)
+                {
+                    const auto member = struc->getMemberForIndex(i);
+                    std::string name = member->name;
+
+                    if (std::isdigit(name[0]))
+                        name = "_" + name;
+
+                    if (name.empty())
+                        name = "noname";
+
+                    if (std::ranges::find(usedNames, name) != usedNames.end())
+                        name += std::to_string(j++);
+
+                    name = generateValidVarName(name);
+
+                    usedNames.push_back(name);
+
+                    if (areAnyMembersUndefined(member)) continue;
+
+                    char buf[1024] = { 0 };
+                    sprintf_s(buf, "static_assert(offsetof(%s, %s) == 0x%04X);", klass.c_str(), name.c_str(), member->offset);
+                    stream << buf << std::endl;
+                }
+            }
+        };
 
     auto generateStruct = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
@@ -111,36 +291,54 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
                 continue;
             allnames.push_back(generateValidVarName(struc->cppName));
 
+            bool needsHelp = false;
+            if (struc->cookedMembers.size() > 0)
+            {
+                if (struc->minAlignment > 0 && (struc->maxSize % struc->minAlignment) > 0)
+                {
+                    needsHelp = true;
+                }
+            }
+
             if (struc->isClass)
                 stream << "/// Class " << struc->fullName << std::endl;
             else
-                stream << "/// Struct " << struc->fullName << std::endl;
-            char buf[100] = { 0 };
-            sprintf_s(buf, "Size: 0x%04X (0x%06X - 0x%06X)", struc->size - struc->inheretedSize, struc->inheretedSize, struc->size);
-            stream << "/// " << buf << std::endl;
-
-            bool needsHelp = false;
-
-            if (struc->cookedMembers.size() > 0)
             {
-                if (struc->maxSize != struc->size)
+                stream << "/// Struct " << struc->fullName << std::endl;
+                if (struc->maxSize == 0)
                 {
-                    needsHelp = true;
-                    stream << "#pragma pack(push, 0x1)" << std::endl;
+                    // it's an empty struct, but by default will take up 1 byte
+                    struc->size = 0x1;
+                    struc->maxSize = 0x1;
                 }
             }
+            char buf[256] = { 0 };
+            sprintf_s(
+                buf, 
+                "Size: 0x%04X (%d bytes) (0x%06X - 0x%06X) align %s pad: 0x%04X",
+                struc->size - struc->getInheritedSize(),
+                struc->size - struc->getInheritedSize(),
+                struc->getInheritedSize(), 
+                struc->size, 
+                (struc->minAlignment > 0 ? std::to_string(struc->minAlignment) : "n/a").c_str(),
+                needsHelp ? struc->maxSize % struc->minAlignment : 0
+            );
+            stream << "/// " << buf << std::endl;
+
+            if (needsHelp) stream << "#pragma pack(push, 0x1)" << std::endl;
 
             if (struc->isClass)
                 stream << "class ";
             else
                 stream << "struct ";
 
-            if (needsHelp)
+
+            /*if (needsHelp)
             {
                 char buf1[100] = { 0 };
                 sprintf_s(buf1, "alignas(0x%X) ", struc->minAlignment);
                 stream << buf1;
-            }
+            }*/
 
             stream << generateValidVarName(struc->cppName);
 
@@ -167,11 +365,13 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
                 char nameBuf[500];
                 std::string name = member->name;
 
-                if (std::isdigit(name[0]))
-                    name = "_" + name;
+                
 
                 if (name.empty())
                     name = "noname";
+
+                else if (std::isdigit(name[0]))
+                    name = "_" + name;
 
                 if (std::ranges::find(usedNames, name) != usedNames.end())
                     name += std::to_string(j++);
@@ -182,40 +382,13 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
 
                 std::string memberType = member->type.stringify().c_str();
 
-                if (member->type.clickable)
+                if (member->type.clickable && areAnyMembersUndefined(member))
                 {
-                    bool anyUndef = !member->type.info || !member->type.info->valid;
-                    if (!anyUndef && member->type.subTypes.size() > 0)
-                    {
-                        auto checkAllSubs = [&](const fieldType& type, auto& self) -> void
-                        {
-                            for (auto& sub : type.subTypes)
-                            {
-                                if (sub.clickable && (!sub.info || !sub.info->valid))
-                                {
-                                    anyUndef = true;
-                                    break;
-                                }
-                                if (sub.propertyType == PropertyType::Unknown)
-                                {
-                                    anyUndef = true;
-                                    break;
-                                }
-                                if (sub.subTypes.size() > 0)
-                                    self(sub, self);
-                            }
-                        };
-                        checkAllSubs(member->type, checkAllSubs);
-                    }
-
-                    if (anyUndef)
-                    {
-                        memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
-                        name = "__um(" + member->name + ")";
-                    }
+                    memberType = "SDK_UNDEFINED(" + std::to_string(member->size) + "," + std::to_string(undefinedCnt++) + ") /* " + memberType + " */";
+                    name = "__um(" + member->name + ")";
+                } else if (member->arrayDim > 1) {
+                    name += "[" + std::to_string(member->arrayDim) + "]";
                 }
-
-
 
                 if (member->isBit)
                     name += " : 1";
@@ -238,28 +411,87 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
                 stream << "\n\n\t/// Functions" << std::endl;
             }
 
+            uint32_t vtableIndex = 0;
+            std::unordered_set<std::string> alreadyGeneratedFunctions;
             for (const auto& func : struc->functions)
             {
+                if (alreadyGeneratedFunctions.contains(func.fullName)) {
+                    // some blueprint functions will be duplicated with exact same signatures, offsets, the lot
+                    windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "SDK GEN", "WARNING: Duplicate function %s in struct %s. Skipping...", func.fullName.c_str(), struc->fullName.c_str());
+                    printf("WARNING: Duplicate function %s in struct %s. Skipping...\n", func.fullName.c_str(), struc->fullName.c_str());
+                    continue;
+                }
+                alreadyGeneratedFunctions.insert(func.fullName);
+
                 stream << "\t// Function " << func.fullName << std::endl;
                 char funcBuf[1200];
-                std::string params = "// " + func.returnType.stringify() + " " + func.cppName.c_str() + "(";
+                const auto bAddPrefix = featureFlags & FeatureFlags::SDK::FUNCTION_BODIES ? false : true;
+
+                std::string params = "" + func.returnType.stringify(bAddPrefix) + " " + generateValidVarName(func.cppName).c_str() + "(";
+                std::string funcPtrTypes = "";
+                std::string funcPtrParams = "";
+
+                std::unordered_set<std::string> alreadyUsedNames;
+
                 for (auto param : func.params)
                 {
-                    params += std::get<0>(param).stringify();
+                    params += std::get<0>(param).stringify(bAddPrefix);
+                    funcPtrTypes += std::get<0>(param).stringify(bAddPrefix);
+
                     if (std::get<3>(param) > 1)
+                    {
                         params += "*";
+                        funcPtrTypes += "*";
+                    }
                     else if (std::get<2>(param) & EPropertyFlags::CPF_OutParm)
+                    {
                         params += "&";
-                    params += " " + std::get<1>(param) + ", ";
+                        funcPtrTypes += "&";
+                    }
+
+                    std::string paramName = generateValidVarName(std::get<1>(param));
+
+                    // some func signatures re-use the variable name, so we need to make them unique
+                    int duplicateParamCounter = 0;
+                    while (alreadyUsedNames.contains(paramName)) paramName = generateValidVarName(std::get<1>(param)) + std::to_string(++duplicateParamCounter);
+                    alreadyUsedNames.insert(paramName);
+
+                    params += " " + paramName + ", ";
+                    funcPtrTypes += ", ";
+                    funcPtrParams += paramName + ", ";
                 }
                 if (func.params.size() > 0)
+                {
                     params = params.erase(params.size() - 2);
-                params += ");";
+                    funcPtrTypes = funcPtrTypes.erase(funcPtrTypes.size() - 2);
+                    funcPtrParams = funcPtrParams.erase(funcPtrParams.size() - 2);
+                }
 
+                if (featureFlags & FeatureFlags::SDK::FUNCTION_BODIES && !areAnyParamsUndefined(func))
+                {
+                    params += ")";
+                    sprintf_s(funcBuf, "	%s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
+                    stream << funcBuf << std::endl;
 
+                    bool isVoidFunc = func.returnType.stringify() == "void";
 
-                sprintf_s(funcBuf, "	%-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
-                stream << funcBuf << std::endl;
+                char funcBody[1200];
+                sprintf_s(funcBody, R"EOF(	{
+		typedef %s (*FuncPtr)(%s);
+		auto vtablePtr = reinterpret_cast<uintptr_t*>(vtable);
+		auto func = reinterpret_cast<FuncPtr>(vtablePtr[%d]);
+		%sfunc(%s);
+	})EOF", func.returnType.stringify().c_str(), funcPtrTypes.c_str(), vtableIndex, isVoidFunc ? "" : "return ", funcPtrParams.c_str());
+                    stream << funcBody << std::endl;
+                }
+                else {
+                    params += ");";
+                    sprintf_s(funcBuf, "	// %-120s // [0x%llx] %-20s ", params.c_str(), func.binaryOffset, func.functionFlags.c_str());
+                    stream << funcBuf << std::endl;
+                }
+
+                vtableIndex++;
+
             }
             if (needsHelp)
             {
@@ -271,13 +503,18 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
         }
     };
 
+    if (featureFlags & FeatureFlags::SDK::FORWARD_DECLARATIONS) {
+        generateForwardDecls(package.combinedStructsAndClasses);
+        stream << "\n";
+    }
+
     //first we generate enums
 
     for (const auto& enu : package.enums)
     {
         stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
-        sprintf_s(buf, "Size: 0x%02d", enu.members.size());
+        sprintf_s(buf, "Size: 0x%02d (%d bytes)", enu.size, enu.size);
         stream << "/// " << buf << std::endl;
         stream << "enum class " << enu.cppName << " : " << enu.type << std::endl;
         stream << "{" << std::endl;
@@ -304,7 +541,33 @@ void SDKGeneration::generatePackage(std::ofstream& stream, const EngineStructs::
     }
 
 
-    generateStruct(package.combinedStructsAndClasses);
+    // this feature flag exists so that classes that reference structs in their call signatures
+    // can be defined, without needing forward declarations of structs everywhere
+    if (featureFlags & FeatureFlags::SDK::STRUCTS_BEFORE_CLASSES)
+    {
+        std::vector<EngineStructs::Struct*> structs;
+        std::vector<EngineStructs::Struct*> classes;
+
+        for (auto package : package.combinedStructsAndClasses)
+        {
+            if (package->isClass) classes.push_back(package);
+            else structs.push_back(package);
+        }
+
+        generateStruct(structs);
+        generateStruct(classes);
+    }
+    else
+    {
+        generateStruct(package.combinedStructsAndClasses);
+    }
+
+    // add static asserts for objects
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS_OBJECT_SIZE)
+        generateStaticAssertsForObjectSizes(package.combinedStructsAndClasses);
+    // add static asserts for members
+    if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS_MEMBERS)
+        generateStaticAssertsForMembers(package.combinedStructsAndClasses);
 
 }
 
@@ -312,7 +575,7 @@ SDKGeneration::SDKGeneration()
 {
 }
 
-void SDKGeneration::Generate(int& progressDone, int& totalProgress)
+void SDKGeneration::Generate(int& progressDone, int& totalProgress, int featureFlags)
 {
     windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking SDK...");
 
@@ -361,12 +624,19 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 )";
 
     std::vector<MergedPackage> newPackages;
+    const auto sortedPackages = sortPackages(progressDone, totalProgress, newPackages);
 
-    const auto soredPackages = sortPackages(progressDone, totalProgress, newPackages);
 
+    std::unordered_map<std::string, std::string> originalPackageToMerged;
+    for (auto& pack : newPackages)
+    {
+        for (auto& mergedPack : pack.mergedPackages) {
+            originalPackageToMerged.insert(std::pair<std::string, std::string>(mergedPack->packageName, pack.package.packageName));
+        }
+    }
 
     puts("------sorted packages------");
-    for (auto& pack : soredPackages)
+    for (auto& pack : sortedPackages)
     {
         printf("%s\n", pack->package.packageName.c_str());
     }
@@ -374,9 +644,9 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
 
     //generateBasicType();
 
-    totalProgress = soredPackages.size();
+    totalProgress = sortedPackages.size();
     progressDone = 0;
-    for (auto& pack : soredPackages)
+    for (auto& pack : sortedPackages)
     {
         windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
         masterHeader << "#include \"SDK/" + pack->package.packageName + ".h\"" << std::endl;
@@ -387,7 +657,7 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress)
             std::string packageName = pack->package.packageName + ".h";
             std::ofstream package(SDKPath / packageName);
             printCredits(package);
-            generatePackage(package, pack->package);
+            generatePackage(package, pack->package, featureFlags, originalPackageToMerged);
             package.close();
         }
 

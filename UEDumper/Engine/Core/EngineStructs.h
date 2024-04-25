@@ -127,32 +127,32 @@ struct fieldType
 		return arr;
 	}
 
-	std::string stringify() const
+	std::string stringify(bool bAddTypePrefix = true) const
 	{
 
 		auto generateValidVarName = [](const std::string& str)
-		{
-			//hacky way to ignore shit like unsigned char get to unsigned_char
-			if (getSize(str) != -1)
-				return str;
-			std::string result = "";
-
-			for (const char c : str)
 			{
-				if (static_cast<int>(c) < 0 || !std::isalnum(c))
-					result += '_';
-				else
-					result += c;
+				//hacky way to ignore shit like unsigned char get to unsigned_char
+				if (getSize(str) != -1)
+					return str;
+				std::string result = "";
 
-			}
-			//guaranteed 0 termination
-			return result;
-		};
+				for (const char c : str)
+				{
+					if (static_cast<int>(c) < 0 || !std::isalnum(c))
+						result += '_';
+					else
+						result += c;
+
+				}
+				//guaranteed 0 termination
+				return result;
+			};
 
 
 		std::string typeStr = generateValidVarName(name);
 
-		if ((propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && (info && info->valid))
+		if (bAddTypePrefix && (propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && (info && info->valid))
 		{
 			const std::string prefix = info->type == ObjectInfo::OI_Class ? "class " : "struct ";
 			typeStr = prefix + typeStr;
@@ -237,6 +237,7 @@ namespace EngineStructs
 		std::string name; //name of the member
 		int offset = 0; //offset of the member (real offset)
 		int size = 0; //size of the member
+		int arrayDim = 0; // the number of elements if it's an array (e.g. int16_t foobar[123])
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
 		int bitOffset = 0; //the offset of the bit (0 if not bit)
@@ -253,6 +254,7 @@ namespace EngineStructs
 			j["n"] = name;
 			j["o"] = offset;
 			j["s"] = size;
+			j["d"] = arrayDim;
 			j["m"] = missed;
 			j["i"] = isBit;
 			j["b"] = bitOffset;
@@ -267,6 +269,7 @@ namespace EngineStructs
 			m.name = json["n"];
 			m.offset = json["o"];
 			m.size = json["s"];
+			m.arrayDim = json["d"];
 			m.missed = json["m"];
 			m.isBit = json["i"];
 			m.bitOffset = json["b"];
@@ -338,14 +341,20 @@ namespace EngineStructs
 		bool inherited = false; //if the struct is inherited
 		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
 		int minAlignment = 0; //minimal alignment defined by ue
-		int size = 0; //true size of the struct
-		int inheretedSize = 0; //size of the inherited structs
+		int size = 0; //propertiesSize, possibly wrong, use maxSize
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
 		std::vector<Member> definedMembers{}; //list of all members that are all valid and known
 		std::vector<Member> undefinedMembers{}; //list of all members that are all valid and known
 		//listing: isDefined, vecIndex;
 		std::vector<std::pair<bool, int>> cookedMembers{}; //list of all members that are aligned and contain padding members, unknown members etc
 		std::vector<Function> functions{}; //array of all functions of the struct
+
+		int getInheritedSize() const
+		{
+			if (supers.empty()) return 0;
+
+			return supers[0]->maxSize;
+		}
 
 		Member* getMemberForIndex(int i)
 		{
@@ -371,7 +380,7 @@ namespace EngineStructs
 			j["spn"] = superNames;
 			j["in"] = inherited;
 			j["sz"] = size;
-			j["is"] = inheretedSize;
+			j["msz"] = maxSize;
 			j["uc"] = unknownCount;
 			nlohmann::json jMembers;
 			for (const auto& member : definedMembers)
@@ -394,7 +403,7 @@ namespace EngineStructs
 			s.superNames = json["spn"];
 			s.inherited = json["in"];
 			s.size = json["sz"];
-			s.inheretedSize = json["is"];
+			s.maxSize = json["msz"];
 			s.unknownCount = json["uc"];
 			for (const nlohmann::json& member : json["m"])
 				s.definedMembers.push_back(Member::fromJson(member));
@@ -414,7 +423,8 @@ namespace EngineStructs
 		std::string fullName;
 		std::string cppName;
 		std::string type;
-		std::vector<std::pair<std::string, int>>members;
+		int size;
+		std::vector<std::pair<std::string, int>> members;
 
 		nlohmann::json toJson() const
 		{
@@ -423,6 +433,7 @@ namespace EngineStructs
 			j["f"] = fullName;
 			j["c"] = cppName;
 			j["t"] = type;
+			j["sz"] = size;
 			nlohmann::json jMembers;
 			for (const auto& member : members)
 			{
@@ -442,11 +453,17 @@ namespace EngineStructs
 			e.fullName = json["f"];
 			e.cppName = json["c"];
 			e.type = json["t"];
+			e.size = json["sz"];
 			const nlohmann::json jMembers = json["m"];
 			for (const nlohmann::json& member : jMembers)
 				e.members.push_back(std::pair(member["f"], member["s"]));
 
 			return e;
+		}
+
+		bool operator==(const Enum& en) const
+		{
+			return en.fullName == fullName;
 		}
 	};
 

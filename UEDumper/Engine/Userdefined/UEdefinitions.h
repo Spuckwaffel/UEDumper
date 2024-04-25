@@ -33,8 +33,10 @@
 #define RELEASE_1_8_FINAL	15
 #define RELEASE_1_9_BETA	16
 #define RELEASE_1_9_FINAL	17
+#define RELEASE_1_10_BETA	18
+#define RELEASE_1_10_FINAL	19
 
-#define DUMPER_VERSION RELEASE_1_9_BETA
+#define DUMPER_VERSION RELEASE_1_10_BETA
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -43,6 +45,7 @@
 
 
 //supported unreal engine versions, dont edit
+#define UE_NOT_SET 99
 #define UE_4_19		0
 #define UE_4_20		1
 #define UE_4_21		2
@@ -61,7 +64,11 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_01
+#define UE_VERSION UE_NOT_SET
+
+
+/* SDK generation */
+#define WRITE_STATIC_ASSERT_TESTS TRUE
 
 
 /* FName settings */
@@ -149,3 +156,10 @@
 //default false
 #define WITH_EDITORONLY_DATA FALSE
 #endif
+
+// If your game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
+#define GOBJECTS_XOR_ECRYPTION_KEY 0x0
+
+// Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
+// This is used when a chunk using XOR encryption has a nullptr at the start and needs padding
+#define CHUNK_PADDING 0x0

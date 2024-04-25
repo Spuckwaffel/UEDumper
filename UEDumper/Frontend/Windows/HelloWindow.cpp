@@ -5,6 +5,9 @@
 #include <Settings/EngineSettings.h>
 #include <Frontend/Fonts/fontAwesomeHelper.h>
 #include <Memory/Memory.h>
+#include <Engine/Core/Core.h>
+#include <Engine/Userdefined/Offsets.h>
+#include "Frontend/Windows/LogWindow.h"
 
 
 windows::HelloWindow::HelloWindow()
@@ -14,6 +17,28 @@ windows::HelloWindow::HelloWindow()
 bool windows::HelloWindow::render()
 {
 	if (alreadyCompleted) return true;
+
+	static bool bUserKnowsWhatTheyAreDoing = true;
+	static bool checkOffsets = true;
+	if(checkOffsets)
+	{
+		for (const auto& offset : setOffsets()) {
+			if (offset.offset == SHOW_README_IF_OFFSETS_ARE_VALUE) {
+				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "OFFSETS",
+					"ERROR: Offsets were not changed. Please read the README and specify the correct offsets.");
+				bUserKnowsWhatTheyAreDoing = false;
+				break;
+			}
+		}
+		if(EngineSettings::_UE_VERSION == UE_NOT_SET )
+		{
+			bUserKnowsWhatTheyAreDoing = false;
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_ERROR, "UE VERSION",
+				"ERROR: UE Version not set. Please read the README and specify the correct offsets.");
+		}
+		checkOffsets = false;
+	}
+
 
 	static char processName[100] = { 0 };
 	static char projectName[50] = { 0 };
@@ -45,9 +70,23 @@ bool windows::HelloWindow::render()
 		ImGui::SameLine();
 		float posX = ImGui::GetCursorPosX();
 		ImGui::Dummy({ 0,0 });
+		ImGui::SetCursorPos(ImVec2(ImGui::GetCursorPosX() + 10, ImGui::GetCursorPosY() - 10));
 		ImGui::TextColored(IGHelper::Colors::grayedOut, "%22s", EngineSettings::getDumperVersion().c_str());
 		ImGui::SetCursorPos({ posX, 35 });
 		ImGui::BeginChild("NewProjectChild", ImVec2(520, 280), false, ImGuiWindowFlags_NoScrollWithMouse);
+
+		if (!bUserKnowsWhatTheyAreDoing)
+		{
+			ImGui::SetCursorPosY(70);
+			ImGui::TextColored(IGHelper::Colors::white, "Hi there! Looks like you're new to this tool.");
+			ImGui::TextColored(IGHelper::Colors::red, "The tool DOES NOT WORK OUT OF THE BOX!");
+			ImGui::TextColored(IGHelper::Colors::white, "Please read the included README.md file to proceed.");
+			ImGui::EndChild();
+			ImGui::EndChild();
+			return false;
+		}
+
+
 		ImGui::PushItemWidth(373);
 		ImGui::Dummy(ImVec2(0, 20));
 		ImGui::Text("Enter a project name (at least 5 characters)");
