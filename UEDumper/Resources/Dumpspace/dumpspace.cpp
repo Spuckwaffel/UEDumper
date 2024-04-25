@@ -10,6 +10,7 @@
 namespace Dumpspace
 {
     std::string dumpTimeStamp = {};
+    constexpr auto version = 10201;
 
     // Last std::string isn't used atm, but dumps.host expects it.
     std::vector<std::pair<std::string, uintptr_t>> offsets = {};
@@ -40,6 +41,7 @@ namespace Dumpspace
     void DumpOffsets(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
+        j["version"] = version;
         j["data"] = nlohmann::json(offsets);
 
         std::ofstream file(directory / "OffsetsInfo.json");
@@ -49,6 +51,7 @@ namespace Dumpspace
     void DumpClasses(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
+        j["version"] = version;
         j["data"] = classes;
 
         std::ofstream file(directory / "ClassesInfo.json");
@@ -58,6 +61,7 @@ namespace Dumpspace
     void DumpFunctions(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
+        j["version"] = version;
         j["data"] = functions;
 
         std::ofstream file(directory / "FunctionsInfo.json");
@@ -67,6 +71,7 @@ namespace Dumpspace
     void DumpStructs(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
+        j["version"] = version;
         j["data"] = structs;
 
         std::ofstream file(directory / "StructsInfo.json");
@@ -76,6 +81,7 @@ namespace Dumpspace
     void DumpEnums(const std::filesystem::path& directory) {
         nlohmann::json j;
         j["updated_at"] = dumpTimeStamp;
+        j["version"] = version;
         j["data"] = enums;
 
         std::ofstream file(directory / "EnumsInfo.json");

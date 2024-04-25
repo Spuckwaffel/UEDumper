@@ -13,6 +13,7 @@ void ObjectsManager::verifyUBigObjectSize(UObjectManager::UBigObject* bigObjectP
 			"HARD ERROR! A UObject tried to access more space (%d) than it can have max (%d). Try increasing UOBJECT_MAX_SIZE", requiredSize, UOBJECT_MAX_SIZE);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
+		return;
 	}
 
 	//do we have to read more than we did at one point before?
@@ -38,20 +39,25 @@ uint64_t ObjectsManager::getUObjectPtrByIndex(int index)
 			"HARD ERROR: getUObjectPtrByIndex requested index %d which is out of range (max: %d)! Are you out of the SDK generation?", index, gUObjectManager.UObjectArray.NumElements);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
+		return 0;
 	}
 
-	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + index * FUOBJECTITEM_SIZE);
+	return *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + (index * FUOBJECTITEM_SIZE));
 }
 
 void ObjectsManager::STOP_OPERATION()
 {
-	puts("Operation shut down after failure");
-	bOperationSuccess = false;
+	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER",
+		" -- OPERATION STOP CALLED --");
+	puts(" -- OPERATION STOP CALLED --");
+#ifdef _DEBUG
+	DebugBreak();
+#endif
+	_STOP_OPERATION = true;
 }
 
 ObjectsManager::ObjectsManager()
 {
-	bOperationSuccess = false;
 	const auto UObjectAddr = EngineCore::getOffsetAddress(EngineCore::getOffsetForName("OFFSET_GOBJECTS"));
 	if (!UObjectAddr)
 	{
@@ -62,6 +68,10 @@ ObjectsManager::ObjectsManager()
 	}
 
 	gUObjectManager.UObjectArray = Memory::read<TypeUObjectArray>(UObjectAddr);
+
+#if GOBJECTS_XOR_ECRYPTION_KEY
+	gUObjectManager.UObjectArray.Objects = reinterpret_cast<FUObjectItem**>((decryptPointer(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects))));
+#endif
 
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject -> 0x%p", gUObjectManager.UObjectArray.Objects);
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "TUObject elements: %d", gUObjectManager.UObjectArray.NumElements);
@@ -109,18 +119,16 @@ ObjectsManager::ObjectsManager()
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Allocated %llX bytes for FFieldClass cache", FFIELD_CLASSES_CT * sizeof(FFieldClass));
 
 #endif
-	bOperationSuccess = true;
 }
 
-bool ObjectsManager::operationSuccess()
+bool ObjectsManager::CRITICAL_STOP_CALLED()
 {
-	return bOperationSuccess;
+	return _STOP_OPERATION;
 }
 
-bool ObjectsManager::operationSuccess(std::string& errorString)
+void ObjectsManager::resolvedStop()
 {
-	errorString = errorReason;
-	return bOperationSuccess;
+	_STOP_OPERATION = false;
 }
 
 std::string ObjectsManager::getErrorMessage()
@@ -130,7 +138,6 @@ std::string ObjectsManager::getErrorMessage()
 
 void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
 {
-	bOperationSuccess = false;
 	status = CS_busy;
 	finishedBytes = 0;
 	totalBytes = gUObjectManager.UObjectArray.NumElements * FUOBJECTITEM_SIZE;
@@ -141,6 +148,7 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 		status = CS_error;
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "OBJECTSMANAGER", "Failed to allocate memory for GObjectPtrArray!");
 		errorReason = windows::LogWindow::getLastLogMessage();
+		STOP_OPERATION();
 		return;
 	}
 
@@ -169,12 +177,13 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 
 	for (int i = 0; i < gUObjectManager.UObjectArray.NumChunks; i++)
 	{
-		//chunks are in objects* 
-		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects) + i * 8);
+		//chunks are in objects*
+		const auto chunkStart = Memory::read<uint64_t>(reinterpret_cast<uint64_t>(gUObjectManager.UObjectArray.Objects) + (i * 0x8)) + CHUNK_PADDING;
+
 		auto chunkBytesRead = 0;
 		printf("chunk %i from %llX to %llX\n", i, chunkStart, chunkStart + chunkBytesSize);
 		//256 bytes is good enough, a full chunk would take 6144 reads.
-		//if the cunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
+		//if the chunk is only half full, we got the code below. totalBytes calculates the bytes for all existing elements
 		while (finishedBytes + 0x100 < totalBytes && chunkBytesRead < chunkBytesSize)
 		{
 			Memory::read(reinterpret_cast<void*>(chunkStart + chunkBytesRead), reinterpret_cast<void*>(gUObjectManager.pGObjectPtrArray + finishedBytes), 0x100);
@@ -194,18 +203,17 @@ void ObjectsManager::copyGObjectPtrs(int64_t& finishedBytes, int64_t& totalBytes
 
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "OBJECTSMANAGER", "Loaded GObjectPtrArray successfully!");
-
-	bOperationSuccess = true;
 }
 
 void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes, CopyStatus& status)
 {
-	bOperationSuccess = false;
+	status = CS_busy;
+
 	finishedBytes = 0;
 	//only read UObjects atm
 	totalBytes = gUObjectManager.UObjectArray.NumElements * sizeof(UObject);
 	const auto allocatedBytes = gUObjectManager.UObjectArray.NumElements * sizeof(UObjectManager::UBigObject);
-	status = CS_busy;
+	
 	//allocate UOBJECT_MAX_SIZE bytes for every UObject
 	gUObjectManager.pUBigObjectArray = reinterpret_cast<uint64_t>(calloc(1, allocatedBytes));
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Allocating 0x%llX bytes of memory for UBigObjectArray at 0x%p", totalBytes, gUObjectManager.pUBigObjectArray);
@@ -216,26 +224,29 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "Failed to allocate memory for UBigObjectArray!");
 		errorReason = windows::LogWindow::getLastLogMessage();
+		STOP_OPERATION();
 		return;
 	}
 
-
 	//go through each element
+	int32_t numInvalidElements = 0;
 	for (int32_t i = 0; i < gUObjectManager.UObjectArray.NumElements; i++)
 	{
 		//get the real UObject address
-		uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
+		const uint64_t UObjectAddress = *reinterpret_cast<uint64_t*>(gUObjectManager.pGObjectPtrArray + i * FUOBJECTITEM_SIZE);
 		//this happens quite often, those objects just got deleted
 		//the array is like a block of cheese with holes
 		if (!UObjectAddress) {
-			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Could not resolve address for obect %d!", i);
+			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "ENGINECORE", "Could not resolve address for object %d!", i);
+			numInvalidElements += 1;
 		}
 		else {
-			//gets the memory address where the objects gonna be
+			//gets the memory address where the object's gonna be
 			UObjectManager::UBigObject* newBigObject = reinterpret_cast<UObjectManager::UBigObject*>(gUObjectManager.pUBigObjectArray + i * sizeof(UObjectManager::UBigObject));
 			newBigObject->readSize = sizeof(UObject);
 			//read the UObject inside the buffer with UOBJECT_MAX_SIZE bytes size
-			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, sizeof(UObject));
+
+			Memory::read(reinterpret_cast<void*>(UObjectAddress), newBigObject->object, newBigObject->readSize);
 
 			//these are all UObjects. We just override the VTABLE with the UObjectAddress (look at UnrealClasses.h)
 			*reinterpret_cast<uint64_t*>(newBigObject->object) = UObjectAddress;
@@ -248,9 +259,14 @@ void ObjectsManager::copyUBigObjects(int64_t& finishedBytes, int64_t& totalBytes
 
 		finishedBytes += sizeof(UObject);
 	}
+
+	if (numInvalidElements > 0)
+	{
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "Failed to resolve address for %d/%d objects", numInvalidElements, gUObjectManager.UObjectArray.NumElements);
+	}
+
 	status = CS_success;
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "ENGINECORE", "Loaded UBigObjectArray successfully!");
-	bOperationSuccess = true;
 }
 
 #if UE_VERSION >= UE_4_25
@@ -263,6 +279,7 @@ uint64_t ObjectsManager::cacheFField(uint64_t gamePtr)
 			"HARD ERROR: cacheFField wanted to cache another field but the cache is full! Try increasing FFIELD_CT (currently: %d)", FFIELD_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
+		return 0;
 	}
 	uint64_t realAddress = gFFieldManager.pFFieldArray + gFFieldManager.linkedFFieldIndexCount * UOBJECT_MAX_SIZE;
 	Memory::read(reinterpret_cast<void*>(gamePtr), reinterpret_cast<void*>(realAddress), UOBJECT_MAX_SIZE);
@@ -286,6 +303,7 @@ FFieldClass* ObjectsManager::getFFieldClass(void* gamePtr)
 			"HARD ERROR: getFFieldClass wanted to cache another fieldclass but the cache is full! Try increasing FFIELD_CLASSES_CT (currently: %d)", FFIELD_CLASSES_CT);
 		errorReason = windows::LogWindow::getLastLogMessage();
 		STOP_OPERATION();
+		return nullptr;
 	}
 	uint64_t realAddress = gFFieldManager.pFFieldClassArray + gFFieldManager.linkedFFieldClassIndexCount * sizeof(FFieldClass);
 	Memory::read(gamePtr, reinterpret_cast<void*>(realAddress), sizeof(FFieldClass));

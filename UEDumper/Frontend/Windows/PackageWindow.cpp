@@ -12,6 +12,7 @@
 #include "Engine/Generation/MDK.h"
 #include "Engine/Generation/SDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
+#include "Engine/Userdefined/FeatureFlags.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
 {
@@ -113,7 +114,8 @@ bool windows::PackageWindow::render()
 				std::ofstream file(EngineSettings::getWorkingDirectory() / (packages[packagePicked].packageName + ".h"));
 				SDKGeneration::printCredits(file);
 				file << "/// Package " + packages[packagePicked].packageName << ".\n\n";
-				SDKGeneration::generatePackage(file, packages[packagePicked]);
+				auto emptyMerged = std::unordered_map<std::string, std::string>{};
+				SDKGeneration::generatePackage(file, packages[packagePicked], FeatureFlags::SDK::STABLE, emptyMerged);
 				LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGE", "Saved Package %s to disk!", packages[packagePicked].packageName.c_str());
 			}
 			if (ImGui::Button("Copy package name"))
@@ -262,7 +264,19 @@ void windows::PackageWindow::renderProjectPopup()
 		anyProgressTotal = 1;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "Creating SDK...");
-			SDKGeneration::Generate(anyProgressDone, anyProgressTotal);
+			SDKGeneration::Generate(anyProgressDone, anyProgressTotal, FeatureFlags::SDK::STABLE);
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "Done!");
+			presentTopMostCallback = false;
+			}))).reset();
+	}
+	if (ImGui::Button(merge(ICON_FA_DOWNLOAD, " Generate internal SDK (experimental)")))
+	{
+		presentTopMostCallback = true;
+		anyProgressDone = 0;
+		anyProgressTotal = 1;
+		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
+			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "Creating SDK...");
+			SDKGeneration::Generate(anyProgressDone, anyProgressTotal, FeatureFlags::SDK::EXPERIMENTAL_INTERNAL);
 			LogWindow::Log(LogWindow::logLevels::LOGLEVEL_INFO, "PACKAGEWINDOW", "Done!");
 			presentTopMostCallback = false;
 			}))).reset();

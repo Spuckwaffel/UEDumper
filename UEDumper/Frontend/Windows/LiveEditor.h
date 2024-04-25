@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Engine/Core/EngineStructs.h"
 #include "Engine/Live/LiveMemory.h"
+#include "Frontend/StrucGraph.h"
+
 /****************************************
 *										*
 *	+++ UEDumper live editor +++		*
@@ -15,6 +17,10 @@ namespace windows
 {
 	class LiveEditor
 	{
+		// avoid stack overflows if the user expands too many nodes
+		// ideally we need to write this as a loop instead of recursively to avoid this
+		static const int MAX_RECURSION_DEPTH_SAFEGUARD = 100;
+
 		static inline bool liveEditorStarted = false;
 
 		enum EditorTabType
@@ -40,10 +46,27 @@ namespace windows
 		static inline std::unordered_map<uint64_t, std::string> realSuperClassCache{};
 
 		static inline bool bRenderAddInspector = false;
+		static inline bool bRenderSearchBox = false; // whether to display the modal
+		static inline bool bRenderSearchResults = false; // whether to show search results
 
 		static inline int tabPicked = 0;
 
+		static inline char addAddressAddressValue[20] = { 0 };
+		static inline char addAddressNameValue[40] = { 0 };
+
 		static inline std::vector<EditorTab> tabs{};
+
+		static inline char searchText[512] = { 0 };
+		static inline std::string previousSearchText = "0xDEADBEEF";
+		static inline int searchResultPicked = 0; // which search result they picked
+		static inline std::string searchResultMember; // what member they clicked on
+		static inline std::vector<Node> searchResults; // actual search results
+		static inline bool bFindingPaths = false; // whether or not a search is in progress
+		static inline bool bDisplayPaths = false; // whether to display the discovered paths in the modal
+		static inline std::vector<std::vector<NodeAndMember>> discoveredPaths; // paths to the user's chosen class/member
+
+		static void populateStrucGraph(EngineStructs::Struct *struc);
+		static void populateStrucGraph(EngineStructs::Struct *struc, EngineStructs::Struct* parent);
 
 		static void renderAddAddress();
 
@@ -76,8 +99,9 @@ namespace windows
 		 * \param block memory block the member lies in
 		 * \param secret secret
 		 * \param innerOffset inner offset
+		 * \param the recursion depth so far
 		 */
-		static void drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawMemberArrayProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset, uint64_t parentAddr, int depth);
 
 		/**
 		 * \brief displays the given struct for a memory block
@@ -86,8 +110,9 @@ namespace windows
 		 * \param block the memory block where the data lies
 		 * \param secret a secret key to make the members unique
 		 * \param offset data offset so it will use block + offset for the members
+		 * \param depth the recursion depth so far
 		 */
-		static void drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset);
+		static void drawStructProperty(const EngineStructs::Struct* struc, const std::string& name, LiveMemory::MemoryBlock* block, const std::string& secret, int offset, int depth);
 
 		/**
 		 * \brief draws a single member that is not clickable and has support to get written to
@@ -105,8 +130,9 @@ namespace windows
 		 * \param block the memory block where the data lies
 		 * \param secret a secret key to make the member unique
 		 * \param innerOffset additional offset to the member.offset
+		 * \param depth the recursion depth so far
 		 */
-		static void drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset);
+		static void drawMemberObjectProperty(const EngineStructs::Member& member, LiveMemory::MemoryBlock* block, const std::string& secret, int innerOffset, uint64_t parentAddr, int depth);
 
 		/**
 		 * \brief displays a TEnumAsByte
@@ -126,8 +152,9 @@ namespace windows
 		 * \param secret a secret for imgui and their string ids
 		 * \param innerOffset in case a struct is in a struct (no ptr) we wanna display those fields too. We can do this by setting a inner offset
 		 * which is just the real struct + offset to the inner struct (member) and keeping the ADDRESS THE SAME. With this we also have click support
+		 * \param depth the recursion depth so far
 		 */
-		static void drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset = 0);
+		static void drawMembers(const EngineStructs::Struct* struc, uint64_t address, const std::string& secret, int innerOffset = 0, int depth = 0);
 
 		/**
 		 * \brief displays the entire struct/class properly
@@ -137,7 +164,7 @@ namespace windows
 		 * \param secret a secret key to make the members unique
 		 * \param origin whether the game address should be displayed or a specific origin
 		 */
-		static void renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin = "");
+		static void renderStruct(const EngineStructs::Struct* struc, uint64_t address, const std::string& name, const std::string& secret, const std::string& origin = "", int depth = 0);
 
 		/**
 		 * \brief checks whether the StructName is valid. Enabling lookForBest does additionally memory operations
@@ -159,6 +186,12 @@ namespace windows
 		 * \return if the enum and returning data is valid
 		 */
 		static bool isValidEnumName(const std::string& CName, EngineStructs::Enum*& enu);
+
+		static void renderSearchBox();
+		static void renderSearchResults();
+
+		static void performSearch();
+		static void performSearch(const std::string& searchString);
 		
 
 	public:
@@ -179,5 +212,7 @@ namespace windows
 		 * there's something that has to be rendered topmost. Use carefully!
 		 */
 		static void topmostCallback();
+
+		static std::string convertToLowercase(const std::string& str);
 	};
 }

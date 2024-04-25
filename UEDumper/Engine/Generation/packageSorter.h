@@ -241,7 +241,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 						//add it before, this ensures it will be defined before
 						//fix the iterator
 
-						printf("%d - %s: agded %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
+						printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
 
 						orderedStructsAndClasses.insert(currentIt, neededStruct);
 						currentIt = std::ranges::find(
@@ -335,15 +335,21 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
 
+	const float one_thousand = 1000;
+	// Max number of iterations before we give up
+	// Using some very large number - it's to prevent infinite loops, not break too early before convergence
+	const auto maxIterations = 20 * one_thousand;
+	progressDone = 0;
+	totalProgress = maxIterations; // Note: we may converge before this and end up with a Microsoft style progress bar that magically jumps to 100% while (didReordering && progressDone < totalProgress);
+
 	do
 	{
+		progressDone++;
 		//reset flags
-		progressDone = 0;
 		didReordering = false;
 
 		for (auto& p : newPackages)
 		{
-			progressDone++;
 			windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "fixing package imports of %s", p.package.packageName.c_str());
 			auto currentPackageIt = std::ranges::find(
 				orderedPackages, &p);
@@ -402,7 +408,16 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 				}
 			}
 		}
-	} while (didReordering);
+	} while (didReordering && progressDone < totalProgress);
+	if (didReordering)
+	{
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "MDK GEN", "Unable to resolve cyclic import dependencies after %.2fK iterations", progressDone / one_thousand);
+	}
+	else
+	{
+		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Converged imports after %.2fK iterations", progressDone / one_thousand);
+		progressDone = totalProgress;
+	}
 
 	return orderedPackages;
 }
