@@ -1409,7 +1409,7 @@ void windows::LiveEditor::renderSearchBox()
 	if (!bRenderSearchBox) return;
 
 	static ImVec2 smallWindow = ImVec2(860, 730);
-	static ImVec2 closeButtonPos = ImVec2(smallWindow.x, 0);
+	static ImVec2 closeButtonPos = ImVec2(10, 10);
 	const ImVec2 bigWindow = IGHelper::getWindowSize();
 
 	ImGui::SetCursorPos(ImVec2(bigWindow.x / 2 - smallWindow.x / 2, (bigWindow.y / 2 - smallWindow.y / 2) - 100));
@@ -1543,9 +1543,12 @@ void windows::LiveEditor::renderSearchBox()
 	}
 
 	ImGui::PopStyleVar();
+
+	
 	ImGui::EndChild();
 
-	if (ImGui::Button("Close", closeButtonPos))
+	ImGui::SetCursorPosX(smallWindow.x / 2 - 25);
+	if (ImGui::Button("Close", ImVec2(50, 30)))
 		bRenderSearchBox = false;
 
 	ImGui::EndChild();
@@ -1553,8 +1556,7 @@ void windows::LiveEditor::renderSearchBox()
 
 void windows::LiveEditor::renderSearchResults()
 {
-	ImGui::BeginChild("LiveViewerChildSearch", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y + 20), true);
-	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,0 });
+	
 
 	auto searchTextString = convertToLowercase(std::string(searchText));
 	performSearch(searchTextString);
@@ -1563,7 +1565,7 @@ void windows::LiveEditor::renderSearchResults()
 		bFindingPaths = true;
 		std::make_unique<std::future<void>*>(new auto(std::async(std::launch::async, [] {
 			auto& searchResult = searchResults[searchResultPicked];
-			auto& root = tabs[tabPicked].struc;
+			const auto& root = tabs[tabPicked].struc;
 
 			discoveredPaths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
 			if (searchResultMember == "")
@@ -1580,7 +1582,7 @@ void windows::LiveEditor::renderSearchResults()
 		})));
 	};
 
-	if (ImGui::BeginListBox("##liveInspectorSearchResults", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
+	if (ImGui::BeginListBox("##liveInspectorSearchResults", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 15)))
 	{
 		for (int i = 0; i < searchResults.size(); i++)
 		{
@@ -1630,9 +1632,6 @@ void windows::LiveEditor::renderSearchResults()
 		}
 		ImGui::EndListBox();
 	}
-
-	ImGui::PopStyleVar();
-	ImGui::EndChild();
 }
 
 void windows::LiveEditor::performSearch()
@@ -1640,16 +1639,16 @@ void windows::LiveEditor::performSearch()
 	performSearch(convertToLowercase(searchText));
 }
 
-void windows::LiveEditor::performSearch(const std::string searchString)
+void windows::LiveEditor::performSearch(const std::string& searchString)
 {
-	auto lowercasedSearchString = convertToLowercase(searchString);
+	const auto lowercasedSearchString = convertToLowercase(searchString);
 
 	if (lowercasedSearchString == previousSearchText) return;
 	previousSearchText = lowercasedSearchString;
 
 	bDisplayPaths = false;
 
-	auto strucGraph = StrucGraph::getInstance();
+	const auto strucGraph = StrucGraph::getInstance();
 
 	searchResults.clear();
 	if (lowercasedSearchString == "")
@@ -1725,11 +1724,16 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 #endif
 		}
 
+		if (node->supers.size() > 0)
+		{
+			queue.push_back(std::tuple(node->supers[0], node, std::to_string(reinterpret_cast<uint64_t>(&node->supers[0]))));
+		}
+
 		for (auto& member : node->definedMembers)
 		{
 			if (member.type.clickable)
 			{
-				auto address = node->memoryAddress + member.offset;
+				const auto address = node->memoryAddress + member.offset;
 
 				switch (member.type.propertyType)
 				{
@@ -1739,7 +1743,7 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 					EngineStructs::Struct* childStruc;
 					if (isValidStructName(address, member.type.name, childStruc))
 					{
-						queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
+						queue.push_back(std::tuple(childStruc, node, member.name));
 					}
 					break;
 				case PropertyType::ArrayProperty:
@@ -1748,24 +1752,29 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 					case PropertyType::ObjectProperty:
 					case PropertyType::ClassProperty:
 					case PropertyType::StructProperty:
-						const auto block = LiveMemory::getMemoryBlock(node->memoryAddress);
-						if (!block) break; // invalid memory block?
-						if (member.type.subTypes.size() != 1) break; // broken TArray
-
-						const auto arr = block->read<TArray<uint64_t>>(address);
-						EngineStructs::Struct* childStruc;
-
-						if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, childStruc))
 						{
-							queue.push_back(std::tuple<EngineStructs::Struct*, EngineStructs::Struct*, std::string>(childStruc, node, member.name));
+							const auto block = LiveMemory::getMemoryBlock(node->memoryAddress);
+							if (!block) break; // invalid memory block?
+							if (member.type.subTypes.size() != 1) break; // broken TArray
+
+							const auto arr = block->read<TArray<uint64_t>>(address);
+							EngineStructs::Struct* childStruc;
+
+							if (isValidStructName(reinterpret_cast<uint64_t>(arr.Data), member.type.subTypes[0].name, childStruc))
+							{
+								queue.push_back(std::tuple(childStruc, node, member.name));
+							}
+							break;
 						}
-						break;
+					default: ;
 					}
 					break;
+				default: ;
 				}
 				continue;
 			}
 		}
+
 	}
 }
 

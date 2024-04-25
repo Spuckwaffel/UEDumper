@@ -191,7 +191,7 @@ namespace windows
 		static void renderSearchResults();
 
 		static void performSearch();
-		static void performSearch(const std::string searchString);
+		static void performSearch(const std::string& searchString);
 		
 
 	public:

@@ -12,7 +12,7 @@
 #include "Engine/Generation/MDK.h"
 #include "Engine/Generation/SDK.h"
 #include "Frontend/Fonts/fontAwesomeHelper.h"
-#include "FeatureFlags.h"
+#include "Engine/Userdefined/FeatureFlags.h"
 
 void windows::PackageWindow::renderUndefinedStructs()
 {

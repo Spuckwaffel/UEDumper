@@ -296,6 +296,9 @@
     <ClInclude Include="Resources\DMA\vmmdll.h">
       <Filter>Resources\DMA</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Userdefined\FeatureFlags.h">
+      <Filter>Engine\User Defined</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UEDumper.rc">

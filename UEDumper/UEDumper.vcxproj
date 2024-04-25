@@ -196,6 +196,7 @@
     <ClInclude Include="Engine\structs.h" />
     <ClInclude Include="Engine\UEClasses\UnrealClasses.h" />
     <ClInclude Include="Engine\Userdefined\Datatypes.h" />
+    <ClInclude Include="Engine\Userdefined\FeatureFlags.h" />
     <ClInclude Include="Engine\Userdefined\Offsets.h" />
     <ClInclude Include="Engine\Userdefined\StructDefinitions.h" />
     <ClInclude Include="Engine\Userdefined\UEdefinitions.h" />
