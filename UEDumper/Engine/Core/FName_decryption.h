@@ -30,24 +30,26 @@ static void fname_decrypt(char* inputBuf, int namelength)
 
     char* v2; // rdi
     int v4; // ebx
-    int v5; // eax
-    int v6; // er8
-    unsigned int v7; // edx
-    __int64 v8; // rcx
-    __int64 v9; // rax
+    __int16 result; // ax
+    int v6; // edx
+    int v7; // ecx
+    int v8; // ecx
+    __int16 v9; // ax
 
     v2 = inputBuf;
     v4 = namelength;
+    result = Memory::read<unsigned int>(Memory::getBaseAddress() + 0x127A3F5C);
     v6 = 0;
-    v7 = Memory::read<unsigned int>(Memory::getBaseAddress() + 0x1270893C) >> 5;
+    v7 = 30;
     if (v4)
     {
         do
         {
-            v7 += v6 + 160;
-            ++v6;
-            v5 = (16 * *v2) | (v7 ^ ((unsigned int)(char)*v2 >> 4)) & 0xF;
-            *v2++ = static_cast<char>(v5 & 0xFF);
+            v8 = v6++ | v7;
+            v9 = v8;
+            v7 = 2 * v8;
+            result = ~v9;
+            *v2++ ^= result;
         } while (v6 < v4);
     }
 }
