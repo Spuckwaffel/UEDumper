@@ -984,7 +984,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for (auto& enu : package.enums) {
 			if (usedNames.contains(enu.cppName)) {
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
-				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
 			}
 			usedNames.insert({ enu.cppName, package.packageName });
 		}
