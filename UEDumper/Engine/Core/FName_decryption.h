@@ -38,9 +38,9 @@ static void fname_decrypt(char* inputBuf, int namelength)
 
     v2 = inputBuf;
     v4 = namelength;
-    result = Memory::read<unsigned int>(Memory::getBaseAddress() + 0x127A3F5C);
+    result = Memory::read<unsigned int>(Memory::getBaseAddress() + 0x12879BBC); //12AD4EA8
     v6 = 0;
-    v7 = 30;
+    v7 = 42;
     if (v4)
     {
         do
