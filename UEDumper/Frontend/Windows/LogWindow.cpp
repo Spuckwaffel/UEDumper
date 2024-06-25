@@ -6,7 +6,6 @@
 
 windows::LogWindow::LogWindow()
 {
-
 }
 
 void windows::LogWindow::Log(logLevels level, const std::string& origin, const char* fmt, ...)
@@ -29,9 +28,15 @@ void windows::LogWindow::Log(logLevels level, const std::string& origin, const c
 	l.originandTime = "[" + oss.str() + " - " + origin + "]:";
 	l.level = level;
 
+#if _DEBUG
+	printf("%s %s\n", l.originandTime.c_str(), l.message);
+#endif
+
+	logMutex.lock();
 	logs.push_back(l);
 	if (ENUM(level) & ENUM(logLevels::LOGLEVEL_NORMAL))
 		displayLogs.push_back(l);
+	logMutex.unlock();
 }
 
 int windows::LogWindow::getLogLevel()
@@ -122,8 +127,14 @@ void windows::LogWindow::render()
 	if (ImGui::BeginListBox("##loglistbox", ImVec2(ImGui::GetWindowSize().x - 15, ImGui::GetWindowSize().y - 50)))
 	{
 		for (int i = selectedLogRange; i < logSize && i < selectedLogRange + logRange; i++) {
-			const auto& log = _logs[i];
+
+			logMutex.lock();
+			const auto log = _logs[i];
+			logMutex.unlock();
 			const bool is_selected = (selectedLog == i);
+
+			
+
 			memset(buf, 0, sizeof(log::message) + 51);
 			sprintf_s(buf, sizeof(log::message) + 50, "%d %s %s", i, log.originandTime.c_str(), log.message);
 			if (ENUM(log.level) & ENUM(logLevels::LOGLEVEL_WARNING))
@@ -139,16 +150,17 @@ void windows::LogWindow::render()
 			
 			if (is_selected && ImGui::IsItemHovered()) {
 				ImGui::BeginTooltip();
-				ImGui::Text("%s", logs[i].message);
+				ImGui::Text("%s", log.message);
 				ImGui::EndTooltip();
 			}
 			ImGui::PopStyleColor();
+			
 		}
 
-		if (oldSize != logs.size())
+		if (oldSize != logSize)
 		{
 			ImGui::SetScrollHereY(1.0f);
-			oldSize = logs.size();
+			oldSize = logSize;
 		}
 
 		ImGui::EndListBox();
@@ -164,11 +176,13 @@ void windows::LogWindow::renderEditPopup()
 	if (ImGui::Button("Export Log"))
 	{
 		std::ofstream file(EngineSettings::getWorkingDirectory() / "log.txt");
+		logMutex.lock();
 		for (size_t i = 0; i < logs.size(); i++)
 		{
 			file << i << " " << logs[i].originandTime << " " << logs[i].message << std::endl;
 		}
 		file.close();
+		logMutex.unlock();
 		Log(logLevels::LOGLEVEL_INFO, "LOGWINDOW", "Saved log to %s/%s!", EngineSettings::getWorkingDirectory().string().c_str(), "log.txt");
 	}
 }
@@ -177,7 +191,14 @@ std::string windows::LogWindow::getLastLogMessage()
 {
 	//returning a copy and not a reference
 	//also returning a index rather than calling back because i dont trust back
-	return logs[logs.size() - 1].message;
+
+	logMutex.lock();
+
+	std::string msg = logs[logs.size() - 1].message;
+
+	logMutex.unlock();
+
+	return msg;
 }
 
 float windows::LogWindow::getLogWindowYSize()

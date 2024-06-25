@@ -646,16 +646,26 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress, int featureF
 
     totalProgress = sortedPackages.size();
     progressDone = 0;
+    int tooLongNames = 0;
     for (auto& pack : sortedPackages)
     {
+        std::string packageName = pack->package.packageName;
+        if(packageName.length() > 100)
+        {
+            packageName = "tooLongPackage_" + std::to_string(tooLongNames++);
+            masterHeader << "// Package name has been changed because the name was too long. Original name:" << std::endl;
+            masterHeader << "// " << pack->package.packageName << std::endl;
+        }
+
         windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
-        masterHeader << "#include \"SDK/" + pack->package.packageName + ".h\"" << std::endl;
+
+    	masterHeader << "#include \"SDK/" + packageName + ".h\"" << std::endl;
         if (pack->package.packageName == "BasicType")
             generateBasicType();
         else
         {
-            std::string packageName = pack->package.packageName + ".h";
-            std::ofstream package(SDKPath / packageName);
+            std::string _packageName = packageName + ".h";
+            std::ofstream package(SDKPath / _packageName);
             printCredits(package);
             generatePackage(package, pack->package, featureFlags, originalPackageToMerged);
             package.close();

@@ -45,7 +45,7 @@
 
 
 //supported unreal engine versions, dont edit
-#define UE_NOT_SET 99
+#define UE_NOT_SET  99
 #define UE_4_19		0
 #define UE_4_20		1
 #define UE_4_21		2
@@ -64,10 +64,11 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_NOT_SET
+#define UE_VERSION UE_5_03
 
 
 /* SDK generation */
+//if this is set to true, the SDK will contain static asserts to check whether the struct sizes and members actually match their offsets
 #define WRITE_STATIC_ASSERT_TESTS TRUE
 
 

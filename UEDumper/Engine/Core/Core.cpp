@@ -1055,7 +1055,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				auto& generatedStruc = dataVector.back();
 				generatedStruc.isClass = isClass;
 
-				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.definedMembers.size(), generatedStruc.functions.size());
 
 			}
 			else if (object->IsA<UEnum>())
