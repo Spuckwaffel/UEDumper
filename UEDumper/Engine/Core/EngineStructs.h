@@ -177,7 +177,7 @@ struct fieldType
 		}
 		else
 		{
-			if ((propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && clickable)
+			if (isPointer())
 			{
 				typeStr += "*";
 			}
@@ -236,7 +236,7 @@ namespace EngineStructs
 		fieldType type; //type of the member
 		std::string name; //name of the member
 		int offset = 0; //offset of the member (real offset)
-		int size = 0; //size of the member
+		int size = 0; //total size of the member (size * arrayDim)
 		int arrayDim = 0; // the number of elements if it's an array (e.g. int16_t foobar[123])
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
