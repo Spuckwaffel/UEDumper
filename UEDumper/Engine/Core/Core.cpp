@@ -361,6 +361,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.type = type;
 
 			member.offset = child->getOffset();
+
 			if (type.propertyType == PropertyType::Unknown)
 			{
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
@@ -661,7 +662,16 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		if (endOffset - startOffset > 1)
 		{
 			//fill that with a unknownmember instead of bits
-			genUnknownMember(startOffset + 1, endOffset, 3);
+			//if the start bit is 0, which indicates the last defined bit was a 8th bit,
+			//we dont have to increase the startOffset as it would directly fit, however of the
+			//startbit is something else, we have to increase the start offset
+			//----case 1 ----
+			// 0x10: 00000000 <- last defined bit was 8th, function gets called with 0x11 startOffset and startbit 0 
+			// 0x11: unknown
+			//----case 2 ----
+			// 0x10: 0000---- <- last defined bit was 4th, function gets called with 0x10 startoffset and startbit 5
+			// 0x11: unknown
+			genUnknownMember(startBit == 0 ? startOffset : startOffset + 1, endOffset, 3);
 			//check if the end is < 0, then we can just stop
 			if (endBit == 0)
 				return;
@@ -726,7 +736,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "%s maxSize is zero! SDK for %s may not work correctly!", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
 				printf("%s maxSize is zero! SDK for %s may not work correctly!\n", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
 			}
-			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
+			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 8);
 		}
 	}
 	else if(!eStruct.definedMembers.empty())
@@ -741,7 +751,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	//we are hoping (very hard) that definedmembers array is 1. sorted and 2. checked for collisions
 	for (int i = 0; i < eStruct.definedMembers.size() - 1; i++)
 	{
-		const auto& currentMember = eStruct.definedMembers[i];
+		auto& currentMember = eStruct.definedMembers[i];
 		const auto& nextMember = eStruct.definedMembers[i + 1];
 
 		//bit shit
@@ -796,6 +806,22 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x2 [0x4]
 		//0x6 unk[0x1]
 		//0x7 [0x2]
+
+
+		//set the real size
+		if(!currentMember.type.isPointer())
+		{
+			if (const auto classObject = getInfoOfObject(currentMember.type.name))
+			{
+				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
+				{
+					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
+					currentMember.size = cclass->maxSize * (currentMember.arrayDim <= 0 ? 1 : currentMember.arrayDim);
+				}
+			}
+		}
+
+
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
 		{
 			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 6);
@@ -1164,6 +1190,7 @@ void EngineCore::finishPackages()
 {
 	std::unordered_map<std::string, EngineStructs::Enum*> enumLookupTable;
 	std::unordered_map<std::string, int> enumMap = {};
+	std::unordered_set<std::string> duplicatedClassNames{};
 	int duplicatedNames = 0;
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
 	for (int i = 0; i < packages.size(); i++)
@@ -1183,7 +1210,11 @@ void EngineCore::finishPackages()
 				if (packageObjectInfos.contains(struc.cppName))
 				{
 					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "Duplicate name found: %s", struc.cppName.c_str());
+
+					if (!duplicatedClassNames.contains(struc.cppName))
+						duplicatedClassNames.insert(struc.cppName);
 					struc.cppName += "dup_" + std::to_string(duplicatedNames++);
+					
 				}
 				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
 				package.combinedStructsAndClasses.push_back(&struc);
@@ -1197,6 +1228,13 @@ void EngineCore::finishPackages()
 
 					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
 
+				}
+
+				//empty structs have a size of 1
+				if(!struc.isClass && struc.maxSize == 0)
+				{
+					struc.size = 1;
+					struc.maxSize = 1;
 				}
 			}
 		};
@@ -1254,6 +1292,18 @@ void EngineCore::finishPackages()
 				}
 			}
 
+			//this check works only with broken structs
+			if(struc->supers.size() > 0)
+			{
+				//is the super max size is greater than the max size of the struct itself we have some weird cringe struc
+				auto super = struc->supers[0];
+				if(super->maxSize > struc->maxSize)
+				{
+					struc->maxSize = super->maxSize;
+					struc->size = super->maxSize;
+				}
+			}
+
 			for (auto& var : struc->definedMembers)
 			{
 				if (!var.type.clickable)
@@ -1261,6 +1311,18 @@ void EngineCore::finishPackages()
 				const auto info = getInfoOfObject(var.type.name);
 				if (!info || !info->valid)
 					continue;
+
+				//if the type is a type where dumplicate classes exist, we have to erase it
+				//theres no way to know which one of the dup classes it refers to
+				//or maybe there is a way? maybe in the future with pointers or so....
+				if(duplicatedClassNames.contains(var.type.name))
+				{
+					var.type.clickable = false;
+					var.type.propertyType = PropertyType::Int8Property;
+					var.arrayDim = var.size;
+					var.name += "_unkBecDupClass_" + var.type.name;
+					var.type.name = TYPE_UCHAR;
+				}
 
 				var.type.info = info;
 
