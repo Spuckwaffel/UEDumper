@@ -503,8 +503,14 @@ void SDKGeneration::generatePackage(
 
     //first we generate enums
 
+    std::unordered_set<std::string> definedEnums;
+
     for (const auto& enu : package.enums)
     {
+        if (definedEnums.contains(enu.cppName))
+            continue;
+        definedEnums.insert(enu.cppName);
+
         stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
         sprintf_s(buf, "Size: 0x%02d (%d bytes)", enu.size, enu.size);

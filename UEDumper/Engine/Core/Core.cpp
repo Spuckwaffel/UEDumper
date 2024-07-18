@@ -626,6 +626,24 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		eStruct.cookedMembers.clear();
 
 
+	auto checkRealMemberSize = [&](EngineStructs::Member* currentMember)
+	{
+		//set the real size
+		if (!currentMember->type.isPointer())
+		{
+			if (const auto classObject = getInfoOfObject(currentMember->type.name))
+			{
+				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
+				{
+					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
+					if(!cclass->noFixedSize)
+						currentMember->size = cclass->maxSize * (currentMember->arrayDim <= 0 ? 1 : currentMember->arrayDim);
+				}
+			}
+		}
+	};
+
+
 	auto genUnknownMember = [&](int from, int to, int special)
 	{
 		EngineStructs::Member unknown;
@@ -808,18 +826,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x7 [0x2]
 
 
-		//set the real size
-		if(!currentMember.type.isPointer())
-		{
-			if (const auto classObject = getInfoOfObject(currentMember.type.name))
-			{
-				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
-				{
-					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
-					currentMember.size = cclass->maxSize * (currentMember.arrayDim <= 0 ? 1 : currentMember.arrayDim);
-				}
-			}
-		}
+		checkRealMemberSize(&currentMember);
 
 
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
@@ -835,7 +842,8 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	}
 	//add the last member
 	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
-	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	auto last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	checkRealMemberSize(last);
 	if (last->offset + last->size < eStruct.maxSize)
 		genUnknownMember(last->offset + last->size, eStruct.maxSize, 7);
 }

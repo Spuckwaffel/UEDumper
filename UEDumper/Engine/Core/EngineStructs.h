@@ -340,6 +340,7 @@ namespace EngineStructs
 		std::vector<Struct*> superOfOthers{}; //all the structs that use this class as a super
 		bool inherited = false; //if the struct is inherited
 		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
+		bool noFixedSize = false; // if this boolean is true, the current struct or class has no specific fixed size, meaning it can change (template classes)
 		int minAlignment = 0; //minimal alignment defined by ue
 		int size = 0; //propertiesSize, possibly wrong, use maxSize
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
