@@ -345,10 +345,10 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
 
-	const float one_thousand = 1000;
+	constexpr auto one_thousand = 1000;
 	// Max number of iterations before we give up
 	// Using some very large number - it's to prevent infinite loops, not break too early before convergence
-	const auto maxIterations = 20 * one_thousand;
+	constexpr auto maxIterations = 20 * one_thousand;
 	progressDone = 0;
 	totalProgress = maxIterations; // Note: we may converge before this and end up with a Microsoft style progress bar that magically jumps to 100% while (didReordering && progressDone < totalProgress);
 

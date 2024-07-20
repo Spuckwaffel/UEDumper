@@ -347,8 +347,8 @@ public:
 struct FSoftObjectPath_
 {
 public:
-    class FName AssetPathName;
-    class FString SubPathString;
+    FName AssetPathName;
+    FString SubPathString;
 };
 
 

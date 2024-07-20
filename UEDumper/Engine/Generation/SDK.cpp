@@ -260,7 +260,7 @@ void SDKGeneration::generatePackage(
             if(struc->size == 1 && struc->maxSize == 0)
                 actualSize = 1;
 
-            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), actualSize, struc->maxSize, struc->getInheritedSize(), actualSize);
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04llX); // %d bytes (0x%06X - 0x%06llX)", generateValidVarName(struc->cppName).c_str(), actualSize, struc->maxSize, struc->getInheritedSize(), actualSize);
             stream << buf << std::endl;
         }
     };
