@@ -123,8 +123,6 @@ class UField : public UObject {
 public:
 	using UObject::UObject;
 
-	int pad;
-
 	/** Next Field in the linked list */
 	UField* Next;
 
