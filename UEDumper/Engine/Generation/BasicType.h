@@ -292,6 +292,120 @@ private:
 
     definedStructs.push_back(dStruct);
 
+    dStruct.name = "FWeakObjectPtr";
+    dStruct.definition =
+        R"(
+class FWeakObjectPtr
+{
+public:
+	int32_t ObjectIndex;
+	int32_t ObjectSerialNumber;
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TWeakObjectPtr";
+    dStruct.definition =
+        R"(
+template<typename UEType>
+class TWeakObjectPtr : public FWeakObjectPtr
+{
+public:
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TPersistentObjectPtr";
+    dStruct.definition =
+        R"(
+template<typename TObjectID>
+class TPersistentObjectPtr
+{
+public:
+	FWeakObjectPtr WeakPtr;
+	int32_t TagAtLastTest;
+	TObjectID ObjectID;
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "FUniqueObjectGuid";
+    dStruct.definition =
+        R"(
+class FUniqueObjectGuid final
+{
+public:
+	uint32_t A;
+	uint32_t B;
+	uint32_t C;
+	uint32_t D;
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TLazyObjectPtr";
+    dStruct.definition =
+        R"(
+template<typename UEType>
+class TLazyObjectPtr : public TPersistentObjectPtr<FUniqueObjectGuid>
+{
+public:
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "FSoftObjectPath_";
+    dStruct.definition =
+        R"(
+struct FSoftObjectPath_
+{
+public:
+	FName AssetPathName;
+	FString SubPathString;
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "FSoftObjectPtr";
+    dStruct.definition =
+        R"(
+class FSoftObjectPtr : public TPersistentObjectPtr<FSoftObjectPath_>
+{
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TSoftObjectPtr";
+    dStruct.definition =
+        R"(
+template<typename UEType>
+class TSoftObjectPtr : public FSoftObjectPtr
+{
+public:
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
+    dStruct.name = "TSoftClassPtr";
+    dStruct.definition =
+        R"(
+template<typename UEType>
+class TSoftClassPtr : public FSoftObjectPtr
+{
+public:
+};
+)";
+
+    definedStructs.push_back(dStruct);
+
     dStruct.name = "TPair";
     dStruct.definition =
         R"(

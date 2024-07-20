@@ -191,9 +191,10 @@ std::string UObject::getSecondPackageName() const
 bool UObject::IsA(const UClass* staticClass) const
 {
     if (!ClassPrivate) return false;
+    UClass* oldSup = nullptr;
     for (auto super = getClass(); super; super = super->getSuper<UClass>())
     {
-        if (!super)
+        if (!super || oldSup == super)
             return false;
         std::string fullname = super->getFullName();
         if (super == staticClass)
@@ -201,6 +202,7 @@ bool UObject::IsA(const UClass* staticClass) const
             //printf("%s\n", fullname.c_str());
             return true;
         }
+        oldSup = super;
     }
     return false;
 
@@ -443,6 +445,16 @@ fieldType UProperty::getType()
         if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
             return{ true, PropertyType::WeakObjectProperty, UObjectPropertyBase::weakTypeName(), cast->getSubTypes() };
     };
+    if (IsA<USoftObjectProperty>())
+    {
+        if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
+            return{ true, PropertyType::SoftObjectProperty, UObjectPropertyBase::softTypeName(), cast->getSubTypes() };
+    };
+    if (IsA<ULazyObjectProperty>())
+    {
+        if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
+            return{ true, PropertyType::LazyObjectProperty, UObjectPropertyBase::lazyTypeName(), cast->getSubTypes() };
+    };
     if (IsA<UObjectPropertyBase>())
     {
         if (const auto cast = castTo<UObjectPropertyBase>(); cast->getPropertyClass())
@@ -565,6 +577,11 @@ UClass* UWeakObjectProperty::staticClass()
     return ObjectsManager::findObject<UClass>("/Script/CoreUObject.WeakObjectProperty");
 }
 
+UClass* USoftObjectProperty::staticClass()
+{
+    return ObjectsManager::findObject<UClass>("/Script/CoreUObject.SoftObjectProperty");
+}
+
 UProperty* UInterfaceProperty::getInterfaceClass() const
 {
     UREADORNULL(UProperty, InterfaceClass)
@@ -575,10 +592,10 @@ UClass* UInterfaceProperty::staticClass()
     return ObjectsManager::findObject<UClass>("/Script/CoreUObject.InterfaceProperty");
 }
 
-std::string UWeakObjectProperty::typeName()
-{
-    return "struct TWeakObjectPtr<struct " + castTo<UStructProperty>()->typeName() + ">";
-}
+//std::string UWeakObjectProperty::typeName()
+//{
+//    return "struct TWeakObjectPtr<struct " + castTo<UStructProperty>()->typeName() + ">";
+//}
 
 UClass* UClassProperty::getMetaClass() const
 {

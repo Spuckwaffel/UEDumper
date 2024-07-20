@@ -34,9 +34,13 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 		anyMergeFound = false;
 		//a new vector we fill up this round and then replace the newPackages vector
 		std::vector<MergedPackage> _newPackages{};
+
+		std::vector<MergedPackage> mergePackages{};
 		//this just acts as a temporary identifier to make sure when we queue a package to be merged we dont chack that package
 		//otherwise when a abd b should merge obviously b and a have to merge too resulting in a duplicate merge
 		std::vector<std::string> skippedPackageDueToMerge{};
+
+		std::vector<std::string> packagesThatHaveBeenMerged{};
 
 		//go over all packages
 		for (auto& pack : newPackages)
@@ -48,7 +52,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 			//reset the boolean
 			bool mergefound = false;
 			//go over all dependencies of the root package
-			for (auto& dependencyPackage : pack.package.dependencyPackages)
+			for (auto dependencyPackage : pack.package.dependencyPackages)
 			{
 				//go over all dependencies of the dependency package
 				for (auto& dependencyOfDependencyPackage : dependencyPackage->dependencyPackages)
@@ -62,6 +66,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN",
 						"merge found with %s and %s origin %s", dependencyPackage->packageName.c_str(), dependencyOfDependencyPackage->packageName.c_str(), pack.package.packageName.c_str());
+
 
 					anyMergeFound = true;
 					mergefound = true;
@@ -77,10 +82,14 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 			}
 
+			skippedPackageDueToMerge.push_back(pack.package.packageName);
+
 			//if a merge has been found, recreate the entire package
 			if (mergefound)
 			{
 				MergedPackage p;
+				//create a unique index
+				p.package.index = newPackages.size() + 100 + mergePackages.size();
 				//first sort out own references and remove dups
 				std::set<EngineStructs::Package*> totalDependencyPackage;
 				std::string name = "merged";
@@ -109,6 +118,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					p.package.dependencyPackages.insert(dependencyPackage);
 				}
 				_newPackages.push_back(p);
+				mergePackages.push_back(p);
 
 			}
 			//no merge? just add
@@ -117,64 +127,64 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 
 			progressDone++;
 		}
+
 		//clear the vector and overwrite
 		newPackages.clear();
-		newPackages.insert(newPackages.end(), _newPackages.begin(), _newPackages.end());
-	} while (anyMergeFound);
 
-	progressDone = 0;
-	totalProgress = newPackages.size();
+		//we use this to already detect duplicate merges and to clear out any packages that got added before merged
+		//ie if a solo package got added into the vector before it got merged with other pkgs, it can stay there forever
+		//because merges will be always last in the loop
 
-	//we cant get rid of all duplicates so we do it here just to check
-	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Eliminating double merges....");
-	bool eraseDone = false;
-	do
-	{
-		//reset flag
-		eraseDone = false;
-
-		//iterate over all packages
-		for (auto& [mergedPackages, package] : newPackages)
+		if(mergePackages.size() > 0)
 		{
-			//keep a tracker, a for int i loop would do the same 
-			int tracker = -1;
-			for (auto& p1 : newPackages)
+			std::vector<MergedPackage> cleanedPackages{};
+
+			std::unordered_set<int> blacklistedPkgs;
+
+			for (auto& pack : mergePackages)
 			{
-				tracker++;
-				//own package? skip
-				if (package.packageName == p1.package.packageName)
-					continue;
-				//are the merged packages a different size? then its guaranteed not a dup
-				if (mergedPackages.size() != p1.mergedPackages.size())
+				//we do this so we prevent two merged packages blacklisting each other
+				if (blacklistedPkgs.contains(pack.package.index))
 					continue;
 
+				for (auto& cmpPack : _newPackages)
+				{
+					//we looking at the exact same package?
 
-				//sort the merged packages
-				std::ranges::sort(mergedPackages);
-				std::ranges::sort(p1.mergedPackages);
+					if (blacklistedPkgs.contains(cmpPack.package.index))
+						continue;
 
-				//not the same? skip
-				if (mergedPackages != p1.mergedPackages)
-					continue;
+					if (cmpPack.package.index == pack.package.index)
+						continue;
 
-				//always a duplicate then
+					std::unordered_set elements(pack.mergedPackages.begin(), pack.mergedPackages.end());
 
-				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN",
-					"deleted %s because its same to %s", p1.package.packageName.c_str(), package.packageName.c_str());
-
-				//delete p1 package
-				newPackages.erase(newPackages.begin() + tracker);
-				//set this flag to recheck
-				eraseDone = true;
-				//break as we are done with this package
-				break;
-
+					for(const auto& p1 : cmpPack.mergedPackages)
+					{
+						if(elements.contains(p1))
+						{
+							blacklistedPkgs.insert(cmpPack.package.index);
+							break;
+						}
+					}
+						
+				}
 			}
-			//completely break through and redo
-			if (eraseDone)
-				break;
+
+			for(auto& cmpPack : _newPackages)
+			{
+				if (blacklistedPkgs.contains(cmpPack.package.index))
+					continue;
+
+				cleanedPackages.push_back(cmpPack);
+			}
+
+			newPackages.insert(newPackages.end(), cleanedPackages.begin(), cleanedPackages.end());
 		}
-	} while (eraseDone);
+		else
+			newPackages.insert(newPackages.end(), _newPackages.begin(), _newPackages.end());
+
+	} while (anyMergeFound);
 
 	progressDone = 0;
 	totalProgress = newPackages.size();
@@ -335,10 +345,10 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 	windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "MDK GEN", "Reordering packages");
 	std::vector<MergedPackage*> orderedPackages;
 
-	const float one_thousand = 1000;
+	constexpr auto one_thousand = 1000;
 	// Max number of iterations before we give up
 	// Using some very large number - it's to prevent infinite loops, not break too early before convergence
-	const auto maxIterations = 20 * one_thousand;
+	constexpr auto maxIterations = 20 * one_thousand;
 	progressDone = 0;
 	totalProgress = maxIterations; // Note: we may converge before this and end up with a Microsoft style progress bar that magically jumps to 100% while (didReordering && progressDone < totalProgress);
 

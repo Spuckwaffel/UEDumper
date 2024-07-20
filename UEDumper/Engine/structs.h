@@ -289,6 +289,94 @@ private:
     uint8_t value;
 };
 
+
+/// Definition for FWeakObjectPtr
+
+class FWeakObjectPtr
+{
+public:
+    int32_t ObjectIndex;
+    int32_t ObjectSerialNumber;
+};
+
+
+/// Definition for TWeakObjectPtr
+
+template<typename UEType>
+class TWeakObjectPtr : public FWeakObjectPtr
+{
+public:
+};
+
+
+/// Definition for TPersistentObjectPtr
+
+template<typename TObjectID>
+class TPersistentObjectPtr
+{
+public:
+    FWeakObjectPtr WeakPtr;
+    int32_t TagAtLastTest;
+    TObjectID ObjectID;
+};
+
+
+/// Definition for FUniqueObjectGuid
+
+class FUniqueObjectGuid final
+{
+public:
+    uint32_t A;
+    uint32_t B;
+    uint32_t C;
+    uint32_t D;
+};
+
+
+/// Definition for TLazyObjectPtr
+
+template<typename UEType>
+class TLazyObjectPtr : public TPersistentObjectPtr<FUniqueObjectGuid>
+{
+public:
+};
+
+
+/// Definition for FSoftObjectPath_
+
+struct FSoftObjectPath_
+{
+public:
+    FName AssetPathName;
+    FString SubPathString;
+};
+
+
+/// Definition for FSoftObjectPtr
+
+class FSoftObjectPtr : public TPersistentObjectPtr<FSoftObjectPath_>
+{
+};
+
+
+/// Definition for TSoftObjectPtr
+
+template<typename UEType>
+class TSoftObjectPtr : public FSoftObjectPtr
+{
+public:
+};
+
+
+/// Definition for TSoftClassPtr
+
+template<typename UEType>
+class TSoftClassPtr : public FSoftObjectPtr
+{
+public:
+};
+
+
 template <typename KeyType, typename ValueType>
 class TPair
 {

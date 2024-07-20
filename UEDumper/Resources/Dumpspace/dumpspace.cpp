@@ -44,8 +44,13 @@ namespace Dumpspace
         j["version"] = version;
         j["data"] = nlohmann::json(offsets);
 
+        nlohmann::json credit;
+        credit["dumper_used"] = "UEDumper";
+        credit["dumper_link"] = "https://github.com/Spuckwaffel/UEDumper";
+        j["credit"] = credit;
+
         std::ofstream file(directory / "OffsetsInfo.json");
-        file << j.dump();
+        file << j.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
     }
 
     void DumpClasses(const std::filesystem::path& directory) {
@@ -55,7 +60,7 @@ namespace Dumpspace
         j["data"] = classes;
 
         std::ofstream file(directory / "ClassesInfo.json");
-        file << j.dump();
+        file << j.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
     }
 
     void DumpFunctions(const std::filesystem::path& directory) {
@@ -65,7 +70,7 @@ namespace Dumpspace
         j["data"] = functions;
 
         std::ofstream file(directory / "FunctionsInfo.json");
-        file << j.dump();
+        file << j.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
     }
 
     void DumpStructs(const std::filesystem::path& directory) {
@@ -75,7 +80,7 @@ namespace Dumpspace
         j["data"] = structs;
 
         std::ofstream file(directory / "StructsInfo.json");
-        file << j.dump();
+        file << j.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
     }
 
     void DumpEnums(const std::filesystem::path& directory) {
@@ -85,7 +90,7 @@ namespace Dumpspace
         j["data"] = enums;
 
         std::ofstream file(directory / "EnumsInfo.json");
-        file << j.dump();
+        file << j.dump(-1, ' ', false, nlohmann::detail::error_handler_t::replace);
     }
 
     void Dump(std::filesystem::path directory) {
