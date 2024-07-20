@@ -625,6 +625,7 @@ public:
 
 	std::string typeName() const { return getPropertyClass()->getCName(); }
 	static std::string weakTypeName() { return "TWeakObjectPtr"; }
+	static std::string softTypeName() { return "TSoftObjectPtr"; }
 	static std::string lazyTypeName() { return "TLazyObjectPtr"; }
 	//only use on wak or lazy types!
 	std::vector<fieldType> getSubTypes() const { return std::vector<fieldType>{ {true, PropertyType::ObjectProperty, getPropertyClass()->getCName()}}; }
@@ -679,7 +680,16 @@ class UWeakObjectProperty : public UObjectPropertyBase
 public:
 	using UObjectPropertyBase::UObjectPropertyBase;
 
-	std::string typeName();
+	//std::string typeName();
+	static UClass* staticClass();
+};
+
+class USoftObjectProperty : public UObjectPropertyBase
+{
+public:
+	using UObjectPropertyBase::UObjectPropertyBase;
+
+	//std::string typeName();
 	static UClass* staticClass();
 };
 
@@ -1029,7 +1039,7 @@ public:
 
 	UClass* getMetaClass() const;
 
-	static std::string typeName() { return "TWeakObjectPtr"; }
+	static std::string typeName() { return "TSoftObjectPtr"; }
 
 	std::vector<fieldType> getSubTypes() const { return std::vector<fieldType>{ {true, PropertyType::ObjectProperty, getMetaClass()->getCName()}}; }
 

@@ -96,9 +96,12 @@ struct Offset
 //gobjects: 48 8B 05 ? ? ? ? 48 8B 0C C8 48 8D 04 D1 48 85 C0
 
 /// Example:
-/// offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
-/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x4D01930 });
-/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x4E0EFF0 });
+///	Signatures need OFFSET_SIGNATURE_FOLLOW or OFFSET_SINGNATURE_DIRECT
+/// offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DS, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
+///	Addresses need OFFSET_ADDRESS
+/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x4D01930 });
+///	Use OFFSET_LIVE_EDITOR to display the address in the live editor
+/// offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x4E0EFF0 });
 
 inline std::vector<Offset> setOffsets()
 {
@@ -107,35 +110,6 @@ inline std::vector<Offset> setOffsets()
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0xDEADBEEF });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0xDEADBEEF });
 	offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0xDEADBEEF });
-
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GNAMES", 0x562D340 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH, "OFFSET_GOBJECTS", 0x545C6E0 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DH | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x581A7E0 });
-
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0x3CA2540 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x3CDE9E0 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x3E22258 });
-
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0x5B8D390 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x5B918B8 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x5C80950 });
-
-	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DS, "OFFSET_GNAMES", 0, "\x4C\x8B\x0D\x73\x3C\x94\x03", "xxxxxxx" });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x4D01930 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x4E0EFF0 });
-
-	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW |  OFFSET_DS, "OFFSET_GNAMES", 0, 
-	//	"\x48\x8d\x0d\x00\x00\x00\x00\xe8\x00\x00\x00\x00\xc6\x05\x00\x00\x00\x00\x00\x0f\x10\x03", "xxx????x????xx?????xxx" });
-
-	//offsets.push_back({ OFFSET_SIGNATURE_FOLLOW | OFFSET_DH, "OFFSET_GOBJECTS", 0, "\x48\x8b\x05\x00\x00\x00\x00\x48\x8b\x14\xc8\x49\x63\xc0\x48\x8d\x0c\x40\x48\x39\x34\xca", "xxx????xxxxxxxxxxxxxxx"});
-
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 0x5F48000 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 0x5F60C78 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 0x607E6C8 });
-
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS | OFFSET_LIVE_EDITOR, "OFFSET_GWORLD", 124224808 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GNAMES", 122913320 });
-	//offsets.push_back({ OFFSET_ADDRESS | OFFSET_DS, "OFFSET_GOBJECTS", 122940512 });
 
 	return offsets;
 }

@@ -51,6 +51,8 @@ public:
 		"Version 1.9 Release",
 		"Version 1.10 BETA",
 		"Version 1.10 Release",
+		"Version 1.11 BETA",
+		"Version 1.11 Release",
 	};
 
 private:

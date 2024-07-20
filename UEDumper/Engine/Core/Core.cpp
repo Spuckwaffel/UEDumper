@@ -361,6 +361,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			member.type = type;
 
 			member.offset = child->getOffset();
+
 			if (type.propertyType == PropertyType::Unknown)
 			{
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "Struct %s: %s at offset 0x%llX is unknown prop! Missing support?", object->getCName().c_str(), member.name.c_str(), member.offset);
@@ -625,6 +626,24 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		eStruct.cookedMembers.clear();
 
 
+	auto checkRealMemberSize = [&](EngineStructs::Member* currentMember)
+	{
+		//set the real size
+		if (!currentMember->type.isPointer())
+		{
+			if (const auto classObject = getInfoOfObject(currentMember->type.name))
+			{
+				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
+				{
+					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
+					if(!cclass->noFixedSize)
+						currentMember->size = cclass->maxSize * (currentMember->arrayDim <= 0 ? 1 : currentMember->arrayDim);
+				}
+			}
+		}
+	};
+
+
 	auto genUnknownMember = [&](int from, int to, int special)
 	{
 		EngineStructs::Member unknown;
@@ -661,7 +680,16 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		if (endOffset - startOffset > 1)
 		{
 			//fill that with a unknownmember instead of bits
-			genUnknownMember(startOffset + 1, endOffset, 3);
+			//if the start bit is 0, which indicates the last defined bit was a 8th bit,
+			//we dont have to increase the startOffset as it would directly fit, however of the
+			//startbit is something else, we have to increase the start offset
+			//----case 1 ----
+			// 0x10: 00000000 <- last defined bit was 8th, function gets called with 0x11 startOffset and startbit 0 
+			// 0x11: unknown
+			//----case 2 ----
+			// 0x10: 0000---- <- last defined bit was 4th, function gets called with 0x10 startoffset and startbit 5
+			// 0x11: unknown
+			genUnknownMember(startBit == 0 ? startOffset : startOffset + 1, endOffset, 3);
 			//check if the end is < 0, then we can just stop
 			if (endBit == 0)
 				return;
@@ -726,7 +754,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ERROR, "ENGINECORE", "%s maxSize is zero! SDK for %s may not work correctly!", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
 				printf("%s maxSize is zero! SDK for %s may not work correctly!\n", inherStruct->fullName.c_str(), eStruct.fullName.c_str());
 			}
-			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
+			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 8);
 		}
 	}
 	else if(!eStruct.definedMembers.empty())
@@ -741,7 +769,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	//we are hoping (very hard) that definedmembers array is 1. sorted and 2. checked for collisions
 	for (int i = 0; i < eStruct.definedMembers.size() - 1; i++)
 	{
-		const auto& currentMember = eStruct.definedMembers[i];
+		auto& currentMember = eStruct.definedMembers[i];
 		const auto& nextMember = eStruct.definedMembers[i + 1];
 
 		//bit shit
@@ -796,6 +824,11 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x2 [0x4]
 		//0x6 unk[0x1]
 		//0x7 [0x2]
+
+
+		checkRealMemberSize(&currentMember);
+
+
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
 		{
 			genUnknownMember(currentMember.offset + currentMember.size, nextMember.offset, 6);
@@ -809,7 +842,8 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	}
 	//add the last member
 	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
-	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	auto last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	checkRealMemberSize(last);
 	if (last->offset + last->size < eStruct.maxSize)
 		genUnknownMember(last->offset + last->size, eStruct.maxSize, 7);
 }
@@ -984,7 +1018,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for (auto& enu : package.enums) {
 			if (usedNames.contains(enu.cppName)) {
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
-				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
 			}
 			usedNames.insert({ enu.cppName, package.packageName });
 		}
@@ -1055,7 +1089,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 				auto& generatedStruc = dataVector.back();
 				generatedStruc.isClass = isClass;
 
-				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.cookedMembers.size(), generatedStruc.functions.size());
+				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE", "Total member count: %d | Function count: %d", generatedStruc.definedMembers.size(), generatedStruc.functions.size());
 
 			}
 			else if (object->IsA<UEnum>())
@@ -1164,6 +1198,7 @@ void EngineCore::finishPackages()
 {
 	std::unordered_map<std::string, EngineStructs::Enum*> enumLookupTable;
 	std::unordered_map<std::string, int> enumMap = {};
+	std::unordered_set<std::string> duplicatedClassNames{};
 	int duplicatedNames = 0;
 	//were done, now we do packageObjectInfos caching, we couldnt do before because pointers are all on stack data and not in the static package vec
 	for (int i = 0; i < packages.size(); i++)
@@ -1183,7 +1218,11 @@ void EngineCore::finishPackages()
 				if (packageObjectInfos.contains(struc.cppName))
 				{
 					windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "ENGINECORE", "Duplicate name found: %s", struc.cppName.c_str());
+
+					if (!duplicatedClassNames.contains(struc.cppName))
+						duplicatedClassNames.insert(struc.cppName);
 					struc.cppName += "dup_" + std::to_string(duplicatedNames++);
+					
 				}
 				packageObjectInfos.insert(std::pair(struc.cppName, ObjectInfo(true, OI_type, &struc)));
 				package.combinedStructsAndClasses.push_back(&struc);
@@ -1197,6 +1236,13 @@ void EngineCore::finishPackages()
 
 					packageObjectInfos.insert(std::pair(func.cppName, ObjectInfo(true, ObjectInfo::OI_Function, &func)));
 
+				}
+
+				//empty structs have a size of 1
+				if(!struc.isClass && struc.maxSize == 0)
+				{
+					struc.size = 1;
+					struc.maxSize = 1;
 				}
 			}
 		};
@@ -1231,7 +1277,7 @@ void EngineCore::finishPackages()
 			for (auto& name : struc->superNames)
 			{
 				const auto info = getInfoOfObject(name);
-				if (!info || !info->valid)
+				if (!info || !info->valid || (info->type != ObjectInfo::OI_Class && info->type != ObjectInfo::OI_Struct))
 					continue;
 				//get the super struct
 				auto superStruc = static_cast<EngineStructs::Struct*>(info->target);
@@ -1254,6 +1300,18 @@ void EngineCore::finishPackages()
 				}
 			}
 
+			//this check works only with broken structs
+			if(struc->supers.size() > 0)
+			{
+				//is the super max size is greater than the max size of the struct itself we have some weird cringe struc
+				auto super = struc->supers[0];
+				if(super->maxSize > struc->maxSize)
+				{
+					struc->maxSize = super->maxSize;
+					struc->size = super->maxSize;
+				}
+			}
+
 			for (auto& var : struc->definedMembers)
 			{
 				if (!var.type.clickable)
@@ -1262,10 +1320,24 @@ void EngineCore::finishPackages()
 				if (!info || !info->valid)
 					continue;
 
+				//if the type is a type where dumplicate classes exist, we have to erase it
+				//theres no way to know which one of the dup classes it refers to
+				//or maybe there is a way? maybe in the future with pointers or so....
+				if(duplicatedClassNames.contains(var.type.name))
+				{
+					var.type.clickable = false;
+					var.type.propertyType = PropertyType::Int8Property;
+					var.arrayDim = var.size;
+					var.name += "_unkBecDupClass_" + var.type.name;
+					var.type.name = TYPE_UCHAR;
+				}
+
 				var.type.info = info;
 
 				for (auto& subtype : var.type.subTypes)
 				{
+					if (!subtype.clickable)
+						continue;
 					const auto subInfo = getInfoOfObject(subtype.name);
 					if (!subInfo || !subInfo->valid)
 						continue;
@@ -1274,18 +1346,16 @@ void EngineCore::finishPackages()
 
 					if (subtype.propertyType != PropertyType::ObjectProperty && subtype.propertyType != PropertyType::ClassProperty)
 					{
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(subInfo->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = subInfo->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(subInfo->target)->owningPackage : static_cast<EngineStructs::Struct*>(subInfo->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 
+				const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+				if (targetPack->index != package.index)
+					package.dependencyPackages.insert(targetPack);
 
-				//casting is fine even if its a enum as owningpackage is the first package
-				const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-				if (targetStruc->owningPackage->index != package.index)
-					package.dependencyPackages.insert(targetStruc->owningPackage);
 			}
 		}
 
@@ -1301,10 +1371,9 @@ void EngineCore::finishPackages()
 					{
 						type.info = info;
 
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 			};

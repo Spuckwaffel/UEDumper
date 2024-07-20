@@ -92,21 +92,27 @@ void SDKGeneration::generatePackage(
 ) {
     stream << "#pragma once\n";
     //flag some invalid characters in a name
-    auto generateValidVarName = [](const std::string& str)
+    auto generateValidVarName = [](const std::string& str, bool allowBrackets = false)
     {
         std::string result = "";
         for (const char c : str)
         {
             if (c == ' ')
                 continue;
-            else if (static_cast<int>(c) < 0 || !std::isalnum(c))
-                result += '_';
+            if (static_cast<int>(c) < 0 || !std::isalnum(c))
+            {
+                if(allowBrackets && (c == '[' ||  c == ']'))
+                    result += c;
+                else
+					result += '_';
+            }
+                
             else
                 result += c;
 
         }
 
-        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE", "try" };
 
         if (std::isdigit(result[0])) result = "_" + result;
         if (reservedNames.contains(result)) result += "0";
@@ -135,6 +141,8 @@ void SDKGeneration::generatePackage(
     }
 
     stream << "\n";
+
+    stream << "#pragma pack(push, 0x1)\n" << std::endl;
 
     auto generateForwardDecls = [&](const std::vector<EngineStructs::Struct*>& DataStruc)
     {
@@ -243,7 +251,16 @@ void SDKGeneration::generatePackage(
         for (const auto& struc : DataStruc)
         {
             char buf[1024] = { 0 };
-            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), struc->maxSize, struc->maxSize, struc->getInheritedSize(), struc->maxSize);
+
+            //maxsize has been decresed to 0 because of a super struct, we have to "fix it"
+            //for the static assert as single structs with no member cant be 0 bytes
+
+            uint64_t actualSize = struc->maxSize;
+
+            if(struc->size == 1 && struc->maxSize == 0)
+                actualSize = 1;
+
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04llX); // %d bytes (0x%06X - 0x%06llX)", generateValidVarName(struc->cppName).c_str(), actualSize, struc->maxSize, struc->getInheritedSize(), actualSize);
             stream << buf << std::endl;
         }
     };
@@ -253,13 +270,13 @@ void SDKGeneration::generatePackage(
             for (const auto& struc : DataStruc)
             {
                 const auto klass = generateValidVarName(struc->cppName);
-                std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+                std::vector<std::string> usedNames{};
 
                 int j = 0;
                 for (int i = 0; i < struc->cookedMembers.size(); i++)
                 {
                     const auto member = struc->getMemberForIndex(i);
-                    std::string name = member->name;
+                    std::string name = generateValidVarName(member->name, true);
 
                     if (std::isdigit(name[0]))
                         name = "_" + name;
@@ -291,41 +308,24 @@ void SDKGeneration::generatePackage(
                 continue;
             allnames.push_back(generateValidVarName(struc->cppName));
 
-            bool needsHelp = false;
-            if (struc->cookedMembers.size() > 0)
-            {
-                if (struc->minAlignment > 0 && (struc->maxSize % struc->minAlignment) > 0)
-                {
-                    needsHelp = true;
-                }
-            }
-
             if (struc->isClass)
                 stream << "/// Class " << struc->fullName << std::endl;
             else
             {
                 stream << "/// Struct " << struc->fullName << std::endl;
-                if (struc->maxSize == 0)
-                {
-                    // it's an empty struct, but by default will take up 1 byte
-                    struc->size = 0x1;
-                    struc->maxSize = 0x1;
-                }
             }
             char buf[256] = { 0 };
             sprintf_s(
                 buf, 
-                "Size: 0x%04X (%d bytes) (0x%06X - 0x%06X) align %s pad: 0x%04X",
-                struc->size - struc->getInheritedSize(),
-                struc->size - struc->getInheritedSize(),
+                "Size: 0x%04X (%d bytes) (0x%06X - 0x%06X) align %s MaxSize: 0x%04X",
+                struc->size,
+                struc->size,
                 struc->getInheritedSize(), 
                 struc->size, 
                 (struc->minAlignment > 0 ? std::to_string(struc->minAlignment) : "n/a").c_str(),
-                needsHelp ? struc->maxSize % struc->minAlignment : 0
+                struc->maxSize
             );
             stream << "/// " << buf << std::endl;
-
-            if (needsHelp) stream << "#pragma pack(push, 0x1)" << std::endl;
 
             if (struc->isClass)
                 stream << "class ";
@@ -353,7 +353,7 @@ void SDKGeneration::generatePackage(
             if (struc->isClass)
                 stream << "public:" << std::endl;
 
-            std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE"};
+            std::vector<std::string> usedNames{};
 
 
             int j = 0;
@@ -363,9 +363,7 @@ void SDKGeneration::generatePackage(
                 const auto member = struc->getMemberForIndex(i);
                 char finalBuf[600];
                 char nameBuf[500];
-                std::string name = member->name;
-
-                
+                std::string name = generateValidVarName(member->name, true);
 
                 if (name.empty())
                     name = "noname";
@@ -418,7 +416,6 @@ void SDKGeneration::generatePackage(
                 if (alreadyGeneratedFunctions.contains(func.fullName)) {
                     // some blueprint functions will be duplicated with exact same signatures, offsets, the lot
                     windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "SDK GEN", "WARNING: Duplicate function %s in struct %s. Skipping...", func.fullName.c_str(), struc->fullName.c_str());
-                    printf("WARNING: Duplicate function %s in struct %s. Skipping...\n", func.fullName.c_str(), struc->fullName.c_str());
                     continue;
                 }
                 alreadyGeneratedFunctions.insert(func.fullName);
@@ -493,11 +490,7 @@ void SDKGeneration::generatePackage(
                 vtableIndex++;
 
             }
-            if (needsHelp)
-            {
-                stream << "};\n#pragma pack(pop)\n\n";
-            }
-            else stream << "};\n\n";
+        	stream << "};\n\n";
 
 
         }
@@ -510,8 +503,14 @@ void SDKGeneration::generatePackage(
 
     //first we generate enums
 
+    std::unordered_set<std::string> definedEnums;
+
     for (const auto& enu : package.enums)
     {
+        if (definedEnums.contains(enu.cppName))
+            continue;
+        definedEnums.insert(enu.cppName);
+
         stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
         sprintf_s(buf, "Size: 0x%02d (%d bytes)", enu.size, enu.size);
@@ -520,14 +519,14 @@ void SDKGeneration::generatePackage(
         stream << "{" << std::endl;
 
         int j = 0;
-        std::vector<std::string> usedNames{ "float", "int", "bool", "double", "long", "char"};
+        std::vector<std::string> usedNames{};
 
         for (const auto& member : enu.members)
         {
             j++;
             char memberBuf[300];
 
-            std::string fir = member.first;
+            std::string fir = generateValidVarName(member.first);
 
             if (std::ranges::find(usedNames, fir) != usedNames.end())
                 fir += std::to_string(j);
@@ -548,10 +547,10 @@ void SDKGeneration::generatePackage(
         std::vector<EngineStructs::Struct*> structs;
         std::vector<EngineStructs::Struct*> classes;
 
-        for (auto package : package.combinedStructsAndClasses)
+        for (auto cpackage : package.combinedStructsAndClasses)
         {
-            if (package->isClass) classes.push_back(package);
-            else structs.push_back(package);
+            if (cpackage->isClass) classes.push_back(cpackage);
+            else structs.push_back(cpackage);
         }
 
         generateStruct(structs);
@@ -561,6 +560,8 @@ void SDKGeneration::generatePackage(
     {
         generateStruct(package.combinedStructsAndClasses);
     }
+
+    stream << "#pragma pack(pop)\n\n" << std::endl;
 
     // add static asserts for objects
     if (featureFlags & FeatureFlags::SDK::STATIC_ASSERTS_OBJECT_SIZE)
@@ -646,16 +647,26 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress, int featureF
 
     totalProgress = sortedPackages.size();
     progressDone = 0;
+    int tooLongNames = 0;
     for (auto& pack : sortedPackages)
     {
-        windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking package %s", pack->package.packageName.c_str());
-        masterHeader << "#include \"SDK/" + pack->package.packageName + ".h\"" << std::endl;
+        std::string packageName = pack->package.packageName;
+        if(packageName.length() > 100)
+        {
+            packageName = "tooLongPackage_" + std::to_string(tooLongNames++);
+            masterHeader << "// Package name has been changed because the name was too long. Original name:" << std::endl;
+            masterHeader << "// " << pack->package.packageName << std::endl;
+        }
+
+        windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "SDK GEN", "Baking package %s", packageName.c_str());
+
+    	masterHeader << "#include \"SDK/" + packageName + ".h\"" << std::endl;
         if (pack->package.packageName == "BasicType")
             generateBasicType();
         else
         {
-            std::string packageName = pack->package.packageName + ".h";
-            std::ofstream package(SDKPath / packageName);
+            std::string _packageName = packageName + ".h";
+            std::ofstream package(SDKPath / _packageName);
             printCredits(package);
             generatePackage(package, pack->package, featureFlags, originalPackageToMerged);
             package.close();

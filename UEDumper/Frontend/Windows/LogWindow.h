@@ -33,6 +33,7 @@ namespace windows
 			char message[201];
 			logLevels level;
 		};
+		static inline std::mutex logMutex = {};
 		static inline std::vector<log> logs{};
 		static inline std::vector<log> displayLogs{};
 		static inline int oldSize = 0;

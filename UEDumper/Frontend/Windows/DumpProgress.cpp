@@ -177,7 +177,7 @@ bool windows::DumpProgress::render()
 		skip: {
 			//-
 		}
-		ImGui::Text(LogWindow::getLastLogMessage().c_str());
+		ImGui::TextWrapped(LogWindow::getLastLogMessage().c_str());
 	}
 	ImGui::EndChild();
 	return false;

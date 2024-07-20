@@ -35,8 +35,10 @@
 #define RELEASE_1_9_FINAL	17
 #define RELEASE_1_10_BETA	18
 #define RELEASE_1_10_FINAL	19
+#define RELEASE_1_11_BETA	20
+#define RELEASE_1_11_FINAL	21
 
-#define DUMPER_VERSION RELEASE_1_10_BETA
+#define DUMPER_VERSION RELEASE_1_11_FINAL
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -45,7 +47,7 @@
 
 
 //supported unreal engine versions, dont edit
-#define UE_NOT_SET 99
+#define UE_NOT_SET  99
 #define UE_4_19		0
 #define UE_4_20		1
 #define UE_4_21		2
@@ -64,10 +66,11 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_NOT_SET
+#define UE_VERSION UE_4_27
 
 
-/* SDK generation */
+/* SDK and MDK generation */
+//if this is set to true, the SDK will contain static asserts to check whether the struct sizes and members actually match their offsets
 #define WRITE_STATIC_ASSERT_TESTS TRUE
 
 

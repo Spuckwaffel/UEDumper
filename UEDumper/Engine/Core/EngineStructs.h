@@ -177,7 +177,7 @@ struct fieldType
 		}
 		else
 		{
-			if ((propertyType == PropertyType::ObjectProperty || propertyType == PropertyType::ClassProperty) && clickable)
+			if (isPointer())
 			{
 				typeStr += "*";
 			}
@@ -236,7 +236,7 @@ namespace EngineStructs
 		fieldType type; //type of the member
 		std::string name; //name of the member
 		int offset = 0; //offset of the member (real offset)
-		int size = 0; //size of the member
+		int size = 0; //total size of the member (size * arrayDim)
 		int arrayDim = 0; // the number of elements if it's an array (e.g. int16_t foobar[123])
 		bool missed = false; //if the member is actually a missed member and is just used to fill up bytes
 		bool isBit = false; //if the member is a bit (": 1")
@@ -340,6 +340,7 @@ namespace EngineStructs
 		std::vector<Struct*> superOfOthers{}; //all the structs that use this class as a super
 		bool inherited = false; //if the struct is inherited
 		int maxSize = 0; //the maximum size this struct is "allowed" to have, as size is not accurate due to padding and trailing
+		bool noFixedSize = false; // if this boolean is true, the current struct or class has no specific fixed size, meaning it can change (template classes)
 		int minAlignment = 0; //minimal alignment defined by ue
 		int size = 0; //propertiesSize, possibly wrong, use maxSize
 		int unknownCount = 0; //keep track of all missed vars, only used for the package viewer to edit unknowndata
