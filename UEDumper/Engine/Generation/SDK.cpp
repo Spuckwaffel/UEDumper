@@ -112,7 +112,7 @@ void SDKGeneration::generatePackage(
 
         }
 
-        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE" };
+        const static std::unordered_set<std::string> reservedNames{ "float", "int", "bool", "double", "long", "char", "TRUE", "FALSE", "try" };
 
         if (std::isdigit(result[0])) result = "_" + result;
         if (reservedNames.contains(result)) result += "0";
@@ -260,7 +260,7 @@ void SDKGeneration::generatePackage(
             if(struc->size == 1 && struc->maxSize == 0)
                 actualSize = 1;
 
-            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04X); // %d bytes (0x%06X - 0x%06X)", generateValidVarName(struc->cppName).c_str(), actualSize, struc->maxSize, struc->getInheritedSize(), actualSize);
+            sprintf_s(buf, "static_assert(sizeof(%s) == 0x%04llX); // %d bytes (0x%06X - 0x%06llX)", generateValidVarName(struc->cppName).c_str(), actualSize, struc->maxSize, struc->getInheritedSize(), actualSize);
             stream << buf << std::endl;
         }
     };
@@ -503,8 +503,14 @@ void SDKGeneration::generatePackage(
 
     //first we generate enums
 
+    std::unordered_set<std::string> definedEnums;
+
     for (const auto& enu : package.enums)
     {
+        if (definedEnums.contains(enu.cppName))
+            continue;
+        definedEnums.insert(enu.cppName);
+
         stream << "/// Enum " << enu.fullName << std::endl;
         char buf[100] = { 0 };
         sprintf_s(buf, "Size: 0x%02d (%d bytes)", enu.size, enu.size);

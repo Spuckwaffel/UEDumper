@@ -195,6 +195,115 @@ inline void addStructs()
 	//add it
 	EngineCore::createStruct(TenumAsByte);
 
+	EngineStructs::Struct FweakObjectPtr;
+	FweakObjectPtr.fullName = "/Custom/FWeakObjectPtr";
+	FweakObjectPtr.cppName = "FWeakObjectPtr";
+	FweakObjectPtr.isClass = true;
+	FweakObjectPtr.size = sizeof(FWeakObjectPtr);
+	FweakObjectPtr.maxSize = FweakObjectPtr.size;
+	FweakObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"ObjectIndex",	0, 4},
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"ObjectSerialNumber",	4, 4},
+	};
+	//add it
+	EngineCore::createStruct(FweakObjectPtr);
+
+	EngineStructs::Struct TweakObjectPtr;
+	TweakObjectPtr.fullName = "/Custom/TWeakObjectPtr";
+	TweakObjectPtr.cppName = "TWeakObjectPtr";
+	TweakObjectPtr.isClass = true;
+	TweakObjectPtr.size = sizeof(TWeakObjectPtr<int>);
+	TweakObjectPtr.maxSize = TweakObjectPtr.size;
+	TweakObjectPtr.superNames = { "FWeakObjectPtr" };
+	TweakObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+	};
+	//add it
+	EngineCore::createStruct(TweakObjectPtr);
+
+	EngineStructs::Struct TpersistentObjectPtr;
+	TpersistentObjectPtr.fullName = "/Custom/TPersistentObjectPtr";
+	TpersistentObjectPtr.cppName = "TPersistentObjectPtr";
+	TpersistentObjectPtr.isClass = true;
+	TpersistentObjectPtr.size = sizeof(TPersistentObjectPtr<int>);
+	TpersistentObjectPtr.maxSize = TpersistentObjectPtr.size;
+	TpersistentObjectPtr.noFixedSize = true;
+	TpersistentObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+		{{true,		PropertyType::ObjectProperty,		"FWeakObjectPtr"},		"WeakPtr",	0, 8},
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"TagAtLastTest",	8, 4},
+		{{false,		PropertyType::ObjectProperty,		"TObjectID"},		"ObjectID",	12, 4},
+	};
+	//add it
+	EngineCore::createStruct(TpersistentObjectPtr);
+
+	EngineStructs::Struct FuniqueObjectGuid;
+	FuniqueObjectGuid.fullName = "/Custom/FUniqueObjectGuid";
+	FuniqueObjectGuid.cppName = "FUniqueObjectGuid";
+	FuniqueObjectGuid.isClass = true;
+	FuniqueObjectGuid.size = sizeof(FUniqueObjectGuid);
+	FuniqueObjectGuid.maxSize = FuniqueObjectGuid.size;
+	FuniqueObjectGuid.definedMembers = std::vector<EngineStructs::Member>{
+		{{false,		PropertyType::UInt32Property,		TYPE_UI32},		"A",	0, 4},
+		{{false,		PropertyType::UInt32Property,		TYPE_UI32},		"B",	4, 4},
+		{{false,		PropertyType::UInt32Property,		TYPE_UI32},		"C",	8, 4},
+		{{false,		PropertyType::UInt32Property,		TYPE_UI32},		"D",	12, 4},
+	};
+	//add it
+	EngineCore::createStruct(FuniqueObjectGuid);
+
+	EngineStructs::Struct TlazyObjectPtr;
+	TlazyObjectPtr.fullName = "/Custom/TLazyObjectPtr";
+	TlazyObjectPtr.cppName = "TLazyObjectPtr";
+	TlazyObjectPtr.isClass = true;
+	TlazyObjectPtr.size = sizeof(TLazyObjectPtr<int>);
+	TlazyObjectPtr.maxSize = TlazyObjectPtr.size;
+	TlazyObjectPtr.noFixedSize = true;
+	TlazyObjectPtr.superNames = { "TPersistentObjectPtr" };
+	TlazyObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+		{{true,		PropertyType::ObjectProperty,		"FWeakObjectPtr"},		"WeakPtr",	0, 8},
+		{{false,		PropertyType::IntProperty,		TYPE_I32},		"TagAtLastTest",	8, 4},
+		{{false,		PropertyType::ObjectProperty,		"TObjectID"},		"ObjectID",	12, 4},
+	};
+	//add it
+	EngineCore::createStruct(TlazyObjectPtr);
+
+	EngineStructs::Struct FsoftObjectPtr;
+	FsoftObjectPtr.fullName = "/Custom/FSoftObjectPtr";
+	FsoftObjectPtr.cppName = "FSoftObjectPtr";
+	FsoftObjectPtr.isClass = true;
+	FsoftObjectPtr.size = sizeof(FSoftObjectPtr);
+	FsoftObjectPtr.noFixedSize = true;
+	FsoftObjectPtr.maxSize = FsoftObjectPtr.size;
+	FsoftObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+	};
+	//add it
+	EngineCore::createStruct(FsoftObjectPtr);
+
+	EngineStructs::Struct TsoftObjectPtr;
+	TsoftObjectPtr.fullName = "/Custom/TSoftObjectPtr";
+	TsoftObjectPtr.cppName = "TSoftObjectPtr";
+	TsoftObjectPtr.isClass = true;
+	TsoftObjectPtr.size = sizeof(TSoftObjectPtr<int>);
+	TsoftObjectPtr.noFixedSize = true;
+	TsoftObjectPtr.maxSize = TsoftObjectPtr.size;
+	TsoftObjectPtr.superNames = { "FSoftObjectPtr" };
+	TsoftObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
+	};
+	//add it
+	EngineCore::createStruct(TsoftObjectPtr);
+
+	EngineStructs::Struct TsoftClassPtr;
+	TsoftClassPtr.fullName = "/Custom/TSoftClassPtr";
+	TsoftClassPtr.cppName = "TSoftClassPtr";
+	TsoftClassPtr.isClass = true;
+	TsoftClassPtr.size = sizeof(TSoftClassPtr<int>);
+	TsoftClassPtr.noFixedSize = true;
+	TsoftClassPtr.maxSize = TsoftClassPtr.size;
+	TsoftClassPtr.superNames = { "FSoftObjectPtr" };
+	TsoftClassPtr.definedMembers = std::vector<EngineStructs::Member>{
+	};
+	//add it
+	EngineCore::createStruct(TsoftClassPtr);
+
 	EngineStructs::Struct FtextData;
 	FtextData.fullName = "/Custom/FTextData";
 	FtextData.cppName = "FTextData";
@@ -219,6 +328,20 @@ inline void addStructs()
 	};
 	//add it
 	EngineCore::createStruct(Ftext);
+
+	EngineStructs::Struct Tmap;
+	Tmap.fullName = "/Custom/TMap";
+	Tmap.cppName = "TMap";
+	Tmap.isClass = false;
+	Tmap.size = sizeof(TMap<int, int>);
+	Tmap.maxSize = Tmap.size;
+	Tmap.noFixedSize = true;
+	Tmap.definedMembers = std::vector<EngineStructs::Member>{
+		{{true,		PropertyType::ObjectProperty,		"TArray"},		"Data",	0, 16},
+		{{false,		PropertyType::ArrayProperty,		TYPE_UCHAR},		"UnknownData01[0x40]",	16, 0x40},
+	};
+	//add it
+	EngineCore::createStruct(Tmap);
 }
 
 inline void addEnums()

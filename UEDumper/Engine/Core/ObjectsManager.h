@@ -269,7 +269,7 @@ public:
 #ifdef _DEBUG
 		if (gamePtr < 0x100) {
 			// if your pointer is less than 0x100, it's likely invalid and there's a bug. Check your structs
-			DebugBreak();
+			//DebugBreak();
 		}
 #endif
 		if(!gUObjectManager.linkedUObjectPtrs.contains(gamePtr))

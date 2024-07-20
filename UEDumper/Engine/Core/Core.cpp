@@ -626,6 +626,24 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		eStruct.cookedMembers.clear();
 
 
+	auto checkRealMemberSize = [&](EngineStructs::Member* currentMember)
+	{
+		//set the real size
+		if (!currentMember->type.isPointer())
+		{
+			if (const auto classObject = getInfoOfObject(currentMember->type.name))
+			{
+				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
+				{
+					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
+					if(!cclass->noFixedSize)
+						currentMember->size = cclass->maxSize * (currentMember->arrayDim <= 0 ? 1 : currentMember->arrayDim);
+				}
+			}
+		}
+	};
+
+
 	auto genUnknownMember = [&](int from, int to, int special)
 	{
 		EngineStructs::Member unknown;
@@ -808,18 +826,7 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 		//0x7 [0x2]
 
 
-		//set the real size
-		if(!currentMember.type.isPointer())
-		{
-			if (const auto classObject = getInfoOfObject(currentMember.type.name))
-			{
-				if (classObject->type == ObjectInfo::OI_Struct || classObject->type == ObjectInfo::OI_Class)
-				{
-					const auto cclass = static_cast<EngineStructs::Struct*>(classObject->target);
-					currentMember.size = cclass->maxSize * (currentMember.arrayDim <= 0 ? 1 : currentMember.arrayDim);
-				}
-			}
-		}
+		checkRealMemberSize(&currentMember);
 
 
 		if (nextMember.offset - (currentMember.offset + currentMember.size) > 0)
@@ -835,7 +842,8 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	}
 	//add the last member
 	eStruct.cookedMembers.push_back(std::pair(true, eStruct.definedMembers.size() - 1));
-	const auto& last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	auto last = eStruct.getMemberForIndex(eStruct.cookedMembers.size() - 1);
+	checkRealMemberSize(last);
 	if (last->offset + last->size < eStruct.maxSize)
 		genUnknownMember(last->offset + last->size, eStruct.maxSize, 7);
 }
@@ -1010,7 +1018,7 @@ void EngineCore::generatePackages(int64_t& finishedPackages, int64_t& totalPacka
 		for (auto& enu : package.enums) {
 			if (usedNames.contains(enu.cppName)) {
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "CORE", "Enum redefinitio in package %s! %s has already been defined in package %s", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
-				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", enu.cppName.c_str(), usedNames[enu.cppName].c_str());
+				printf("Enum redefinition in package %s! %s has already been defined in package %s\n", package.packageName.c_str(), enu.cppName.c_str(), usedNames[enu.cppName].c_str());
 			}
 			usedNames.insert({ enu.cppName, package.packageName });
 		}
@@ -1269,7 +1277,7 @@ void EngineCore::finishPackages()
 			for (auto& name : struc->superNames)
 			{
 				const auto info = getInfoOfObject(name);
-				if (!info || !info->valid)
+				if (!info || !info->valid || (info->type != ObjectInfo::OI_Class && info->type != ObjectInfo::OI_Struct))
 					continue;
 				//get the super struct
 				auto superStruc = static_cast<EngineStructs::Struct*>(info->target);
@@ -1328,6 +1336,8 @@ void EngineCore::finishPackages()
 
 				for (auto& subtype : var.type.subTypes)
 				{
+					if (!subtype.clickable)
+						continue;
 					const auto subInfo = getInfoOfObject(subtype.name);
 					if (!subInfo || !subInfo->valid)
 						continue;
@@ -1336,18 +1346,16 @@ void EngineCore::finishPackages()
 
 					if (subtype.propertyType != PropertyType::ObjectProperty && subtype.propertyType != PropertyType::ClassProperty)
 					{
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(subInfo->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = subInfo->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(subInfo->target)->owningPackage : static_cast<EngineStructs::Struct*>(subInfo->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 
+				const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+				if (targetPack->index != package.index)
+					package.dependencyPackages.insert(targetPack);
 
-				//casting is fine even if its a enum as owningpackage is the first package
-				const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-				if (targetStruc->owningPackage->index != package.index)
-					package.dependencyPackages.insert(targetStruc->owningPackage);
 			}
 		}
 
@@ -1363,10 +1371,9 @@ void EngineCore::finishPackages()
 					{
 						type.info = info;
 
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 			};

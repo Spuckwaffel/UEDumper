@@ -38,7 +38,7 @@
 #define RELEASE_1_11_BETA	20
 #define RELEASE_1_11_FINAL	21
 
-#define DUMPER_VERSION RELEASE_1_11_BETA
+#define DUMPER_VERSION RELEASE_1_11_FINAL
 
 
 /// This file contains engine definitions that you have to edit depending on the game!
@@ -66,7 +66,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_5_03
+#define UE_VERSION UE_4_27
 
 
 /* SDK and MDK generation */
