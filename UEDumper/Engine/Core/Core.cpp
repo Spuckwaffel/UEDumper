@@ -1264,9 +1264,6 @@ void EngineCore::finishPackages()
 	{
 		auto& package = packages[i];
 
-		if (package.packageName == "AnimatedTexture")
-			DebugBreak();
-
 		for (const auto& struc : package.combinedStructsAndClasses)
 		{
 			for (const auto& var : struc->definedMembers)
