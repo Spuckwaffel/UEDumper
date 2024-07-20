@@ -1264,6 +1264,9 @@ void EngineCore::finishPackages()
 	{
 		auto& package = packages[i];
 
+		if (package.packageName == "AnimatedTexture")
+			DebugBreak();
+
 		for (const auto& struc : package.combinedStructsAndClasses)
 		{
 			for (const auto& var : struc->definedMembers)
@@ -1277,7 +1280,7 @@ void EngineCore::finishPackages()
 			for (auto& name : struc->superNames)
 			{
 				const auto info = getInfoOfObject(name);
-				if (!info || !info->valid)
+				if (!info || !info->valid || (info->type != ObjectInfo::OI_Class && info->type != ObjectInfo::OI_Struct))
 					continue;
 				//get the super struct
 				auto superStruc = static_cast<EngineStructs::Struct*>(info->target);
@@ -1336,6 +1339,8 @@ void EngineCore::finishPackages()
 
 				for (auto& subtype : var.type.subTypes)
 				{
+					if (!subtype.clickable)
+						continue;
 					const auto subInfo = getInfoOfObject(subtype.name);
 					if (!subInfo || !subInfo->valid)
 						continue;
@@ -1344,18 +1349,16 @@ void EngineCore::finishPackages()
 
 					if (subtype.propertyType != PropertyType::ObjectProperty && subtype.propertyType != PropertyType::ClassProperty)
 					{
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(subInfo->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = subInfo->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(subInfo->target)->owningPackage : static_cast<EngineStructs::Struct*>(subInfo->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 
+				const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+				if (targetPack->index != package.index)
+					package.dependencyPackages.insert(targetPack);
 
-				//casting is fine even if its a enum as owningpackage is the first package
-				const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-				if (targetStruc->owningPackage->index != package.index)
-					package.dependencyPackages.insert(targetStruc->owningPackage);
 			}
 		}
 
@@ -1371,10 +1374,9 @@ void EngineCore::finishPackages()
 					{
 						type.info = info;
 
-						//casting is fine even if its a enum as owningpackage is the first package
-						const auto targetStruc = static_cast<EngineStructs::Struct*>(info->target);
-						if (targetStruc->owningPackage->index != package.index)
-							package.dependencyPackages.insert(targetStruc->owningPackage);
+						const auto targetPack = info->type == ObjectInfo::OI_Enum ? static_cast<EngineStructs::Enum*>(info->target)->owningPackage : static_cast<EngineStructs::Struct*>(info->target)->owningPackage;
+						if (targetPack->index != package.index)
+							package.dependencyPackages.insert(targetPack);
 					}
 				}
 			};
