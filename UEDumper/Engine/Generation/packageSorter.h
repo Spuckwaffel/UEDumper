@@ -89,7 +89,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 			{
 				MergedPackage p;
 				//create a unique index
-				p.package.index = newPackages.size() + 100 + mergePackages.size();
+				p.package.index = newPackages.size() + 10000 + mergePackages.size();
 				//first sort out own references and remove dups
 				std::set<EngineStructs::Package*> totalDependencyPackage;
 				std::string name = "merged";
@@ -135,43 +135,64 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 		//ie if a solo package got added into the vector before it got merged with other pkgs, it can stay there forever
 		//because merges will be always last in the loop
 
-		if(mergePackages.size() > 0)
+		if (mergePackages.size() > 0)
 		{
+			//clean package array, we will use this to push our stuff
 			std::vector<MergedPackage> cleanedPackages{};
 
+			//a set of package indexes we blacklist to then filter out
 			std::unordered_set<int> blacklistedPkgs;
 
+			//iterate over all newly mereged packages
 			for (auto& pack : mergePackages)
 			{
 				//we do this so we prevent two merged packages blacklisting each other
 				if (blacklistedPkgs.contains(pack.package.index))
 					continue;
 
+				//now we iterate over all new packages (containing single packages too)
 				for (auto& cmpPack : _newPackages)
 				{
-					//we looking at the exact same package?
-
+					//if the blacklist contains this package, we ignore it
 					if (blacklistedPkgs.contains(cmpPack.package.index))
 						continue;
 
+					//we looking at the exact same package?
 					if (cmpPack.package.index == pack.package.index)
 						continue;
 
-					std::unordered_set elements(pack.mergedPackages.begin(), pack.mergedPackages.end());
+					auto isSubset = [&](const std::vector<EngineStructs::Package*>& v1, const std::vector<EngineStructs::Package*>& v2) {
+						const auto& largeVec = v1.size() > v2.size() ? v1 : v2;
+						std::unordered_set largerSet(largeVec.begin(), largeVec.end());
 
-					for(const auto& p1 : cmpPack.mergedPackages)
-					{
-						if(elements.contains(p1))
-						{
-							blacklistedPkgs.insert(cmpPack.package.index);
-							break;
+						const auto& smallVec = v1.size() <= v2.size() ? v1 : v2;
+
+						for (auto& num : smallVec) {
+							if (!largerSet.contains(num)) {
+								return false;
+							}
 						}
+						return true;
+					};
+
+					//check if a package is a subset of the other
+					//this way we will let packages continue to build if they contain different packages, ie
+					//package a: a, b, c, d
+					//package b: b, d, f, g, h
+					//as they will find their way sooner or later
+					//otherwise we will just break one package and the recent merged packages like a, c get just lost
+					//as they will not appear in the next loop anymore
+					
+					if(isSubset(pack.mergedPackages, cmpPack.mergedPackages))
+					{
+						//blacklist the smaller package / the one which is the subset
+						blacklistedPkgs.insert(pack.mergedPackages.size() <= cmpPack.mergedPackages.size() ? pack.mergedPackages.size() : cmpPack.package.index);
+						break;
 					}
-						
 				}
 			}
 
-			for(auto& cmpPack : _newPackages)
+			for (auto& cmpPack : _newPackages)
 			{
 				if (blacklistedPkgs.contains(cmpPack.package.index))
 					continue;
@@ -230,46 +251,46 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 				// struct c { a member1, a member2}
 				// works both for inheritance and any struct
 				auto fixOrder = [&](EngineStructs::Struct* neededStruct) mutable
-				{
-					//is it not in our package? then theres nothing we have to do
-					if (std::ranges::find(mergedPackages, neededStruct->owningPackage) == mergedPackages.end())
-						return;
-
-					//now we get the position of the item
-					const auto neededIt = std::ranges::find(orderedStructsAndClasses, neededStruct);
-
-					//is it before defined? then nothing we have to do
-					if (neededIt <= currentIt)
-						return;
-
-					//set the rorder flag
-					didReordering = true;
-
-					//not in the list?
-					if (neededIt == orderedStructsAndClasses.end())
 					{
-						//add it before, this ensures it will be defined before
+						//is it not in our package? then theres nothing we have to do
+						if (std::ranges::find(mergedPackages, neededStruct->owningPackage) == mergedPackages.end())
+							return;
+
+						//now we get the position of the item
+						const auto neededIt = std::ranges::find(orderedStructsAndClasses, neededStruct);
+
+						//is it before defined? then nothing we have to do
+						if (neededIt <= currentIt)
+							return;
+
+						//set the rorder flag
+						didReordering = true;
+
+						//not in the list?
+						if (neededIt == orderedStructsAndClasses.end())
+						{
+							//add it before, this ensures it will be defined before
+							//fix the iterator
+
+							printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
+
+							orderedStructsAndClasses.insert(currentIt, neededStruct);
+							currentIt = std::ranges::find(
+								orderedStructsAndClasses, item);
+
+							return;
+						}
+
+						//its defined but too high up
+						const auto it = *neededIt;
+
+						printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), it->cppName.c_str(), (*currentIt)->cppName.c_str());
+						orderedStructsAndClasses.erase(neededIt);
 						//fix the iterator
-
-						printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), neededStruct->cppName.c_str(), (*currentIt)->cppName.c_str());
-
-						orderedStructsAndClasses.insert(currentIt, neededStruct);
+						orderedStructsAndClasses.insert(currentIt, it);
 						currentIt = std::ranges::find(
 							orderedStructsAndClasses, item);
-
-						return;
-					}
-
-					//its defined but too high up
-					const auto it = *neededIt;
-
-					printf("%d - %s: added %s before %s\n", kk, package.packageName.c_str(), it->cppName.c_str(), (*currentIt)->cppName.c_str());
-					orderedStructsAndClasses.erase(neededIt);
-					//fix the iterator
-					orderedStructsAndClasses.insert(currentIt, it);
-					currentIt = std::ranges::find(
-						orderedStructsAndClasses, item);
-				};
+					};
 
 				//if the class or struct has no inheritance we skip this
 				if (item->inherited)
