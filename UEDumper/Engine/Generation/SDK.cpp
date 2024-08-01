@@ -629,10 +629,10 @@ void SDKGeneration::Generate(int& progressDone, int& totalProgress, int featureF
 
 
     std::unordered_map<std::string, std::string> originalPackageToMerged;
-    for (auto& pack : newPackages)
+    for (auto& pack : sortedPackages)
     {
-        for (auto& mergedPack : pack.mergedPackages) {
-            originalPackageToMerged.insert(std::pair<std::string, std::string>(mergedPack->packageName, pack.package.packageName));
+        for (auto& mergedPack : pack->mergedPackages) {
+            originalPackageToMerged.insert(std::pair<std::string, std::string>(mergedPack->packageName, pack->package.packageName));
         }
     }
 

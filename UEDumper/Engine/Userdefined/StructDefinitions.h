@@ -229,8 +229,12 @@ inline void addStructs()
 	TpersistentObjectPtr.noFixedSize = true;
 	TpersistentObjectPtr.definedMembers = std::vector<EngineStructs::Member>{
 		{{true,		PropertyType::ObjectProperty,		"FWeakObjectPtr"},		"WeakPtr",	0, 8},
+#if UE_VERSION < UE_5_03
 		{{false,		PropertyType::IntProperty,		TYPE_I32},		"TagAtLastTest",	8, 4},
 		{{false,		PropertyType::ObjectProperty,		"TObjectID"},		"ObjectID",	12, 4},
+#else
+		{{false,		PropertyType::ObjectProperty,		"TObjectID"},		"ObjectID",	8, 4},
+#endif
 	};
 	//add it
 	EngineCore::createStruct(TpersistentObjectPtr);

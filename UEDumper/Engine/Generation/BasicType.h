@@ -318,6 +318,8 @@ public:
     definedStructs.push_back(dStruct);
 
     dStruct.name = "TPersistentObjectPtr";
+
+#if UE_VERSION < UE_5_03
     dStruct.definition =
         R"(
 template<typename TObjectID>
@@ -329,6 +331,18 @@ public:
 	TObjectID ObjectID;
 };
 )";
+#else
+    dStruct.definition =
+        R"(
+template<typename TObjectID>
+class TPersistentObjectPtr
+{
+public:
+	FWeakObjectPtr WeakPtr;
+	TObjectID ObjectID;
+};
+)";
+#endif
 
     definedStructs.push_back(dStruct);
 

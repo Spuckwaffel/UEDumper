@@ -186,7 +186,7 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					if(isSubset(pack.mergedPackages, cmpPack.mergedPackages))
 					{
 						//blacklist the smaller package / the one which is the subset
-						blacklistedPkgs.insert(pack.mergedPackages.size() <= cmpPack.mergedPackages.size() ? pack.mergedPackages.size() : cmpPack.package.index);
+						blacklistedPkgs.insert(pack.mergedPackages.size() <= cmpPack.mergedPackages.size() ? pack.package.index : cmpPack.package.index);
 						break;
 					}
 				}
