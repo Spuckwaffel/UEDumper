@@ -421,7 +421,7 @@ void SDKGeneration::generatePackage(
                 alreadyGeneratedFunctions.insert(func.fullName);
 
                 stream << "\t// Function " << func.fullName << std::endl;
-                char funcBuf[1200];
+                char funcBuf[4000];
                 const auto bAddPrefix = featureFlags & FeatureFlags::SDK::FUNCTION_BODIES ? false : true;
 
                 std::string params = "" + func.returnType.stringify(bAddPrefix) + " " + generateValidVarName(func.cppName).c_str() + "(";
@@ -472,7 +472,7 @@ void SDKGeneration::generatePackage(
 
                     bool isVoidFunc = func.returnType.stringify() == "void";
 
-                char funcBody[1200];
+                char funcBody[4000];
                 sprintf_s(funcBody, R"EOF(	{
 		typedef %s (*FuncPtr)(%s);
 		auto vtablePtr = reinterpret_cast<uintptr_t*>(vtable);

@@ -10,7 +10,7 @@
 namespace Dumpspace
 {
     std::string dumpTimeStamp = {};
-    constexpr auto version = 10201;
+    constexpr auto version = 10202;
 
     // Last std::string isn't used atm, but dumps.host expects it.
     std::vector<std::pair<std::string, uintptr_t>> offsets = {};
@@ -158,9 +158,9 @@ namespace Dumpspace
 
                         //actually no need to use the typearray because bits are literally just unsigned chars or bools but we wanna keep the same style
                         if (member.isBit)
-                            jmember[member.name + " : 1"] = std::make_tuple(member.type.jsonify(), member.offset, member.size, member.bitOffset);
+                            jmember[member.name] = std::make_tuple(member.type.jsonify(), member.offset, member.size, member.arrayDim,member.bitOffset);
                         else
-                            jmember[member.name] = std::make_tuple(member.type.jsonify(), member.offset, member.size);
+                            jmember[member.name] = std::make_tuple(member.type.jsonify(), member.offset, member.size, member.arrayDim);
                         membersArray.push_back(jmember);
                     }
                     nlohmann::json j;

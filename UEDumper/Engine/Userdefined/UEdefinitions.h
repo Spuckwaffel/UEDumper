@@ -66,7 +66,7 @@
 /* UE version settings */
 
 //set your games ue version
-#define UE_VERSION UE_4_27
+#define UE_VERSION UE_4_20
 
 
 /* SDK and MDK generation */
