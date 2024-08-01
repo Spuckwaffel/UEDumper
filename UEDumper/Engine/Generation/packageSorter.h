@@ -150,6 +150,9 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 				if (blacklistedPkgs.contains(pack.package.index))
 					continue;
 
+				//flag whether this package already blacklisted one package
+				bool blacklistedOne = false;
+
 				//now we iterate over all new packages (containing single packages too)
 				for (auto& cmpPack : _newPackages)
 				{
@@ -161,9 +164,15 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					if (cmpPack.package.index == pack.package.index)
 						continue;
 
-					auto isSubset = [&](const std::vector<EngineStructs::Package*>& v1, const std::vector<EngineStructs::Package*>& v2) {
+					//we will continue to blacklist solo packages but not any merged ones as that should do a completely new round so we dont break something
+					if (blacklistedOne && cmpPack.mergedPackages.size() > 1)
+						continue;
+
+					auto isSubset = [&](const std::vector<EngineStructs::Package*>& v1, const std::vector<EngineStructs::Package*>& v2, bool& ownOneSmaller) {
 						const auto& largeVec = v1.size() > v2.size() ? v1 : v2;
 						std::unordered_set largerSet(largeVec.begin(), largeVec.end());
+
+						ownOneSmaller = v1.size() <= v2.size();
 
 						const auto& smallVec = v1.size() <= v2.size() ? v1 : v2;
 
@@ -182,12 +191,17 @@ inline std::vector<MergedPackage*> sortPackages(int& progressDone, int& totalPro
 					//as they will find their way sooner or later
 					//otherwise we will just break one package and the recent merged packages like a, c get just lost
 					//as they will not appear in the next loop anymore
-					
-					if(isSubset(pack.mergedPackages, cmpPack.mergedPackages))
+					bool ownOneSmaller = false;
+					if(isSubset(pack.mergedPackages, cmpPack.mergedPackages, ownOneSmaller))
 					{
 						//blacklist the smaller package / the one which is the subset
-						blacklistedPkgs.insert(pack.mergedPackages.size() <= cmpPack.mergedPackages.size() ? pack.package.index : cmpPack.package.index);
-						break;
+						blacklistedPkgs.insert(ownOneSmaller ? pack.package.index : cmpPack.package.index);
+						//we set this flag again just to check again
+						anyMergeFound = true;
+						//if our own one is smaller we have to break and cant blacklist more, this will break everything and packages get lost
+						if (ownOneSmaller)
+							break;
+						blacklistedOne = true;
 					}
 				}
 			}

@@ -374,6 +374,7 @@ public:
     definedStructs.push_back(dStruct);
 
     dStruct.name = "FSoftObjectPath_";
+#if UE_VERSION < UE_5_01
     dStruct.definition =
         R"(
 struct FSoftObjectPath_
@@ -383,6 +384,18 @@ public:
 	FString SubPathString;
 };
 )";
+#else
+    dStruct.definition =
+        R"(
+struct FSoftObjectPath_
+{
+public:
+	FName PackageName;
+    FName AssetName;
+	FString SubPathString;
+};
+)";
+#endif
 
     definedStructs.push_back(dStruct);
 
