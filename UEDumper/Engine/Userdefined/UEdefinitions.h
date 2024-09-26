@@ -86,7 +86,7 @@
 #define WITH_CASE_PRESERVING_NAME FALSE
 
 //set this to false if your generation always stops and says you have a invalid fname offset
-//however all this does is check if the first item is /Scrupt/Core.UObject which should always be the case
+//however all this does is check if the first item is /Script/Core.UObject which should always be the case
 //default TRUE
 #define BREAK_IF_INVALID_NAME TRUE
 
