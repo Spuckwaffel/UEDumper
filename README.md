@@ -119,6 +119,9 @@
 <p>Please keep in mind that i will not accept any pull requests that change the entire code base, do not use any caching, arent documented or just messy.&nbsp;</p>
 <p>This project is a very large project but very stable and uses a lot caching for almost everything in order to work properly and fast. However, if you find any better solutions, feel free to create a pull request to implement it.</p>
 <p>&nbsp;</p>
+<h2>Other branches</h2>
+<p>The project also supports Direct Memory Access. Just take a look at the branches.</p>
+
 <h2>Thank you</h2>
 <p>This project was made entirely by me and I spent a lot of free time in this project and after all i still released it to the public entirely free.&nbsp;</p>
 <p>Special thanks to Blue Fire for the idea, help and suggestions.</p>
